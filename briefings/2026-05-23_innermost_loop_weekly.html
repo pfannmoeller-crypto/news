@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innermost Loop · Weekly Briefing · May 19–22, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #1a73e8;
+    --primary-hover: #174ea6;
+    --primary-soft: #e8f0fe;
+    --primary-on-soft: #1967d2;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--on-surface);
+    font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* APP BAR */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .appbar .logo {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--purple-soft);
+    color: var(--purple);
+    display: grid; place-items: center;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700; font-size: 16px;
+  }
+  .appbar .titles { flex: 1; }
+  .appbar h1 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 18px; font-weight: 500;
+    color: var(--on-surface);
+    margin: 0; line-height: 1.2;
+  }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+
+  /* PAGE */
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  /* CHIPS */
+  .chips {
+    display: flex; gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 24px;
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--divider);
+    background: var(--surface);
+    color: var(--on-surface-2);
+    font-family: 'Google Sans Text', sans-serif;
+    font-size: 13px; font-weight: 500;
+    white-space: nowrap; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-decoration: none;
+  }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active {
+    background: var(--purple-soft);
+    border-color: transparent;
+    color: var(--purple);
+  }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #8e44ad 0%, #5e35b1 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-1);
+  }
+  .hero .eyebrow {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    opacity: 0.85; margin-bottom: 8px;
+  }
+  .hero h2 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 28px; font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    font-size: 15px; line-height: 1.55;
+    opacity: 0.95; margin: 0;
+    max-width: 660px;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin: 32px 4px 12px;
+  }
+  .section-header .material-icons-outlined {
+    color: var(--primary);
+    font-size: 22px;
+  }
+  .section-header h3 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 16px; font-weight: 500;
+    color: var(--on-surface);
+    margin: 0;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-1);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border: 1px solid var(--divider-soft);
+  }
+  .card .card-head {
+    display: flex; align-items: baseline;
+    gap: 12px; margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .card .day {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--purple);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .card .date {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: var(--on-surface-muted);
+  }
+  .card h4 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 20px; font-weight: 500;
+    line-height: 1.3;
+    color: var(--on-surface);
+    margin: 4px 0 14px;
+  }
+  .card .tagline {
+    font-style: italic;
+    color: var(--purple);
+    font-size: 14px;
+    margin: 0 0 18px;
+    padding-left: 14px;
+    border-left: 3px solid var(--purple-soft);
+  }
+
+  .story {
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--divider-soft);
+  }
+  .story:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .story h5 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--on-surface);
+    margin: 0 0 6px;
+  }
+  .story p {
+    margin: 0 0 8px;
+    color: var(--on-surface-2);
+  }
+  .story .links {
+    display: flex; flex-wrap: wrap;
+    gap: 6px 10px;
+    margin-top: 6px;
+  }
+  .story .links a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--primary-soft);
+    transition: background 0.15s;
+  }
+  .story .links a:hover { background: #d4e3fb; }
+  .story .links a .material-icons-outlined { font-size: 14px; }
+
+  .pullquote {
+    margin: 18px 0 4px;
+    padding: 14px 18px;
+    background: var(--surface-2);
+    border-radius: 10px;
+    border-left: 3px solid var(--purple);
+    font-family: 'Google Sans', sans-serif;
+    font-size: 14px;
+    color: var(--on-surface-2);
+    font-style: italic;
+  }
+  .pullquote .label {
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    color: var(--on-surface-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  /* SYNTHESIS */
+  .syn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) {
+    .syn-grid { grid-template-columns: 1fr; }
+  }
+  .syn-card {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--divider-soft);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-1);
+  }
+  .syn-card h6 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--purple);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .syn-card p {
+    margin: 0 0 6px;
+    color: var(--on-surface-2);
+    font-size: 13.5px;
+  }
+  .syn-card .days {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11.5px;
+    color: var(--on-surface-muted);
+    margin-top: 6px;
+  }
+
+  .consequential {
+    background: linear-gradient(135deg, #fff8e7 0%, #fef7e0 100%);
+    border-left: 4px solid var(--yellow);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0 24px;
+  }
+  .consequential h6 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--yellow);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .consequential p { margin: 0 0 8px; color: var(--on-surface-2); }
+
+  .launch-list {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--divider-soft);
+    padding: 4px 0;
+    box-shadow: var(--shadow-1);
+    margin-bottom: 16px;
+  }
+  .launch-row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 14px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--divider-soft);
+    align-items: baseline;
+  }
+  .launch-row:last-child { border-bottom: none; }
+  .launch-row .ldate {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: var(--purple);
+    font-weight: 500;
+  }
+  .launch-row .litems { font-size: 13.5px; color: var(--on-surface-2); }
+  .launch-row .litems strong { color: var(--on-surface); font-weight: 500; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 32px;
+    padding: 16px 4px;
+    border-top: 1px solid var(--divider-soft);
+    font-size: 12px;
+    color: var(--on-surface-muted);
+    text-align: center;
+  }
+  .footer a { color: var(--primary); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  .meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 0 4px 24px;
+    font-size: 12.5px;
+    color: var(--on-surface-muted);
+  }
+  .meta-bar .dot { color: var(--divider); }
+
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">&#8734;</div>
+    <div class="titles">
+      <h1>Innermost Loop &middot; Weekly Briefing</h1>
+      <div class="sub">Alex Wissner-Gross &middot; May 19 &ndash; May 22, 2026 &middot; 4 issues digested</div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <div class="eyebrow">Week of May 19&ndash;22, 2026</div>
+    <h2>The Singularity got a futures market &mdash;<br>then proved a theorem humans had believed for decades.</h2>
+    <p>An off-cycle four-issue edition (last week's briefing closed on May 18). Two thresholds crossed in four days: the compute economy acquired its keystone &mdash; GPU futures listing on the Intercontinental Exchange, the same plumbing that clears Brent crude &mdash; and an internal, general-purpose OpenAI model disproved a longstanding Erdős conjecture, the first clean case of a model expanding the frontier of knowledge rather than merely searching it. Underneath: a straining silicon substrate, the agent stack reorganizing the labor market, and SpaceX and OpenAI both racing toward IPO filings.</p>
+  </div>
+
+  <div class="meta-bar">
+    <span><span class="material-icons-outlined" style="font-size:14px; vertical-align:-2px;">link</span> Source: <a href="https://theinnermostloop.substack.com/" style="color: var(--primary); text-decoration:none;">theinnermostloop.substack.com</a></span>
+    <span class="dot">&middot;</span>
+    <span><span class="material-icons-outlined" style="font-size:14px; vertical-align:-2px;">mail</span> Pulled from your Gmail (4 threads)</span>
+    <span class="dot">&middot;</span>
+    <span><span class="material-icons-outlined" style="font-size:14px; vertical-align:-2px;">person</span> Author: Alex Wissner-Gross</span>
+  </div>
+
+  <div class="chips">
+    <a class="chip active" href="#synthesis"><span class="material-icons-outlined">insights</span>Synthesis</a>
+    <a class="chip" href="#may19">May 19</a>
+    <a class="chip" href="#may20">May 20</a>
+    <a class="chip" href="#may21">May 21</a>
+    <a class="chip" href="#may22">May 22</a>
+  </div>
+
+  <!-- ─────────── SYNTHESIS ─────────── -->
+  <section id="synthesis">
+    <div class="section-header">
+      <span class="material-icons-outlined">hub</span>
+      <h3>Cross-week synthesis</h3>
+    </div>
+
+    <div class="syn-grid">
+
+      <div class="syn-card">
+        <h6>&#9312; Compute becomes a financialized commodity</h6>
+        <p>The week's spine. Compute finished its arc from product to tradable asset: Ornn's OCPI index gained an exchange home as GPU futures list on ICE. Alongside it, OpenAI's "Guaranteed Capacity" tier sold multi-year compute lock-ins, and Anthropic was revealed to be paying SpaceX $15B/year for compute.</p>
+        <div class="days">May 19 (full essay) &middot; May 20 &middot; May 21</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>&#9313; The substrate is straining</h6>
+        <p>A near-verbatim recurring phrase. Seagate can't build fabs fast enough; Nvidia posts a record $81.6B quarter yet concedes China to Huawei; high-bandwidth memory jumped to 63% of AI-chip component spend; AI is projected to cut smartphone shipments 13%. The bottleneck "migrated from logic to power and concrete."</p>
+        <div class="days">May 20 &middot; May 21 &middot; May 22</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>&#9314; The economy reroutes around the agent stack</h6>
+        <p>A steady drumbeat of cuts: Standard Chartered (&minus;7,000), Meta (&minus;10%, +7,000 reassigned), Intuit (&minus;17%), ClickUp (&minus;22%, with $1M agent-orchestrator salary bands). Counter-currents: Hassabis urging firms to do more rather than fire; Newsom's order studying retention subsidies.</p>
+        <div class="days">May 20 &middot; May 21 &middot; May 22</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>&#9315; AI conquers formal knowledge</h6>
+        <p>An OpenAI model disproved an Erdős conjecture; an LLM matched human superforecasters on ForecastBench; Gemini for Science unified the discovery stack; Kemira/CuspAI generated PFAS-removal materials; Qwen3.7-Max ran 35 hours of autonomous self-improvement. "Recursive self-improvement is no longer theoretical."</p>
+        <div class="days">May 20 &middot; May 21 &middot; May 22</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>&#9316; The IPO / capital-markets supercycle</h6>
+        <p>SpaceX filed an IPO prospectus claiming a $28.5T TAM and will exercise a $60B option to buy Cursor; OpenAI is preparing an imminent IPO filing; Anthropic priced at 93% to cross $1T this year; $37&ndash;100B in lab-linked philanthropy is going liquid; Altman is paying YC founders in OpenAI tokens.</p>
+        <div class="days">May 19 &middot; May 20 &middot; May 21</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>&#9317; Frontier governance and the off-world frontier</h6>
+        <p>Two frontiers in parallel: regulatory (Minnesota criminalizing Polymarket/Kalshi; a White House frontier-model pre-release order floated May 21, postponed May 22 "after anti-doomer pushback"; St. Charles City's data-center ban) and literal (Starship V3's twelfth flight, lunar Starlink "interplanetary roaming," recurring PURSUE UAP releases).</p>
+        <div class="days">May 19 &middot; May 20 &middot; May 21 &middot; May 22</div>
+      </div>
+
+    </div>
+
+    <div class="consequential">
+      <h6>Most consequential single thread this week</h6>
+      <p><strong>An internal, general-purpose OpenAI model disproved Erdős's planar unit-distance conjecture (May 21)</strong> &mdash; the first clean instance this week of an AI producing genuinely novel mathematical knowledge, overturning a decades-held belief that square grids were optimal, via original chain-of-thought from a non-specialized model. Mathematician Arul Shankar noted it tried "a vast array of ideas from a wide range of mathematics" before honing in.</p>
+      <p>It moved expert timelines: Epoch AI's median for solving most Millennium Prize Problems was pulled forward to 2032. Unlike financialization or layoffs &mdash; which extend existing trends &mdash; this marks AI crossing from solving known problems to expanding the frontier of human knowledge itself. By May 22 it was already being mythologized as "the flag of artificial intelligence."</p>
+    </div>
+
+    <div class="section-header">
+      <span class="material-icons-outlined">rocket_launch</span>
+      <h3>What launched this week</h3>
+    </div>
+
+    <div class="launch-list">
+      <div class="launch-row">
+        <div class="ldate">May 19</div>
+        <div class="litems"><strong>Ornn GPU compute futures on ICE</strong> (first exchange-listed, cash-settled GPU futures &mdash; H100/H200/B200/RTX 5090) &middot; <strong>OCPI</strong> on the Bloomberg Terminal (recap &mdash; first compute benchmark derivatives can settle against)</div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 20</div>
+        <div class="litems"><strong>Gemini 3.5 Flash</strong> (GA) &middot; <strong>Gemini Omni</strong> (any-to-any multimodal) &middot; <strong>Gemini 3.5 Pro</strong> (delayed to June) &middot; <strong>Gemini for Science</strong> &middot; <strong>Antigravity 2.0</strong> &middot; <strong>Project Genie</strong> &middot; <strong>Universal Cart + AP2</strong> &middot; Cursor <strong>Composer 2.5</strong> &middot; Prime Intellect self-play env &middot; Odyssey <strong>Agora-1</strong> &middot; <strong>Azure Linux 4.0</strong> &middot; Armada $230M &middot; Google&times;Blackstone <strong>$25B TPU JV</strong> &middot; Figure <strong>F.03</strong> &middot; Android XR audio glasses &middot; OpenAI <strong>Guaranteed Capacity</strong></div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 21</div>
+        <div class="litems"><strong>OpenAI Erdős-conjecture disproof</strong> &middot; <strong>Seedance 2.0</strong> &middot; Gemini conversational ads &middot; <strong>SpaceX IPO prospectus</strong> ($28.5T claimed TAM) &middot; <strong>Macrohard</strong> (Tesla AI agent platform) &middot; <strong>Bexorg</strong> (deceased-brain function restoration) &middot; Altman/YC "tokenmaxxing"</div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 22</div>
+        <div class="litems">DeepMind <strong>"green tree"</strong> (ForecastBench leader) &middot; Alibaba <strong>Qwen3.7-Max</strong> (35-hr autonomous run) &middot; OpenSCAD LLM benchmark &middot; Kemira+CuspAI <strong>PFAS materials</strong> &middot; UBTECH <strong>Walker C1</strong> &middot; EngineAI 10,000-unit humanoid line &middot; Eli Lilly <strong>retatrutide</strong> trial &middot; Colossal <strong>artificial egg</strong> &middot; <strong>Starship V3</strong> (flight 12) &middot; Starlink lunar roaming &middot; $2B US quantum grants</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─────────── DAILY ─────────── -->
+  <div class="section-header">
+    <span class="material-icons-outlined">calendar_today</span>
+    <h3>Day by day</h3>
+  </div>
+
+  <!-- MAY 19 -->
+  <article class="card" id="may19">
+    <div class="card-head"><span class="day">Tuesday</span><span class="date">2026-05-19</span></div>
+    <h4>"The Singularity has had a price since March, but no major exchange to trade it on, until now."</h4>
+    <p class="tagline">A single long-form essay: compute finishes its journey from rate card to cleared, exchange-listed futures contract &mdash; the keystone of a $7 trillion buildout.</p>
+
+    <div class="story">
+      <h5>Compute lists on a major regulated exchange</h5>
+      <p>Two months after Ornn began publishing the Ornn Compute Price Index (OCPI) on the Bloomberg Terminal &mdash; "the first compute benchmark that derivatives can reference and settle against" &mdash; Ornn will now list exchange-traded GPU compute futures on Intercontinental Exchange (ICE), parent of the NYSE. Contracts are USD-denominated, cash-settled, and reference the OCPI series across H100, H200, B200 and RTX 5090. "OCPI settles against cleared GPU prices, not rate cards or surveys. That was the credentialing step &mdash; but credentialing is not clearing." (Wissner-Gross discloses he advises and helped form Ornn.)</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/674dc76e-6bf7-438b-89d6-cfcf10a2dcf7"><span class="material-icons-outlined">open_in_new</span>Ornn / OCPI</a>
+        <a href="https://substack.com/redirect/2ccc496d-a7db-46f7-9dfe-30ee369d604a"><span class="material-icons-outlined">open_in_new</span>ICE futures listing</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>ICE's origin story is the exact template</h5>
+      <p>Jeff Sprecher founded ICE in 2000, three years after buying the struggling Continental Power Exchange for $1,000 &mdash; the vision was to drag opaque OTC energy markets into transparent, electronically cleared trading. "The parallel to GPU compute today is exact." ICE inherited Brent crude futures via its 2001 London acquisition, grew Brent into the reference price for roughly three-quarters of traded oil, bought the NYSE itself in 2013, and now extends that same plumbing &mdash; which clears Brent, TTF gas and EU carbon &mdash; to compute.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/809afd15-9c3d-4f5d-af8d-75138ece0214"><span class="material-icons-outlined">open_in_new</span>Sprecher / ICE history</a>
+        <a href="https://substack.com/redirect/6a476372-366d-4e0f-a708-8512f8a22df5"><span class="material-icons-outlined">open_in_new</span>Brent crude lineage</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>What clearing unlocks: hedging the $7 trillion buildout</h5>
+      <p>Once OCPI-referenced futures clear at ICE, lenders financing GPU buildouts can hedge exposure on the same infrastructure that clears oil and gas; insurers can underwrite residual-value risk against a regulated curve; hyperscaler treasury desks can lock forward compute costs "the way airlines have locked in jet fuel since the 1980s." Sovereign infrastructure funds and pension capital can finally participate in the $7 trillion compute buildout.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/b8cf5dcb-3d55-45ec-baef-5be0d2b89d49"><span class="material-icons-outlined">open_in_new</span>The keystone argument</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The historical pattern: builders always need bankers</h5>
+      <p>Invoking <em>Solve Everything</em> (with Peter Diamandis): the Intelligence Revolution turns scarce domains abundant, "but only after the financial infrastructure catches up." Edison built the generators; Insull made them financeable. Carnegie made the steel; J.P. Morgan made it bankable. Oil took over a century from Drake's well to NYMEX futures; gas longer still. "Compute took only years because oil and gas had already built the machinery. Those years end now."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/0e145dd3-037e-4dba-b9cc-368d9d422ea3"><span class="material-icons-outlined">open_in_new</span>Solve Everything</a>
+        <a href="https://substack.com/redirect/1b8cd6ee-4ecd-4a67-8fa4-0835977979b8"><span class="material-icons-outlined">open_in_new</span>From bits to bankability</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "The index was the foundation. The exchange is the keystone. The arch can now bear weight."
+    </div>
+  </article>
+
+  <!-- MAY 20 -->
+  <article class="card" id="may20">
+    <div class="card-head"><span class="day">Wednesday</span><span class="date">2026-05-20</span></div>
+    <h4>"The Singularity now has a release calendar, a futures curve, and an encyclical."</h4>
+    <p class="tagline">Google I/O delivers Gemini 3.5 Flash but punts the flagship Pro; the substrate strains; and a pope prepares to bless the whole stack.</p>
+
+    <div class="story">
+      <h5>Google I/O: Gemini 3.5 Flash ships, 3.5 Pro slips</h5>
+      <p>Google made Gemini 3.5 Flash generally available, beating Gemini 3.1 Pro on Terminal-Bench (76.2%), GDPval (1656 Elo) and CharXiv (84.2%) at roughly 4&times; the speed. Gemini Omni collapsed text, image, audio and video into one any-to-any model with SynthID baked in. But Pichai punted the flagship &mdash; "Give us until next month to get it to you" &mdash; prompting one observer to snipe that GPT-5.5-medium is already smarter and cheaper, and that "it might genuinely be over for anyone not named OpenAI or Anthropic."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/f5e962b4-5e46-4720-85d9-f0abef6b6d1f"><span class="material-icons-outlined">open_in_new</span>Gemini 3.5 Flash</a>
+        <a href="https://substack.com/redirect/735e812b-3e71-4538-9de9-c15770ab6995"><span class="material-icons-outlined">open_in_new</span>Gemini Omni</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The open frontier refuses to cede ground</h5>
+      <p>Prime Intellect released a 4,504-task training environment that tripled small-model BFCL performance via self-play; Odyssey's Agora-1 lets four players share a GoldenEye-trained deathmatch as a learned game engine; and Cursor's Composer 2.5 wraps Moonshot's Kimi K2.5 with 25&times; more synthetic tasks &mdash; with xAI co-training a 10&times; successor on Colossus 2.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/b4d77a36-f5e4-4e41-b881-3be548e73318"><span class="material-icons-outlined">open_in_new</span>Prime Intellect</a>
+        <a href="https://substack.com/redirect/9011fa85-d93a-4d0a-b2aa-6ec424ebf475"><span class="material-icons-outlined">open_in_new</span>Odyssey Agora-1</a>
+        <a href="https://substack.com/redirect/932bd866-c578-4bbf-8341-7f9f3b073d6b"><span class="material-icons-outlined">open_in_new</span>Cursor Composer 2.5</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Science gets orchestrated; Gemini distribution goes vertical</h5>
+      <p>"Science itself is being orchestrated." Gemini for Science ties Co-Scientist, AlphaEvolve+ERA and NotebookLM into one stack with 100+ partners. The Gemini app crossed 900M monthly users; Google now processes 3.2 quadrillion tokens a month, up from 9.7T two years ago. Search AI Mode crossed 1B users &mdash; "the biggest search-box upgrade in 25 years" &mdash; and Universal Cart with the AP2 protocol lets Spark agents transact across merchants from cloud VMs that run while devices are off.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/7168184f-34db-4fa9-aa2d-8641d891aa0c"><span class="material-icons-outlined">open_in_new</span>Gemini for Science</a>
+        <a href="https://substack.com/redirect/382151f3-a741-48fa-b863-2c83aced4482"><span class="material-icons-outlined">open_in_new</span>900M users / token volume</a>
+        <a href="https://substack.com/redirect/72459430-c94e-47bb-9e6a-c13786c4028e"><span class="material-icons-outlined">open_in_new</span>AI Mode &amp; Universal Cart</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The substrate strains: chips, capacity, data centers</h5>
+      <p>Intel is muscling PC makers onto 18A while throttling Intel 7; OpenAI's new "Guaranteed Capacity" tier sells multi-year compute lock-ins, with Altman warning the world "will be capacity-constrained for some time." Microsoft shipped Azure Linux 4.0, its first server distro; Armada raised $230M for modular data centers; and the capstone is a Google&ndash;Blackstone $25B TPU joint venture targeting 500MW by 2027.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/e8a4385b-9326-41e5-a568-fc70c2faa20c"><span class="material-icons-outlined">open_in_new</span>OpenAI Guaranteed Capacity</a>
+        <a href="https://substack.com/redirect/54f8b001-d159-4d8b-a52a-9c742d3f3971"><span class="material-icons-outlined">open_in_new</span>Google&ndash;Blackstone TPU JV</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Atoms follow bits into autonomy</h5>
+      <p>Figure's F.03 cleared day seven of fully autonomous package sorting without failure; Google's Android XR audio glasses ship this fall, "putting Gemini one tap from the temple." SpaceX will buy Cursor roughly 30 days after its June IPO, exercising a $60B option; Astrolight opened an ESA-backed CubeSat laser-link station in Greece. The next PURSUE UAP drop is imminent after the last pulled a billion views.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/1377fdae-9ab4-4699-b9d0-0c77e9aea359"><span class="material-icons-outlined">open_in_new</span>Figure F.03</a>
+        <a href="https://substack.com/redirect/18ce0590-6e7f-4776-817b-f9cc2d4c9841"><span class="material-icons-outlined">open_in_new</span>Android XR glasses</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The economy reroutes around the agent stack</h5>
+      <p>Standard Chartered is shedding 7,000 jobs &mdash; CEO Bill Winters calling it "replacing in some cases lower-value human capital" &mdash; while Demis Hassabis urged firms to use AI gains to do more rather than fire. Meta is cutting 10% of staff while reassigning 7,000 into "AI native" reorgs. And Andrej Karpathy joined Anthropic under Nick Joseph to lead pre-training &mdash; "essentially training Claude to accelerate Claude."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/6609d819-114b-4879-bb26-8da6f2ea09c0"><span class="material-icons-outlined">open_in_new</span>Standard Chartered</a>
+        <a href="https://substack.com/redirect/d4b263a9-6684-4728-ad74-145299894ed8"><span class="material-icons-outlined">open_in_new</span>Meta reorg</a>
+        <a href="https://substack.com/redirect/12ff0c8a-c896-46cf-bcc0-cd24fa573dd4"><span class="material-icons-outlined">open_in_new</span>Karpathy to Anthropic</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Cyberpunk corner &mdash; and a papal blessing</h5>
+      <p>"In cyberpunk mode," the FBI is shopping for nationwide license-plate-reader access, and Iran launched Hormuz Safe, Bitcoin-backed "shipping insurance" for the Strait of Hormuz projected to rake in $10 billion. And "to bless the whole stack," Pope Leo XIV releases his first encyclical, <em>Magnifica humanitas</em>, on May 25 &mdash; alongside Anthropic co-founder and interpretability lead Christopher Olah.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/705257ab-9ff0-47ef-909c-a79e5d0d2581"><span class="material-icons-outlined">open_in_new</span>FBI plate readers</a>
+        <a href="https://substack.com/redirect/c55f5020-43d3-4fe9-bf08-6505c9d20ef3"><span class="material-icons-outlined">open_in_new</span>Hormuz Safe</a>
+        <a href="https://substack.com/redirect/bd5e4dca-f679-4309-b789-47cd1029f2ba"><span class="material-icons-outlined">open_in_new</span>Papal encyclical</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "And the Word became weights, and dwelt among us."
+    </div>
+  </article>
+
+  <!-- MAY 21 -->
+  <article class="card" id="may21">
+    <div class="card-head"><span class="day">Thursday</span><span class="date">2026-05-21</span></div>
+    <h4>"The Singularity has just cut out the middleman in Erdős's quip that mathematicians are 'machines for turning coffee into theorems.'"</h4>
+    <p class="tagline">A general-purpose model overturns a decades-old conjecture; the silicon can't be built fast enough; and the IPO machine spins up.</p>
+
+    <div class="story">
+      <h5>An OpenAI model disproves an Erdős conjecture</h5>
+      <p>An internal OpenAI model disproved Erdős's longstanding planar unit-distance conjecture, contradicting decades of belief that square grids were optimal &mdash; and it came from a general-purpose model, not a math-specialized one. Mathematician Arul Shankar marveled that the chain-of-thought tried "a vast array of ideas" before honing in with "original ingenious ideas." Altman called it "a kinda big milestone" evoking "complicated feelings"; Epoch AI pulled its median for solving most Millennium Prize Problems forward to 2032.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/6fadbca2-7431-4d37-91e3-73dce27f4474"><span class="material-icons-outlined">open_in_new</span>Erdős disproof</a>
+        <a href="https://substack.com/redirect/0f0eaced-bd09-4e26-b420-6ef13cb9c073"><span class="material-icons-outlined">open_in_new</span>Expert reaction</a>
+        <a href="https://substack.com/redirect/4db4b481-60cd-4e19-8077-473865cbb317"><span class="material-icons-outlined">open_in_new</span>Millennium-Prize timelines</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The application layer fans out, mundane to absurd</h5>
+      <p>Google is rolling out Gemini-powered conversational ads inside AI Mode and Search, generating tailored creative for queries about, say, making your home smell like a spa. "On the unauthorized end of the spectrum," hobbyists are using Seedance 2.0 to "fix" the Harry Potter cinematic universe by violently dispatching the unpopular characters.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/e9d62858-ef34-42ba-9923-f3f21175182c"><span class="material-icons-outlined">open_in_new</span>Gemini conversational ads</a>
+        <a href="https://substack.com/redirect/e3b1025f-151f-4c84-95d2-ce5d6e428557"><span class="material-icons-outlined">open_in_new</span>Seedance 2.0</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Silicon can't be built fast enough; Nvidia's record quarter</h5>
+      <p>Seagate's CEO concedes new factories would simply "take too long" relative to AI demand. Nvidia posted a record $81.6B quarter, up 85% year-over-year, even as Jensen Huang acknowledges Nvidia has "largely conceded" the China AI-chip market to Huawei. The real bottleneck has "migrated from logic to power and concrete" &mdash; xAI is buying another $2.8B of turbines, and Anthropic now pays SpaceX $15B a year for compute, "bankrolling its rival's landlord."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/61d27692-e4a4-4318-80e2-99099bec57aa"><span class="material-icons-outlined">open_in_new</span>Seagate</a>
+        <a href="https://substack.com/redirect/6aaa3f3a-4076-4fc6-8d63-11badcb9afcb"><span class="material-icons-outlined">open_in_new</span>Nvidia Q1</a>
+        <a href="https://substack.com/redirect/409431e0-d889-41e6-bab7-d04aa1649f0f"><span class="material-icons-outlined">open_in_new</span>Anthropic&ndash;SpaceX compute</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Compute heads to orbit; SpaceX files for IPO</h5>
+      <p>SpaceX is preparing for Starship's twelfth flight test while filing an IPO prospectus claiming a $28.5 trillion total addressable market &mdash; "roughly the entire US GDP" &mdash; spanning Starlink, X advertising, AI infrastructure, and a Tesla-collaborated agent platform named Macrohard "meant to emulate an entire AI-run software company." Jeff Bezos agrees orbital data centers are "very realistic" but called Musk's 2&ndash;3-year timeline "a little ambitious" &mdash; "the orbital-compute debate has quietly collapsed from physics to scheduling."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/0949f0d7-9206-434e-b0ab-cb6fba134aaf"><span class="material-icons-outlined">open_in_new</span>SpaceX IPO prospectus</a>
+        <a href="https://substack.com/redirect/e379cf38-7f8a-40dc-b84e-533ea1690ee2"><span class="material-icons-outlined">open_in_new</span>Bezos on orbital compute</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Bexorg restores function to deceased brains</h5>
+      <p>Startup Bexorg is now restoring some functions to intact brains from deceased donors, hoping to build a better drug-development testbed for neurodegenerative diseases, and "quietly redrawing the line between mortuary and laboratory bench." As Wissner-Gross frames it: "If compute is heading to orbit, cognition is heading back from the grave."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/751ac2d7-eebe-4d12-aab5-0e339b61b486"><span class="material-icons-outlined">open_in_new</span>Bexorg</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Capital reorganizes at speed: philanthropy, tokens, IPOs</h5>
+      <p>A wave of $37&ndash;100B in philanthropic funding is about to become liquid as the OpenAI Foundation's 26% stake and Anthropic founders' giving pledges mature &mdash; a 6&ndash;17% boost to annual US philanthropy. Sam Altman is offering every YC founder $2M in OpenAI tokens instead of cash, betting on "tokenmaxxing startups." Anthropic expects 130% revenue growth to $10.9B this quarter and its first operating profit. OpenAI is preparing an imminent IPO filing, "possibly within days."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/6ffdb414-b8bd-414d-8689-f54dcb57ad32"><span class="material-icons-outlined">open_in_new</span>Philanthropy goes liquid</a>
+        <a href="https://substack.com/redirect/d5b25b7b-9d05-491b-ba41-38b04768b8a7"><span class="material-icons-outlined">open_in_new</span>Altman tokenmaxxing</a>
+        <a href="https://substack.com/redirect/0fb2dfb1-7828-4b25-b65d-2706afd76d7c"><span class="material-icons-outlined">open_in_new</span>OpenAI IPO filing</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "Cogito, ergo IPO, the Singularity's last theorem."
+    </div>
+  </article>
+
+  <!-- MAY 22 -->
+  <article class="card" id="may22">
+    <div class="card-head"><span class="day">Friday</span><span class="date">2026-05-22</span></div>
+    <h4>"The Singularity is now forecasting itself."</h4>
+    <p class="tagline">An LLM matches human superforecasters, recursive self-improvement goes live, and the new factor of production starts rewriting org charts.</p>
+
+    <div class="story">
+      <h5>An LLM matches superforecasters; recursive self-improvement goes live</h5>
+      <p>On ForecastBench, an LLM matched superforecaster performance for the first time, with Google DeepMind's "green tree" topping the Forecasting Research Institute's benchmark &mdash; "recursive self-improvement is no longer theoretical." Alibaba's Qwen3.7-Max ran 35 hours of continuous autonomous execution &mdash; 432 kernel evaluations across 1,158 tool calls &mdash; delivering a 10&times; geometric-mean speedup over the Triton reference.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/e7bae883-5ccc-4ff9-a7bf-1fb5f4509b14"><span class="material-icons-outlined">open_in_new</span>ForecastBench parity</a>
+        <a href="https://substack.com/redirect/4f91dd90-768c-49b0-9353-866c0319f71c"><span class="material-icons-outlined">open_in_new</span>Qwen3.7-Max 35-hr run</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The unknown becomes an engineering problem &mdash; math and chemistry</h5>
+      <p>Following OpenAI's Erdős disproof, a GPT-5.5 counterexample is being proposed as "the flag of artificial intelligence." Chemistry joined: Kemira and CuspAI used generative AI to design materials that strip PFAS "forever chemicals" from water, exploring a 300-trillion-structure design space to deliver over 5,000 novel candidates. As one observer noted, "One day AI will cure a disease. And many people will look you dead in the eye and say 'the cure was already in the corpus of human knowledge.'"</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/5c8ea905-f7d5-4244-8e1c-cf6a50eadd09"><span class="material-icons-outlined">open_in_new</span>"Flag of AI"</a>
+        <a href="https://substack.com/redirect/a9b2a652-c77d-4d52-8cfe-d6b7f1de2ee8"><span class="material-icons-outlined">open_in_new</span>Kemira / CuspAI PFAS</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The substrate strains: memory eats the cheap smartphone</h5>
+      <p>Epoch AI found high-bandwidth memory ballooned from 52% to 63% of total AI-chip component spending in under two years. Anthropic is reportedly in talks with Microsoft to adopt Maia chips, "signaling that everyone needs a second silicon source." AI is killing the cheap smartphone &mdash; worldwide handset shipments are projected to fall 13% in 2026 as memory gets vacuumed into data centers. The White House awarded $2B to nine quantum-computing firms, "taking equity."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/6e698bed-4f47-46af-ab98-71d8b2e4c30e"><span class="material-icons-outlined">open_in_new</span>HBM cost share</a>
+        <a href="https://substack.com/redirect/01a85a4b-bd0f-4d33-ad6f-75ae212c3083"><span class="material-icons-outlined">open_in_new</span>Anthropic / Maia chips</a>
+        <a href="https://substack.com/redirect/1c986509-cc35-484c-bf91-78535eb7f1fd"><span class="material-icons-outlined">open_in_new</span>$2B quantum grants</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Embodied intelligence reaches consumer scale</h5>
+      <p>UBTECH unveiled Walker C1, a full-size humanoid built for "urban co-existence" that performs ballet and ballroom dances with a human partner &mdash; "and the factories to mass-produce these dancers are already humming." China's EngineAI activated a 10,000-unit humanoid production line in Shenzhen. Robot barbers in China are giving millimeter-precision haircuts for under a dollar, "finally making the deflationary promise of automation tangible."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/d77e0c9d-f7b1-4974-9185-369ad9980539"><span class="material-icons-outlined">open_in_new</span>UBTECH Walker C1</a>
+        <a href="https://substack.com/redirect/e90d18d3-a813-4759-8f64-068aa84cc077"><span class="material-icons-outlined">open_in_new</span>EngineAI production line</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Biology rewritten: retatrutide and de-extinction</h5>
+      <p>Eli Lilly's retatrutide trial showed weight loss matching gastric-bypass surgery for the heaviest patients &mdash; 28.3% bodyweight loss over 80 weeks with zero cardiac or liver signals, positioning it "to become the best-selling drug of all time." De-extinction crept closer: Colossal Biosciences' artificial egg &mdash; a silicone-membrane synthetic shell &mdash; just hatched 26 healthy chickens, "a foundational step toward resurrecting the dodo and the moa."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/2c8f1494-5bce-4ab8-9935-fc73cadf25b3"><span class="material-icons-outlined">open_in_new</span>Retatrutide trial</a>
+        <a href="https://substack.com/redirect/974640aa-92f3-48a8-95c5-ba80bfa895d7"><span class="material-icons-outlined">open_in_new</span>Colossal artificial egg</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The roadmap goes off-world: Starship V3, lunar Starlink, UAPs</h5>
+      <p>SpaceX's Starlink team announced interplanetary roaming to deliver "Gigabit connectivity anywhere on the Moon" &mdash; "a service ready before its first customers." NASA's Jared Isaacman expects China to fly a crewed lunar mission in 2027. SpaceX successfully launched Starship V3 on the program's twelfth flight test. And "the sky has too many cameras to stay classified" &mdash; the Department of War's second PURSUE UAP release included the 40+ videos requested by Rep. Luna's task force.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/71d57f55-730e-4d2a-9f3e-2bf453503efd"><span class="material-icons-outlined">open_in_new</span>Lunar Starlink</a>
+        <a href="https://substack.com/redirect/3aca9dbf-e5e0-4ee3-ba87-dd051cb950f7"><span class="material-icons-outlined">open_in_new</span>Starship V3 flight 12</a>
+        <a href="https://substack.com/redirect/63a5e987-eb40-4ea1-b335-789c2d798a14"><span class="material-icons-outlined">open_in_new</span>PURSUE UAP release</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>The economy restructures around its new factor of production</h5>
+      <p>ClickUp cut 22% of headcount despite booming business, introducing $1M salary bands for engineers who orchestrate agents rather than write code &mdash; calling itself a "100x org." AT&amp;T is suing California to escape a $1B annual mandate to maintain copper wires for the 3% of households still on them. Newsom signed an order telling state agencies to study subsidizing companies that retain workers, while the White House postponed its own AI pre-release-review order "after anti-doomer pushback." Underneath it all, OpenAI booked $5.7B in Q1 revenue, roughly $1B ahead of Anthropic.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/ad4704c4-c4c5-407f-9e04-75ae85d16e61"><span class="material-icons-outlined">open_in_new</span>ClickUp "100x org"</a>
+        <a href="https://substack.com/redirect/bbd0a613-354c-49b8-9250-ede3a40173ed"><span class="material-icons-outlined">open_in_new</span>White House EO postponed</a>
+        <a href="https://substack.com/redirect/2350a081-2538-4001-b3bd-53c7a59877e5"><span class="material-icons-outlined">open_in_new</span>OpenAI Q1 revenue</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "Any sufficiently advanced B2B SaaS is indistinguishable from magic."
+    </div>
+  </article>
+
+  <div class="footer">
+    Innermost Loop &middot; Weekly Briefing &middot; generated 2026-05-23 &middot; 4 issues digested (May 19&ndash;22)<br>
+    Source: <a href="https://theinnermostloop.substack.com/">theinnermostloop.substack.com</a> &middot; Alex Wissner-Gross &middot; pulled from Gmail
+  </div>
+
+</main>
+
+</body>
+</html>

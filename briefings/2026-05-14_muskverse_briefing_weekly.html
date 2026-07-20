@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Mid-week refresh · May 14, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #3c4043;
+    --primary-hover: #2d3134;
+    --primary-soft: #e8eaed;
+    --primary-on-soft: #3c4043;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --blue: #1a73e8;
+    --blue-soft: #e8f0fe;
+    --blue-on-soft: #1967d2;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  /* APP BAR — NOT sticky */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: #3c4043; color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 16px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--divider); background: var(--surface); color: var(--on-surface-2); font-family: 'Google Sans Text', sans-serif; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  .hero { background: linear-gradient(135deg, #5f6368 0%, #1f2937 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 26px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0; max-width: 740px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.tesla    { background: #fce8e6; color: #a50e0e; }
+  .provider.spacex   { background: #e8eef6; color: #1f3548; }
+  .provider.xai      { background: #f1f3f4; color: #3c4043; }
+  .provider.politics { background: #fef7e0; color: #b06000; }
+  .provider.trial    { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ventures { background: #e6f4ea; color: #0d652d; }
+  .provider.baseline { background: #e8f0fe; color: #1967d2; }
+
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\00b7"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 10px; }
+  .card p:last-of-type { margin-bottom: 12px; }
+  .card .takeaway { background: #f5fbf6; border-left: 3px solid var(--green); padding: 10px 14px; margin: 4px 0 12px; font-size: 13px; line-height: 1.55; color: var(--on-surface-2); border-radius: 0 8px 8px 0; }
+  .card .takeaway strong { color: var(--green); font-weight: 500; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--blue-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--blue-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+
+  .banner.cross-ref { background: var(--blue-soft); border-color: #a8c7fa; color: var(--blue-on-soft); }
+  .banner.cross-ref .material-icons-outlined { color: var(--blue-on-soft); }
+  .banner.cross-ref strong { color: var(--blue-on-soft); }
+  .banner.cross-ref div { color: #174ea6; }
+  .banner.cross-ref a { color: #1a73e8; font-weight: 500; }
+
+  .status-list { list-style: none; margin: 0; padding: 0; }
+  .status-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--divider-soft); font-size: 13px; line-height: 1.55; color: var(--on-surface-2); }
+  .status-list li:last-child { border-bottom: none; }
+  .status-list .label { flex-shrink: 0; width: 100px; font-weight: 500; color: var(--on-surface); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 1px; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 20px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 12px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: left; font-size: 12px; color: var(--on-surface-muted); line-height: 1.7; }
+  .colophon h4 { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--on-surface-2); margin: 0 0 8px; }
+  .colophon a { color: var(--blue-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Mid-week refresh &middot; May 14, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a href="#status" class="chip active"><span class="material-icons-outlined">check_circle</span>Status Quo</a>
+  <a href="#tesla" class="chip">Tesla</a>
+  <a href="#xai" class="chip">xAI / Grok</a>
+  <a href="#spacex" class="chip">SpaceX</a>
+  <a href="#doge" class="chip">DOGE / Politics</a>
+  <a href="#legal" class="chip">Legal</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="eyebrow">May 7 &ndash; May 14, 2026 &middot; 3-day delta refresh</div>
+  <h2>Starship V3 slips a week. Musk flies to Beijing with Trump. The SEC deal hits a judge who won't rubber-stamp it.</h2>
+  <p>This is a mid-week refresh, three days after the May 11 edition &mdash; so the delta is deliberately thin and we only report what actually moved. The biggest change: <strong>Flight 12 slipped from May 12 to May 19</strong>, with the FAA approving a revised southerly trajectory through the Caribbean. Musk joined <strong>Trump's May 13&ndash;15 state visit to China</strong>, with Full Self-Driving approval the unstated agenda; TSLA touched <strong>$445</strong>. xAI is racing to sign <strong>Wall Street firms onto Grok</strong> ahead of the SpaceX IPO. And the judge reviewing Musk's $1.5M SEC settlement said she <strong>cannot "rubber-stamp"</strong> it. The Musk v. Altman trial moved fast this week &mdash; covered separately.</p>
+</div>
+
+<!-- ═══ STATUS QUO ═══ -->
+<div id="status" class="section-header">
+  <span class="material-icons-outlined">check_circle</span>
+  <h3>Status Quo &middot; Where things stood at the May 11 edition</h3>
+  <span class="count">snapshot</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider baseline"><span class="dot"></span>Baseline</span>
+    <span class="meta-pill">As of May 11 2026</span>
+  </div>
+  <h4>Recap from the May 11 briefing &mdash; what has and hasn't moved since</h4>
+  <ul class="status-list">
+    <li><span class="label">Tesla</span>Last Model S/X rolled off Fremont May 9; line converting to Optimus. 1.3M FSD subscribers disclosed for Q1. Robotaxi at ~26 unsupervised vehicles, expanding to Dallas/Houston. <em>Moved: TSLA rallied to $445; China trip added; robotaxi friction reports surfaced.</em></li>
+    <li><span class="label">xAI / X</span>Quiet headline week; Grok 4.3 product rollout (video Extend/Upscale, STT API). <em>Moved: xAI now signing Wall Street firms onto Grok; legacy models retire May 15.</em></li>
+    <li><span class="label">SpaceX</span>V3 Super Heavy completed first full static fire May 7; Flight 12 targeted "tomorrow May 12." <em>Moved materially: Flight 12 slipped to May 19 with a revised FAA-approved trajectory.</em></li>
+    <li><span class="label">DOGE</span>Judge McMahon's 143-page ruling found DOGE's $100M NEH grant cuts unconstitutional; EFF lawsuit cleared to proceed. <em>Moved: ruling detail confirmed (ChatGPT + keyword grant triage); administration signals appeal.</em></li>
+    <li><span class="label">Legal</span>SEC settlement ($1.5M, Twitter disclosure) signed May 4. <em>Moved: judge says she won't "rubber-stamp" it, ordered answers by June 1.</em></li>
+    <li><span class="label">Trial</span>Brockman and Zilis testified Week 2. <em>Moved: Nadella and Altman testified May 11&ndash;13 &mdash; see the separate trial briefing.</em></li>
+  </ul>
+</div>
+
+<!-- ═══ TESLA ═══ -->
+<div id="tesla" class="section-header">
+  <span class="material-icons-outlined">electric_car</span>
+  <h3>Tesla</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">May 12&ndash;14 2026</span>
+  </div>
+  <h4>Musk joins Trump's China state visit; FSD approval the unstated agenda; TSLA touches $445</h4>
+  <p>President Trump's <strong>state visit to China runs May 13&ndash;15</strong> &mdash; the first such trip in roughly a decade &mdash; and Musk is travelling with the delegation alongside Tim Cook (Apple), Kelly Ortberg (Boeing) and Larry Fink (BlackRock). The unstated Tesla agenda is <strong>Full Self-Driving (FSD) regulatory approval in China</strong>, which Musk earlier predicted for Q1 2026; Chinese state media publicly contradicted that timeline in January, and Tesla's internal teams have since shifted their working estimate to <strong>Q3 2026</strong>. Tesla currently charges roughly 62,000 yuan (~$9,100) for FSD in China, but the software remains heavily restricted pending broader approval. The trip gives Musk direct access to Chinese leadership at a moment both governments want to show goodwill. TSLA closed <strong>$445.27 on May 13 (+2.7%)</strong>, capping a roughly 28% one-month rally on the Optimus and robotaxi narratives &mdash; though shares were volatile intra-week, dipping ~5% on May 12 on robotaxi-glitch and battery-delay reports before recovering.
+    (<a href="https://eletric-vehicles.com/tesla/musk-to-join-trumps-china-delegation-on-may-13-15/" style="color:var(--blue-on-soft)">EV</a>,
+    <a href="https://invezz.com/news/2026/05/13/tesla-stock-climbs-3-as-musk-heads-to-china-amid-fsd-expansion-push/" style="color:var(--blue-on-soft)">Invezz</a>,
+    <a href="https://247wallst.com/investing/2026/05/12/tesla-sinks-5-as-musk-heads-to-china-robotaxi-glitches-battery-delays-test-investor-patience/" style="color:var(--blue-on-soft)">24/7 Wall St</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The "China meeting premium" is a recurring TSLA pattern &mdash; the stock prices in the optionality of an FSD unlock before anything is signed. Watch for substance, not optics: a concrete approval pathway out of the visit would be a genuine revenue catalyst in Tesla's most compliance-invested market, while a photo-op with no regulatory movement leaves the Q3 internal estimate as the real number. The May 12 dip is the more honest signal of where fundamentals sit.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://eletric-vehicles.com/tesla/musk-to-join-trumps-china-delegation-on-may-13-15/"><span class="material-icons-outlined">open_in_new</span>EV delegation</a>
+    <a class="link-pill" href="https://invezz.com/news/2026/05/13/tesla-stock-climbs-3-as-musk-heads-to-china-amid-fsd-expansion-push/"><span class="material-icons-outlined">open_in_new</span>Invezz $445</a>
+    <a class="link-pill" href="https://247wallst.com/investing/2026/05/12/tesla-sinks-5-as-musk-heads-to-china-robotaxi-glitches-battery-delays-test-investor-patience/"><span class="material-icons-outlined">open_in_new</span>24/7 Wall St dip</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">May 12&ndash;14 2026 &middot; robotaxi</span>
+  </div>
+  <h4>Robotaxi scaling friction surfaces; analysts debate the timeline as the stock outruns delivery</h4>
+  <p>As Tesla's robotaxi service scales beyond Austin into Dallas and Houston, the first concrete <strong>operational friction</strong> is being reported: long wait times and frequent ride cancellations as the small fleet stretches across more cities. The picture is consistent with the May 11 edition &mdash; this is incremental colour, not a new development &mdash; but it lands against an analyst debate that sharpened this week. The Motley Fool, MEXC and Piper Sandler all published on whether the rally to $445 is justified, with the bull framing ("Optimus is free at $445") sitting uneasily next to the reminder that Tesla expects <strong>no material robotaxi revenue in 2026</strong> and is gating large-scale unsupervised FSD on the <strong>v15 software release, presumed early 2027</strong>. No change to the underlying fleet size or timeline since May 11.
+    (<a href="https://www.fool.com/investing/2026/05/14/heres-when-teslas-robotaxi-rollout-will-really-ram/" style="color:var(--blue-on-soft)">Motley Fool</a>,
+    <a href="https://www.tikr.com/blog/tesla-stock-piper-sandler-says-optimus-is-free-at-445-heres-where-the-stock-could-go" style="color:var(--blue-on-soft)">TIKR / Piper Sandler</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> This is a "watch, don't act" card. The signal-to-noise on robotaxi is poor right now: the stock is pricing a 2027&ndash;2028 autonomy story while the 2026 operational reality is wait-time complaints across a ~26-vehicle fleet. The v15 release remains the single gating event &mdash; until it ships, every robotaxi headline is sentiment, not fundamentals. Treat the analyst price-target noise accordingly.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.fool.com/investing/2026/05/14/heres-when-teslas-robotaxi-rollout-will-really-ram/"><span class="material-icons-outlined">open_in_new</span>Motley Fool ramp</a>
+    <a class="link-pill" href="https://www.tikr.com/blog/tesla-stock-piper-sandler-says-optimus-is-free-at-445-heres-where-the-stock-could-go"><span class="material-icons-outlined">open_in_new</span>TIKR Piper Sandler</a>
+  </div>
+</div>
+
+<!-- ═══ xAI / GROK ═══ -->
+<div id="xai" class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>xAI / Grok</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>xAI / X</span>
+    <span class="meta-pill">May 13&ndash;14 2026</span>
+  </div>
+  <h4>xAI races to sign Wall Street firms onto Grok ahead of the SpaceX IPO; legacy models retire May 15</h4>
+  <p>Bloomberg reported on <strong>May 13</strong> that xAI is pushing hard to get Wall Street firms &mdash; many with existing ties to Musk's empire &mdash; to adopt the Grok chatbot internally. <strong>Apollo Global Management</strong> and <strong>Morgan Stanley</strong> have begun using Grok alongside competing AI software, and <strong>Valor Equity Partners</strong> is also using it. The connections are not incidental: Apollo has worked with xAI on financing for Nvidia chips, and Morgan Stanley is Musk's long-standing bank, expected to take a senior role in the SpaceX IPO. The push is explicitly framed as a <strong>pre-IPO revenue-bolstering exercise</strong> &mdash; chatbot subscriptions plus compute access &mdash; ahead of the offering expected next month. The honest caveat from the reporting: despite signing up, financiers are "rarely using the chatbot for work." Separately, a housekeeping note: on <strong>May 15</strong>, several legacy Grok models retire from the xAI API, with requests auto-redirecting to grok-4.3.
+    (<a href="https://www.bloomberg.com/news/articles/2026-05-13/musk-s-xai-races-to-get-wall-street-firms-to-use-grok-chatbot" style="color:var(--blue-on-soft)">Bloomberg</a>,
+    <a href="https://www.japantimes.co.jp/business/2026/05/14/tech/musk-xai-wall-street-grok-chatbot/" style="color:var(--blue-on-soft)">Japan Times</a>,
+    <a href="https://docs.x.ai/developers/migration/may-15-retirement" style="color:var(--blue-on-soft)">xAI Docs</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> This is revenue-narrative engineering with the IPO clock running. Signing brand-name financial firms gives the SpaceX S-1 a list of enterprise Grok customers to point at &mdash; but the "rarely using it for work" line is the tell. These are relationship adoptions, not product-pull adoptions, and sophisticated IPO buyers will discount the distinction. The interesting question is whether the S-1 discloses Grok enterprise revenue as a hard number or only as a logo wall.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-05-13/musk-s-xai-races-to-get-wall-street-firms-to-use-grok-chatbot"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://www.japantimes.co.jp/business/2026/05/14/tech/musk-xai-wall-street-grok-chatbot/"><span class="material-icons-outlined">open_in_new</span>Japan Times</a>
+    <a class="link-pill" href="https://docs.x.ai/developers/migration/may-15-retirement"><span class="material-icons-outlined">open_in_new</span>xAI model retirement</a>
+  </div>
+</div>
+
+<!-- ═══ SPACEX ═══ -->
+<div id="spacex" class="section-header">
+  <span class="material-icons-outlined">rocket_launch</span>
+  <h3>SpaceX</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX</span>
+    <span class="meta-pill">May 12 2026 &middot; schedule slip</span>
+  </div>
+  <h4>Starship Flight 12 slips from May 12 to May 19; FAA approves revised southerly Caribbean trajectory</h4>
+  <p>The headline change since the May 11 edition: <strong>Flight 12 has slipped from "tomorrow May 12" to May 19</strong>. SpaceX confirmed the new target on May 12: a 90-minute window opening <strong>22:30 UTC on May 19</strong> (5:30 p.m. local at Starbase), lifting off from Orbital Launch Pad 2 with <strong>Booster 19 + Ship 39</strong> &mdash; the maiden flight of the V3 architecture. The FAA has approved a <strong>revised, more southerly trajectory</strong>: the flight path now threads a narrower corridor south of the Caribbean landmasses, between Jamaica and Cuba, so that any mishap debris (as seen on Ships 33/34) would fall predominantly into open Caribbean water rather than near populated or trafficked areas. The upper stage will deploy <strong>22 Starlink simulators</strong> sized like next-generation satellites; the final two will scan Starship's heat shield and downlink imagery to test return-to-launch-site readiness for future flights. V3 introduces Raptor 3 engines, an integrated interstage, and three grid fins instead of four.
+    (<a href="https://spaceflightnow.com/2026/05/12/spacex-targets-may-19-for-debut-of-starship-super-heavy-version-3-launch-pad-2/" style="color:var(--blue-on-soft)">Spaceflight Now</a>,
+    <a href="https://www.nasaspaceflight.com/2026/05/spacex-mid-may-starship-flight-12-revised-trajectory/" style="color:var(--blue-on-soft)">NASASpaceflight</a>,
+    <a href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-v3-megarocket-finally-has-a-debut-launch-date-heres-when-it-will-fly" style="color:var(--blue-on-soft)">Space.com</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> A week's slip is routine for Starship and not a red flag in itself &mdash; but the timing now matters more. May 19 sits squarely inside the May 18&ndash;22 SEC filing window flagged in the May 11 edition, so the launch and the S-1 milestone are now effectively concurrent rather than the launch leading by six days. That removes the buffer: a clean flight and a filing land together as a positive cluster; a failure on the 19th lands directly on top of the filing window. The revised debris-corridor trajectory is also a quiet signal that SpaceX still treats a V3 mishap as a live possibility.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://spaceflightnow.com/2026/05/12/spacex-targets-may-19-for-debut-of-starship-super-heavy-version-3-launch-pad-2/"><span class="material-icons-outlined">open_in_new</span>Spaceflight Now</a>
+    <a class="link-pill" href="https://www.nasaspaceflight.com/2026/05/spacex-mid-may-starship-flight-12-revised-trajectory/"><span class="material-icons-outlined">open_in_new</span>NASASpaceflight</a>
+    <a class="link-pill" href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-v3-megarocket-finally-has-a-debut-launch-date-heres-when-it-will-fly"><span class="material-icons-outlined">open_in_new</span>Space.com date</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX</span>
+    <span class="meta-pill">May 11&ndash;12 2026 &middot; contracts</span>
+  </div>
+  <h4>SpaceX launches NRO intelligence satellites; deepens Golden Dome missile-defense integration</h4>
+  <p>On <strong>May 11</strong>, SpaceX launched a batch of intelligence-gathering satellites for the <strong>NRO (National Reconnaissance Office)</strong> &mdash; the NROL-172 mission &mdash; with deployment confirmed May 12. The launch was flown under the <strong>NSSL (National Security Space Launch) Phase 3 Lane 1</strong> contract managed by the U.S. Space Force's Space Systems Command. Separately, SpaceX's role in <strong>Golden Dome</strong> &mdash; the Trump administration's space-based missile-defense architecture, described by analysts as the most expensive U.S. weapons program in history &mdash; continues to deepen: the company holds a $57M Pentagon contract to demonstrate space-based satellite crosslinks (Link-182 standard) and has been formally folded into Golden Dome's software development group. The cadence backdrop is unchanged from the May 11 edition: SpaceX passed its <strong>1,000th Starlink satellite of 2026</strong> in April, and Starlink reached <strong>~10 million subscribers</strong> in February.
+    (<a href="https://spaceflightnow.com/2026/05/11/live-coverage-spacex-to-launch-intelligence-gathering-satellites-for-the-national-reconnaissance-office/" style="color:var(--blue-on-soft)">Spaceflight Now</a>,
+    <a href="https://keeptrack.space/x-report/spacex-brief-2026-04-25" style="color:var(--blue-on-soft)">KeepTrack</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The defense-revenue surface keeps widening &mdash; NRO launches plus Golden Dome software-group inclusion is exactly the recurring, government-backed cash flow the SpaceX IPO narrative wants to foreground against the loss-making X/xAI drag. Golden Dome is also a political-risk item, though: a program this large and this tied to the current administration carries appropriations and procurement-challenge exposure that a public SpaceX would have to disclose as a risk factor.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://spaceflightnow.com/2026/05/11/live-coverage-spacex-to-launch-intelligence-gathering-satellites-for-the-national-reconnaissance-office/"><span class="material-icons-outlined">open_in_new</span>Spaceflight Now NRO</a>
+    <a class="link-pill" href="https://keeptrack.space/x-report/spacex-brief-2026-04-25"><span class="material-icons-outlined">open_in_new</span>KeepTrack Golden Dome</a>
+  </div>
+</div>
+
+<!-- ═══ DOGE / POLITICS ═══ -->
+<div id="doge" class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>DOGE / Politics</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider politics"><span class="dot"></span>Politics</span>
+    <span class="meta-pill">May 12 2026 &middot; ruling detail</span>
+  </div>
+  <h4>NEH ruling detail confirmed: DOGE used ChatGPT and keyword filters to cancel grants; administration signals appeal</h4>
+  <p>Follow-on reporting this week filled in the substance behind Judge <strong>Colleen McMahon</strong>'s 143-page ruling (covered in the May 11 edition) that DOGE's cancellation of ~$100M in <strong>NEH (National Endowment for the Humanities)</strong> grants was unconstitutional. The newly surfaced detail: central to the decision were depositions from two DOGE employees, <strong>Justin Fox and Nathan Cavanaugh</strong>, who admitted using <strong>ChatGPT and diversity-related keyword filters</strong> &mdash; terms like "DEI, Equity, Inclusion, LGBTQ" &mdash; to decide which grants to cancel, <strong>without reviewing the applications or supporting materials</strong>. McMahon's ruling found the cuts both unconstitutional and discriminatory. The <strong>Trump administration has signaled it intends to appeal</strong>. No change to the broader DOGE legal posture since May 11: the EFF (Electronic Frontier Foundation) lawsuit keeping Musk personally on the hook proceeds, and the DOJ-appealed discovery pause shielding Musk from sworn testimony remains in place. Musk's special-government-employee window expires at the end of May; the USDS temporary organization still sunsets July 4.
+    (<a href="https://blackamericaweb.com/2026/05/12/doge-grant-cuts-discriminatory-unconstitutional-elon-musk/" style="color:var(--blue-on-soft)">Black America Web</a>,
+    <a href="https://www.cubaheadlines.com/articles/328591" style="color:var(--blue-on-soft)">Cuba Headlines</a>,
+    <a href="https://www.cnn.com/2026/04/13/politics/elon-musk-doge-lawsuits-avoid-deposition-questions" style="color:var(--blue-on-soft)">CNN</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The "ChatGPT plus keyword filter, no human review" detail is the part that travels &mdash; it's a concrete, quotable factual finding that plaintiffs in the >200 parallel DOGE cases will lift directly into their own briefs. It reframes the constitutional argument from abstract ("no spending authority") to visceral ("a chatbot cancelled federal grants"). The appeal buys the administration time but does not un-ring the bell on the factual record.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://blackamericaweb.com/2026/05/12/doge-grant-cuts-discriminatory-unconstitutional-elon-musk/"><span class="material-icons-outlined">open_in_new</span>Black America Web</a>
+    <a class="link-pill" href="https://www.cubaheadlines.com/articles/328591"><span class="material-icons-outlined">open_in_new</span>Cuba Headlines</a>
+    <a class="link-pill" href="https://www.cnn.com/2026/04/13/politics/elon-musk-doge-lawsuits-avoid-deposition-questions"><span class="material-icons-outlined">open_in_new</span>CNN discovery pause</a>
+  </div>
+</div>
+
+<!-- ═══ LEGAL ═══ -->
+<div id="legal" class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>Musk Legal</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>Legal</span>
+    <span class="meta-pill">May 9&ndash;14 2026 &middot; SEC settlement</span>
+  </div>
+  <h4>Judge won't "rubber-stamp" Musk's $1.5M SEC settlement; cites "red flags," orders answers by June 1</h4>
+  <p>The $1.5M settlement Musk reached with the <strong>SEC (Securities and Exchange Commission)</strong> on May 4 &mdash; resolving allegations he disclosed his 2022 Twitter stake 11 days too late, allegedly costing other shareholders ~$150M &mdash; hit a wall this week. U.S. District Judge <strong>Sparkle Sooknanan</strong> said she <strong>cannot "rubber-stamp"</strong> the deal, cited <strong>"red flags"</strong> about how it was reached, and ordered attorneys for both Musk and the SEC to answer questions in writing by <strong>June 1</strong>. The settlement &mdash; under which Musk's revocable trust pays the penalty, with <strong>no admission of wrongdoing</strong> and no clawback of the money he allegedly saved &mdash; still needs the judge's sign-off to take effect. The Musk v. Altman trial also moved this week (Nadella and Altman testified May 11&ndash;13); per scope, that is covered in the dedicated trial briefing and not duplicated here.
+    (<a href="https://www.cnbc.com/2026/05/09/elon-musk-sec-settlement.html" style="color:var(--blue-on-soft)">CNBC</a>,
+    <a href="https://www.insurancejournal.com/news/national/2026/05/14/869792.htm" style="color:var(--blue-on-soft)">Insurance Journal</a>,
+    <a href="https://www.bloomberg.com/news/articles/2026-05-08/judge-to-review-musk-sec-settlement-deal-in-twitter-stake-case" style="color:var(--blue-on-soft)">Bloomberg</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> A judge refusing to fast-track a regulator-defendant settlement is unusual and worth watching. The structural objection is obvious: a no-admission deal where a trust (not Musk personally) pays a sum dwarfed by the alleged $150M gain looks less like enforcement than like a closed chapter purchased cheaply. If Sooknanan rejects the deal outright after the June 1 filings, the SEC matter reopens &mdash; a low-probability but non-trivial tail risk that had been considered effectively settled.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/05/09/elon-musk-sec-settlement.html"><span class="material-icons-outlined">open_in_new</span>CNBC rubber-stamp</a>
+    <a class="link-pill" href="https://www.insurancejournal.com/news/national/2026/05/14/869792.htm"><span class="material-icons-outlined">open_in_new</span>Insurance Journal</a>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-05-08/judge-to-review-musk-sec-settlement-deal-in-twitter-stake-case"><span class="material-icons-outlined">open_in_new</span>Bloomberg review</a>
+  </div>
+</div>
+
+<!-- Cross-reference banner -->
+<div class="banner cross-ref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Trial covered separately</strong>
+    Musk v. Altman moved fast this week &mdash; Satya Nadella and Sam Altman both testified May 11&ndash;13, with Altman framing Musk as a control-obsessed competitor and saying Musk wanted 90% of OpenAI. Full analysis, timeline, and the May 21 liability-verdict scenario modeling live in the dedicated briefing: <a href="2026-05-01_openai_trial_musk_v_altman.html">Musk v. Altman &middot; OpenAI Trial Deep Dive</a>.
+  </div>
+</div>
+
+<!-- ═══ EDITOR'S VIEW ═══ -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span> Editor's View</div>
+  <h3>Four takeaways from the May 14 refresh</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>Honest note on the delta: this was a thin three days.</strong> The May 11 edition was comprehensive, and most of what crossed the wire since is follow-on detail rather than new development. Only three items genuinely moved the picture: the Starship slip, the China trip, and the SEC settlement hitting judicial resistance. Everything else is colour. No padding &mdash; the next full edition will have more to work with.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>The Starship slip collapsed the buffer between the launch and the IPO filing.</strong> Flight 12 was supposed to lead the May 18&ndash;22 SEC window by six days; at May 19 it now sits inside it. The optimal sequencing the May 11 edition described &mdash; clean launch, then file &mdash; is gone. The launch and the S-1 milestone are now a single coupled event, which raises the stakes on both. A V3 failure on the 19th would land directly on the filing.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>The IPO clock is now visibly shaping behaviour across the portfolio.</strong> xAI signing Wall Street firms onto Grok "to bolster revenue ahead of the IPO," SpaceX deepening Golden Dome and NRO contract surface, the revised Starship trajectory de-risking the debris case &mdash; these are not coincidental. The whole Muskverse is being arranged for the S-1. Watch whether the filing leans on logo walls and combined-entity framing or discloses hard segment numbers; the May 11 edition's structural-risk point still stands.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>The SEC settlement is the week's quiet tail risk.</strong> It was treated as a closed chapter on May 4. A judge citing "red flags" and refusing to rubber-stamp it reopens a small but real probability that the matter is not actually over. June 1 is the date to watch. Combined with the DOGE NEH appeal and the EFF case, the legal-overhang line item is not shrinking &mdash; it is just moving between venues.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══ COLOPHON ═══ -->
+<div class="colophon">
+  <h4>Methodology &amp; sources</h4>
+  <p><strong>Coverage window:</strong> May 7 &ndash; May 14, 2026 (mid-week refresh, 3-day delta from prior edition). <strong>Baseline:</strong> <a href="2026-05-11_muskverse_briefing_weekly.html">Muskverse Weekly Briefing, May 11, 2026</a> &middot; <a href="2026-05-04_muskverse_briefing_weekly.html">Muskverse Weekly Briefing, May 4, 2026</a>. <strong>Lens:</strong> Portfolio-wide digest, system-level perspective; reports only genuine developments since May 11 &mdash; no re-reporting of prior-edition stories. C-Score 1&ndash;5 per card. All abbreviations expanded at first use (FSD, NRO, NSSL, NEH, EFF, SEC, USDS, etc.).</p>
+
+  <h4 style="margin-top:16px;">Primary sources</h4>
+  <p>
+    Tesla: <a href="https://eletric-vehicles.com/tesla/musk-to-join-trumps-china-delegation-on-may-13-15/">EV China delegation</a>,
+    <a href="https://invezz.com/news/2026/05/13/tesla-stock-climbs-3-as-musk-heads-to-china-amid-fsd-expansion-push/">Invezz TSLA</a>,
+    <a href="https://247wallst.com/investing/2026/05/12/tesla-sinks-5-as-musk-heads-to-china-robotaxi-glitches-battery-delays-test-investor-patience/">24/7 Wall St</a>,
+    <a href="https://www.fool.com/investing/2026/05/14/heres-when-teslas-robotaxi-rollout-will-really-ram/">Motley Fool robotaxi</a>,
+    <a href="https://www.tikr.com/blog/tesla-stock-piper-sandler-says-optimus-is-free-at-445-heres-where-the-stock-could-go">TIKR / Piper Sandler</a>.
+    xAI / X: <a href="https://www.bloomberg.com/news/articles/2026-05-13/musk-s-xai-races-to-get-wall-street-firms-to-use-grok-chatbot">Bloomberg Wall Street Grok</a>,
+    <a href="https://www.japantimes.co.jp/business/2026/05/14/tech/musk-xai-wall-street-grok-chatbot/">Japan Times</a>,
+    <a href="https://docs.x.ai/developers/migration/may-15-retirement">xAI model retirement docs</a>.
+    SpaceX: <a href="https://spaceflightnow.com/2026/05/12/spacex-targets-may-19-for-debut-of-starship-super-heavy-version-3-launch-pad-2/">Spaceflight Now Flight 12</a>,
+    <a href="https://www.nasaspaceflight.com/2026/05/spacex-mid-may-starship-flight-12-revised-trajectory/">NASASpaceflight trajectory</a>,
+    <a href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-v3-megarocket-finally-has-a-debut-launch-date-heres-when-it-will-fly">Space.com V3 date</a>,
+    <a href="https://spaceflightnow.com/2026/05/11/live-coverage-spacex-to-launch-intelligence-gathering-satellites-for-the-national-reconnaissance-office/">Spaceflight Now NROL-172</a>,
+    <a href="https://keeptrack.space/x-report/spacex-brief-2026-04-25">KeepTrack Golden Dome</a>.
+    DOGE: <a href="https://blackamericaweb.com/2026/05/12/doge-grant-cuts-discriminatory-unconstitutional-elon-musk/">Black America Web NEH detail</a>,
+    <a href="https://www.cubaheadlines.com/articles/328591">Cuba Headlines ruling</a>,
+    <a href="https://www.cnn.com/2026/04/13/politics/elon-musk-doge-lawsuits-avoid-deposition-questions">CNN discovery pause</a>.
+    Legal: <a href="https://www.cnbc.com/2026/05/09/elon-musk-sec-settlement.html">CNBC SEC settlement</a>,
+    <a href="https://www.insurancejournal.com/news/national/2026/05/14/869792.htm">Insurance Journal</a>,
+    <a href="https://www.bloomberg.com/news/articles/2026-05-08/judge-to-review-musk-sec-settlement-deal-in-twitter-stake-case">Bloomberg judicial review</a>.
+  </p>
+
+  <p style="margin-top:24px; text-align:center; color:var(--on-surface-muted);">
+    Muskverse Briefing &middot; Mid-week refresh &middot; Assembled May 14, 2026 &middot; 7 cards &middot; Coverage May 7 &ndash; May 14
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

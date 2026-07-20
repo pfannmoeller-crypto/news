@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Environment Briefing · 22 June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#1a73e8; --primary-soft:#e8f0fe; --primary-on-soft:#1967d2;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --orange:#d56e0c; --orange-soft:#feefe3; --orange-deep:#a04d00;
+    --amber:#b06000; --amber-soft:#fef7e0;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--primary-soft); color:var(--primary-on-soft); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .caveat { display:flex; gap:12px; padding:14px 18px; background:var(--yellow-soft); border:1px solid #fde293; border-radius:12px; margin-bottom:18px; font-size:13px; line-height:1.55; }
+  .caveat .material-icons-outlined { font-size:20px; color:var(--yellow); flex-shrink:0; }
+  .caveat strong { display:block; color:var(--yellow); margin-bottom:2px; font-weight:500; }
+  .caveat div { color:#5f4400; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:var(--primary-soft); border-color:var(--primary-soft); color:var(--primary-on-soft); font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#4285f4 0%,#1a73e8 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+  .hero .stat-row { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; }
+  .hero .stat .n { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:700; }
+  .hero .stat .l { font-size:11px; opacity:0.85; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:var(--primary-on-soft); font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-size:12px; color:var(--on-surface-muted); background:var(--surface-2); border-radius:10px; padding:2px 10px; font-family:'Roboto Mono',monospace; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .provider-chip { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .provider-chip .dot { width:7px; height:7px; border-radius:50%; }
+  .pc-anthropic { background:var(--amber-soft); color:#8a4b00; } .pc-anthropic .dot { background:#d56e0c; }
+  .pc-openai { background:var(--green-soft); color:var(--green-deep); } .pc-openai .dot { background:#188038; }
+  .pc-google { background:var(--primary-soft); color:var(--primary-on-soft); } .pc-google .dot { background:#1a73e8; }
+  .pc-meta { background:#e8f0fe; color:#1346a0; } .pc-meta .dot { background:#1346a0; }
+  .pc-xai { background:#e8eaed; color:#3c4043; } .pc-xai .dot { background:#3c4043; }
+  .pc-china { background:var(--red-soft); color:var(--red-deep); } .pc-china .dot { background:#c5221f; }
+  .pc-nvidia { background:var(--green-soft); color:#1e7a3d; } .pc-nvidia .dot { background:#76b900; }
+  .pc-eu { background:var(--purple-soft); color:#5f1d8e; } .pc-eu .dot { background:#7627bb; }
+  .pc-industry { background:#e8eef7; color:#1346a0; } .pc-industry .dot { background:#1346a0; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:var(--primary-on-soft); text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:var(--primary-soft); }
+  .card .foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); flex-wrap:wrap; }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:var(--primary); }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  /* Release Radar */
+  .radar { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:8px 10px; }
+  .radar-row { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:8px; }
+  .radar-row:not(:last-child) { border-bottom:1px solid var(--divider-soft); }
+  .radar-row:hover { background:var(--surface-2); }
+  .radar-row .rtext { flex:1; font-size:13px; color:var(--on-surface-2); }
+  .radar-row .rtext strong { color:var(--on-surface); font-weight:500; }
+  .radar-row .rdate { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); white-space:nowrap; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:var(--primary-soft); color:var(--primary-on-soft); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:var(--primary-on-soft); font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">AI</div>
+    <div class="titles">
+      <h1>AI Environment Briefing</h1>
+      <div class="sub">Compiled 22 June 2026 · Reporting window ~last 2 weeks (since 8 June run)</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#models">Frontier models</a>
+  <a class="chip" href="#talent">Talent</a>
+  <a class="chip" href="#money">Money &amp; IPO</a>
+  <a class="chip" href="#infra">Infra &amp; chips</a>
+  <a class="chip" href="#agents">Agents &amp; tooling</a>
+  <a class="chip" href="#policy">Policy</a>
+  <a class="chip" href="#radar">Release Radar</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<div class="caveat">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Confidence labelling · breadth over precision</strong>
+    This is the comprehensive flagship sweep — it includes lower-confidence and aggregator-sourced items with an honest C-Score rather than dropping them. Primary-source items (vendor release notes, SEC filings) carry 5/5; corroborated mainstream 4/5; single-source / industry summaries 3/5. The Anthropic Fable 5 / Mythos 5 line below contradicts some static product references and is flagged accordingly.
+  </div>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Weekly AI Environment · Flagship sweep</div>
+  <h2>A fortnight defined by money and people, not just models: OpenAI files to go public, the talent war takes a Nobel laureate, and a frontier model ships then gets pulled by an export order.</h2>
+  <p>Every major lab moved. OpenAI filed a confidential S-1 targeting a ~$1T September IPO. John Jumper (AlphaFold Nobel) left Google DeepMind for Anthropic the same week Gemini co-lead Noam Shazeer went to OpenAI. Anthropic shipped Fable 5 / Mythos 5 — then a US export-control directive forced a suspension days later. Google, Meta, xAI and the Chinese labs all pushed releases. Below: ~18 full stories plus a Release Radar of the rest.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">~$1T</div><div class="l">OpenAI IPO target</div></div>
+    <div class="stat"><div class="n">$215.9B</div><div class="l">NVIDIA FY26 revenue</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">Nobel-tier moves in 1 week</div></div>
+    <div class="stat"><div class="n">August 2</div><div class="l">EU AI Act full applicability</div></div>
+  </div>
+</div>
+
+<!-- ── FRONTIER MODELS ── -->
+<a id="models"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">hub</span>
+  <h3>Frontier models</h3>
+  <span class="count-pill">6</span>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-anthropic"><span class="dot"></span>Anthropic</span>
+    <span class="date-pill">9 Jun → suspended 12 Jun</span>
+  </div>
+  <h4>Anthropic ships Fable 5 &amp; Mythos 5 — then a US export-control directive forces a suspension</h4>
+  <p>Per multiple reports, Anthropic made <strong>Claude Fable 5</strong> generally available on 9 June across the Claude API, Bedrock, Vertex AI and Microsoft Foundry, introducing a new "Mythos-class" capability tier (Fable 5 = the general-use member, Mythos 5 the restricted sibling). On 12 June — under a week later — Anthropic said it had received a US government export-control directive requiring it to <strong>suspend access to both Fable 5 and Mythos 5</strong>. If accurate, this is the first time a frontier US model has been pulled from market by an export order, and a meaningful signal about how national-security controls are now reaching into model distribution, not just chips. <em>Flagged: this contradicts some static product references that still list Opus 4.8 as the frontier; treat as developing.</em></p>
+  <div class="links">
+    <a href="https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5">Anthropic · Fable 5 / Mythos 5</a>
+    <a href="https://releasebot.io/updates/anthropic/claude">Claude updates (Jun 2026)</a>
+    <a href="https://www.scriptbyai.com/anthropic-claude-timeline/">Claude timeline</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated, developing</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-openai"><span class="dot"></span>OpenAI</span>
+    <span class="date-pill">9–12 Jun 2026</span>
+  </div>
+  <h4>GPT-5.5 Instant tuned for fewer hallucinations; GPT-5.2 retired, GPT-4.5 sunsets 27 June</h4>
+  <p>OpenAI rolled a personalization-and-accuracy update to <strong>GPT-5.5 Instant</strong> (9 June) on the Go and Free tiers, claiming <strong>52.5% fewer hallucinated claims than GPT-5.3 Instant</strong> on high-stakes prompts (e.g. medicine), plus a more natural tone and better context use. Housekeeping continued: the GPT-5.2 family (Instant / Thinking / Pro) was retired on 12 June with conversations auto-migrated to the GPT-5.5 equivalents, and <strong>GPT-4.5 retires from ChatGPT on 27 June</strong>. Older GPT Image API models were also flagged for removal on 1 December. Primary-source release notes, so high confidence.</p>
+  <div class="links">
+    <a href="https://openai.com/index/gpt-5-5-instant/">OpenAI · GPT-5.5 Instant</a>
+    <a href="https://help.openai.com/en/articles/9624314-model-release-notes">OpenAI model release notes</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">5/5 · primary source</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-google"><span class="dot"></span>Google DeepMind</span>
+    <span class="date-pill">I/O 26 + June</span>
+  </div>
+  <h4>Gemini 3.5 Flash hits GA; Gemini Omni (video-native), Managed Agents and "Gemini Spark" land from I/O</h4>
+  <p>Google moved its cheap-but-strong tier to GA with <strong>gemini-3.5-flash</strong>, pitched as its most intelligent model for sustained agentic and coding work and claimed to beat Gemini 3.1 Pro on key benchmarks. Bigger picture from I/O 26: <strong>Gemini Omni</strong>, an any-input→any-output model "starting with video"; <strong>Managed Agents</strong> in the Gemini API (public preview) running in Google-hosted sandboxes; a redesigned Gemini app with a "Daily Brief," and a personal agent called <strong>Gemini Spark</strong>. Deep Think reached AI Ultra subscribers. Two image-preview models deprecate 25 June.</p>
+  <div class="links">
+    <a href="https://techcrunch.com/2026/05/19/google-updates-its-gemini-app-to-take-on-chatgpt-and-claude-at-io-2026/">TechCrunch · Gemini at I/O 26</a>
+    <a href="https://ai.google.dev/gemini-api/docs/changelog">Gemini API changelog</a>
+    <a href="https://deepmind.google/blog/">DeepMind blog</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-meta"><span class="dot"></span>Meta</span>
+    <span class="date-pill">Q2 2026</span>
+  </div>
+  <h4>Meta debuts "Muse Spark" — first model from Superintelligence Labs, and it's closed-source</h4>
+  <p>Meta launched <strong>Muse Spark</strong> (code-named "Avocado"), the first model from the new Muse series out of Meta Superintelligence Labs — the first major release since the ~$14B Scale AI deal that brought in Alexandr Wang. Notably it is <strong>proprietary</strong>, with only a vague hope to open-source later — a real break from the Llama open-weights identity. Meta claims rebuilt infra lets it match an older mid-size Llama 4 variant at "an order of magnitude less compute." Context for the spend: 2026 AI capex guided to <strong>$115–135B</strong>, nearly double last year.</p>
+  <div class="links">
+    <a href="https://www.cnbc.com/2026/04/08/meta-debuts-first-major-ai-model-since-14-billion-deal-to-bring-in-alexandr-wang.html">CNBC · Meta's new model</a>
+    <a href="https://builtin.com/artificial-intelligence/meta-superintelligence-labs">Meta Superintelligence Labs</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-xai"><span class="dot"></span>xAI</span>
+    <span class="date-pill">June 2026</span>
+  </div>
+  <h4>Grok 4.3 reaches AWS Bedrock; Grok lands in Microsoft Word; Imagine Video 1.5 ships</h4>
+  <p>xAI pushed into enterprise distribution: <strong>Grok 4.3</strong> went GA on Amazon Bedrock with a 1M-token context window, configurable reasoning levels and a low-hallucination enterprise pitch. It also shipped <strong>Grok for Microsoft Word</strong> (a free M365 add-in pulling web + X data and connectors from email/SharePoint/Drive into documents) and <strong>Grok Imagine Video 1.5</strong> (better image-to-video, faster gen, Projects + multi-agent workflows). All distribution and product moves rather than a frontier-model jump — xAI widening surface area on the back of its $20B January Series E.</p>
+  <div class="links">
+    <a href="https://x.ai/news">xAI · News</a>
+    <a href="https://releasebot.io/updates/xai">xAI release notes (Jun 2026)</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-china"><span class="dot"></span>China labs</span>
+    <span class="date-pill">Apr–Jun 2026</span>
+  </div>
+  <h4>DeepSeek V4 (1.6T params) and an imminent Qwen 3.5 keep the open-weight pressure on</h4>
+  <p>The Chinese open-weight cadence continues. <strong>DeepSeek V4</strong> shipped in two flavours — V4-Pro (1.6T parameters, 1M context, "rivaling top closed-source models") and a cheaper V4-Flash — with tight Huawei-chip integration and rock-bottom pricing. <strong>Alibaba</strong> says Qwen3-Max-Thinking outperforms major US models and has the <strong>Qwen 3.5 series imminent</strong> with stronger math and coding. Moonshot (Kimi), MiniMax and others are all shipping high-performing open models. The strategic read: the open-weight frontier keeps closing the gap, which is exactly what is pulling US export controls toward distribution (see Anthropic above).</p>
+  <div class="links">
+    <a href="https://fortune.com/2026/04/24/deepseek-v4-ai-model-price-performance-china-open-source/">Fortune · DeepSeek V4</a>
+    <a href="https://www.cnbc.com/2026/01/28/chinese-tech-companies-accelerate-ai-model-rollouts-us-rivals-deepseek-moonshot-kimi.html">CNBC · China AI race</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · industry summary</span></div>
+  </div>
+</div>
+
+<!-- ── TALENT ── -->
+<a id="talent"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">groups</span>
+  <h3>Talent &amp; people</h3>
+  <span class="count-pill">2</span>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-anthropic"><span class="dot"></span>Anthropic ← DeepMind</span>
+    <span class="date-pill">19–23 Jun 2026</span>
+  </div>
+  <h4>Nobel laureate John Jumper leaves Google DeepMind for Anthropic — same week Gemini co-lead Shazeer goes to OpenAI</h4>
+  <p><strong>John Jumper</strong> — 2024 Chemistry Nobel for AlphaFold — announced he is leaving DeepMind for <strong>Anthropic</strong>, days after Gemini co-lead <strong>Noam Shazeer</strong> reportedly chose OpenAI. Axios framed it bluntly: "Google takes the hit in AI's talent war." Jumper caps an Anthropic hiring spree that already pulled in Karpathy, Ross Nordeen, Eric Boyd and a senior layer across research, infra, security and science. The structural oddity worth holding: Google owns ~14% of Anthropic, so Alphabet profits financially from the lab poaching its own Nobel laureates while competing with it in coding agents and enterprise AI.</p>
+  <div class="links">
+    <a href="https://www.axios.com/2026/06/23/ai-lab-agi-google-deepmind-departures">Axios · Google's talent hit</a>
+    <a href="https://winbuzzer.com/2026/06/23/john-jumper-plans-anthropic-move-from-google-deepmind-xcxwbn/">Winbuzzer · Jumper move</a>
+    <a href="https://explainx.ai/blog/anthropic-hiring-spree-2026-john-jumper-karpathy-talent-2026">Anthropic 2026 hiring spree</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-industry"><span class="dot"></span>Talent market</span>
+    <span class="date-pill">2026</span>
+  </div>
+  <h4>The comp bubble: Meta reportedly hired five Thinking Machines founders, one at a rumoured $1.5B package</h4>
+  <p>Beyond the marquee moves, the price of frontier talent keeps escalating. Meta reportedly hired <strong>five Thinking Machines Lab founders</strong>, including one engineer at a reported $1.5B comp package — the kind of number that explains why a single departure can trigger a cascade. The pattern across the fortnight: a tiny number of people who can direct AI research are being repriced as strategic assets, and labs are buying entire senior layers, not individuals. De-rated to 3/5 — the eye-popping figure is single-source and should be read as directional, not audited.</p>
+  <div class="links">
+    <a href="https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid">TNW · Meta talent raid</a>
+    <a href="https://www.pin.com/blog/ai-compensation-salary-guide/">AI compensation benchmarks 2026</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · single-source figure</span></div>
+  </div>
+</div>
+
+<!-- ── MONEY ── -->
+<a id="money"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">payments</span>
+  <h3>Money &amp; IPO</h3>
+  <span class="count-pill">3</span>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-openai"><span class="dot"></span>OpenAI</span>
+    <span class="date-pill">8 Jun 2026</span>
+  </div>
+  <h4>OpenAI files confidential S-1, targeting a September IPO at up to $1 trillion</h4>
+  <p>OpenAI filed a <strong>confidential S-1 with the SEC on 8 June</strong>, targeting a <strong>September 2026 IPO at up to $1T</strong>, with Goldman Sachs and Morgan Stanley leading. The last private mark was <strong>$852B</strong> (the $122B March round led by SoftBank, a16z and D.E. Shaw); annualized revenue has reportedly blown past <strong>$25B</strong> (from ~$20B at end-2025). Underwriters set the range in late August / early September. If it prices near target this is the defining liquidity event of the cycle and a read-through for every private AI valuation — and it lands in the same window as a possible SpaceX listing.</p>
+  <div class="links">
+    <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html">CNBC · $122B round / IPO build</a>
+    <a href="https://forgeglobal.com/openai_ipo/">Forge · OpenAI IPO tracker</a>
+    <a href="https://www.investing.com/analysis/the-trilliondollar-ipo-test-spacex-and-openai-face-public-markets-200680688">Investing.com · the $1T IPO test</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated (confidential filing)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-industry"><span class="dot"></span>Funding</span>
+    <span class="date-pill">Q2 2026</span>
+  </div>
+  <h4>Pre-product mega-rounds: SSI at $32B, Thinking Machines' record $2B seed, Mistral raising at €20B</h4>
+  <p>Capital keeps flowing to the founders, not the products. <strong>Safe Superintelligence</strong> (Ilya Sutskever) raised ~$2B at a <strong>$32B valuation</strong> with no public product. <strong>Thinking Machines Lab</strong> (Mira Murati) closed a <strong>$2B seed at $10B</strong> — the largest US seed round on record per Crunchbase. In Europe, <strong>Mistral</strong> is in talks for ~€3B at a <strong>€20B valuation</strong> (nearly double nine months ago), having crossed $400M ARR, acquired Austria's Emmi AI, renamed Le Chat to "Vibe," and floated designing its own chips. The European-sovereign-AI thesis is now funded at scale.</p>
+  <div class="links">
+    <a href="https://techfundingnews.com/inside-the-32b-ai-unicorn-backed-by-alphabet-nvidia-5-facts-about-openai-co-founders-safe-superintelligence/">TFN · SSI $32B</a>
+    <a href="https://fourweekmba.com/mistral-ai-20-billion-euros-european-sovereign-ai/">Mistral · €20B</a>
+    <a href="https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/">Crunchbase · largest rounds</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-nvidia"><span class="dot"></span>NVIDIA</span>
+    <span class="date-pill">FY26 / June</span>
+  </div>
+  <h4>NVIDIA closes FY26 at $215.9B revenue; Blackwell Ultra ramps, Rubin unveiled as the next platform</h4>
+  <p>NVIDIA's full fiscal-year revenue hit <strong>$215.9B (+65%)</strong>, with Q4 alone at $68.1B and data-center at $62.3B. Blackwell Ultra is "ramping at full speed," and the company unveiled the next-gen <strong>Vera Rubin</strong> platform — six chips promising up to a 10× cut in inference cost per token vs Blackwell, with AWS, Google Cloud, Azure and Oracle first to deploy. June also brought fresh build-out: a six-year collaboration to deploy up to 40,000 GB300 GPUs in Australia. The infra layer remains the one place where the AI boom converts directly into shipped, audited revenue.</p>
+  <div class="links">
+    <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026">NVIDIA · FY26 results</a>
+    <a href="https://futurumgroup.com/insights/nvidia-q3-fy-2026-record-data-center-revenue-higher-q4-guide/">Futurum · data-center record</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">5/5 · SEC / primary</span></div>
+  </div>
+</div>
+
+<!-- ── INFRA ── -->
+<a id="infra"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">dns</span>
+  <h3>Infrastructure &amp; compute</h3>
+  <span class="count-pill">1</span>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-openai"><span class="dot"></span>Stargate</span>
+    <span class="date-pill">June 2026</span>
+  </div>
+  <h4>Stargate hits ~7 GW planned: Oracle delivers first GB200 racks, OpenAI's $300B+ compute deal advances</h4>
+  <p>The OpenAI–Oracle leg of <strong>Stargate</strong> (a >$300B, five-year compute agreement; ~10 GW / $500B program overall) advanced materially: <strong>Oracle delivered its first NVIDIA GB200 racks in June</strong>, with early training and inference workloads for OpenAI's next-generation research already running, and broke ground on new sites in Michigan, Wisconsin, Wyoming and Pennsylvania — bringing the program to ~7 GW planned and >$400B over three years. The capex underwriting OpenAI's IPO story and NVIDIA's revenue are the same dollars, which is exactly why power availability and financing are the real bottlenecks now, not model quality.</p>
+  <div class="links">
+    <a href="https://openai.com/index/five-new-stargate-sites/">OpenAI · five new Stargate sites</a>
+    <a href="https://www.datacenterdynamics.com/en/news/openai-announces-five-more-us-stargate-data-centers-with-oracle-and-softbank/">DCD · Stargate expansion</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · corroborated</span></div>
+  </div>
+</div>
+
+<!-- ── AGENTS & TOOLING ── -->
+<a id="agents"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>Agents, tooling &amp; protocols</h3>
+  <span class="count-pill">3</span>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-industry"><span class="dot"></span>MCP</span>
+    <span class="date-pill">Mid-2026</span>
+  </div>
+  <h4>MCP crosses into mainstream: ~97M monthly SDK downloads, ~41% of orgs running it in production</h4>
+  <p>The Model Context Protocol — Anthropic's open standard for connecting models to tools and data — has crossed from niche to default infrastructure. Reported figures: <strong>~97M monthly SDK downloads</strong> (Python + TypeScript) and <strong>~41% of surveyed software orgs</strong> in limited or broad production with MCP servers, with Anthropic, OpenAI, Google, Microsoft and Amazon all shipping MCP-compatible tooling. The standard is now what lets enterprises move from chat prompting to active agentic workflows. The flip side is the live risk: security and governance are lagging adoption, and analysts expect "destructive incidents security teams don't see coming."</p>
+  <div class="links">
+    <a href="https://www.cio.com/article/4136548/why-model-context-protocol-is-suddenly-on-every-executive-agenda.html">CIO · MCP on every agenda</a>
+    <a href="https://www.cdata.com/blog/2026-year-enterprise-ready-mcp-adoption">CData · enterprise MCP 2026</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · survey / aggregator</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-google"><span class="dot"></span>DeepMind research</span>
+    <span class="date-pill">June 2026</span>
+  </div>
+  <h4>Research-grade reasoning goes API: DeepMind's "AI Co-Mathematician" scores 48% on FrontierMath Tier 4</h4>
+  <p>The reasoning frontier is shifting from exam-passing to open-ended discovery. DeepMind released <strong>AI Co-Mathematician</strong>, an interactive multi-agent workbench spanning ideation, literature search, computational exploration and theorem proving with state held across sessions — and it scored <strong>48% on FrontierMath Tier 4</strong>, the hardest tier. More broadly, "research-grade" reasoning is now being exposed as an API offering aimed at hard optimization, novel algorithm design and problems with no memorizable answer. New eval scaffolding (ARC-AGI-2, BrowseComp, MedBrowseComp) is emerging to measure agents on genuinely novel work rather than benchmarks they can saturate.</p>
+  <div class="links">
+    <a href="https://www.buildthisnow.com/blog/guide/mechanics/ai-research-june-2026">Build This Now · June research</a>
+    <a href="https://llm-stats.com/ai-news">LLM-Stats · model news</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · industry summary</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-industry"><span class="dot"></span>Coding agents</span>
+    <span class="date-pill">1–3 Jun 2026</span>
+  </div>
+  <h4>GitHub Copilot moves to usage-based "AI Credits"; Build 2026 lands a Copilot agent refresh</h4>
+  <p>Microsoft shifted <strong>GitHub Copilot to a usage-based "AI Credits" model on 1 June</strong>, replacing flat-rate subscriptions and temporarily pausing new paid sign-ups during the rollout — a notable signal that inference cost is now being passed to developers as agentic usage scales. <strong>Build 2026 (2–3 June, San Francisco)</strong> brought a Copilot agent refresh. The three-way coding-agent market (Cursor / Copilot / Claude Code) keeps consolidating: Cursor (Anysphere, ~$29B) leans autonomous multi-file flows; Copilot owns the inline loop and native IDE reach; Claude Code anchors the terminal-agent tier.</p>
+  <div class="links">
+    <a href="https://www.morphllm.com/best-ai-coding-agents-2026">Coding-agent leaderboard (Jun 2026)</a>
+    <a href="https://tech-insider.org/cursor-vs-copilot-2026/">Cursor vs Copilot 2026</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · industry summary</span></div>
+  </div>
+</div>
+
+<!-- ── POLICY ── -->
+<a id="policy"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>Policy &amp; regulation</h3>
+  <span class="count-pill">1</span>
+</div>
+
+<div class="card">
+  <div class="meta">
+    <span class="provider-chip pc-eu"><span class="dot"></span>EU / US</span>
+    <span class="date-pill">Aug 2 deadline</span>
+  </div>
+  <h4>The August cliff: EU AI Act transparency obligations bite 2 August; US tries to pre-empt state laws</h4>
+  <p>The regulatory calendar is now the story. The <strong>EU AI Act becomes fully applicable on 2 August 2026</strong>, switching on transparency obligations (including AI-generated-content labelling, with a Code of Practice due to finalize around June); a political agreement on the "AI omnibus" simplification proposal was reached 7 May. In the US, the December 2025 Trump executive order aims to <strong>block state AI laws</strong> deemed incompatible with a light federal framework — but doesn't remove near-term state enforcement risk, and <strong>Colorado's AI Act takes effect 30 June</strong>. For any EU-facing AI deployment, August compliance prep is now a hard deadline, not a planning item.</p>
+  <div class="links">
+    <a href="https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline">Holland &amp; Knight · Aug 2026 deadline</a>
+    <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">EU · AI Act framework</a>
+    <a href="https://www.gunder.com/en/news-insights/insights/2026-ai-laws-update-key-regulations-and-practical-guidance">Gunderson · 2026 AI laws</a>
+  </div>
+  <div class="foot">
+    <div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · legal-source corroborated</span></div>
+  </div>
+</div>
+
+<!-- ── RELEASE RADAR ── -->
+<a id="radar"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">radar</span>
+  <h3>Release Radar — the rest, in brief</h3>
+  <span class="count-pill">12</span>
+</div>
+
+<div class="radar">
+  <div class="radar-row"><span class="provider-chip pc-anthropic"><span class="dot"></span>Anthropic</span><div class="rtext"><strong>Opus 4.8</strong> shipped (context for Fable 5): ~4× less likely than 4.7 to pass flawed code; Claude Code rate limits doubled; "Dreaming" + multi-agent orchestration added to Managed Agents.</div><span class="rdate">28 May</span></div>
+  <div class="radar-row"><span class="provider-chip pc-openai"><span class="dot"></span>OpenAI</span><div class="rtext"><strong>GPT-5.5 Instant</strong> personalization rollout to Go &amp; Free tiers.</div><span class="rdate">9 Jun</span></div>
+  <div class="radar-row"><span class="provider-chip pc-google"><span class="dot"></span>Google</span><div class="rtext"><strong>Gemini Omni</strong> (any-input→any-output, video-first) + <strong>Gemini Spark</strong> personal agent announced at I/O 26.</div><span class="rdate">I/O 26</span></div>
+  <div class="radar-row"><span class="provider-chip pc-xai"><span class="dot"></span>xAI</span><div class="rtext"><strong>Grok 4.3</strong> GA on Bedrock; <strong>Grok for Word</strong>; <strong>Grok Imagine Video 1.5</strong>.</div><span class="rdate">June</span></div>
+  <div class="radar-row"><span class="provider-chip pc-china"><span class="dot"></span>DeepSeek</span><div class="rtext"><strong>V4-Pro</strong> (1.6T params, 1M ctx) &amp; <strong>V4-Flash</strong>, Huawei-chip integrated.</div><span class="rdate">late Apr</span></div>
+  <div class="radar-row"><span class="provider-chip pc-china"><span class="dot"></span>Alibaba</span><div class="rtext"><strong>Qwen 3.5</strong> imminent; Qwen3-Max-Thinking claims to beat major US models.</div><span class="rdate">June</span></div>
+  <div class="radar-row"><span class="provider-chip pc-meta"><span class="dot"></span>Meta</span><div class="rtext"><strong>Muse Spark</strong> (closed-source) — first Muse-series model from Superintelligence Labs.</div><span class="rdate">Q2</span></div>
+  <div class="radar-row"><span class="provider-chip pc-nvidia"><span class="dot"></span>NVIDIA</span><div class="rtext"><strong>Vera Rubin</strong> platform unveiled — 6 chips, up to 10× lower inference cost/token vs Blackwell.</div><span class="rdate">2026</span></div>
+  <div class="radar-row"><span class="provider-chip pc-eu"><span class="dot"></span>Mistral</span><div class="rtext">Le Chat renamed <strong>Vibe</strong>; acquired Emmi AI; exploring own chip designs.</div><span class="rdate">late May</span></div>
+  <div class="radar-row"><span class="provider-chip pc-industry"><span class="dot"></span>Microsoft</span><div class="rtext"><strong>GitHub Copilot AI Credits</strong> usage-based billing live; Build 2026 Copilot agent refresh.</div><span class="rdate">1–3 Jun</span></div>
+  <div class="radar-row"><span class="provider-chip pc-google"><span class="dot"></span>DeepMind</span><div class="rtext"><strong>AI Co-Mathematician</strong> — 48% on FrontierMath Tier 4.</div><span class="rdate">June</span></div>
+  <div class="radar-row"><span class="provider-chip pc-industry"><span class="dot"></span>Apple</span><div class="rtext">Reportedly <strong>blocked Siri AI from EU iPhones</strong> over DMA constraints.</div><span class="rdate">June</span></div>
+</div>
+
+<!-- ── EDITOR'S VIEW ── -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Editor's view — the through-lines</span>
+  <h3>This fortnight, the frontier moved at the money-and-policy layer, not the model layer</h3>
+  <p><span class="num">1.</span> <strong>The IPO window is now the organizing event.</strong> OpenAI's confidential S-1 at up to $1T pulls every private mark — SSI's $32B, Thinking Machines' $10B, Mistral's €20B, xAI's $230B — into a single September referendum. If OpenAI prices near target, the whole pre-product mega-round class gets validated; if the range disappoints, the repricing flows downhill fast. Watch the late-August underwriter range as the real signal.</p>
+  <p><span class="num">2.</span> <strong>Export control reached the model layer for the first time.</strong> Anthropic shipping Fable 5 / Mythos 5 and then suspending them under a US directive is the structurally new event of the fortnight — bigger than any single benchmark. It says national-security policy now gates distribution of frontier <em>models</em>, not just chips, and it lands precisely as the Chinese open-weight labs (DeepSeek V4, Qwen 3.5) close the capability gap. These two facts are the same story.</p>
+  <p><span class="num">3.</span> <strong>Talent is repricing faster than product.</strong> Two Nobel-tier moves in one week (Jumper→Anthropic, Shazeer→OpenAI) plus rumoured nine-figure-plus packages tell you the binding constraint is people who can direct research, not compute or data. Google is the visible loser this round — while owning ~14% of the lab taking its laureates.</p>
+  <p><span class="num">4.</span> <strong>The architecture is settling into layers.</strong> NVIDIA owns the infra layer (the only place the boom shows up as audited revenue — $215.9B), Stargate is the power-and-capex bottleneck, MCP is becoming the connective tissue, and the model labs fight at the top. Capability is increasingly table stakes; distribution, governance and energy are where the contest actually is.</p>
+  <p><span class="num">5.</span> <strong>The August regulatory cliff is real.</strong> EU AI Act transparency obligations switch on 2 August and Colorado's law on 30 June — concrete deadlines, not horizon items, for anyone shipping AI into those markets.</p>
+  <p class="closer">Cross-reference: the Anthropic export-suspension and the Stargate/NVIDIA capex thread both connect to the geopolitics and market briefings (US–China tech controls; the AI-capex share of S&amp;P earnings). The OpenAI-IPO and AI-race themes also surface as live clusters in the Polymarket dashboard.</p>
+</div>
+
+<div class="colophon">
+  AI Environment Briefing · Weekly · Flagship comprehensive sweep<br>
+  Compiled 2026-06-22 · ~18 full stories + 12 Release Radar items · sources: vendor release notes, SEC filings, mainstream &amp; trade press<br>
+  Confidence labelled per item · lower-confidence items retained with honest C-Scores rather than dropped
+</div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cowork Briefing — Week of 2–8 June 2026</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f8f9fa;font-family:Roboto,Arial,Helvetica,sans-serif;color:#202124;">
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f8f9fa;">
+<tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="880" cellpadding="0" cellspacing="0" style="max-width:880px;width:100%;">
+
+<!-- ============ APP BAR ============ -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:18px 22px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+    <td width="48" valign="middle">
+      <table role="presentation" cellpadding="0" cellspacing="0"><tr><td align="center" valign="middle" style="width:42px;height:42px;background-color:#f29900;border-radius:21px;color:#ffffff;font-size:16px;font-weight:700;font-family:Roboto,Arial,sans-serif;">CW</td></tr></table>
+    </td>
+    <td valign="middle" style="padding-left:14px;">
+      <div style="font-size:19px;font-weight:500;color:#202124;line-height:1.2;">Cowork Briefing</div>
+      <div style="font-size:13px;color:#5f6368;padding-top:2px;">Week of 2–8 June 2026</div>
+    </td>
+    <td valign="middle" align="right">
+      <span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:5px 10px;border-radius:12px;">Praxis-first</span>
+    </td>
+  </tr></table>
+</td></tr>
+<tr><td style="height:16px;line-height:16px;font-size:16px;">&nbsp;</td></tr>
+
+<!-- ============ HERO ============ -->
+<tr><td style="background-color:#c46210;border-radius:12px;padding:26px 26px 24px 26px;">
+  <div style="font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#ffe0b2;font-weight:500;">Briefing summary</div>
+  <div style="font-size:24px;font-weight:500;color:#ffffff;line-height:1.28;padding-top:8px;">A loud week for the company, a quiet one for fresh praxis — and the most useful lever is still hiding in a Cowork support article</div>
+  <div style="font-size:15px;color:#fdebd2;line-height:1.6;padding-top:14px;">
+    The headline moves this week were corporate and structural: Anthropic filed a confidential S-1 with the SEC (1 Jun), launched a Services Track and Partner Hub for its Partner Network (3 Jun), expanded Project Glasswing (2 Jun), and doubled Cowork's 5-hour rate limits for a month (from 5 Jun). On the substrate side, Claude Code shipped v2.1.166–168 with a <i>fallbackModel</i> setting and hardened cross-session messaging, and the 15 Jun billing split looms — programmatic use (Agent SDK, headless, GitHub Actions) moves to separate API-rate credits while interactive use, <b>Cowork included, stays in your subscription</b>.
+  </div>
+  <div style="font-size:15px;color:#fdebd2;line-height:1.6;padding-top:12px;">
+    Honest read on praxis: very little net-new walkthrough content carried a 2–8 Jun datestamp. So this edition leans on the strongest evergreen patterns — Karo Zieminski's self-improving scheduled-task loop, Daria Cupareanu's six scheduled-task recipes, and Simon Willison's still-definitive first-impressions teardown. The lever worth your weekend is the self-improving loop: Cowork already rewrites a scheduled task's own prompt after the first run, and you can steer that rewrite toward quality, not just connector plumbing. That is the difference between a briefing that ages and one that compounds.
+  </div>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ SECTION: WHAT SHIPPED ============ -->
+<tr><td style="padding:0 4px 12px 4px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#5f6368;font-weight:700;">What shipped this week</div>
+  <div style="font-size:13px;color:#5f6368;padding-top:3px;">Supporting context — 5 announcement cards</div>
+</td></tr>
+
+<!-- Card: Cowork limits doubled -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:20px 22px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#fef3e0;color:#c46210;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Cowork</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">5 Jun 2026</span></td>
+  </tr></table>
+  <div style="font-size:17px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Cowork's 5-hour rate limits doubled for one month</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:8px;">
+    From 5 June, Anthropic doubled the 5-hour rate limits that govern Cowork (and other interactive use) for a one-month window. Read it as breathing room for heavy agentic sessions — and as positioning ahead of the 15 June billing change that pushes programmatic workloads onto a separate meter. For someone running multiple scheduled briefings a day, the practical effect is fewer mid-afternoon "you've hit your limit" stalls this month.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:14px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 4/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://pasqualepillitteri.it/en/news/4328/anthropic-doubles-claude-cowork-limits-strategy" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Analysis</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Card: Partner Network Services Track -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:20px 22px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#fef7e0;color:#b06000;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Anthropic</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">3 Jun 2026</span></td>
+  </tr></table>
+  <div style="font-size:17px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Claude Partner Network adds a Services Track and Partner Hub</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:8px;">
+    Anthropic formalised a services layer around Claude — a Services Track for implementation/consulting partners plus a Partner Hub to find them. For a non-enterprise operator this is mostly signal, not action: it tells you where the build-out energy is going (vertical deployments, done-for-you skill and plugin packaging) and hints that more turnkey, industry-specific Cowork bundles will keep arriving through partners rather than only from Anthropic directly.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:14px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 5/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://www.anthropic.com/news/services-track-partner-hub" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Anthropic newsroom</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Card: June 15 billing split -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:20px 22px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e8eef6;color:#1f3548;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Substrate</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">Effective 15 Jun 2026</span></td>
+  </tr></table>
+  <div style="font-size:17px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Billing split: programmatic use moves to API-rate credits — Cowork stays in your subscription</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:8px;">
+    From 15 June, programmatic consumption — Agent SDK, headless mode, GitHub Actions, third-party apps — switches to a separate credit pool billed at API rates. Interactive use stays inside the flat subscription, and Anthropic has been explicit that this <b>includes Cowork and Claude Code in the terminal</b>. Net for you: scheduled-task briefings run from the Cowork desktop app are on the protected side of the line. If you ever externalised a workflow into the SDK or a GitHub Action, that's where new metering bites.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:14px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 4/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://codersera.com/blog/anthropic-june-2026-billing-change-claude-code/" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">What to do</a></td>
+      <td valign="middle" style="padding-left:6px;"><a href="https://devtoolpicks.com/blog/anthropic-splits-claude-subscriptions-agent-sdk-credit-june-2026" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Detail</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Card: Claude Code v2.1.166-168 -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:20px 22px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e8eef6;color:#1f3548;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Substrate</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">6 Jun 2026</span></td>
+  </tr></table>
+  <div style="font-size:17px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Claude Code v2.1.166–168: fallbackModel, deny-rule globs, safer cross-session messaging</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:8px;">
+    The engine under Cowork moved. v2.1.166 added a <i>fallbackModel</i> setting (up to three models tried in order when the primary is overloaded), glob-pattern support in deny-rule tool-name positions, and a security hardening so messages relayed via SendMessage from other Claude sessions no longer carry user authority. The latter matters for anyone chaining agents or scheduled tasks — it closes a privilege-escalation path between sessions. v2.1.167–168 were reliability follow-ups.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:14px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 5/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://github.com/anthropics/claude-code/releases" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">GitHub releases</a></td>
+      <td valign="middle" style="padding-left:6px;"><a href="https://code.claude.com/docs/en/changelog" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Changelog</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Card: S-1 / IPO -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:20px 22px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#fef7e0;color:#b06000;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Anthropic</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">1 Jun 2026</span></td>
+  </tr></table>
+  <div style="font-size:17px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Anthropic confidentially files a draft S-1 with the SEC</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:8px;">
+    Anthropic confidentially submitted a draft S-1 on 1 June — the first formal step toward an IPO — days after a $65B Series H at a $965B post-money valuation. Why it belongs in a Cowork briefing: a public-market path raises the pressure to monetise per-seat productivity surfaces. The 15 June billing split is the first visible expression of that pressure. Expect the subscription-vs-metered boundary to keep getting drawn more sharply; the strategic question for you is keeping value-generating workflows on the flat-rate, interactive side.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:14px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 5/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://www.anthropic.com/news/confidential-draft-s1-sec" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Anthropic newsroom</a></td>
+      <td valign="middle" style="padding-left:6px;"><a href="https://www.cbsnews.com/news/anthropic-ipo-confidential-filing-claude-ai/" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">CBS</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ SECTION: TUTORIALS & VIDEOS ============ -->
+<tr><td style="padding:0 4px 12px 4px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#5f6368;font-weight:700;">Tutorials &amp; Videos der Woche</div>
+  <div style="font-size:13px;color:#5f6368;padding-top:3px;">Concrete builds, concrete stacks — evergreen this week (see hero)</div>
+</td></tr>
+
+<!-- Praxis Card: LinkedIn lead automation -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e6f4ea;color:#0d652d;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">YouTube</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">Evergreen · 2026</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">5-minute setup: LinkedIn outreach on autopilot via the ConnectSafely MCP</div>
+  <div style="font-size:13px;color:#5f6368;font-style:italic;padding-top:6px;">Multiple creators · "Cowork + LinkedIn" videos + ConnectSafely guide · YouTube / web</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:16px;">Problem</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Manual LinkedIn prospecting and follow-up eats hours and doesn't scale; native automation tools risk account flags.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Stack</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Cowork desktop · ConnectSafely MCP server (remote plugin) · persistent Project memory for ICP/tone · Cowork sub-agents for parallel research · optional /schedule for a daily inbox sweep.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Steps</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:4px;">
+    1. Install Cowork, add the ConnectSafely MCP server as a remote plugin (~5–7 min end to end).<br>
+    2. Authenticate LinkedIn through ConnectSafely's API rather than scraping.<br>
+    3. Store your ideal-customer profile, tone, and outreach strategy once in a Project so you never re-explain it.<br>
+    4. Ask Cowork to research a target list and draft personalised first-touch messages.<br>
+    5. Optionally /schedule a morning task: "check my LinkedIn inbox and draft replies."
+  </div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Ergebnis</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Honest caveat: the eye-catching "10,000 leads/mo" framing is marketing. What's real and replicable is the plumbing — ConnectSafely keeps you on a sanctioned API path, and persistent memory removes the per-session re-briefing tax. Treat draft quality as something you still review before send.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Für wen</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">B2B operators doing relationship-led outreach — directly relevant to your pet-store and vet sales motion.</div>
+
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 3/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://connectsafely.ai/articles/claude-cowork-linkedin-lead-generation-guide-2026" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Setup guide</a></td>
+      <td valign="middle" style="padding-left:6px;"><a href="https://www.youtube.com/watch?v=mHIxGVrN2pY" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Video</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Praxis Card: Maven live demo skills+cowork -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e6f4ea;color:#0d652d;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Maven · Live demo</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">Evergreen · 2026</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">How I use Claude Skills + Cowork to run my whole LinkedIn content engine</div>
+  <div style="font-size:13px;color:#5f6368;font-style:italic;padding-top:6px;">Live demo walkthrough · Maven session</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:16px;">Problem</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Content creation is a repeating multi-step process (ideate → draft → match voice → format per channel) that gets re-explained to a chatbot every single time.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Stack</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">A custom "write like me" Skill (voice fingerprint) · a Cowork Project holding past posts and source material · Cowork doing the multi-step run instead of one-shot prompting.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Steps</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:4px;">
+    1. Build a Skill that encodes your voice from a handful of real samples.<br>
+    2. Drop reference material into a Project so context persists.<br>
+    3. Point Cowork at a topic; it drafts, self-checks against the voice Skill, and formats for the channel.<br>
+    4. Review and ship — the human stays in the loop on final approval.
+  </div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Ergebnis</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">The unlock is the Skill-as-voice pattern: once encoded, output stops sounding generic. Caveat — a voice Skill is only as good as the samples; thin or off-tone samples produce confident-but-wrong drafts.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Für wen</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Anyone publishing regularly under their own name or brand voice — applies cleanly to Alphapet/SmartPetPro brand content.</div>
+
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 3/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://maven.com/p/8085f9/how-i-use-claude-skills-cowork-for-linked-in-live-demo" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Demo</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Praxis Card: 2 real workflows that save hours -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e6f4ea;color:#0d652d;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">YouTube</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">Evergreen · 2026</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Two real Cowork workflows that save hours — file triage + recurring reporting</div>
+  <div style="font-size:13px;color:#5f6368;font-style:italic;padding-top:6px;">Tutorial walkthrough · YouTube</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:16px;">Problem</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Most "Cowork tutorials" stop at setup. This one shows two end-to-end workflows that actually deliver a finished artifact rather than a demo.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Stack</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Cowork pointed at a local folder · a connector (Drive/Stripe-style) for the reporting flow · /schedule for the recurring piece.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Steps</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:4px;">
+    1. Workflow A — point Cowork at a messy folder and have it sort files by project, no rules pre-written.<br>
+    2. Workflow B — connect a data source and have Cowork compile a recurring report into a file.<br>
+    3. Wrap B in a scheduled task so it lands in your folder on a cadence.
+  </div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Ergebnis</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Good for seeing the "describe → finished file" loop concretely. Thin on edge cases — real folders are messier than demo folders, so expect to babysit the first few runs.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Für wen</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Newcomers who want proof beyond setup screens before committing a real workflow.</div>
+
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 3/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://www.youtube.com/watch?v=O6SVv33gPDU" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Video</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ SECTION: AUS DEN BLOGS ============ -->
+<tr><td style="padding:0 4px 12px 4px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#5f6368;font-weight:700;">Aus den Blogs</div>
+  <div style="font-size:13px;color:#5f6368;padding-top:3px;">Deeper written walkthroughs — the highest-value patterns this edition</div>
+</td></tr>
+
+<!-- Praxis Card: Self-improving loop (LEAD) -->
+<tr><td style="background-color:#ffffff;border:1px solid #c46210;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e6f4ea;color:#0d652d;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Substack</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#fef3e0;color:#c46210;font-size:12px;padding:4px 10px;border-radius:12px;">★ Lead pattern</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">9 Apr 2026</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">A self-improving Cowork loop: let a scheduled task rewrite its own prompt toward quality, not just plumbing</div>
+  <div style="font-size:13px;color:#5f6368;font-style:italic;padding-top:6px;">Karo Zieminski · @karozieminski · Product with Attitude (Substack)</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:16px;">Problem</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Every recurring workflow decays — files move, conventions change, new edge cases pile up — but the prompt stays frozen, and you only fix what you've already seen break.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">The hidden mechanic</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Cowork already rewrites a scheduled task's prompt after its first run. Because each run is an isolated session with no memory of the conversation that created it, the rewritten prompt <i>is</i> the task's continuity — effectively a CLAUDE.md the task wrote for itself. Natively, that rewrite optimises for connector accuracy (paths resolve, channels map). Zieminski's move: add an improvement directive so the rewrite optimises for <b>quality and relevance</b> instead.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Stack</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">No code, no terminal. Three pieces: a <i>context.md</i> in the project folder · folder instructions · an improvement directive in the scheduled-task prompt. Karpathy's auto-research loop, adapted to Cowork's visual interface.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Steps</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:4px;">
+    1. Create a project with a context.md that holds the task's evolving playbook.<br>
+    2. Write the scheduled task so each run ends by reflecting on what could be sharper and updating context.md.<br>
+    3. Add the directive that points the rewrite at output quality, not just connector mapping.<br>
+    4. Let it run; after 10+ cycles context.md becomes a playbook Claude wrote for its own workflow.
+  </div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Ergebnis</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">By the second run the prompt is already more precise than what you wrote. Honest limits the author flags: instruction drift after 20–30 runs and the need for a guardrail/eval rubric to keep the loop from optimising itself sideways — the full guardrail system sits behind her paywall.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Für wen</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Anyone running recurring scheduled briefings — i.e. exactly your weekly AI, pet-food commodity, and Cowork briefings. This is the single highest-leverage pattern in this edition.</div>
+
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 4/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://karozieminski.substack.com/p/claude-cowork-self-improving-automation-karpathy-loop-2026" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Walkthrough</a></td>
+      <td valign="middle" style="padding-left:6px;"><a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Anthropic docs</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Praxis Card: 6 scheduled task recipes -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e6f4ea;color:#0d652d;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Substack</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">26 Feb 2026</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Six scheduled-task recipes, with the prompts Claude rewrote for itself</div>
+  <div style="font-size:13px;color:#5f6368;font-style:italic;padding-top:6px;">Daria Cupareanu · @dariacupareanu · AI blew my mind (Substack)</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:16px;">Problem</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Scheduled tasks are easy to turn on and hard to point at something genuinely useful. This is a tested menu rather than a feature tour.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Stack</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Cowork /schedule (or the sidebar "New task" form: name, description, prompt, cadence, model, folder) · connectors for Gmail, Calendar, Stripe, and local files.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">The six</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:4px;">
+    1. Daily email + calendar morning briefing.<br>
+    2. Sort messy files by project automatically.<br>
+    3. Stripe revenue reporting on a cadence.<br>
+    4. Organise invoices and reconcile against bank statements.<br>
+    5. Tidy Apple Notes.<br>
+    6. Track flight prices for an upcoming trip.
+  </div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Ergebnis</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Useful confirmation of the same mechanic Zieminski builds on: the author notes the prompt you submit "won't stay exactly as you wrote it" — Claude rewrites it after run one. Practical gotcha she hit: had to update Claude Desktop twice before /schedule and task creation both appeared. Full prompts sit behind her paywall; the setup mechanics are free.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Für wen</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Anyone who wants a copy-and-adapt starting menu — the invoice-reconciliation and revenue-reporting recipes map onto your finance ops.</div>
+
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;</span><span style="color:#dadce0;font-size:15px;letter-spacing:2px;">&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 3/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://aiblewmymind.substack.com/p/claude-cowork-scheduled-tasks-6-ways" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Recipes</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Praxis Card: Simon Willison first impressions -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#e6f4ea;color:#0d652d;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Weblog</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">12 Jan 2026 · foundational</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">The definitive teardown: what Cowork actually is, and where prompt injection bites</div>
+  <div style="font-size:13px;color:#5f6368;font-style:italic;padding-top:6px;">Simon Willison · @simonw · simonwillison.net</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:16px;">Why it still matters</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Five months on, this remains the clearest mental model: Cowork is "Claude Code for the rest of your work" — regular Claude Code wrapped in a friendlier interface with a filesystem sandbox configured for you. Willison reverse-engineered the macOS Electron app and confirmed it runs an Ubuntu VM via Apple's Virtualization framework (VZVirtualMachine) booting a custom Linux root filesystem.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">The caveat to keep</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">His central warning ages well: a general agent with real-world capabilities is a live prompt-injection surface. Every connector you add, every web page a scheduled task reads, is potential instruction. The 6 Jun cross-session-messaging hardening in Claude Code is the substrate slowly closing exactly this class of gap.</div>
+
+  <div style="font-size:13px;color:#5f6368;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding-top:14px;">Für wen</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.6;padding-top:4px;">Anyone wiring Cowork to email, CRM, or the open web — read this before connecting anything that can act, not just read.</div>
+
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><span style="color:#f29900;font-size:15px;letter-spacing:2px;">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+      <td valign="middle" style="padding-left:12px;"><span style="font-size:12px;color:#5f6368;">C 5/5</span></td>
+      <td valign="middle" style="padding-left:12px;"><a href="https://simonwillison.net/2026/Jan/12/claude-cowork/" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">First impressions</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ SECTION: TRY THIS WEEK ============ -->
+<tr><td style="padding:0 4px 12px 4px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#5f6368;font-weight:700;">Try this week</div>
+  <div style="font-size:13px;color:#5f6368;padding-top:3px;">Two builds you could stand up this weekend, in your context</div>
+</td></tr>
+
+<!-- Try Card 1 -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#fef3e0;color:#c46210;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Workflow</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">~20 min setup</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">Turn your pet-food commodity briefing into a self-improving loop</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:10px;">
+    You already run a weekly cost-of-goods commodity sweep. Add Zieminski's mechanic to it: create a <i>context.md</i> in that briefing's project folder, and append one instruction to the scheduled task — "at the end of each run, note in context.md which sources gave usable price/availability reads this week and which were noise, and adjust next run's source list and structure accordingly." After 5–6 weeks the task will have learned, for example, that MATIF rapeseed and TTF gas pages resolve cleanly while a given renderer's page rarely updates — and it will reweight on its own. Add a one-line guardrail: "never drop a named supplier or protein cluster from coverage; only reorder and reprioritise." That protects your three-cluster structure from drift.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><a href="https://karozieminski.substack.com/p/claude-cowork-self-improving-automation-karpathy-loop-2026" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Pattern source</a></td>
+      <td valign="middle" style="padding-left:6px;"><a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">Scheduled tasks docs</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:12px;line-height:12px;font-size:12px;">&nbsp;</td></tr>
+
+<!-- Try Card 2 -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:22px 24px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+    <td><span style="display:inline-block;background-color:#fef3e0;color:#c46210;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;">Workflow</span></td>
+    <td style="padding-left:8px;"><span style="display:inline-block;background-color:#f1f3f4;color:#5f6368;font-size:12px;padding:4px 10px;border-radius:12px;">~30 min setup</span></td>
+  </tr></table>
+  <div style="font-size:18px;font-weight:500;color:#202124;padding-top:12px;line-height:1.35;">A daily B2B outreach prep task for the pet-store / vet channel</div>
+  <div style="font-size:14px;color:#3c4043;line-height:1.7;padding-top:10px;">
+    Combine the ConnectSafely LinkedIn pattern with a scheduled task. Store an ICP for your two best-fit buyer types (independent premium pet stores; small-animal vet practices) in a Project, plus your tone and a few winning past messages as a voice Skill. Then /schedule a weekday-morning task: "pull new LinkedIn engagement and inbound, shortlist five accounts that fit the stored ICP, and draft a first-touch message each in my voice — output to a file, do not send." You review and send manually. This keeps you on ConnectSafely's sanctioned API path, keeps the human on final approval (the right call given Willison's prompt-injection caveat), and removes the daily re-briefing tax. Honest note: draft quality depends entirely on the ICP and sample quality you feed it — thin inputs produce confident-but-generic drafts.
+  </div>
+  <div style="border-top:1px solid #e8eaed;margin-top:16px;padding-top:12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle"><a href="https://connectsafely.ai/articles/claude-cowork-linkedin-lead-generation-guide-2026" style="display:inline-block;background-color:#f1f3f4;color:#1967d2;font-size:12px;text-decoration:none;padding:5px 10px;border-radius:12px;">ConnectSafely guide</a></td>
+    </tr></table>
+  </div>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ SECTION: PLUGIN & SKILL RADAR ============ -->
+<tr><td style="padding:0 4px 12px 4px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#5f6368;font-weight:700;">Plugin &amp; Skill Radar</div>
+</td></tr>
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:8px 22px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+    <tr><td style="padding:14px 0;border-bottom:1px solid #e8eaed;">
+      <div style="font-size:15px;font-weight:500;color:#202124;">Legal: 20+ MCP connectors + 12 practice-area plugins</div>
+      <div style="font-size:13px;color:#5f6368;line-height:1.55;padding-top:3px;">Open source, live in Cowork; research, contracts, discovery, matter management, legal aid. Enterprise admins enable in workspace settings. <span style="color:#3c4043;">Signals the vertical-bundle cadence continues.</span></div>
+    </td></tr>
+    <tr><td style="padding:14px 0;border-bottom:1px solid #e8eaed;">
+      <div style="font-size:15px;font-weight:500;color:#202124;">Finance bundle (still the reference build)</div>
+      <div style="font-size:13px;color:#5f6368;line-height:1.55;padding-top:3px;">Five plugins — financial analysis, IB, equity research, PE, wealth — plus FactSet/MSCI connectors and Excel→PowerPoint context carry. The template every later vertical bundle is following.</div>
+    </td></tr>
+    <tr><td style="padding:14px 0;border-bottom:1px solid #e8eaed;">
+      <div style="font-size:15px;font-weight:500;color:#202124;">Marketplace state</div>
+      <div style="font-size:13px;color:#5f6368;line-height:1.55;padding-top:3px;">Official directory (anthropics/claude-plugins-official) auto-available; community marketplace passes Anthropic safety screening; private marketplaces let enterprise admins curate per-department sets. Catalogue at claude.com/plugins.</div>
+    </td></tr>
+    <tr><td style="padding:14px 0;">
+      <div style="font-size:15px;font-weight:500;color:#202124;">Connector worth a look for you</div>
+      <div style="font-size:13px;color:#5f6368;line-height:1.55;padding-top:3px;">ConnectSafely MCP for sanctioned LinkedIn access — the cleanest path for B2B outreach without account-flag risk. Remote plugin, ~5–7 min to wire up.</div>
+    </td></tr>
+  </table>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ SECTION: ADJACENT MOVES ============ -->
+<tr><td style="padding:0 4px 12px 4px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#5f6368;font-weight:700;">Adjacent moves</div>
+</td></tr>
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:8px 22px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+    <tr><td style="padding:14px 0;">
+      <div style="font-size:15px;font-weight:500;color:#202124;">Microsoft ships "Copilot Cowork"</div>
+      <div style="font-size:13px;color:#5f6368;line-height:1.55;padding-top:3px;">Microsoft 365 launched its own agentic "Cowork" surface (9 Mar). The name collision is not subtle, and it tells you the desktop-agent category is now contested by the incumbent that owns the file estate most knowledge workers live in. Watch whether Microsoft's distribution advantage (Office install base) outpaces Anthropic's capability lead — relevant if your business runs on M365. <a href="https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/" style="color:#1967d2;text-decoration:none;">MS blog</a></div>
+    </td></tr>
+  </table>
+</td></tr>
+<tr><td style="height:24px;line-height:24px;font-size:24px;">&nbsp;</td></tr>
+
+<!-- ============ EDITOR'S VIEW ============ -->
+<tr><td style="background-color:#ffffff;border:1px solid #e8eaed;border-radius:12px;padding:24px 26px;">
+  <div style="font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:#c46210;font-weight:700;">Editor's view</div>
+  <div style="font-size:15px;color:#202124;line-height:1.65;padding-top:14px;">
+    <b>1.</b> The lever that converts Cowork from helpful-sometimes to running-things-while-you-sleep is the self-improving scheduled task. You already run several recurring briefings — that makes you the ideal user of the one pattern (context.md + an improvement directive) that compounds quality instead of letting it decay. This is a weekend's work with outsized payoff; everything else this week is secondary to it.
+  </div>
+  <div style="font-size:15px;color:#202124;line-height:1.65;padding-top:12px;">
+    <b>2.</b> The 15 June billing split is the real strategic event hiding under the IPO noise. The line being drawn is interactive (flat) vs programmatic (metered) — and Cowork sits firmly on the protected side. Keep value-generating work inside the Cowork desktop app rather than externalising it to the SDK, and your unit economics stay flat while Anthropic's monetisation pressure rises.
+  </div>
+  <div style="font-size:15px;color:#202124;line-height:1.65;padding-top:12px;">
+    <b>3.</b> Fresh praxis was genuinely thin this week — not a search failure, a real lull. The best material is foundational (Willison) or a couple of months old (Zieminski, Cupareanu), and it's still better than anything net-new. When the signal is quiet, the honest move is to deepen a pattern you already run, not chase a new tool.
+  </div>
+  <div style="font-size:14px;color:#5f6368;line-height:1.6;padding-top:16px;font-style:italic;border-top:1px solid #e8eaed;margin-top:16px;">
+    Wildcard to track: the Copilot Cowork name collision. If Microsoft normalises "Cowork" as a generic category term on the back of the Office install base, Anthropic's first-mover branding edge erodes — worth a glance each week if your stack touches M365.
+  </div>
+</td></tr>
+<tr><td style="height:20px;line-height:20px;font-size:20px;">&nbsp;</td></tr>
+
+<!-- ============ FOOTER ============ -->
+<tr><td style="padding:8px 6px 24px 6px;">
+  <div style="font-size:12px;color:#5f6368;line-height:1.6;">
+    Compiled 8 June 2026 · Window: 2–8 June 2026 (praxis includes evergreen where fresh content was thin) · English sources.<br>
+    <b>Confidence legend</b> — 5/5 Anthropic primary or GitHub release · 4/5 press corroborating a primary, or known-quality creator with concrete walkthrough · 3/5 single Substack/YouTube with concrete stack · 2/5 aggregator-only.<br>
+    16 cards across 7 sections. Scopes: Ring 1 Cowork · Ring 2 substrate (Claude Code, MCP, plugins) · Ring 3 adjacent (Microsoft).
+  </div>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

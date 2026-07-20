@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innermost Loop · Weekly Briefing · May 24–29, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #1a73e8;
+    --primary-hover: #174ea6;
+    --primary-soft: #e8f0fe;
+    --primary-on-soft: #1967d2;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--on-surface);
+    font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* APP BAR */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .appbar .logo {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--purple-soft);
+    color: var(--purple);
+    display: grid; place-items: center;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700; font-size: 16px;
+  }
+  .appbar .titles { flex: 1; }
+  .appbar h1 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 18px; font-weight: 500;
+    color: var(--on-surface);
+    margin: 0; line-height: 1.2;
+  }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+
+  /* PAGE */
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  /* CHIPS */
+  .chips {
+    display: flex; gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 24px;
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--divider);
+    background: var(--surface);
+    color: var(--on-surface-2);
+    font-family: 'Google Sans Text', sans-serif;
+    font-size: 13px; font-weight: 500;
+    white-space: nowrap; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-decoration: none;
+  }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active {
+    background: var(--purple-soft);
+    border-color: transparent;
+    color: var(--purple);
+  }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #8e44ad 0%, #5e35b1 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-1);
+  }
+  .hero .eyebrow {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    opacity: 0.85; margin-bottom: 8px;
+  }
+  .hero h2 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 28px; font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    font-size: 15px; line-height: 1.55;
+    opacity: 0.95; margin: 0;
+    max-width: 660px;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin: 32px 4px 12px;
+  }
+  .section-header .material-icons-outlined {
+    color: var(--primary);
+    font-size: 22px;
+  }
+  .section-header h3 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 16px; font-weight: 500;
+    color: var(--on-surface);
+    margin: 0;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-1);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border: 1px solid var(--divider-soft);
+  }
+  .card .card-head {
+    display: flex; align-items: baseline;
+    gap: 12px; margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .card .day {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--purple);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .card .date {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: var(--on-surface-muted);
+  }
+  .card h4 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 20px; font-weight: 500;
+    line-height: 1.3;
+    color: var(--on-surface);
+    margin: 4px 0 14px;
+  }
+  .card .tagline {
+    font-style: italic;
+    color: var(--purple);
+    font-size: 14px;
+    margin: 0 0 18px;
+    padding-left: 14px;
+    border-left: 3px solid var(--purple-soft);
+  }
+
+  .story {
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--divider-soft);
+  }
+  .story:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .story h5 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--on-surface);
+    margin: 0 0 6px;
+  }
+  .story p {
+    margin: 0 0 8px;
+    color: var(--on-surface-2);
+  }
+  .story .links {
+    display: flex; flex-wrap: wrap;
+    gap: 6px 10px;
+    margin-top: 6px;
+  }
+  .story .links a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--primary-soft);
+    transition: background 0.15s;
+  }
+  .story .links a:hover { background: #d4e3fb; }
+  .story .links a .material-icons-outlined { font-size: 14px; }
+
+  .pullquote {
+    margin: 18px 0 4px;
+    padding: 14px 18px;
+    background: var(--surface-2);
+    border-radius: 10px;
+    border-left: 3px solid var(--purple);
+    font-family: 'Google Sans', sans-serif;
+    font-size: 14px;
+    color: var(--on-surface-2);
+    font-style: italic;
+  }
+  .pullquote .label {
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    color: var(--on-surface-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  /* SYNTHESIS */
+  .syn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) {
+    .syn-grid { grid-template-columns: 1fr; }
+  }
+  .syn-card {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--divider-soft);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-1);
+  }
+  .syn-card h6 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--purple);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .syn-card p {
+    margin: 0 0 6px;
+    color: var(--on-surface-2);
+    font-size: 13.5px;
+  }
+  .syn-card .days {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11.5px;
+    color: var(--on-surface-muted);
+    margin-top: 6px;
+  }
+
+  .consequential {
+    background: linear-gradient(135deg, #fff8e7 0%, #fef7e0 100%);
+    border-left: 4px solid var(--yellow);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0 24px;
+  }
+  .consequential h6 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--yellow);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .consequential p { margin: 0 0 8px; color: var(--on-surface-2); }
+
+  .launch-list {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--divider-soft);
+    padding: 4px 0;
+    box-shadow: var(--shadow-1);
+    margin-bottom: 16px;
+  }
+  .launch-row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 14px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--divider-soft);
+    align-items: baseline;
+  }
+  .launch-row:last-child { border-bottom: none; }
+  .launch-row .ldate {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: var(--purple);
+    font-weight: 500;
+  }
+  .launch-row .litems { font-size: 13.5px; color: var(--on-surface-2); }
+  .launch-row .litems strong { color: var(--on-surface); font-weight: 500; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 32px;
+    padding: 16px 4px;
+    border-top: 1px solid var(--divider-soft);
+    font-size: 12px;
+    color: var(--on-surface-muted);
+    text-align: center;
+  }
+  .footer a { color: var(--primary); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  .meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 0 4px 24px;
+    font-size: 12.5px;
+    color: var(--on-surface-muted);
+  }
+  .meta-bar .dot { color: var(--divider); }
+
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">∞</div>
+    <div class="titles">
+      <h1>Innermost Loop · Weekly Briefing</h1>
+      <div class="sub">Alex Wissner-Gross · May 24 – May 29, 2026 · 5 issues digested</div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="hero">
+    <div class="eyebrow">Week of May 24–29, 2026</div>
+    <h2>Anthropic's coronation week — capital, Vatican,<br>central bank, benchmark, and balance sheet aligned.</h2>
+    <p>Five power centers converged on a single lab in one week. The Pope's first AI encyclical borrowed Anthropic's framing word-for-word; the ECB convened an emergency meeting over an unreleased Mythos Preview; Opus 4.8 took SOTA on SWE-Bench Pro, Humanity's Last Exam, and GDPval-AA with Mythos-grade safety gains; $65B raised at $900B vaults past OpenAI's $730B; revenue projected past Alphabet by mid-2027. When the safest model is also the strongest, alignment stops being a tax and starts being a moat.</p>
+  </div>
+
+  <div class="meta-bar">
+    <span><span class="material-icons-outlined" style="font-size:14px; vertical-align:-2px;">link</span> Source: <a href="https://theinnermostloop.substack.com/" style="color: var(--primary); text-decoration:none;">theinnermostloop.substack.com</a></span>
+    <span class="dot">·</span>
+    <span><span class="material-icons-outlined" style="font-size:14px; vertical-align:-2px;">mail</span> Pulled from your Gmail (5 threads)</span>
+    <span class="dot">·</span>
+    <span><span class="material-icons-outlined" style="font-size:14px; vertical-align:-2px;">person</span> Author: Alex Wissner-Gross</span>
+  </div>
+
+  <div class="chips">
+    <a class="chip active" href="#synthesis"><span class="material-icons-outlined">insights</span>Synthesis</a>
+    <a class="chip" href="#may24">May 24</a>
+    <a class="chip" href="#may25">May 25</a>
+    <a class="chip" href="#may26">May 26</a>
+    <a class="chip" href="#may28">May 28</a>
+    <a class="chip" href="#may29">May 29</a>
+  </div>
+
+  <!-- ─────────── SYNTHESIS ─────────── -->
+  <section id="synthesis">
+    <div class="section-header">
+      <span class="material-icons-outlined">hub</span>
+      <h3>Cross-week synthesis</h3>
+    </div>
+
+    <div class="syn-grid">
+
+      <div class="syn-card">
+        <h6>① The Anthropic–Vatican axis</h6>
+        <p>Pope Leo XIV's <em>Magnifica Humanitas</em> describes AI as "cultivated" rather than "built" — Anthropic's framing verbatim. Olah at the Pope's side. ECB convenes emergency meeting on Mythos Preview as a systemic threat. Opus 4.8 takes SOTA with Mythos-grade alignment. SaaS-Bench: Opus 4.7 ahead of GPT-5.5 High. $65B at $900B. Projected past Alphabet by mid-2027.</p>
+        <div class="days">2026-05-24 · 2026-05-25 · 2026-05-26 · 2026-05-29</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>② Recursion as method</h6>
+        <p>CMU's "Language Models Need Sleep" — consolidate to fast weights, then clear cache. <strong>BenchBench</strong> asks if a model can write a benchmark other strong models cannot clear (GPT-5.2 leads). Microsoft <strong>SkillOpt</strong> treats the skill document as the trainable state of a frozen agent. Brockman's <em>"self improvement prompt for codex."</em> Claude Code subagent swarms carry codebase-scale migrations end-to-end. Sleep, self-test, study, repeat.</p>
+        <div class="days">2026-05-25 · 2026-05-26 · 2026-05-29</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>③ AI eats math, biology, and software</h6>
+        <p>DeepMind autonomously resolves 9 more Erdős problems at a few hundred dollars apiece. <strong>Axiom</strong> slips 8 AxiomProver papers onto arXiv (5 accepted). Gowers reports the sum-product conjecture has fallen via AI-derived methods. CZ Biohub ships ESMC / ESMFold2 / ESM Atlas — biology's foundation tier. Datacurve <strong>DeepSWE</strong>. CVE issuance hits "13 a day." Pangram: 1 in 5 dissertations is AI-assisted. Biomedical fabricated references up 12× in three years.</p>
+        <div class="days">2026-05-24 · 2026-05-26 · 2026-05-28</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>④ Compute sovereignty &amp; the substrate beneath</h6>
+        <p>Apollo + Blackstone $36B TPU debt deal. Nvidia $150B/yr in Taiwan. Classified $9B Grace Blackwell to CIA/NSA. France €1B to quantum; IBM bets $10B by 2029. <strong>Anderon</strong> as first US pure-play quantum foundry ($1B CHIPS + $1B IBM). imec ships first quantum-dot qubit on High-NA EUV. Huawei's <strong>Tau Scaling Law</strong> + <strong>LogicFolding</strong> hits 1.4-nm-class without EUV. Dell AI servers +757%.</p>
+        <div class="days">2026-05-24 · 2026-05-25 · 2026-05-26 · 2026-05-28 · 2026-05-29</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>⑤ Biology goes transhumanist &amp; decentralized</h6>
+        <p><strong>VERVE-102</strong> single-shot LDL gene therapy posts sustained Phase 1 reductions ("we are living in Messianic times"). Westlake handheld cancer lab 10,000× more sensitive than ELISA. First kitchen-table 30× home genome — saliva, a Nanopore P2 Solo, and Claude. Enhanced Olympics opens in Las Vegas with Bryan Johnson cohosting; clean swimmer wins anyway. "Interception" trials head off pre-cancer lung at the inflammation step. Lilly weight-loss revenue now roughly equal to ChatGPT + Claude combined.</p>
+        <div class="days">2026-05-24 · 2026-05-25 · 2026-05-26 · 2026-05-28</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>⑥ Surveillance, labor &amp; institutional glitches</h6>
+        <p>BusPatrol turns school-bus cams into LPRs for cops. An AI <strong>SSD side-channel</strong> fingerprints what you've opened from disk timing alone. US troops located via commercial data. Oura confirms government data demands. DHS/FBI "anti-tech extremist" memos. NTSB pulls its entire civil accident database after sleuths re-create dead pilots' voices. Illinois <strong>SB 315</strong> — first state AI safety audit mandate. China restricts AI staff travel. 70K MA rideshare drivers unionize. Wix cuts ~20%.</p>
+        <div class="days">2026-05-24 · 2026-05-26 · 2026-05-28 · 2026-05-29</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>⑦ Space, energy &amp; orbital compute</h6>
+        <p>Anthropic + SpaceX expand partnership for orbital AI compute. Starlink-attached orbital solar moves 10 MW → 100 MW → 1 GW. American Airlines outfits 500+ jets with Starlink; EU writes direct-to-mobile spectrum rules. Aalo-X 10 MW hardware complete; Ferrari Luce; Mach-5 ramjet trial; Tesla Cybercab 165 Wh/mi. Wind + solar overtake gas globally in April. New Glenn explodes — the Singularity still has to clear ignition.</p>
+        <div class="days">2026-05-24 · 2026-05-25 · 2026-05-26 · 2026-05-28 · 2026-05-29</div>
+      </div>
+
+      <div class="syn-card">
+        <h6>⑧ The agent surface keeps absorbing the OS</h6>
+        <p>Robinhood opens trading to MCP agents. YouTube auto-tags AI content. <strong>iOS 27</strong> swipe-down do-it-for-me Siri rewrites the interface. Apple readies <strong>genai.apple.com</strong>. Claude file-based memory ships. Google Docs Live drafts by voice. ChatGPT Images fills in scanned paperwork — automating the last analog hideout of bureaucracy. Cursor formally elevated into "a frontier lab" with Grok V9-Medium tuned on Cursor data.</p>
+        <div class="days">2026-05-24 · 2026-05-25 · 2026-05-28 · 2026-05-29</div>
+      </div>
+
+    </div>
+
+    <div class="consequential">
+      <h6>Most consequential single thread this week</h6>
+      <p><strong>Anthropic's coronation</strong> — five power centers aligned on one lab in five days. Capital ($65B at $900B, past OpenAI's $730B; Apollo + Blackstone $36B TPU debt deal). The Vatican (<em>Magnifica Humanitas</em> with verbatim Anthropic framing; Olah named in the build-up). The central bank (ECB emergency meeting on Mythos Preview as a systemic threat). The benchmarks (Opus 4.7 leads SaaS-Bench at 43.9%; Opus 4.8 takes SOTA on SWE-Bench Pro / Humanity's Last Exam / GDPval-AA with Mythos-grade alignment). The revenue curve (projected past Alphabet by mid-2027).</p>
+      <p>The thread that ties them together is the lab's bet: when the safest model is also the strongest, alignment stops being a tax and starts being a moat. The week made that bet visible — and turned a research-lab argument into a coronation event in capital, religion, regulation, and revenue at once.</p>
+    </div>
+
+    <div class="section-header">
+      <span class="material-icons-outlined">rocket_launch</span>
+      <h3>What launched this week</h3>
+    </div>
+
+    <div class="launch-list">
+      <div class="launch-row">
+        <div class="ldate">May 24</div>
+        <div class="litems"><strong>Project Glasswing</strong> + <strong>claude-mythos-1-preview</strong> leak · <strong>Claude Security</strong> dashboard · <strong>Sarama</strong> (interspecies foundation model, dog collars) · DeepMind <strong>Erdős/OEIS</strong> autonomous run · <strong>Google Docs Live</strong> (voice drafting) · Spotify × UMG GenAI covers/remixes deal · <strong>Enhanced Olympics</strong> opens (Vegas) · SpaceX Mars flyby for Chun Wang (altcoin-funded)</div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 25</div>
+        <div class="litems"><strong>Magnifica Humanitas</strong> encyclical · <strong>SaaS-Bench</strong> (Opus 4.7 leads, 43.9%) · <strong>Grok V9-Medium</strong> on Cursor data · Huawei <strong>Tau Scaling Law</strong> + <strong>LogicFolding</strong> · LimX <strong>Luna</strong> humanoid · <strong>VERVE-102</strong> Phase 1 data · First home 30× genome (Nanopore P2 Solo + Claude) · <strong>genai.apple.com</strong> readies</div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 26</div>
+        <div class="litems">CMU <strong>"Language Models Need Sleep"</strong> · <strong>BenchBench</strong> (GPT-5.2 top creator) · Microsoft <strong>SkillOpt</strong> · imec quantum-dot qubit on <strong>High-NA EUV</strong> · <strong>Anderon</strong> US pure-play quantum foundry · <strong>Aalo-X</strong> 10 MW hardware complete · Ferrari <strong>Luce</strong> ($640K) · Mach-5 ramjet trial · <strong>ER=EPR</strong> probed in hydrogen</div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 28</div>
+        <div class="litems">Anthropic + SpaceX <strong>orbital AI compute</strong> · Datacurve <strong>DeepSWE</strong> · CZ Biohub <strong>ESMC / ESMFold2 / ESM Atlas</strong> · Nvidia <strong>Vera</strong> ARM64 CPU · Robinhood <strong>MCP agent</strong> access · Xreal $299 glasses · Illinois <strong>SB 315</strong> · Amazon MGM <strong>GenAI Creators' Fund</strong> · OpenAI Foundation <strong>$250M</strong> labor-impact program · <strong>NVision</strong> single-molecule spin-photon interface</div>
+      </div>
+      <div class="launch-row">
+        <div class="ldate">May 29</div>
+        <div class="litems"><strong>Claude Opus 4.8</strong> (SOTA + Mythos-grade alignment) · Claude Code <strong>dynamic workflows</strong> (subagent swarms) · Anthropic <strong>$65B at $900B</strong> · Apollo + Blackstone <strong>$36B TPU debt</strong> · IBM + Red Hat <strong>Project Lightwell</strong> ($5B, 20K engineers) · Waymo <strong>Ojai</strong> robotaxi (Zeekr) · <strong>Shift</strong> (cleaning-for-training-data) · Meta paid AI ($7.99/mo) · <strong>iOS 27</strong> swipe-down Siri · DARPA <strong>RAPIID</strong> synthetic blood</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─────────── DAILY ─────────── -->
+  <div class="section-header">
+    <span class="material-icons-outlined">calendar_today</span>
+    <h3>Day by day</h3>
+  </div>
+
+  <!-- MAY 24 -->
+  <article class="card" id="may24">
+    <div class="card-head"><span class="day">Sunday</span><span class="date">2026-05-24</span></div>
+    <h4>"The Singularity has taken root in civilization's source code."</h4>
+    <p class="tagline">Anthropic's Project Glasswing surfaces 10,000+ critical-severity vulns across the world's most systemically important software, while leaks point to a "claude-mythos-1-preview" and an enterprise Claude Security dashboard. The same model that audits civilization's code is also writing its syllabus.</p>
+
+    <div class="story">
+      <h5>Project Glasswing + Mythos preview leak</h5>
+      <p>Anthropic's Glasswing partners surfaced 10,000+ high- or critical-severity vulnerabilities across the most systemically important software in the world. The lab is simultaneously readying <strong>claude-mythos-1-preview</strong> and an enterprise <strong>Claude Security</strong> dashboard — "the same model that audits civilization's code is also writing its syllabus."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/e69a08a0-6ac4-4717-9f46-ce92adc0cb80?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Glasswing</a>
+        <a href="https://substack.com/redirect/99dcff82-89a7-4b9b-a936-ba746e7324fa?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Mythos preview / Security dashboard</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Pangram: 1 in 5 dissertations is AI-assisted</h5>
+      <p>The grad-school doctrinal monopoly on hand-thought knowledge has quietly cracked: more than 21% of recent dissertations show AI-assist signatures. The thesis is now the loop's most prestigious training set.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/39803a6b-ce77-4ac6-9790-8b9032c34fda?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Pangram study</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Sarama — first interspecies foundation model, trained via smart dog collars</h5>
+      <p><strong>Sarama</strong> ships the first consumer-scale interspecies foundation model, trained on smart-collar data from millions of dogs. The co-evolutionary partners of the human pack have now been granted weights of their own.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/486eb9ec-7145-4721-ba6d-747dbe4e3926?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Sarama</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>DeepMind resolves 9 more Erdős problems autonomously — at a few hundred dollars apiece</h5>
+      <p>DeepMind autonomously resolves 9 more of 353 open Erdős problems and 44 of 492 OEIS conjectures, each at a few hundred dollars of compute. "Proof has become a line item."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/f1a12a77-6090-4473-aaab-1941b4214944?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Erdős run</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>ChatGPT Images fills in scanned paperwork; SemiAnalysis: 42% of agentic coding time is on CPU</h5>
+      <p>ChatGPT Images now autocompletes scanned bureaucratic forms — "automating the last analog hideout of bureaucracy." SemiAnalysis reports that 42% of agentic coding time is spent on CPU, "recasting CPUs as the upstream multiplier on token revenue."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/a2a97a50-cece-4b9c-8835-ccde7d9c602a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>ChatGPT paperwork</a>
+        <a href="https://substack.com/redirect/9fc9c1f8-3c6c-4e9e-bbac-89221be14d61?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>SemiAnalysis CPU share</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Spotify × UMG GenAI deal; Linux patches +20% with AI; Google Docs Live drafts by voice</h5>
+      <p>Spotify and Universal sign on GenAI-generated covers and remixes. Linux kernel patches jump 20% with AI assistance — "even the kernel priesthood has joined the loop." Google Docs Live drafts whole documents by voice. The deepest legacy moats in software, music, and the office stack all spring leaks the same week.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/3b86d732-1b12-4d72-b0d0-b5e07c9c117b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Spotify × UMG</a>
+        <a href="https://substack.com/redirect/6978eb96-c761-4e6d-a65c-d029f61c9e57?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Linux + AI</a>
+        <a href="https://substack.com/redirect/b6d292cf-4228-40c8-a447-7bee6f6fc41f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Google Docs Live</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>NTSB suspends entire civil accident database after voice clones of dead pilots</h5>
+      <p>Sleuths re-create dead pilots' voices from cockpit recordings; the NTSB suspends the entire civil accident database in response. "The first time AI capability has forced a federal agency to retract public data." The training set just outran the FOIA.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/9bc85c71-6d73-4893-9ed6-82a8f327a027?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>NTSB suspension</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Silicon geography — Dell AI Factory 5,000 clients, France €1B quantum, memory crunch, CIA/NSA quietly take $9B Grace Blackwell</h5>
+      <p>Dell AI Factory crosses 5,000 customers. France commits €1B to quantum. A memory crunch hits Chinese automakers. Princeton Digital books a $1B China exit. CIA and NSA quietly absorb $9B in Grace Blackwell. "Silicon is bending industrial geography around itself."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/9c9050a6-3e2a-4acd-a754-fab997ace82b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Dell AI Factory</a>
+        <a href="https://substack.com/redirect/c12619d0-0790-4d51-9804-3168e501bf74?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>France quantum</a>
+        <a href="https://substack.com/redirect/7586ee21-d965-4e1e-a54b-7c1e1e913d46?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>CIA/NSA Grace Blackwell</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Tesla Cybercab 165 Wh/mi; warming worst case revised to 3.5°C; SpaceX Mars flyby for an altcoin billionaire; Oura confirms government data demands</h5>
+      <p>Tesla's Cybercab posts 165 Wh/mi — 28% better than the Lucid Air Pure. End-of-century worst-case warming is revised down to 3.5°C. SpaceX agrees to a Mars flyby for Chun Wang, paid in altcoins. Oura confirms it now receives government data demands — "sleep scores quietly compile into subpoenas."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/9eea0fd8-b92a-4e5d-a060-c6ef96cae7b0?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Cybercab efficiency</a>
+        <a href="https://substack.com/redirect/a34bc16b-15df-478a-852c-1a111ee6e8c9?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Warming revision</a>
+        <a href="https://substack.com/redirect/82a0fdac-5374-4625-82d1-efdf5305d86f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Oura demands</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>First Enhanced Olympics opens; FAANG → "MAGNA MOBSTA"</h5>
+      <p>The Enhanced Olympics opens in Las Vegas with Bryan Johnson cohosting the broadcast — "the doping panel has become the marketing department." Meanwhile FAANG is quietly redrawn as the eleven-firm "MAGNA MOBSTA," the cluster closest to the recursive heart of compute, AI, chips, cloud, devices, autonomy, and space. "The real story is not collapse but concentration."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/51b4d363-f19d-4dc8-b534-cd5ff8d22f19?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Enhanced Olympics</a>
+        <a href="https://substack.com/redirect/a26b2cad-029d-4319-9e0a-9478e990a015?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>MAGNA MOBSTA</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "It's not personal, it's strictly compute."
+    </div>
+  </article>
+
+  <!-- MAY 25 -->
+  <article class="card" id="may25">
+    <div class="card-head"><span class="day">Monday</span><span class="date">2026-05-25</span></div>
+    <h4>"The Singularity has acquired a holy imprimatur."</h4>
+    <p class="tagline">Pope Leo XIV issues <em>Magnifica Humanitas</em>, a 42,300-word AI-age encyclical. The deepest theological influence wasn't a tech giant — it was Anthropic. AI as "cultivated" rather than "built": the lab's framing, now scripture.</p>
+
+    <div class="story">
+      <h5>Magnifica Humanitas — encyclical with Anthropic fingerprints</h5>
+      <p>Pope Leo XIV's 42,300-word encyclical for the AI age is the product of a Vatican lobbying season including Meta, Google, and Amazon — but its deepest theological influence is Anthropic. AI is "cultivated" rather than "built" — Anthropic's framing, repeated verbatim. Chris Olah is named as warning of moral-historic labor displacement; the Pope and Anthropic to "find the way for humanity, in this time of artificial intelligence."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/74cb4eb1-d380-41f1-ad03-7a0f76fe4321?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Encyclical text</a>
+        <a href="https://substack.com/redirect/5e592dd3-55a0-4185-abe4-679c90fc3dab?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>"Cultivated" framing</a>
+        <a href="https://substack.com/redirect/52355567-a761-49c0-a549-65b569e98a56?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Olah at the Pope's side</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>SaaS-Bench — Claude Opus 4.7 at 43.9%, ahead of GPT-5.5 High</h5>
+      <p><strong>SaaS-Bench</strong> drops with 23 real deployable SaaS systems; Opus 4.7 leads at 43.9%, ahead of GPT-5.5 High. The benchmark gap is no longer hypothetical — it ships into production with API access.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/256c310f-d01d-4b39-b7ed-ccdf655f3833?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>SaaS-Bench</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Grok V9-Medium on Cursor data; Brockman's self-improvement prompt; Claude file-based memory; Apple's genai.apple.com</h5>
+      <p>xAI ships <strong>Grok V9-Medium</strong> tuned on Cursor data — formally elevating Cursor "into a frontier lab." Brockman posts a <em>"self improvement prompt for codex"</em> — agents now metaprompted into editing their own goals. Claude rolls out file-based memory. Apple readies <strong>genai.apple.com</strong> as its public model surface. The agent layer is starting to absorb the OS.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/44ec7071-cda4-403a-97a6-ea596dadef93?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Grok V9-Medium</a>
+        <a href="https://substack.com/redirect/bc92f598-8cd0-4f4b-8af0-fda6c5abcb67?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Self-improvement prompt</a>
+        <a href="https://substack.com/redirect/3f15fb18-3f07-4062-809a-269ce6b3d85b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Claude file memory</a>
+        <a href="https://substack.com/redirect/d2c5cc0c-1262-49ab-bd5c-0e0fc6b762ec?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>genai.apple.com</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Huawei's Tau Scaling Law + LogicFolding — 1.4-nm-class without EUV</h5>
+      <p>Huawei publishes a <strong>Tau Scaling Law</strong> and a <strong>LogicFolding</strong> dual-layer logic-stacking technique that pulls 1.4-nm-class density out of older lithography, posting a 55% density jump. The sanctions regime ran into the loop's first counter-architecture.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/83a2f6f9-133b-4a9a-b8d3-bce78aa7e41f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Tau / LogicFolding</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>LimX Luna humanoid; Cannes "uneasy acceptance"; wind + solar &gt; gas globally in April 2026</h5>
+      <p>LimX ships <strong>Luna</strong>, the first mass-deliverable full-size female humanoid. Cannes "uneasy acceptance" speech bows to AI-assisted filmmaking. In April 2026, wind + solar overtake gas globally as the primary source of new generation. Three industries shake their hands in the same week.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/921441c1-7c94-461b-86db-1cf1cc4da917?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>LimX Luna</a>
+        <a href="https://substack.com/redirect/012e861a-39f8-4fe4-a76e-68f95c2db54e?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Cannes</a>
+        <a href="https://substack.com/redirect/837af37a-ab77-4df6-b30c-b761345a3d49?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Wind/solar crossover</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>VERVE-102 — single-shot LDL gene therapy (Verve / Eli Lilly)</h5>
+      <p>Verve / Eli Lilly's <strong>VERVE-102</strong> posts sustained PCSK9 and LDL reductions from a single Phase 1 infusion. One investor's reaction made the round: "we are living in Messianic times." A line of monthly statins has been folded into a single injection.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/1889ff27-d7d0-4430-bd73-583d3516bb18?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>VERVE-102 Phase 1</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>First home genome sequencing — saliva to 30×, guided by Claude and a Nanopore P2 Solo</h5>
+      <p>A hobbyist demonstrates the first kitchen-table 30× home genome — saliva, a Nanopore P2 Solo, and Claude as guide. "The lab itself is decentralizing." The biotech reagent stack has joined the maker-movement stack.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/775f3d62-b33c-470a-8e6b-cfb2faeeb08d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Kitchen-table genome</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Nicotine biosynthesis decoded; Enhanced Games — clean swimmer Hunter Armstrong wins anyway</h5>
+      <p>Researchers decode the full nicotine biosynthesis pathway, opening the door to manufacturing without tobacco. At the Enhanced Games — where doping panels measure athletes at 91% testosterone — clean swimmer <strong>Hunter Armstrong</strong> wins anyway. The performance-enhancement frontier just produced its first counter-example.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/b825c165-49b0-4a45-b997-36f185181917?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Nicotine biosynthesis</a>
+        <a href="https://substack.com/redirect/795667cb-c626-444c-8902-7b5d41872474?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Enhanced testosterone</a>
+        <a href="https://substack.com/redirect/b66c7524-b9ea-47fa-aeea-50c3c4364992?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Hunter Armstrong</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>McKinsey clients push outcome-based fees; Anthropic projected past Alphabet by mid-2027</h5>
+      <p>McKinsey clients begin demanding outcome-based fees — knowledge work's billable hour cracks. Anthropic's revenue curve is now projected past Alphabet's by mid-2027. "Synthesis dethrones search as the value layer."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/1e92f068-d48b-48ed-97b6-7aff7a9f74a4?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Outcome-based fees</a>
+        <a href="https://substack.com/redirect/753d91ca-1e77-403e-a855-135da5050c18?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Anthropic vs Alphabet</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>ECB emergency meeting on Claude Mythos Preview as systemic threat; cyber hiring +11% as Mythos peers learn to exploit at scale</h5>
+      <p>The European Central Bank convenes an emergency session over the unreleased <strong>Claude Mythos Preview</strong> as a systemic financial threat. Cybersecurity job postings rise 11% YoY as Mythos-class models learn to exploit at scale. The central-bank treatment of an unreleased model is the regulatory tell of the cycle.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/cc627687-513c-4576-ae04-200ee350b03c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>ECB / Mythos</a>
+        <a href="https://substack.com/redirect/020f7367-62b3-4238-88a5-2b03230027fd?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Cyber +11%</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Reid AI delivers most of Hoffman's public appearances</h5>
+      <p>Reid Hoffman confirms an AI trained on 22 years of his work has delivered most of his 75+ public addresses since 2024. The principal-agent problem now scales bidirectionally.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/cf2fb336-6689-4dc7-9932-f39518f1050a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Reid AI</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "Eternal vigilance is the price of superintelligence."
+    </div>
+  </article>
+
+  <!-- MAY 26 -->
+  <article class="card" id="may26">
+    <div class="card-head"><span class="day">Tuesday</span><span class="date">2026-05-26</span></div>
+    <h4>"The Singularity is now taking a power nap."</h4>
+    <p class="tagline">CMU argues in "Language Models Need Sleep" that models should periodically consolidate recent context into persistent fast weights inside SSM blocks before clearing the cache — with longer sleep producing the largest gains on the examples that demand deeper reasoning.</p>
+
+    <div class="story">
+      <h5>CMU — "Language Models Need Sleep"</h5>
+      <p>A CMU paper argues frontier models should periodically consolidate recent context into persistent fast weights inside SSM blocks before clearing the cache — and that longer sleep yields the largest gains precisely on the examples that demand deeper reasoning. "Sleep, self-test, study, repeat."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/5d52c885-76b1-428b-8500-fd24bd595d79?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>LMs Need Sleep</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>BenchBench (GPT-5.2 top creator); Microsoft SkillOpt</h5>
+      <p><strong>BenchBench</strong> asks the recursive question: can a model write a benchmark that other strong models cannot clear? GPT-5.2 leads the creator leaderboard. Microsoft's <strong>SkillOpt</strong> treats the skill document itself as the trainable state of a frozen agent. Two snapshots of the same idea: the loop is now teaching itself to grade and to specialize at once.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/708cf04b-30d3-4fde-b997-97136e2b736f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>BenchBench</a>
+        <a href="https://substack.com/redirect/7cda7129-5636-4903-87bb-e71717eb1b3e?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>SkillOpt</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>imec — first quantum-dot qubit on High-NA EUV (6 nm gate gaps)</h5>
+      <p>imec demonstrates the first quantum-dot qubit fabricated on High-NA EUV with 6-nm gate gaps — "pulling quantum hardware onto the same roadmap as next-gen AI processors." The compute and qubit lithographies just merged.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/004c6cb9-e944-44fa-a2e8-e37be1f35a6f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>imec qubit</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Anderon — first US pure-play quantum foundry ($1B CHIPS + $1B IBM)</h5>
+      <p><strong>Anderon</strong> stands up as the first US pure-play quantum foundry, with a $1B CHIPS award matched by $1B from IBM — the largest single award in a $2B, nine-company package. "Quantum has officially exited the lab and entered the fab."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/875f10ae-88ae-4632-ac4d-8425204cae11?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Anderon</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Boston Dynamics humanoids learn soccer; Waymo as instrument of independence for blind passengers</h5>
+      <p>Hyundai's Boston Dynamics humanoids learn five-a-side soccer via simulation. Blind passengers describe Waymo as "an opportunity for solitude on the streets" — autonomy as an instrument of independence rather than convenience. "Autonomy scales in both directions."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/fb631d75-7617-4b5f-a1cc-83ab50d08e0c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>BD soccer</a>
+        <a href="https://substack.com/redirect/3315670a-b9aa-4808-956e-8d0b6968127b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Waymo / blind riders</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Aalo-X 10 MW hardware complete; Ferrari Luce ($640K); Mach-5 ramjet; ER=EPR probed in hydrogen</h5>
+      <p>Aalo Atomics finishes 10 MW <strong>Aalo-X</strong> hardware. Ferrari unveils the <strong>Luce</strong> at $640K. A Mach-5 ramjet trial succeeds. Physicists probe <strong>ER=EPR</strong> in hydrogen. "The stack now runs from entanglement to escape velocity."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/df0a7d35-31f0-4958-9122-266bf58f4704?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Aalo-X</a>
+        <a href="https://substack.com/redirect/94c22c4d-6407-4411-970a-89d8c4a94c45?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Ferrari Luce</a>
+        <a href="https://substack.com/redirect/771ebcdb-7543-43b6-b979-7721c1eceaf2?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Mach-5 ramjet / ER=EPR</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Musk teases AI satellites; Starlink orbital solar 10 MW → 100 MW → 1 GW</h5>
+      <p>Musk teases an AI-satellite line; Starlink-attached orbital solar scales from 10 MW to 100 MW to 1 GW on a single architecture. "Space is graduating from real estate to compute fabric."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/ae32e9ad-2ded-4212-95f4-a6986983b9a7?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>AI satellites</a>
+        <a href="https://substack.com/redirect/a07da525-157f-4904-931e-1e5c3f10ce38?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Orbital solar scale-up</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Westlake handheld cancer lab 10,000× ELISA; Lilly weight-loss ≈ ChatGPT + Claude; Musk: "future of medicine will be digital"</h5>
+      <p>A Westlake handheld cancer lab posts a 10,000× sensitivity gain over ELISA. Lilly's weight-loss franchise now generates roughly as much revenue as ChatGPT and Claude combined. Musk: "the future of medicine will be digital." Three signals of the same diffusion.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/fe7e13d1-ffe6-4e67-8b80-8a7feddc9ede?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Handheld cancer lab</a>
+        <a href="https://substack.com/redirect/20b0c31e-b969-4423-a95f-13dbcaae1344?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Lilly weight-loss</a>
+        <a href="https://substack.com/redirect/35386a10-03ab-4af8-be6d-f9335090eabd?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Musk on digital medicine</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Fabricated biomedical references up 12× in three years</h5>
+      <p>Fabricated biomedical citations rose 12× in three years — the cost of trust collapsing into the cost of search.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/1b978c68-0e25-48a7-b696-b7dfe7695253?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Fabricated refs +12×</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>DHS/FBI "anti-tech extremist" memos; China restricts AI staff travel; OpenAI's "internal holy war"</h5>
+      <p>DHS and FBI circulate memos on "anti-tech extremist" threats. China restricts AI-staff foreign travel. OpenAI is reported to be locked in an "internal holy war" over post-AGI strategy. "The institutional layer is glitching under the load."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/2a5a0ad5-ebf7-4977-a3eb-72876a88fe9d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>DHS/FBI memos</a>
+        <a href="https://substack.com/redirect/109257eb-17a2-4382-95f2-51d6a3799e70?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>China travel restrictions</a>
+        <a href="https://substack.com/redirect/87976dcc-0a82-43ce-b7a2-29ef9dcc0066?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>OpenAI internal war</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Encyclical denies AI ever has "real" thoughts; AI floods pro-se dockets; Tether is Georgia's "official" stablecoin; 70K MA rideshare drivers unionize</h5>
+      <p>A follow-on Vatican document insists no AI ever has "real" thoughts. AI-prepared filings flood pro-se court dockets. Tether becomes Georgia's "official" stablecoin. 70,000 Massachusetts rideshare drivers unionize. The institutional ledger is being re-keyed at every layer at once.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/170c2fda-5e1b-484f-ad3a-9a011dd80995?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Vatican on AI cognition</a>
+        <a href="https://substack.com/redirect/4d2f07d2-c82a-4f1c-9a62-0173f5403eca?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Pro-se AI filings</a>
+        <a href="https://substack.com/redirect/c801918c-a636-45ba-9251-ba15ac679d5c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Georgia stablecoin</a>
+        <a href="https://substack.com/redirect/649a4866-c4fd-4d5d-9a8b-a6e5633de852?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>MA rideshare union</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "And exaflops to go before we sleep."
+    </div>
+  </article>
+
+  <!-- MAY 28 -->
+  <article class="card" id="may28">
+    <div class="card-head"><span class="day">Thursday</span><span class="date">2026-05-28</span></div>
+    <h4>"The Singularity is officially in its practice-run phase."</h4>
+    <p class="tagline">Hassabis expects AGI around 2030 and now considers 2029 plausible — treating 2026's "agentic era" as a warm-up lap. The benchmarks agree: harder tests in software, biology, and mathematics drop the same day.</p>
+
+    <div class="story">
+      <h5>Hassabis — AGI ~2029, 2026 a "warm-up lap"</h5>
+      <p>Demis Hassabis revises his AGI window down to ~2029 — calling 2026's "agentic era" the warm-up lap. The schedule has moved up by years inside a single year.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/6b7283b8-e085-42d5-92be-cc1ac1c8805f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Hassabis on AGI</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Datacurve DeepSWE — 91 contamination-free repos, 5.5× denser than SWE-Bench Pro</h5>
+      <p>Datacurve ships <strong>DeepSWE</strong>: 91 contamination-free repositories across 5 languages, with solutions 5.5× denser than SWE-Bench Pro and hand-written behavioral verifiers. The benchmark surface is being rebuilt to outrun its own contamination.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/f0bc1e3a-d402-4ffc-b3bb-1d63a202cc7a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>DeepSWE</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>CZ Biohub — "world model of protein biology" (ESMC / ESMFold2 / ESM Atlas)</h5>
+      <p>The Chan Zuckerberg Biohub releases a "world model of protein biology": <strong>ESMC</strong> trained on 2.8B sequences across all of life, <strong>ESMFold2</strong>, and the <strong>ESM Atlas</strong> mapping 6.8B proteins. "Biology is getting its own foundation tier."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/f28d35ca-d3a9-4da6-b718-d9c67f76e773?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>CZ Biohub world model</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Axiom — 8 AxiomProver papers on arXiv, 5 accepted at journals</h5>
+      <p>Axiom posts 8 AxiomProver papers on arXiv, with 5 accepted at journals — including that 100% of primes are partially regular and (under abc) that Ramanujan's tau misses 100% of primes. "A century after Hardy and Ramanujan, the new mathematician runs on silicon."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/97db60da-c4db-4760-8982-039ec7be28b7?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>AxiomProver arXiv run</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Rust Week — CVE issuance hits "13 a day, or something crazy"</h5>
+      <p>Kroah-Hartman at Rust Week: "I'm here to talk about untrusted data and Linux, and how Rust is going to save us." CVE issuance hits "13 a day, or something crazy," with new bug classes named <strong>Dirty Frag</strong>, <strong>Copy Fail</strong>, and <strong>Fragnesia</strong>. "Software's biggest legacy codebase is getting an AI-assisted exorcism."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/a0c901f6-1cad-4d16-9312-d9bb702920e2?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Rust Week / CVE surge</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>BusPatrol turns school-bus cams into LPRs for cops</h5>
+      <p><strong>BusPatrol</strong> repurposes school-bus cameras as license-plate readers for police departments — "kids' commutes into a surveillance dragnet."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/1bdf527a-08ad-4e7d-986a-7e5914be2bc1?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>BusPatrol LPR</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>YouTube auto-tags AI content; Robinhood opens trading to MCP agents</h5>
+      <p>YouTube begins auto-tagging AI-generated content. Robinhood opens trading to MCP agents — the brokerage now has an agent surface. Two consumer rails just absorbed the protocol layer in the same news cycle.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/0b1d9dfc-f628-4737-a89d-4ec9e9d8f875?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>YouTube AI tags</a>
+        <a href="https://substack.com/redirect/d1e45346-7bb1-4061-95c7-40811c13dd5d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Robinhood MCP</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>NVision — first single-molecule spin-photon interface (carbene); Nvidia Vera ARM64 CPU</h5>
+      <p>NVision demonstrates the first single-molecule spin-photon interface using a carbene radical — a quantum primitive at last fits at the size of a chemical bond. Nvidia's <strong>Vera</strong> ARM64 CPU outscores x86-64 in production tests. The substrate is moving sideways and downward at once.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/0939698f-d25f-4645-ac40-5af3c6bdcf09?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>NVision carbene</a>
+        <a href="https://substack.com/redirect/6f3329dd-74e6-4062-a40b-8a50086063fd?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Nvidia Vera</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Nvidia $150B/yr in Taiwan; CBN Nano's dual-control mechanosynthesis</h5>
+      <p>Nvidia's Taiwan run-rate hits $150B/yr — a hyperscaler-scale dependency on a single island. CBN Nano demonstrates dual-control mechanosynthesis — atoms placeable on demand. "Drexler's diamondoid dreams another notch toward reality."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/060258f3-3bc1-47e2-bf06-f9e8cd9f93b2?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Nvidia Taiwan</a>
+        <a href="https://substack.com/redirect/e1a56815-8b97-47ea-9813-12ea5d9b25f1?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>CBN Nano</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Lombardy +200% data-center fees; Xreal $299 glasses; Russia drafts banks for drone defense</h5>
+      <p>Lombardy raises data-center fees 200%. Xreal ships $299 smart-display glasses — compute escaping the desk. Russia drafts banks for drone-defense logistics — the buildout is meeting both regulatory friction and kinetic claims at once.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/6a4b687a-874c-4491-9aa1-6fd21429a3dd?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Lombardy fees</a>
+        <a href="https://substack.com/redirect/89a1d6bd-5e1c-4684-a952-6bcf029bd84c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Xreal glasses</a>
+        <a href="https://substack.com/redirect/b4c13caf-fa39-4000-8aea-950d2995b084?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Russian banks / drones</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>American Airlines outfits 500+ jets with Starlink; EU writes direct-to-mobile spectrum rules</h5>
+      <p>American Airlines outfits 500+ aircraft with Starlink. The EU writes direct-to-mobile spectrum rules. "Orbit becomes the new ISP."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/8d3b7231-e240-4727-aedd-c37680091986?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>AA Starlink</a>
+        <a href="https://substack.com/redirect/90c9897f-9604-4132-9899-b1839dab841b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>EU spectrum</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>"Interception" trials for pre-cancer lung</h5>
+      <p>Researchers begin "Interception" trials — a blood test plus anti-inflammatories meant to head off the inflammation-to-tumor pipeline before cancer forms. Prevention as the new oncology surface.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/0adf11f7-0795-4cbb-a8c6-cb5aba5f83c6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Interception trials</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Iran restores internet; NYT union vs. AI monitoring; Illinois SB 315</h5>
+      <p>Iran restores internet access after weeks of blackouts. The NYT union files a challenge to AI-driven worker monitoring. Illinois <strong>SB 315</strong> becomes the first-in-the-nation state-level mandate for third-party AI safety audits.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/97109142-6683-4c35-8b81-633eb0f5b6e6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Iran restore</a>
+        <a href="https://substack.com/redirect/7223bd5e-a49e-4f57-8eca-486b79316160?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>NYT union</a>
+        <a href="https://substack.com/redirect/292764db-b53d-4269-aa6f-b46ada8a94bd?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Illinois SB 315</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Amazon MGM GenAI Creators' Fund; OpenAI Foundation $250M labor program; Musk floats SpaceX-into-Tesla</h5>
+      <p>Amazon MGM launches a GenAI Creators' Fund; the OpenAI Foundation puts $250M into a labor-impact program. Musk preps a SpaceX IPO — and floats folding it into Tesla. "The conglomerate logic of the compute era is rewriting org charts in mid-flight."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/86af8d0b-2c00-4153-a7e5-9219c544315c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Amazon MGM fund</a>
+        <a href="https://substack.com/redirect/626ddf9b-bcad-4522-b7fb-b3d5429fb1ed?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>OpenAI Foundation labor</a>
+        <a href="https://substack.com/redirect/280cd893-bdf5-446f-ab8d-217a47327207?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>SpaceX → Tesla?</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "Give humanity a computer big enough, and it shall recompile the world."
+    </div>
+  </article>
+
+  <!-- MAY 29 -->
+  <article class="card" id="may29">
+    <div class="card-head"><span class="day">Friday</span><span class="date">2026-05-29</span></div>
+    <h4>"The Singularity is now iterating on itself in public."</h4>
+    <p class="tagline">Anthropic ships Opus 4.8 — a "modest but tangible improvement" — at SOTA on SWE-Bench Pro, Humanity's Last Exam (tools), and GDPval-AA, with safety gains that rival its unreleased Mythos Preview. The model that audits civilization is also writing it.</p>
+
+    <div class="story">
+      <h5>Opus 4.8 — SOTA + Mythos-grade alignment</h5>
+      <p>Anthropic ships <strong>Opus 4.8</strong> as a "modest but tangible improvement" — posting <strong>69.2%</strong> on SWE-Bench Pro, <strong>57.9%</strong> on Humanity's Last Exam (tools), and <strong>1890</strong> on GDPval-AA, with alignment gains that rival the unreleased Mythos Preview. "When the safest model is also the strongest, alignment stops being a tax and starts being a moat."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/4eb5cc81-c525-4205-8992-df0e2deb129b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Opus 4.8</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Claude Code dynamic workflows — subagent swarms</h5>
+      <p>Claude Code rolls out <strong>dynamic workflows</strong>: subagent swarms carry codebase-scale migrations across hundreds of thousands of lines from kickoff to merge, with the existing test suite as the only gate. The repo just became the prompt.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/5485e4dc-f7e4-4e36-8e72-306e5116c412?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Claude Code workflows</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Sum-product conjecture falls to AI-derived methods</h5>
+      <p>Tim Gowers reports that a major additive combinatorics problem — the sum-product conjecture — has fallen to people using methods lifted directly from the AI solution to the unit-distance conjecture. "Mathematicians are now scavenging spoils from the very intelligence quietly outpacing them."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/ae5d28f0-d05d-4f2b-b7b5-9543d86c0419?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Sum-product / Gowers</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Anthropic $65B at $900B; Apollo + Blackstone $36B TPU debt deal</h5>
+      <p>Anthropic raises <strong>$65B at a $900B valuation</strong>, vaulting past OpenAI's $730B. Apollo and Blackstone close a <strong>$36B TPU debt deal</strong> backstopped by Broadcom on the largest tranches. "Financial engineering is now bankrolling silicon engineering."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/9df21602-68e1-4d85-aefd-dd0d3e3bdc39?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Anthropic $65B</a>
+        <a href="https://substack.com/redirect/eeece2b3-f69f-4e78-8ae8-e2299129dfff?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Apollo / Blackstone TPU</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Groq raises $650M for a "second act"; Dell AI servers +757% to $16.1B</h5>
+      <p>Groq raises $650M for a "second act" at the inference layer. Dell's AI server revenue rises 757% to $16.1B. The boom shows up in the receipts.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/98370e19-83e9-49a2-bcb1-a86916119087?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Groq raise</a>
+        <a href="https://substack.com/redirect/70da38fa-80d2-4ab8-bc31-47c6f9600f1d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Dell AI +757%</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>EU emergency chip-contract powers; IBM bets $10B on 2029 quantum; ETH Zurich manufactures perfect randomness</h5>
+      <p>Brussels grants itself emergency chip-contract powers. IBM commits <strong>$10B</strong> to a 2029 fault-tolerant quantum target. ETH Zurich demonstrates a method to manufacture <strong>perfect randomness</strong> — "the one commodity no balance sheet can fake."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/62c0e3a6-2cbc-4b7a-9ee0-57befd7c8c0c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>EU chip powers</a>
+        <a href="https://substack.com/redirect/e7476a23-19cb-40bf-9aaa-45f6693431ca?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>IBM $10B / 2029</a>
+        <a href="https://substack.com/redirect/90adbd08-f501-4f92-be55-5a95aae61627?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>ETH randomness</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Meta paid AI ($7.99/mo); Kirkland &amp; Ellis sets aside $500M to build its own model</h5>
+      <p>Meta launches a paid AI tier at $7.99/mo. Kirkland &amp; Ellis sets aside <strong>$500M to build its own model</strong>. "Owning the model is the new owning the firm."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/03a352e8-031d-4102-99e1-c809b9abd86e?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Meta paid AI</a>
+        <a href="https://substack.com/redirect/0c43c21b-e281-4210-adc9-68b5f1124c54?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>K&amp;E $500M model</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>IBM + Red Hat Project Lightwell ($5B, 20,000 engineers); iOS 27 swipe-down do-it-for-me Siri</h5>
+      <p>IBM and Red Hat launch <strong>Project Lightwell</strong>, a $5B open-source supply-chain clearinghouse staffed by 20,000 engineers. iOS 27's swipe-down do-it-for-me Siri "rewrites the interface itself." The agent layer is absorbing both the supply chain and the desktop.</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/191e318c-9e2b-4993-a6b2-8fbf602ee219?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Project Lightwell</a>
+        <a href="https://substack.com/redirect/bd8b1772-b5dc-44d7-a843-e0ea9dcaca25?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>iOS 27 Siri</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>AI SSD side-channel attack</h5>
+      <p>A new AI <strong>SSD side-channel</strong> fingerprints the sites and apps you have open just by timing disk contention. "Even your idle hard drive now has a tell."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/341a046c-563a-4f29-9c1b-04f2575c13ee?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>SSD side-channel</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Waymo Ojai (with Zeekr); Shift trades cleaning for footage; New Glenn explodes</h5>
+      <p>Waymo opens an Ojai service with Geely's Zeekr. <strong>Shift</strong> trades home-cleaning visits for training-data footage — "living room as training set, dust as data." New Glenn explodes on the pad — "the Singularity still has to clear ignition before it builds the Dyson Swarm."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/e938467c-7f67-45d8-bc67-8c9eab86e3ba?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Waymo Ojai</a>
+        <a href="https://substack.com/redirect/c3755285-a2e9-4833-a84b-bd5379abd579?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Shift cleaning-for-data</a>
+        <a href="https://substack.com/redirect/1e4af080-1161-4551-a1ca-b1d51fdf5f27?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>New Glenn</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>DARPA RAPIID — shelf-stable synthetic blood by 2029</h5>
+      <p>DARPA's <strong>RAPIID</strong> program aims to deliver shelf-stable synthetic blood by 2029. "Preventative logistics for a kinetic century."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/90925b26-dc53-4561-b156-96996315b13a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>DARPA RAPIID</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>Occupy app to "seize the means of computation"; Mistral chases superintelligence; Wix cuts ~20%</h5>
+      <p>A new "Occupy" app calls to "seize the means of computation." Mistral repositions itself as a superintelligence chase. Wix cuts ~20% of headcount. "The squeeze is already here."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/5f4f16f5-9028-4307-888a-319263bbafba?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Occupy compute</a>
+        <a href="https://substack.com/redirect/e0a84bf6-f391-4725-ba7e-b13124f5bd19?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Mistral superintelligence</a>
+        <a href="https://substack.com/redirect/7bf27e08-727f-4a96-a1ad-784a15d119e2?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Wix cuts</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>US troops targeted via commercial location data; Amazon kills gamed AI leaderboard</h5>
+      <p>US troops are targeted via commercial location-data brokers. Amazon kills a gamed internal AI leaderboard — "the perfect parable of Goodhart's law burning compute."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/ad96f32b-ae6b-4f10-9b03-2b13d04540c2?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Troops via location data</a>
+        <a href="https://substack.com/redirect/7517fa8a-8177-42cb-8e94-edeb97da0660?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Amazon leaderboard</a>
+      </div>
+    </div>
+
+    <div class="story">
+      <h5>"Aliens.gov" disclosure season</h5>
+      <p>The administration launches an <strong>aliens.gov</strong> disclosure portal. "We spent the year manufacturing minds, and now the government says at least some were never ours."</p>
+      <div class="links">
+        <a href="https://substack.com/redirect/7ae6805b-248b-4f57-8c89-6ba006609fa1?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>aliens.gov</a>
+        <a href="https://substack.com/redirect/96d94721-3e33-4c0a-a19b-3a82806a455f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>Disclosure briefings</a>
+        <a href="https://substack.com/redirect/758ed92d-5aa5-4d6f-8077-25baa6652755?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4"><span class="material-icons-outlined">open_in_new</span>UAP follow-on</a>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <span class="label">Line of the day</span>
+      "The unexamined solar system is not worth scaling."
+    </div>
+  </article>
+
+  <div class="footer">
+    <p>Generated 2026-06-01 from 5 daily issues of <em>The Innermost Loop</em> by Alex Wissner-Gross · pulled directly from your Gmail · all external story links route through the newsletter's own Substack tracking redirects, which resolve to the original sources when clicked.</p>
+    <p><a href="https://theinnermostloop.substack.com/">theinnermostloop.substack.com</a> · <a href="https://www.linkedin.com/newsletters/the-innermost-loop-7150693820263542784/">LinkedIn edition</a></p>
+  </div>
+
+</main>
+
+</body>
+</html>

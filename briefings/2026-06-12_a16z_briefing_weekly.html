@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Media Briefing · Weekly · June 12, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #0d47a1;
+    --primary-hover: #0a3d8f;
+    --primary-soft: #e3f2fd;
+    --primary-on-soft: #0d47a1;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #1a237e); color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .hero { background: linear-gradient(135deg, #1565c0 0%, #1a237e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.55; opacity: 0.95; margin: 0; max-width: 700px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .rank { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--on-surface-2); font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.fund    { background: #e3f2fd; color: #0d47a1; }
+  .provider.crypto  { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ai      { background: #e6f4ea; color: #0d652d; }
+  .provider.media   { background: #fef7e0; color: #b06000; }
+  .provider.policy  { background: #fce8e6; color: #a50e0e; }
+  .provider.portfolio { background: #e8eef6; color: #1f3548; }
+  .provider.talent  { background: #fff3e0; color: #b06000; }
+
+  .timestamp { font-family: 'Roboto Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-on-soft); font-weight: 500; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\2022"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .card a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: var(--on-surface-2); }
+
+  .status-quo { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .status-quo h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .status-quo h3 .material-icons-outlined { color: var(--primary); font-size: 20px; }
+  .status-quo ul { margin: 0; padding-left: 20px; }
+  .status-quo li { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin-bottom: 8px; }
+  .status-quo li strong { color: var(--on-surface); font-weight: 500; }
+
+  .quiet { background: var(--surface-2); border: 1px dashed var(--divider); border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; }
+  .quiet h4 { font-family: 'Google Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--on-surface-2); margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+  .quiet h4 .material-icons-outlined { font-size: 18px; color: var(--on-surface-muted); }
+  .quiet p { font-size: 13.5px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 8px; }
+  .quiet p:last-child { margin-bottom: 0; }
+  .quiet strong { color: var(--on-surface); font-weight: 600; }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.6; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+  .colophon a { color: var(--primary-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">a16z</div>
+    <div class="titles">
+      <h1>a16z Media Briefing</h1>
+      <div class="sub">Weekly &middot; June 12, 2026 &middot; Coverage: June 5 &ndash; June 12 &middot; Andreessen Horowitz</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="hero">
+  <div class="eyebrow">Weekly &middot; June 5 &ndash; June 12, 2026</div>
+  <h2>The Canton check finally closed &mdash; bigger than reported. Crypto Fund V deployed twice in one week, a16z hired a former deputy national security advisor, and the first ex-GP went public against the firm.</h2>
+  <p>The overdue watch item resolved decisively: <strong>Digital Asset closed $355M at ~$2B</strong> (oversubscribed from the reported $300M target), with a16z crypto writing $100M and a Wall-Street syndicate of 20+ institutions behind it. Two days earlier, a16z crypto <strong>co-led Morpho's $175M</strong> &mdash; Fund V went from zero public checks to two in one week, both institutional-finance plays. On the people side, <strong>Anne Neuberger</strong> (ex-deputy national security advisor for cyber, 11 years NSA) joined as full-time partner and first head of global affairs &mdash; personnel catching up with the &ldquo;Global Mission&rdquo; editorial. And a first: ex-GP <strong>John O'Farrell</strong> published an op-ed calling the a16z-backed Leading the Future super-PAC &ldquo;political infiltration.&rdquo; Plus one honest correction: Town's $55M Series A (June 3) was missed by the last edition and is carded below.</p>
+</div>
+
+<!-- STATUS QUO -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo from the June 8 Edition</h3>
+  <ul>
+    <li><strong>Four new a16z-led checks in seven days:</strong> Endra ($50M Series A, AI for building MEP design), Westmag ($11M seed, US drone-motor reshoring &mdash; American Dynamism), Lassie ($35M Series A, AI back office for SMBs), and Special (undisclosed, the ex-DOGE founders' AI-PE rollup). Unifying theme: AI eating professional services and the real economy.</li>
+    <li><strong>Owned editorial revived:</strong> Ben Horowitz's &ldquo;A16Z's global mission&rdquo; essay (June 4) plus a new a16z Show episode broke the three-week silence on owned channels; editorial and capital deployment moving in sync again.</li>
+    <li><strong>Digital Asset / Canton was the top watch item:</strong> the ~$300M a16z-crypto-led round at ~$2B was four weeks past first report (May 11) with no close &mdash; flagged as &ldquo;the single highest-value watch item into the next edition.&rdquo;</li>
+    <li><strong>Other pending items carried in:</strong> Speedrun SR007 cohort selection un-announced (kicks off July 27); FDE Fellowship applications open through June 26; no personnel moves since Eddy Lazzarin's promotion to a16z crypto GP (May 5).</li>
+  </ul>
+</div>
+
+<!-- SECTION 1: CRYPTO / WEB3 -->
+<div class="section-header">
+  <span class="material-icons-outlined">currency_bitcoin</span>
+  <h3>Crypto &amp; Web3</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">1</span>
+    <span class="provider crypto"><span class="dot"></span>Closed &mdash; Fund V Lead</span>
+    <span class="timestamp">June 9&ndash;11, 2026</span>
+    <span class="meta-pill">Digital Asset &middot; $355M &middot; ~$2B &middot; a16z in for $100M</span>
+  </div>
+  <h4>Resolved: Digital Asset closes $355M at ~$2B &mdash; oversubscribed past the reported target, a16z crypto leads with $100M</h4>
+  <p>The four-week watch item closed, and it closed up: <strong>Digital Asset Holdings</strong>, developer of the <strong>Canton Network</strong>, announced a <strong>$355M equity round led by a16z crypto</strong> at a valuation of roughly <strong>$2B</strong> &mdash; oversubscribed against the ~$300M Bloomberg first reported on May 11. Per Bloomberg, a16z crypto contributed <strong>$100M</strong> of the total. The syndicate is a who's-who of regulated finance: an Abu Dhabi Investment Authority subsidiary, Apollo Funds, BNP Paribas, Broadridge, Citadel Securities, CME Ventures, Coinbase Ventures, HSBC, Optiver, Polychain, S&amp;P Global, SBI Group, SoFi, Tradeweb, William Blair, 7RIDGE and more than 20 institutions in all. Notably, investors received <strong>equity, not tokens</strong>. Capital goes to Canton product expansion, developer engagement and M&amp;A capacity. (<a href="https://www.prnewswire.com/news-releases/digital-asset-raises-355-million-to-accelerate-cantons-role-as-onchain-infrastructure-for-capital-markets-302797427.html">PRNewswire</a>, <a href="https://www.bloomberg.com/news/articles/2026-06-11/andreessen-horowitz-backs-blockchain-used-by-wall-street-giants">Bloomberg</a>, <a href="https://www.coindesk.com/business/2026/06/11/canton-network-developer-raises-usd355-million-to-bring-wall-street-onchain">CoinDesk</a>)</p>
+  <p>The continuity read from the last three editions resolves cleanly: the slip was syndicate assembly, not trouble &mdash; the round grew $55M past target while it &ldquo;slipped.&rdquo; This is now officially Fund V's marquee first check ($2.2B fund, closed May 5), and it confirms the fund's stated pivot in its purest form: Wall-Street-grade permissioned infrastructure over retail Web3. Canton has processed &gt;$6T in tokenized assets, DTCC is testing tokenized Treasuries on it, HSBC ran a tokenized-deposit pilot, and Visa joined as a Super Validator in March. The equity-not-tokens structure is itself a statement about what institutional crypto looks like in 2026. Full confidence: company primary release plus Bloomberg, CoinDesk, The Block and broad corroboration with consistent figures.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.prnewswire.com/news-releases/digital-asset-raises-355-million-to-accelerate-cantons-role-as-onchain-infrastructure-for-capital-markets-302797427.html"><span class="material-icons-outlined">open_in_new</span>PRNewswire (primary)</a>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-06-11/andreessen-horowitz-backs-blockchain-used-by-wall-street-giants"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://www.theblock.co/post/404386/a16z-crypto-leads-355-million-raise-for-canton-developer-digital-asset"><span class="material-icons-outlined">open_in_new</span>The Block</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">2</span>
+    <span class="provider crypto"><span class="dot"></span>Co-Lead &mdash; DeFi Credit</span>
+    <span class="timestamp">June 9, 2026</span>
+    <span class="meta-pill">Morpho &middot; $175M &middot; co-led with Paradigm &amp; Ribbit</span>
+  </div>
+  <h4>a16z crypto co-leads Morpho's $175M &mdash; one of DeFi's largest rounds ever, aimed at onchain credit markets</h4>
+  <p>a16z crypto <strong>co-led a $175M round in Morpho</strong> alongside <strong>Paradigm and Ribbit Capital</strong> &mdash; one of the largest financings in DeFi (decentralized finance) history. Morpho is an open lending network whose infrastructure powers onchain credit markets; the round drew <strong>Apollo Funds, Circle Ventures, VanEck, Ledger Cathay, Variant, Wintermute Ventures, SBI Group, Bpifrance</strong> and other strategic backers. The raise positions Morpho as the credit-markets layer of the institutional-onchain stack that Canton is building the settlement layer for. (<a href="https://finance.yahoo.com/markets/crypto/articles/a16z-paradigm-ribbit-back-morpho-165100669.html">Yahoo Finance</a>)</p>
+  <p>Taken with the Digital Asset close two days later, Fund V's opening week tells one coherent story: institutional credit and capital markets moving onchain. The tell is <strong>Apollo Funds appearing in both cap tables</strong> in the same week &mdash; private credit is the bridge asset class between TradFi (traditional finance) and DeFi, and a16z is positioned on both sides of it (Canton for the permissioned rails, Morpho for the open-credit layer). Carded one notch down: co-lead rather than solo lead, and sourcing is solid trade press rather than an a16z primary statement; round mechanics (equity vs. token warrants) not fully detailed in public reporting.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://finance.yahoo.com/markets/crypto/articles/a16z-paradigm-ribbit-back-morpho-165100669.html"><span class="material-icons-outlined">open_in_new</span>Yahoo Finance</a>
+  </div>
+</div>
+
+<!-- SECTION 2: TALENT & ORGANIZATION -->
+<div class="section-header">
+  <span class="material-icons-outlined">badge</span>
+  <h3>Talent &amp; Organization</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">3</span>
+    <span class="provider talent"><span class="dot"></span>Partner Hire &mdash; New Function</span>
+    <span class="timestamp">June 4&ndash;5, 2026</span>
+    <span class="meta-pill">Anne Neuberger &middot; partner &amp; first head of global affairs</span>
+  </div>
+  <h4>Anne Neuberger joins a16z as partner and first head of global affairs &mdash; an ex-deputy national security advisor now runs the firm's geopolitics</h4>
+  <p><strong>Anne Neuberger</strong>, former US deputy national security advisor for cyber and emerging technologies, joined a16z as a <strong>full-time partner and the firm's first head of global affairs</strong> (Axios broke it June 4; trade press followed June 5). She spent 11 years at the National Security Agency (NSA), rising to head its cybersecurity directorate overseeing ~4,000 analysts and cryptographers, and had been a part-time a16z advisor since summer 2025. Her brief: drive technology partnerships with allied nations across AI, robotics, defense modernization, cybersecurity and supply-chain resilience, advise portfolio companies on geopolitical and regulatory navigation, and build out a team &mdash; initially focused on growth-stage companies. She published a positioning essay, &ldquo;Technology is Security, for America and Her Allies,&rdquo; on a16z's owned channels. (<a href="https://www.axios.com/2026/06/04/anne-neuberger-andreessen-horowitz">Axios</a>, <a href="https://a16z.com/technology-is-security-for-america-and-her-allies/">a16z essay</a>, <a href="https://www.odwyerpr.com/story/public/24849/2026-06-05/andreessen-horowitz-adds-neuberger.html">O'Dwyer's</a>)</p>
+  <p>The sequencing is the story. Ben Horowitz publishes &ldquo;A16Z's global mission&rdquo; on June 4 &mdash; the same day the Neuberger news breaks. Last edition read that essay as ideological scaffolding for the American-Dynamism and global-expansion push; a week later the scaffolding has a staff. A VC firm hiring a former deputy national security advisor to run &ldquo;global affairs&rdquo; &mdash; after the Tokyo office, the $15B raise pitched on US interests, and the Westmag/Anduril defense book &mdash; completes the build-out from policy-adjacent investing to a quasi-statecraft operation. It also extends the firm's bet that geopolitical access is a fund-level moat. First personnel move since Lazzarin's GP promotion (May 5). Full confidence on the facts; Axios exclusive plus a16z primary publication.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.axios.com/2026/06/04/anne-neuberger-andreessen-horowitz"><span class="material-icons-outlined">open_in_new</span>Axios</a>
+    <a class="link-pill" href="https://a16z.com/technology-is-security-for-america-and-her-allies/"><span class="material-icons-outlined">open_in_new</span>a16z essay</a>
+    <a class="link-pill" href="https://www.odwyerpr.com/story/public/24849/2026-06-05/andreessen-horowitz-adds-neuberger.html"><span class="material-icons-outlined">open_in_new</span>O'Dwyer's</a>
+  </div>
+</div>
+
+<!-- SECTION 3: MEDIA, POLITICS & THOUGHT LEADERSHIP -->
+<div class="section-header">
+  <span class="material-icons-outlined">campaign</span>
+  <h3>Media, Politics &amp; Thought Leadership</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">4</span>
+    <span class="provider policy"><span class="dot"></span>Critique &mdash; Ex-Insider</span>
+    <span class="timestamp">June 11, 2026</span>
+    <span class="meta-pill">John O'Farrell op-ed &middot; Leading the Future PAC &middot; $125M+</span>
+  </div>
+  <h4>First public dissent from inside the family: ex-GP John O'Farrell calls the a16z-backed AI super-PAC &ldquo;political infiltration&rdquo;</h4>
+  <p><strong>John O'Farrell</strong> &mdash; a general partner at a16z for nearly 15 years until his 2025 resignation &mdash; published a New York Times op-ed (covered by CNBC June 11) attacking the AI industry's anti-regulation political machine, and his old firm by name. His core charge: the <strong>Leading the Future</strong> super-PAC (political action committee), backed by a16z, Greg Brockman (OpenAI), Joe Lonsdale (Palantir co-founder), Ron Conway and Perplexity, has raised <strong>over $125M</strong> &ldquo;not to make the case for their vision of AI policy, but to intimidate politicians.&rdquo; He traces the playbook to crypto's strategy of electing industry-friendly politicians, argues AI is &ldquo;not just another technology,&rdquo; and predicts &ldquo;this attempted political infiltration by the AI industry will fail.&rdquo; (<a href="https://www.cnbc.com/2026/06/11/ex-a16z-partner-slams-old-firm-othes-political-infiltration-in-ai.html">CNBC</a>, <a href="https://www.techbuzz.ai/articles/ex-a16z-partner-blasts-firm-s-ai-lobbying-as-political-intimidation">TechBuzz</a>)</p>
+  <p>This briefing has carried &ldquo;political-alignment concentration risk&rdquo; as a standing caveat since the Special check (ex-DOGE founders) and the $25M Andreessen/Horowitz PAC contributions. What changed this week is that the critique now comes from a named, fully credentialed insider &mdash; not an outside columnist. O'Farrell was on the Anduril and Databricks boards; he cannot be dismissed as anti-tech. The $125M+ PAC figure (up from the $51M reported in January, $50M+ in April) also quantifies how fast the machine is scaling into the midterms. Watch for whether a16z responds on owned channels &mdash; the firm's pattern is to answer critiques with essays. Single mainstream report plus secondary pickup; the op-ed itself is primary but paywalled, so carded 4/5.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/06/11/ex-a16z-partner-slams-old-firm-othes-political-infiltration-in-ai.html"><span class="material-icons-outlined">open_in_new</span>CNBC</a>
+    <a class="link-pill" href="https://www.techbuzz.ai/articles/ex-a16z-partner-blasts-firm-s-ai-lobbying-as-political-intimidation"><span class="material-icons-outlined">open_in_new</span>TechBuzz</a>
+  </div>
+</div>
+
+<!-- SECTION 4: INVESTMENTS — CATCH-UP -->
+<div class="section-header">
+  <span class="material-icons-outlined">payments</span>
+  <h3>Investments &amp; Deals &mdash; Catch-Up</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="banner">
+  <span class="material-icons-outlined">error_outline</span>
+  <div><strong>Correction to the June 8 edition</strong>The following deal was announced June 3 &mdash; inside the prior coverage window &mdash; but was missed by last week's briefing. Carded here for completeness rather than silently dropped.</div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">5</span>
+    <span class="provider fund"><span class="dot"></span>New Lead &mdash; Series A (June 3)</span>
+    <span class="timestamp">June 3, 2026</span>
+    <span class="meta-pill">Town &middot; $55M Series A &middot; personal AI assistant</span>
+  </div>
+  <h4>a16z led Town's $55M Series A &mdash; a fifth check in the early-June cluster, this one consumer-facing personal AI</h4>
+  <p>a16z led a <strong>$55M Series A in Town</strong>, a personal AI assistant that works across the tools you already use &mdash; email, calendar, Slack, docs, WhatsApp, desktop, web &mdash; and learns how you work to proactively pitch in. <strong>Forerunner Ventures, First Round, Alt Capital and Conviction</strong> joined. Founders: <strong>Jean-Denis Gr&egrave;ze</strong> (former Plaid CTO) and <strong>Tony Vincent</strong> (former director of applied AI at Google), company founded late 2024. (<a href="https://a16z.com/announcement/investing-in-town/">a16z</a>, <a href="https://fortune.com/2026/06/03/towns-ai-assistants-andreessen-horowitz-forerunner-55-million/">Fortune</a>, <a href="https://www.globenewswire.com/news-release/2026/06/03/3306172/0/en/town-raises-55m-series-a-from-a16z-and-forerunner-to-build-the-ai-assistant-that-learns-how-you-work.html">GlobeNewswire</a>)</p>
+  <p>This retroactively changes last week's headline: early June was <em>five</em> a16z-led checks in seven days, not four &mdash; the busiest deployment stretch of the year. Town also adds a wedge the cluster lacked: where Endra, Lassie and Special point AI at professional services and SMB back offices, Town is the consumer/prosumer flank of the same &ldquo;AI does the work&rdquo; thesis &mdash; and the a16z + Forerunner pairing signals a consumer-product conviction, not an enterprise one. At $55M it was actually the largest disclosed check of the cluster. Full confidence: a16z primary, Fortune, company release.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/announcement/investing-in-town/"><span class="material-icons-outlined">open_in_new</span>a16z</a>
+    <a class="link-pill" href="https://fortune.com/2026/06/03/towns-ai-assistants-andreessen-horowitz-forerunner-55-million/"><span class="material-icons-outlined">open_in_new</span>Fortune</a>
+    <a class="link-pill" href="https://www.globenewswire.com/news-release/2026/06/03/3306172/0/en/town-raises-55m-series-a-from-a16z-and-forerunner-to-build-the-ai-assistant-that-learns-how-you-work.html"><span class="material-icons-outlined">open_in_new</span>GlobeNewswire</a>
+  </div>
+</div>
+
+<!-- SECTION 5: QUIET -->
+<div class="section-header">
+  <span class="material-icons-outlined">do_not_disturb_on</span>
+  <h3>Quiet This Window</h3>
+  <span class="count">no cards</span>
+</div>
+
+<div class="quiet">
+  <h4><span class="material-icons-outlined">search_off</span> What did not move, June 5&ndash;12</h4>
+  <p><strong>New non-crypto leads inside the window:</strong> None surfaced. After the June 1&ndash;4 burst (Endra, Westmag, Lassie, Special, Town), the flagship and American Dynamism books announced nothing new June 5&ndash;12 &mdash; this week's deployment was entirely a16z crypto's.</p>
+  <p><strong>Speedrun SR007 cohort selection:</strong> Still un-announced. Applications closed May 17 (sub-0.4% acceptance rate, ~60&ndash;70 teams expected); cohort runs July 27 &ndash; October 11. Selection reveal remains a watch item for mid-to-late June.</p>
+  <p><strong>FDE Fellowship:</strong> No news; applications open through June 26.</p>
+  <p><strong>Owned podcast cadence held:</strong> a16z Podcast shipped steadily (June 5: George Fraser with Martin Casado; June 6: Sarah Wang with Will Bryk) &mdash; normal output, no standout editorial piece beyond the Neuberger essay carded above.</p>
+  <p><strong>Minor housekeeping:</strong> a16z bio funds trimmed their Nautilus Biotechnology (NAUT) stake to ~10% in a June 2 block trade at $2.35/share per an SEC Schedule 13D/A &mdash; routine public-position management, noted for completeness.</p>
+  <p><strong>Special (ex-DOGE rollup):</strong> Round size and valuation remain undisclosed; no follow-up disclosure this week.</p>
+</div>
+
+<!-- EDITOR'S VIEW -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px;">edit</span> Editor's View</div>
+  <h3>Five Takeaways from Crypto Week at a16z</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>The Digital Asset &ldquo;slip&rdquo; resolved upward &mdash; the lesson is that the delay was demand, not doubt.</strong> Three editions of this briefing tracked the unclosed ~$300M round with mounting skepticism; the answer was an oversubscribed $355M close at ~$2B with 20+ institutions and a16z writing $100M. Worth internalizing for future watch items: when an institutional round with many strategic LPs runs long, syndicate assembly is the base case, renegotiation the exception. Fund V's marquee check is now real, and it is exactly what the fund prospectus implied: Wall Street rails, equity not tokens. C-Score 5/5.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>Fund V deployed twice in one week, and both checks aim at the same target: institutional credit and capital markets onchain.</strong> Canton (settlement/tokenization rails for regulated finance) plus Morpho (open credit-market infrastructure) bracket the institutional-DeFi stack from both ends. The tell is Apollo Funds in both cap tables in the same week &mdash; private credit is the bridge asset class, and a16z crypto is positioned on both the permissioned and the open side of it. Retail Web3 is conspicuously absent from the fund's opening moves. C-Score 4/5 on the thematic read.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>The Neuberger hire turns the &ldquo;Global Mission&rdquo; essay into an org chart.</strong> Essay June 4, personnel announcement June 4 &mdash; that is not a coincidence, it's a coordinated rollout. A former deputy national security advisor running &ldquo;global affairs,&rdquo; hiring a team, focused on allied-nation tech partnerships across AI, defense and supply chains: a16z is institutionalizing geopolitical access as a fund-level moat, on top of the Tokyo office and the $15B &ldquo;US interests&rdquo; raise. No other venture firm has this function at this seniority. C-Score 5/5 on the facts.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>The political bet now has a credentialed internal critic &mdash; the concentration risk this briefing has flagged is no longer hypothetical.</strong> John O'Farrell is not an outside columnist; he spent ~15 years as an a16z GP. His charge &mdash; that the $125M+ Leading the Future PAC exists to intimidate rather than persuade &mdash; lands differently coming from someone who sat on Anduril's board. The same week the firm hires a national-security heavyweight and banks a check from ex-DOGE founders' backers, the cost side of the political-alignment ledger got its first public line item. Watch for an owned-channel rebuttal. C-Score 4/5.</div>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <div class="body"><strong>The Town miss revises last week's picture: five leads in seven days, and the largest one was consumer.</strong> Correcting the prior edition's omission, the early-June cluster was Endra + Westmag + Lassie + Special + Town &mdash; and Town's $55M was the biggest disclosed check. That extends the &ldquo;AI does the work&rdquo; thesis from professional services and SMB back offices to the individual knowledge worker, with Forerunner riding shotgun signaling consumer-product conviction. Deployment pace across all books in early June was the fastest of 2026 so far. C-Score 5/5 on the deal, 4/5 on the pace claim.</div>
+    </li>
+  </ul>
+  <div class="closing">
+    <strong>Bottom line:</strong> A consequential week with a clear shape: crypto Fund V woke up and deployed $275M+ of exposure into institutional-onchain finance, the geopolitics function got a name and an org chart, and the firm's political strategy drew its first credentialed public dissent. Watch items into June 19: (1) Speedrun SR007 cohort reveal &mdash; now the longest-standing open item; (2) any a16z owned-channel response to O'Farrell; (3) Special's terms, if ever disclosed; (4) Neuberger's first concrete portfolio or policy move; (5) whether Fund V's third check continues the institutional-credit pattern.
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <p>
+    a16z Media Briefing &middot; Weekly &middot; June 12, 2026 &middot; Coverage: June 5 &ndash; June 12, 2026<br>
+    5 cards across 4 active sections &middot; 1 section reported quiet &middot; 1 prior-edition correction &middot; Compiled June 12, 2026<br>
+    Sources: PRNewswire, Bloomberg, CoinDesk, The Block, Yahoo Finance, Axios, a16z, O'Dwyer's, CNBC, TechBuzz, Fortune, GlobeNewswire, crypto.news, StartupHub.ai, plus prior-edition context<br>
+    C-Scores reflect source quality and corroboration depth (5 = primary statement + multiple independent corroborations; 4 = single primary + reliable secondary or undisclosed terms; 3 = single-source reporting or interpretive framing)<br>
+    This briefing is generated from web search results. No inside information. Verify before acting.
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

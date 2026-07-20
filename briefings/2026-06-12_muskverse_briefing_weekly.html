@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Weekly · June 12, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #3c4043;
+    --primary-hover: #2d3134;
+    --primary-soft: #e8eaed;
+    --primary-on-soft: #3c4043;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --blue: #1a73e8;
+    --blue-soft: #e8f0fe;
+    --blue-on-soft: #1967d2;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  /* APP BAR — NOT sticky */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: #3c4043; color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 16px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--divider); background: var(--surface); color: var(--on-surface-2); font-family: 'Google Sans Text', sans-serif; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  .hero { background: linear-gradient(135deg, #5f6368 0%, #1f2937 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 26px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0; max-width: 740px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.tesla    { background: #fce8e6; color: #a50e0e; }
+  .provider.spacex   { background: #e8eef6; color: #1f3548; }
+  .provider.xai      { background: #f1f3f4; color: #3c4043; }
+  .provider.politics { background: #fef7e0; color: #b06000; }
+  .provider.trial    { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ventures { background: #e6f4ea; color: #0d652d; }
+  .provider.baseline { background: #e8f0fe; color: #1967d2; }
+
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\00b7"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 10px; }
+  .card p:last-of-type { margin-bottom: 12px; }
+  .card .takeaway { background: #f5fbf6; border-left: 3px solid var(--green); padding: 10px 14px; margin: 4px 0 12px; font-size: 13px; line-height: 1.55; color: var(--on-surface-2); border-radius: 0 8px 8px 0; }
+  .card .takeaway strong { color: var(--green); font-weight: 500; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--blue-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--blue-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+
+  .banner.cross-ref { background: var(--blue-soft); border-color: #a8c7fa; color: var(--blue-on-soft); }
+  .banner.cross-ref .material-icons-outlined { color: var(--blue-on-soft); }
+  .banner.cross-ref strong { color: var(--blue-on-soft); }
+  .banner.cross-ref div { color: #174ea6; }
+  .banner.cross-ref a { color: #1a73e8; font-weight: 500; }
+
+  .status-list { list-style: none; margin: 0; padding: 0; }
+  .status-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--divider-soft); font-size: 13px; line-height: 1.55; color: var(--on-surface-2); }
+  .status-list li:last-child { border-bottom: none; }
+  .status-list .label { flex-shrink: 0; width: 100px; font-weight: 500; color: var(--on-surface); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 1px; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 20px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 12px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: left; font-size: 12px; color: var(--on-surface-muted); line-height: 1.7; }
+  .colophon h4 { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--on-surface-2); margin: 0 0 8px; }
+  .colophon a { color: var(--blue-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Weekly &middot; June 12, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a href="#status" class="chip active"><span class="material-icons-outlined">check_circle</span>Status Quo</a>
+  <a href="#spacex" class="chip">SpaceX / IPO</a>
+  <a href="#tesla" class="chip">Tesla</a>
+  <a href="#xai" class="chip">SpaceXAI / Grok</a>
+  <a href="#doge" class="chip">DOGE / Politics</a>
+  <a href="#legal" class="chip">Legal</a>
+  <a href="#ventures" class="chip">Other Ventures</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="eyebrow">June 5 &ndash; June 12, 2026 &middot; Weekly edition</div>
+  <h2>Listing day: SPCX priced at $135 on a book 3.5&ndash;4&times; oversubscribed and started trading this morning &mdash; while Tesla quietly unfroze its robotaxi map across the entire Austin metro, with a fleet of only ~20 cars to serve it.</h2>
+  <p>The largest initial public offering (IPO) in market history happened this week, on schedule. SpaceX&rsquo;s order book closed <strong>June 10 between 3.5 and 4 times oversubscribed</strong> &mdash; more than <strong>$250 billion in demand against a $75 billion raise</strong>, with single institutions placing $10-billion-plus orders and up to 30% of the deal reserved for retail. Pricing landed <strong>June 11 at the fixed $135</strong>, valuing the company near <strong>$1.75 trillion</strong>, and the stock began trading on Nasdaq this morning, June 12, under <strong>SPCX</strong> &mdash; with the open delayed about 30 minutes amid frenzied order-matching and prediction markets betting on a $150&ndash;200 first print. This briefing compiles mid-debut: the first-day close is not yet in. The countervailing tell: gray-market and crypto-perpetual premiums <em>shrank</em> into pricing, settling near +25%. Elsewhere, <strong>Tesla expanded unsupervised robotaxi coverage to the entire ~4,300-square-mile Austin metro on June 3&ndash;4</strong> &mdash; ending the expansion freeze we flagged for a month, but with roughly 20 active driverless vehicles versus Waymo&rsquo;s 250+ in the same city &mdash; while TSLA slid toward <strong>~$396</strong> and J.P. Morgan executed a whiplash upgrade to Neutral with a $475 target. Grok V9-Medium is still pre-release in its mid-June window, Starship stays grounded, and Judge Sooknanan&rsquo;s settlement ruling remains outstanding &mdash; the legal tail that never fired before the debut.</p>
+</div>
+
+<!-- ═══ CAVEAT BANNER ═══ -->
+<div class="banner">
+  <span class="material-icons-outlined">warning_amber</span>
+  <div>
+    <strong>Compiled on debut day &mdash; three open data points</strong>
+    This edition is compiled <strong>during the June 12 trading session</strong>: SPCX&rsquo;s opening print and first-day close were not yet confirmed at compile time &mdash; only the delayed ~9:50 a.m. ET start, the $150&ndash;200 prediction-market consensus, and a ~$168 crypto-perpetual quote (~+25%) are on record. <strong>Tesla&rsquo;s share price</strong> is messy this week: ~$396 (June 8, Capital.com) versus ~$432 a week earlier, and outlets disagree on the year-to-date drawdown (&minus;7% to &minus;16%+ depending on baseline) &mdash; treat the level as approximate. <strong>Starship</strong> carries over last week&rsquo;s ambiguity: an FAA newsroom page says the mishap investigation &ldquo;closes,&rdquo; while trade reporting through early June still described it as open; no fresh reporting moved it this week.
+  </div>
+</div>
+
+<!-- ═══ STATUS QUO ═══ -->
+<div id="status" class="section-header">
+  <span class="material-icons-outlined">check_circle</span>
+  <h3>Status Quo &middot; Where things stood at the June 8 edition</h3>
+  <span class="count">snapshot</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider baseline"><span class="dot"></span>Baseline</span>
+    <span class="meta-pill">As of June 8 2026</span>
+  </div>
+  <h4>Recap from the June 8 briefing &mdash; what has and hasn&rsquo;t moved since</h4>
+  <ul class="status-list">
+    <li><span class="label">SpaceX IPO</span>Roadshow opened June 4 at a fixed $135/share, all-primary $75B raise, ~$1.75T valuation; pricing June 11, debut June 12; Google compute deal (~$920M/month &times; 32 months) landed as the demand proof-point. <strong>Moved: book closed June 10 at 3.5&ndash;4&times; oversubscribed (&gt;$250B demand); priced June 11 at $135; trading began this morning under SPCX with a delayed open.</strong></li>
+    <li><span class="label">Starship</span>Grounded under the Federal Aviation Administration (FAA) mishap investigation into Flight 12; Flight 13 (Ship 40 + Booster 20) in a July&ndash;August window; FAA signals mixed. <em>Moved: nothing &mdash; no new launch license, no new corrective-action reporting in the window; the IPO priced with the rocket still on the ground.</em></li>
+    <li><span class="label">Tesla</span>TSLA ~$432, &minus;16% year-to-date; robotaxi fleet expansion frozen since May 10 at 39 vehicles; analyst consensus Hold, average target $403.86 below spot. <strong>Moved: geofence unfroze &mdash; June 3&ndash;4 expansion to the entire Austin metro; but active unsupervised fleet is ~20 cars and shrinking; stock slid to ~$396; J.P. Morgan upgraded to Neutral, target $475 (from $145).</strong></li>
+    <li><span class="label">xAI / Grok</span>Grok V9-Medium finished training at 1.5 trillion parameters, mid-June release expected; image-to-video model shipped; Google signed as a major compute tenant. <em>Moved: still pre-release &mdash; mid-June window intact; new detail: V9-Medium was trained heavily on Cursor coding data; no benchmarks published yet.</em></li>
+    <li><span class="label">Legal</span>SEC and Musk filed June 1&ndash;3 defending the $1.5M Twitter-disclosure settlement as &ldquo;fair, reasonable and appropriate&rdquo;; Judge Sooknanan had not ruled. <em>Moved: still no ruling &mdash; the one legal scenario that intersected the IPO calendar did not fire before pricing or debut.</em></li>
+    <li><span class="label">DOGE</span>Reports of an effective early wind-down with functions absorbed into the Office of Personnel Management (OPM); administration insists the charter runs to July 4. <em>Moved: the afterlife began &mdash; ex-DOGE staffers launched &ldquo;Special,&rdquo; a Musk-ally-backed venture to buy companies and cut waste with artificial intelligence (AI).</em></li>
+  </ul>
+</div>
+
+<!-- ═══ SPACEX / IPO ═══ -->
+<div id="spacex" class="section-header">
+  <span class="material-icons-outlined">rocket_launch</span>
+  <h3>SpaceX / IPO</h3>
+  <span class="count">3 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX &middot; IPO book</span>
+    <span class="meta-pill">June 5&ndash;11 2026 &middot; 3.5&ndash;4&times; covered</span>
+  </div>
+  <h4>The book closed June 10 at 3.5&ndash;4 times oversubscribed &mdash; over $250 billion of demand for a $75 billion deal &mdash; and SPCX priced June 11 at the fixed $135</h4>
+  <p>The fixed-price gamble paid off. Per Bloomberg, SpaceX&rsquo;s initial public offering (IPO) drew <strong>more orders than shares available within a day of the roadshow opening</strong>, and by the time books closed on <strong>Wednesday, June 10</strong>, institutional demand ran at <strong>3.5 to 4 times the $75 billion raise</strong> &mdash; over $250 billion in orders &mdash; with multiple institutions individually bidding <strong>$10 billion or more</strong>. Unusually, SpaceX reserved <strong>up to 30% of the 555.6-million-share offering for retail investors</strong>, an order of magnitude above the single-digit retail slice typical for deals this size. Pricing followed on <strong>June 11 at the fixed $135 per share</strong>, confirming the ~$1.75 trillion valuation. One sobering counter-signal amid the euphoria: TechTimes reported the <strong>gray-market premium slid into pricing</strong> &mdash; unofficial pre-debut trading suggested the first-print pop was shrinking, not growing, as the free money got arbitraged away.
+    (<a href="https://www.bloomberg.com/news/articles/2026-06-08/spacex-ipo-is-said-to-be-well-oversubscribed-orders-close-wed" style="color:var(--blue-on-soft)">Bloomberg books close</a>,
+    <a href="https://finance.yahoo.com/markets/stocks/articles/spacex-ipo-said-well-oversubscribed-154906500.html" style="color:var(--blue-on-soft)">Yahoo $10B orders</a>,
+    <a href="https://www.techtimes.com/articles/318170/20260610/spacex-ipo-order-books-close-four-times-oversubscribed-gray-market-slide-signals-shrinking-premium.htm" style="color:var(--blue-on-soft)">TechTimes gray-market slide</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Last week&rsquo;s open question &mdash; does the book fill at $135 with the rocket grounded? &mdash; is answered, emphatically. A 3.5&ndash;4&times; covered book means the marginal buyer fully underwrote the AI-infrastructure option without needing Starship flying, which validates the read that SPCX is being bought as a compute-and-scarcity asset, not a launch company. The 30% retail allocation is the structural novelty: it dilutes the institutional-only float dynamics we flagged, but it also seeds a retail shareholder base that behaves very differently in drawdowns. The shrinking gray-market premium is the honest number in the noise &mdash; it says the $135 price captured most of the value, leaving less first-day pop than the hype implies.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-06-08/spacex-ipo-is-said-to-be-well-oversubscribed-orders-close-wed"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://finance.yahoo.com/markets/stocks/articles/spacex-ipo-said-well-oversubscribed-154906500.html"><span class="material-icons-outlined">open_in_new</span>Yahoo Finance</a>
+    <a class="link-pill" href="https://www.techtimes.com/articles/318170/20260610/spacex-ipo-order-books-close-four-times-oversubscribed-gray-market-slide-signals-shrinking-premium.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX &middot; debut day</span>
+    <span class="meta-pill">June 12 2026 &middot; live at compile</span>
+  </div>
+  <h4>SPCX began trading this morning &mdash; Musk and Gwynne Shotwell rang opening bells in New York and Texas, the open was delayed ~30 minutes, and prediction markets bet on a $150&ndash;200 first print</h4>
+  <p>Debut day arrived on schedule. CNBC&rsquo;s live coverage has <strong>Elon Musk and SpaceX President Gwynne Shotwell ringing opening bells in New York and Texas</strong> as Space Exploration Technologies Corp. Class A common stock began trading on Nasdaq under <strong>SPCX</strong>. The official start of trading was <strong>delayed roughly 30 minutes, to about 9:50 a.m. Eastern Time</strong>, as designated market-making worked through the order imbalance &mdash; Fast Company tied the frenzy partly to intense prediction-market activity. Where it opens is the live question at compile time: <strong>prediction markets on Binance and Polymarket clustered around a $150&ndash;200 opening range</strong>, a Benzinga reader poll had 87% expecting an open above $135, and perpetual futures on the decentralised exchange Hyperliquid quoted SpaceX near <strong>$168 &mdash; a ~25% premium</strong>. Goldman Sachs led the underwriting syndicate, with Morgan Stanley, Bank of America, Citigroup and JPMorgan Chase behind it. <em>This card is deliberately unfinished: the opening print and first-day close were not confirmed when this briefing was compiled mid-session.</em>
+    (<a href="https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html" style="color:var(--blue-on-soft)">CNBC live updates</a>,
+    <a href="https://www.fastcompany.com/91558140/spacex-spcx-stock-price-ipo-trading-start-time-nasdaq-debut" style="color:var(--blue-on-soft)">Fast Company delayed start</a>,
+    <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/261964145-spacex-spcx-price-ipo-binance-polymarket-tradingkey" style="color:var(--blue-on-soft)">TradingKey prediction markets</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The thing to watch is not the first print but the first week. A modest pop (the gray market&rsquo;s ~+25%, versus the +50% retail dream) would actually be the bullish-structure outcome &mdash; it would mean the bankers priced a $1.75 trillion company within a quarter-turn of clearing, on the biggest deal ever, which de-risks the inevitable follow-on raises Starship and the data-centre build will demand. The bear mechanics to monitor: a thin effective float plus a 30% retail tranche plus prediction-market leverage is a recipe for violent two-way swings before the shareholder base settles. And note the second-order event: SPCX listing makes the Muskverse partially markable for the first time &mdash; every Tesla &ldquo;SpaceX halo&rdquo; argument now has a daily price to check itself against.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html"><span class="material-icons-outlined">open_in_new</span>CNBC</a>
+    <a class="link-pill" href="https://www.fastcompany.com/91558140/spacex-spcx-stock-price-ipo-trading-start-time-nasdaq-debut"><span class="material-icons-outlined">open_in_new</span>Fast Company</a>
+    <a class="link-pill" href="https://www.benzinga.com/markets/ipos/26/06/53165095/will-spacex-stock-open-above-135-ipo-price"><span class="material-icons-outlined">open_in_new</span>Benzinga</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX &middot; Starship</span>
+    <span class="meta-pill">no movement &middot; still grounded</span>
+  </div>
+  <h4>Starship: no movement in the window &mdash; still grounded, Flight 13 still July&ndash;August, and the FAA &ldquo;closes&rdquo;-versus-open ambiguity carries over unresolved</h4>
+  <p>Continuity item. Nothing new surfaced this week on the Flight 12 mishap file: the <strong>Federal Aviation Administration (FAA)</strong> still requires SpaceX to complete the investigation into Booster 19&rsquo;s premature engine shutdown and failed boostback ignitions (May 22), and to win approval of root cause and corrective actions before <strong>Flight 13 (Ship 40 + Booster 20)</strong> can fly &mdash; the reported window remains <strong>July&ndash;August 2026</strong>. The documentary ambiguity flagged last week is still live: an FAA newsroom page titled &ldquo;FAA Closes SpaceX Starship Mishap Investigation&rdquo; exists, while early-June trade reporting (MyRGV, June 2) described the probe as SpaceX&rsquo;s third open mishap investigation since January 2025. No launch-license announcement either way during IPO week. The stake is unchanged: <strong>Starlink Version 3 satellites fly only on Starship</strong>, and the S-1&rsquo;s second-half-2026 V3 deployment commitment compresses with every grounded week.
+    (<a href="https://www.faa.gov/newsroom/faa-closes-spacex-starship-mishap-investigation" style="color:var(--blue-on-soft)">FAA newsroom page</a>,
+    <a href="https://spacenews.com/faa-requires-mishap-investigation-into-latest-starship-launch/" style="color:var(--blue-on-soft)">SpaceNews requirement</a>,
+    <a href="https://myrgv.com/local-news/2026/06/02/spacex-conducting-third-mishap-investigation-since-january-2025/" style="color:var(--blue-on-soft)">MyRGV third probe</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The market just told you it doesn&rsquo;t care &mdash; for now. A 4&times;-covered book with the flagship vehicle grounded means Starship risk is priced as a timing question, not an existential one. That holds only while the July&ndash;August Flight 13 window holds. Now that SPCX trades daily, Starship news stops being a private-company footnote and becomes a same-day stock catalyst: the first post-IPO earnings frame, the corrective-action approval, and the Flight 13 license are the next three dates that move a public ticker. Anchor on the launch license, not the newsroom headline.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.faa.gov/newsroom/faa-closes-spacex-starship-mishap-investigation"><span class="material-icons-outlined">open_in_new</span>FAA</a>
+    <a class="link-pill" href="https://spacenews.com/faa-requires-mishap-investigation-into-latest-starship-launch/"><span class="material-icons-outlined">open_in_new</span>SpaceNews</a>
+    <a class="link-pill" href="https://myrgv.com/local-news/2026/06/02/spacex-conducting-third-mishap-investigation-since-january-2025/"><span class="material-icons-outlined">open_in_new</span>MyRGV</a>
+  </div>
+</div>
+
+<!-- ═══ TESLA ═══ -->
+<div id="tesla" class="section-header">
+  <span class="material-icons-outlined">electric_car</span>
+  <h3>Tesla</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla &middot; robotaxi</span>
+    <span class="meta-pill">June 3&ndash;4 2026 &middot; geofence unfrozen</span>
+  </div>
+  <h4>The robotaxi freeze ended &mdash; unsupervised service now covers the entire ~4,300-square-mile Austin metro &mdash; but the active driverless fleet is ~20 cars, and it&rsquo;s been shrinking</h4>
+  <p>The expansion freeze we carried for a month broke, in the least expected dimension. On <strong>June 3&ndash;4, Tesla expanded its unsupervised robotaxi geofence to the entire Austin metropolitan area</strong> &mdash; roughly <strong>4,286 square miles</strong> including Pflugerville, Manor, the I-35 corridor and Austin-Bergstrom International Airport. &ldquo;Unsupervised&rdquo; means no safety driver in the front seats, though remote operators still monitor feeds and can intervene; this is the fifth geofence expansion since the Austin pilot began. The catch is the denominator: Electrek reports only <strong>~20 active unsupervised vehicles</strong> serving the whole metro &mdash; a number that has been <em>shrinking</em>, versus ~50 total Tesla robotaxis per city officials and <strong>Waymo&rsquo;s 250+ vehicles</strong> in the same market. Early field tests showed the strain: a reporter logged <strong>wait times up to 30 minutes</strong> and intermittent inability to book a ride at all. Separately, Cathie Wood took a publicised driverless Tesla ride during the week &mdash; the demand-side narrative machine is running.
+    (<a href="https://electrek.co/2026/06/03/tesla-robotaxi-expands-entire-austin-metro-only-20-vehicles/" style="color:var(--blue-on-soft)">Electrek ~20 vehicles</a>,
+    <a href="https://cleantechnica.com/2026/06/03/tesla-expands-unsupervised-robotaxi-service-to-whole-austin-metro-area/" style="color:var(--blue-on-soft)">CleanTechnica metro expansion</a>,
+    <a href="https://www.gurufocus.com/news/8909764/troubles-for-teslas-tsla-robotaxi-service-in-austin" style="color:var(--blue-on-soft)">GuruFocus wait times</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Read the asymmetry carefully: Tesla expanded the <em>map</em>, not the <em>fleet</em>. A 4,300-square-mile geofence with 20 cars is a software-confidence statement (the stack now handles highways, airport runs, suburban edge cases) wrapped around a hardware-deployment failure (the fleet stopped growing in May and hasn&rsquo;t restarted). Thirty-minute waits are what happens when coverage outruns capacity by two orders of magnitude. The bull case is that geofence-first is the right order &mdash; prove the operating domain, then flood it with Cybercabs. The bear case is that the fleet number, not the map, is the binding constraint, and it is moving the wrong way while Waymo runs 12&times; the vehicles in Tesla&rsquo;s showcase city. Until the vehicle count inflects, this is a demo at metro scale.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://electrek.co/2026/06/03/tesla-robotaxi-expands-entire-austin-metro-only-20-vehicles/"><span class="material-icons-outlined">open_in_new</span>Electrek</a>
+    <a class="link-pill" href="https://cleantechnica.com/2026/06/03/tesla-expands-unsupervised-robotaxi-service-to-whole-austin-metro-area/"><span class="material-icons-outlined">open_in_new</span>CleanTechnica</a>
+    <a class="link-pill" href="https://www.gurufocus.com/news/8909764/troubles-for-teslas-tsla-robotaxi-service-in-austin"><span class="material-icons-outlined">open_in_new</span>GuruFocus</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla &middot; stock</span>
+    <span class="meta-pill">June 8&ndash;9 2026 &middot; ~$396</span>
+  </div>
+  <h4>TSLA slid to ~$396 even as the robotaxi map grew &mdash; while J.P. Morgan flipped from Underweight to Neutral and more than tripled its target to $475</h4>
+  <p>The equity decoupled from the robotaxi headline. <strong>TSLA traded around $396 on June 8</strong>, down from ~$432 at our June 1 read &mdash; an ~8% slide into and through SPCX pricing week, sitting below its short- and medium-term moving averages (year-to-date drawdown characterisations vary by outlet, &minus;7% to beyond &minus;16%; see caveat banner). The sell-side moved the other way: <strong>J.P. Morgan upgraded Tesla from Underweight to Neutral and raised its 12-month target from $145 to $475</strong> &mdash; one of the most violent target revisions on record &mdash; explicitly reframing its valuation around autonomous driving and humanoid robotics and projecting revenue from ~$95 billion (2025) to <strong>~$203 billion by 2030</strong>. Barclays followed June 8, calling robotaxi the critical growth driver in Tesla&rsquo;s artificial-intelligence (AI) strategy. The $25 billion 2026 capital-expenditure programme &mdash; robotaxi infrastructure, AI compute, the AI5 inference chip, Optimus &mdash; remains the cash-burn backdrop, with free cash flow guided negative for the rest of 2026.
+    (<a href="https://capital.com/en-int/market-updates/tesla-stock-forecast-09-06-2026" style="color:var(--blue-on-soft)">Capital.com $396 &amp; JPM upgrade</a>,
+    <a href="https://www.gurufocus.com/news/8905253/teslas-ai-strategy-robotaxi-insight-by-barclays-tsla" style="color:var(--blue-on-soft)">GuruFocus Barclays note</a>,
+    <a href="https://www.heygotrade.com/en/blog/tesla-stock-2026-robotaxi-capex-25b/" style="color:var(--blue-on-soft)">HeyGoTrade capex</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The June 8 briefing called Tesla &ldquo;the asset most exposed to a sell-the-SPCX-news unwind&rdquo; &mdash; the ~8% slide into debut week is consistent with exactly that rotation: why hold the proxy when the real thing lists Friday? The J.P. Morgan move is the more interesting signal, though: a $145&rarr;$475 target isn&rsquo;t an upgrade, it&rsquo;s a capitulation to the autonomy-and-Optimus framing by the street&rsquo;s most prominent Tesla bear &mdash; the narrative war over <em>what Tesla is</em> just lost its loudest dissenter. Watch whether SPCX&rsquo;s first trading week pulls halo capital back out of TSLA or re-anchors the whole complex higher; and keep Optimus V3 (July&ndash;August reveal) as the next Tesla-native catalyst.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://capital.com/en-int/market-updates/tesla-stock-forecast-09-06-2026"><span class="material-icons-outlined">open_in_new</span>Capital.com</a>
+    <a class="link-pill" href="https://www.gurufocus.com/news/8905253/teslas-ai-strategy-robotaxi-insight-by-barclays-tsla"><span class="material-icons-outlined">open_in_new</span>GuruFocus</a>
+    <a class="link-pill" href="https://www.heygotrade.com/en/blog/tesla-stock-2026-robotaxi-capex-25b/"><span class="material-icons-outlined">open_in_new</span>HeyGoTrade</a>
+  </div>
+</div>
+
+<!-- ═══ SPACEXAI / GROK ═══ -->
+<div id="xai" class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>SpaceXAI / Grok</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>Grok</span>
+    <span class="meta-pill">June 2026 &middot; pre-release</span>
+  </div>
+  <h4>Grok V9-Medium holds its mid-June window &mdash; new detail: it was trained heavily on Cursor coding data, with Musk promising &ldquo;much better at coding,&rdquo; but still no benchmarks</h4>
+  <p>A quiet week for the AI division by its standards &mdash; the model everyone is waiting on hasn&rsquo;t shipped yet. <strong>Grok V9-Medium</strong> (1.5 trillion parameters, ~3&times; the ~500-billion-parameter V8-Small in production) remains in supervised fine-tuning and reinforcement learning, with the <strong>public release still expected mid-June</strong> &mdash; i.e., imminently. The week&rsquo;s incremental detail is the training recipe: per TechTimes and builder analyses, a significant volume of <strong>Cursor data &mdash; real-world developer workflows from the AI code editor &mdash; was incorporated in supplementary training</strong>, and Musk&rsquo;s positioning is explicitly a coding play (&ldquo;much better at coding&rdquo;). The competitive gap it must close is documented: <strong>Grok 4 scores ~75% on SWE-bench Verified</strong> (a benchmark of real software-engineering fixes) versus <strong>Claude Opus 4.7&rsquo;s 87.6%</strong>, and Grok sits at roughly <strong>6% enterprise adoption</strong> against OpenAI&rsquo;s 55%, Anthropic&rsquo;s 47% and Google&rsquo;s 39%. No V9 benchmarks have been published.
+    (<a href="https://www.techtimes.com/articles/317328/20260528/grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june.htm" style="color:var(--blue-on-soft)">TechTimes Cursor data</a>,
+    <a href="https://www.aicerts.ai/news/xais-grok-v9-fuels-next-frontier-models-race/" style="color:var(--blue-on-soft)">AI CERTs adoption gap</a>,
+    <a href="https://docs.x.ai/developers/release-notes" style="color:var(--blue-on-soft)">xAI release notes</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The Cursor-data detail sharpens what V9 is for: not a general-assistant play but a direct run at the coding-agent market, which is where the enterprise money and the Anthropic moat both sit. The 6%-versus-47% adoption gap is the number that matters more than parameters &mdash; xAI&rsquo;s problem has never been model scale, it&rsquo;s distribution and trust in enterprise procurement. With SPCX now public, V9&rsquo;s release lands differently: a strong benchmark print is no longer just lab PR, it is same-week support for the AI-revenue line in a listed company&rsquo;s story. The re-rating date we set last week stands &mdash; judge Grok on the released model&rsquo;s benchmarks, due within days.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.techtimes.com/articles/317328/20260528/grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+    <a class="link-pill" href="https://www.aicerts.ai/news/xais-grok-v9-fuels-next-frontier-models-race/"><span class="material-icons-outlined">open_in_new</span>AI CERTs</a>
+    <a class="link-pill" href="https://docs.x.ai/developers/release-notes"><span class="material-icons-outlined">open_in_new</span>xAI Docs</a>
+  </div>
+</div>
+
+<!-- ═══ DOGE / POLITICS ═══ -->
+<div id="doge" class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>DOGE / Politics</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider politics"><span class="dot"></span>Politics</span>
+    <span class="meta-pill">June 2 2026 &middot; the afterlife</span>
+  </div>
+  <h4>DOGE&rsquo;s afterlife takes shape: ex-staffers launch &ldquo;Special,&rdquo; a Musk-ally-backed venture to buy companies and cut waste with AI &mdash; three weeks before the July 4 charter end</h4>
+  <p>The wind-down story moved from dispute to succession. Bloomberg reported <strong>June 2</strong> that two former staffers of the <strong>Department of Government Efficiency (DOGE)</strong> unveiled <strong>&ldquo;Special,&rdquo; a venture that buys companies and applies artificial intelligence (AI) to cut their costs</strong> &mdash; the DOGE playbook, privatised. Backers include multiple Musk allies, among them <strong>Steve Davis</strong>, Musk&rsquo;s de-facto second-in-command at DOGE (and Boring Company president). The official entity meanwhile drifts to its <strong>July 4, 2026 charter end</strong> with the early-wind-down-versus-formal-end dispute from last week unresolved; the savings ledger still reads <strong>~$170&ndash;180 billion claimed</strong>, dogged by documented errors and far short of the original $2 trillion ambition. Musk&rsquo;s own government role ended in May 2025; his net worth this week is estimated at <strong>$826&ndash;834 billion</strong>, the world&rsquo;s richest person &mdash; about to be tested daily by a public SPCX ticker.
+    (<a href="https://www.bloomberg.com/news/articles/2026-06-02/musk-allies-back-ex-doge-staffers-trying-to-use-ai-to-cut-waste" style="color:var(--blue-on-soft)">Bloomberg &ldquo;Special&rdquo;</a>,
+    <a href="https://en.wikipedia.org/wiki/Department_of_Government_Efficiency" style="color:var(--blue-on-soft)">DOGE overview</a>,
+    <a href="https://blog.mean.ceo/elon-musk-news-june-2026/" style="color:var(--blue-on-soft)">Musk net worth</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> &ldquo;Special&rdquo; is the tell that the DOGE network is converting political capital into private-market positioning before the charter formally lapses &mdash; an AI-roll-up fund staffed by people who spent eighteen months inside federal cost structures is a genuinely novel asset, whatever one thinks of the provenance. For the portfolio ledger it confirms the soft-landing path: no July 4 reckoning, just diffusion of DOGE people and methods into OPM on the government side and ventures like Special on the private side. This remains a fading variable for the Muskverse proper; the July 4 charter expiry is now a calendar footnote, not a catalyst.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-06-02/musk-allies-back-ex-doge-staffers-trying-to-use-ai-to-cut-waste"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Department_of_Government_Efficiency"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+  </div>
+</div>
+
+<!-- ═══ LEGAL ═══ -->
+<div id="legal" class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>Musk Legal</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>SEC &middot; OpenAI</span>
+    <span class="meta-pill">June 5&ndash;12 2026 &middot; still pending</span>
+  </div>
+  <h4>No Sooknanan ruling &mdash; the SEC settlement tail-risk window closed around the IPO without firing, and the docket goes quiet into the post-debut period</h4>
+  <p>Continuity item, and a meaningful non-event. <strong>U.S. District Judge Sparkle Sooknanan has still not ruled</strong> on the proposed <strong>$1.5 million settlement</strong> of the Securities and Exchange Commission (SEC) suit alleging Musk&rsquo;s late disclosure of his 2022 Twitter stake saved him over <strong>$150 million</strong> at shareholders&rsquo; expense. The state of play is unchanged from the June 1&ndash;3 filings: both sides defended the deal &mdash; penalty paid by a Musk-linked trust, no admission of wrongdoing &mdash; as &ldquo;fair, reasonable and appropriate&rdquo; and free of collusion, after Sooknanan&rsquo;s May statements that she would not &ldquo;rubber stamp&rdquo; an agreement whose structure raised &ldquo;red flags.&rdquo; The scenario we tracked for three weeks &mdash; a rejection landing inside the pricing-and-debut window &mdash; <strong>did not materialise</strong>: SPCX priced June 11 and listed June 12 with the matter simply pending. The Musk v. Altman / OpenAI thread stays parked on the 9th Circuit appeal docket; nothing moved this week.
+    (<a href="https://www.insurancejournal.com/news/national/2026/06/03/872219.htm" style="color:var(--blue-on-soft)">Insurance Journal filings</a>,
+    <a href="https://www.law.com/nationallawjournal/2026/05/13/no-rubber-stamp-us-judge-questions-sec-musk-settlement-proposal/" style="color:var(--blue-on-soft)">Law.com no rubber stamp</a>,
+    <a href="https://www.cpapracticeadvisor.com/2026/06/02/sec-defends-settlement-with-musk-after-judge-cites-red-flags/184338/" style="color:var(--blue-on-soft)">CPA Practice Advisor</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The calendar risk is spent but the legal risk is not. A post-debut rejection by Sooknanan would now hit a <em>public</em> SpaceX &mdash; reopened SEC enforcement against the controlling shareholder of a listed $1.75 trillion company is a materially different disclosure event than the same news against a private one, and SPCX&rsquo;s risk factors will own it. The cynical read &mdash; that the judge sat on the ruling through the IPO window &mdash; is unsupported; judges take months on contested consent decrees routinely. Keep it on the watch list at lower urgency: the binary is unchanged (approve and close, or reject and reopen), only the blast radius has grown.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.insurancejournal.com/news/national/2026/06/03/872219.htm"><span class="material-icons-outlined">open_in_new</span>Insurance Journal</a>
+    <a class="link-pill" href="https://www.law.com/nationallawjournal/2026/05/13/no-rubber-stamp-us-judge-questions-sec-musk-settlement-proposal/"><span class="material-icons-outlined">open_in_new</span>Law.com</a>
+    <a class="link-pill" href="https://www.cpapracticeadvisor.com/2026/06/02/sec-defends-settlement-with-musk-after-judge-cites-red-flags/184338/"><span class="material-icons-outlined">open_in_new</span>CPA Advisor</a>
+  </div>
+</div>
+
+<!-- ═══ OTHER VENTURES ═══ -->
+<div id="ventures" class="section-header">
+  <span class="material-icons-outlined">hub</span>
+  <h3>Other Ventures</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider ventures"><span class="dot"></span>Neuralink &middot; Boring &middot; X</span>
+    <span class="meta-pill">June 2026 &middot; continuity+</span>
+  </div>
+  <h4>Neuralink pushes toward high-volume implant production with near-automated surgery; Boring names New Orleans and Dallas as Tunnel Vision winners; X rolls out its AI-rebuilt ad platform</h4>
+  <p><strong>Neuralink:</strong> the brain-computer interface (BCI) company is positioning 2026 as its industrialisation year &mdash; Musk says it will start <strong>&ldquo;high-volume production&rdquo; of implant devices</strong> and move to a <strong>streamlined, almost fully automated surgical procedure</strong>; public reporting counts <strong>21 implanted patients as of January 2026</strong>, across spinal-cord-injury and amyotrophic lateral sclerosis (ALS) cases, with the Blindsight visual prosthesis (FDA Breakthrough status, covered last week) targeting a first patient this year. <strong>The Boring Company:</strong> the &ldquo;Tunnel Vision Challenge&rdquo; named <strong>New Orleans and Dallas</strong> as winning candidate cities for new Loop systems &mdash; Baltimore was initially named, then dropped after early talks &mdash; while the company entered <strong>negotiations for an underground transit system at Universal Orlando</strong>; Dubai Loop construction (6.4 km, four stations, target 2027) continues. <strong>X:</strong> the <strong>rebuilt, AI-powered advertising platform</strong> is in phased rollout &mdash; modern retrieval-and-ranking, new ad-quality rules (hashtags and multi-emoji copy banned, visual-size-based pricing), with the Hotshot text-to-video generator to be integrated; eMarketer pegs X ad revenue recovering to <strong>~$2.46 billion in 2026</strong>, still about half of Twitter&rsquo;s 2021 business.
+    (<a href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices" style="color:var(--blue-on-soft)">Fierce Biotech production ramp</a>,
+    <a href="https://www.foxbusiness.com/fox-news-tech/elon-musks-boring-company-eyes-underground-tunnel-projects-two-major-us-cities" style="color:var(--blue-on-soft)">Fox Business tunnel cities</a>,
+    <a href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/" style="color:var(--blue-on-soft)">TechCrunch X ads</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Three ventures, one common move: each is converting a science-project narrative into an operations narrative &mdash; Neuralink talking production volume and surgical automation instead of first-in-human firsts, Boring converting a publicity challenge into named-city pipelines plus a theme-park contract negotiation, X talking ad-stack engineering instead of free-speech wars. None is near material to the consolidated Muskverse numbers, but the direction matters: post-SPCX, every Musk entity benefits from looking like a business rather than a bet. The X ad recovery (~$2.46B, half of 2021) is the soberest line item &mdash; the platform&rsquo;s strategic value to Musk is Grok distribution and data, not the ad P&amp;L.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices"><span class="material-icons-outlined">open_in_new</span>Fierce Biotech</a>
+    <a class="link-pill" href="https://www.foxbusiness.com/fox-news-tech/elon-musks-boring-company-eyes-underground-tunnel-projects-two-major-us-cities"><span class="material-icons-outlined">open_in_new</span>Fox Business</a>
+    <a class="link-pill" href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+  </div>
+</div>
+
+<!-- ═══ CROSS-REF ═══ -->
+<div class="banner cross-ref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Cross-references</strong>
+    The SPCX debut belongs at the top of this week&rsquo;s market briefing &mdash; largest IPO ever, $250B+ of demand absorbed in one week is itself a liquidity datapoint. The Grok V9 release (due within days) and the 6%-vs-47% enterprise-adoption gap connect to the AI briefing&rsquo;s coding-agent competition thread; Claude Opus 4.7&rsquo;s 87.6% SWE-bench Verified is the bar V9 is aiming at. Polymarket&rsquo;s SPCX opening-price markets ($150&ndash;200 cluster) are a live case for the Polymarket dashboard&rsquo;s AI-race theme. The Musk v. Altman appeal stays parked &mdash; nothing for the OpenAI trial report this week.
+  </div>
+</div>
+
+<!-- ═══ EDITOR'S VIEW ═══ -->
+<div class="featured">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Editor&rsquo;s View</span>
+  <h3>Six reads on the week the Muskverse went public</h3>
+  <ol class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <span class="body"><strong>The book answered last week&rsquo;s question: the market bought the option, not the rocket.</strong> 3.5&ndash;4&times; oversubscribed, $250B+ in demand, $10B single-institution orders &mdash; all with Starship grounded and no Flight 13 license. The marginal SPCX buyer underwrote the AI-infrastructure and orbital-compute thesis on the strength of the Google contract and the scarcity narrative alone. That is now an empirical fact about how the largest pools of capital price this story.</span>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <span class="body"><strong>The shrinking gray-market premium is the most honest number of the week.</strong> Prediction markets dream of $150&ndash;200; the gray market drifted toward ~+25% and falling into pricing. If the debut pops modestly rather than violently, that&rsquo;s the bankers&rsquo; win &mdash; a $1.75T company priced within a quarter-turn of clearing &mdash; and it preserves credibility for the follow-on raises the capex plan will inevitably demand. Judge the IPO on week one, not minute one.</span>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <span class="body"><strong>Everything in the Muskverse is now marked to a daily price.</strong> SPCX listing converts Starship licenses, Grok benchmarks, even Sooknanan&rsquo;s ruling from private-company footnotes into same-day stock catalysts. It also disciplines the Tesla &ldquo;SpaceX halo&rdquo; trade: the halo now has its own ticker, and TSLA&rsquo;s ~8% slide into debut week looks like exactly that capital rotating to the source.</span>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <span class="body"><strong>Tesla expanded the map, not the fleet &mdash; don&rsquo;t confuse the two.</strong> A 4,300-square-mile unsupervised geofence is a real software milestone; ~20 active driverless cars (and shrinking) against Waymo&rsquo;s 250+ in the same city is the operating reality, and 30-minute waits are the arithmetic. The freeze we tracked since May 10 broke in the dimension that costs nothing. The vehicle count is the number to watch &mdash; it, not the geofence, decides whether the J.P. Morgan capitulation ($145&rarr;$475, Underweight&rarr;Neutral) was early or late.</span>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <span class="body"><strong>Grok V9 lands in days, into higher stakes than it was announced for.</strong> The Cursor-training detail says xAI is aiming squarely at the coding-agent market where the enterprise revenue lives &mdash; and where Grok&rsquo;s 6% adoption versus Anthropic&rsquo;s 47% and a 75-vs-87.6 SWE-bench gap define the climb. Post-listing, a strong V9 print is balance-sheet-relevant news for a public company, not lab PR. A weak one punctures the &ldquo;frontier lab worth the clusters&rdquo; half of the SPCX thesis in week one of trading.</span>
+    </li>
+    <li>
+      <span class="num">6</span>
+      <span class="body"><strong>The tails that didn&rsquo;t fire still exist &mdash; they just got bigger consequences.</strong> Sooknanan&rsquo;s ruling and the Starship corrective-action approval both slipped past the IPO window harmlessly, but each now detonates (or resolves) against a public ticker: a settlement rejection means reopened SEC enforcement against the controlling shareholder of a listed $1.75T company; a Flight 13 slip past August guts the H2 Starlink V3 commitment in the S-1. <em>The wildcard for next week: the actual SPCX close &mdash; and whether Grok V9 ships inside it.</em></span>
+    </li>
+  </ol>
+</div>
+
+<!-- ═══ COLOPHON ═══ -->
+<div class="colophon">
+  <h4>About this briefing</h4>
+  Muskverse Portfolio Briefing &middot; Weekly edition &middot; coverage period June 5&ndash;12, 2026 &middot; compiled June 12, 2026, during the SPCX debut session.<br>
+  Sources are web-search-derived [tool] and linked inline per story; confidence dots (C-Scores) reflect source strength: 5 = primary/filing, 4 = mainstream corroborated, 3 = single-source or industry summary. Open items flagged in the caveat banner: SPCX opening/closing prints (compiled mid-session), Tesla share-price level and year-to-date characterisation (conflicting outlets), Starship mishap-investigation status (FAA &ldquo;closes&rdquo; page vs. open-probe trade reporting). A reported Neuralink $650M Series E circulating in June-dated aggregators likely recycles the June 2025 round and is deliberately excluded. Not investment advice. Prices and legal status as of compile date and subject to change.
+</div>
+
+</main>
+</body>
+</html>

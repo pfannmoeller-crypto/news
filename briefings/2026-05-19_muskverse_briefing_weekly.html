@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Weekly · May 19, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #3c4043;
+    --primary-hover: #2d3134;
+    --primary-soft: #e8eaed;
+    --primary-on-soft: #3c4043;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --blue: #1a73e8;
+    --blue-soft: #e8f0fe;
+    --blue-on-soft: #1967d2;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  /* APP BAR — NOT sticky */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: #3c4043; color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 16px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--divider); background: var(--surface); color: var(--on-surface-2); font-family: 'Google Sans Text', sans-serif; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  .hero { background: linear-gradient(135deg, #5f6368 0%, #1f2937 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 26px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0; max-width: 740px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.tesla    { background: #fce8e6; color: #a50e0e; }
+  .provider.spacex   { background: #e8eef6; color: #1f3548; }
+  .provider.xai      { background: #f1f3f4; color: #3c4043; }
+  .provider.politics { background: #fef7e0; color: #b06000; }
+  .provider.trial    { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ventures { background: #e6f4ea; color: #0d652d; }
+  .provider.baseline { background: #e8f0fe; color: #1967d2; }
+
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\00b7"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 10px; }
+  .card p:last-of-type { margin-bottom: 12px; }
+  .card .takeaway { background: #f5fbf6; border-left: 3px solid var(--green); padding: 10px 14px; margin: 4px 0 12px; font-size: 13px; line-height: 1.55; color: var(--on-surface-2); border-radius: 0 8px 8px 0; }
+  .card .takeaway strong { color: var(--green); font-weight: 500; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--blue-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--blue-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+
+  .banner.cross-ref { background: var(--blue-soft); border-color: #a8c7fa; color: var(--blue-on-soft); }
+  .banner.cross-ref .material-icons-outlined { color: var(--blue-on-soft); }
+  .banner.cross-ref strong { color: var(--blue-on-soft); }
+  .banner.cross-ref div { color: #174ea6; }
+  .banner.cross-ref a { color: #1a73e8; font-weight: 500; }
+
+  .status-list { list-style: none; margin: 0; padding: 0; }
+  .status-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--divider-soft); font-size: 13px; line-height: 1.55; color: var(--on-surface-2); }
+  .status-list li:last-child { border-bottom: none; }
+  .status-list .label { flex-shrink: 0; width: 100px; font-weight: 500; color: var(--on-surface); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 1px; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 20px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 12px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: left; font-size: 12px; color: var(--on-surface-muted); line-height: 1.7; }
+  .colophon h4 { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--on-surface-2); margin: 0 0 8px; }
+  .colophon a { color: var(--blue-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Weekly &middot; May 19, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a href="#status" class="chip active"><span class="material-icons-outlined">check_circle</span>Status Quo</a>
+  <a href="#tesla" class="chip">Tesla</a>
+  <a href="#xai" class="chip">xAI / Grok</a>
+  <a href="#spacex" class="chip">SpaceX</a>
+  <a href="#doge" class="chip">DOGE / Politics</a>
+  <a href="#legal" class="chip">Legal</a>
+  <a href="#ventures" class="chip">Other Ventures</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="eyebrow">May 14 &ndash; May 19, 2026 &middot; Weekly edition</div>
+  <h2>The OpenAI trial collapses on a calendar technicality. SpaceX moves to file publicly for the IPO. Starship Flight 12 slips a third time.</h2>
+  <p>The single biggest event since the May 14 refresh: a federal jury in Oakland needed <strong>under two hours</strong> on May 18 to dismiss every claim in Musk's <strong>$134 billion</strong> lawsuit against Sam Altman and OpenAI, finding the alleged breach-of-charitable-trust claims fell outside the three-year statute of limitations. Microsoft was cleared on the same grounds. Musk called it a "calendar technicality" and will appeal to the 9th U.S. Circuit Court of Appeals. Simultaneously, Bloomberg reported on May 15 that <strong>SpaceX plans to file its public S-1 as soon as Wednesday May 20</strong>, with Nasdaq picked as listing venue, marketing starting June 4, pricing as early as June 11, and a target valuation <strong>above $1.75 trillion</strong>. <strong>Starship Flight 12 slipped a third time</strong> &mdash; from May 19 to May 20 to May 21, now coinciding with the public-filing window. TSLA cooled to ~$423 (-3.7% on May 15). The SEC settlement red-flag detail sharpened. And Neuralink unveiled a next-generation surgical robot with whole-brain access.</p>
+</div>
+
+<!-- ═══ STATUS QUO ═══ -->
+<div id="status" class="section-header">
+  <span class="material-icons-outlined">check_circle</span>
+  <h3>Status Quo &middot; Where things stood at the May 14 edition</h3>
+  <span class="count">snapshot</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider baseline"><span class="dot"></span>Baseline</span>
+    <span class="meta-pill">As of May 14 2026</span>
+  </div>
+  <h4>Recap from the May 14 briefing &mdash; what has and hasn't moved since</h4>
+  <ul class="status-list">
+    <li><span class="label">Tesla</span>TSLA at $445.27 (+2.7% on May 13) on the China trip and Optimus narratives; robotaxi friction reports in Dallas/Houston/Austin. <em>Moved: stock cooled to ~$423 on May 15; China trip wrapped without a Full Self-Driving (FSD) approval announcement; CapEx hike to >$25B reported.</em></li>
+    <li><span class="label">xAI / X</span>Bloomberg: xAI signing Wall Street firms onto Grok (Apollo, Morgan Stanley, Valor) ahead of SpaceX IPO; legacy Grok models retiring May 15. <em>Moved: model retirement deadline has now passed; Grok Build coding agent ($300/mo SuperGrok Heavy) and Custom Voices/Quality Mode updates carrying through to user surface area.</em></li>
+    <li><span class="label">SpaceX</span>Flight 12 confirmed for May 19 (lifted off later that day in the May 14 narrative); Federal Aviation Administration (FAA) approved southerly Caribbean trajectory; NRO satellites launched May 11. <em>Moved materially: Flight 12 slipped to May 20, then again to May 21; Bloomberg reported the SpaceX public S-1 filing imminent (May 20) at $1.75T+ target valuation.</em></li>
+    <li><span class="label">DOGE</span>Judge McMahon's ruling on National Endowment for the Humanities (NEH) grant cuts confirmed; ChatGPT + keyword-filter detail surfaced; appeal signaled. <em>No material movement May 14&ndash;19.</em></li>
+    <li><span class="label">Legal</span>Judge Sparkle Sooknanan refused to "rubber-stamp" Musk's $1.5M Securities and Exchange Commission (SEC) settlement; cited "red flags"; June 1 written-answer deadline. <em>Moved: detail of the judge's three specific objections came into focus &mdash; trust structure, penalty size (1% of alleged damages), and Musk's personal removal as a defendant.</em></li>
+    <li><span class="label">Trial</span>Nadella and Altman testified May 11&ndash;13; verdict scenario flagged for ~May 21. <em>Moved decisively: jury verdict came in <strong>May 18</strong> &mdash; three days early &mdash; dismissing all claims on statute-of-limitations grounds.</em></li>
+  </ul>
+</div>
+
+<!-- ═══ TESLA ═══ -->
+<div id="tesla" class="section-header">
+  <span class="material-icons-outlined">electric_car</span>
+  <h3>Tesla</h3>
+  <span class="count">3 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">May 14&ndash;16 2026 &middot; China trip wrap</span>
+  </div>
+  <h4>China trip ends without a concrete FSD approval; Musk and Huang flew home on Air Force One</h4>
+  <p>Trump's May 13&ndash;15 state visit to China closed without a public Full Self-Driving (FSD) regulatory commitment for Tesla. Of the 17 chief executives in the delegation, <strong>only Musk and Nvidia's Jensen Huang were given seats on Air Force One</strong> &mdash; a signal of access rather than a substantive deliverable. Reporting from CNBC and Yahoo Finance describes the visit's choreography as heavy on optics (a state banquet, executive selfies, Huang's hutong noodle run) and lighter on specific Tesla agreements. The internal Tesla working estimate for FSD approval in China remains <strong>Q3 2026</strong>, unchanged from before the trip. Separately, an export-license signal for Nvidia's second-most-advanced chips into China was the trip's clearest specific outcome &mdash; benefiting Nvidia directly, and indirectly the AI-infrastructure surface around xAI.
+    (<a href="https://www.cnbc.com/2026/05/16/a-state-banquet-selfies-and-a-noodle-run-trumps-beijing-visit.html" style="color:var(--blue-on-soft)">CNBC banquet</a>,
+    <a href="https://finance.yahoo.com/economy/policy/articles/trump-brought-17-ceos-china-143720929.html" style="color:var(--blue-on-soft)">Yahoo Finance Air Force One</a>,
+    <a href="https://stocktwits.com/news-articles/markets/equity/tsla-stock-slips-musk-trump-china-trip-fsd-delays-shanghai-factory/cZXX38WReLn" style="color:var(--blue-on-soft)">Stocktwits FSD delay</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The May 14 edition called this a "watch for substance, not optics" event. The substance didn't arrive; the optics were strong. Markets read it accordingly &mdash; the China-meeting premium has now been priced and largely given back. The honest scoreboard: Musk got access and presence, but the Q3 internal estimate remains the operative number on FSD-China. Nvidia got the cleaner win out of the trip.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/05/16/a-state-banquet-selfies-and-a-noodle-run-trumps-beijing-visit.html"><span class="material-icons-outlined">open_in_new</span>CNBC visit recap</a>
+    <a class="link-pill" href="https://finance.yahoo.com/economy/policy/articles/trump-brought-17-ceos-china-143720929.html"><span class="material-icons-outlined">open_in_new</span>Yahoo Air Force One</a>
+    <a class="link-pill" href="https://stocktwits.com/news-articles/markets/equity/tsla-stock-slips-musk-trump-china-trip-fsd-delays-shanghai-factory/cZXX38WReLn"><span class="material-icons-outlined">open_in_new</span>Stocktwits FSD</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">May 15 2026 &middot; stock + capex</span>
+  </div>
+  <h4>TSLA gives back ~3.7% to $423; 2026 CapEx hiked above $25B; negative free cash flow expected rest of year</h4>
+  <p>TSLA closed down <strong>3.73% on May 15</strong> to roughly $423, reversing part of the China-trip rally. The pullback coincided with reporting that Tesla's 2026 capital-expenditure plan has been <strong>lifted above $25 billion</strong> &mdash; nearly triple the prior year's $8.53 billion and well above the roughly $20 billion plan discussed earlier in 2026. Management has guided to <strong>negative free cash flow for the rest of the year</strong> after the Q1 surplus. Separately, the May 14 robotaxi friction story (long wait times, cancellations, navigation issues across Austin/Dallas/Houston) has been picked up more broadly; analysts (Piper Sandler, Motley Fool, MEXC) are coalescing around the view that the rally to $445 priced an early-2027 autonomy story while 2026 operational reality is a ~26-vehicle fleet stretched across multiple cities. Tesla expects no material robotaxi revenue in 2026 and continues to gate scale on the <strong>v15 software release</strong>, presumed early 2027.
+    (<a href="https://www.tradingkey.com/news/market-movers/261900513-market-movers-tsla-20260515" style="color:var(--blue-on-soft)">TradingKey May 15</a>,
+    <a href="https://www.techi.com/tesla-ai-capex-ev-cash-machine/" style="color:var(--blue-on-soft)">Techi CapEx</a>,
+    <a href="https://www.fool.com/investing/2026/05/14/heres-when-teslas-robotaxi-rollout-will-really-ram/" style="color:var(--blue-on-soft)">Motley Fool ramp</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The fundamental question is becoming visible again. Tesla is shifting capital structure from EV cash machine to AI capex absorber while delivery growth slows. A $25B+ spend year against negative FCF guidance is a different financial profile than the one TSLA traded on at $445. The stock is now adjudicating two stories &mdash; the Optimus/robotaxi optionality and the deteriorating near-term cash picture. The bull case still works on a long-dated discount rate; the question is whether the market keeps applying one as the IPO-cycle attention shifts to SpaceX.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.tradingkey.com/news/market-movers/261900513-market-movers-tsla-20260515"><span class="material-icons-outlined">open_in_new</span>TradingKey May 15</a>
+    <a class="link-pill" href="https://www.techi.com/tesla-ai-capex-ev-cash-machine/"><span class="material-icons-outlined">open_in_new</span>Techi CapEx</a>
+    <a class="link-pill" href="https://www.fool.com/investing/2026/05/14/heres-when-teslas-robotaxi-rollout-will-really-ram/"><span class="material-icons-outlined">open_in_new</span>Motley Fool ramp</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">May 2026 &middot; Optimus</span>
+  </div>
+  <h4>Optimus production timeline firms: Fremont line installation underway; V3 reveal slated July&ndash;August; start "quite slow"</h4>
+  <p>Fresh detail on the post-Model S/X Fremont conversion: the <strong>first-generation Optimus production line</strong> is now being installed at Fremont, with the <strong>V3 robot reveal targeted late July or August 2026</strong> and production starting "shortly after." Musk has explicitly warned that initial output will be <strong>"quite slow"</strong> and that predicting the 2026 rate is "literally impossible" given Optimus carries ~10,000 unique parts across an entirely new line. The Fremont line is designed for a long-term capacity of <strong>1 million robots per year</strong>; Gigafactory Texas is being prepared for the second-generation line, designed for 10 million per year. Today, Optimus robots are operating within Tesla's own factories but, per the Q4 2025 call, are "primarily for learning and data collection rather than performing productive tasks."
+    (<a href="https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line/" style="color:var(--blue-on-soft)">Electrek V3 reveal</a>,
+    <a href="https://optimusk.blog/blog/tesla-optimus-production-timeline/" style="color:var(--blue-on-soft)">Optimus Production Timeline</a>,
+    <a href="https://www.greendrive-accessories.com/blog/language/en/tesla-optimus-3-robot-humanoide-2026-2/" style="color:var(--blue-on-soft)">Greendrive Optimus 3</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The Optimus production story is graduating from rhetorical claim to physical line installation &mdash; that is the genuine progress. The "quite slow" framing from Musk himself is the honest disclaimer: the bull thesis at $445 implicitly priced rapid ramp, but the operator-stated rate is "unpredictable, low to start." The valuable signal in the next 90 days is whether the July&ndash;August reveal actually happens on time and what it shows on the dexterity/throughput axis &mdash; that is the leading indicator on whether the AI-pivot capex earns its cost.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line/"><span class="material-icons-outlined">open_in_new</span>Electrek reveal</a>
+    <a class="link-pill" href="https://optimusk.blog/blog/tesla-optimus-production-timeline/"><span class="material-icons-outlined">open_in_new</span>Optimusk Blog</a>
+  </div>
+</div>
+
+<!-- ═══ xAI / GROK ═══ -->
+<div id="xai" class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>xAI / Grok</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>xAI / X</span>
+    <span class="meta-pill">May 14&ndash;19 2026</span>
+  </div>
+  <h4>Grok Build coding agent rolls out at $300/month; legacy Grok models retired May 15; X claims 611M MAU</h4>
+  <p>The headline product news on the xAI side is the consumer-facing rollout of <strong>Grok Build</strong>, xAI's coding agent and command-line interface (CLI), described as built "for professional software engineering and complex coding work." It is available <strong>only to SuperGrok Heavy subscribers at $300 per month</strong> &mdash; a price point that explicitly positions xAI against Anthropic's Claude Code and OpenAI's Codex tier. Adjacent: the <strong>May 15 legacy-model retirement</strong> flagged in the May 14 edition took effect, with API requests now auto-redirecting to grok-4.3. On the X side, the platform claims <strong>611 million monthly active users in Q1 2026</strong>, up from 588M a year earlier; monetizable daily active users (mDAU) reached <strong>251M, a platform record</strong>. The rebuilt artificial-intelligence-powered ads platform announced in late April continues to roll out. No new headline on the Wall Street firms / Grok adoption Bloomberg story from May 13 &mdash; that thread is in waiting mode until the SpaceX S-1 lands.
+    (<a href="https://www.engadget.com/2173482/xai-coding-agent-grok-build/" style="color:var(--blue-on-soft)">Engadget Grok Build</a>,
+    <a href="https://www.eweek.com/news/xai-grok-build-coding-agent/" style="color:var(--blue-on-soft)">eWeek Grok Build</a>,
+    <a href="https://www.businessofapps.com/data/twitter-statistics/" style="color:var(--blue-on-soft)">Business of Apps 611M</a>,
+    <a href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/" style="color:var(--blue-on-soft)">TechCrunch X ads</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Two things are happening in parallel. (1) xAI is hardening the consumer surface (Grok Build at $300, model consolidation on May 15) so the SpaceX S-1 can reference a clean product ladder rather than a model zoo. (2) The X-platform user numbers (611M MAU, 251M mDAU record) are the headline metrics any combined-entity IPO narrative would want to anchor on. The unanswered question remains: will the S-1 disclose xAI/X as a segment with hard revenue, or aggregate it into "other" so the loss-making profile stays opaque?</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.engadget.com/2173482/xai-coding-agent-grok-build/"><span class="material-icons-outlined">open_in_new</span>Engadget</a>
+    <a class="link-pill" href="https://www.eweek.com/news/xai-grok-build-coding-agent/"><span class="material-icons-outlined">open_in_new</span>eWeek</a>
+    <a class="link-pill" href="https://www.businessofapps.com/data/twitter-statistics/"><span class="material-icons-outlined">open_in_new</span>X MAU/mDAU</a>
+  </div>
+</div>
+
+<!-- ═══ SPACEX ═══ -->
+<div id="spacex" class="section-header">
+  <span class="material-icons-outlined">rocket_launch</span>
+  <h3>SpaceX</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX</span>
+    <span class="meta-pill">May 15 2026 &middot; IPO filing</span>
+  </div>
+  <h4>Bloomberg: SpaceX moves to public S-1 filing as soon as May 20; Nasdaq picked; $1.75T+ target valuation</h4>
+  <p>The defining event of the week. Bloomberg reported on <strong>May 15</strong> (corroborated by Reuters via Bloomberg Law and CNBC) that SpaceX intends to file its <strong>public Form S-1 with the Securities and Exchange Commission (SEC) as soon as Wednesday May 20</strong>, converting the confidential filing made on April 1. <strong>Nasdaq has been selected as the listing venue</strong>; the ticker speculation continues to point to SPCX though that is not formally confirmed. The plan as reported: <strong>formal IPO marketing (roadshow) kicks off June 4, pricing as early as June 11, with first day of trading June 12</strong>. The valuation SpaceX is seeking is <strong>above $1.75 trillion</strong> &mdash; which, if achieved, would make SpaceX one of the ten most valuable publicly listed companies in the world from day one. The April 1 confidential filing already disclosed the offering will include "Combined-Entity" features bundling SpaceX, xAI, and X operations through inter-company arrangements; the public S-1 will reveal how that structure is described to retail and institutional buyers.
+    (<a href="https://www.bloomberg.com/news/articles/2026-05-15/spacex-picks-nasdaq-as-listing-venue-for-ipo-reuters" style="color:var(--blue-on-soft)">Bloomberg May 15</a>,
+    <a href="https://news.bloomberglaw.com/tech-and-telecom-law/spacex-picks-nasdaq-as-listing-venue-for-ipo-reuters" style="color:var(--blue-on-soft)">Bloomberg Law / Reuters</a>,
+    <a href="https://www.techi.com/spacex-ipo/" style="color:var(--blue-on-soft)">TECHi S-1 watch</a>,
+    <a href="https://www.fool.com/investing/2026/04/27/spacex-ipo-timeline-every-important-date-need-know/" style="color:var(--blue-on-soft)">Motley Fool timeline</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Every prior briefing's "the whole Muskverse is being arranged for the S-1" thesis just became the operating reality. The four-week window between May 20 (file) and June 12 (trade) is when the disclosure stress-tests reveal the actual numbers behind Starlink, the defense surface (NRO/Golden Dome), and the xAI/X combined-entity arrangement. Two things to watch hardest: (a) how segment revenue is broken out &mdash; SpaceX bulls want hard Starlink numbers, the company wants to keep the X/xAI losses opaque; and (b) how the prospectus treats Musk's legal exposure (the OpenAI appeal, the SEC settlement still pending Sooknanan, DOGE cases). A $1.75T+ asking valuation leaves little margin for disclosure surprises.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-05-15/spacex-picks-nasdaq-as-listing-venue-for-ipo-reuters"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://news.bloomberglaw.com/tech-and-telecom-law/spacex-picks-nasdaq-as-listing-venue-for-ipo-reuters"><span class="material-icons-outlined">open_in_new</span>Bloomberg Law</a>
+    <a class="link-pill" href="https://www.techi.com/spacex-ipo/"><span class="material-icons-outlined">open_in_new</span>TECHi</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX</span>
+    <span class="meta-pill">May 18&ndash;19 2026 &middot; Flight 12 slip #3</span>
+  </div>
+  <h4>Starship Flight 12 slips a third time from May 19 to May 21; launch and S-1 filing now coincident</h4>
+  <p>Starship Flight 12 has slipped again. The May 14 edition recorded the move from May 12 to May 19; Spaceflight Now and Space.com reported on May 18 that SpaceX pushed the launch <strong>first to Wednesday May 20</strong>, then on May 19 to <strong>Thursday May 21 at 22:30 UTC</strong> (6:30 p.m. EDT, 5:30 p.m. local at Starbase, Texas). The mission profile is unchanged: <strong>Booster 19 + Ship 39</strong> in the maiden V3 (Raptor 3, integrated interstage, three grid fins) configuration, suborbital, deploying 22 next-generation Starlink simulators, with the upper stage splashing down in the Indian Ocean off Western Australia about 65 minutes after liftoff. Final two simulators will scan the heat shield and downlink imagery to test return-to-launch-site readiness. The Federal Aviation Administration (FAA) approved southerly Caribbean trajectory remains in force.
+    (<a href="https://www.space.com/news/live/spacex-starship-flight-12-launch-updates-may-18-2026" style="color:var(--blue-on-soft)">Space.com live</a>,
+    <a href="https://www.spacelaunchschedule.com/launch/starship-flight-12/" style="color:var(--blue-on-soft)">SLS schedule</a>,
+    <a href="https://spacelaunchlive.com/launches/starship-flight-12/" style="color:var(--blue-on-soft)">Space Launch Live</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The May 14 edition flagged that May 19 had already collapsed the buffer between launch and the May 18&ndash;22 SEC filing window. Now the launch sits <strong>on top of</strong> the filing window: if SpaceX files on May 20 and launches on May 21, an Initial Public Offering (IPO) prospectus and a V3 maiden flight share 48 hours of news cycle. A clean V3 flight just before pricing would be a textbook tailwind. A failure on the 21st, with a fresh prospectus in the market, is the asymmetric downside &mdash; one the disclosure document would have to address as a "subsequent event" or expand in risk factors. SpaceX has historically been willing to fly through public-relations risk; that calculus tightens when an offering is on the calendar.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.space.com/news/live/spacex-starship-flight-12-launch-updates-may-18-2026"><span class="material-icons-outlined">open_in_new</span>Space.com</a>
+    <a class="link-pill" href="https://www.spacelaunchschedule.com/launch/starship-flight-12/"><span class="material-icons-outlined">open_in_new</span>SLS</a>
+    <a class="link-pill" href="https://spacelaunchlive.com/launches/starship-flight-12/"><span class="material-icons-outlined">open_in_new</span>SLL</a>
+  </div>
+</div>
+
+<!-- ═══ DOGE / POLITICS ═══ -->
+<div id="doge" class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>DOGE / Politics</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider politics"><span class="dot"></span>Politics</span>
+    <span class="meta-pill">May 14&ndash;19 2026 &middot; quiet week</span>
+  </div>
+  <h4>No material new DOGE development; charter still expires July 4; CBS/USAFacts re-audit the savings claim</h4>
+  <p>Quiet week on the Department of Government Efficiency (DOGE) front following the May 12 ruling-detail story. The structural picture is unchanged from the May 14 edition: DOGE's underlying entity was effectively wound down in <strong>November 2025</strong> when the Office of Personnel Management absorbed most of its tasks, but the <strong>founding charter remains active until July 4, 2026</strong>, and DOGE continues to operate its website and social channels. The Trump administration's signaled appeal of Judge Colleen McMahon's National Endowment for the Humanities (NEH) ruling has not yet been filed. The interesting indirect news this week was a CBS News / USAFacts re-audit of DOGE's savings claims: DOGE asserts it has saved taxpayers <strong>$170 billion</strong>; the CBS-cited analysis estimates DOGE actions <strong>cost taxpayers $135 billion</strong> through paid leave, mis-firing/re-hiring costs, and lost productivity &mdash; meaning the net is close to a wash or possibly negative depending on which assumptions hold. Musk's special-government-employee window expires at the end of May. The Electronic Frontier Foundation (EFF) lawsuit naming Musk personally proceeds; the Department of Justice (DOJ)-appealed discovery pause continues to shield Musk from sworn testimony.
+    (<a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/" style="color:var(--blue-on-soft)">CBS $135B cost</a>,
+    <a href="https://usafacts.org/articles/what-is-going-on-with-doge/" style="color:var(--blue-on-soft)">USAFacts audit</a>,
+    <a href="https://en.wikipedia.org/wiki/Department_of_Government_Efficiency" style="color:var(--blue-on-soft)">DOGE Wikipedia</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The savings-vs-cost re-audit is the kind of number that will get cited in any post-mortem of the DOGE experiment, and is also material to the SpaceX S-1's risk-factor disclosure given Musk's continuing personal exposure in EFF and parallel cases. The "approximately net-zero or worse" framing on DOGE's fiscal claim deflates the central political deliverable Musk attached his name to &mdash; not a market-moving event in itself, but a slow drag on the political-capital side of the ledger that other parts of the portfolio (defense contracting, regulatory approvals) depend on.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/"><span class="material-icons-outlined">open_in_new</span>CBS News</a>
+    <a class="link-pill" href="https://usafacts.org/articles/what-is-going-on-with-doge/"><span class="material-icons-outlined">open_in_new</span>USAFacts</a>
+  </div>
+</div>
+
+<!-- ═══ LEGAL ═══ -->
+<div id="legal" class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>Musk Legal</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>OpenAI Trial</span>
+    <span class="meta-pill">May 18 2026 &middot; verdict</span>
+  </div>
+  <h4>Jury dismisses all claims in Musk v. Altman in under two hours; statute-of-limitations finding adopted by judge; Musk to appeal</h4>
+  <p>The dominant Muskverse legal event since the May 14 refresh. On <strong>Monday May 18</strong>, an advisory jury in the U.S. District Court for the Northern District of California (Oakland) returned a verdict in <strong>less than two hours of deliberation</strong> dismissing every count in Musk's lawsuit against Sam Altman and OpenAI. <strong>Judge Yvonne Gonzalez Rogers immediately adopted the verdict.</strong> The basis: the court did not address whether Musk's "breach of charitable trust" claims were <em>substantively</em> valid; it found instead that they fell <strong>outside the three-year statute of limitations</strong> &mdash; meaning Musk waited too long to sue after the alleged breach. Musk had sought <strong>$134 billion</strong> in disgorged "ill-gotten gains." On the same statute-of-limitations grounds, the jury also <strong>rejected Musk's claim against Microsoft</strong> for allegedly aiding and abetting Altman and Greg Brockman in breaching their duty to OpenAI. Musk and his attorneys said they will appeal to the <strong>9th U.S. Circuit Court of Appeals</strong>. In a post on X, Musk called the decision a <strong>"calendar technicality"</strong>. Color note: a federal judge had told Musk earlier in the week that he was not excused from trial; Musk attended the Trump China delegation anyway, and his lawyer apologized for his absence.
+    (<a href="https://www.npr.org/2026/05/18/nx-s1-5822366/musk-altman-openai-jury-verdict-claims-dismissed" style="color:var(--blue-on-soft)">NPR verdict</a>,
+    <a href="https://www.cnbc.com/2026/05/18/musk-altman-openai-trial-verdict.html" style="color:var(--blue-on-soft)">CNBC technicality</a>,
+    <a href="https://www.nbcnews.com/tech/tech-news/openai-elon-musk-case-verdict-rcna345655" style="color:var(--blue-on-soft)">NBC News</a>,
+    <a href="https://localnewsmatters.org/2026/05/18/musk-v-altman-verdict-musks-134b-openai-suit-collapses-after-swift-jury-deliberations/" style="color:var(--blue-on-soft)">LNM swift deliberations</a>,
+    <a href="https://www.nbcnews.com/tech/elon-musk/musk-flies-china-trump-ongoing-openai-trial-rcna344981" style="color:var(--blue-on-soft)">NBC China-during-trial</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Read this as a clean legal loss with a soft narrative outcome. The <em>legal</em> outcome is unambiguous: a unanimous-feeling, under-two-hour verdict with the judge stepping in to adopt it instantly is as decisive as it gets. The <em>narrative</em> outcome is softer: because the case died on the calendar, not on the merits, Musk's framing &mdash; "OpenAI betrayed its non-profit mission" &mdash; survives politically and reputationally, even as the courtroom shut it down. The appeal to the 9th Circuit will likely fail on the same grounds (statute of limitations is rarely reopened on appeal). The bigger consequence: a major piece of legal overhang has now resolved <em>before</em> the SpaceX S-1 publishes, which is plausibly material to how SpaceX risk-factor language can be written. One thread closes; two (SEC, DOGE/EFF) remain open.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.npr.org/2026/05/18/nx-s1-5822366/musk-altman-openai-jury-verdict-claims-dismissed"><span class="material-icons-outlined">open_in_new</span>NPR</a>
+    <a class="link-pill" href="https://www.cnbc.com/2026/05/18/musk-altman-openai-trial-verdict.html"><span class="material-icons-outlined">open_in_new</span>CNBC</a>
+    <a class="link-pill" href="https://www.nbcnews.com/tech/tech-news/openai-elon-musk-case-verdict-rcna345655"><span class="material-icons-outlined">open_in_new</span>NBC</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>SEC</span>
+    <span class="meta-pill">May 13&ndash;19 2026 &middot; SEC settlement red flags</span>
+  </div>
+  <h4>Judge Sooknanan's three specific red flags come into focus; June 1 written-answer deadline holds</h4>
+  <p>Detail behind last week's "won't rubber-stamp" headline tightened this week. Reporting from Bloomberg, U.S. News, and Insurance Journal makes Judge Sparkle Sooknanan's <strong>three specific objections</strong> to the $1.5M Musk-SEC Twitter-stake settlement explicit. <strong>First</strong>: the trust structure. Sooknanan ordered both parties to explain "why the proposed settlement involves a trust tied to Musk instead of the billionaire himself," asking on the record &mdash; "<em>Is Mr. Musk getting some kind of special treatment in this case?</em>" <strong>Second</strong>: the penalty size. The judge noted that $1.5M is <strong>approximately 1% of the ~$150M Musk allegedly cost Twitter shareholders</strong> by disclosing his stake eleven days late. <strong>Third</strong>: the structure removing Musk personally as a defendant, which the judge suggested had been crafted "<em>for the sole purpose of Mr. Musk being able to say that no relief was entered.</em>" Both sides have written answers due by <strong>June 1</strong>. The settlement does not take effect until the judge approves it.
+    (<a href="https://www.usnews.com/news/top-news/articles/2026-05-13/us-sec-musk-to-argue-for-twitter-settlement-before-dc-judge" style="color:var(--blue-on-soft)">US News red flags</a>,
+    <a href="https://www.bloomberg.com/news/articles/2026-05-13/judge-says-cannot-rubber-stamp-musk-s-1-5-million-sec-deal" style="color:var(--blue-on-soft)">Bloomberg</a>,
+    <a href="https://www.insurancejournal.com/news/national/2026/05/14/869792.htm" style="color:var(--blue-on-soft)">Insurance Journal</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Three named objections, each one a distinct structural defect, is materially worse than a single procedural complaint. The judge is signaling she has read the settlement carefully and finds it unusually defendant-favorable. The probability that Sooknanan <em>outright rejects</em> the deal after the June 1 filings is still likely modest &mdash; courts almost always accept SEC settlements &mdash; but it has now risen from background to non-trivial tail risk. Critically, June 1 sits squarely inside the SpaceX IPO marketing window (which begins June 4). A rejected settlement re-opening the SEC matter <em>during</em> the IPO roadshow is a specific, calendarable downside scenario the S-1 will have to address.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.usnews.com/news/top-news/articles/2026-05-13/us-sec-musk-to-argue-for-twitter-settlement-before-dc-judge"><span class="material-icons-outlined">open_in_new</span>US News</a>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-05-13/judge-says-cannot-rubber-stamp-musk-s-1-5-million-sec-deal"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://www.insurancejournal.com/news/national/2026/05/14/869792.htm"><span class="material-icons-outlined">open_in_new</span>Insurance Journal</a>
+  </div>
+</div>
+
+<!-- ═══ OTHER VENTURES ═══ -->
+<div id="ventures" class="section-header">
+  <span class="material-icons-outlined">hub</span>
+  <h3>Other Ventures</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider ventures"><span class="dot"></span>Neuralink</span>
+    <span class="meta-pill">May 2026 &middot; new robot</span>
+  </div>
+  <h4>Neuralink unveils next-generation surgical robot designed for whole-brain access; expands beyond motor cortex</h4>
+  <p>Neuralink has announced a <strong>next-generation surgical robot</strong> designed to access <strong>any region of the brain</strong> with high precision, a meaningful expansion from earlier Neuralink systems that focused on the motor cortex and helped users interact with computers via thought. The robot implants <strong>ultrathin electrode threads &mdash; thinner than a human hair</strong> &mdash; directly into brain tissue to capture and transmit neural signals. Reporting (YourStory.com, Fierce Biotech, Digital Health News) emphasizes three points: (1) the broader anatomical reach opens research paths to <strong>Parkinson's disease, epilepsy, paralysis, and sensory disorders</strong>; (2) the robot uses advanced cameras and sensors to navigate brain micro-movement and minimize bleeding/scarring during implantation; (3) Neuralink has <strong>not yet provided a commercial timeline</strong> for the new robot. Musk's stated framing remains the "generalized neural interface" goal &mdash; a brain-computer interface (BCI) that could address neurological conditions broadly rather than serving one indication.
+    (<a href="https://yourstory.com/2026/05/neuralink-surgical-robot-brain-interface-2026" style="color:var(--blue-on-soft)">YourStory</a>,
+    <a href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices" style="color:var(--blue-on-soft)">Fierce Biotech</a>,
+    <a href="https://www.digitalhealthnews.com/neuralink-targets-high-volume-brain-implant-production-by-2026-musk-says" style="color:var(--blue-on-soft)">Digital Health News</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Whole-brain access is the platform pivot that takes Neuralink from "single-indication motor BCI" to a research tool that competing labs (Synchron, Precision Neuroscience, Paradromics) will need to respond to. The honest disclaimer in the reporting &mdash; "no commercial timeline" &mdash; matters: this is a capability claim, not a shipped product. For the SpaceX S-1 narrative, Neuralink sits in the "Musk-ecosystem optionality" column rather than the cashflow column, but a credible whole-brain-access platform raises the ecosystem's terminal-value ceiling.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://yourstory.com/2026/05/neuralink-surgical-robot-brain-interface-2026"><span class="material-icons-outlined">open_in_new</span>YourStory</a>
+    <a class="link-pill" href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices"><span class="material-icons-outlined">open_in_new</span>Fierce Biotech</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider ventures"><span class="dot"></span>Boring Co.</span>
+    <span class="meta-pill">May 2026 &middot; Vegas Loop</span>
+  </div>
+  <h4>Boring Company moves Vegas Loop into permit-by-permit Strip build; fleet target 250&ndash;300 Teslas; downtown completion 2028&ndash;2029</h4>
+  <p>The Boring Company's Vegas Loop is progressing through a slower-than-anticipated permitting pipeline. Company president Steve Davis has detailed publicly that Boring is awaiting the <strong>first city-of-Las-Vegas permit approval</strong>, which would unlock the initial tunnel <strong>north of Sahara Avenue to the Strat</strong>, with subsequent extensions to Fremont Street and Circa's Garage Mahal. The current operating assumption is that the <strong>Strip-and-Las Vegas Boulevard core kicks off construction in fall 2026, with completion in 2027</strong>; downtown, Chinatown, Allegiant Stadium and south-of-Strip extensions slip to <strong>2028&ndash;2029</strong>. Fleet target on the University Center loop scales to <strong>250&ndash;300 Teslas</strong>. UNLV declined a campus station earlier in 2026; that pushback remains the principal political-friction data point. The Vegas Loop has been a contained, low-news venture in the Muskverse portfolio for several quarters and no material capital-allocation event is associated with the May 14&ndash;19 window.
+    (<a href="https://www.reviewjournal.com/local/traffic/boring-co-s-vegas-loops-future-build-detailed-by-company-president-3605797/" style="color:var(--blue-on-soft)">Review-Journal future build</a>,
+    <a href="https://www.reviewjournal.com/news/news-columns/road-warrior/boring-co-plans-vegas-loop-airport-rides-in-early-2026-3589025/" style="color:var(--blue-on-soft)">Review-Journal road warrior</a>,
+    <a href="https://www.boringcompany.com/vegas-loop" style="color:var(--blue-on-soft)">Boring Co. Vegas Loop</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Boring stays in "ignore unless something breaks" territory for portfolio purposes. The honest signal is the slipping completion calendar (2027 for the Strip core, 2028&ndash;2029 for everything else) against the company's repeated framing of the Loop as a near-term hyperloop precursor. The fact that the venture continues to advance without absorbing material capital from the rest of the Muskverse is itself the point &mdash; Boring is a low-burn optionality bet, not a contributor.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.reviewjournal.com/local/traffic/boring-co-s-vegas-loops-future-build-detailed-by-company-president-3605797/"><span class="material-icons-outlined">open_in_new</span>Review-Journal</a>
+    <a class="link-pill" href="https://www.boringcompany.com/vegas-loop"><span class="material-icons-outlined">open_in_new</span>Boring Co.</a>
+  </div>
+</div>
+
+<!-- Cross-reference banner -->
+<div class="banner cross-ref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>OpenAI trial briefing: scheduled-task winddown</strong>
+    The dedicated <a href="2026-05-01_openai_trial_musk_v_altman.html">Musk v. Altman trial briefing</a> tracked this case through closing arguments. With the May 18 verdict, the trial scope is now resolved at the district-court level; the appeal moves to the 9th Circuit on a multi-month calendar. The weekly trial-briefing task is set to auto-deactivate post-verdict per the briefing system. Future appeals movement will be folded into this Muskverse briefing under Legal.
+  </div>
+</div>
+
+<!-- ═══ EDITOR'S VIEW ═══ -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span> Editor's View</div>
+  <h3>Five takeaways from the May 19 edition</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>The OpenAI lawsuit died on the calendar, not the merits &mdash; legally clean loss, narratively soft outcome.</strong> An under-two-hour jury verdict adopted instantly by the judge is as decisive as district-court losses come, and the 9th Circuit appeal is highly unlikely to revive a claim on statute-of-limitations grounds. But because the merits were never adjudicated, Musk's "OpenAI betrayed its mission" framing survives reputationally even as it collapses legally. The portfolio-relevant point: a major legal overhang has now resolved <em>before</em> the SpaceX S-1 publishes &mdash; arguably the cleanest sequencing Musk could have engineered.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>SpaceX moving to public S-1 filing is the week's structural event. Everything else is now subordinate to its disclosures.</strong> The four-week window May 20 (file) &rarr; June 4 (marketing) &rarr; June 11 (price) &rarr; June 12 (trade) at a $1.75T+ asking valuation will be the pricing test of the decade. The two questions: (a) does the prospectus break out Starlink, defense, and xAI/X as hard segment revenue, or hide xAI losses inside "combined entity" aggregation; (b) how does the risk-factor section handle the SEC settlement (Sooknanan), the appeal of the OpenAI verdict, and Musk's continuing DOGE-related personal exposure (EFF). Disclosure quality on these specific points will determine whether the asking valuation holds at pricing.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>Starship Flight 12 (now May 21) and the IPO filing window have collapsed into a single news event.</strong> This is the third slip in two weeks. A clean V3 maiden flight just before pricing would be a textbook tailwind. A failure on the 21st with a fresh prospectus in the market is asymmetric downside requiring a "subsequent event" disclosure or expanded risk-factor language. SpaceX is willing to fly through public-relations risk; that willingness tightens materially when an offering is on the calendar. Watch whether the IPO timing causes them to add additional pre-flight scrub conservatism.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>Tesla is now adjudicating two stories and the second one is winning the week.</strong> The $445 rally implicitly priced an early-2027 autonomy ramp on a still-shipping cash machine. The CapEx hike above $25B with management-guided negative free cash flow for the rest of 2026, plus delivery slowdown, plus a China trip that didn't deliver a concrete FSD unlock, surface the alternative story: an AI-pivot company eating through the EV cash flow that funded it. TSLA giving back ~3.7% on May 15 is the market starting to price both sides. The Optimus V3 reveal (July/August) is now the leading indicator on whether the AI capex earns its cost.</div>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <div class="body"><strong>One legal thread closes, two remain explicitly open &mdash; and one of them (SEC) lands inside the IPO roadshow.</strong> The OpenAI matter is effectively resolved (appeal will likely fail). The DOGE/EFF EFF/NEH thread remains, with Musk's special-government-employee window expiring end of May. The SEC settlement &mdash; with Judge Sooknanan's three named objections and the <strong>June 1 written-answer deadline sitting <em>three days before</em> SpaceX marketing begins</strong> &mdash; is the calendarable risk to watch hardest. A rejected settlement re-opening the SEC matter <em>during</em> the IPO roadshow is the specific, dated scenario the S-1 will have to address in writing. June 1 just became one of the most important dates in the Muskverse calendar.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══ COLOPHON ═══ -->
+<div class="colophon">
+  <h4>Methodology &amp; sources</h4>
+  <p><strong>Coverage window:</strong> May 14 &ndash; May 19, 2026 (weekly edition, 5-day delta from prior). <strong>Baseline:</strong> <a href="2026-05-14_muskverse_briefing_weekly.html">Muskverse Briefing, May 14, 2026 (mid-week refresh)</a> &middot; <a href="2026-05-11_muskverse_briefing_weekly.html">Muskverse Weekly Briefing, May 11, 2026</a>. <strong>Lens:</strong> Portfolio-wide digest, system-level perspective; reports only genuine developments since May 14, with status-quo recap of what was current at the prior edition. C-Score 1&ndash;5 per card. All abbreviations expanded at first use (FSD, NRO, NSSL, NEH, EFF, SEC, FAA, BCI, MAU, mDAU, CLI, USDS, DOJ).</p>
+
+  <h4 style="margin-top:16px;">Primary sources</h4>
+  <p>
+    Tesla: <a href="https://www.cnbc.com/2026/05/16/a-state-banquet-selfies-and-a-noodle-run-trumps-beijing-visit.html">CNBC Beijing visit</a>,
+    <a href="https://finance.yahoo.com/economy/policy/articles/trump-brought-17-ceos-china-143720929.html">Yahoo Finance Air Force One</a>,
+    <a href="https://stocktwits.com/news-articles/markets/equity/tsla-stock-slips-musk-trump-china-trip-fsd-delays-shanghai-factory/cZXX38WReLn">Stocktwits FSD delay</a>,
+    <a href="https://www.tradingkey.com/news/market-movers/261900513-market-movers-tsla-20260515">TradingKey May 15</a>,
+    <a href="https://www.techi.com/tesla-ai-capex-ev-cash-machine/">Techi CapEx</a>,
+    <a href="https://www.fool.com/investing/2026/05/14/heres-when-teslas-robotaxi-rollout-will-really-ram/">Motley Fool ramp</a>,
+    <a href="https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line/">Electrek Optimus reveal</a>,
+    <a href="https://optimusk.blog/blog/tesla-optimus-production-timeline/">Optimus timeline</a>.
+    xAI / X: <a href="https://www.engadget.com/2173482/xai-coding-agent-grok-build/">Engadget Grok Build</a>,
+    <a href="https://www.eweek.com/news/xai-grok-build-coding-agent/">eWeek Grok Build</a>,
+    <a href="https://www.businessofapps.com/data/twitter-statistics/">Business of Apps X stats</a>,
+    <a href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/">TechCrunch X ads</a>.
+    SpaceX / IPO: <a href="https://www.bloomberg.com/news/articles/2026-05-15/spacex-picks-nasdaq-as-listing-venue-for-ipo-reuters">Bloomberg public filing</a>,
+    <a href="https://news.bloomberglaw.com/tech-and-telecom-law/spacex-picks-nasdaq-as-listing-venue-for-ipo-reuters">Bloomberg Law / Reuters Nasdaq</a>,
+    <a href="https://www.techi.com/spacex-ipo/">TECHi S-1 watch</a>,
+    <a href="https://www.fool.com/investing/2026/04/27/spacex-ipo-timeline-every-important-date-need-know/">Motley Fool IPO timeline</a>,
+    <a href="https://www.space.com/news/live/spacex-starship-flight-12-launch-updates-may-18-2026">Space.com Flight 12 live</a>,
+    <a href="https://www.spacelaunchschedule.com/launch/starship-flight-12/">SLS Flight 12</a>.
+    DOGE: <a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/">CBS $135B cost</a>,
+    <a href="https://usafacts.org/articles/what-is-going-on-with-doge/">USAFacts audit</a>,
+    <a href="https://en.wikipedia.org/wiki/Department_of_Government_Efficiency">DOGE Wikipedia</a>.
+    Legal: <a href="https://www.npr.org/2026/05/18/nx-s1-5822366/musk-altman-openai-jury-verdict-claims-dismissed">NPR verdict</a>,
+    <a href="https://www.cnbc.com/2026/05/18/musk-altman-openai-trial-verdict.html">CNBC technicality</a>,
+    <a href="https://www.nbcnews.com/tech/tech-news/openai-elon-musk-case-verdict-rcna345655">NBC News verdict</a>,
+    <a href="https://localnewsmatters.org/2026/05/18/musk-v-altman-verdict-musks-134b-openai-suit-collapses-after-swift-jury-deliberations/">LNM swift deliberations</a>,
+    <a href="https://www.nbcnews.com/tech/elon-musk/musk-flies-china-trump-ongoing-openai-trial-rcna344981">NBC China-during-trial</a>,
+    <a href="https://www.usnews.com/news/top-news/articles/2026-05-13/us-sec-musk-to-argue-for-twitter-settlement-before-dc-judge">US News red flags</a>,
+    <a href="https://www.bloomberg.com/news/articles/2026-05-13/judge-says-cannot-rubber-stamp-musk-s-1-5-million-sec-deal">Bloomberg SEC review</a>,
+    <a href="https://www.insurancejournal.com/news/national/2026/05/14/869792.htm">Insurance Journal SEC</a>.
+    Other ventures: <a href="https://yourstory.com/2026/05/neuralink-surgical-robot-brain-interface-2026">YourStory Neuralink robot</a>,
+    <a href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices">Fierce Biotech Neuralink</a>,
+    <a href="https://www.reviewjournal.com/local/traffic/boring-co-s-vegas-loops-future-build-detailed-by-company-president-3605797/">Review-Journal Vegas Loop</a>.
+  </p>
+
+  <p style="margin-top:24px; text-align:center; color:var(--on-surface-muted);">
+    Muskverse Briefing &middot; Weekly edition &middot; Assembled May 19, 2026 &middot; 11 cards &middot; Coverage May 14 &ndash; May 19
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

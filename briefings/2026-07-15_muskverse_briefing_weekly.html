@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Week of 15 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#1f2933; --primary-soft:#eceff1; --primary-on-soft:#1f2933;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --accent:#374151; --accent-soft:#eceff1; --accent-deep:#1f2937;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:#1f2937; color:#fff; display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:16px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:#1f2937; border-color:#1f2937; color:#fff; font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#5f6368 0%,#374151 55%,#1f2937 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+  .hero .stat-row { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; }
+  .hero .stat .n { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:700; }
+  .hero .stat .l { font-size:11px; opacity:0.85; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:8px; }
+  .statusquo .sq-label { display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--accent-deep); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin-bottom:6px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:#374151; font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); background:var(--surface-2); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.tesla { background:#fce8e6; color:#a50e0e; }
+  .tag.spacex { background:#e8eef6; color:#1f3548; }
+  .tag.xai { background:#f1f3f4; color:#3c4043; }
+  .tag.x { background:#f1f3f4; color:#202124; }
+  .tag.neuralink { background:#f3e8fd; color:#5f1d8e; }
+  .tag.boring { background:#fef7e0; color:#b06000; }
+  .tag.politics { background:#eceff1; color:#1f2937; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-dark { background:#eceff1; color:#1f2933; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); margin-left:auto; }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .data-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 14px; }
+  .data-item { background:var(--surface-2); border-radius:8px; padding:10px 12px; }
+  .data-label { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .data-value { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; color:var(--on-surface); }
+  .data-value.up { color:var(--green-deep); } .data-value.down { color:var(--red-deep); }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:#1f2937; text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:#eceff1; }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:#374151; }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.deep { margin-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:500; color:#1f2937; background:var(--surface-2); padding:5px 14px; border-radius:14px; user-select:none; transition:background 0.15s; }
+  details.deep summary:hover { background:#eceff1; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .chev { font-size:16px; line-height:1; transition:transform 0.2s; }
+  details.deep[open] summary .chev { transform:rotate(180deg); }
+  details.deep .dd { margin-top:12px; padding:14px 16px; background:var(--surface-2); border-radius:10px; }
+  details.deep .dd p { font-size:13.5px; line-height:1.65; color:var(--on-surface-2); margin:0 0 12px; }
+  details.deep .dd p:last-child { margin-bottom:0; }
+  details.deep .dd strong.lbl { color:var(--on-surface); font-weight:700; }
+
+  .banner { display:flex; gap:12px; background:var(--yellow-soft); border-radius:12px; padding:14px 18px; margin-bottom:14px; align-items:flex-start; }
+  .banner .material-icons-outlined { color:var(--yellow); font-size:20px; margin-top:1px; }
+  .banner .txt { font-size:13px; line-height:1.55; color:var(--on-surface-2); }
+  .banner .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:#eceff1; color:#1f2937; padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:#374151; font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+    .date-pill { margin-left:0; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Week of Jul 15 2026 · Last 7 days · Tesla · xAI · SpaceX · politics · legal · Neuralink · Boring</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#tesla">Tesla</a>
+  <a class="chip" href="#xai">xAI / Grok</a>
+  <a class="chip" href="#spacex">SpaceX</a>
+  <a class="chip" href="#politics">DOGE / Politics</a>
+  <a class="chip" href="#legal">Legal</a>
+  <a class="chip" href="#other">Other ventures</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Muskverse portfolio · weekly · Jul 8 – Jul 15 2026</div>
+  <h2>DOGE quietly dies at one year old, Grok 4.5's benchmarks land closer to "good workhorse" than "Opus-killer," and Starship Flight 13 slides forward to next-earlier — the Muskverse spent the week being graded on the promises it made at IPO.</h2>
+  <p>The week's spine is scoring, not shipping. Elon Musk's <strong>Department of Government Efficiency (DOGE) formally wound down on 4 July</strong>, its self-imposed sunset, claiming $215B in savings against ~200,000 departed federal workers — and agencies already re-hiring. Independent <strong>Grok 4.5 coding benchmarks</strong> arrived: two wins, two losses versus Anthropic's Claude Opus 4.8, but a real 4x token-efficiency edge — and <strong>OpenAI's GPT-5.6 "Sol" launched days later</strong>, reigniting the Musk–Altman feud ("Scam Altman"). <strong>Starship Flight 13 moved up to no-earlier-than 16 July</strong>, Booster 20 static-fired on 10 July, and the flight will finally deploy 20+ Starlink V3 satellites. Tesla trades at $406 into its make-or-break <strong>22 July margin print</strong>; Musk floated <strong>orbital AI data centers "next year"</strong> and short-seller Jim Chanos called it. Neuralink implanted its first Canadian patient in Toronto.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">DOGE ✝</div><div class="l">Wound down 4 Jul · $215B claimed</div></div>
+    <div class="stat"><div class="n">2–2</div><div class="l">Grok 4.5 vs Opus 4.8 on coding</div></div>
+    <div class="stat"><div class="n">NET 16 Jul</div><div class="l">Starship Flight 13</div></div>
+    <div class="stat"><div class="n">22 Jul</div><div class="l">Tesla Q2 margin print</div></div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <span class="sq-label"><span class="material-icons-outlined" style="font-size:14px">history</span>Status quo — where last week's edition left off</span>
+  <ul>
+    <li><strong>xAI / Grok:</strong> Grok 4.5 shipped 8 July — a 1.5-trillion-parameter model at $2/$6 per million tokens, Cursor-trained, framed by Musk as "Opus-class but ~60% cheaper." Independent benchmarks were still pending.</li>
+    <li><strong>SpaceX:</strong> SPCX joined the Nasdaq-100 on 7 July with only a ~1% pop, sitting ~28% below its post-IPO peak; Starship Flight 13 hardware was in static-fire prep at a then-target of no-earlier-than 31 July.</li>
+    <li><strong>Tesla:</strong> TSLA rebounded +6.7% to $419.77 after the counterintuitive delivery-day sell-off; the National Highway Traffic Safety Administration (NHTSA) closed its Autopilot probe; Optimus V3 reveal targeted late July; a 25 GWh NatPower European storage deal signed.</li>
+    <li><strong>Politics:</strong> SpaceX President Gwynne Shotwell had donated $320M of SPCX stock to "Trump Accounts" children's savings accounts; the America Party approached its one-year mark with no ballot lines but GOP-damaging polling.</li>
+    <li><strong>Neuralink:</strong> Patient 26 reached; international trials scaling across the US, UAE, UK and — newly — Canada.</li>
+  </ul>
+</div>
+
+<!-- TESLA -->
+<a id="tesla"></a>
+<div class="section-header"><span class="material-icons-outlined">electric_bolt</span><h3>Tesla</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-yellow">Earnings setup</span><span class="date-pill">08 – 15 Jul 2026</span></div>
+  <h4>TSLA drifts to $406 into the 22 July print — the whole tape is now a bet on one number: automotive gross margin</h4>
+  <p>Last week's post-rebound optimism has bled off: TSLA sits at <strong>$406.55</strong>, a hair <em>below</em> the analyst consensus target of <strong>$412.39</strong> — the Street is effectively neutral into the 22 July Q2 report. With the 480,126-delivery beat already banked, sell-side desks are unanimous that the print is <em>about margins, not volume</em>: consensus non-GAAP earnings per share (EPS) of only <strong>$0.47</strong>, and the market's single decisive line is <strong>automotive gross margin excluding regulatory credits</strong>. RBC Capital is the visible bull, raising its target to <strong>$500</strong> on autonomy and AI optionality; most of the Street stays tepid, with the consensus target only fractionally above spot — "limited bullish conviction until Tesla demonstrates sustained profit growth." Technical levels to watch around the print: resistance <strong>$428.60</strong>, support <strong>$395.00</strong>.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">TSLA spot</div><div class="data-value">$406.55</div></div>
+    <div class="data-item"><div class="data-label">Consensus target</div><div class="data-value">$412.39</div></div>
+    <div class="data-item"><div class="data-label">Q2 EPS (non-GAAP)</div><div class="data-value">$0.47 est.</div></div>
+    <div class="data-item"><div class="data-label">RBC bull target</div><div class="data-value up">$500</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262021897-tesla-tsla-stock-forecast-july-2026-q2-earnings-margins-cybercab-tradingkey">TradingKey · margins &amp; Cybercab</a>
+    <a href="https://ts2.tech/en/tesla-nasdaqtsla-heads-into-july-22-margin-test-after-big-q2-inventory-dip/">TS2 · July 22 margin test</a>
+    <a href="https://cryptodaily.co.uk/2026/07/tesla-q2-delivery-beat-margin-test">CryptoDaily · margin confidence test</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — This is the same margin question that has haunted TSLA all year, now reaching its quarterly verdict. Q1 2026 automotive gross margin excluding credits printed at roughly 13.7% — a decade low outside the pandemic — pressured by aggressive Model 3/Y pricing in China and the US federal electric-vehicle (EV) tax-credit dynamics. The record 480k Q2 delivery beat only sharpened the trap: if that volume was <em>bought</em> with discounts, margin compresses again and the "Tesla is a car company priced like an AI company" bear thesis hardens. Trading at roughly 200x forward price-to-earnings (P/E), the car business alone cannot justify the multiple — which is precisely why the call commentary tends to move the stock more than the printed EPS.</p>
+      <p><strong class="lbl">Die Details</strong> — The report drops 22 July with the call at 4:30 pm US Central Time. Beyond the auto gross-margin line, the four analyst focal points per this week's previews are: (1) whether margins held despite higher unit volume; (2) how the ~$25B 2026 capital-expenditure (capex) plan hits future free cash flow — the number funding Optimus, Cybercab and Dojo/AI compute; (3) Cybercab timeline and deployment scope; and (4) the scalability of the high-margin energy-storage and robotics lines. Energy storage deployed 13.5 GWh (gigawatt-hours) in Q2 (+40% year-over-year) and carries richer margins than autos, so a storage beat can partially mask an auto miss. Note the EPS bar is low ($0.47) — the risk is not the headline but the mix beneath it.</p>
+      <p><strong class="lbl">Einordnung</strong> — Positioning is the tell: the stock rebounded +6.7% the week of deliveries, then gave most of it back to sit fractionally below consensus target. That is the market declining to pre-position either way — a coiled spring into a binary. For the portfolio, the 22 July call is Musk's first proper stage since the SpaceX initial public offering (IPO) to reframe Tesla's premium against SpaceX's ~$2.3T mark and xAI's Grok momentum; expect explicit cross-entity valuation framing to justify the multiple. The read-through to the rest of the Muskverse is real — a Tesla margin miss re-opens the "how is all this capex funded" question that also shadows SpaceX's orbital-data-center ambitions.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) automotive gross margin ex-credits vs the ~13.7% Q1 base; (2) storage gross-margin trajectory and any raised full-year deployment guide; (3) Optimus V3 production commentary and any firm reveal-event date; (4) Cybercab and any reference to a Federal Motor Vehicle Safety Standards (FMVSS) exemption path; (5) capex guidance revision — up or down from ~$25B.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · verified spot price + multi-desk previews; estimates not yet actuals</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-blue">Robotaxi</span><span class="date-pill">03 – 14 Jul 2026</span></div>
+  <h4>Robotaxi's Miami launch is real but tiny — a camera-only FSD stress test in the rain, while Austin still won't scale</h4>
+  <p>Tesla's third autonomy state is live: <strong>unsupervised Robotaxi rides in Miami</strong> launched 3 July and drew a fresh wave of first-impression footage this week. The catch is scope — Electrek maps a <strong>deliberately small geofenced service area</strong>, and the framing across coverage is pointed: Tesla is "mapping a tiny Robotaxi zone in Miami while it still can't scale Texas." Miami is also the hardest environment yet for Tesla's <strong>camera-only Full Self-Driving (FSD)</strong> approach — Florida's heavy rain is a direct test of a vision-only stack that skeptics argue needs radar or lidar redundancy. Early rider clips show the system working but with the same cautious, occasionally hesitant behaviour seen in Austin. The strategic tension is unchanged: Tesla can open new cities faster than it can deepen any one of them, and none of the three markets yet resembles a scaled commercial service.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Miami launch</div><div class="data-value">03 Jul 2026</div></div>
+    <div class="data-item"><div class="data-label">Autonomy states</div><div class="data-value">3 (TX · CA · FL)</div></div>
+    <div class="data-item"><div class="data-label">Sensor stack</div><div class="data-value">Camera-only FSD</div></div>
+    <div class="data-item"><div class="data-label">Service area</div><div class="data-value down">Small geofence</div></div>
+  </div>
+  <div class="links">
+    <a href="https://electrek.co/2026/07/03/tesla-robotaxi-miami-service-area-map/">Electrek · tiny Miami zone</a>
+    <a href="https://www.techtimes.com/articles/319711/20260704/tesla-robotaxi-arrives-miami-floridas-rain-hardest-test-yet-camera-only-fsd.htm">TechTimes · rain is the test</a>
+    <a href="https://www.teslarati.com/tesla-expands-robotaxi-florida-third-state-autonomy/">Teslarati · third state</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — Tesla's robotaxi program runs on modified Model Y vehicles (not the steering-wheel-less Cybercab, which is a parallel track) and launched in Austin, expanded to a California market, and now Miami. The bet is that a vision-only, neural-net FSD system can generalise across cities with mapping and validation rather than the high-definition-lidar approach Waymo uses. Every new city is thus both a product expansion and a public referendum on whether camera-only autonomy is safe enough for unsupervised paid rides. Miami raises the bar because sub-tropical downpours degrade camera visibility in exactly the way vision-only critics have flagged for years.</p>
+      <p><strong class="lbl">Die Details</strong> — This week's reporting emphasises the gap between headline ("third state!") and substance (a small mapped polygon, employee/limited-access safeguards, no evidence of the "millions of robotaxis" scale Musk projects). Electrek's framing — expanding geography faster than it deepens any single market — matters for the 22 July earnings call, where investors will press for ride counts, revenue per market, and a safety-incident record. Nothing this week suggests Tesla has cracked the scaling problem; it has instead widened the demo surface. The camera-only rain performance is now an on-record data point rivals and regulators will study.</p>
+      <p><strong class="lbl">Einordnung</strong> — For the portfolio, robotaxi is the single biggest swing factor in Tesla's valuation multiple, because the ~200x P/E is a bet on autonomy and Optimus, not car margins. A visibly clean Miami rainy-season record would be a genuine bull data point; a high-profile weather-related incident would be a multiple-compression event and would ripple into the broader "Muskverse can execute on hard AI" narrative that also underpins Grok and SpaceX's orbital-compute pitch. Note the cross-read to Cybercab: robotaxi proving the FSD stack in adverse weather is the precondition for the steering-wheel-less vehicle ever earning its FMVSS exemption.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) any Miami weather-related disengagement or incident hitting the record; (2) ride-count / revenue disclosure on the 22 July call; (3) geofence expansion cadence in each of the three states; (4) whether Tesla adds a fourth city before scaling one — the pattern investors are now flagging as a red-flag tell.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · multi-outlet reporting + rider footage; scale claims remain Musk-side</span></div></div>
+</div>
+
+<!-- XAI -->
+<a id="xai"></a>
+<div class="section-header"><span class="material-icons-outlined">psychology</span><h3>xAI · Grok</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">xAI</span><span class="tag t-dark">Benchmarks</span><span class="date-pill">08 – 14 Jul 2026</span></div>
+  <h4>Grok 4.5's benchmarks land: a 2–2 coding split with Opus 4.8, a real 4x token-efficiency edge — then GPT-5.6 "Sol" steals the headline</h4>
+  <p>The "Opus-class" claim from last week got scored. On the four coding benchmarks SpaceXAI published, <strong>Grok 4.5 went 2–2 against Anthropic's Claude Opus 4.8</strong>: it won DeepSWE 1.0 (<strong>62.0% vs 55.75%</strong>) and Terminal Bench 2.1 (<strong>83.3% vs 78.9%</strong>), but lost DeepSWE 1.1 (53% vs 59%) and SWE-Bench Pro (64.7% vs 69.2%). Against the broader field it trails Anthropic's Fable 5 and OpenAI's GPT-5.5 on most of these. The genuinely differentiated number is efficiency: Grok 4.5 used <strong>~15,954 average output tokens per SWE-Bench Pro task versus ~67,020 for Opus 4.8 — a 4.2x advantage</strong> that translates directly into lower cost at scale. Crucially, xAI published <em>no</em> general-reasoning or math benchmarks and there is still no independent verification. Then <strong>OpenAI dropped GPT-5.6 "Sol" days later</strong>, and Altman needled Musk: benchmarks favor his model, and "the most reliable way to tell is that elon is obsessed with me again."</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">DeepSWE 1.0</div><div class="data-value up">62.0% (Opus 55.8%)</div></div>
+    <div class="data-item"><div class="data-label">Terminal Bench 2.1</div><div class="data-value up">83.3% (Opus 78.9%)</div></div>
+    <div class="data-item"><div class="data-label">SWE-Bench Pro</div><div class="data-value down">64.7% (Opus 69.2%)</div></div>
+    <div class="data-item"><div class="data-label">Token efficiency</div><div class="data-value up">4.2x vs Opus</div></div>
+  </div>
+  <div class="links">
+    <a href="https://apidog.com/blog/grok-4-5-benchmarks/">Apidog · benchmark breakdown</a>
+    <a href="https://x.ai/news/grok-4-5">SpaceXAI · Grok 4.5 (primary)</a>
+    <a href="https://akitaonrails.com/en/2026/07/09/llm-benchmark-grok-4-5-gpt-5-6-sol/">AkitaOnRails · Grok 4.5 vs GPT-5.6</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — Last week's edition logged the Grok 4.5 <em>ship</em>; this week's story is the <em>scoring</em>, and it is a modest deflation of Musk's "Opus-class, faster, cheaper" framing. Recall Musk's own hedge that Grok 4.5 was "roughly comparable to Opus 4.7" — i.e. one generation behind the live frontier (Opus 4.8). The published numbers confirm a workhorse, not a frontier-leader: competitive-to-slightly-behind on hard coding, with the real edge being cost/efficiency rather than raw capability. That is a coherent strategy — win the enterprise budget line, not the leaderboard — but it is not the "Anthropic-killer" the marketing implied.</p>
+      <p><strong class="lbl">Die Details</strong> — Full card: DeepSWE 1.0 pass@1 — Grok 4.5 62.0%, ahead of Opus 4.8 (55.75%) but behind Fable 5 (66.1%) and GPT-5.5 (64.31%); DeepSWE 1.1 — Grok 53%, behind Opus (59%), Fable 5 (70%) and GPT-5.5 (67%); Terminal Bench 2.1 — Grok 83.3%, essentially tied with GPT-5.5 (83.4%) and ahead of Opus (78.9%); SWE-Bench Pro resolve rate — Grok 64.7%, behind Opus (69.2%) and Fable 5 (80.4%). The efficiency stat — ~15,954 output tokens/task vs ~67,020 for Opus at max — is the strongest single claim and maps onto Grok 4.5's $2/$6-per-million-token pricing to produce a large real-world cost gap. The honest caveats: no independent reproduction yet, no general-reasoning/math suite, and unclear "effort-level" settings for Grok's own runs. Then GPT-5.6 "Sol" launched within days, resetting the frontier reference point and pulling attention off Grok.</p>
+      <p><strong class="lbl">Einordnung</strong> — Three portfolio reads. <em>First</em>, the "cheaper workhorse" positioning is defensible and monetisable — the 4x token efficiency plus aggressive pricing is a genuine enterprise wedge, especially bundled through the Cursor code-editor distribution xAI acquired. <em>Second</em>, the timing is unfortunate: landing benchmarks the same week OpenAI ships GPT-5.6 means Grok 4.5's moment was brief, and it feeds Altman's "one generation behind" narrative. <em>Third</em>, this collides directly with the Legal section — the Musk–Altman rivalry is now simultaneously a courtroom appeal, a product race, and a daily X brawl, and the two feed each other (Altman's "obsessed with me again" jab is a benchmark flex weaponised as legal-PR).</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) independent third-party benchmarks (LMArena, an unaffiliated SWE-bench run) confirming or puncturing xAI's numbers; (2) any general-reasoning/math scores xAI has so far withheld; (3) EU availability timeline; (4) enterprise take-rate signals — do AWS Bedrock/Databricks default their Grok tier to 4.5; (5) how GPT-5.6 "Sol" reprices the whole tier and whether xAI responds with a Grok 5 date.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · vendor-published benchmarks + trade analysis; no independent verification yet</span></div></div>
+</div>
+
+<div class="banner">
+  <span class="material-icons-outlined">campaign</span>
+  <div class="txt"><strong>Vendor-benchmark flag.</strong> All Grok 4.5 scores here are from SpaceXAI's own published set, aggregated by trade press. There is no independent reproduction yet, no general-reasoning or math suite disclosed, and the "effort-level" settings for Grok's own runs are unclear — treat the 2–2 split and the 4x efficiency claim as vendor-reported until third parties confirm.</div>
+</div>
+
+<!-- SPACEX -->
+<a id="spacex"></a>
+<div class="section-header"><span class="material-icons-outlined">rocket_launch</span><h3>SpaceX</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-red">Starship</span><span class="date-pill">03 – 14 Jul 2026</span></div>
+  <h4>Starship Flight 13 moves up to NET 16 July — Booster 20 static-fired, and this flight finally deploys real payload</h4>
+  <p>The Flight 13 date pulled <em>earlier</em>, not later: the target is now <strong>no earlier than (NET) 16 July, 6:45 pm US Eastern</strong> from Starbase, Texas — ahead of last week's 31 July marker. <strong>Booster 20 (B20) completed its static fire on 10 July</strong> and was lowered and returned to the hangar; SpaceX planned to re-stack B20 and <strong>Ship 40 (S40)</strong> at Pad 2 with "at least one additional engine test" before liftoff. The substantive upgrade over the last two flights: Flight 13 follows a Flight-12-like profile but will <strong>deploy 20+ upgraded Starlink V3 satellites</strong> — the first meaningful payload demonstration on the Version 3 vehicle, not just a suborbital hop. Six of the satellites carry modified camera suites to film the Starship heat-shield during re-entry. It is the first Starship launch since SpaceX became a listed company, into a shareholder base that now includes passive Nasdaq-100 and retail "Trump Accounts" exposure.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Launch NET</div><div class="data-value up">16 Jul 2026</div></div>
+    <div class="data-item"><div class="data-label">Booster static fire</div><div class="data-value up">Done 10 Jul (B20)</div></div>
+    <div class="data-item"><div class="data-label">Payload</div><div class="data-value">20+ Starlink V3</div></div>
+    <div class="data-item"><div class="data-label">Profile</div><div class="data-value">V3 · Flight-12-like</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.space.com/news/live/spacex-starship-flight-13-launch-updates-july-14-2026">Space.com · live updates</a>
+    <a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-ignites-all-33-powerful-engines-on-starship-booster-test-ahead-of-flight-13-test-launch">Space.com · 33-engine fire</a>
+    <a href="https://spacenews.com/spacex-gears-up-for-starship-flight-13/">SpaceNews · Flight 13 preview</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — Flight 12 (Q1 2026) was the first fully successful suborbital demonstration of the V3 architecture — booster caught, ship soft-splashdown. The plan last week was for Flight 13 to be a cautious <em>repeat</em> with no payload. The change this week is meaningful: SpaceX added a real Starlink V3 deploy to the mission, signalling enough confidence in the V3 upper stage to risk carrying operational hardware. Pulling the date forward from 31 July to NET 16 July also reflects clean static-fire progress rather than schedule slip — a rare "earlier than advertised" in the Starship program.</p>
+      <p><strong class="lbl">Die Details</strong> — Booster 20 static-fired 10 July (its 33 Raptor engines) and was rolled back for checkouts; the plan was to re-stack with Ship 40 at Orbital Launch Pad 2 within roughly a day, with at least one more engine test before flight. The Starlink V3 satellites are larger, laser-linked craft that "extend solar arrays and antennas"; six carry modified camera suites to transmit heat-shield imagery during descent. Jim Chanos, the short-seller, publicly needled the mission — noting Flight 13 "is still not planned to reach full Earth orbit," his shot at the gap between Musk's orbital-data-center rhetoric and what the vehicle actually does on 16 July.</p>
+      <p><strong class="lbl">Einordnung</strong> — This is a public-market milestone as much as a technical one. A clean flight <em>with</em> a successful Starlink V3 deploy would be a genuine step up — payload capability, not just survivability — and would give SpaceX a concrete data point for the orbital-compute narrative (next card). A visible failure now compounds the current SPCX drawdown and hands Chanos and Altman ammunition simultaneously. The pulled-forward date means this could be the marquee Muskverse event of the coming days, landing just before Tesla's 22 July earnings — a dense one-week window where the portfolio is graded on hardware and margins back-to-back.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) the final pre-launch engine test and any slip past 16 July; (2) whether the Starlink V3 deploy actually executes vs being deferred; (3) heat-shield camera footage and re-entry survival; (4) SPCX price action into and out of launch; (5) any Federal Aviation Administration (FAA) notice-to-mariners/airmen in the launch window.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · consistent trade-press + live-update sourcing; NET dates always flex</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-blue">Orbital compute</span><span class="date-pill">13 – 14 Jul 2026</span></div>
+  <h4>Musk says SpaceX will "start flying" orbital AI data centers next year — Jim Chanos isn't buying the timeline</h4>
+  <p>Prompted by an Altman jab about the practicality of space-based compute, <strong>Musk said SpaceX will "start flying them next year"</strong> — orbital data centers that put artificial-intelligence (AI) compute on satellites, powered by continuous solar and cooled by radiating heat to space. The pitch dovetails with the Starlink V3 hardware Flight 13 will deploy (large, laser-linked craft) and with SpaceX's IPO-era framing of a compute business beyond internet-from-space. Short-seller <strong>Jim Chanos was openly dismissive</strong>, pointing out that even Flight 13 "is still not planned to reach full Earth orbit" — i.e., the vehicle that would loft this infrastructure has not yet demonstrated orbital capability, let alone the mass-to-orbit economics that space-based data centers require. Treat the timeline as aspirational: the direction (compute + constellation convergence) is strategically real; the "next year" date is a Musk projection, not a program milestone.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Musk timeline</div><div class="data-value">"Next year" (2027)</div></div>
+    <div class="data-item"><div class="data-label">Concept</div><div class="data-value">AI compute in LEO</div></div>
+    <div class="data-item"><div class="data-label">Enabler</div><div class="data-value">Starship + Starlink V3</div></div>
+    <div class="data-item"><div class="data-label">Skeptic</div><div class="data-value down">Chanos: not orbital yet</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.benzinga.com/news/space/26/07/60407246/elon-musk-says-spacex-will-fly-orbital-data-centers-next-year-jim-chanos-isnt-buying-it">Benzinga · Musk vs Chanos</a>
+    <a href="https://www.datacenterdynamics.com/en/news/spacex-ipo-musks-firm-set-to-launch-first-orbital-data-center-ai1-satellites-in-2027-will-put-compute-on-starlink-craft/">DCD · AI1 orbital data center</a>
+    <a href="https://satnews.com/2026/07/13/spacex-advances-direct-to-device-constellation-matrix-with-starlink-v3-hardware/">SatNews · Starlink V3 hardware</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — Space-based data centers are the newest pillar of the SpaceX-as-compute-company story that IPO investors were sold. The logic: low-Earth-orbit (LEO) offers uninterrupted solar power, free radiative cooling, and — with Starship's projected mass-to-orbit — a path to putting graphics-processing-unit (GPU) clusters above the atmosphere, sidestepping terrestrial power and cooling constraints that increasingly bottleneck AI build-outs. This is also the direct competitive front with Altman: OpenAI is scaling terrestrial "Stargate" data centers, and Musk's orbital pitch is partly a differentiation play (and partly, per Altman's counter-jab, "selling public-market investors on short-term space datacenters").</p>
+      <p><strong class="lbl">Die Details</strong> — The concrete this week: Musk verbally committed to a "next year" flight start; separate reporting frames a first "AI1" orbital-data-center satellite line targeted around 2027, with compute riding on Starlink-derived craft. Flight 13's 20+ Starlink V3 satellites are the nearest tangible hardware — laser-linked, larger craft that are the plausible bus for future compute payloads. The hard constraints Chanos flags are real: Starship must first demonstrate reliable full-orbit capability and cost-effective reusability; thermal management of dense GPU clusters in vacuum is unproven at scale; and the radiation environment degrades commercial silicon. None of these are solved by a 2027 date on a slide.</p>
+      <p><strong class="lbl">Einordnung</strong> — For the portfolio this is the clearest example of the week's theme: narrative extension outrunning demonstrated capability. It is strategically coherent — SpaceX's launch cadence and constellation are the two scarce assets a space-compute business needs, and no competitor has both. But it also imports the same "funded by faith in future execution" risk that shadows Tesla's capex and xAI's Colossus compute spend. Chanos's intervention matters because it is the first prominent short-seller explicitly pricing the gap between Muskverse rhetoric and near-term deliverables — a sentiment marker worth tracking as SPCX consolidates post-inclusion.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) any FCC (Federal Communications Commission) filing or hardware reveal for the "AI1" compute satellites; (2) whether Flight 13 achieves the Starlink V3 deploy that underpins the whole concept; (3) short-interest and analyst-skepticism trend on SPCX; (4) Altman/OpenAI counter-messaging as the terrestrial-vs-orbital compute framing becomes a public debate.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></div><span class="lbl">2/5 · Musk projection + reporting; no program milestone — treat "next year" as aspirational</span></div></div>
+</div>
+
+<!-- POLITICS -->
+<a id="politics"></a>
+<div class="section-header"><span class="material-icons-outlined">flag</span><h3>DOGE · Musk personal · politics</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">DOGE</span><span class="tag t-yellow">Wind-down</span><span class="date-pill">04 – 06 Jul 2026</span></div>
+  <h4>DOGE dies at one year old — $215B claimed, ~200,000 workers gone, and agencies already re-hiring</h4>
+  <p>The <strong>Department of Government Efficiency (DOGE)</strong> — the cost-cutting effort Musk fronted after the 2024 election — <strong>formally wound down on its self-imposed sunset date of 4 July 2026</strong>. The scorecard is contested: DOGE <strong>claimed $215 billion in savings</strong> (marketed as "$1,335.40 per taxpayer"), a figure independent experts have repeatedly questioned as inflated or unverifiable, with the Office of Management and Budget's own director noting the absence of a clean final accounting. What is not in dispute is the human number: roughly <strong>200,000 federal employees departed</strong> through a mix of firings, buyouts and retirements. And the coda undercuts the mission — <strong>agencies are already re-hiring</strong>, with over 104,000 federal jobs posted in early 2026 to backfill lost capacity. Musk had stepped back from day-to-day DOGE involvement earlier in the cycle; the formal end closes his most direct chapter inside the government even as his companies' entanglement with it (contracts, regulatory posture) continues.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Wind-down date</div><div class="data-value">04 Jul 2026</div></div>
+    <div class="data-item"><div class="data-label">Claimed savings</div><div class="data-value">$215B (disputed)</div></div>
+    <div class="data-item"><div class="data-label">Workers departed</div><div class="data-value down">~200,000</div></div>
+    <div class="data-item"><div class="data-label">Re-hiring</div><div class="data-value up">104k+ jobs posted</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.thefiscaltimes.com/2026/07/06/DOGE-Officially-Done">Fiscal Times · DOGE officially done</a>
+    <a href="https://en.wikipedia.org/wiki/Department_of_Government_Efficiency">Wikipedia · DOGE</a>
+    <a href="https://sea.peoplemattersglobal.com/amp/news/business/after-a-year-of-federal-workforce-cuts-elon-musks-doge-shuts-down-50697">People Matters · workforce cuts</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — DOGE was announced by President-elect Trump in late 2024 with Musk (and initially Vivek Ramaswamy) to lead a drive to cut federal spending and headcount. It ran as an aggressive, high-profile campaign through 2025 — mass buyouts, agency restructurings, contract cancellations — and was always framed with a defined lifespan. Musk's personal involvement had already tapered after his mid-2025 public break with Trump over the "One Big Beautiful Bill," which also spawned his America Party. The 4 July 2026 wind-down is therefore less a surprise than the closing of an arc: the vehicle for Musk's most direct government role has reached its scheduled end.</p>
+      <p><strong class="lbl">Die Details</strong> — The $215B savings claim ($1,335.40/taxpayer) is the headline DOGE promoted, but reporting stresses there is no audited final accounting; the Office of Management and Budget did not certify a clean number, and outside analysts have flagged double-counting and questionable methodology throughout DOGE's life. The ~200,000-departure figure spans firings, deferred-resignation buyouts and accelerated retirements. The re-hiring signal is the most pointed detail: with 104,000+ positions posted in early 2026, a share of the cuts is being reversed as agencies discover lost functions were load-bearing — which erodes the net-savings story further.</p>
+      <p><strong class="lbl">Einordnung</strong> — For the portfolio, DOGE's end changes the <em>form</em> but not the <em>substance</em> of Musk's political leverage. His companies remain deeply entangled with the federal government — SpaceX's launch and defense contracts, Starlink procurement, Tesla's regulatory relationships with NHTSA and the FMVSS exemption process, xAI's data-center permitting. The America Party remains alive as a spoiler-insurance policy, and Shotwell's $320M "Trump Accounts" donation remains the reconciliation counterweight. The relationship reads increasingly transactional rather than ideological: DOGE was the ideological banner; with it retired, what remains is a set of concrete contract-and-regulation dependencies that outlast the political theater.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) any post-mortem audit that revises the $215B claim materially; (2) whether re-hiring accelerates and how far it reverses the headcount cuts; (3) Musk's next political signaling — America Party ballot filings (deadlines cluster this quarter for November 2026); (4) any read-through to Muskverse federal contracts now that the DOGE relationship is formally closed.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · multi-outlet reporting; savings figure is DOGE-claimed and disputed</span></div></div>
+</div>
+
+<!-- LEGAL -->
+<a id="legal"></a>
+<div class="section-header"><span class="material-icons-outlined">gavel</span><h3>Legal · Musk v. Altman</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">LEGAL</span><span class="tag t-red">Appeal</span><span class="date-pill">May – 14 Jul 2026</span></div>
+  <h4>Musk v. Altman heads to the Ninth Circuit on a "calendar technicality" — while the feud reignites over GPT-5.6 and Apple</h4>
+  <p>The appeal is now the live legal thread. In <strong>May 2026, an Oakland federal jury dismissed Musk's ~$150B suit against OpenAI and Sam Altman on statute-of-limitations grounds</strong> — deliberating under two hours and finding Musk "waited too long to sue" over OpenAI's non-profit-to-commercial conversion, since he was aware of the shift as early as 2021 (more than three years before his August 2024 filing). No damages; the underlying fraud and unjust-enrichment merits were never reached. <strong>Musk immediately vowed to appeal to the Ninth Circuit Court of Appeals</strong>, calling it "a calendar technicality" and arguing the clock should have started at OpenAI's 2023–24 restructuring, not his earlier awareness. This week the <em>feud</em> flared alongside the litigation: after Apple sued OpenAI, Musk posted <strong>"Scam Altman strikes again,"</strong> Altman fired back that Musk is misleading investors on "short-term space datacenters," and the two traded blows as Grok 4.5 and GPT-5.6 "Sol" launched days apart. Separately, xAI is appealing the dismissal of its trade-secret suit against OpenAI.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Verdict</div><div class="data-value down">Dismissed (May 2026)</div></div>
+    <div class="data-item"><div class="data-label">Basis</div><div class="data-value">Statute of limitations</div></div>
+    <div class="data-item"><div class="data-label">Amount at stake</div><div class="data-value">~$150B</div></div>
+    <div class="data-item"><div class="data-label">Next step</div><div class="data-value">9th Circuit appeal</div></div>
+  </div>
+  <div class="links">
+    <a href="https://starconnectmedia.com/musk-vows-appeal-to-ninth-circuit-after-jury-dismisses-openai-lawsuit-on-calendar-technicality/">StarConnect · appeal vow</a>
+    <a href="https://fortune.com/2026/07/13/elon-musk-sam-altman-feud-scam-accusations-spacex-openai-ipos-grok-gpt-apple-lawsuit/">Fortune · feud reignites</a>
+    <a href="https://www.mlex.com/mlex/artificial-intelligence/articles/2500563/xai-appealing-dismissal-of-trade-secret-lawsuit-against-openai">MLex · xAI trade-secret appeal</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — Musk filed in August 2024 alleging OpenAI and Altman betrayed the founding non-profit charter by converting toward a for-profit structure — claims of breach of charitable trust, fraud and unjust enrichment. Judge Yvonne Gonzalez Rogers trimmed some claims but let fraud and unjust enrichment reach a jury; she also ruled "existential risk" out of scope. Musk testified 28–30 April 2026. In an unusual move, he had amended his request so any monetary damages would go to OpenAI's non-profit charity, and he sought Altman's removal from the board. OpenAI counter-sued in April 2025, accusing Musk of bad-faith tactics to benefit his own competing interests (xAI).</p>
+      <p><strong class="lbl">Die Details</strong> — The May 2026 jury never weighed the merits: it found the three-year statutory window for the charitable-trust and unjust-enrichment claims had expired because Musk knew of OpenAI's commercial pivot by ~2021. Deliberation took under two hours. No damages were awarded; a Musk win could have redirected up to ~$150B to the original charitable foundation. His appeal turns on a single legal question — <em>when the limitations clock started</em>: Musk's team argues it should run from OpenAI's finalized 2023–24 restructuring, not from his earlier general awareness. That is a genuine, appealable question of law (accrual date), which is why "technicality" cuts both ways — it lost him the trial but is also the cleanest possible basis for a reversal-and-remand.</p>
+      <p><strong class="lbl">Einordnung</strong> — The legal case and the commercial war are now fully intertwined. This week's Fortune and Bloomberg reporting shows the rivalry operating on three fronts at once: the courtroom (this appeal, plus xAI's separate trade-secret appeal), the product race (Grok 4.5 vs GPT-5.6 "Sol," launched days apart, with Altman claiming benchmark superiority), and the daily X brawl ("Scam Altman" / "obsessed with me again"). Apple's fresh lawsuit against OpenAI gave Musk a new cudgel. For the portfolio, the appeal is a low-probability, high-payoff option — a Ninth Circuit reversal would revive an existential-scale claim against xAI's chief competitor — but it will take quarters to resolve, and the near-term impact is reputational and strategic rather than financial.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) formal notice-of-appeal filing and the Ninth Circuit briefing schedule; (2) the accrual-date legal question — the entire appeal hinges on it; (3) the parallel xAI trade-secret appeal; (4) the Apple-vs-OpenAI suit and whether xAI aligns with Apple; (5) whether the GPT-5.6-vs-Grok product race spills into further legal filings.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · verdict + appeal well-reported; appeal filing mechanics still developing</span></div></div>
+</div>
+
+<!-- OTHER -->
+<a id="other"></a>
+<div class="section-header"><span class="material-icons-outlined">hub</span><h3>Other ventures · Neuralink · Boring</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag neuralink">NEURALINK</span><span class="tag t-blue">First in Canada</span><span class="date-pill">Early – mid Jul 2026</span></div>
+  <h4>Neuralink implants its first Canadian patient in Toronto — cursor control "within an hour" of surgery</h4>
+  <p>Neuralink confirmed a milestone this week: its <strong>first Canadian implant, performed at Toronto Western Hospital</strong> (part of the University Health Network, UHN) as part of the ongoing brain-computer-interface (BCI) trials. Per Neuralink's own account, the participant <strong>was controlling a computer cursor with their thoughts within an hour of surgery</strong>, with recovery "progressing as expected." This extends the international footprint — the US, UAE and UK — into a fourth country, consistent with last week's report of 26 patients enrolled overall. It lands the same week a peer-reviewed <strong>Nature Medicine paper documented long-term independent use of an intracortical BCI for speech and cursor control</strong>, adding academic weight to a field Neuralink is racing to commercialize. The company's stated 2026 goals remain high-volume implant production and a shift toward an almost fully automated surgical procedure. Neuralink devices remain investigational — not yet cleared for general use.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">New country</div><div class="data-value up">Canada (Toronto)</div></div>
+    <div class="data-item"><div class="data-label">Site</div><div class="data-value">Toronto Western / UHN</div></div>
+    <div class="data-item"><div class="data-label">Cursor control</div><div class="data-value up">&lt;1 hr post-op</div></div>
+    <div class="data-item"><div class="data-label">Cohort</div><div class="data-value">26 patients (US·UAE·UK·CA)</div></div>
+  </div>
+  <div class="links">
+    <a href="https://x.com/neuralink/status/2072026728222834787">Neuralink · Toronto procedure (primary)</a>
+    <a href="https://www.technologyreview.com/2026/06/19/1139270/brain-computer-interface-trials-are-taking-off/">MIT Tech Review · BCI trials scaling</a>
+    <a href="https://www.nature.com/articles/s41591-026-04414-6">Nature Medicine · long-term BCI use</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — Neuralink runs two parallel studies: PRIME (quadriplegia — thought-based control of computers and robotic arms) and VOICE (severe speech impairment — decoding intended words). It has been expanding internationally through 2025–26 to accelerate enrollment across regulatory jurisdictions, and last week's edition logged patient 26 with Canada newly added. This week fills in the specific: the Canadian implant happened at Toronto Western Hospital under the UHN academic-hospital umbrella, giving Neuralink a Canadian clinical-trial site alongside its US, UAE and UK operations.</p>
+      <p><strong class="lbl">Die Details</strong> — Neuralink's public description of the Toronto case — cursor control "within an hour" of surgery, normal recovery — is a strong anecdotal data point but a company-sourced one; it is not yet a peer-reviewed outcome. The independent scientific weight this week came from elsewhere: a Nature Medicine paper on long-term, independent use of an intracortical BCI for speech and cursor control, and an MIT Technology Review survey noting BCI trials are "taking off" across multiple groups (Neuralink is one of several serious players, not a monopoly). Neuralink's 2026 targets — high-volume implant manufacturing and a near-fully-automated surgical robot that inserts threads through the dura rather than removing it — remain the operational milestones to grade the company on.</p>
+      <p><strong class="lbl">Einordnung</strong> — Neuralink is the quietest, longest-duration bet in the portfolio, and this week is incremental-positive: geographic expansion plus a fast, clean anecdotal outcome plus adjacent academic validation of the whole field. The competitive context matters — the Nature/MIT coverage underscores that BCI is now a genuine race (Synchron, Precision Neuroscience and academic labs are advancing), so Neuralink's edge has to come from surgical automation and production scale rather than being first-to-concept. No financial read-through (Neuralink is private and not part of the SpaceX/xAI/Tesla capital structure), but it remains the highest-optionality science story in the Muskverse.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) whether the 26-patient count keeps climbing and how fast Canada/UK/UAE sites enroll; (2) any peer-reviewed Neuralink outcomes (vs company-sourced anecdotes); (3) progress on the automated-surgery robot and "high-volume production" claim; (4) competitive milestones from Synchron/Precision that pressure Neuralink's lead; (5) any regulatory step beyond investigational status.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · Neuralink primary post + independent field coverage; outcome is company-sourced</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag boring">BORING</span><span class="tag t-yellow">Vegas Loop</span><span class="date-pill">Recent · Jul 2026</span></div>
+  <h4>Boring Company keeps drilling — Prufrock-2 completes a new Vegas Loop tunnel as Chinatown expansion advances</h4>
+  <p>Steady, non-headline progress on the <strong>Vegas Loop</strong>. The Boring Company's <strong>Prufrock-2 tunnel-boring machine emerged after completing a new Vegas Loop tunnel</strong>, per Teslarati — concrete evidence the physical network is still extending, not stalled. Throughput remains the proof-of-concept: the system moved <strong>~82,000 passengers at CONEXPO 2026</strong> alone, on top of its multi-million cumulative total across operating stations. The <strong>three-station Chinatown branch</strong> continues to advance, and the long-approved Clark County / Las Vegas buildout still targets a network on the order of 68 miles and 100+ stations later this decade. The persistent asterisk from prior weeks is unchanged: the <strong>airport-connection rides have slipped</strong> from their early-2026 target as tunnel-and-station construction remains the binding constraint, and questions about regulatory oversight of the privately built network continue to surface in local reporting.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Boring machine</div><div class="data-value up">Prufrock-2 · new tunnel done</div></div>
+    <div class="data-item"><div class="data-label">CONEXPO throughput</div><div class="data-value">~82,000 riders</div></div>
+    <div class="data-item"><div class="data-label">Chinatown branch</div><div class="data-value">3 stations · advancing</div></div>
+    <div class="data-item"><div class="data-label">Airport rides</div><div class="data-value down">Still slipped</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.teslarati.com/the-boring-company-prufrock-2-completes-new-vegas-loop-tunnel/">Teslarati · Prufrock-2 tunnel</a>
+    <a href="https://www.basenor.com/blogs/news/vegas-loop-moves-82-000-passengers-at-conexpo-2026">Basenor · 82k at CONEXPO</a>
+    <a href="https://www.boringcompany.com/vegas-loop">Boring Co. · Vegas Loop (primary)</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext &amp; Vorgeschichte</strong> — The Vegas Loop is Boring's only revenue-operating system: Tesla vehicles shuttling passengers through single-lane tunnels between stations, anchored at the Las Vegas Convention Center and expanding across the Strip corridor. The long-term Clark County / City of Las Vegas approval covers a network on the order of 68 miles and roughly 100 stations, targeting completion late this decade, with an ambition of up to ~1,200 vehicles. Progress has been genuine but slower than Musk's timelines, and each new tunnel and station is the actual unit of progress — hence Prufrock-2's completion of a new bore being the substantive item this week.</p>
+      <p><strong class="lbl">Die Details</strong> — Two concrete data points: Prufrock-2 (Boring's production-generation tunnel-boring machine) finished a new Vegas Loop tunnel and surfaced, and the network moved ~82,000 passengers during CONEXPO 2026, a single large convention — a useful throughput stress test. The Chinatown three-station branch, which ties in a large number of local businesses, continues construction. The airport-ride connection — repeatedly floated for early 2026 — has slipped again, with tunnel-and-station buildout the binding constraint. Local reporting has also revisited the oversight question, with officials pushing back on claims that the privately built system operates with "little" regulatory scrutiny.</p>
+      <p><strong class="lbl">Einordnung</strong> — Boring is the lowest-stakes, most-private node in the portfolio and behaves like it: incremental physical progress, no capital-markets read-through, no drama. The value of logging it is directional — Prufrock-2 completing a tunnel confirms the network is compounding, and the CONEXPO throughput shows the operational model handles surge demand. The slipped airport connection is the recurring reality check: Boring's constraint is construction pace, not demand, and Musk's headline timelines here have consistently run ahead of the drilling. Nothing this week changes the trajectory; it confirms it.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) a firm airport-connection ride date (repeatedly slipped); (2) Chinatown branch opening; (3) cumulative passenger and station-count updates; (4) any expansion approval or oversight dispute with Clark County / Las Vegas; (5) whether Boring wins any project outside Las Vegas — the missing signal for the venture's broader viability.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · corporate + local/trade press; passenger figures self-reported</span></div></div>
+</div>
+
+<!-- EDITOR -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span>Editor's view</span>
+  <h3>Grading week: the Muskverse stopped making promises and started getting scored on them — and the marks were mixed.</h3>
+  <p><strong>Last week the theme was "converting IPO capital into product cadence." This week the tape sent the report card back.</strong> Grok 4.5's independent-ish benchmarks came in at a <span class="num">2–2</span> coding split with Opus 4.8 — respectable, cost-efficient, but not the "Opus-killer" the marketing implied — and OpenAI's GPT-5.6 "Sol" launched days later to reclaim the frontier headline. DOGE, the most visible political banner Musk carried, quietly expired at one year old with a disputed $215B savings claim and agencies already re-hiring. And Musk's boldest new promise — orbital AI data centers "next year" — drew the week's first prominent short-seller pushback from Jim Chanos, whose point was simple and hard to rebut: the rocket that would carry them hasn't reached orbit yet.</p>
+  <p>The through-line is <strong>the gap between narrative and demonstrated capability</strong>, and this week that gap got named out loud — by benchmarkers, by Chanos, by Altman. The counter-evidence is real too: <strong>Starship Flight 13 pulled forward to NET 16 July</strong> and, more importantly, upgraded from a cautious repeat to a mission that actually deploys 20+ Starlink V3 satellites — the first tangible payload proof on the V3 vehicle. Neuralink put a patient in Toronto controlling a cursor within an hour. Boring's Prufrock-2 finished another tunnel. The hardware ventures are quietly delivering; the AI and rhetoric ventures are over-promising. That asymmetry is the week.</p>
+  <p><strong>The political read has shifted from ideological to purely transactional.</strong> With DOGE retired, Musk's leverage inside government is no longer a banner — it's a portfolio of concrete dependencies: SpaceX contracts, Tesla's NHTSA/FMVSS regulatory path, xAI's data-center permitting. The America Party survives as spoiler insurance and Shotwell's $320M "Trump Accounts" donation as the counterweight, but the ideological project has ended and what's left is contracts and regulation. Meanwhile the Musk–Altman war is now fought on three fronts simultaneously — the Ninth Circuit appeal, the Grok-vs-GPT product race, and the daily "Scam Altman" X brawl — each amplifying the others.</p>
+  <p><strong>What to watch next 7 days:</strong> <span class="num">(1)</span> Starship Flight 13 on/after 16 July — does the Starlink V3 deploy actually execute; <span class="num">(2)</span> Tesla's 22 July print — automotive gross margin ex-credits is the whole ballgame; <span class="num">(3)</span> independent third-party Grok 4.5 benchmarks and any GPT-5.6 repricing of the tier; <span class="num">(4)</span> the formal Musk-v-Altman notice of appeal and Ninth Circuit schedule; <span class="num">(5)</span> any SPCX sentiment shift as Chanos-style skepticism meets a live launch.</p>
+  <p class="closer">Last week the Muskverse was asked to show, not tell. This week it showed some hardware, over-told on AI — and for the first time, someone with a short position started keeping score.</p>
+</div>
+
+<div class="colophon">
+  Muskverse Briefing · 15 July 2026 · covers 8 – 15 July · next edition Mon 20 July<br>
+  Prepared for Stefan · sources: TradingKey, TS2, CryptoDaily, Electrek, TechTimes, Teslarati, Apidog, SpaceXAI (x.ai), AkitaOnRails, Space.com, SpaceNews, Benzinga, DataCenterDynamics, SatNews, The Fiscal Times, People Matters, Wikipedia, StarConnect Media, Fortune, MLex, Neuralink, MIT Technology Review, Nature Medicine, Basenor<br>
+  Standard: 880px fluid container · Google Material Design · graphite / slate hero for the weekly Muskverse edition
+</div>
+
+</main>
+
+</body>
+</html>

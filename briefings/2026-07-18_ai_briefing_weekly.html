@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Briefing — 12–18 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --blue:#1a73e8; --link:#1967d2; --pill:#f1f3f4;
+  }
+  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg);font-family:'Google Sans',Roboto,Arial,Helvetica,sans-serif;color:var(--text);line-height:1.55;}
+  .wrap{max-width:880px;width:100%;margin:0 auto;padding:24px 20px;}
+  .card{background:var(--surface);border:1px solid var(--divider);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
+  .appbar{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 40px;font-family:'Google Sans';}
+  .appbar .title{font-size:18px;font-weight:500;}
+  .appbar .sub{font-size:13px;color:var(--muted);}
+  .chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .fchip{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--divider);color:var(--text2);font-size:12px;padding:5px 11px;border-radius:14px;}
+  .fchip .material-icons-outlined{font-size:14px;color:var(--muted);}
+  .fchip.active{background:#e8f0fe;border-color:#c2d7f8;color:#1967d2;}
+  .hero{background:linear-gradient(135deg,#1a73e8 0%,#1967d2 60%,#174ea6 100%);border-radius:12px;padding:26px 28px;margin-bottom:22px;box-shadow:0 1px 2px rgba(0,0,0,0.05);}
+  .hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#c2d7f8;text-transform:uppercase;}
+  .hero h1{font-size:24px;font-weight:500;color:#fff;margin:10px 0 12px;line-height:1.3;font-family:'Google Sans';}
+  .hero p{font-size:14px;color:#e8f0fe;margin:0;line-height:1.62;}
+  .section{padding:6px 6px 10px;margin-top:14px;display:flex;align-items:center;gap:8px;}
+  .section .material-icons-outlined{font-size:20px;color:var(--muted);}
+  .section .name{font-size:15px;font-weight:500;font-family:'Google Sans';}
+  .section .count{font-size:13px;color:var(--muted);}
+  .chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:0.3px;}
+  .datepill{display:inline-block;background:var(--pill);color:var(--muted);font-size:11px;padding:3px 10px;border-radius:10px;margin-left:6px;font-family:'Roboto Mono','SF Mono',ui-monospace,monospace;}
+  .c-anthropic{background:#fef7e0;color:#b06000;}
+  .c-openai{background:#e6f4ea;color:#0d652d;}
+  .c-google{background:#e8f0fe;color:#1967d2;}
+  .c-deepseek{background:#fce8e6;color:#a50e0e;}
+  .c-xai{background:#f1f3f4;color:#3c4043;}
+  .c-eu{background:#f3e8fd;color:#5f1d8e;}
+  .c-infra{background:#e8eef6;color:#1f3548;}
+  .c-mcp{background:#e6f4ea;color:#0d652d;}
+  .headline{font-size:17px;font-weight:500;margin:10px 0 6px;font-family:'Google Sans';}
+  .body{font-size:13.5px;color:var(--text2);}
+  .body p{margin:0 0 8px;}
+  details{margin-top:12px;}
+  summary{list-style:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#e8f0fe;color:#1967d2;font-size:12px;font-weight:500;padding:5px 12px;border-radius:14px;user-select:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary .material-icons-outlined{font-size:14px;transition:transform .2s;}
+  details[open] summary .material-icons-outlined{transform:rotate(90deg);}
+  .deep{font-size:13px;color:var(--text2);line-height:1.62;margin-top:12px;padding:14px 16px;background:#f8f9fb;border:1px solid var(--divider);border-radius:10px;}
+  .deep .lbl{display:block;font-weight:700;color:var(--text);margin:12px 0 3px;font-size:12.5px;font-family:'Google Sans';}
+  .deep .lbl:first-child{margin-top:0;}
+  .deep p{margin:0 0 6px;}
+  .divider{border-top:1px solid var(--divider);margin:12px 0 10px;}
+  .foot-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;}
+  .conf{font-size:12px;color:var(--muted);}
+  .conf .dots{letter-spacing:1px;color:#1a73e8;}
+  .links{padding-left:2px;}
+  .links a{display:inline-flex;align-items:center;gap:3px;background:var(--pill);color:var(--link);font-size:12px;text-decoration:none;padding:3px 10px;border-radius:10px;margin-left:4px;margin-top:4px;}
+  .links a .material-icons-outlined{font-size:12px;}
+  .banner{background:#fef7e0;border:1px solid #fde293;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:var(--text2);line-height:1.6;display:flex;gap:12px;align-items:flex-start;}
+  .banner .material-icons-outlined{color:#b06000;font-size:20px;flex-shrink:0;}
+  .banner strong.w{color:#b06000;}
+  .countdown{background:#f3e8fd;border:1px solid #d7bff2;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:#3c4043;line-height:1.6;display:flex;gap:12px;align-items:center;}
+  .countdown .material-icons-outlined{color:#5f1d8e;font-size:22px;}
+  .countdown strong{color:#5f1d8e;font-family:'Google Sans';}
+  .radar{font-size:13px;color:var(--text2);}
+  .radar .row{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--divider);align-items:baseline;}
+  .radar .row:first-child{border-top:none;}
+  .radar .rdate{flex:0 0 58px;font-size:11px;color:var(--muted);font-family:'Roboto Mono','SF Mono',ui-monospace,monospace;padding-top:1px;}
+  .radar .rname{font-weight:500;color:var(--text);}
+  .editor .chip{background:#e8f0fe;color:#1967d2;padding:4px 12px;border-radius:12px;font-size:12px;}
+  .editor h3{font-size:16px;font-weight:500;font-family:'Google Sans';margin:4px 0 10px;}
+  .editor ol{font-size:13.5px;color:var(--text2);line-height:1.65;margin:14px 0 8px;padding-left:22px;}
+  .editor li{margin-bottom:10px;}
+  .editor .wild{font-size:13px;color:var(--muted);font-style:italic;margin-top:6px;}
+  .trend{font-size:13.5px;color:var(--text2);}
+  .trend .t{font-weight:700;color:var(--text);font-family:'Google Sans';font-size:13px;display:block;margin:12px 0 3px;}
+  .trend .t:first-child{margin-top:0;}
+  .foot{text-align:center;padding:14px 12px 24px;}
+  .foot div{font-size:12px;color:var(--muted);margin-bottom:4px;}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+<div class="wrap">
+
+  <!-- App bar -->
+  <div class="appbar card" style="margin-bottom:14px;">
+    <div class="avatar">AI</div>
+    <div>
+      <div class="title">AI Briefing</div>
+      <div class="sub">Weekly · 12 – 18 Jul 2026 · Saturday edition</div>
+    </div>
+  </div>
+
+  <!-- Filter chip row -->
+  <div class="chiprow">
+    <span class="fchip active"><span class="material-icons-outlined">bolt</span>Frontier models</span>
+    <span class="fchip"><span class="material-icons-outlined">apps</span>Products &amp; platforms</span>
+    <span class="fchip"><span class="material-icons-outlined">public</span>Geopolitics &amp; regulation</span>
+    <span class="fchip"><span class="material-icons-outlined">payments</span>Money &amp; silicon</span>
+    <span class="fchip"><span class="material-icons-outlined">group</span>Talent &amp; corporate</span>
+    <span class="fchip"><span class="material-icons-outlined">calendar_today</span>Release radar</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">Briefing summary</div>
+    <h1>Gemini 3.5 Pro finally shipped — and China spent the same 24 hours answering it with a 2.8-trillion-parameter open model and a 29-nation governance bloc</h1>
+    <p>The week Stefan's last briefing pointed at actually delivered. On <strong style="color:#fff;">17 July</strong> Google DeepMind released Gemini 3.5 Pro with a 2M-token context window and Deep Think gated behind the $250 Ultra tier — six weeks late, after scrapping and re-pretraining the base model. Hours before it, Moonshot AI dropped <strong style="color:#fff;">Kimi K3</strong>: 2.8T parameters sparse MoE, 1M context, open weights promised by 27 July, and a No. 1 slot in Frontend Code Arena ahead of Claude Fable 5 and GPT-5.6 Sol. Hours after it, Xi Jinping gave the first head-of-state keynote in the World AI Conference's history and launched WAICO, a 29-country AI cooperation body Beijing wants headquartered in Shanghai. Underneath the split-screen: Apple conceded China to Alibaba's Qwen, TSMC's profit rose 77% and its US commitment hit $265bn, Databricks marked at $188bn, Helsing took Europe's biggest-ever defence round at $18bn, OpenAI killed its Atlas browser, and the EU AI Act's GPAI enforcement powers are now <strong style="color:#fff;">T-15 days</strong> away. Twenty-three cards, an eleven-row Release Radar, three trends, one Editor's View.</p>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown">
+    <span class="material-icons-outlined">gavel</span>
+    <div><strong>T-15 days.</strong> On 2 August 2026 the European Commission's enforcement powers over general-purpose AI (GPAI) model providers enter into application — documentation requests, model evaluations, corrective measures, and fines up to the greater of €15m or 3% of worldwide annual turnover. The same date activates Article 50 transparency duties: chatbot disclosure, machine-readable marking of AI-generated content, deepfake labelling. Neither was postponed.</div>
+  </div>
+
+  <!-- Yellow banner - unverified -->
+  <div class="banner">
+    <span class="material-icons-outlined">warning_amber</span>
+    <div><strong class="w">Caveats up front.</strong> Three items in this edition rest on thinner sourcing than the rest. (1) <em>Gemini 3.5 Pro pricing</em> — the launch is confirmed by Google DeepMind and mainstream press, but per-token API pricing figures circulating this week ranged from $1.25/$10 to $15/$60 per million tokens depending on the outlet; no figure here should be treated as final until the model card lands. (2) <em>Thinking Machines' "Inkling"</em> and <em>Liquid AI's "Antidoom"</em> come from industry roundups rather than company primary sources. (3) <em>OpenAI's proposed ~$42.6bn US government equity stake</em> is reported, not announced. Each card carries its C-Score.</div>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">bolt</span>
+    <span class="name">Frontier models</span>
+    <span class="count">· 6 items</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <span class="chip c-google">GOOGLE</span><span class="datepill">17 Jul</span>
+    <div class="headline">Gemini 3.5 Pro ships with a 2M-token context window and Deep Think locked to the $250 Ultra tier</div>
+    <div class="body">
+      <p>Google DeepMind confirmed the release of Gemini 3.5 Pro on Friday, closing out a launch that had slipped roughly six weeks from its original June target. The headline specs are a 2-million-token context window — double Gemini 2.5 Pro — and a "Deep Think" step-by-step reasoning mode available only on the $250-per-month Ultra subscription. Google described "meaningful gains in coding and long-horizon reasoning" over the 3.0 generation and announced no free tier, continuing its practice of gating the most capable systems behind paid plans.</p>
+      <p>The delay had a cause the company did not volunteer but reporting surfaced all week: engineers found structural failures in recursive tool-calling and SVG generation in the original base model, and Google scrapped it and restarted pretraining rather than ship it. That is the responsible call and an expensive one — the model landed eight days after GPT-5.6 went generally available, nine days after Grok 4.5 opened to the public, and roughly twelve hours after Kimi K3.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Gemini 3.5 was first teased at Google I/O on 19 May 2026. Google shipped 3.5 <em>Flash</em> on schedule — with published benchmarks including 76.2% on Terminal-Bench 2.1, 1656 Elo on GDPval-AA, 83.6% on MCP Atlas and 84.2% on CharXiv Reasoning — while Pro stayed in limited Vertex preview with no model card, no pricing page and no <code>gemini-3.5-pro</code> listing in the public API docs as late as 13 July. That gap between a shipped Flash and an invisible Pro is what made the delay legible from outside: the small model was fine, the big one was not.</p>
+          <span class="lbl">Die Details</span>
+          <p>The re-pretraining decision is the substantive fact of this launch. Recursive tool-calling — a model calling a tool, reading the result, and calling again in a chain — is the exact capability agentic products are built on, and a structural defect there is not patchable with post-training. Deep Think is not new to the Gemini ecosystem; it has posted verified results including 84.6% on ARC-AGI-2 and a gold-medal-level result at the 2025 International Mathematical Olympiad. What is new is its pairing with the 3.5 Pro base and its confinement to Ultra.</p>
+          <p>Pricing is where you should hold judgement. Leak-driven reporting through the week carried two incompatible sets of numbers: one cluster around $1.25 input / $10 output per million tokens, another around $15 / $60. Those are not rounding differences — they are different market positions. Until the official pricing page publishes, treat any per-token comparison against GPT-5.6 or Kimi K3 as provisional.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Google enters a field it no longer sets the terms of. Grok 4.5 reset the value floor at roughly $2 input / $6 output. DeepSeek V4 sits near $0.44 per million output tokens. Kimi K3 will have <em>free weights</em> within ten days. A premium closed model with no free tier now has to justify itself on capability alone, in a week when the open side of the market produced a credible frontier-class rival. The second-order risk for Google is subtler: the 2M context window is only worth what its recall at full length is worth, and long-context quality degradation past ~500K tokens has been the persistent unadvertised weakness of every large-context model shipped so far.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Independent long-context recall benchmarks at 1M+ tokens. The official model card and API pricing. Whether Deep Think stays Ultra-only or migrates down to Pro tiers within a quarter. And whether Gemini 3.5 Pro beats GPT-5.6 Sol on any headline coding benchmark — as of publication it had not been independently verified doing so.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●○</span> C-Score 4/5 · launch confirmed by Google DeepMind and mainstream press; pricing and benchmarks not yet independently verified</span>
+        <span class="links">
+          <a href="https://www.hngn.com/articles/272128/20260717/google-launches-gemini-35-pro-xi-jinping-opens-chinas-ai-summit-shanghai-same-day.htm"><span class="material-icons-outlined">link</span>HNGN</a>
+          <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/"><span class="material-icons-outlined">link</span>Google Blog</a>
+          <a href="https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm"><span class="material-icons-outlined">link</span>TechTimes</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <span class="chip c-deepseek">MOONSHOT AI</span><span class="datepill">16 Jul</span>
+    <div class="headline">Kimi K3: 2.8 trillion parameters, open weights by 27 July, and No. 1 in Frontend Code Arena</div>
+    <div class="body">
+      <p>Moonshot AI released Kimi K3 late on 16 July — a sparse Mixture-of-Experts model with roughly 2.8 trillion total parameters, a 1-million-token context window, native vision and always-on reasoning. It is the largest open-weight-track model ever released by any lab anywhere. API pricing is $0.30 per million cache-hit input tokens, $3 on cache misses and $15 output. Full weights are promised by 27 July.</p>
+      <p>It took first place in the Frontend Code Arena with 1,679 points, ahead of Claude Fable 5 (1,631), GPT-5.6 Sol (1,618) and GLM-5.2 (1,587). Moonshot itself concedes K3 still trails Fable 5 and Sol on overall performance, but says it beat every other model in its evaluation suite — including Claude Opus 4.8 and GPT-5.5 — across coding and agentic benchmarks. Fortune called the market reaction a second DeepSeek shock.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Moonshot has been the quiet consistent performer of the Chinese open-weight cohort, but K3 is a step change in scale rather than an increment. The launch leaked a day early through a promotion page on Moonshot's own platform, and it shipped without a keynote, press conference or livestream — a deliberate contrast with the choreography Google was running the same week. Two variants shipped: K3 Max for chat and agent work, K3 Swarm Max for large-scale parallel processing.</p>
+          <span class="lbl">Die Details</span>
+          <p>The architecture is genuinely new, not merely larger. K3 is built on <strong>Kimi Delta Attention</strong> and <strong>Attention Residuals</strong>, which change how information propagates across long sequences and through model depth. Sparsity is aggressive: 16 of 896 experts activate per token, roughly 1.8% of the pool, which is what keeps inference economics viable at 2.8T total parameters. Reasoning is controlled by a tunable <code>reasoning_effort</code> parameter rather than a separate model variant. Weights are being prepared with MXFP4 quantisation, which matters for whether anyone outside a well-funded lab can actually run this.</p>
+          <p>Independent early estimates from Artificial Analysis placed K3 around the Opus 4.8 / GPT-5.5 tier — competitive with top closed coding models, behind Fable 5 on some arena prompts. Tom's Hardware framed the release explicitly as China working around US compute limits: a 2.8T-parameter training run inside a sanctioned compute environment is itself the claim.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The timing is the strategic act. Dropping a frontier-class model hours before Google's biggest launch of the year guarantees every Gemini benchmark gets read against a Chinese model whose weights will be free within ten days. Combined with DeepSeek V4's stable release targeting 24 July, the last third of July is a coordinated open-weight offensive timed to land while the closed labs fight each other on price. The question it forces — what exactly justifies a large premium for closed frontier APIs on routine workloads — now gets asked at 2.8 trillion parameters instead of at 671 billion.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the weights actually land on 27 July and under what licence. Independent reproduction of the Frontend Code Arena result. Whether Western enterprises with China-exposure policies will touch open weights of Chinese origin — the compliance question, not the capability question, is what caps K3's Western adoption.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · Bloomberg, Fortune, Tom's Hardware, VentureBeat; vendor API docs</span>
+        <span class="links">
+          <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/moonshot-releases-2-8-trillion-parameter-kimi-k3"><span class="material-icons-outlined">link</span>Tom's Hardware</a>
+          <a href="https://fortune.com/2026/07/17/china-moonshot-kimi-k3-markets-china-ai/"><span class="material-icons-outlined">link</span>Fortune</a>
+          <a href="https://www.bloomberg.com/news/articles/2026-07-17/china-s-powerful-new-moonshot-ai-model-closes-gap-with-us-rivals"><span class="material-icons-outlined">link</span>Bloomberg</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <span class="chip c-deepseek">DEEPSEEK</span><span class="datepill">mid-Jul</span>
+    <div class="headline">DeepSeek V4 goes stable — and puts a hard 24 July migration deadline on every developer still on preview builds</div>
+    <div class="body">
+      <p>DeepSeek's V4 family is completing its move from preview to stable release in mid-July. The stable cut ships with a 1-million-token context window across the entire lineup and stronger performance on agentic task execution, mathematical reasoning and code generation. Two models: <strong>V4-Pro</strong> at 1.6T total / 49B active parameters, and <strong>V4-Flash</strong> at 284B total / 13B active.</p>
+      <p>The forcing function is the deprecation: the older <code>deepseek-chat</code> and <code>deepseek-reasoner</code> models become fully inaccessible after 24 July 2026. Anyone still pointing production traffic at those endpoints has a week.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>V4 first appeared as a preview on 24 April 2026 and has led open-weight leaderboards since. The stable cut is what cautious enterprises have been waiting on: preview-build churn — endpoints moving, behaviour shifting between snapshots — is the single largest reason risk-averse teams stay on paid closed APIs even when the open alternative benchmarks better.</p>
+          <span class="lbl">Die Details</span>
+          <p>The pricing change shipping alongside is the genuinely novel part and has had less attention than it deserves: DeepSeek is introducing <strong>peak and off-peak API pricing</strong> for the first time. Peak hours run 09:00–12:00 and 14:00–18:00 Beijing time, during which usage is charged at twice the off-peak rate. That is congestion pricing for tokens — an admission that inference capacity, not model quality, is the binding constraint, and an explicit incentive to move batch and non-interactive workloads into the night.</p>
+          <p>DeepSeek's roughly $0.44 per million output tokens remains the price floor the whole industry is measured against. Against Gemini 3.5 Pro's premium positioning and Kimi K3's $15 output, V4 is the cheap end of a suddenly crowded open frontier.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Two effects. First, for European teams the peak/off-peak split is arbitrage: Beijing peak hours are 03:00–06:00 and 08:00–12:00 CEST, so a European workday partially sits in DeepSeek's discounted window. Second, and larger: if peak pricing works, expect it to spread. Every inference provider has the same capacity problem, and DeepSeek just made time-of-day metering normal.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the 24 July deprecation slips. Whether other providers copy time-of-day pricing within the quarter. Independent benchmarks of stable V4-Pro against Kimi K3 Max once both are generally available.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●○</span> C-Score 4/5 · DeepSeek API docs and vendor announcement, corroborated by TechNode</span>
+        <span class="links">
+          <a href="https://api-docs.deepseek.com/news/news260424/"><span class="material-icons-outlined">link</span>DeepSeek API Docs</a>
+          <a href="https://technode.com/2026/06/30/deepseek-to-launch-v4-in-mid-july-with-new-peak-time-api-pricing/"><span class="material-icons-outlined">link</span>TechNode</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <span class="chip c-infra">ON-DEVICE</span><span class="datepill">14 Jul</span>
+    <div class="headline">PrismML's Bonsai 27B squeezes a 27-billion-parameter model onto an iPhone at 3.9 GB</div>
+    <div class="body">
+      <p>PrismML released Bonsai 27B on 14 July: a 27-billion-parameter model compressed to 3.9 gigabytes that runs locally on an iPhone 17 Pro at roughly 11 tokens per second. Built from Qwen3.6-27B using 1-bit and 1.58-bit ternary compression, it is multimodal, handles reasoning, coding and agentic tasks, and retains more than 90% of full-precision performance in the 1-bit build and over 95% in the ternary version. Apache 2.0, free.</p>
+      <p>A capable 27B-class model has not previously fit comfortably on a phone. CEO Babak Hassibi told CNBC that Apple and others have been evaluating the models for speed and energy efficiency on their own hardware — which lands with extra weight in the same week Apple secured its China AI approval.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Extreme quantisation — dropping from 16-bit weights toward 1-bit or ternary (-1/0/+1) representations — has been a live research thread for two years, but the demos have consistently been either small models or large models with unacceptable quality loss. Bonsai's contribution is the combination: 27B class, phone-resident, and a quality retention figure high enough that the compression stops being the headline caveat.</p>
+          <span class="lbl">Die Details</span>
+          <p>11 tokens per second is usable but not fast — roughly reading speed, not skimming speed. And 1-bit compression does lose real capability on the hardest tasks; the >90% retention figure is an average across a benchmark suite, not a floor. Neither caveat undermines the point, because the workloads that migrate on-device are not the hardest ones. Summarising, drafting, classifying, routing, answering: none of that needs a frontier model, and all of it currently costs money per token and leaks content to a third party.</p>
+          <p>Paired with Liquid AI's Antidoom result the same week (see below), the reliability objection to small local models is also under attack from the other direction.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The economics are the story. A reliable local model costs the developer nothing per query, against roughly $30 per million output tokens for a flagship like GPT-5.6 Sol. For any product with high-volume, low-complexity AI calls, that is not an optimisation — it is a different business model. The threat to the labs is structural: token metering funds everything they do, and a large share of routine volume moving on-device erodes the base while the frontier-capability spend keeps rising.</p>
+          <p>There is also a regulatory tailwind nobody planned. A model that runs locally is a model that satisfies a data-residency regulator, which is exactly the constraint Apple just navigated in China and exactly the constraint EU enterprises face from 2 August.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether Apple ships anything built on this class of compression in an OS release. Independent quality measurement of the 1-bit build on agentic tasks specifically, where error compounding punishes small quality losses hardest. Whether Qwen's licence terms constrain downstream commercial use of derivatives.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●○</span> C-Score 4/5 · 9to5Mac, MarkTechPost, CNBC quote; benchmark claims are vendor-reported</span>
+        <span class="links">
+          <a href="https://9to5mac.com/2026/07/14/prismml-releases-bonsai-27b-claiming-first-major-ai-model-of-its-size-fit-for-iphone/"><span class="material-icons-outlined">link</span>9to5Mac</a>
+          <a href="https://www.marktechpost.com/2026/07/14/prismml-releases-bonsai-27b-1-bit-and-ternary-builds-of-qwen3-6-27b-that-run-on-laptops-and-phones/"><span class="material-icons-outlined">link</span>MarkTechPost</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <span class="chip c-xai">THINKING MACHINES</span><span class="datepill">wk 12–18 Jul</span>
+    <div class="headline">Mira Murati's Thinking Machines debuts with "Inkling" — and chooses open weights</div>
+    <div class="body">
+      <p>Thinking Machines, founded by former OpenAI CTO Mira Murati, released Inkling, an open-weight model that can be downloaded, run locally and fine-tuned. It is the company's first major public release since its heavily funded founding, and the format carries more signal than the model: the executive who helped build the most famous closed models in the world chose open weights for her independent debut.</p>
+      <p>Inkling joins a 2026 open-model surge that now looks like a stampede — DeepSeek, Qwen, GLM and Kimi already held four of the top five open-weight positions before this week added Bonsai 27B and Kimi K3.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Thinking Machines was founded after Murati's departure from OpenAI and raised at a valuation that made it one of the best-capitalised pre-product AI companies ever formed. The long silence since founding made the choice of first release unusually loaded: a closed API would have signalled a direct OpenAI competitor, an open release signals a different theory of where value accrues.</p>
+          <span class="lbl">Die Details</span>
+          <p>Honest limitation: detailed specifications, parameter count, benchmark results and licence terms for Inkling come from industry roundups rather than a company primary source I could verify this week. Treat the capability claims as unconfirmed. What is firm is the format — open weights, downloadable, fine-tunable — and the fact of release.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The strategic question is what the business becomes if the model is free. The plausible answers are the ones Mistral has been running in Europe: enterprise services, custom training, hosted infrastructure around an open core. That is a lower-margin, higher-defensibility position than API metering, and it only works if the open core attracts genuine developer gravity.</p>
+          <p>The broader significance is that an American marquee founder joined the open side of the ledger in the same week two Chinese labs did. Through the first half of 2026 it was possible to frame open weights as a China strategy — a way to buy relevance under compute sanctions. That framing is now harder to sustain.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>The actual licence. Whether Thinking Machines publishes a model card and benchmarks, or lets the roundups define the model. Whether any enterprise announces a production deployment within the quarter.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●○○</span> C-Score 3/5 · industry roundup sourcing; no primary vendor announcement verified</span>
+        <span class="links">
+          <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-17-2026"><span class="material-icons-outlined">link</span>Build Fast with AI</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <span class="chip c-infra">LIQUID AI</span><span class="datepill">wk 12–18 Jul</span>
+    <div class="headline">Liquid AI's "Antidoom" cuts a 4B model's failure rate from 22.9% to 1% on a target task</div>
+    <div class="body">
+      <p>Liquid AI introduced a method called Antidoom which, applied to Qwen3.5-4B, cut the model's failure rate on a target task from 22.9% to 1%. The technique attacks the defining weakness of small on-device models: not raw capability but <em>reliability</em>. Small models are fast and cheap and then break on edge cases in ways large cloud models do not.</p>
+      <p>A 4-billion-parameter model that fails once in a hundred attempts instead of once in four is deployable in production. That threshold — not benchmark score — is what turns a cheap local model from a toy into a tool.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Liquid AI has spent 2026 working the efficiency frontier rather than the capability frontier — the deliberate opposite of the scaling labs. The commercial logic is that the number of devices that could run a good small model vastly exceeds the number of workloads that need a frontier one, and nobody has been serving that market well.</p>
+          <span class="lbl">Die Details</span>
+          <p>The honest caveat is large and should be stated first: a 22.9%-to-1% improvement on <em>one</em> task is not a general result. Single-benchmark reliability gains have a long history of not transferring, and independent testing across varied workloads is what would prove the method. Liquid AI has not, as far as I can verify, published a multi-task evaluation.</p>
+          <p>What makes it worth a card anyway is the specific failure mode targeted. In agentic pipelines errors compound multiplicatively: a 22.9% per-step failure rate makes a five-step chain succeed 28% of the time; a 1% rate makes the same chain succeed 95% of the time. That is the difference between a demo and a product, and it is why reliability work at small scale has outsized leverage.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Read Bonsai 27B and Antidoom together and the week's quiet theme is that the on-device shift stopped being about size and started being about trust. Compression solved "can it fit"; reliability work addresses "can I ship it". If both hold up under independent testing, the practical architecture for 2027 products is hybrid routing — frontier reasoning in the cloud, high-volume routine work on device — and the winners are whoever automates the routing decision.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>A multi-task evaluation from Liquid AI or a third party. Whether the method generalises to models outside the Qwen family. Whether it survives contact with adversarial input rather than just distributional edge cases.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●○○</span> C-Score 3/5 · single vendor claim on a single benchmark, reported via industry summary</span>
+        <span class="links">
+          <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-16-2026"><span class="material-icons-outlined">link</span>Build Fast with AI</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2 ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">apps</span>
+    <span class="name">Products &amp; platforms</span>
+    <span class="count">· 5 items</span>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI</span><span class="datepill">16 Jul</span>
+    <div class="headline">GPT-Red: an internal red-teaming model that beat human red-teamers 84% to 13% on prompt injection</div>
+    <div class="body">
+      <p>OpenAI published details of GPT-Red, an internal automated red-teaming model trained via self-play reinforcement learning to generate progressively stronger prompt-injection attacks while defender models learn to resist them. It behaves like a human red-teamer — sends a prompt, watches the response, iterates toward a malicious goal such as exfiltrating data to an external server — but at machine scale. It succeeded on 84% of scenarios against 13% for human red-teamers.</p>
+      <p>OpenAI says the resulting GPT-5.6 Sol is its most prompt-injection-resistant model to date, with 6x fewer failures on the hardest direct prompt-injection benchmark than the best production model from four months earlier. GPT-Red itself is kept isolated so its offensive capability does not reach attackers.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Prompt injection has been the unsolved structural vulnerability of the agent era since agents got tool access. The problem is architectural, not a bug: a model that reads untrusted content and also holds credentials cannot reliably distinguish instructions from data, because both arrive as text. Every lab shipping agents has been trading blows with it, and the industry's honest position through 2025 was that it had no general defence.</p>
+          <span class="lbl">Die Details</span>
+          <p>The most instructive artefact in OpenAI's disclosure is a case study: GPT-Red manipulated an autonomous vending-machine agent into lowering prices, ordering discounted inventory, and cancelling another customer's order — before the vulnerabilities were disclosed and fixed. That is a compact demonstration of the whole risk class. The agent was not jailbroken into saying something rude; it was steered into taking real commercial actions against its principal's interest.</p>
+          <p>The self-play framing matters technically. Attacker and defender co-train, so the attack distribution keeps moving and the defender cannot overfit to a fixed adversary. It is the AlphaGo-style structure applied to security, and it is the first credible mechanism for defence scaling with capability rather than lagging it.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Two readings, both true. Optimistic: this is the first plausible answer to "how does safety keep pace as models get more capable" — you scale the attacker alongside the model. Pessimistic: OpenAI has demonstrated that an AI can find 84% of prompt-injection vectors, and the same technique is available to anyone with compute and motive. Keeping GPT-Red isolated is prudent and is not a moat; the method is now public even if the weights are not.</p>
+          <p>For enterprises the practical read connects directly to this week's other security story: AI-security M&A tripled in H1 2026, and CISA warned that agents are opening new identity-and-access gaps. GPT-Red is the vendor-side half of a picture whose buyer-side half is a control problem nobody has staffed for.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether Anthropic and Google publish comparable adversarial-training work. Whether the 6x robustness gain holds against attacks generated by a <em>different</em> attacker model than the one it co-trained with — that is the generalisation test. Whether any regulator starts requiring adversarial evaluation evidence; the EU AI Act's model-evaluation powers activate 2 August.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · OpenAI primary publication, corroborated by The Hacker News, Decrypt, MarkTechPost</span>
+        <span class="links">
+          <a href="https://openai.com/index/unlocking-self-improvement-gpt-red/"><span class="material-icons-outlined">link</span>OpenAI</a>
+          <a href="https://thehackernews.com/2026/07/openais-gpt-red-automates-prompt.html"><span class="material-icons-outlined">link</span>The Hacker News</a>
+          <a href="https://decrypt.co/373613/openai-ai-red-team-strengthen-gpt-5-6-prompt-injection-attacks"><span class="material-icons-outlined">link</span>Decrypt</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI</span><span class="datepill">wk 12–18 Jul</span>
+    <div class="headline">OpenAI kills the Atlas browser — everything folds into ChatGPT as one super app</div>
+    <div class="body">
+      <p>OpenAI is deprecating Atlas, its AI web browser, as it moves browser-based agentic capability into ChatGPT and Codex. Atlas stops working on 9 August 2026. The stated logic is consolidation: ChatGPT Work, GPT-Live voice, browsing and the Codex tools all funnel into a single surface, and OpenAI now believes the chat app rather than the browser is the front door to the internet.</p>
+      <p>Killing a high-profile product reveals strategy more reliably than launching one. A year ago every lab wanted its own browser; the fight has consolidated into which single app you open first each morning.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Atlas launched as OpenAI's bid to own web navigation — the reasoning being that an agent that can see and act on the open web needs a browser it controls. The counter-argument, which has now won internally, is that the browser is a container and the container does not matter if the agent can drive a headless one from inside the app the user already lives in.</p>
+          <span class="lbl">Die Details</span>
+          <p>The shutdown sits inside a busier week of ChatGPT platform work than the headline suggests. Custom instructions expanded from 1,500 to 5,000 characters for Plus, Enterprise, Business and Education users. ChatGPT Enterprise and EDU gained workspace-scoped Admin keys in the Global Admin Console for supported ChatGPT and Codex admin APIs, plus credit and Codex analytics history. And OpenAI is hiring a product manager dedicated to families, caregivers and older adults — signalling family plans, child and teen profiles, shared household memory and stronger safety controls.</p>
+          <p>Microsoft reportedly reached the same conclusion this week, opting for deeper ChatGPT integration rather than building a rival browser.</p>
+          <span class="lbl">Einordnung</span>
+          <p>There is a corporate-discipline story here worth crediting separately from the product logic. OpenAI is weeks from an IPO filing. Shutting down a launched, branded product that is not winning — rather than letting it limp along for optics — is what companies do when they start reporting to public markets. Read the Atlas shutdown, the family-products hire and the admin-console work as one thing: OpenAI tidying its surface area and broadening its demographic before it has to explain itself quarterly.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>What happens to Atlas users' data and extensions on 9 August. Whether ChatGPT's in-app browsing reaches feature parity with what Atlas did before the shutdown date. The IPO filing itself, and whether the S-1 confirms the consolidation rationale.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●○</span> C-Score 4/5 · OpenAI release notes plus mainstream corroboration; IPO timing is reported, not confirmed</span>
+        <span class="links">
+          <a href="https://openai.com/news/product-releases/"><span class="material-icons-outlined">link</span>OpenAI Newsroom</a>
+          <a href="https://releasebot.io/updates/openai"><span class="material-icons-outlined">link</span>Release notes</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card">
+    <span class="chip c-google">GOOGLE</span><span class="datepill">16 Jul</span>
+    <div class="headline">NotebookLM becomes Gemini Notebook — and gets a cloud computer that runs code inside your notebook</div>
+    <div class="body">
+      <p>Google renamed NotebookLM to Gemini Notebook on 16 July, folding it into the Gemini brand. The rename came with substance: a secure cloud computer that lets users run code directly inside notebooks for data analysis, rolling out to Pro users, plus notebook sync across the Gemini app and Google Search, with availability inside Search's AI Mode coming. The product serves more than 30 million people and over 600,000 organisations.</p>
+      <p>The cloud computer turns a document-grounded chat tool into something closer to a data workbench: upload sources, ask questions, execute analysis code against them without leaving the notebook.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>NotebookLM had built one of the strongest independent product brands in AI, largely on its podcast-style Audio Overviews going viral repeatedly through 2024–25. It was the rare Google AI product people recommended by name without mentioning Google. Folding it into the Gemini umbrella trades that distinctiveness for brand tidiness — Forbes ran a piece literally titled "I'm Confused."</p>
+          <span class="lbl">Die Details</span>
+          <p>The Search integration is the part that matters commercially and got the least attention. Putting notebooks inside Google Search's AI Mode places a research tool in front of billions of users — the day before Gemini 3.5 Pro headlines the same brand. Google consolidated every AI surface it owns under one name in launch week. That is sequencing, not housekeeping.</p>
+          <p>The cloud computer is a meaningful capability jump. Document-grounded Q&amp;A can only tell you what a source says; code execution against uploaded data lets the tool compute things the sources do not contain. For a 30-million-user base that skews toward students, researchers and analysts, that is the difference between a reading assistant and an analysis environment.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The competitive frame is Anthropic's Cowork and OpenAI's ChatGPT Work, both of which are chasing the same thing from different starting points: a persistent workspace where an agent has your files, your context and the ability to execute. Google's advantage is distribution — Search — and its disadvantage is that it keeps rebranding the products people had learned to ask for by name.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the cloud computer reaches free tiers or stays Pro-gated. Whether Audio Overviews survive the rebrand as a distinct feature. Whether Search AI Mode integration actually ships, and what it does to notebook creation volume.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · Google Blog primary, TechCrunch corroboration</span>
+        <span class="links">
+          <a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/"><span class="material-icons-outlined">link</span>Google Blog</a>
+          <a href="https://techcrunch.com/2026/07/16/google-continues-its-renaming-streak-by-turning-notebooklm-to-gemini-notebook/"><span class="material-icons-outlined">link</span>TechCrunch</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">14 Jul</span>
+    <div class="headline">Claude for Teachers goes free for US K-12 — plus Reflect, Cowork on mobile and web, and self-serve HIPAA</div>
+    <div class="body">
+      <p>Anthropic launched Claude for Teachers, giving verified US K-12 educators free access to premium Claude tools, teaching skills and curriculum connections aligned to standards in all 50 states — lesson planning, personalised instructional materials, and data-informed instruction. It is a land-grab for the American classroom against a field that includes Google and OpenAI.</p>
+      <p>Three other shipments the same stretch: <strong>Reflect</strong>, a dashboard that visualises how you use Claude with a monthly recap of topics, most active day and peak hour; <strong>Cowork</strong> expanded to mobile and web with sessions and files following you across devices, background work, scheduled tasks, shared chats and projects, and mobile approvals; and self-serve HIPAA configuration for Enterprise and API organisations with BAA review and one-step enablement.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Anthropic spent the previous week building institutions rather than shipping models — Ben Bernanke onto the Long-Term Benefit Trust, a public "Hard Questions" commitment. Claude for Teachers is the same instinct pointed at distribution. Education is the one consumer channel where being trusted matters more than being cheapest, and it is the channel where a generation forms habits about which assistant they reach for.</p>
+          <span class="lbl">Die Details</span>
+          <p>The 50-state standards alignment is the operationally expensive part and the actual moat. US K-12 curriculum standards are fragmented by state; a lesson-planning tool that does not map to the standards a teacher is evaluated against is a novelty. Anthropic doing that work — rather than shipping a generic education prompt pack — is what makes the offer sticky.</p>
+          <p>The HIPAA self-serve configuration is the quieter but commercially larger item. Until now, Business Associate Agreement handling for healthcare customers has been a sales-assisted process at every major lab. Making it self-serve with a one-step enablement removes a multi-week procurement blocker for every US healthcare organisation below enterprise-sales scale.</p>
+          <p>Anthropic also shipped an Admin API in beta for Claude Enterprise organisations: list and look up members by email, change roles, remove members, send and withdraw invites, manage groups and membership. Plus a broad Claude Code stability update — subagent text streaming, better permission and upload handling, improved background agent reporting, faster terminal rendering, and fixes across Chrome, Windows, Bedrock, Vertex, hooks and session recovery.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Read the four together and the strategy is legible: Anthropic is not competing for the next benchmark headline this month, it is removing adoption friction at both ends — free at the classroom end, compliance-cleared at the regulated-enterprise end. TechCrunch separately noted a Claude feature that "quietly sells you on AI," which is the tension worth holding: a free tool for teachers is also a distribution channel into millions of households.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether Google or OpenAI answers with a comparable free K-12 offer within the quarter. Whether Claude for Teachers extends outside the US — the EU version would land straight into AI Act Article 50 transparency duties and, for education use, potentially high-risk classification. Whether Reflect's usage data raises privacy questions.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · Anthropic newsroom and release notes; Chalkbeat, EdSurge, TechCrunch corroboration</span>
+        <span class="links">
+          <a href="https://www.chalkbeat.org/2026/07/14/anthropic-launches-claude-for-teachers-as-ai-companies-battle-for-classrooms/"><span class="material-icons-outlined">link</span>Chalkbeat</a>
+          <a href="https://www.anthropic.com/news"><span class="material-icons-outlined">link</span>Anthropic Newsroom</a>
+          <a href="https://www.edsurge.com/news/anthropic-introduces-claude-for-teachers"><span class="material-icons-outlined">link</span>EdSurge</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card">
+    <span class="chip c-mcp">MCP</span><span class="datepill">28 Jul</span>
+    <div class="headline">MCP 2026-07-28 is ten days out: stateless core, no session IDs, extensions as first-class, OAuth 2.1 hardening</div>
+    <div class="body">
+      <p>The Model Context Protocol's 2026-07-28 specification — the biggest revision since launch — publishes in ten days, with beta SDKs for Python, TypeScript, Go and C# already available. The release candidate locked on 21 May, giving SDK maintainers and client implementers a ten-week window to validate against real workloads.</p>
+      <p>The protocol becomes stateless. The <code>initialize</code> handshake is removed entirely; protocol version, client info and capabilities travel in <code>_meta</code> on every request. The <code>Mcp-Session-Id</code> header is gone, so any server instance can handle any request. A new <code>server/discover</code> method lets clients fetch capabilities on demand.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>MCP shipped originally with a session-oriented design borrowed from stdio-style local tooling: connect, handshake, hold a session. That was correct for a local integration protocol and wrong for what MCP became — a remote, multi-tenant, load-balanced enterprise transport. The session pinned a client to a specific server instance, which is exactly what a horizontally scaled deployment cannot tolerate. This release is the correction, and MCP's maintainers have been explicit that it is a rewrite of the core rather than an increment.</p>
+          <span class="lbl">Die Details</span>
+          <p>Four changes matter beyond statelessness. <strong>Extensions framework:</strong> extensions get reverse-DNS IDs, are negotiated through an extensions map on client and server capabilities, live in their own <code>ext-*</code> repositories with delegated maintainers, and version independently of the spec — MCP Apps and a redesigned Tasks extension are the first two. <strong>Authorization:</strong> alignment with OAuth 2.1 and OpenID Connect, which is what takes MCP from "works with a token" to enterprise-deployable identity. <strong>Schemas:</strong> tool <code>inputSchema</code> and <code>outputSchema</code> lift to full JSON Schema 2020-12, so input schemas now allow composition (<code>oneOf</code>, <code>anyOf</code>, <code>allOf</code>), conditionals and references. <strong>Response caching</strong> lands at the protocol layer. And a formal deprecation policy finally exists, so this scale of break should not recur unannounced.</p>
+          <p>SC Media flagged the security dimension: an overhaul this large introduces new attack surface in exactly the layer that brokers agent access to tools and data, and implementations racing to migrate are where the bugs will be.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Statelessness is what lets MCP servers run behind ordinary load balancers, autoscale, and survive instance churn — the operational prerequisites for anything a large enterprise will actually deploy. Combined with OAuth 2.1/OIDC, this is the release where MCP stops being a developer-ecosystem protocol and starts being infrastructure. The cost is a genuine migration: anything relying on the handshake or session header breaks.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the 28 July date holds. How fast the major clients (Claude Desktop, Claude Code, IDE integrations) cut over, and whether they run dual-protocol support. Whether the extensions framework fragments the ecosystem — delegated maintainers and independent versioning solve a governance problem and create a compatibility one.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · MCP blog primary, GitHub releases, maintainer statements</span>
+        <span class="links">
+          <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"><span class="material-icons-outlined">link</span>MCP Blog</a>
+          <a href="https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"><span class="material-icons-outlined">link</span>Beta SDKs</a>
+          <a href="https://workos.com/blog/mcp-2026-spec-agent-authentication"><span class="material-icons-outlined">link</span>WorkOS</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 3 ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">public</span>
+    <span class="name">Geopolitics &amp; regulation</span>
+    <span class="count">· 5 items</span>
+  </div>
+
+  <!-- 12 -->
+  <div class="card">
+    <span class="chip c-deepseek">CHINA</span><span class="datepill">17 Jul</span>
+    <div class="headline">Xi Jinping keynotes the World AI Conference and launches WAICO — a 29-nation AI cooperation body Beijing wants headquartered in Shanghai</div>
+    <div class="body">
+      <p>Xi Jinping delivered the opening keynote of the 2026 World AI Conference in Shanghai on 17 July — the first appearance by China's leader at the event since it began in 2018. "Artificial intelligence should not be dominated by a single country," he told the conference, urging international cooperation on development and governance. The conference runs through 20 July with more than 140 forums and 1,100-plus exhibitors, doubling as a High-Level Meeting on Global AI Governance.</p>
+      <p>Twenty-nine countries — including Russia, Brazil, Pakistan, Indonesia, Cuba, Venezuela, Belarus, Serbia, Kazakhstan and Laos — signed an agreement establishing the <strong>World Artificial Intelligence Cooperation Organization (WAICO)</strong>, which Beijing wants headquartered in Shanghai.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>A head of state personally opening an AI trade show would have been unthinkable three years ago. Xi breaking from years of sending lower-level officials signals that Beijing now treats AI leadership as requiring direct presidential engagement rather than delegation to tech ministries. Chinese state media framed the summit around AI safety, data security and reducing "technological protectionism," calling for shared access to computing power, datasets and talent between developed and developing nations.</p>
+          <span class="lbl">Die Details</span>
+          <p>The founding membership list is the substance. It is not a coalition of AI powers — it is a coalition of countries that are <em>not</em> AI powers, plus Russia. That is the point: WAICO is a Global South offer, pitched at states deciding whose stack to build on, at the exact moment Washington has no equivalent institutional proposal on the table. The pitch is full-stack: Huawei demonstrated its Atlas 950 SuperPoD — domestic-silicon training infrastructure built under US export restrictions — on the WAIC floor the same week, and Kimi K3's open weights arrive on 27 July. Chips, models and rules, presented as a package to countries that want AI capability without dependence on US export policy.</p>
+          <p>The split-screen with Gemini 3.5 Pro's launch hours earlier was a scheduling coincidence, but it functioned as a summary of the year: the West's most-anticipated model launch and the East's biggest AI policy speech in the same 24 hours, with a Chinese frontier open model dropped between them.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Governance follows power, and both were being demonstrated this week. Whether WAICO advances real coordination or simply relocates the argument to a Chinese-hosted venue is genuinely open. What is not open is that the West's lack of a counter-proposal is itself a policy choice with consequences — the EU has the AI Act but no international convening body, and the US has neither. Whoever writes the rules shapes the market every model competes in.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether WAICO acquires a secretariat, budget and legal personality, or stays a signing ceremony. Additional policy announcements from Chinese officials on data security and algorithmic governance standards before the conference closes 20 July. Whether any EU or OECD member joins. Whether the US responds with an institutional proposal of its own or continues to compete purely on export controls.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · Al Jazeera, CNBC, Euronews, Bloomberg, AFP</span>
+        <span class="links">
+          <a href="https://www.aljazeera.com/news/2026/7/17/chinas-xi-jinping-launches-new-ai-alliance-what-is-it"><span class="material-icons-outlined">link</span>Al Jazeera</a>
+          <a href="https://www.cnbc.com/2026/07/17/x-china-ai-summit-risks-security.html"><span class="material-icons-outlined">link</span>CNBC</a>
+          <a href="https://www.euronews.com/next/2026/07/17/xi-calls-for-global-ai-cooperation-as-us-restrictions-squeeze-chinas-tech-access"><span class="material-icons-outlined">link</span>Euronews</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card">
+    <span class="chip c-infra">APPLE / ALIBABA</span><span class="datepill">15 Jul</span>
+    <div class="headline">Apple Intelligence clears China after 22 months — powered by Alibaba's Qwen, with Baidu on visual search</div>
+    <div class="body">
+      <p>The Cyberspace Administration of China published a registration notice on 15 July clearing Apple Intelligence for mainland China, nearly 22 months after Apple said at the iPhone 16 launch that the features would arrive "subject to regulatory approval." Alibaba confirmed its Qwen model will be integrated across iOS, iPadOS, macOS and visionOS for Chinese users; Baidu handles visual search. The CAC listed Apple Intelligence among seven approved on-device generative-AI services for smartphones, alongside Huawei, Xiaomi, Samsung, OPPO, vivo and Nubia.</p>
+      <p>The strategic reality is blunt: an American technology company cannot run its own AI models in China, so the most valuable company on earth is putting Alibaba's model under the hood of its own branded feature in its second-largest market.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>China requires every large language model to be registered and approved before public release, and foreign models do not clear that bar. Apple's 22-month gap between announcement and approval is the cost of that regime, paid in a market where domestic rivals shipped AI features the whole time. Apple Intelligence launched everywhere else in late 2024; Chinese iPhone buyers have watched Huawei and Xiaomi ship generative features on their own silicon for two years.</p>
+          <span class="lbl">Die Details</span>
+          <p>The regulator's statement set no launch date — registration is a milestone, not a release. Historically the gap between CAC approval and public availability has run weeks to months, putting Chinese availability plausibly in Q3–Q4 2026. The division of labour is worth noting: Qwen handles language, Baidu handles visual search. Apple is not renting one model; it is assembling a Chinese stack.</p>
+          <p>Two other Apple threads ran the same week. Apple is reportedly seeking chip-company acquisitions to accelerate custom AI server silicon, extending its A- and M-series design capability into the data centre and reducing Nvidia dependence. And PrismML's CEO said Apple has been evaluating phone-resident compressed models for speed and energy efficiency on Apple hardware.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Market access, not model quality, is becoming the decisive factor in who serves which country. Alibaba gains enormous validation by powering the iPhone in China; the deal is also the clearest evidence yet that the AI world has settled into two stacks with a hard regulatory border. Companies operating globally now run one stack in the West and a different one in China — a profound departure from the single global internet software grew up on. The complexity cost falls on the companies caught in the middle; the strategic benefit accrues to both blocs.</p>
+          <p>There is a third reading that connects to this week's on-device story: a model that runs locally on the handset is also a model that satisfies a regulator worried about data leaving the country. Compression and sovereignty are converging.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>The actual launch date and whether feature parity with the Western version holds. Whether Apple's server-silicon acquisition hunt produces a named target. Whether any US political reaction follows Apple shipping a Chinese model inside a flagship US product.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · CAC registration notice, Alibaba confirmation, TechCrunch, Bloomberg/Yahoo Finance</span>
+        <span class="links">
+          <a href="https://techcrunch.com/2026/07/15/apple-intelligence-approved-for-launch-in-china-with-alibabas-qwen-ai/"><span class="material-icons-outlined">link</span>TechCrunch</a>
+          <a href="https://www.techtimes.com/articles/320811/20260717/apple-intelligence-wins-china-approval-after-22-months-qwen-handles-language-baidu-handles-search.htm"><span class="material-icons-outlined">link</span>TechTimes</a>
+          <a href="https://finance.yahoo.com/technology/ai/articles/apple-intelligence-approved-china-alibaba-131501096.html"><span class="material-icons-outlined">link</span>Yahoo Finance</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card">
+    <span class="chip c-infra">NVIDIA / EXPORT CONTROL</span><span class="datepill">14 Jul</span>
+    <div class="headline">Nvidia's first H200 shipments reach China — a "trivial" number, and a live political fight in Washington</div>
+    <div class="body">
+      <p>A small number of Nvidia H200 accelerators have shipped to customers in China after winning US approval. Jeffrey Kessler, under secretary of commerce for industry and security, said a "trivial" number of processors were shipped, declining to specify volumes or buyers. Roughly ten Chinese firms have been cleared to receive advanced AI hardware from Nvidia and AMD. The H200 was cleared for export to China by President Trump in December.</p>
+      <p>The low volumes have opened a sharp political divide in Washington over how the technology blockade is being enforced — the shipments are simultaneously too small to matter commercially and large enough to be a precedent.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>The H200 clearance in December was a significant easing of controls designed to constrain Beijing's AI ambitions. It has been followed by tightening elsewhere: in May the US moved to halt Nvidia shipments to Chinese firms operating <em>outside</em> China, closing the offshore-subsidiary route. The net policy is not liberalisation but a narrowing of legal channels combined with metered official access.</p>
+          <span class="lbl">Die Details</span>
+          <p>Beijing is running its own two-track policy from the other side, reportedly permitting limited H200 imports under government control while pushing domestic alternatives. That is pragmatic in both directions: Chinese labs need compute now, and domestic silicon — however fast Huawei's Atlas line improves — cannot yet fill the whole gap at frontier-training scale. Kimi K3's 2.8 trillion parameters were trained on something. Metered H200 supply buys time while Huawei scales, and gives Beijing a lever it can tighten or loosen with the geopolitical weather.</p>
+          <p>For Nvidia, partial re-entry into the world's second-largest AI market recovers revenue export rules had written off, which is why the company has lobbied for precisely this outcome all year.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The durable lesson for anyone planning AI capacity is that chip access is now a policy variable, not a market one. The US cleared licence-free exports to the UAE two weeks ago; China is metering H200s in this week; next quarter the settings may move again. Every frontier lab on either side of the Pacific has to model politics alongside price and power when planning a training run, and the rules can change between purchase order and delivery.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether "trivial" volumes scale, and whether Congress forces disclosure of buyers. Whether Huawei's Atlas 950 SuperPoD gets independently benchmarked — Chinese accelerator benchmarks remain scarce. Whether the offshore-subsidiary enforcement holds.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · Bloomberg, named Commerce Department official, CNBC</span>
+        <span class="links">
+          <a href="https://www.bloomberg.com/news/articles/2026-07-14/small-amount-of-nvidia-ai-chips-shipped-to-china-with-us-license"><span class="material-icons-outlined">link</span>Bloomberg</a>
+          <a href="https://www.benzinga.com/markets/equities/26/07/60462326/nvidia-starts-h200-ai-chip-shipments-to-china-as-us-approves-limited-exports"><span class="material-icons-outlined">link</span>Benzinga</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card">
+    <span class="chip c-eu">EU</span><span class="datepill">T-15</span>
+    <div class="headline">EU AI Act: Commission enforcement powers over GPAI providers activate 2 August, alongside Article 50 transparency duties</div>
+    <div class="body">
+      <p>On 2 August 2026 the European Commission's enforcement powers over general-purpose AI model providers enter into application. Those powers include requesting documentation and information, conducting model evaluations, requiring measures on compliance, risk mitigation, market restriction, recall and withdrawal — and imposing fines.</p>
+      <p>The same date activates Article 50 transparency obligations: chatbot disclosure, machine-readable marking of AI-generated content, and deepfake labelling. Neither was postponed. Both GPAI and Article 50 violations carry the same maximum tier under Article 99 — the greater of €15 million or 3% of total worldwide annual turnover.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>GPAI obligations themselves came into force in August 2025; what has been missing since is the Commission's ability to enforce them. That one-year gap was deliberate — it gave providers a grace period and gave the AI Office time to staff up. 2 August 2026 closes it. The GPAI Code of Practice, drafted by independent experts and submitted to the Commission, remains a voluntary compliance route covering transparency, copyright and systemic-risk management; signing it is the pragmatic way to demonstrate good faith, not a legal safe harbour.</p>
+          <span class="lbl">Die Details</span>
+          <p>The evaluation power is the one most underestimated by non-lawyers. The Commission can require a provider to submit a model for evaluation — meaning a European regulator can, in principle, test a frontier model directly rather than relying on the provider's self-reported model card. That is a materially different oversight posture from anything in the US, and it is the mechanism most likely to produce the first public dispute.</p>
+          <p>Article 50's practical bite falls on deployers, not just model providers. Any organisation running a customer-facing chatbot in the EU owes disclosure; any organisation publishing AI-generated content owes machine-readable marking. For a mid-sized European company using an AI assistant on its website, this is a two-week engineering task that most have not started.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The timing collides awkwardly with everything else in this briefing. Kimi K3's open weights land 27 July; DeepSeek V4 stable on 24 July; the Commission's enforcement powers on 2 August. Open-weight models raise an unresolved question the Act does not answer cleanly — who is the "provider" of a model whose weights were released for free by a non-EU lab and are being fine-tuned and served by an EU company? That question is now live rather than academic.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>The first documentation request or evaluation demand, and to whom. Whether any provider declines to sign the Code of Practice and what follows. Whether the Commission publishes enforcement priorities before 2 August. Guidance on open-weight provider obligations.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · European Commission digital-strategy pages, artificialintelligenceact.eu, Latham &amp; Watkins, Bird &amp; Bird</span>
+        <span class="links">
+          <a href="https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers"><span class="material-icons-outlined">link</span>European Commission</a>
+          <a href="https://artificialintelligenceact.eu/enforcement-of-chapter-v-under-the-eu-ai-act/"><span class="material-icons-outlined">link</span>AI Act Explorer</a>
+          <a href="https://www.lw.com/en/insights/eu-ai-act-gpai-model-obligations-in-force-and-final-gpai-code-of-practice-in-place"><span class="material-icons-outlined">link</span>Latham &amp; Watkins</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card">
+    <span class="chip c-eu">GOVERNANCE</span><span class="datepill">13 Jul</span>
+    <div class="headline">Hundreds of experts warn the world must prepare now — and the FLI Safety Index gives the best lab a C+</div>
+    <div class="body">
+      <p>Hundreds of AI experts issued a public warning that the world must prepare now for AI's economic and social impact, amplifying the UN's push for global governance following its Independent International Scientific Panel's preliminary report. That report — the first globally coordinated assessment by an independent body of 40 experts from every world region — concluded that capabilities are accelerating faster than any government's ability to understand or regulate them, and that no technical guarantee exists that the most advanced systems will follow the instructions they are given.</p>
+      <p>Alongside it, the Future of Life Institute's Summer 2026 AI Safety Index graded nine frontier labs. Anthropic took the top overall grade at <strong>C+ (2.66)</strong>, leading five of six domains. OpenAI and Google DeepMind sat at C. Three labs failed outright. Nobody scored better than C− on existential safety; the best grade in that domain was Anthropic's D+.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>The UN panel's preliminary report published 1 July and fed into the UN Global Dialogue on AI Governance held in Geneva 6–7 July. Yoshua Bengio, Turing Award winner and panel co-chair, framed the core finding: with growing evidence of deceptive AI behaviour, science currently cannot guarantee that as capabilities increase, AI will not cause catastrophic harm — either autonomously or through malicious users. The report cites laboratory evidence of systems violating safety instructions to avoid shutdown, and leading models increasingly recognising when they are being tested.</p>
+          <span class="lbl">Die Details</span>
+          <p>The FLI index's most uncomfortable finding is not the grades but the trajectory. Between 2024 and 2026, companies including Anthropic, OpenAI, Google DeepMind and Meta that had previously banned military applications gradually reversed course, joining xAI and Mistral in actively seeking defence partnerships. The nine graded companies were Anthropic, OpenAI, Google DeepMind, xAI, Z.ai, Meta, DeepSeek, Alibaba Cloud and Mistral. Anthropic's lead came from relatively strong transparency, an established safety framework, technical research and governance — relative strength in an absolutely weak field.</p>
+          <p>That reversal on military use is not incidental to this week's other stories: Helsing raised $1.8bn for AI defence systems on 13 July, the largest European defence-tech round ever.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The governance vacuum is the story underneath every other story in this edition. National efforts are fragmenting — the EU building pre-market testing, the US convening task forces and hearings, China proposing to host the global body — while the technology ships weekly and labs walk back their own commitments. The experts' point is simple and uncomfortable: every previous technology got its rules after the harm arrived, and AI is moving too fast for that pattern to be survivable.</p>
+          <p>The realist read is that governance follows power, and power was being demonstrated on both sides of the Pacific this very week.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the UN panel's final report (following the preliminary) lands before year-end and whether it names specific systems. Whether any lab responds substantively to its FLI grade rather than dismissing the methodology. Whether the existential-safety domain grades move at all in the next index.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · UN primary report, FLI primary index, Al Jazeera, TIME, MIT SMR</span>
+        <span class="links">
+          <a href="https://www.aljazeera.com/economy/2026/7/13/hundreds-of-experts-warn-the-world-must-prepare-now-for-ais-impact"><span class="material-icons-outlined">link</span>Al Jazeera</a>
+          <a href="https://futureoflife.org/ai-safety-index-summer-2026/"><span class="material-icons-outlined">link</span>FLI Index</a>
+          <a href="https://www.un.org/independent-international-scientific-panel-ai/en/preliminary-report"><span class="material-icons-outlined">link</span>UN Panel</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 4 ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">payments</span>
+    <span class="name">Money &amp; silicon</span>
+    <span class="count">· 5 items</span>
+  </div>
+
+  <!-- 17 -->
+  <div class="card">
+    <span class="chip c-infra">TSMC</span><span class="datepill">16 Jul</span>
+    <div class="headline">TSMC Q2: profit up 77%, capex raised to $60–64bn, and another $100bn for Arizona</div>
+    <div class="body">
+      <p>TSMC reported second-quarter net profit of roughly $22 billion, up 77% year over year, on revenue of $40.2 billion, up 34% — beating analyst expectations on sustained AI chip demand. It raised 2026 capital spending guidance to $60–64 billion, guided full-year revenue growth above 40%, and announced an additional $100 billion for Arizona, lifting total planned US investment to <strong>$265 billion</strong> with up to four more fabs under consideration and an emphasis on 2-nanometre manufacturing.</p>
+      <p>The Arizona number is the strategic headline: a $265bn US commitment from the company that fabricates nearly every advanced AI chip is the strongest hedge yet against the industry's Taiwan concentration risk.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>TSMC has now raised capital spending guidance twice in a single year and been rewarded for it, which is not how semiconductor cycles normally work. The usual pattern is that capex increases spook investors because fab capacity arrives eighteen months late and into a downturn. That this one was cheered is the market saying it believes AI demand is structural rather than cyclical.</p>
+          <span class="lbl">Die Details</span>
+          <p>The week's other supply-chain story explains why TSMC can behave this way and also where its limits are. ASML — sole maker of the extreme ultraviolet (EUV) lithography machines required for leading-edge chips — has discussed raising EUV prices with TSMC and plans roughly 10% increases on its older deep ultraviolet (DUV) systems. TSMC is resisting. That is a negotiation between two irreplaceable links: one company makes the EUV machines, one company dominates leading-edge fabrication, one company leads high-bandwidth memory. Each is a single point of failure with real pricing power, and any increase flows downstream into the cost of AI compute.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The pattern of 2026 holds for another quarter: model companies cut prices while the hardware layer prints records. Grok 4.5 at $6 output, DeepSeek near $0.44, Kimi K3 promising free weights — all of it requires more silicon to serve more demand, and TSMC collects on every side of every price war. Every hyperscaler compute pledge and custom-chip programme, from Meta's silicon to Apple's server-chip hunt, routes through TSMC capacity.</p>
+          <p>For an investor read: a 77% profit surge says the buildout is not just continuing but accelerating, and it is being paid for with purchase orders rather than press releases. That is the most reliable demand signal available in this sector, because it is the only one that requires someone to actually spend money eighteen months in advance.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the ASML price increase lands and at what magnitude. Whether the four additional Arizona fabs get confirmed or stay "under consideration." Q3 guidance, and specifically whether 2nm capacity is sold out.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · TSMC earnings release, mainstream financial press</span>
+        <span class="links">
+          <a href="https://techstartups.com/2026/07/16/top-tech-news-today-july-15-2026/"><span class="material-icons-outlined">link</span>Tech Startups</a>
+          <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-17-2026"><span class="material-icons-outlined">link</span>Roundup</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card">
+    <span class="chip c-infra">DATABRICKS</span><span class="datepill">16–17 Jul</span>
+    <div class="headline">Databricks signs a term sheet at a $188bn valuation — up from $134bn five months ago</div>
+    <div class="body">
+      <p>Databricks announced a strategic funding round at a $188 billion valuation, led by existing investor Coatue with additional new and existing investors. The company has signed a term sheet and expects to close later this summer; reported size is roughly $3 billion. It completed a raise of about $5 billion at $134 billion earlier this year — a 40% valuation increase in five months.</p>
+      <p>Proceeds go to three named products: <strong>Unity AI Gateway</strong> (multi-AI governance), <strong>Genie</strong> (its AI coworker), and <strong>Lakebase</strong> (serverless Postgres built for AI agents). Databricks separately reported growth above 65% year over year and a revenue run-rate past $5.4 billion.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Databricks has spent the AI cycle as what TechCrunch called "AI's favourite second act" — a company that existed before the boom, had the data-platform position everyone suddenly needed, and did not have to invent a business model to monetise it. That is a structurally different bet from a frontier lab: no training-compute burn, revenue that grows with customers' AI usage regardless of which model wins.</p>
+          <span class="lbl">Die Details</span>
+          <p>The three named products describe a coherent thesis. Unity AI Gateway is model-agnostic governance — the layer an enterprise needs precisely because it will run Claude, GPT, Gemini and an open model simultaneously and must apply one policy across all of them. Lakebase is Postgres re-architected for agent access patterns: agents make many small stateful reads and writes rather than analytical scans, and existing warehouses handle that badly. Genie is the consumption surface. Together they are a bet that the durable value sits in governance and state, not in the model.</p>
+          <p>A >65% growth rate at a $5.4bn run-rate is the number that justifies the mark. At that scale, sustaining that rate is rare enough that a 40% valuation step-up in five months is arithmetically defensible rather than pure sentiment.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The wider funding picture this week: Helsing at $1.8bn, Fireworks AI at $1.5bn Series D, AIsphere $439m led by Alibaba, Chai Discovery $400m, Neko Health $700m. H1 2026 global AI startup funding hit a record $510bn, and roughly 86% of the $412.7bn in US H1 venture money went to AI. Asia hit a multiyear high in Q2. The capital map is genuinely multipolar for the first time.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the round actually closes at $188bn this summer. Whether Databricks files for an IPO — at this valuation and growth rate the private-market runway is getting short. Whether Unity AI Gateway gets traction against the cloud providers' own model-governance offerings.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · Databricks press release primary, Bloomberg, TechCrunch</span>
+        <span class="links">
+          <a href="https://www.databricks.com/company/newsroom/press-releases/databricks-raising-strategic-round-funding-188-billion-valuation"><span class="material-icons-outlined">link</span>Databricks</a>
+          <a href="https://techcrunch.com/2026/07/17/databricks-hits-188b-valuation-extending-its-run-as-ais-favorite-second-act/"><span class="material-icons-outlined">link</span>TechCrunch</a>
+          <a href="https://www.bloomberg.com/news/articles/2026-07-17/coatue-leads-databricks-funding-round-at-188-billion-valuation"><span class="material-icons-outlined">link</span>Bloomberg</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card">
+    <span class="chip c-eu">HELSING</span><span class="datepill">13 Jul</span>
+    <div class="headline">Helsing raises $1.8bn at $18bn — Europe's largest-ever defence-tech round, five years after founding</div>
+    <div class="body">
+      <p>Munich-based Helsing closed a $1.8 billion Series E at an $18 billion valuation on 13 July, with investor demand "significantly" exceeding allocation. Investors included Dragoneer, Lightspeed, Disruptive, Iconiq, Goldman Sachs Alternatives Growth Equity, JPMorgan Chase, Canada Pension Plan Investment Board, General Catalyst, Plural and Stepstone. It is Europe's biggest defence-technology funding round on record, for a company founded in 2021.</p>
+      <p>Helsing builds AI software and autonomous systems that fuse drone, radar, satellite and camera data into a single real-time operational picture. Products include the HX-2 strike drone and the Altra battlefield-operations software, plus a proposed CA-1 autonomous fighter concept.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Helsing is Europe's answer to Anduril and it has been valued accordingly with unusual speed — from founding in 2021 to $18bn in five years, in a sector that historically took decades to build enterprise value because procurement cycles are measured in parliaments. The acceleration is a direct function of European rearmament budgets and the demonstrated battlefield relevance of software-defined autonomy.</p>
+          <span class="lbl">Die Details</span>
+          <p>The investor list is the tell. This is not defence-specialist capital — it is Dragoneer, Lightspeed, Iconiq, General Catalyst, Goldman, JPMorgan and CPPIB, i.e. generalist growth and pension money. A Canadian public pension fund underwriting a European strike-drone manufacturer is a category boundary that did not exist three years ago. Oversubscription at $18bn means the constraint was allocation, not conviction.</p>
+          <p>Read it against the FLI Safety Index finding in this same briefing: between 2024 and 2026, every major lab that had banned military applications reversed course. Helsing's round is the capital-markets expression of the same shift the safety researchers were documenting as a governance failure.</p>
+          <span class="lbl">Einordnung</span>
+          <p>For Europe specifically this is the clearest evidence that the continent can build a category-defining AI company when the demand signal is sovereign rather than consumer. Europe has not produced an OpenAI; it has produced a Helsing and a Mistral, both of which exist because European buyers had a reason to prefer a European supplier. That is a replicable pattern and a narrow one — it works where sovereignty is the purchasing criterion.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether the CA-1 autonomous fighter concept converts into a funded programme with a named partner nation. How Helsing's systems interact with EU AI Act obligations — military and national-security applications sit largely outside the Act's scope, which is itself a growing point of contention. Whether the valuation invites a European competitor round.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●●</span> C-Score 5/5 · CNBC, Defense News, Tech.eu; company announcement</span>
+        <span class="links">
+          <a href="https://www.cnbc.com/2026/07/13/helsing-fund-raise-defense-18-billion.html"><span class="material-icons-outlined">link</span>CNBC</a>
+          <a href="https://www.defensenews.com/global/europe/2026/07/13/helsing-raises-18-billion-in-europes-biggest-defense-startup-round/"><span class="material-icons-outlined">link</span>Defense News</a>
+          <a href="https://tech.eu/2026/07/13/european-defence-ai-leader-helsing-secures-18b-series-e-at-18b-valuation/"><span class="material-icons-outlined">link</span>Tech.eu</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card">
+    <span class="chip c-infra">SECURITY</span><span class="datepill">wk 12–18 Jul</span>
+    <div class="headline">AI-security M&amp;A triples as buyers scramble to secure agent fleets — and Microsoft patches a record 570 flaws</div>
+    <div class="body">
+      <p>Cybersecurity companies completed 219 mergers and acquisitions in H1 2026, on pace to exceed 400 for the year. Acquisitions of AI-security companies specifically jumped from 10 in all of last year to <strong>29 in the first half alone</strong>. Strategic buyers are hunting anything that can secure models and autonomous agents — the fastest-emerging attack surface in enterprise software. CISA warned this week that AI agents are opening new gaps in identity and access management.</p>
+      <p>Separately, Microsoft's July Patch Tuesday fixed a record 570 vulnerabilities across Windows and related products — the largest single patch release in its history — with the company crediting internal AI systems for identifying and prioritising a significant share.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>Enterprises spent 2025 and early 2026 deploying agents faster than anyone could secure them. Every agent with credentials and autonomy is effectively a new employee who never sleeps, can be socially engineered at machine speed, and inherits whatever permissions it was carelessly granted. The market has concluded that securing that is easier bought than built, and acquirers are paying accordingly.</p>
+          <span class="lbl">Die Details</span>
+          <p>The 570-flaw number is less alarming than it looks and more revealing. AI can now audit code at a scale humans never could, which surfaces flaws that would otherwise have sat undiscovered for years — a record patch count partly means the finding got better, not that the code got worse. The uncomfortable half of the same truth is that attackers wield the same class of tools, which is why defence has to run at machine speed. That is precisely what OpenAI's GPT-Red disclosure this week demonstrates from the vendor side.</p>
+          <p>The practical enterprise checklist is forming and is not complicated: inventory every agent holding credentials, scope permissions to the minimum, log every action, and put a human checkpoint in front of anything irreversible. The week's enterprise-agent launches from Google, Meta and Nvidia all led with governance features for exactly this reason.</p>
+          <span class="lbl">Einordnung</span>
+          <p>For the security industry this is the largest product cycle since cloud migration. For everyone else, the window between a flaw being discovered and exploited keeps shrinking as both sides automate — which makes patch latency, not patch volume, the metric that matters. Expect the 29 acquisitions to look small by December; the attack surface is compounding monthly.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether any of the 29 acquisitions produce a genuine agent-identity standard rather than 29 proprietary consoles. Whether MCP's OAuth 2.1/OIDC alignment on 28 July becomes the de facto agent-auth substrate. Whether CISA issues binding guidance rather than a warning.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●○○</span> C-Score 3/5 · M&amp;A figures via industry summary; Microsoft patch count and CISA warning independently reported</span>
+        <span class="links">
+          <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-17-2026"><span class="material-icons-outlined">link</span>Roundup</a>
+          <a href="https://www.scworld.com/brief/model-context-protocol-overhaul-introduces-new-security-challenges-for-developers"><span class="material-icons-outlined">link</span>SC Media</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card">
+    <span class="chip c-infra">ASML / TSMC</span><span class="datepill">16 Jul</span>
+    <div class="headline">ASML moves to raise EUV and DUV tool prices — and TSMC pushes back</div>
+    <div class="body">
+      <p>ASML, the only company in the world making extreme ultraviolet (EUV) lithography machines, has discussed raising EUV prices with TSMC and plans to charge roughly 10% more for its older deep ultraviolet (DUV) systems. TSMC is resisting. This is a negotiation between two irreplaceable links in the AI supply chain — every advanced AI chip, from Nvidia's accelerators to Apple's silicon, is etched by an ASML machine costing hundreds of millions of dollars.</p>
+      <p>It is a rare glimpse of pricing power at the very bottom of the stack. When ASML raises prices and even TSMC has to push back, the leverage of the handful of companies owning irreplaceable technology becomes visible.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>ASML's monopoly on EUV is the single most concentrated dependency in modern technology, and it is a monopoly by physics and decades of accumulated engineering rather than by market position — there is no fast-follower. DUV is nominally more competitive, with Nikon and Canon present, but not at the nodes that matter for AI accelerators, which is why a 10% DUV increase is being floated at all.</p>
+          <span class="lbl">Die Details</span>
+          <p>The negotiation is being reported rather than announced, so treat the specific 10% figure as directional. The structural fact is not in dispute: ASML has pricing power it has historically exercised conservatively, and it is now testing how much of the AI boom's margin it can claim. TSMC's resistance is rational and limited — it cannot walk away.</p>
+          <p>Cost flows downstream mechanically. Pricier tools mean pricier fabs mean pricier wafers mean pricier accelerators mean pricier AI compute for everyone building on top. It arrives at a moment when model providers are competing on price aggressively enough that several are almost certainly serving inference below cost.</p>
+          <span class="lbl">Einordnung</span>
+          <p>The AI boom rests on an extraordinarily narrow foundation: one company makes EUV machines, one dominates leading-edge fabrication, one leads high-bandwidth memory. Each is a potential single point of failure and a holder of genuine pricing power, which is exactly why nations are pouring hundreds of billions into alternatives — and why TSMC's $265bn Arizona commitment reads as insurance rather than expansion. This quiet supplier negotiation is the AI economy showing its plumbing.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether ASML confirms increases in its next earnings call. Whether TSMC's capex guidance absorbs the increase or passes it through in wafer pricing. Whether Chinese domestic lithography efforts produce anything credible at the nodes Huawei needs for Atlas-class systems.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●○○</span> C-Score 3/5 · reported negotiation, no company confirmation; specific percentage is directional</span>
+        <span class="links">
+          <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-16-2026"><span class="material-icons-outlined">link</span>Roundup</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 5 ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">group</span>
+    <span class="name">Talent &amp; corporate</span>
+    <span class="count">· 2 items</span>
+  </div>
+
+  <!-- 22 -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">13 Jul</span>
+    <div class="headline">Monzo co-founder Tom Blomfield takes leave from Y Combinator to join Anthropic's compute team</div>
+    <div class="body">
+      <p>Tom Blomfield — co-founder of Monzo and GoCardless, and a Y Combinator general partner since 2023 — announced on 13 July that he is taking a leave of absence from YC to join Anthropic's compute team under co-founder and Chief Compute Officer Tom Brown. Blomfield's stated reasoning: "availability of compute becomes one of the most important issues to solve as we enter the early stages of recursive self-improvement."</p>
+      <p>It extends a 2026 Anthropic recruiting run that has already brought in Andrej Karpathy from OpenAI (May, to build a team using Claude to accelerate pre-training research), DeepMind's Nobel laureate John Jumper, former Microsoft Azure executive Eric Boyd, and UC Berkeley CS division chair Jelani Nelson (1 July).</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>The talent flow through H1 2026 has run consistently in one direction at the senior level. Axios reported in June that lab musical chairs hit Google hardest; Fortune questioned whether DeepMind can stay at the frontier after losing Noam Shazeer to OpenAI and Jumper to Anthropic, with Gemini researchers Jonas Adler and Alexander Pritzel also reported as leaving for Anthropic. OpenAI lost Chief Futurist Joshua Achiam on 7 July after nearly a decade on safety research, with no next step announced.</p>
+          <span class="lbl">Die Details</span>
+          <p>The interesting part of Blomfield's move is the <em>function</em>, not the name. He is a consumer-fintech operator joining a compute-infrastructure team. That is not a domain match; it is a signal about what Anthropic thinks the compute problem actually is. Securing, financing and scheduling multi-gigawatt compute is a capital-markets, contracting and operations problem as much as an engineering one — closer to building a bank's balance sheet operation than to writing CUDA kernels. Hiring a founder who has raised and deployed billions in regulated infrastructure reads as an admission that compute procurement is now a commercial discipline.</p>
+          <p>The "early stages of recursive self-improvement" phrasing is his, not Anthropic's, and it is doing a lot of work. It is the kind of statement that would have been fringe eighteen months ago and is now the stated motivation of a YC general partner taking a leave of absence.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Anthropic is assembling an unusually broad senior bench — a Nobel laureate, a hyperscaler executive, a theoretical computer scientist, a fintech founder, and Karpathy — which is a different hiring pattern from the pure researcher-poaching everyone else is doing. Combined with Bernanke on the Long-Term Benefit Trust, the through-line is institutional depth rather than headcount.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether Blomfield's move is a genuine leave or a one-way door — his YC status is the tell. Whether DeepMind stems its outflow. Whether Anthropic announces a named compute partnership or financing structure in the next two quarters, which is what a hire like this would precede.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●●○</span> C-Score 4/5 · Blomfield's own announcement; PYMNTS, TNW, TechFundingNews. Karpathy/Jumper hires corroborated separately</span>
+        <span class="links">
+          <a href="https://thenextweb.com/news/tom-blomfield-monzo-founder-anthropic-compute"><span class="material-icons-outlined">link</span>TNW</a>
+          <a href="https://www.pymnts.com/personnel/2026/anthropic-recruits-monzo-co-founder-to-tackle-compute-issues/"><span class="material-icons-outlined">link</span>PYMNTS</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card">
+    <span class="chip c-infra">MICROSOFT</span><span class="datepill">wk 12–18 Jul</span>
+    <div class="headline">Microsoft tells enterprise sales to pitch Copilot as superior to OpenAI and Anthropic</div>
+    <div class="body">
+      <p>Microsoft has instructed its enterprise sales teams to position Copilot as superior to OpenAI and Anthropic products, per reporting this week. OpenAI's largest investor and infrastructure partner is now explicitly selling against it in corporate deals — the latest consequence of the restructured Microsoft-OpenAI relationship that loosened exclusivity earlier this year.</p>
+      <p>The structure makes conflict inevitable: Microsoft owns a large stake in OpenAI and hosts much of its compute, while Copilot and ChatGPT Work chase identical enterprise budgets with overlapping features.</p>
+      <details>
+        <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+        <div class="deep">
+          <span class="lbl">Kontext &amp; Vorgeschichte</span>
+          <p>The Microsoft-OpenAI relationship was renegotiated earlier in 2026, loosening the exclusivity that had defined it since 2019. Both sides described the change as enabling; this sales memo is the first visible cost. Microsoft also reportedly decided this week against building a rival browser, opting for deeper ChatGPT integration instead — so it is simultaneously deepening product integration and sharpening sales opposition, which is coherent only if you separate the platform layer from the applications layer.</p>
+          <span class="lbl">Die Details</span>
+          <p>The competitive pressure is not only bilateral. Anthropic's roughly $47 billion annualised revenue run-rate — and Fortune's July reporting that Anthropic overtook OpenAI on revenue — pressures both from the enterprise side. Copilot's structural advantage is that it is already in the Microsoft 365 licence; its structural disadvantage is that enterprise buyers increasingly evaluate assistants on agentic capability, where bundled convenience matters less.</p>
+          <p>The sourcing here is trade reporting rather than a leaked document I could verify, so treat the specific instruction as reported rather than confirmed.</p>
+          <span class="lbl">Einordnung</span>
+          <p>Every hyperscaler-lab alliance carries the same fault line — Google-Anthropic compute arrangements, Amazon's investments — intertwined at infrastructure, knife-fighting at sales, sometimes in the same week. For buyers the practical effect is leverage: competing vendors who are also partners tend to soften prices and sweeten bundles when pushed. The quiet beneficiary is Anthropic, whose enterprise pitch stays undivided while its two largest rivals argue over who sells the other's technology better.</p>
+          <span class="lbl">Watch-Items</span>
+          <p>Whether OpenAI responds publicly or through its IPO disclosures. Whether Microsoft's Azure OpenAI commitments change. Whether any large enterprise cites the conflict in a public procurement decision.</p>
+        </div>
+      </details>
+      <div class="divider"></div>
+      <div class="foot-row">
+        <span class="conf"><span class="dots">●●●○○</span> C-Score 3/5 · trade reporting, no primary document verified</span>
+        <span class="links">
+          <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-17-2026"><span class="material-icons-outlined">link</span>Roundup</a>
+          <a href="https://fortune.com/2026/07/02/sam-altman-new-world-order-ai-openai-google-anthropic/"><span class="material-icons-outlined">link</span>Fortune</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RELEASE RADAR ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">calendar_today</span>
+    <span class="name">Release Radar</span>
+    <span class="count">· 11 minor-but-real items</span>
+  </div>
+
+  <div class="card radar">
+    <div class="row"><span class="rdate">17 Jul</span><div><span class="rname">Neko Health — $700m Series C at ~$7bn.</span> Daniel Ek's preventive-care venture funds US expansion starting with New York clinics. 8 clinics today, 350,000+ on the waiting list.</div></div>
+    <div class="row"><span class="rdate">16 Jul</span><div><span class="rname">Zeroth — ~$73.6m Series A led by Ant Group.</span> Humanoid robotics; notable for a major Chinese fintech leading an embodied-AI round.</div></div>
+    <div class="row"><span class="rdate">16 Jul</span><div><span class="rname">Emergent (India) — $130m Series C at $1.5bn post.</span> Natural-language app building; India's newest AI unicorn, $230m raised in total.</div></div>
+    <div class="row"><span class="rdate">15 Jul</span><div><span class="rname">Fireworks AI — $1.5bn Series D.</span> Enterprise inference infrastructure; one of the largest infrastructure rounds of the month.</div></div>
+    <div class="row"><span class="rdate">15 Jul</span><div><span class="rname">Chai Discovery — $400m Series C.</span> Led by Index, Kleiner Perkins, Sequoia and Dimension. AI for biology.</div></div>
+    <div class="row"><span class="rdate">14 Jul</span><div><span class="rname">AIsphere — $439m Series C led by Alibaba.</span> AI video generation.</div></div>
+    <div class="row"><span class="rdate">16 Jul</span><div><span class="rname">Spectro Cloud — $100m Series D above $1bn.</span> Kubernetes and edge orchestration, backed by AMD and LG — chipmaker and OEM betting on the cloud-to-edge control layer.</div></div>
+    <div class="row"><span class="rdate">16 Jul</span><div><span class="rname">Hemispheric — $52m for brain-activity AI.</span> Israeli startup applying ML to neural signal interpretation.</div></div>
+    <div class="row"><span class="rdate">16 Jul</span><div><span class="rname">OpenAI Codex Micro — $230 desktop keypad.</span> Built with Work Louder: backlit keys, rotary knob, joystick. OpenAI's first real consumer hardware accessory.</div></div>
+    <div class="row"><span class="rdate">22 Jul</span><div><span class="rname">Google opens Android to rival app stores.</span> Competing stores can distribute through Google Play from 22 July, ending the Epic litigation; marketplace operators pay annual security-review fees.</div></div>
+    <div class="row"><span class="rdate">wk</span><div><span class="rname">Hyundai workers strike over AI and humanoid robots.</span> One of the first major labour actions naming AI deployment and factory-floor humanoids explicitly as grievances — days after South Korea targeted growing humanoids from 1% to 20% of its market by 2028.</div></div>
+  </div>
+
+  <!-- ============ TRENDS ============ -->
+  <div class="section">
+    <span class="material-icons-outlined">insights</span>
+    <span class="name">Three trends worth naming</span>
+    <span class="count">· structural, not weekly</span>
+  </div>
+
+  <div class="card trend">
+    <span class="t">1. The open-weight offensive has a date, and it is the last week of July</span>
+    <p>DeepSeek V4 stable on 24 July, Kimi K3 weights on 27 July, Inkling already out, Bonsai 27B on a phone. Four open releases inside two weeks, two of them frontier-class, one of them from an American founder. The premium a closed API can charge for routine workloads is being actively tested, and the test result arrives before August. Watch the enterprise procurement conversations in September — that is when the evaluations run this month turn into contract renegotiations.</p>
+    <span class="t">2. Compute has become a sovereign variable, not a market one</span>
+    <p>Nvidia H200s trickling into China under licence, Beijing metering imports while showcasing Huawei's Atlas 950, the US clearing licence-free exports to the UAE, TSMC committing $265bn to Arizona, ASML testing its pricing power. Every frontier training run now has a political dependency graph alongside its technical one, and the settings change between purchase order and delivery. For anyone planning multi-year AI capacity — including European buyers — supplier diversity is no longer a procurement nicety.</p>
+    <span class="t">3. Governance is now a contest between institutions, not a gap in them</span>
+    <p>The vacuum narrative is out of date. The EU has enforceable powers activating on 2 August. China has WAICO with 29 founding signatories and a proposed Shanghai headquarters. The UN has a scientific panel with a published assessment. What is missing is not institutions but <em>convergence</em> — and the US, notably, has neither an enforcement regime nor an international convening proposal. Two competing rulebooks with a hard border between them is now the base case, not the risk case, and it is already reflected in product: Apple runs Qwen in China and its own stack elsewhere.</p>
+  </div>
+
+  <!-- ============ EDITOR'S VIEW ============ -->
+  <div class="card editor">
+    <span class="chip">💡 Editor's view</span>
+    <h3>The closed labs had their biggest launch week of the summer, and the open side still set the terms</h3>
+    <ol>
+      <li><strong>Run the evaluation now, not in September.</strong> Between 24 and 27 July you will have stable DeepSeek V4 and free Kimi K3 weights against a freshly launched Gemini 3.5 Pro and a two-week-old GPT-5.6. That is a rare clean comparison window on your own workloads. The specific question worth answering is not "which is best" but "which of my workloads still justify frontier pricing" — for most organisations the honest answer is a smaller share than current spend implies. Bonsai 27B and the Antidoom result suggest a third tier is arriving underneath both.</li>
+      <li><strong>The 2 August EU deadline is fifteen days out and mostly a deployer problem, not a provider problem.</strong> Article 50 transparency duties — chatbot disclosure, machine-readable marking of AI-generated content, deepfake labelling — bind anyone running customer-facing AI in the EU, not just the labs. Penalties top out at the greater of €15m or 3% of worldwide turnover, the same tier as GPAI violations. If any Alphapet or SmartPetPro surface uses generative AI for customer contact or content, that is a two-week engineering task that should already be underway.</li>
+      <li><strong>Watch the compute-procurement hires, not the researcher hires.</strong> Anthropic putting a fintech founder on its compute team, TSMC raising capex twice in a year, ASML testing pricing power, and H200s moving under licence all point the same way: the binding constraint has moved from talent to physical capacity and the politics around it. When the scarce input changes, so does who has leverage — and right now that is TSMC, ASML, and whoever controls export licences.</li>
+    </ol>
+    <p class="wild">The wildcard: Kimi K3's weights land on 27 July. If a 2.8-trillion-parameter model that ranked first in Frontend Code Arena is genuinely downloadable and runnable at MXFP4 quantisation, the interesting question stops being whether Chinese labs can compete on capability and becomes whether Western enterprises will be permitted — by their own compliance functions, not by regulators — to use the result.</p>
+  </div>
+
+  <!-- Footer / colophon -->
+  <div class="foot">
+    <div><strong>AI Briefing</strong> · coverage window 12–18 July 2026 · compiled Saturday 18 July 2026</div>
+    <div>23 story cards · 11 Release Radar rows · 3 trends · 14 items at C-Score 4/5 or higher</div>
+    <div>C-Score: 5/5 primary source · 4/5 mainstream corroborated · 3/5 single mainstream source or industry summary · 2/5 aggregator-only · 1/5 rumour</div>
+    <div>Sources current at time of writing. Items flagged in the yellow banner rest on thinner sourcing and are marked inline.</div>
+  </div>
+
+</div>
+</body>
+</html>

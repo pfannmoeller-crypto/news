@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Media Briefing · Week of May 11, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #0d47a1;
+    --primary-hover: #0a3d8f;
+    --primary-soft: #e3f2fd;
+    --primary-on-soft: #0d47a1;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #1a237e); color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .hero { background: linear-gradient(135deg, #1565c0 0%, #1a237e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.55; opacity: 0.95; margin: 0; max-width: 700px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .rank { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--on-surface-2); font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.fund    { background: #e3f2fd; color: #0d47a1; }
+  .provider.crypto  { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ai      { background: #e6f4ea; color: #0d652d; }
+  .provider.media   { background: #fef7e0; color: #b06000; }
+  .provider.policy  { background: #fce8e6; color: #a50e0e; }
+  .provider.portfolio { background: #e8eef6; color: #1f3548; }
+
+  .timestamp { font-family: 'Roboto Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-on-soft); font-weight: 500; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\2022"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .card a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--primary-soft); border: 1px solid #bbdefb; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--primary); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--primary); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--primary); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: var(--on-surface-2); }
+
+  .status-quo { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .status-quo h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .status-quo h3 .material-icons-outlined { color: var(--primary); font-size: 20px; }
+  .status-quo ul { margin: 0; padding-left: 20px; }
+  .status-quo li { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin-bottom: 8px; }
+  .status-quo li strong { color: var(--on-surface); font-weight: 500; }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.6; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+  .colophon a { color: var(--primary-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">a16z</div>
+    <div class="titles">
+      <h1>a16z Media Briefing</h1>
+      <div class="sub">Week of May 11, 2026 &middot; Coverage: May 5 &ndash; May 11 &middot; Andreessen Horowitz</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="hero">
+  <div class="eyebrow">Weekly Briefing &middot; May 5 &ndash; May 11, 2026</div>
+  <h2>Crypto Fund V closes at $2.2B, two new deals announced, and Andreessen's AI prompt sets the discourse on fire.</h2>
+  <p>The week's headline event was a16z crypto closing its fifth fund at $2.2 billion and promoting CTO Eddy Lazzarin to General Partner. Alongside the fund close, two fresh deals surfaced &mdash; Digital Asset Holdings (~$300M at $2B valuation) and Ethos ($22.75M Series A) &mdash; while Marc Andreessen handed critics a free week of material with a leaked "custom AI prompt." A substantive week after a quieter prior one.</p>
+</div>
+
+<!-- ─── STATUS QUO ─── -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo from May 4 Baseline</h3>
+  <ul>
+    <li><strong>CFTC prediction-markets filing (May 2):</strong> 18-page comment letter proposing Event Controllers, Determinations Committees, cross-SEC surveillance &mdash; positioning prediction markets as "information machines" and favoring blockchain-based platforms.</li>
+    <li><strong>"Retire the word stablecoin" essay (May 1):</strong> Robert Hackett's pitch to reframe stablecoins as "digital dollars" / "digital euros" &mdash; rhetorical separation from both CBDCs and crypto-native jargon.</li>
+    <li><strong>AI Super PAC "Leading the Future"</strong> sat at $51M after the April Andreessen/Horowitz $25M injection. Three-pronged political strategy fully visible (PCAST/DOGE + PAC + MTS).</li>
+    <li><strong>Crypto Fund V</strong> fundraising in progress toward ~$2B target, expected H1 2026 close. Chris Dixon leading.</li>
+    <li><strong>MTS (Monitoring the Situation)</strong> completed its second week of 24/7 livestreaming on X. Launch coverage normalized.</li>
+    <li><strong>$15B mega-raise (Jan 2026)</strong> and $90B+ AUM remain the structural backdrop. 1,159&ndash;1,172 portfolio companies, 123 unicorns.</li>
+    <li><strong>No new deal announcements</strong> in the prior week (April 28 &ndash; May 4) &mdash; pipeline existed behind the scenes.</li>
+  </ul>
+</div>
+
+<!-- ─── SECTION 1: INVESTMENTS & DEALS ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>Investments &amp; Deals</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">1</span>
+    <span class="provider fund"><span class="dot"></span>New Deal</span>
+    <span class="timestamp">May 6</span>
+    <span class="meta-pill">Ethos &middot; $22.75M Series A</span>
+  </div>
+  <h4>Ethos raises $22.75M Series A led by a16z for voice-onboarded expert network</h4>
+  <p>Ethos closed a $22.75 million Series A round led by Andreessen Horowitz with participation from General Catalyst, XTX Markets, Evantic Capital, and Common Magic. The company is building an "expert network" platform &mdash; the category typically dominated by GLG and AlphaSights &mdash; with a voice-based onboarding flow as its differentiator. Voice agents capture expert profiles, expertise depth, and availability without forms or scheduled calls, which collapses time-to-listing from days to minutes. (<a href="https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/">TechCrunch</a>)</p>
+  <p>Fit with the thesis: AI-native rebuild of an existing B2B services category where the legacy incumbents priced for analog onboarding workflows. Sits alongside ElevenLabs in a16z's voice-AI cluster, but applied to the "knowledge-as-a-service" layer rather than synthesis. Series A size and lead position suggest a16z views this as an Apps-fund anchor rather than a Speedrun-stage bet.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">2</span>
+    <span class="provider fund"><span class="dot"></span>New Deal</span>
+    <span class="timestamp">May 11</span>
+    <span class="meta-pill">Digital Asset &middot; ~$300M @ $2B</span>
+  </div>
+  <h4>Digital Asset targets $2B valuation in a16z crypto-led ~$300M round</h4>
+  <p>Digital Asset Holdings is raising approximately $300 million in fresh capital at a reported $2 billion valuation, with a16z crypto expected to lead the round. Digital Asset is the company behind <strong>Canton Network</strong>, a public, permissionless Layer 1 blockchain focused on privacy-enabled financial transactions &mdash; pitched at regulated capital-markets participants (banks, exchanges, asset managers) who need on-chain settlement without exposing trade details publicly. (<a href="https://finance.yahoo.com/markets/crypto/articles/digital-asset-targets-2bn-valuation-061225515.html">Yahoo Finance / Bloomberg</a>, <a href="https://www.cryptotimes.io/2026/05/11/digital-asset-eyes-2b-valuation-in-a16z-crypto-led-funding-round/">CryptoTimes</a>)</p>
+  <p>Strategic read: this is the first deployable check from Fund V (announced two days earlier) and lands squarely in the on-chain finance thesis Dixon articulated in the fund's announcement post. Canton's privacy-preserving design is what makes it palatable to regulated counterparties &mdash; the exact wedge a16z's CFTC filing and "digital dollars" essay are aimed at unlocking. Round terms are reported but not yet confirmed; treat valuation as a draft figure until close.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://finance.yahoo.com/markets/crypto/articles/digital-asset-targets-2bn-valuation-061225515.html"><span class="material-icons-outlined">open_in_new</span>Yahoo / Bloomberg</a>
+    <a class="link-pill" href="https://www.cryptotimes.io/2026/05/11/digital-asset-eyes-2b-valuation-in-a16z-crypto-led-funding-round/"><span class="material-icons-outlined">open_in_new</span>CryptoTimes</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 2: AI PORTFOLIO ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>AI Portfolio &amp; Thought Leadership</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">3</span>
+    <span class="provider ai"><span class="dot"></span>AI Strategy</span>
+    <span class="meta-pill">Andreessen on China AI &middot; This week</span>
+  </div>
+  <h4>Andreessen: "roughly 80% of US startups pitching a16z are running on Chinese open-source models"</h4>
+  <p>Picked up in coverage this week, Marc Andreessen has been repeating a striking data point: roughly 80% of US startups pitching to a16z today are building on Chinese open-source AI models &mdash; primarily DeepSeek and the Qwen family. The claim, if directionally accurate, reframes the US&ndash;China AI competition: the "open vs. closed" axis matters more than the geographic one, and the open lane is currently being led from China. (<a href="https://cybernews.com/ai-news/marc-andressen-weird-ai-prompt/">Cybernews</a>)</p>
+  <p>No new AI portfolio deals were announced this specific week beyond the Ethos round above. The firm's $1.7B AI infrastructure allocation continues to deploy in the background; major positions in OpenAI, ElevenLabs, Anysphere (Cursor), Harvey, Ideogram, Fal, and Safe Superintelligence remain the visible anchors. The 80% data point is functioning as the rhetorical engine for both Ben Horowitz's open-source-AI podcast thesis and the Leading the Future PAC's "don't regulate US AI out of competitiveness" pitch &mdash; one stat doing double duty across portfolio narrative and policy advocacy.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://cybernews.com/ai-news/marc-andressen-weird-ai-prompt/"><span class="material-icons-outlined">open_in_new</span>Cybernews</a>
+    <a class="link-pill" href="https://a16z.com/ai/"><span class="material-icons-outlined">open_in_new</span>a16z AI page</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 3: CRYPTO / WEB3 ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">currency_bitcoin</span>
+  <h3>Crypto &amp; Web3</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">4</span>
+    <span class="provider crypto"><span class="dot"></span>Fund Close</span>
+    <span class="timestamp">May 5</span>
+    <span class="meta-pill">Fund V &middot; $2.2B &middot; Headline event</span>
+  </div>
+  <h4>a16z crypto closes Fund V at $2.2B; promotes Eddy Lazzarin to General Partner</h4>
+  <p>The week's headline event: a16z crypto announced the close of its fifth dedicated crypto fund at $2.2 billion on Tuesday, May 5. The fund is 100% dedicated to crypto entrepreneurs &mdash; explicitly resisting the pivot-to-AI trend that has thinned other crypto-native funds. Total committed capital across a16z's five crypto vehicles now stands at $9.8 billion. (<a href="https://fortune.com/2026/05/05/a16z-crypto-andreessen-horowitz-fifth-fund-2-2-billion/">Fortune</a>, <a href="https://techcrunch.com/2026/05/05/as-crypto-cools-a16zcrypto-raises-a-2-2b-fund/">TechCrunch</a>, <a href="https://www.theblock.co/post/400012/a16z-crypto-raises-2-2-billion-fifth-fund-promotes-cto-general-partner">The Block</a>)</p>
+  <p>Two structural notes. First, $2.2B is roughly half of the $4.5B Fund IV (2022), which remains the largest single crypto venture fund ever raised. The smaller size is partly a function of market timing &mdash; Fund IV deployed into a peak; Fund V is a more disciplined ticket. Second, the fund's announcement post (Dixon + GPs) frames the thesis as "turning new infrastructure into products people use every day": payments, on-chain financial services, creator platforms, tokenized markets. The Digital Asset round (Card 2) is the first visible expression of this thesis. (<a href="https://www.cooley.com/news/coverage/2026/2026-05-05-a16z-crypto-announces-$2-2-billion-fund-five">Cooley</a>)</p>
+  <p>Personnel move: <strong>Eddy Lazzarin</strong>, previously CTO, was promoted to General Partner &mdash; becoming the fourth GP alongside Chris Dixon, Ali Yahya, and Guy Wuollet. Promoting a CTO to GP is a deliberate signal that technical depth on protocol design and security is now formally a check-writing function, not a support function. Reads as a hedge against the "VC tourists" critique that's followed crypto VCs since 2022.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://fortune.com/2026/05/05/a16z-crypto-andreessen-horowitz-fifth-fund-2-2-billion/"><span class="material-icons-outlined">open_in_new</span>Fortune</a>
+    <a class="link-pill" href="https://techcrunch.com/2026/05/05/as-crypto-cools-a16zcrypto-raises-a-2-2b-fund/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+    <a class="link-pill" href="https://www.theblock.co/post/400012/a16z-crypto-raises-2-2-billion-fifth-fund-promotes-cto-general-partner"><span class="material-icons-outlined">open_in_new</span>The Block</a>
+    <a class="link-pill" href="https://unchainedcrypto.com/a16z-crypto-closes-2-2-billion-fund-betting-on-cryptos-financial-infrastructure-moment/"><span class="material-icons-outlined">open_in_new</span>Unchained</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">5</span>
+    <span class="provider crypto"><span class="dot"></span>Thesis Post</span>
+    <span class="timestamp">May 5</span>
+    <span class="meta-pill">Dixon &middot; Fund V announcement</span>
+  </div>
+  <h4>Dixon's Fund V framing: "the part of the cycle that gets less attention and produces more of the lasting value"</h4>
+  <p>In the blog post accompanying the Fund V announcement, Chris Dixon and the GP team wrote: "The founders we're backing with this $2.2 billion fund are working on the part of the cycle that gets less attention and produces more of the lasting value: turning new infrastructure into products people use every day." Read this as a deliberate distancing from the 2021&ndash;2022 token-trading-and-NFT-flip cycle and a re-anchoring on application-layer crypto. (<a href="https://crypto-economy.com/a16z-launches-2-2b-crypto-fund/">Crypto Economy</a>, <a href="https://news.bitcoin.com/a16z-crypto-unveils-2-2-billion-fund-to-build-the-next-wave-of-financial-innovation/">Bitcoin.com</a>)</p>
+  <p>Three drivers cited for the fund's timing: (1) growing real-world use of stablecoins for cross-border payments and remittances; (2) maturing on-chain finance infrastructure (custodians, oracles, identity primitives); (3) regulatory clarity emerging &mdash; the CFTC prediction-markets filing from May 2 is part of the firm's own contribution to that third leg. The Dixon thesis and the policy product are explicitly linked.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://crypto-economy.com/a16z-launches-2-2b-crypto-fund/"><span class="material-icons-outlined">open_in_new</span>Crypto Economy</a>
+    <a class="link-pill" href="https://news.bitcoin.com/a16z-crypto-unveils-2-2-billion-fund-to-build-the-next-wave-of-financial-innovation/"><span class="material-icons-outlined">open_in_new</span>Bitcoin.com</a>
+    <a class="link-pill" href="https://www.gncrypto.news/news/a16z-crypto-raises-2-2b-crypto-fund-5-on-chain-finance/"><span class="material-icons-outlined">open_in_new</span>GN Crypto</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 4: MEDIA & THOUGHT LEADERSHIP ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">podcasts</span>
+  <h3>Media &amp; Thought Leadership</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">6</span>
+    <span class="provider media"><span class="dot"></span>Controversy</span>
+    <span class="timestamp">May 5</span>
+    <span class="meta-pill">Andreessen "custom prompt" &middot; X</span>
+  </div>
+  <h4>Andreessen's "current AI custom prompt" goes viral &mdash; for the wrong reasons</h4>
+  <p>On Monday, May 5, Marc Andreessen posted what he called his "current AI custom prompt" on X. The prompt instructs the model to be "provocative, aggressive, argumentative, and pointed" and to "never hallucinate or make anything up." Within 24 hours, the post had drawn substantial criticism from AI researchers and engineers &mdash; most notably <strong>Gary Marcus</strong> (NYU emeritus) and <strong>Zach Tratar</strong> (Notion AI engineering lead) &mdash; who pointed out that telling an LLM not to hallucinate doesn't work, because hallucinations are an architectural property of the model, not a behavior the system can simply be told to suppress. (<a href="https://dnyuz.com/2026/05/05/how-marc-andreessen-says-he-sets-up-his-ai-chatbot-and-why-critics-are-skeptical-it-works/">DNyuz</a>, <a href="https://futurism.com/artificial-intelligence/marc-andreessen-mocked-ai-works">Futurism</a>)</p>
+  <p>The criticism cascaded across mainstream and tech press over the week. The substantive critique is technical: the prompt reveals a category error about how transformer models work. The narrative critique is uglier &mdash; Andreessen is positioning himself as a leading AI policy voice (PCAST, DOGE, Leading the Future PAC) while publicly demonstrating limited operational fluency with the technology. (<a href="https://cybernews.com/ai-news/marc-andressen-weird-ai-prompt/">Cybernews</a>, <a href="https://www.techloy.com/why-marc-andreessen-is-facing-backlash-over-an-ai-prompt/">Techloy</a>)</p>
+  <p>Strategic cost: limited in the short term &mdash; LP and portfolio relationships don't bend on a meme cycle. Longer-term risk is that "Andreessen doesn't actually understand AI" becomes a sticky meta-narrative that complicates the firm's policy positioning. Worth tracking whether the firm tightens his public posture.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://dnyuz.com/2026/05/05/how-marc-andreessen-says-he-sets-up-his-ai-chatbot-and-why-critics-are-skeptical-it-works/"><span class="material-icons-outlined">open_in_new</span>DNyuz</a>
+    <a class="link-pill" href="https://futurism.com/artificial-intelligence/marc-andreessen-mocked-ai-works"><span class="material-icons-outlined">open_in_new</span>Futurism</a>
+    <a class="link-pill" href="https://cybernews.com/ai-news/marc-andressen-weird-ai-prompt/"><span class="material-icons-outlined">open_in_new</span>Cybernews</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">7</span>
+    <span class="provider media"><span class="dot"></span>Political</span>
+    <span class="meta-pill">Leading the Future &middot; Quiet week</span>
+  </div>
+  <h4>Leading the Future PAC: status quo at $51M, no new injections reported this week</h4>
+  <p>No new contribution events for Leading the Future were reported in the May 5 &ndash; May 11 window. The PAC remains at the $51M+ on-hand figure reached in mid-April after the Andreessen/Horowitz $25M personal contribution. A related, more uncomfortable item surfaced this week: reporting on a separate "Build American AI" influence campaign &mdash; described as a "dark money" effort paying TikTok and Instagram creators ~$5,000 per video to push a Chinese-AI-as-national-security-threat narrative. The relationship between that campaign and the formal a16z-affiliated PAC is unclear from current reporting; treat as a parallel ecosystem item rather than a direct a16z action until linkage is confirmed. (<a href="https://en.wikipedia.org/wiki/Leading_the_Future">Wikipedia: Leading the Future</a>, <a href="https://www.notus.org/money/ai-super-pac-fundraising-midterms-democrats-republicans">NOTUS</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Leading_the_Future"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+    <a class="link-pill" href="https://www.notus.org/money/ai-super-pac-fundraising-midterms-democrats-republicans"><span class="material-icons-outlined">open_in_new</span>NOTUS</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 5: PORTFOLIO COMPANY NEWS ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">business</span>
+  <h3>Portfolio Company News</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">8</span>
+    <span class="provider portfolio"><span class="dot"></span>Portfolio</span>
+    <span class="meta-pill">Thin week ex new deals</span>
+  </div>
+  <h4>No major headlines from the existing unicorn cohort this week</h4>
+  <p>Beyond the two new deals (Ethos, Digital Asset) covered in Section 1, no significant individual portfolio events surfaced from the existing unicorn roster in the May 5 &ndash; May 11 window. <strong>Databricks</strong> ($43B), <strong>Anduril</strong> ($15B), <strong>Anysphere</strong> (Cursor), <strong>ElevenLabs</strong>, <strong>Harvey</strong>, and <strong>OpenAI</strong> all remained out of the headlines for a16z-specific news. The 1,159+ portfolio count from March 2026 remains the working figure; the firm has not published an updated quarterly portfolio snapshot since.</p>
+  <p>Calendar item to watch: <strong>Speedrun SR007 applications close May 17</strong>. Selection announcements typically follow 4&ndash;6 weeks later, so a fresh SR007 cohort should appear in mid-to-late June briefings.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/portfolio/"><span class="material-icons-outlined">open_in_new</span>a16z Portfolio</a>
+    <a class="link-pill" href="https://growthlist.co/andreessen-horowitz-portfolio/"><span class="material-icons-outlined">open_in_new</span>GrowthList Database</a>
+  </div>
+</div>
+
+<!-- ─── EDITOR'S VIEW ─── -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px;">edit</span> Editor's View</div>
+  <h3>Five Takeaways from the Week</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>Fund V is smaller, by design.</strong> $2.2B is roughly half of Fund IV's $4.5B and well below the ~$2B target the market had been pricing in March. Discipline at the top of the funnel is a stronger signal than headline size: smaller fund + similar GP count = larger per-partner check write-out, higher hit-rate bar. Watch ownership stakes on Fund V deals to see whether check sizes go up or whether the firm is just tightening the funnel.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>The Lazzarin promotion is the more interesting personnel move.</strong> Promoting a CTO to GP is a structural statement: protocol-level technical judgment now has check-writing authority, not just diligence input. This is a hedge against the post-2022 "crypto VCs are tourists" critique and a positioning move ahead of an era where the differentiator is going to be technical depth on settlement, privacy, and stablecoin rails &mdash; not market timing.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>Digital Asset is the thesis on a platter.</strong> First Fund V check (reported) is into Canton Network &mdash; a privacy-preserving L1 designed for regulated capital-markets participants. This is exactly the wedge a16z's CFTC filing, "digital dollars" essay, and Dixon's "on-chain finance" Fund V framing are aimed at unlocking. Policy product, narrative product, and capital product all pointing at the same target. Coherent, even if the round close hasn't been confirmed yet.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>The Andreessen prompt episode is a discipline problem, not a strategy problem.</strong> The firm is paying real reputational tax for one founder's personal posting. In a normal week this would be background noise &mdash; on a week when a16z closes a $2.2B fund, the prompt drama is what TechCrunch's AI desk and most of X are talking about. The narrative discipline asymmetry between a16z (founder-led, X-native) and the rest of crypto/AI venture (firm-led, press-managed) is widening. Whether that's a feature or a bug depends on whether you think attention itself is the moat.</div>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <div class="body"><strong>The Ethos round is a quiet but interesting data point.</strong> $22.75M Series A for an expert-network with voice onboarding is small money for a16z, but it locates a specific bet: AI-native rebuilds of services categories (research, consulting, expert sourcing) where the legacy cost structure is priced for analog onboarding. Expect more of these &mdash; Apps fund deployment is rotating from horizontal AI tooling toward vertical AI-native takedowns of B2B services.</div>
+    </li>
+  </ul>
+  <div class="closing">
+    <strong>Bottom line:</strong> Substantively the biggest week for a16z since the January $15B mega-raise &mdash; a major fund close, a senior promotion, two deals, and a thesis post that ties the firm's policy and capital activity into a single arc. The Andreessen prompt mess is the noise; Fund V + Lazzarin + Digital Asset is the signal. If Fund V's first 90 days continue to deploy into on-chain finance infrastructure at this pace, the "smaller fund" framing will start to look like deliberate concentration rather than market caution.
+  </div>
+</div>
+
+<!-- ─── COLOPHON ─── -->
+<div class="colophon">
+  <p>
+    a16z Media Briefing &middot; Week of May 11, 2026 &middot; Coverage: May 5 &ndash; May 11<br>
+    8 cards across 5 sections &middot; Compiled May 11, 2026<br>
+    Sources: Fortune, TechCrunch, The Block, Cooley, Bloomberg/Yahoo, CryptoTimes, Crypto Economy, Bitcoin.com, GN Crypto, Unchained, DNyuz, Futurism, Cybernews, Techloy, NOTUS, Wikipedia, a16z.com<br>
+    C-Scores reflect source quality and corroboration depth (5 = multiple primary sources; 3 = extrapolated or thin sourcing)<br>
+    This briefing is generated from web search results. No inside information. Verify before acting.
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

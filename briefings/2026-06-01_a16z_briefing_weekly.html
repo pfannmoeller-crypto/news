@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Media Briefing · Weekly · June 1, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #0d47a1;
+    --primary-hover: #0a3d8f;
+    --primary-soft: #e3f2fd;
+    --primary-on-soft: #0d47a1;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #1a237e); color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .hero { background: linear-gradient(135deg, #1565c0 0%, #1a237e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.55; opacity: 0.95; margin: 0; max-width: 700px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .rank { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--on-surface-2); font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.fund    { background: #e3f2fd; color: #0d47a1; }
+  .provider.crypto  { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ai      { background: #e6f4ea; color: #0d652d; }
+  .provider.media   { background: #fef7e0; color: #b06000; }
+  .provider.policy  { background: #fce8e6; color: #a50e0e; }
+  .provider.portfolio { background: #e8eef6; color: #1f3548; }
+  .provider.talent  { background: #fff3e0; color: #b06000; }
+
+  .timestamp { font-family: 'Roboto Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-on-soft); font-weight: 500; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\2022"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .card a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: var(--on-surface-2); }
+
+  .status-quo { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .status-quo h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .status-quo h3 .material-icons-outlined { color: var(--primary); font-size: 20px; }
+  .status-quo ul { margin: 0; padding-left: 20px; }
+  .status-quo li { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin-bottom: 8px; }
+  .status-quo li strong { color: var(--on-surface); font-weight: 500; }
+
+  .quiet { background: var(--surface-2); border: 1px dashed var(--divider); border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; }
+  .quiet h4 { font-family: 'Google Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--on-surface-2); margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+  .quiet h4 .material-icons-outlined { font-size: 18px; color: var(--on-surface-muted); }
+  .quiet p { font-size: 13.5px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 8px; }
+  .quiet p:last-child { margin-bottom: 0; }
+  .quiet strong { color: var(--on-surface); font-weight: 600; }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.6; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+  .colophon a { color: var(--primary-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">a16z</div>
+    <div class="titles">
+      <h1>a16z Media Briefing</h1>
+      <div class="sub">Weekly &middot; June 1, 2026 &middot; Coverage: May 25 &ndash; June 1 &middot; Andreessen Horowitz</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="hero">
+  <div class="eyebrow">Weekly &middot; May 25 &ndash; June 1, 2026</div>
+  <h2>Three concrete items: OpenRouter doubled to $1.3B with a16z holding its stake, Boston Tech Week closed to a positive-but-mixed local read, and a new FDE Fellowship goes live.</h2>
+  <p>After the genuinely empty May 25 edition, this window produced real signal. The headline deal is OpenRouter's $113M Series B led by Google's CapitalG with NVIDIA, Snowflake, Databricks, MongoDB and ServiceNow joining alongside existing investors a16z and Menlo &mdash; a 2.4x valuation step-up in twelve months on a 5x token-volume run. Boston Tech Week (May 26&ndash;31) closed with a mostly-positive local read and a hard-to-ignore footprint of 572 events. And a16z formally opened applications for a new 8-week Forward-Deployed Engineer (FDE) Fellowship, the third operator-pipeline program after Speedrun and the Design Engineer Fellowship. Beyond a16z's own footprint, the dominant AI-investing event of the week &mdash; Anthropic's $65B Series H at a $965B valuation &mdash; reshuffled the AI-cap-table landscape without a16z on the term sheet.</p>
+</div>
+
+<!-- STATUS QUO -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo from the May 25 Edition</h3>
+  <ul>
+    <li><strong>Net-new window was empty (May 23&ndash;25):</strong> No new deals, no fund news, no podcast or essay drops. Exa's $250M Series C (May 20, a16z-led, $2.2B post-money) remained the last check on record.</li>
+    <li><strong>Boston Tech Week opened on schedule (May 26):</strong> Four curated tracks &mdash; AI + Infrastructure, Hackathons, Bio + Health, Students &mdash; with a16z, Fenwick, HSBC and IBM as platinum sponsors. Post-event read flagged as the signal-bearing one. Recap is below.</li>
+    <li><strong>Owned media stayed quiet:</strong> No new flagship podcast (Ben &amp; Marc Show, AI + a16z, The a16z Show) and no major essay since Ben Horowitz's May 11 piece. Marc Andreessen's public output dominated by Joe Rogan-fallout commentary and ad-hoc &ldquo;build in America&rdquo; posting.</li>
+    <li><strong>Structural backdrop in force:</strong> Crypto Fund V ($2.2B, May 5), Anduril Series H ($5B at $61B), Stitch / Mintlify / Reducto / Lio / Ciridae / Tessera AI &amp; SaaS checks, ~$115M+ midterm political spend, ~$90B+ AUM after the January $15B mega-raise.</li>
+    <li><strong>Pending close watch:</strong> Digital Asset Holdings (Canton Network) $300M raise at ~$2B led by a16z crypto, first reported May 11 &mdash; expected to wrap &ldquo;in coming weeks,&rdquo; no close announcement yet as of this edition.</li>
+  </ul>
+</div>
+
+<!-- SECTION 1: INVESTMENTS & DEALS -->
+<div class="section-header">
+  <span class="material-icons-outlined">payments</span>
+  <h3>Investments &amp; Deals</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">1</span>
+    <span class="provider fund"><span class="dot"></span>Portfolio Follow-On</span>
+    <span class="timestamp">May 26, 2026</span>
+    <span class="meta-pill">OpenRouter &middot; $113M Series B &middot; $1.3B post</span>
+  </div>
+  <h4>OpenRouter doubles to $1.3B at Series B &mdash; CapitalG leads, NVIDIA / Snowflake / Databricks / Mongo / ServiceNow join; a16z and Menlo follow on</h4>
+  <p>OpenRouter, the AI-model-routing platform that brokers calls across 400+ models from OpenAI, Anthropic, Google, xAI and DeepSeek, announced a <strong>$113M Series B at a $1.3B post-money valuation</strong> on May 26. The round is led by <strong>CapitalG</strong> (Alphabet's independent growth fund), with first-time checks from <strong>NVentures (NVIDIA), ServiceNow Ventures, MongoDB Ventures, Snowflake Ventures, Databricks Ventures, AMP PBC and Pace Capital</strong>, alongside follow-ons from existing investors <strong>Andreessen Horowitz</strong> and <strong>Menlo Ventures</strong>. Reported metrics: weekly token volume grew from 5T to 25T over the last six months, the company is on pace for a quadrillion tokens this year, and the platform now serves 8M+ developers. (<a href="https://openrouter.ai/announcements/series-b">OpenRouter</a>, <a href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/">TechCrunch</a>, <a href="https://www.businesswire.com/news/home/20260526953416/en/OpenRouter-Raises-$113-Million-CapitalG-led-Series-B-as-Weekly-Volume-Explodes-to-25T-Tokens">BusinessWire</a>)</p>
+  <p>The read on a16z's position: this is a follow-on, not a new lead &mdash; a16z and Menlo led the $40M Series A in June 2025 at a ~$547M post-money, so the firm's stake is being marked up roughly 2.4x in twelve months while taking less of the new round than a new entrant. That CapitalG, NVIDIA, and the four cloud/data hyperscalers all wanted in is the harder signal: OpenRouter is being treated as the neutral-router category-definer for inference, the way Stripe was treated for payments &mdash; everyone wants a stake, no one wants to be the only large investor. For a16z specifically the position is now sized to matter (5x volume growth on top of the existing mark) without any incremental capital required to defend it. The interesting strategic tension: OpenRouter's neutrality is the product, and a16z is also publicly long Anthropic, OpenAI (via Series G), Mistral and a roster of open-weights bets &mdash; that breadth is what makes the routing layer matter, and what could create later conflicts. Carded at full confidence: primary statement, TechCrunch and BusinessWire corroboration, named participants.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://openrouter.ai/announcements/series-b"><span class="material-icons-outlined">open_in_new</span>OpenRouter</a>
+    <a class="link-pill" href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+    <a class="link-pill" href="https://www.businesswire.com/news/home/20260526953416/en/OpenRouter-Raises-$113-Million-CapitalG-led-Series-B-as-Weekly-Volume-Explodes-to-25T-Tokens"><span class="material-icons-outlined">open_in_new</span>BusinessWire</a>
+    <a class="link-pill" href="https://theaiinsider.tech/2026/05/27/openrouter-hits-1-3b-valuation-after-113m-series-b-led-by-googles-capitalg/"><span class="material-icons-outlined">open_in_new</span>AI Insider</a>
+  </div>
+</div>
+
+<!-- SECTION 2: AI PORTFOLIO -->
+<div class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>AI Portfolio &amp; Adjacencies</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">2</span>
+    <span class="provider ai"><span class="dot"></span>Adjacent &mdash; Not a16z</span>
+    <span class="timestamp">May 28, 2026</span>
+    <span class="meta-pill">Anthropic Series H &middot; $65B raise &middot; $965B post</span>
+  </div>
+  <h4>Anthropic eclipses OpenAI at a $965B valuation &mdash; a16z is not on the term sheet, and that absence is the story for a16z's AI book</h4>
+  <p>Anthropic closed a <strong>$65B Series H at a $965B post-money valuation</strong> on May 28, overtaking OpenAI's $852B March mark for the first time and triggering broad &ldquo;new largest private company&rdquo; coverage. The round is led by <strong>Altimeter, Dragoneer, Greenoaks and Sequoia</strong>, co-led by <strong>Capital Group, Coatue, D1, GIC, ICONIQ and XN</strong>, with $15B of previously committed hyperscaler capital (including $5B from Amazon) layered on. Reported revenue run-rate: $47B, up from $30B earlier this year and $10B a year ago, on the back of Claude Code. <strong>Andreessen Horowitz is not listed as a participant.</strong> (<a href="https://www.anthropic.com/news/series-h">Anthropic</a>, <a href="https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/">TechCrunch</a>, <a href="https://www.bloomberg.com/news/articles/2026-05-28/anthropic-raises-at-965-billion-valuation-eclipsing-openai">Bloomberg</a>)</p>
+  <p>The implication for a16z: the firm's largest direct foundation-model position is OpenAI via the March Series G (alongside SoftBank, Amazon, Nvidia at $852B post), plus a long tail of model checks &mdash; Mistral, the December Tessera entry, and various open-weights bets. Anthropic, now the largest private AI company by valuation, sits outside that book entirely. The published a16z house view (Martin Casado's <a href="https://www.latent.space/p/a16z">Latent Space</a> conversation reposted this week) explicitly frames this as &ldquo;bitter lessons in venture vs. growth&rdquo; &mdash; a16z's read is that the foundation-model layer is a growth-stage capital game now, and the partner exposure they want is at the application and infrastructure layer (the OpenRouter trade above is a clean expression of that thesis). The honest tension: that thesis is self-serving given a16z is not in Anthropic, but it is also internally consistent with the firm's spending pattern over the last six months. Carded as context, not as a16z activity &mdash; the absence is the data point.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.anthropic.com/news/series-h"><span class="material-icons-outlined">open_in_new</span>Anthropic</a>
+    <a class="link-pill" href="https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-05-28/anthropic-raises-at-965-billion-valuation-eclipsing-openai"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://www.latent.space/p/a16z"><span class="material-icons-outlined">open_in_new</span>Latent Space (Casado &amp; Wang)</a>
+  </div>
+</div>
+
+<!-- SECTION 3: FIRM & PROGRAMS -->
+<div class="section-header">
+  <span class="material-icons-outlined">event</span>
+  <h3>Firm &amp; Programs</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">3</span>
+    <span class="provider talent"><span class="dot"></span>Program Launch</span>
+    <span class="timestamp">Late May 2026</span>
+    <span class="meta-pill">FDE Fellowship &middot; 8-week, SF, July start</span>
+  </div>
+  <h4>a16z opens applications for a new Forward-Deployed Engineer Fellowship &mdash; the third pillar of the operator-pipeline build-out</h4>
+  <p>a16z formally opened applications for the <strong>a16z FDE Fellowship</strong>, an 8-week program for &ldquo;Forward-Deployed Engineers&rdquo; and Applied AI leads at companies actually shipping enterprise AI. Applications close <strong>June 26, 2026 at midnight PT</strong>, reviewed on a rolling basis for a limited cohort. Primary hub is San Francisco, with &ldquo;more cities by demand&rdquo;; the program runs eight weeks with opt-in dinners and events, kicking off July 2026. Target profile is broad on title (FDE, Applied AI Agent Builder, Director of AI Deployment) but narrow on substance: engineers who sit between customer needs and model capability inside enterprises. (<a href="https://www.a16z.news/p/introducing-the-a16z-fde-fellowship">a16z.news announcement</a>, <a href="https://build.a16z.com/fellowships/fde">build.a16z.com program page</a>, <a href="https://www.startuphub.ai/ai-news/investors-news/2026/a16z-launches-fellowship-for-ai-deployers">StartupHub.AI summary</a>)</p>
+  <p>This is the third pillar in a deliberate operator-pipeline build-out, after Speedrun (founder accelerator, SR007 cohort July 27&ndash;October 11) and the Design Engineer Fellowship. The pattern is consistent with the &ldquo;build our own pipes&rdquo; playbook flagged in prior editions: a16z is using brand and access to identify enterprise-AI talent <em>before</em> those people become founders, then keeping them in a relationship that funnels into either future portfolio companies or partner-extension hires. The FDE category is well-chosen &mdash; these are the people closest to where enterprise-AI revenue actually breaks (Anthropic's $47B Claude Code run-rate did not happen without armies of FDEs at customer sites). Worth tracking: how many cohort members end up founding companies a16z then leads within 18 months &mdash; that is the conversion metric this program is actually building toward, and it is the same logic that produced Ciridae (Jack Soslow / former a16z partner). Confidence high &mdash; primary announcement, dedicated program site, third-party corroboration.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.a16z.news/p/introducing-the-a16z-fde-fellowship"><span class="material-icons-outlined">open_in_new</span>a16z News</a>
+    <a class="link-pill" href="https://build.a16z.com/fellowships/fde"><span class="material-icons-outlined">open_in_new</span>build.a16z.com</a>
+    <a class="link-pill" href="https://www.startuphub.ai/ai-news/investors-news/2026/a16z-launches-fellowship-for-ai-deployers"><span class="material-icons-outlined">open_in_new</span>StartupHub.AI</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">4</span>
+    <span class="provider portfolio"><span class="dot"></span>Event Recap</span>
+    <span class="timestamp">May 26&ndash;31, 2026</span>
+    <span class="meta-pill">Boston Tech Week &middot; 572 events &middot; closes May 31</span>
+  </div>
+  <h4>Boston Tech Week closes &mdash; 572 events, positive local read, but the strategic signal is what happens to a16z deal flow next</h4>
+  <p>a16z's inaugural Boston Tech Week ran May 26&ndash;31 with <strong>572 events</strong> across Kendall Square, Seaport and six other neighborhoods, organized through ~80 founding hosts including WHOOP, HubSpot, Klaviyo, DraftKings and Wayfair. Reception was net-positive: Silicon Snark's wrap called Boston &ldquo;great, weird, exhausting, and very Boston,&rdquo; explicitly contrasting it with prior Tech Weeks that read as imported VC theater. Distinctive Boston programming included the Perkins DisabilityTech Investor Summit at MassBio, a four-hour accessibility-tech track that has no analog in the SF or NYC editions, plus deep AI-touches-bio/healthcare/industrial programming the city was already built for. (<a href="https://www.siliconsnark.com/boston-tech-week-was-great-weird-exhausting-and-very-boston/">Silicon Snark recap</a>, <a href="https://www.techtimes.com/articles/317151/20260525/boston-tech-week-2026-opens-tomorrow-a16z-brings-572-events-kendall-square.htm">TechTimes opener</a>, <a href="https://hoodline.com/2026/05/tech-bros-storm-beantown-as-a16z-turns-boston-into-weeklong-startup-circus/">Hoodline</a>)</p>
+  <p>The execution-stage read held: a16z planted a credible flag at low capital cost &mdash; sponsorship, logistics, brand &mdash; in an ecosystem that already had organic density in robotics, bio and enterprise. The interesting tell is that the local press, which had every reason to be skeptical of a SF firm staging a week-long franchise in Boston, mostly was not. That suggests the format (decentralized host network rather than a single keynote stage) genuinely scales to cities with intact local identities. The strategic question now mirrors the May 25 framing exactly: which Boston-area companies surface in a16z deal flow over Q3 / early Q4, and does the firm signal any move toward a physical Cambridge / Seaport presence? Neither is decidable today. Track-able proxies in the next ~90 days: a16z-led or -participated Boston rounds, hires from area universities into a16z portfolio companies, and whether the next event franchise (rumored Toronto, London) adopts the Boston track structure.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.siliconsnark.com/boston-tech-week-was-great-weird-exhausting-and-very-boston/"><span class="material-icons-outlined">open_in_new</span>Silicon Snark</a>
+    <a class="link-pill" href="https://www.techtimes.com/articles/317151/20260525/boston-tech-week-2026-opens-tomorrow-a16z-brings-572-events-kendall-square.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+    <a class="link-pill" href="https://hoodline.com/2026/05/tech-bros-storm-beantown-as-a16z-turns-boston-into-weeklong-startup-circus/"><span class="material-icons-outlined">open_in_new</span>Hoodline</a>
+  </div>
+</div>
+
+<!-- SECTION 4: CRYPTO / WEB3 -->
+<div class="section-header">
+  <span class="material-icons-outlined">currency_bitcoin</span>
+  <h3>Crypto &amp; Web3</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">5</span>
+    <span class="provider crypto"><span class="dot"></span>Pending Close</span>
+    <span class="timestamp">Reported May 11</span>
+    <span class="meta-pill">Digital Asset / Canton Network &middot; ~$300M &middot; ~$2B post</span>
+  </div>
+  <h4>Digital Asset's a16z-led $300M raise has not yet closed &mdash; Fund V's first marquee check is still pending three weeks in</h4>
+  <p>The Digital Asset Holdings round &mdash; reportedly ~<strong>$300M at a ~$2B valuation, led by a16z crypto</strong>, with DRW, Tradeweb, BNP Paribas, Citadel Securities, Goldman Sachs and DTCC named as backers &mdash; was first reported by Bloomberg on May 11 with FT Partners advising and an &ldquo;in coming weeks&rdquo; timing. As of this edition, <strong>no closing announcement</strong> has surfaced. Canton has reportedly processed or issued &gt;$6T in tokenized assets to date, which is the underlying thesis: institutional-grade permissioned tokenization rather than retail Web3. (<a href="https://www.coindesk.com/business/2026/05/11/canton-network-s-digital-asset-targets-usd2-billion-valuation-in-a16z-crypto-led-raise-bloomberg">CoinDesk</a>, <a href="https://www.theblock.co/post/400647/canton-network-developer-digital-asset-eyes-300-million-raise-at-2-billion-valuation-led-by-a16z-crypto-bloomberg">The Block</a>, <a href="https://www.blockhead.co/2026/05/11/a16z-leads-300-million-round-in-digital-asset-as-canton-network-gains-wall-street-traction/">Blockhead</a>)</p>
+  <p>Why this matters as a recurring watch item: this would be Fund V's first marquee check after the $2.2B close on May 5, and Wall-Street-grade permissioned infra is a meaningful pivot from Fund IV's heavier consumer / DeFi tilt &mdash; consistent with the public a16z crypto thesis emphasizing &ldquo;converting existing crypto infrastructure into usable products&rdquo; for stablecoins, on-chain finance and the AI agent economy. The pending-close lag is not unusual for institutional rounds with this many strategic LPs, but the longer it slips past mid-June without a close, the more worth scrutinizing. Confidence reflects single Bloomberg sourcing plus republication; no primary statement from either a16z crypto or Digital Asset has been issued yet. Logged for continuity &mdash; will be re-carded the week it closes.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.coindesk.com/business/2026/05/11/canton-network-s-digital-asset-targets-usd2-billion-valuation-in-a16z-crypto-led-raise-bloomberg"><span class="material-icons-outlined">open_in_new</span>CoinDesk</a>
+    <a class="link-pill" href="https://www.theblock.co/post/400647/canton-network-developer-digital-asset-eyes-300-million-raise-at-2-billion-valuation-led-by-a16z-crypto-bloomberg"><span class="material-icons-outlined">open_in_new</span>The Block</a>
+    <a class="link-pill" href="https://www.blockhead.co/2026/05/11/a16z-leads-300-million-round-in-digital-asset-as-canton-network-gains-wall-street-traction/"><span class="material-icons-outlined">open_in_new</span>Blockhead</a>
+  </div>
+</div>
+
+<!-- SECTION 5: MEDIA & THOUGHT LEADERSHIP -->
+<div class="section-header">
+  <span class="material-icons-outlined">campaign</span>
+  <h3>Media &amp; Thought Leadership</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">6</span>
+    <span class="provider media"><span class="dot"></span>Partner Commentary</span>
+    <span class="timestamp">May 25&ndash;June 1</span>
+    <span class="meta-pill">Casado / Wang on Latent Space &middot; Andreessen quiet on owned media</span>
+  </div>
+  <h4>The week's substantive a16z editorial came from Martin Casado and Sarah Wang on an outside podcast &mdash; the firm's owned channels stayed dark</h4>
+  <p>The most substantive a16z thought-leadership of the window was the <strong>Latent Space</strong> conversation with general partners <strong>Martin Casado and Sarah Wang</strong> titled &ldquo;Bitter Lessons in Venture vs Growth,&rdquo; covering Anthropic vs OpenAI, Noam Shazeer, World Labs, Thinking Machines, Cursor, and ASIC economics. It is the cleanest public articulation of the a16z house view that <em>foundation-model competition is now a growth-stage capital problem, not a venture one</em> &mdash; the rationale, implicitly, for staying out of the Anthropic Series H. (<a href="https://www.latent.space/p/a16z">Latent Space</a>) Separately, <strong>no new flagship a16z podcast episode</strong> (Ben &amp; Marc Show, AI + a16z, The a16z Show) and <strong>no major new essay</strong> from Marc Andreessen or Ben Horowitz dropped this week. The most recent owned editorial remains Ben Horowitz's May 11 piece on industry leadership at scale.</p>
+  <p>Marc Andreessen's X output continued its post-Rogan reverberation pattern &mdash; political and AI-substitution commentary, ad-hoc &ldquo;build in America&rdquo; posting &mdash; without producing a structured piece. Carded at lower confidence because X content is hard to systematically verify and the tone-policing coverage (David Icke's blocked-on-X complaint, etc.) is not substantive a16z signal. The pattern itself, now three weeks running, is worth flagging as a trend: owned editorial has been quiet for ~three weeks, while partner appearances on third-party podcasts (Joe Rogan, Latent Space) carry the firm's most-quoted positions. That is a deliberate distribution choice if the goal is reach, but it cedes editorial control. Worth watching whether the next Ben &amp; Marc Show or a new Andreessen essay surfaces in the next 7&ndash;14 days, or whether the quiet stretch hardens into a structural shift in how a16z communicates.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.latent.space/p/a16z"><span class="material-icons-outlined">open_in_new</span>Latent Space</a>
+    <a class="link-pill" href="https://a16z.com/podcasts/ben-marc/"><span class="material-icons-outlined">open_in_new</span>Ben &amp; Marc Show</a>
+  </div>
+</div>
+
+<!-- SECTION 6: QUIET -->
+<div class="section-header">
+  <span class="material-icons-outlined">do_not_disturb_on</span>
+  <h3>Quiet This Window</h3>
+  <span class="count">no cards</span>
+</div>
+
+<div class="quiet">
+  <h4><span class="material-icons-outlined">search_off</span> What did not move, May 25&ndash;June 1</h4>
+  <p><strong>New a16z-led deals:</strong> OpenRouter is a follow-on, not a new lead. No <em>new</em> a16z-led check announced this week. Exa ($250M Series C, May 20) remains the most recent a16z-led round on record; Digital Asset (~$300M, reported May 11) is the next expected lead-close.</p>
+  <p><strong>American Dynamism / defense:</strong> No new American Dynamism check, no Anduril / Shield AI / Saronic / Hadrian / Apex / Castelion news this window. The book is dormant in public after the January Anduril Series H.</p>
+  <p><strong>Speedrun cohort selection:</strong> SR007 applications closed May 17; cohort kicks off July 27 in San Francisco. No selection announcement yet &mdash; tracking for mid-to-late June, in line with prior cohort timing.</p>
+  <p><strong>Personnel:</strong> No new partner hires, departures, or promotions surfaced. The most recent partner-level move on record is Eddy Lazzarin's promotion to a16z crypto GP at the May 5 Fund V close.</p>
+  <p><strong>Litigation / regulatory:</strong> Nothing new. No SEC / CFTC / DOJ activity touching a16z or its portfolio surfaced for this window.</p>
+</div>
+
+<!-- EDITOR'S VIEW -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px;">edit</span> Editor's View</div>
+  <h3>Four Takeaways from a Window That Finally Produced Signal</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>OpenRouter is the cleanest expression of the &ldquo;own the infrastructure layer, not the foundation layer&rdquo; thesis a16z has been articulating publicly.</strong> CapitalG-led, NVIDIA + four cloud/data hyperscalers joining, a16z follow-on &mdash; the consortium signals that the AI-inference routing layer is being treated as neutral picks-and-shovels infrastructure with strategic value to everyone. a16z's existing stake gets a 2.4x mark and a step toward category-defining status, with no incremental capital at risk. The interesting tension to watch: OpenRouter's neutrality is its product, and a16z's growing breadth across competing model labs could create conflicts later. C-Score 5/5.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>a16z's absence from Anthropic's $965B Series H is the AI story of the week for the firm &mdash; not the OpenRouter follow-on.</strong> Anthropic just became the largest private AI company by valuation, and a16z is not on the cap table. The publicly stated rationale &mdash; foundation-model competition is now a growth-stage capital game &mdash; is internally consistent with the spending pattern (Exa, Stitch, Reducto, Mintlify, Lio, OpenRouter, plus the Crypto / Dynamism / AI-application checks). But it is also self-serving. The honest read: this is a strategic position, not a missed deal, and the next 12&ndash;18 months will test whether infrastructure-and-application bets compound faster than foundation-model exposure. C-Score 4/5 &mdash; high on facts, judgment-call on the framing.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>The FDE Fellowship completes a three-pronged operator-pipeline machine.</strong> With Speedrun (founders), the Design Engineer Fellowship (frontend builders) and now the FDE Fellowship (enterprise-AI shippers), a16z has built a structured way to be in relationship with each of the three categories of operators most likely to start the next wave of companies. The conversion metric that actually matters is how many fellows return as founders inside an a16z-led round within ~18 months &mdash; Ciridae (former a16z partner Jack Soslow) is the template. Worth tracking the SR007 cohort selection and the first FDE Fellowship cohort composition for early read on whether this funnel is producing differentiated deal flow or just brand affinity. C-Score 4/5.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>Boston Tech Week's positive close is real but un-monetizable until Q3 deal flow.</strong> A genuinely successful franchise extension at low capital cost. The local press read &mdash; that the format works for a city with its own intact tech identity &mdash; is the part with strategic implication, because it makes the next franchise extension (Toronto / London rumored) cheaper to justify. But the actual investment signal lands in 90 days: a16z-led or -participated Boston rounds in Q3, and whether the firm signals a physical Cambridge presence. Until then, this is execution-stage success, not strategic confirmation. C-Score 4/5.</div>
+    </li>
+  </ul>
+  <div class="closing">
+    <strong>Bottom line:</strong> First substantive briefing in two weeks. The portfolio side delivered (OpenRouter mark-up + Anthropic-shaped absence), the firm-side delivered (FDE Fellowship launch + Boston wrap), and crypto continues to wait on the Digital Asset close. The most important watch items for the next edition: (1) Digital Asset close announcement, (2) Speedrun SR007 cohort reveal, (3) any new a16z-led check that breaks the post-Exa quiet stretch, (4) first new Ben &amp; Marc Show episode or Andreessen essay after the now ~three-week owned-editorial silence, (5) early Boston follow-through (any Boston-headquartered round that lands with a16z in the lead position).
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <p>
+    a16z Media Briefing &middot; Weekly &middot; June 1, 2026 &middot; Coverage: May 25 &ndash; June 1, 2026<br>
+    6 cards across 5 active sections &middot; 1 section reported quiet &middot; Compiled June 1, 2026<br>
+    Sources: OpenRouter, TechCrunch, BusinessWire, AI Insider, Anthropic, Bloomberg, Latent Space, a16z.news, build.a16z.com, StartupHub.AI, Silicon Snark, TechTimes, Hoodline, CoinDesk, The Block, Blockhead, plus prior-edition context<br>
+    C-Scores reflect source quality and corroboration depth (5 = primary statement + multiple independent corroborations; 4 = single primary + reliable secondary; 3 = single-source reporting or interpretive framing)<br>
+    This briefing is generated from web search results. No inside information. Verify before acting.
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

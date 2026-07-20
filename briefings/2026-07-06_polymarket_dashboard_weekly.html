@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket Dashboard · Weekly · July 6, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#7627bb; --primary-soft:#f3e8fd; --primary-on-soft:#5f1d8e;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --orange:#d56e0c; --orange-soft:#feefe3;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on-soft:#1967d2;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+    --bar-bg:#e8eaed;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--purple-soft); color:var(--purple); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .caveat { display:flex; gap:12px; padding:14px 18px; background:var(--yellow-soft); border:1px solid #fde293; border-radius:12px; margin-bottom:18px; font-size:13px; line-height:1.55; }
+  .caveat .material-icons-outlined { font-size:20px; color:var(--yellow); flex-shrink:0; }
+  .caveat strong { display:block; color:var(--yellow); margin-bottom:2px; font-weight:500; }
+  .caveat div { color:#5f4400; }
+
+  .hero { background:linear-gradient(135deg,#7627bb 0%,#5f1d8e 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:26px; font-weight:500; line-height:1.25; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:15px; line-height:1.55; opacity:0.95; margin:0; max-width:880px; }
+
+  /* META SUMMARY GRID */
+  .meta-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:24px; }
+  .meta-card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:12px; padding:14px 16px; }
+  .meta-theme { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
+  .meta-direction { font-family:'Google Sans',sans-serif; font-weight:600; font-size:14px; display:flex; align-items:center; gap:6px; line-height:1.2; }
+  .meta-direction .material-icons-outlined { font-size:18px; }
+  .dir-up { color:var(--green-deep); }
+  .dir-down { color:var(--red-deep); }
+  .dir-flat { color:var(--on-surface-muted); }
+  .dir-mixed { color:var(--yellow); }
+  .dir-info { color:var(--blue-on-soft); }
+
+  /* STATUS QUO SECTION */
+  .status-quo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:24px 28px; margin-bottom:24px; }
+  .status-quo h3 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 14px; color:var(--on-surface); display:flex; align-items:center; gap:10px; }
+  .status-quo h3 .material-icons-outlined { font-size:22px; color:var(--purple); }
+  .status-quo ul { margin:0; padding:0 0 0 20px; }
+  .status-quo li { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin-bottom:8px; }
+  .status-quo li strong { color:var(--on-surface); font-weight:500; }
+  .status-quo li:last-child { margin-bottom:0; }
+  .status-quo .baseline-note { font-size:12.5px; color:var(--on-surface-muted); margin:0 0 12px; line-height:1.55; }
+
+  /* THEME CARD */
+  .theme { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:24px 28px; margin-bottom:18px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .theme:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .theme .head { display:flex; align-items:flex-start; gap:14px; margin-bottom:14px; }
+  .theme .icon-wrap { flex-shrink:0; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-size:24px; }
+  .theme .icon-wrap.geo { background:var(--purple-soft); color:var(--purple); }
+  .theme .icon-wrap.macro { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .theme .icon-wrap.politics { background:var(--red-soft); color:var(--red-deep); }
+  .theme .icon-wrap.risk { background:var(--orange-soft); color:var(--orange); }
+  .theme .icon-wrap.ai { background:var(--green-soft); color:var(--green-deep); }
+  .theme .icon-wrap.tech { background:#e8eef6; color:#1f3548; }
+  .theme .head-titles { flex:1; }
+  .theme h3 { font-family:'Google Sans',sans-serif; font-size:21px; font-weight:500; margin:0 0 4px; line-height:1.2; letter-spacing:-0.01em; }
+  .theme .scope-tag { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+  .direction-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:8px; font-family:'Google Sans',sans-serif; font-weight:600; font-size:13px; margin-bottom:14px; }
+  .direction-badge.up { background:var(--green-soft); color:var(--green-deep); }
+  .direction-badge.down { background:var(--red-soft); color:var(--red-deep); }
+  .direction-badge.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+  .direction-badge.mixed { background:var(--yellow-soft); color:var(--yellow); }
+  .direction-badge.info { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .direction-badge .material-icons-outlined { font-size:18px; }
+
+  .thesis { font-size:15px; line-height:1.65; color:var(--on-surface); margin:0 0 18px; }
+  .thesis + .thesis { margin-top:-8px; }
+  .thesis a, .would-change a, .meta-take a { color:var(--primary-on-soft); text-decoration:none; border-bottom:1px solid #d9c2f0; }
+  .thesis a:hover, .would-change a:hover, .meta-take a:hover { border-bottom-color:var(--purple); }
+
+  .signals-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--on-surface-muted); margin:18px 0 8px; }
+
+  .signals { background:var(--surface-2); border-radius:10px; padding:4px 0; }
+  .signal-row { display:flex; align-items:center; padding:10px 16px; border-bottom:1px solid var(--divider-soft); gap:12px; }
+  .signal-row:last-child { border-bottom:none; }
+  .signal-q { flex:1; font-size:13px; color:var(--on-surface-2); line-height:1.4; }
+  .signal-q strong { color:var(--on-surface); font-weight:500; }
+  .signal-price { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; padding:3px 10px; border-radius:6px; flex-shrink:0; min-width:64px; text-align:center; }
+  .signal-price.yes { background:var(--green-soft); color:var(--green-deep); }
+  .signal-price.no { background:var(--red-soft); color:var(--red-deep); }
+  .signal-price.neutral { background:var(--surface); color:var(--on-surface); border:1px solid var(--divider-soft); }
+  .signal-price.lead { background:var(--blue-soft); color:var(--blue-on-soft); }
+
+  .delta { font-size:11px; font-family:'Roboto Mono',monospace; font-weight:500; padding:2px 6px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+  .delta.up { background:var(--green-soft); color:var(--green-deep); }
+  .delta.down { background:var(--red-soft); color:var(--red-deep); }
+  .delta.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+
+  .would-change { background:var(--blue-soft); border-left:3px solid var(--blue); border-radius:6px; padding:10px 14px; margin-top:16px; font-size:13px; line-height:1.55; color:var(--blue-on-soft); }
+  .would-change strong { color:var(--blue-on-soft); font-weight:600; display:block; margin-bottom:2px; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; }
+
+  /* EXPANDABLE DEEP-DIVE */
+  details.deepdive { margin-top:16px; }
+  details.deepdive summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px; padding:7px 16px; border-radius:16px; background:var(--purple-soft); color:var(--primary-on-soft); font-family:'Google Sans',sans-serif; font-weight:500; font-size:13px; user-select:none; transition:background 0.15s; }
+  details.deepdive summary::-webkit-details-marker { display:none; }
+  details.deepdive summary:hover { background:#e9d7fb; }
+  details.deepdive summary .material-icons-outlined { font-size:18px; transition:transform 0.2s; }
+  details.deepdive[open] summary .material-icons-outlined { transform:rotate(180deg); }
+  details.deepdive .dd-body { margin-top:14px; padding:18px 20px; background:var(--surface-2); border-radius:10px; font-size:13.5px; line-height:1.65; color:var(--on-surface-2); }
+  .dd-body h4 { font-family:'Google Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--primary-on-soft); margin:18px 0 6px; }
+  .dd-body h4:first-child { margin-top:0; }
+  .dd-body p { margin:0 0 10px; }
+  .dd-body p:last-child { margin-bottom:0; }
+  .dd-body ul { margin:0 0 10px; padding-left:18px; }
+  .dd-body li { margin-bottom:6px; }
+  .dd-body strong { color:var(--on-surface); font-weight:600; }
+  .dd-body a { color:var(--primary-on-soft); text-decoration:none; border-bottom:1px solid #d9c2f0; }
+  .dd-body a:hover { border-bottom-color:var(--purple); }
+  .dd-caveat { font-size:12px; color:#5f4400; background:var(--yellow-soft); border:1px solid #fde293; border-radius:6px; padding:8px 12px; margin-top:12px; line-height:1.5; }
+
+  .meta-take { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .meta-take .label { display:inline-flex; align-items:center; gap:6px; background:var(--purple-soft); color:var(--purple); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .meta-take h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .meta-take p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .meta-take p strong { color:var(--on-surface); font-weight:500; }
+  .meta-take p:last-child { margin-bottom:0; }
+
+  /* CROSS-REFERENCE BANNER */
+  .xref { display:flex; gap:12px; padding:14px 18px; background:var(--purple-soft); border:1px solid #d9c2f0; border-radius:12px; margin-top:18px; font-size:13px; line-height:1.55; }
+  .xref .material-icons-outlined { font-size:20px; color:var(--purple); flex-shrink:0; }
+  .xref div { color:#3d1566; }
+  .xref strong { color:var(--purple); font-weight:500; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:21px; }
+    .theme { padding:20px 22px; }
+    .theme h3 { font-size:18px; }
+    .meta-take { padding:22px; }
+    .meta-take h3 { font-size:18px; }
+    .status-quo { padding:20px 22px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">P</div>
+    <div class="titles">
+      <h1>Polymarket Dashboard</h1>
+      <div class="sub">7 themes &middot; ~30 underlying markets &middot; 10-day catch-up edition &middot; June 26 &ndash; July 6, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="caveat">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Data sourced via news coverage, not direct Polymarket API &mdash; prices are approximate and may be stale.</strong>
+    Polymarket gamma-api allowlist still pending, so every price below is mediated through reporting and Polymarket's public pages as indexed this week; treat exact levels as &plusmn;2&ndash;3pp. This is a <strong>10-day catch-up edition (June 26 &ndash; July 6)</strong>; the prior edition on file is <strong>June 22</strong>, so all deltas span roughly 14 days, not the usual 7. Extra caveat this edition: the biggest Iran market itself became the story &mdash; the <strong>~$345M &ldquo;US&ndash;Iran permanent peace deal&rdquo; complex resolved YES via a disputed UMA vote</strong> (UMA = Universal Market Access, the decentralized token-holder arbitration system Polymarket uses for contested resolutions), with the top seven token holders controlling ~50.3% of the voting power. Where a market has resolved or been disputed, the &ldquo;price&rdquo; is a resolution fact, not a live quote.
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">10-day catch-up edition &middot; June 26 &ndash; July 6, 2026 &middot; Prior edition June 22</div>
+  <h2>The ceasefire held and the war premium fully unwound &mdash; Brent down to ~$72, a level not seen since before the war &mdash; but the 60-day clock stopped ticking: Iran skipped the Qatar round, then paused talks entirely for Khamenei's six-day state funeral. And the board's biggest geopolitical market resolved YES by a whale vote half the losing side calls rigged.</h2>
+  <p>The two weeks since the June 22 edition were follow-through, exactly as flagged &mdash; but follow-through with friction. The de-escalation itself is intact: no strikes, Hormuz open, and <strong>Brent slid from ~$83 to ~$72.20 (WTI $68.77)</strong> as the last of the war premium drained out. Talks even produced &ldquo;encouraging progress&rdquo; in Switzerland June 21&ndash;22, with Qatar and Pakistan reporting a roadmap for a final deal inside the 60-day window. Then the process stalled: <strong>Iran declined to meet US delegates in Qatar on July 1, and on July 2 the Doha talks were paused outright for the state funeral of assassinated Supreme Leader Ali Khamenei (July 3&ndash;9)</strong> &mdash; whose successor Mojtaba Khamenei, wounded in the February strike, did not appear even at his father's funeral. Meanwhile the <strong>~$345M permanent-peace-deal market resolved YES via a contested UMA token-holder vote</strong>, and Bloomberg is reporting insider-trading concerns around Iran-deal bets &mdash; the dashboard's own instrument is now part of the story. Elsewhere: the Fed's hike-timing market firmed (<strong>October 44%, September 37%</strong>) even as the oil collapse undercuts the dots ahead of the July 14 CPI print; the <strong>S&amp;P closed Q2 with its strongest quarter since 2020 (~7,483)</strong> while <strong>Bitcoin broke down through $60k</strong>; and the AI layer cake rolled over intact &mdash; June's best-model market resolved for Anthropic, July prices ~91% &mdash; though <strong>Anthropic's IPO-by-December leg slid from ~90% to ~76%</strong>, the largest single move on the tech board.</p>
+</div>
+
+<!-- DIRECTION SUMMARY GRID -->
+<div class="meta-row">
+  <div class="meta-card">
+    <div class="meta-theme">Iran de-escalation</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Ceasefire holds, oil &minus;13%; talks paused, contested YES resolution</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Ukraine settlement</div>
+    <div class="meta-direction dir-flat"><span class="material-icons-outlined">trending_flat</span>Sixth flat edition; modal ceasefire date slips (Dec 31 ~39%)</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Fed monetary path</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Hike-by-October ~44%; oil collapse vs July 14 CPI</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">US politics</div>
+    <div class="meta-direction dir-flat"><span class="material-icons-outlined">trending_flat</span>Holds blue verbatim: House 84%, sweep 43%, Senate R 56%</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Risk &amp; markets</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>S&amp;P best quarter since 2020; BTC breaks under $60k</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">AI race</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>June resolved Anthropic, July ~91%; IPO-by-Dec slides to ~76%</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Tech (cap leadership)</div>
+    <div class="meta-direction dir-flat"><span class="material-icons-outlined">trending_flat</span>NVDA Dec ~69.5% verbatim; cap slips to ~$4.7T</div>
+  </div>
+</div>
+
+<!-- STATUS QUO (June 22 Baseline) -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo &mdash; Where the 7 clusters stood on June 22</h3>
+  <p class="baseline-note">Note on the baseline: this is a catch-up edition after a broken cadence. The positions below come from the <strong>prior edition dated June 22</strong> &mdash; the most recent dashboard on file, itself already two weeks old &mdash; not from a one-week-ago snapshot. All deltas in the cluster cards are therefore ~14-day moves against that June 22 baseline.</p>
+  <ul>
+    <li><strong>Iran:</strong> Improving &mdash; the 14-point memorandum of understanding (MOU) was signed electronically June 18: 60-day ceasefire, Strait of Hormuz reopened toll-free, naval blockade lifted, up to ~$25B frozen assets on the table. Brent fell ~5% to ~$83. Permanent-peace-by-Dec-31 ~68.5% ($259M+ volume); the MOU was read as a framework, not a final nuclear deal, with the 60-day clock running to ~mid-August.</li>
+    <li><strong>Ukraine:</strong> Stuck &mdash; fifth straight flat edition. Peace-by-June-30 ~4%, ceasefire-by-end-2026 ~25.5% Yes, peace-before-2027 ~28.5% Yes. Open question: does a closing Iran file free US bandwidth for Moscow?</li>
+    <li><strong>Fed:</strong> Hawkish realised &mdash; Warsh's first FOMC (Federal Open Market Committee) held 12&ndash;0 June 17 but flipped the dot plot: median 2026 rate 3.4% &rarr; 3.8%, nine of eighteen projecting a hike, October the live window. &ldquo;0 cuts in 2026&rdquo; settled ~high-70s/80s; recession ~18%.</li>
+    <li><strong>US politics:</strong> Improving (mildly) &mdash; Dems-sweep ~42% ($8M+ vol), House ~83%, Senate R ~56%, generic ballot firming to D+5&ndash;6, Trump economic approval dropping.</li>
+    <li><strong>Risk &amp; markets:</strong> Risk-on relief &mdash; BTC bounced to ~$66k on the deal (still below $70k), S&amp;P recovered toward ~7,420&ndash;7,500, horse race S&amp;P ~44% / Gold ~36&ndash;38% / BTC fading, recession ~18%.</li>
+    <li><strong>AI race:</strong> Holding &mdash; Anthropic best-model-June saturated ~95% ($16M vol), IPO-first ~73% post-filing settle, Anthropic IPO timing Oct ~69% / Dec ~90%, &ldquo;either IPOs by June 30&rdquo; ~100% No.</li>
+    <li><strong>Tech:</strong> Stable &mdash; NVDA-largest-June saturated (cap ~$5.1T June 18), December ~69.5% corroborated; the June 12 outlier print (54%/35%) retired as stale. Alphabet ~14.5% #2 for December, Apple ~10.1%.</li>
+  </ul>
+</div>
+
+<!-- THEME 1: IRAN -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">crisis_alert</span></div>
+    <div class="head-titles">
+      <h3>Iran de-escalation</h3>
+      <div class="scope-tag">Geopolitics &middot; 5 underlying markets &middot; Resolution integrity now part of the cluster</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">sync_alt</span>Mixed &mdash; the de-escalation holds (oil &minus;13%), but the clock paused and the biggest market resolved by a contested whale vote
+  </div>
+  <p class="thesis">The substance is good; the process wobbled. On substance: the ceasefire has now held for nearly three weeks, Hormuz stayed open, and the war premium is fully gone &mdash; <strong>Brent slid from ~$83 at the last edition to ~$72.20 (WTI $68.77)</strong>, its lowest level since before the war. High-level talks in Switzerland June 21&ndash;22 ended with mediators Qatar and Pakistan reporting <strong>&ldquo;encouraging progress&rdquo; and an agreed roadmap for a final deal within the 60-day window</strong> under what is now being called the Islamabad Memorandum. On process: <strong>Iran declined to meet US delegates in Qatar on July 1</strong> (oil actually dipped on the news &mdash; the market read it as reducing deal-friction risk premium, not raising war risk), and on <strong>July 2 the Doha talks were paused for the state funeral of Ali Khamenei (July 3&ndash;9)</strong> &mdash; the Supreme Leader assassinated in the February 28 strike that started the war. The funeral is itself a signal: <strong>successor Mojtaba Khamenei, wounded in the same strike, did not appear</strong> and has communicated only through written statements since March. The 60-day clock runs to ~mid-August; roughly a week of it has now been consumed by mourning, with a successor whose physical capacity to sign anything is unverified. <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/">[House of Commons Library: US&ndash;Iran ceasefire &amp; talks]</a> <a href="https://www.npr.org/2026/07/04/nx-s1-5882083/iran-funeral-ayatollah-ali-khamenei">[NPR: funeral begins]</a> <a href="https://www.cnbc.com/amp/2026/07/05/successor-to-irans-slain-leader-khamenei-does-not-appear-at-funeral.html">[CNBC: successor absent]</a></p>
+  <p class="thesis">And then there is the market itself. The <strong>~$345M &ldquo;US&ndash;Iran permanent peace deal&rdquo; complex resolved YES</strong> &mdash; but only after a dispute over whether a memorandum with an explicit 60-day transitional phase counts as &ldquo;permanent.&rdquo; The case went to UMA (Universal Market Access), Polymarket's decentralized arbitration system where staked token holders vote on contested outcomes: the vote landed YES, with analysis showing <strong>the largest holder controlled ~16.7% of voting power, the top five ~41.7%, and the top seven ~50.3% &mdash; all reportedly voting YES</strong>. Losing traders are formally challenging Polymarket over structural flaws in the mechanism, and Bloomberg is separately reporting insider-trading concerns around Iran-war bets. Two consequences for this dashboard: the December permanent-peace price (~68.5% at the June 22 edition) is retired as resolved rather than tracked, and successor markets &mdash; <strong>&ldquo;US&ndash;Iran Final Nuclear Deal by&hellip;?&rdquo;, &ldquo;Iran ceasefire continues through&hellip;?&rdquo;, &ldquo;Next round of peace talks by&hellip;?&rdquo;</strong> &mdash; are now the live instruments, though corroborated prices for them did not surface in this window (flagged 2/5; do not lean on them yet). <a href="https://www.calcalistech.com/ctechnews/article/wgc50wv09">[Calcalist: inside the disputed resolution]</a> <a href="https://thenextweb.com/news/polymarket-345-million-iran-peace-deal-dispute-uma-whale-voting">[TNW: the $345M dispute]</a> <a href="https://www.bloomberg.com/graphics/2026-polymarket-bets-iran-war-insider-trading/">[Bloomberg: insider-trading fears]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Permanent peace deal (~$345M complex)</strong></div>
+      <div class="signal-price yes">Resolved YES</div>
+      <div class="delta down">via disputed UMA whale vote</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Ceasefire / Hormuz status</strong></div>
+      <div class="signal-price yes">Holding, open</div>
+      <div class="delta up">Brent ~$72.20 (&minus;13% vs June 22)</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>60-day final-deal clock (to ~mid-Aug)</strong></div>
+      <div class="signal-price neutral">Paused</div>
+      <div class="delta down">Qatar round skipped; funeral to July 9</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Switzerland round June 21&ndash;22</strong></div>
+      <div class="signal-price yes">Roadmap agreed</div>
+      <div class="delta up">&ldquo;encouraging progress&rdquo; per mediators</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Successor markets (final deal, ceasefire-continues)</strong></div>
+      <div class="signal-price neutral">No corroborated price</div>
+      <div class="delta flat">2/5 &mdash; live next edition</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Talks resuming promptly after July 9 restores the improving read; every further week of drift consumes an unrecoverable share of the 60-day window and raises the odds the mid-August deadline passes with only an extension &mdash; which the strict final-deal markets would price as failure. Mojtaba Khamenei appearing in person, on camera, able to govern, is the single most information-dense possible event: it resolves whether Iran currently has a counterparty who can sign. A renewed Hormuz disruption remains the hard falsifier. And watch the UMA challenge &mdash; if Polymarket restructures resolution rules mid-stream, every long-dated geopolitical price on this board gets a credibility haircut.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive Iran</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>Four weeks, three regimes. In the June 12 edition the cluster was <em>deteriorating</em>: the April ceasefire had broken (strikes June 10&ndash;11), the deal-by-June-30 leg whipsawed paradoxically up to ~31%, and every near-dated Iran price carried a 3/5 flag. The June 15&ndash;18 memorandum flipped the regime: the permanent-peace-by-December leg, which had traded ~74% before the strikes, re-set at <strong>~68.5% on criteria-strictness</strong> (the crowd read the MOU as a framework that might not satisfy &ldquo;permanent&rdquo;) while deal-by-June-30 collapsed to low single digits and duly resolved No. The third regime arrived in late June: the ~$345M complex went to dispute, then <strong>resolved YES via the UMA vote</strong> &mdash; so the price series ends not in a quote but in a contested legal fact. The tradeable expression of the cluster migrated to oil (Brent <strong>~$92 pre-deal &rarr; ~$83 June 22 &rarr; ~$72.20 now</strong>, a &minus;22% round trip of the entire war premium) and to successor markets: <strong>&ldquo;Next round of US&ndash;Iran peace talks by&hellip;?&rdquo; launched June 23 and has already drawn ~$4.9M in volume</strong> &mdash; the fastest-growing geopolitical book on the board. <a href="https://polymarket.com/event/next-round-of-us-iran-peace-talks-byptptpt-20260623022722982">[Polymarket: next round of talks]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>Permanent peace deal (~$345M, resolved YES):</strong> the resolution rules required an agreement that &ldquo;explicitly indicates that military hostilities between the United States and Iran have ended or will permanently cease&rdquo; &mdash; temporary ceasefires explicitly excluded. The dispute turned on whether a memorandum with a built-in 60-day transitional phase can be &ldquo;permanent.&rdquo; UMA's process: token holders debate evidence in a Discord channel, then vote over 48&ndash;72 hours, voting power proportional to staked tokens. Bloomberg's analysis found <strong>nine wallets control more than half of all UMA voting tokens</strong>; in this vote the largest whale held ~16.7%, the top five ~41.7%, the top seven ~50.3% &mdash; all reportedly voting YES. Losing bettors are threatening a lawsuit and formally challenging the mechanism. <a href="https://thenextweb.com/news/polymarket-345-million-iran-peace-deal-dispute-uma-whale-voting">[TNW]</a> <a href="https://www.ynetnews.com/business/article/b1ajjg97gx">[Ynet: lawsuit threat]</a> <a href="https://www.calcalistech.com/ctechnews/article/wgc50wv09">[Calcalist]</a></li>
+        <li><strong>Next-round-of-talks market (~$4.9M):</strong> Qatar's Foreign Ministry says the next senior meeting will be scheduled &ldquo;at the earliest possible time&rdquo; after the funeral (July 4&ndash;9); reporting points to a <strong>resumption around July 11 in Islamabad</strong>. Crucially, <strong>technical-level sessions continued through the pause</strong> &mdash; enrichment limits, sanctions relief, Hormuz access &mdash; and Iran has agreed to host IAEA (International Atomic Energy Agency) inspectors. The senior track paused; the working track did not.</li>
+        <li><strong>Ceasefire-continues / regime-stability legs:</strong> live but without corroborated prints this window (2/5). A separate &ldquo;Iranian regime falls before 2027&rdquo; market exists as the succession-tail instrument &mdash; worth a corroborated read next edition given Mojtaba's absence.</li>
+        <li><strong>Oil as the honest shadow market:</strong> the July 1 dip on Iran skipping the Qatar round is the tell &mdash; crude read the skip as <em>less</em> deal-friction premium, not more war risk. Oil currently trusts the de-escalation more than the resolution-disputed Polymarket complex did.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) Islamabad happens ~July 11 (base case):</strong> the senior track resumes with ~5 weeks left on the clock; final-deal-by-mid-August legs firm, the cluster returns to improving, Brent stays low or grinds lower. <strong>(b) Drift:</strong> the funeral ends but no senior round convenes within a week &mdash; each idle week consumes ~15% of the remaining window; the likely outcome becomes a deadline extension, which strict final-deal markets price as failure even while ceasefire-continues legs stay high. The cluster bifurcates: peace holds, &ldquo;deal&rdquo; misses. <strong>(c) Succession shock:</strong> evidence Mojtaba cannot govern &mdash; hardline consolidation, IRGC (Revolutionary Guard) assertion &mdash; re-prices Hormuz risk, oil, and every leg in the same hour. This is the tail the current calm is underpricing.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li>July 9: funeral ends &mdash; does a dated senior round follow within 72 hours?</li>
+        <li>July 11 Islamabad round: happens / slips / silently dies.</li>
+        <li>Mojtaba Khamenei: any verified public appearance; continued written-only communication is itself data.</li>
+        <li>IAEA inspectors physically entering Iran &mdash; the first hard compliance fact of the MOU.</li>
+        <li>The UMA challenge and Bloomberg's insider-trading reporting &mdash; any Polymarket rule change hits every long-dated price on this board.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate, &plusmn;2&ndash;3pp; resolved/disputed markets are resolution facts, not live quotes.</div>
+    </div>
+  </details>
+</div>
+
+<!-- THEME 2: UKRAINE -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">military_tech</span></div>
+    <div class="head-titles">
+      <h3>Ukraine settlement</h3>
+      <div class="scope-tag">Geopolitics &middot; 4 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge flat">
+    <span class="material-icons-outlined">trending_flat</span>Stuck &mdash; sixth straight flat edition, with the modal ceasefire date quietly slipping toward 2027
+  </div>
+  <p class="thesis">Six editions, no diplomacy. <strong>&ldquo;Peace deal before 2027&rdquo; holds at ~28.5% Yes (71.5% No)</strong> &mdash; verbatim from June 22 &mdash; and the near-dated June 30 market resolved No at its ~4% as expected, with <strong>&ldquo;ceasefire before July&rdquo; closing at 0%</strong>. The one real move is inside the date distribution: the <strong>&ldquo;Russia x Ukraine ceasefire agreement by&hellip;?&rdquo; market ($5.16M traded) now puts December 31 at ~39% and October 31 at ~24%</strong>, both down from the ~45% / ~28% carried at the June 12 baseline. That is not noise in the same direction twice: the crowd is shaving probability off <em>every 2026 date</em> and pushing settlement mass into 2027. Fundamentals are unchanged &mdash; Zelenskyy's June proposal for direct leader-level talks was dismissed by Moscow, Russia holds its territorial and force-limit demands, Ukraine offers a ceasefire on current lines plus European guarantees.</p>
+  <p class="thesis">The second-order question from the last two editions &mdash; does a closing Iran file free US diplomatic bandwidth for Moscow? &mdash; got its first partial answer: <strong>no rotation is being priced, and the Iran file did not actually close</strong>. With the Doha process paused for the funeral and the 60-day clock still running, Washington's attention remains committed through at least mid-August. Ukraine stays what it has been all year: the board's most stable no, drifting later. <a href="https://polymarket.com/event/russia-x-ukraine-ceasefire-agreement-by">[Polymarket: ceasefire by date]</a> <a href="https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027">[Polymarket: peace before 2027]</a> <a href="https://polymarket.com/event/russia-x-ukraine-ceasefire-before-july">[Polymarket: ceasefire before July]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Ceasefire agreement by Dec 31</strong> &middot; $5.16M vol</div>
+      <div class="signal-price no">~39%</div>
+      <div class="delta down">&darr;~6pp vs ~45% (June 12 base)</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Ceasefire agreement by Oct 31</strong></div>
+      <div class="signal-price no">~24%</div>
+      <div class="delta down">&darr;~4pp vs ~28%</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Comprehensive peace before 2027</strong></div>
+      <div class="signal-price no">Yes ~28.5%</div>
+      <div class="delta flat">verbatim vs June 22</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Ceasefire before July / peace by June 30</strong></div>
+      <div class="signal-price no">Resolved No / 0%</div>
+      <div class="delta flat">as priced for weeks</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Unchanged: only a named, dated framework with both presidents as parties moves peace-before-2027 toward 35%. The bandwidth channel now has a date attached &mdash; if the Iran file genuinely closes by mid-August, September becomes the first realistic window for a US pivot to Moscow, and the October 31 leg (~24%) is the cheapest expression of that view. A Russian summer offensive pushes the whole distribution into 2027 faster than diplomacy can pull it back.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive Ukraine</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>The flattest series on the board, but not a dead one &mdash; it has a slope, and the slope points at 2027. Peace-before-2027 has crawled <strong>~25% (June 12) &rarr; ~28.5% (June 22) &rarr; ~28.5% (now)</strong>: a three-point firming a month ago that has since gone perfectly still. The date-distribution market tells the more honest story: <strong>December 31 has decayed ~45% &rarr; ~39% and October 31 ~28% &rarr; ~24%</strong> over the same four weeks, while every near-dated leg resolved No exactly as priced (peace-by-June-30 at ~4%, ceasefire-before-July closing at 0%). Volume is modest but real &mdash; <strong>~$5.16M traded</strong> on the ceasefire-by-date market as of July 5 &mdash; and external trackers confirm the crowd keeps end-2026 ceasefire odds &ldquo;significantly below 50%.&rdquo; Notably, the Iran war's whole arc &mdash; escalation, ceasefire, MOU, funeral &mdash; produced <em>zero</em> measurable spillover into Ukraine pricing in either direction. <a href="https://polymarket.com/event/russia-x-ukraine-ceasefire-agreement-by">[Polymarket: ceasefire by date]</a> <a href="https://www.periskopi.com/en/What-do-the-odds-say-about-the-end-of-the-Ukraine-Russia-war/">[Periskopi: what the odds say]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>Ceasefire-by-date (Dec 31 ~39%, Oct 31 ~24%):</strong> these are cumulative legs &mdash; Dec 31 includes every earlier date. The ~15pp gap between October and December therefore prices roughly a one-in-seven chance the breakthrough lands specifically in the Nov&ndash;Dec window; the residual ~61% beyond December is the crowd's real base case: <strong>no ceasefire in 2026 at all</strong>.</li>
+        <li><strong>Peace-before-2027 (~28.5% Yes):</strong> structurally lower than the ceasefire market because it requires a comprehensive signed treaty, not an armistice. The ~10pp spread between &ldquo;ceasefire by Dec&rdquo; and &ldquo;peace before 2027&rdquo; is the crowd's estimate that any ceasefire converts quickly into a treaty &mdash; small, and shrinking.</li>
+        <li><strong>The fundamentals under the flatline:</strong> Zelenskyy's June proposal for direct leader-level talks was dismissed by Moscow; Russia holds its demands (territorial recognition, Ukrainian force limits); Ukraine's counter (ceasefire on current lines, European security guarantees) has no Russian audience. A Russian summer offensive grinds on without producing either a collapse or a negotiation trigger.</li>
+        <li><strong>The bandwidth thesis, updated:</strong> two editions running, the open question was whether a closed Iran file frees US diplomatic capacity for Moscow. The market's answer so far: not priced. The date legs <em>fell</em> while the Iran deal advanced &mdash; if a US pivot were expected, October should have firmed. Either the crowd doubts the Iran file closes on time, or it doubts Washington pivots even if it does.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) Iran closes mid-August, US pivots (bull case for dates):</strong> September becomes the first realistic window for a Washington-brokered push; the October 31 leg at ~24% is the cheap expression, December ~39% the safer one. Even then, a leader-level framework by October requires Moscow to want one &mdash; nothing currently suggests it does. <strong>(b) Grind (base case):</strong> the offensive continues, diplomacy stays dismissed, and the date legs keep bleeding ~1&ndash;2pp per fortnight as 2026 mass migrates to 2027; peace-before-2027 drifts toward 25%. <strong>(c) Escalation break:</strong> a major Russian battlefield success (or a Ukrainian strike escalation) pushes even the December leg under 30% quickly &mdash; the distribution has no floor from diplomacy, only from time value.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li>Any named, dated summit with both presidents as parties &mdash; the only event that moves peace-before-2027 toward 35%.</li>
+        <li>US envoy activity toward Moscow in the two weeks after any Iran final deal &mdash; the bandwidth thesis's first observable.</li>
+        <li>The October 31 leg (~24%): the most sensitive instrument to any September diplomacy.</li>
+        <li>Summer offensive momentum &mdash; front-line changes large enough to alter either side's negotiating calculus.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate, &plusmn;2&ndash;3pp.</div>
+    </div>
+  </details>
+</div>
+
+<!-- THEME 3: FED -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap macro"><span class="material-icons-outlined">account_balance</span></div>
+    <div class="head-titles">
+      <h3>Fed monetary path</h3>
+      <div class="scope-tag">Macro &middot; 5 underlying markets &middot; July 14 CPI is the arbiter</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">sync_alt</span>Mixed &mdash; hike timing firmed (Oct ~44%, Sept ~37%) even as the oil collapse undercuts the case for the dots
+  </div>
+  <p class="thesis">The cluster is now a straight race between the dots and the disinflation. On the hawkish side, the hike-timing market firmed over the two weeks: <strong>&ldquo;Fed rate hike by&hellip;?&rdquo; prices the October meeting at ~44% and September at ~37%</strong>, with futures-implied odds near 66% for at least one 25bp move by year-end &mdash; the June 17 dot plot (median 2026 rate 3.8%, nine of eighteen members projecting a hike) is being taken at its word. <strong>&ldquo;0 cuts in 2026&rdquo; sits at ~79.8%</strong> &mdash; the cut case stays dead &mdash; and the <strong>July FOMC is priced ~79.5% no-change</strong>, so the near meeting is not the event.</p>
+  <p class="thesis">On the dovish side, the input that justified the dots keeps evaporating. May CPI (Consumer Price Index) ran 4.2% year-over-year with energy +23.5% &mdash; but <strong>Brent has since fallen from ~$92 pre-deal through ~$83 to ~$72.20</strong>, a ~20%+ decline that will grind through headline inflation over the summer. <strong>The June CPI print lands July 14 and is the single most important data point on the board</strong>: it is the first print with any post-deal energy relief in it. A clear deceleration starts unwinding the September/October hike pricing; a sticky core (~2.9% at last reading) despite cheap oil locks the October hike in and validates Warsh's majority. Note the sequencing risk the crowd is holding: the market gives a hike-by-October more weight than a hike-by-September, which is effectively a bet that Warsh wants two more CPI prints before moving &mdash; consistent with a new chair building credibility rather than rushing. Recession stays a minority read (~18% as of the June 22 baseline; not re-corroborated this window, treat as carried). <a href="https://polymarket.com/event/fed-rate-hike-by">[Polymarket: hike by meeting]</a> <a href="https://polymarket.com/event/how-many-fed-rate-cuts-in-2026">[Polymarket: cuts in 2026]</a> <a href="https://polymarket.com/event/fed-decision-in-july-181">[Polymarket: July FOMC]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Fed rate hike &mdash; October meeting</strong></div>
+      <div class="signal-price neutral">~44%</div>
+      <div class="delta down">leading leg; dots taken seriously</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Fed rate hike &mdash; September meeting</strong></div>
+      <div class="signal-price neutral">~37%</div>
+      <div class="delta down">earlier-move bet building</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>July FOMC &mdash; no change</strong></div>
+      <div class="signal-price yes">~79.5%</div>
+      <div class="delta flat">near meeting not the event</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>0 Fed cuts in 2026</strong></div>
+      <div class="signal-price no">~79.8%</div>
+      <div class="delta flat">settled; cut case dead</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Brent crude (reference)</strong></div>
+      <div class="signal-price neutral">~$72.20</div>
+      <div class="delta up">&minus;13% vs June 22; disinflation pipeline</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    July 14, full stop. A headline CPI print with a 3-handle and soft energy starts dismantling the hike complex leg by leg &mdash; September first, then October &mdash; and could re-open a 2027 cut conversation by autumn. A 4-handle with sticky core does the opposite and makes October ~44% look cheap. The Iran wildcard now runs through this cluster in one direction only: a ceasefire collapse re-prices oil up and re-fuses the two master variables that split in June. Watch Warsh's inter-meeting communication &mdash; a first-year chair talking the dots down would be as informative as the print itself.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive Fed</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>The hike bet has hardened in three steps. Early June (June 12 edition): a 2026 hike was a genuine coin flip at <strong>~50.5%</strong>, with May CPI (4.2% year-over-year, energy +23.5%, hottest since April 2023) as the fuel and the June FOMC (Federal Open Market Committee) as the catalyst. Step two, June 17: Warsh's first meeting held 12&ndash;0 but flipped the dot plot &mdash; median 2026 rate <strong>3.4% &rarr; 3.8%</strong>, nine of eighteen members projecting at least one hike, six projecting two, and the 2026 PCE (Personal Consumption Expenditures) inflation projection lifted to <strong>3.6%</strong>. Step three, the past fortnight: the meeting-timing legs firmed to <strong>October ~44% / September ~37%</strong>, futures-implied odds settled near <strong>two-thirds for at least one hike by December</strong> (cross-checked against CME FedWatch), and &ldquo;0 cuts in 2026&rdquo; sat rock-still at <strong>~79.8%</strong> for a full month &mdash; the most stable price on the entire board. What makes the trajectory interesting is what moved <em>against</em> it: Brent fell ~13% over the same fortnight, so the hike complex firmed while its primary justification (energy-led inflation) was dismantling itself. <a href="https://polymarket.com/event/fed-rate-hike-by">[Polymarket: hike by meeting]</a> <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html">[CME FedWatch]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>Hike-by-meeting (Oct ~44% / Sept ~37%):</strong> cumulative legs again &mdash; October includes September. The ~7pp spread is the crowd's specific bet that Warsh wants <em>two</em> more CPI prints (July 14 and August) before moving: a new chair building credibility with data cover rather than rushing his first hike. That is a behavioural read on one man, and it is the cheapest thing in this cluster to be wrong about.</li>
+        <li><strong>July FOMC no-change ~79.5%:</strong> the late-July meeting is priced as a communication event, not a policy event &mdash; but note ~20% is not nothing; that residual is a bet Warsh treats a hot July 14 print as license to move immediately.</li>
+        <li><strong>&ldquo;0 cuts in 2026&rdquo; ~79.8%:</strong> the cut case is dead and has been since the dots. This leg's stillness is the anchor that makes the hike-timing wiggle readable as signal rather than noise.</li>
+        <li><strong>The disinflation pipeline:</strong> Brent ~$72.20 is down ~22% from the pre-deal ~$92. Energy contributed the bulk of May's 4.2% headline; the pass-through to pump prices and then to CPI takes 4&ndash;8 weeks, meaning July 14 catches only the leading edge &mdash; the August and September prints carry the full relief. Core at ~2.9% is the stubborn remainder the dots are actually aimed at.</li>
+        <li><strong>Recession ~18% (carried):</strong> not re-corroborated this window; treat as stale but directionally stable &mdash; nothing in a best-quarter-since-2020 tape argues it higher.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) July 14 prints a 3-handle with soft energy:</strong> the September leg (~37%) unwinds first, October follows within days, and the year-end hike probability slides from ~66% toward the low 40s; by autumn a 2027 cut conversation reopens. Equities, the NVDA multiple, and both AI IPO windows all get paid on the same print. <strong>(b) 4-handle headline or core re-acceleration:</strong> October ~44% looks cheap, the hike-by-December odds push through 75%, and the July FOMC's ~20% action-residual becomes the live trade. <strong>(c) Iran ceasefire collapse (tail):</strong> oil re-prices $10&ndash;15 up in a session, headline and the dots re-fuse, and the September leg &mdash; not October &mdash; becomes the leading instrument. One-directional risk: there is no equivalent dovish geopolitical surprise available.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li><strong>July 14, 08:30 ET:</strong> June CPI &mdash; the single most important datum on the board; five of seven clusters key off it.</li>
+        <li>Warsh's inter-meeting speeches &mdash; any daylight between the chair and his own dots.</li>
+        <li>The late-July FOMC statement language on energy pass-through.</li>
+        <li>Gasoline futures following crude &mdash; the politics transmission as much as the CPI one.</li>
+        <li>The Sept-vs-Oct spread (~7pp): if it compresses, the market is abandoning the two-prints-first behavioural read.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate, &plusmn;2&ndash;3pp; futures-implied odds are a separate instrument from Polymarket legs and can legitimately diverge.</div>
+    </div>
+  </details>
+</div>
+
+<!-- THEME 4: POLITICS -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap politics"><span class="material-icons-outlined">how_to_vote</span></div>
+    <div class="head-titles">
+      <h3>US political momentum</h3>
+      <div class="scope-tag">Politics &middot; 5 underlying markets &middot; 120 days to the midterms</div>
+    </div>
+  </div>
+  <div class="direction-badge flat">
+    <span class="material-icons-outlined">trending_flat</span>Holding &mdash; the complex sits exactly where it did two weeks ago, shaded blue
+  </div>
+  <p class="thesis">The quietest cluster on the board printed a near-verbatim fortnight: <strong>Democrats-win-House ~84%</strong> (from ~83%), <strong>Democrats-sweep ~43%</strong> (from ~42%), <strong>Senate Republicans ~56% / Democrats ~42.5%</strong> (unchanged), generic ballot steady at <strong>D+5&ndash;6</strong> in the June polling that has now consolidated. Every move is inside noise. The structural read holds: the House is priced as near-certain, the Senate as a Republican-leaning coin flip on an unfavourable map, and the sweep market as the House multiplied by the Senate with modest correlation. Fundraising edges and forecaster shifts in Alaska, Ohio, and North Carolina are the cited drivers keeping the Democratic Senate leg above 40%.</p>
+  <p class="thesis">The interesting part is what did <em>not</em> move. Two weeks ago the open question was whether the Iran deal &mdash; a genuine foreign-policy win &mdash; plus falling pump prices would blunt the economic drag on the incumbent party. The oil relief has now had three weeks to register, gasoline futures are following crude down, and <strong>the political complex has not budged a single point toward Republicans</strong>. Either the transmission is slow (plausible &mdash; pump prices lag, approval lags further) or the crowd has concluded the midterm is a referendum on cumulative inflation, not on the direction of the last month. The July 14 CPI print is therefore a politics event too: it either starts the narrative repair or confirms the 4-handle economy voters will remember in November. <a href="https://polymarket.com/event/which-party-will-win-the-house-in-2026">[Polymarket: House]</a> <a href="https://polymarket.com/event/which-party-will-win-the-senate-in-2026">[Polymarket: Senate]</a> <a href="https://polymarket.com/event/balance-of-power-2026-midterms">[Polymarket: Balance of Power]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Democrats win the House</strong></div>
+      <div class="signal-price yes">Yes ~84%</div>
+      <div class="delta flat">+1pp, noise</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Democrats sweep (Balance of Power)</strong></div>
+      <div class="signal-price neutral">~43%</div>
+      <div class="delta flat">+1pp, noise</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Senate control</strong></div>
+      <div class="signal-price neutral">R ~56% / D ~42.5%</div>
+      <div class="delta flat">structural split intact</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Generic ballot</strong></div>
+      <div class="signal-price neutral">~D+5 to D+6</div>
+      <div class="delta flat">consolidated June read</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Iran-deal approval dividend</strong></div>
+      <div class="signal-price no">Not priced</div>
+      <div class="delta flat">no R-ward move despite the win</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The Senate leg remains the value question: ~42.5% Democratic has now survived a month of Democratic-favourable news without firming, which suggests the map, not the environment, is the binding constraint &mdash; movement requires a candidate-level event in Alaska, Ohio, or North Carolina, not another generic-ballot point. The other live channel is disinflation-as-politics: two soft CPI prints plus sub-$3 gasoline by September is the scenario where the incumbent drag eases and the sweep market gives back its spring gains.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive US-Politik</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>&ldquo;Flat&rdquo; at the cluster level hides a small rotation underneath &mdash; and the freshest captures, pulled while researching this deep-dive, show more intra-window movement than the headline read admits. The sweep leg has crawled <strong>~42% (June 22) &rarr; ~43&ndash;44% (July 6 captures)</strong> on <strong>$8.39M volume</strong> &mdash; now the deepest political book on the board. The House leg printed <strong>~83% &rarr; ~84%, then dipped to ~82% on July 2</strong> ($8.16M traded) &mdash; the first visible wobble in that market since spring, still inside noise. The real mover is the Senate: the Democratic leg firmed <strong>from ~41% on June 20 to ~45% by July 3</strong>, with the Republican side easing from ~56% toward <strong>~54%</strong> ($3.09M vol). That 4-point Democratic firming over two weeks is the largest political move this window &mdash; small in absolute terms, but it is happening on the leg this dashboard has twice called the value question. Generic ballot context: ~D+4 in early June, consolidating to <strong>D+5&ndash;6</strong> through the month. <a href="https://polymarket.com/event/balance-of-power-2026-midterms">[Polymarket: Balance of Power]</a> <a href="https://polymarket.com/event/which-party-will-win-the-senate-in-2026">[Polymarket: Senate]</a> <a href="https://polymarket.com/event/which-party-will-win-the-house-in-2026">[Polymarket: House]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>House (D ~82&ndash;84%):</strong> priced as near-certain on the generic-ballot cushion plus the historical midterm penalty against the president's party. The July 2 dip to 82% has no visible news driver &mdash; likely position adjustment, but if it extends below 80% next edition, something structural (redistricting news, a wave of retirements) is being priced that the coverage has not surfaced.</li>
+        <li><strong>Senate (R ~54% / D ~45%):</strong> the map is the constraint &mdash; Democrats defend more exposed seats than they attack. The June 20 &rarr; July 3 firming (~41 &rarr; ~45) is attributed in coverage to forecaster shifts and fundraising edges in <strong>Alaska, Ohio, and North Carolina</strong> &mdash; candidate-level, not environment-level, exactly the channel the last edition said to watch. Four points of it have now arrived.</li>
+        <li><strong>Sweep (~43&ndash;44%):</strong> arithmetic check: House ~0.83 &times; Senate-D ~0.45 &asymp; 0.37 if independent; the market's ~44% implies strong positive correlation &mdash; the crowd believes a Senate flip only happens inside a wave that carries the House anyway. Coherent.</li>
+        <li><strong>The dog that isn't barking:</strong> a foreign-policy win (Iran), a &minus;22% oil move, and a record equity quarter have produced <em>zero</em> Republican-ward drift in a month. The crowd is treating the midterm as a referendum on cumulative price levels, not on the direction of the last quarter &mdash; which makes the July 14 CPI print a politics event with a long fuse: it starts (or kills) the narrative-repair arc that would need to run through September to matter in November.</li>
+        <li><strong>Tail instrument:</strong> a &ldquo;will the 2026 midterms happen as scheduled&rdquo; market exists and trades near-certainty &mdash; worth a glance only if it ever doesn't.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) Disinflation summer:</strong> two soft CPI prints (July 14, August) plus sub-$3 gasoline by September ease the incumbent drag; the sweep leg gives back its spring gains toward the high-30s and Senate-R re-firms toward 60%. <strong>(b) Status quo (base case):</strong> prices drift on the map; Senate-R holds mid-50s into the fall; the sweep leg oscillates 40&ndash;45% on candidate news. <strong>(c) Candidate cascade:</strong> a second forecaster upgrade in Alaska/Ohio/North Carolina pushes the Democratic Senate leg through 45% toward the coin flip &mdash; at which point the sweep market re-prices toward 50% and becomes the most leveraged instrument on the political board.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li>Senate-D leg vs the 45% line &mdash; the July 3 capture sits exactly on it; confirmation or rejection next edition.</li>
+        <li>July 14 CPI as a politics event: the first datum in the narrative-repair chain.</li>
+        <li>Candidate-level news in Alaska, Ohio, North Carolina &mdash; the only channel that has actually moved prices.</li>
+        <li>House leg below 80% would be the anomaly worth investigating; nothing else in this cluster is.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate, &plusmn;2&ndash;3pp; the visible card carries the conservative June-22-comparable read (House ~84%, Senate R ~56%), while the freshest July captures shown here (82&ndash;84% / ~54%) are single-source snapshots.</div>
+    </div>
+  </details>
+</div>
+
+<!-- THEME 5: RISK & MARKETS -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap risk"><span class="material-icons-outlined">analytics</span></div>
+    <div class="head-titles">
+      <h3>Risk &amp; markets</h3>
+      <div class="scope-tag">Macro / asset prices &middot; 5 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">sync_alt</span>Mixed &mdash; equities closed their best quarter since 2020 while Bitcoin broke down through $60k
+  </div>
+  <p class="thesis">The divergence the horse race has been pricing all year went from thesis to fact. <strong>The S&amp;P 500 closed Q2 with its strongest quarterly performance since 2020, finishing at ~7,483 on July 2</strong> before the holiday-shortened week ended mixed &mdash; the June 10 air-pocket is fully repaired and the index sits within reach of its records. Oil kept falling: <strong>WTI $68.77, Brent $72.20</strong>, with the July 1 leg down triggered by Iran skipping the Qatar talks &mdash; a de-escalation-of-expectations move, not a war move. Meanwhile <strong>Bitcoin went the other way: from ~$66k at the June 22 edition down through $60k, trading near ~$61.7k</strong> after the dip. The July price market has already banked the breakdown &mdash; <strong>the &ldquo;touched below $60,000 in July&rdquo; leg prints ~100%</strong> &mdash; and the full-year distribution is bleak: <strong>$100k-by-year-end just ~11%, below-$55k ~74%, below-$50k ~56%</strong>, with BTC still down more than 50% from its 2025 peak.</p>
+  <p class="thesis">Read together, the clusters say the market has decided what kind of year this is: an equity year running on earnings and an AI-capex cycle, with crypto stripped of both its safe-haven claim (falsified during the war) and its risk-beta claim (it fell while the S&amp;P printed its best quarter in six years). That second falsification is new this edition and worth pausing on &mdash; <strong>BTC is no longer even tracking risk-on; it is trading its own supply/liquidity story, and the crowd's year-end distribution treats sub-$55k as the base case</strong>. In the horse race (S&amp;P ~44% lead / Gold ~36&ndash;38% / BTC trailing at the June 22 baseline), nothing in this window argues against the S&amp;P leg extending &mdash; but no fresh corroborated split surfaced, so treat those exact numbers as carried (3/5). Recession likewise carried ~18%. <a href="https://www.thestreet.com/stock-market-today/stock-market-today-july-1-2026-nasdaq-futures-slip-after-strongest-quarter-since-2020">[TheStreet: strongest quarter since 2020]</a> <a href="https://www.cryptotimes.io/2026/07/03/at-what-price-will-bitcoin-close-2026-polymarket-shows-strong-contrarian-skepticism/">[CryptoTimes: BTC year-end distribution]</a> <a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026">[Polymarket: BTC July]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>S&amp;P 500 (reference)</strong> &middot; July 2 close</div>
+      <div class="signal-price neutral">~7,483</div>
+      <div class="delta up">best quarter since 2020</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Bitcoin spot (reference)</strong></div>
+      <div class="signal-price neutral">~$61.7k</div>
+      <div class="delta down">&darr; from ~$66k; broke $60k intra-July</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>BTC touched &lt;$60k in July</strong></div>
+      <div class="signal-price no">~100%</div>
+      <div class="delta down">breakdown banked</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>BTC 2026 year-end tails</strong></div>
+      <div class="signal-price neutral">&lt;$55k ~74% / $100k ~11%</div>
+      <div class="delta down">sub-$55k now the base case</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Oil (reference)</strong></div>
+      <div class="signal-price neutral">Brent ~$72.20</div>
+      <div class="delta up">war premium fully unwound</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The equity leg's tail is the same as the Fed cluster's: a hot July 14 CPI revives the October hike and compresses multiples into what is now a fully-valued index. The BTC leg needs an actual catalyst &mdash; an ETF-flow reversal, a liquidity event, or a Fed pivot &mdash; to escape the sub-$55k gravity; nothing on the current board provides one before autumn. Gold's ~36&ndash;38% horse-race share is the quiet fade candidate if the Iran file closes cleanly in August. A ceasefire collapse re-prices everything in this cluster at once &mdash; it remains the one shock that hits oil, equities, gold, and the Fed path in the same hour.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive Risk &amp; Markets</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>Three asset paths, one divergence. <strong>Equities:</strong> records above ~7,580 in early June &rarr; the June 10 war air-pocket to ~7,267 (&minus;4%) &rarr; recovery on the MOU toward 7,420&ndash;7,500 &rarr; <strong>Q2 close at ~7,483 on July 2, the strongest quarter since 2020</strong>. <strong>Oil:</strong> ~$92 pre-deal &rarr; ~$83 (June 22) &rarr; <strong>Brent ~$72.20 / WTI $68.77</strong>, with the July 1 leg down triggered &mdash; counterintuitively &mdash; by Iran <em>skipping</em> the Qatar round. <strong>Bitcoin:</strong> ~$62k during the war (no safe-haven bid) &rarr; ~$66k on the deal relief &rarr; <strong>breakdown through $60k intra-week to ~$61.7k</strong> &mdash; falling precisely while equities printed their best quarter in six years. In the June 12 edition the horse race (which asset performs best) read S&amp;P ~44% / Gold ~38% / BTC fading to ~18%; no fresh corroborated split surfaced since, but every price above argues the S&amp;P leg has only extended. <a href="https://www.thestreet.com/stock-market-today/stock-market-today-july-1-2026-nasdaq-futures-slip-after-strongest-quarter-since-2020">[TheStreet: strongest quarter since 2020]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>The BTC market structure needs disentangling &mdash; and the captures disagree.</strong> Polymarket runs two families of Bitcoin markets: <em>touch</em> legs (&ldquo;what price will BTC hit in 2026&rdquo; &mdash; resolves YES if the level trades at any point) and <em>year-end</em> legs. The July touch-below-$60k leg is banked at ~100% &mdash; mechanical, it happened. For the full year, this window produced conflicting reads: coverage early in the window put the bearish tails very high (<strong>sub-$55k ~74%, sub-$50k ~56%</strong> &mdash; plausible for <em>touch</em> legs with spot at ~$61.7k), while fresher captures of the <strong>~$42.7M</strong> &ldquo;What price will Bitcoin hit in 2026&rdquo; complex show <strong>hit-$100k ~11&ndash;19% and a sub-$50k dip ~53%</strong>, and a separate year-end read puts <em>closing</em> below $55k at only ~7&ndash;8%. These are not the same question: dipping below $55k from here requires a ~11% drawdown (likely); <em>ending the year</em> there requires the drawdown to stick (priced as unlikely). Downgrade confidence on any single BTC number to 2/5 &mdash; but the shape is unambiguous: <strong>fat downside-touch probability, thin $100k tail, and a base case of chop between $55k and $75k</strong>. <a href="https://polymarket.com/event/what-price-will-bitcoin-hit-before-2027">[Polymarket: BTC 2026 levels]</a> <a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026">[Polymarket: BTC July]</a></li>
+        <li><strong>The double falsification, precisely:</strong> war in June produced no BTC safe-haven bid (gold got it); the best equity quarter since 2020 produced no BTC risk-on participation. Whatever BTC is trading &mdash; ETF flows, post-halving supply dynamics, its own leverage cycle &mdash; it is not trading macro. That demotes it from cluster signal to tracked residual.</li>
+        <li><strong>Equities into earnings:</strong> the ~7,483 Q2 close arrives fully valued into the mid-July Q2 earnings season, with the July 14 CPI two days ahead of the big banks &mdash; the index's two nearest catalysts land in the same week.</li>
+        <li><strong>Gold's share (~36&ndash;38%, carried):</strong> built almost entirely on the geopolitical bid; with the war premium out of oil, gold's horse-race share is the stale-looking number on the board. Recession ~18% likewise carried, 3/5.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) Soft July 14:</strong> the equity leg extends (records within reach), gold's share bleeds toward 30%, and BTC gets, at best, a liquidity-expectation bounce that the touch-below legs have already partly banked against. <strong>(b) Hot July 14:</strong> multiple compression into a fully-valued index &mdash; the S&amp;P's ~44% horse-race lead is suddenly contestable, and the recession leg (~18%) is the cheap convexity. <strong>(c) Ceasefire collapse:</strong> the one shock that moves all four assets in the same hour &mdash; oil +$10&ndash;15, equities &minus;4&ndash;6%, gold reclaims the lead, BTC (on this year's evidence) does nothing helpful for anyone holding it as a hedge.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li>July 14 CPI, then bank earnings July 15&ndash;17 &mdash; the tape's whole near-term path in 72 hours.</li>
+        <li>BTC vs the $60k line: a weekly <em>close</em> below it converts the touch-thesis into the trend-thesis.</li>
+        <li>A fresh corroborated horse-race split (S&amp;P/Gold/BTC) &mdash; missing for two editions now.</li>
+        <li>ETF flow data &mdash; the only BTC catalyst class with 2026 evidence of moving price.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate; the BTC year-end distribution specifically showed contradictory captures this window (touch vs close legs) and is flagged 2/5.</div>
+    </div>
+  </details>
+</div>
+
+<!-- THEME 6: AI RACE -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap ai"><span class="material-icons-outlined">psychology</span></div>
+    <div class="head-titles">
+      <h3>AI race</h3>
+      <div class="scope-tag">Tech &middot; 6 underlying markets &middot; June market resolved; July is live</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">sync_alt</span>Mixed &mdash; model leadership rolled over intact (July ~91%), but Anthropic's IPO-by-December leg slid ~90% &rarr; ~76%
+  </div>
+  <p class="thesis">Half the architectural read banked, half of it softened. The banked half: <strong>the June best-model market resolved for Anthropic</strong>, as its ~95% saturation implied, and the <strong>July market opened with Anthropic at ~91%</strong> &mdash; Claude Opus 4.8 and Claude Fable 5 still top the composite intelligence indices and SWE-bench (the agentic coding benchmark), ahead of OpenAI's GPT-5.5 series and Google's Gemini 3.5 line. Three consecutive monthly resolutions plus a ~91% open on the fourth is no longer a race being won; it is a regime being priced, with the residual ~9% functioning as standing insurance against a surprise Gemini or GPT release inside any given month.</p>
+  <p class="thesis">The softened half is timing, and it is the largest tech-board move of the fortnight: <strong>&ldquo;Anthropic IPO by December 31&rdquo; slid from ~90% at the June 22 baseline to ~76%</strong>, while <strong>&ldquo;OpenAI IPO by December 31&rdquo; sits at just ~24%</strong> (its S-1 pointing toward late-2026-or-early-2027 at valuations near $1T). Nothing company-specific surfaced to explain the Anthropic slide &mdash; no reported filing trouble, no pulled roadshow &mdash; which leaves two candidate readings: the market pricing ordinary S-1-to-listing slippage risk as the SEC (Securities and Exchange Commission) review clock runs, or the June 17 hawkish dots pushing the expected listing window later, exactly the macro tail flagged in prior editions. Either way, the <strong>IPO-first market (~73% Anthropic at the baseline; no fresh corroborated print this window, treat as carried)</strong> is largely insulated: a 76%-vs-24% year-end split still implies Anthropic lists first with high confidence &mdash; what slipped is <em>when</em>, not <em>whether</em>. <a href="https://polymarket.com/event/which-company-has-best-ai-model-end-of-july-299">[Polymarket: best model July]</a> <a href="https://polymarket.com/event/anthropic-ipo-by">[Polymarket: Anthropic IPO by]</a> <a href="https://polymarket.com/event/openai-ipo-by">[Polymarket: OpenAI IPO by]</a> <a href="https://defirate.com/prediction-markets/best-ai-model-odds/">[DefiRate: best-model odds tracker]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of June</strong></div>
+      <div class="signal-price yes">Resolved: Anthropic</div>
+      <div class="delta up">as the ~95% implied</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of July</strong></div>
+      <div class="signal-price lead">Anthropic ~91%</div>
+      <div class="delta flat">regime pricing, 4th month</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Anthropic IPO by Dec 31</strong></div>
+      <div class="signal-price yes">~76%</div>
+      <div class="delta down">&darr;~14pp from ~90%</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>OpenAI IPO by Dec 31</strong></div>
+      <div class="signal-price no">~24%</div>
+      <div class="delta flat">late-26/early-27 read, ~$1T talk</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Anthropic IPOs first</strong></div>
+      <div class="signal-price yes">~73% (carried)</div>
+      <div class="delta flat">no fresh print; 3/5</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The ~14pp IPO-timing slide is the thing to verify next edition: if it persists or extends without a company-specific cause, it is the market internalising the hawkish-Fed listing-window risk, and the October-timing legs should be re-checked directly. On the model side, only a frontier Gemini or GPT release banking benchmarks before July 31 touches the ~91% &mdash; and after three straight losses inside resolution windows, the residual is more insurance than conviction. The convergence trade to watch: a soft July 14 CPI simultaneously relieves the IPO-window pressure and supports the equity market both listings need &mdash; the AI cluster is now more rate-sensitive than model-sensitive.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive AI-Race</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>Two series, opposite shapes. <strong>Model leadership</strong> is a saturation curve: best-model-June opened the month contested, firmed to <strong>~88% on the June 9 Claude Fable 5 ship</strong>, saturated at <strong>~95%</strong> by June 22 ($16M volume), resolved for Anthropic, and the July market opened at <strong>~91% with Google at ~8%</strong> and OpenAI residual &mdash; the fourth consecutive month of the same answer. <strong>IPO timing</strong> is the opposite &mdash; a fat price wandering: Anthropic-IPO-by-December ran <strong>~90% (June 12 and June 22) &rarr; ~76% (now)</strong>, the largest single move on the tech board this fortnight, while the October leg (~69% at baseline) went uncorroborated. And the ordering market did something genuinely new: <strong>&ldquo;Anthropic or OpenAI IPO first&rdquo; printed ~92% Anthropic in the freshest captures</strong> &mdash; up hard from the ~73% carried since the post-S-1 settle in mid-June. The fortnight's shape: <em>whether</em> firmed to near-certainty, <em>when</em> slipped by a quarter. <a href="https://polymarket.com/event/which-company-has-best-ai-model-end-of-july-299">[Polymarket: best model July]</a> <a href="https://polymarket.com/event/will-anthropic-or-openai-ipo-first">[Polymarket: IPO first]</a> <a href="https://polymarket.com/event/anthropic-ipo-by">[Polymarket: Anthropic IPO by]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>Best-model-July (Anthropic ~91% / Google ~8%):</strong> the resolution basis is composite intelligence leaderboards plus agentic benchmarks like SWE-bench, where Claude Opus 4.8 and Fable 5 currently top OpenAI's GPT-5.5 series and Google's Gemini 3.5/3.1 line on intelligence, agentic workflows, and reliability. The ~9% residual is calendar insurance: Google's ~8% is a bet on a Gemini release <em>landing and benchmarking</em> inside July &mdash; it has lost that bet three months running, but the premium is rational as long as release timing is unannounced. <a href="https://defirate.com/prediction-markets/best-ai-model-odds/">[DefiRate: odds tracker]</a></li>
+        <li><strong>The 92/76 reconciliation:</strong> IPO-first at ~92% with Anthropic-Dec at ~76% and OpenAI-Dec at ~24% is internally coherent and diagnostic: the market says Anthropic's slippage risk is measured in <em>weeks</em> (December into Q1-27 at worst) while OpenAI's S-1 points to late-2026-or-early-2027 by design, at valuations discussed near <strong>$1T</strong>. The ordering is safe even if the date is not &mdash; which is why the 14pp December slide coexists with a 19pp ordering <em>firming</em>.</li>
+        <li><strong>What the 14pp slide is not:</strong> no reported filing trouble, no pulled roadshow, no fresh regulatory action surfaced in this window's coverage. The two candidate mechanisms stand: mechanical SEC-review-clock discounting as the confidential S-1 ages (a public flip is typically needed ~15 trading days before a roadshow, so the feasible-December window is visibly shrinking), and the rate path &mdash; the slide happened in the same fortnight the October-hike leg firmed to ~44%. The cleanest tell for next edition: if the December leg stabilises while rates stay hawkish, it was the calendar; if it tracks the hike legs tick for tick, it is the macro.</li>
+        <li><strong>Cluster inversion, confirmed:</strong> a model-leadership regime priced at ~91% for the fourth month plus an IPO complex repricing on Fed legs means this cluster's marginal variance is now monetary, not competitive &mdash; the &ldquo;AI race&rdquo; cluster has quietly become a rates cluster with an AI label.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) Soft CPI, calm autumn:</strong> the listing window reopens; Anthropic flips the S-1 public in September, roadshows October, and the December leg recovers toward the mid-80s &mdash; the ~76% is cheap in this branch. <strong>(b) Hawkish autumn:</strong> the hike lands in October, growth multiples compress, the listing slips to Q1-27; December bleeds toward 60% while IPO-first stays pinned above 90 &mdash; ordering safe, timing gone. <strong>(c) Competitive surprise:</strong> a frontier Gemini or GPT release banks benchmarks before July 31 &mdash; the ~91% breaks for the first time in four months, and the whole regime-pricing premise gets its first real stress test. Lowest-probability branch, highest information content.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li>An Anthropic public S-1 flip &mdash; the single hardest signal for the December leg; its absence through August is itself an answer.</li>
+        <li>July 14 CPI &mdash; now the AI cluster's primary catalyst, oddly.</li>
+        <li>The October-timing leg (~69% at baseline, uncorroborated for two editions) &mdash; re-check directly.</li>
+        <li>Benchmark releases from Google DeepMind and OpenAI inside July &mdash; the ~9% residual's only trigger.</li>
+        <li>Whether IPO-first ~92% holds &mdash; a 19pp move on an ordering market deserves one confirmation before it is treated as regime.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate, &plusmn;2&ndash;3pp; the IPO-first ~92% is a fresh single-window print against a ~73% carried baseline &mdash; treat the exact level as 3/5 until re-corroborated.</div>
+    </div>
+  </details>
+</div>
+
+<!-- THEME 7: TECH -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap tech"><span class="material-icons-outlined">memory</span></div>
+    <div class="head-titles">
+      <h3>Tech &mdash; cap leadership</h3>
+      <div class="scope-tag">Tech / equity &middot; 5 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge flat">
+    <span class="material-icons-outlined">trending_flat</span>Stable with soft edges &mdash; December holds ~69.5% verbatim, but the cap slipped to ~$4.7T and the July leg opens at ~82%
+  </div>
+  <p class="thesis">The June leg resolved as saturated: <strong>NVIDIA finished June as the world's largest company</strong>, and the market rolled forward. Two softer details, though. First, <strong>NVIDIA's market cap slipped from ~$5.1T (June 18) to ~$4.72T</strong> &mdash; a ~7.5% giveback during a fortnight in which the broad index closed its best quarter since 2020, meaning the AI-infra flagship <em>underperformed</em> the tape even as the de-escalation rally lifted everything else. Second, the fresh <strong>&ldquo;Largest company end of July&rdquo; market opens at ~82% NVIDIA</strong> (some captures read ~85%), with <strong>Apple at ~11%</strong> as the residual &mdash; comfortable, but a visibly wider residual than June's effective certainty, sized to the now-narrower gap over the ~$4.5T peers.</p>
+  <p class="thesis">The December market did not blink: <strong>NVIDIA-largest-end-of-2026 holds ~69.5%, verbatim from the June 22 edition</strong>, still resting on the ~85&ndash;92% AI-accelerator share, hyperscaler capital-expenditure momentum, and the Rubin platform ramp. The two-layer architectural read thus survives another fortnight &mdash; <strong>Anthropic owns the model layer (June resolved, July ~91%), NVIDIA owns the infrastructure layer (June resolved, December ~69.5%)</strong> &mdash; but the risk profile sharpened slightly: the cap giveback into a rising tape is exactly what early multiple-compression looks like, and the October hike priced at ~44% in the Fed cluster is the mechanism. December's ~69.5% and the hike market cannot both be right at their current levels indefinitely; one of them re-prices after July 14. <a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727">[Polymarket: largest end July]</a> <a href="https://polymarket.com/event/largest-company-end-of-december-2026">[Polymarket: largest Dec 2026]</a> <a href="https://companiesmarketcap.com/nvidia/marketcap/">[CompaniesMarketCap: NVDA ~$4.72T]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA largest company end of June</strong></div>
+      <div class="signal-price yes">Resolved: NVIDIA</div>
+      <div class="delta up">as saturated pricing implied</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA largest company end of July</strong></div>
+      <div class="signal-price lead">~82%</div>
+      <div class="delta flat">Apple ~11% residual</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA largest company Dec 2026</strong></div>
+      <div class="signal-price lead">~69.5%</div>
+      <div class="delta flat">verbatim vs June 22</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA market cap (reference)</strong></div>
+      <div class="signal-price neutral">~$4.72T</div>
+      <div class="delta down">&darr;~7.5% vs ~$5.1T; lagged the tape</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Peer caps (reference)</strong></div>
+      <div class="signal-price neutral">~$4.5T zone</div>
+      <div class="delta flat">gap narrowed, order unchanged</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    July 14 again: a soft CPI relieves the discount-rate pressure and lets the December ~69.5% ride; a hot print plus a firmer October hike is the scenario where the ~7.5% cap giveback extends into an actual leadership contest with the ~$4.5T peers. Company-specific tails unchanged: a China export-control escalation, or an Alphabet frontier-model response that revives its December share (~14.5% at the baseline; not re-corroborated this window). Watch whether the July leg's ~82% decays or firms through the month &mdash; it is the cleanest short-horizon thermometer for whether the cap slip was noise or trend.
+  </div>
+  <details class="deepdive">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &mdash; Deep-Dive Tech</summary>
+    <div class="dd-body">
+      <h4>Preis-Trajektorie</h4>
+      <p>The December market is the board's flattest long-dated price &mdash; and that flatness has survived a lot: <strong>~67.5% (June 12) &rarr; ~69.5% (June 22) &rarr; ~69.5% (now, verbatim)</strong>, through a war, a ceasefire, a hawkish dot plot, and a record quarter. The infamous June 12 outlier capture (NVDA 54% / Alphabet 35%) never recurred and stays retired as a stale print. The monthly legs tell the shorter story: largest-company-June saturated at ~94&ndash;96%, resolved NVIDIA; the <strong>fresh July market launched June 24 and opened at ~82% NVIDIA / ~11% Apple</strong>, with capture divergence up to ~85% on the lead leg. The physical underlying moved more than any of the prices: <strong>NVIDIA's cap ~$5T+ (early June) &rarr; ~$5.1T (June 18 peak) &rarr; ~$4.72T</strong> &mdash; a ~7.5% giveback in the exact fortnight the S&amp;P closed its best quarter since 2020. Prices flat, fundamentals wobbling: that combination is the cluster's actual finding this edition. <a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727">[Polymarket: largest end July]</a> <a href="https://polymarket.com/event/largest-company-end-of-december-2026">[Polymarket: largest Dec 2026]</a></p>
+      <h4>Die Signale im Detail</h4>
+      <ul>
+        <li><strong>July leg (~82&ndash;85% NVIDIA, ~11% Apple):</strong> handle with care &mdash; total volume is only <strong>~$727K</strong> since the June 24 launch, thin by this board's standards, so part of the &ldquo;wider residual vs June&rdquo; is plausibly a thin-book artifact rather than genuine doubt. The capture spread (82 vs 85) is itself the news-mediation problem in miniature. Still, the direction of the residual is informative: Apple at ~11% is roughly double its December share, sized to the narrowed gap over the <strong>~$4.5T peer zone</strong>.</li>
+        <li><strong>December (~69.5% NVIDIA):</strong> the bull case is unchanged and structural &mdash; ~85&ndash;92% AI-accelerator share, hyperscaler capital-expenditure momentum, and the Rubin platform ramp into year-end. Coverage places Microsoft, Alphabet, and Broadcom as secondary AI beneficiaries (cloud services, networking silicon) rather than leadership challengers; Alphabet's ~14.5% December share and Apple's ~10% are both carried uncorroborated this window (3/5).</li>
+        <li><strong>The relative-performance tell:</strong> a ~7.5% cap decline against a tape printing its best quarter in six years means NVIDIA <em>underperformed the index it dominates</em> during a broad risk-on rally &mdash; the specific signature of early multiple compression rather than a growth scare (no negative company news surfaced: no guidance cut, no export headline). The mechanism sits one cluster over: an October hike priced at ~44% discounts long-duration growth hardest.</li>
+        <li><strong>The consistency problem, quantified:</strong> December-NVDA at ~69.5% and hike-by-October at ~44% jointly require NVIDIA's lead to survive the very rate path that just took 7.5% off its cap in a friendly tape. Both prices held this fortnight; after July 14, one of them starts moving. The December market's month-long verbatim stability increasingly looks like inattention rather than conviction &mdash; long-dated, low-turnover markets reprice late.</li>
+      </ul>
+      <h4>Szenarien</h4>
+      <p><strong>(a) Soft CPI:</strong> discount-rate pressure lifts, the cap re-approaches $5T, the July leg firms toward the 90s and December's ~69.5% finally looks cheap rather than stale. <strong>(b) Hot CPI / October hike firming:</strong> the giveback extends; below ~$4.5T the leadership question becomes live with Apple and the peer zone, the July leg decays through the 70s, and December re-prices toward the low 60s &mdash; the first genuine contest pricing since spring. <strong>(c) Company-specific tails:</strong> a China export-control escalation (cuts datacenter revenue directly) or an Alphabet frontier-model-plus-TPU (Tensor Processing Unit) narrative that revives its December share &mdash; the one branch where the challenger is named Alphabet rather than Apple, and the only one that would also touch the AI cluster's ~91%.</p>
+      <h4>Watch-Items</h4>
+      <ul>
+        <li>The July leg through the month: decay vs firming is the cleanest short-horizon thermometer on the board.</li>
+        <li>NVIDIA vs S&amp;P relative performance week by week &mdash; the compression tell, ahead of earnings in late August.</li>
+        <li>The peer zone: any name crossing ~$4.7T makes the leadership question arithmetic rather than theoretical.</li>
+        <li>A corroborated December split (NVDA/Alphabet/Apple shares) &mdash; missing for two editions.</li>
+        <li>Export-control headlines &mdash; the standing binary tail on every NVIDIA leg.</li>
+      </ul>
+      <div class="dd-caveat">Prices via news coverage, not API &mdash; approximate, &plusmn;2&ndash;3pp; the July leg is additionally thin (~$727K volume) and showed an 82&ndash;85% capture spread.</div>
+    </div>
+  </details>
+</div>
+
+<!-- META-META READ -->
+<div class="meta-take">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">insights</span>The meta-meta read</span>
+  <h3>The board's new master variable is a date: July 14. The Iran file is paused, not resolved; the oil it released is now disinflation in the pipeline; and the June CPI print arbitrates the Fed cluster, the equity tape, the NVDA multiple, and both AI IPO windows simultaneously. Meanwhile the dashboard acquired a second-order problem &mdash; the integrity of its own instrument.</h3>
+
+  <p><strong>Iran shifted from event to endurance test.</strong> The de-escalation is real &mdash; three weeks of held ceasefire, an open Hormuz, Brent at ~$72 with the entire war premium gone, and a mediator-confirmed roadmap out of the Switzerland round. But the 60-day clock to ~mid-August is now being consumed by things that are not negotiation: a skipped Qatar round, a six-day state funeral, and a successor &mdash; Mojtaba Khamenei &mdash; who did not appear at his own father's burial and may not be physically able to govern. The cluster's question has inverted since June: it is no longer &ldquo;will the war resume&rdquo; but <strong>&ldquo;does Iran currently have a counterparty capable of signing anything before the window closes.&rdquo;</strong> Every quiet week is now mildly bad news, which is a strange and specific market structure.</p>
+
+  <p><strong>The two variables that split in June are converging on one print.</strong> The June 22 edition ended with the Iran-inflation master variable split in two: oil relieved, dots hawkish. This fortnight the split sharpened into a scheduled collision &mdash; the hike market firmed (October ~44%, September ~37%, futures ~66% for a 2026 move) while the disinflation that would falsify it kept building (Brent &minus;13% in two weeks). <strong>July 14 resolves the tension in one direction or the other, and it is upstream of five of the seven clusters</strong>: the Fed path directly, the equity tape and the recession read, the NVDA December multiple, and both AI listing windows. Not since the June 17 FOMC has this much of the board keyed off a single datum.</p>
+
+  <p><strong>The architectural read survived, but its two layers are aging differently.</strong> Anthropic's model-layer position is now regime-priced &mdash; a third monthly resolution banked, July at ~91%, the residual functioning as insurance rather than doubt. NVIDIA's infra-layer position held its December number exactly (~69.5%) but showed its first soft tissue: a ~7.5% cap giveback <em>against</em> the best quarterly tape since 2020, and a July leg that opens at ~82% rather than saturation. The model layer's risk remains competitive (a surprise frontier release); the infra layer's risk is now purely monetary (the October hike). <strong>The new wrinkle is the ~14pp slide in Anthropic's IPO-by-December leg (~90% &rarr; ~76%) with no company-specific cause in sight</strong> &mdash; the cleanest evidence yet that the rate cycle, not any rival lab, is what the tech board actually fears.</p>
+
+  <p><strong>Bitcoin completed its second falsification of the year.</strong> The first (June): no safe-haven bid when war arrived. The second (this edition): no risk-on participation when the best equity quarter in six years arrived &mdash; BTC fell from ~$66k through $60k while the S&amp;P closed Q2 at ~7,483. With the July sub-$60k touch banked at ~100% and the year-end distribution putting ~74% on sub-$55k, the crowd has re-classified BTC out of both macro narratives into its own liquidity story. On this board, that demotes crypto from signal to residual &mdash; worth tracking, no longer worth theorising about.</p>
+
+  <p><strong>And the instrument itself became a story.</strong> The ~$345M Iran permanent-peace complex resolved YES only after a UMA token-holder vote in which seven wallets controlled a majority of the voting power, all reportedly voting with the winning side; losing traders are formally challenging the mechanism, and Bloomberg is reporting insider-trading concerns around Iran-war bets. This dashboard leans on Polymarket prices as aggregated belief; <strong>a resolution process that can be swung by concentrated stakes is a standing haircut on every long-dated, definitionally-fuzzy market on the board</strong> &mdash; which is precisely the geopolitical section. Structural conclusion: weight the mechanically-resolving markets (Fed decisions, cap leadership, model benchmarks, price levels) a notch above the treaty-interpretation markets from here, and say so when the two disagree. Signal concentration this edition: one date (July 14), one clock (mid-August), one credibility question (UMA).</p>
+</div>
+
+<!-- CROSS-REFERENCE BANNERS -->
+<div class="xref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Cross-reference: Geopolitics Briefing</strong><br>
+    The Iran story this fortnight is succession, not strikes: Khamenei's six-day state funeral (July 3&ndash;9, burial in Mashhad), successor Mojtaba Khamenei absent and communicating only in writing since being wounded in the February 28 assassination strike, Doha talks paused, and the Qatar round of July 1 skipped by Tehran &mdash; all against a 60-day final-deal clock expiring ~mid-August. Ukraine stayed decoupled and flat for a sixth edition, with the modal ceasefire date slipping (Dec 31 ~39%, Oct 31 ~24%) and no priced expectation that US bandwidth rotates to Moscow before the Iran file closes.
+  </div>
+</div>
+
+<div class="xref" style="margin-top:10px">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Cross-reference: Markets Briefing</strong><br>
+    Q2 closed as the strongest quarter since 2020 with the S&amp;P at ~7,483 (July 2); oil extended its post-deal slide to Brent ~$72.20 / WTI $68.77 (the July 1 leg down came on Iran skipping the Qatar talks); Bitcoin diverged hard, breaking $60k intra-week to trade ~$61.7k. The macro hinge is July 14 CPI &mdash; the first print carrying post-deal energy relief &mdash; against a hike market pricing October ~44% / September ~37%. NVDA's ~7.5% cap giveback to ~$4.72T against a rising tape is the early multiple-compression tell to watch alongside it.
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  Polymarket Dashboard &middot; Weekly (10-day catch-up) &middot; 2026-07-06 &middot; Deep-dive edition (7 &times; &ldquo;Mehr lesen&rdquo;)<br>
+  7 themes from ~30 underlying markets &middot; Coverage: June 26 &ndash; July 6, 2026 &middot; Baseline: June 22 edition (~14-day deltas)<br>
+  Data sourced via news coverage, not direct Polymarket API &mdash; prices approximate, possibly stale &middot; Live API access pending domain allowlist<br>
+  Next edition tracks: the July 14 CPI print vs. the Sept/Oct hike legs, talks resumption after the July 9 funeral close, the Anthropic IPO-timing slide, and the UMA resolution challenge
+</div>
+
+</main>
+
+</body>
+</html>

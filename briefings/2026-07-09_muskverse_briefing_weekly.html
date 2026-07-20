@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · 9 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#1f2933; --primary-soft:#eceff1; --primary-on-soft:#1f2933;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:#a50e0e; color:#fff; display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:16px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:#a50e0e; border-color:#a50e0e; color:#fff; font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#8b0d0d 0%,#3a0505 55%,#0a0202 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+  .hero .stat-row { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; }
+  .hero .stat .n { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:700; }
+  .hero .stat .l { font-size:11px; opacity:0.85; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:8px; }
+  .statusquo .sq-label { display:inline-flex; align-items:center; gap:6px; background:var(--red-soft); color:var(--red-deep); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin-bottom:6px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:#a50e0e; font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); background:var(--surface-2); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.tesla { background:#fce8e6; color:#a50e0e; }
+  .tag.spacex { background:#e8eef6; color:#1f3548; }
+  .tag.xai { background:#f1f3f4; color:#3c4043; }
+  .tag.x { background:#f1f3f4; color:#202124; }
+  .tag.neuralink { background:#f3e8fd; color:#5f1d8e; }
+  .tag.boring { background:#fef7e0; color:#b06000; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-dark { background:#eceff1; color:#1f2933; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); margin-left:auto; }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .data-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 14px; }
+  .data-item { background:var(--surface-2); border-radius:8px; padding:10px 12px; }
+  .data-label { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .data-value { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; color:var(--on-surface); }
+  .data-value.up { color:var(--green-deep); } .data-value.down { color:var(--red-deep); }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:#a50e0e; text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:#fce8e6; }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:#a50e0e; }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.deep { margin-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:500; color:#a50e0e; background:var(--surface-2); padding:5px 14px; border-radius:14px; user-select:none; transition:background 0.15s; }
+  details.deep summary:hover { background:#fce8e6; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .chev { font-size:16px; line-height:1; transition:transform 0.2s; }
+  details.deep[open] summary .chev { transform:rotate(180deg); }
+  details.deep .dd { margin-top:12px; padding:14px 16px; background:var(--surface-2); border-radius:10px; }
+  details.deep .dd p { font-size:13.5px; line-height:1.65; color:var(--on-surface-2); margin:0 0 12px; }
+  details.deep .dd p:last-child { margin-bottom:0; }
+  details.deep .dd strong.lbl { color:var(--on-surface); font-weight:700; }
+
+  .banner { display:flex; gap:12px; background:var(--yellow-soft); border-radius:12px; padding:14px 18px; margin-bottom:14px; align-items:flex-start; }
+  .banner .material-icons-outlined { color:var(--yellow); font-size:20px; margin-top:1px; }
+  .banner .txt { font-size:13px; line-height:1.55; color:var(--on-surface-2); }
+  .banner .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:#fce8e6; color:#a50e0e; padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:#a50e0e; font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+    .date-pill { margin-left:0; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Mid-week edition · Thu 9 Jul 2026 · Last 7 days · Tesla · SpaceX · xAI · X · Neuralink · Boring · politics</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#tesla">Tesla</a>
+  <a class="chip" href="#spacex">SpaceX</a>
+  <a class="chip" href="#xai">xAI</a>
+  <a class="chip" href="#x">X</a>
+  <a class="chip" href="#neuralink">Neuralink</a>
+  <a class="chip" href="#boring">Boring</a>
+  <a class="chip" href="#politics">Politics</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Muskverse portfolio · mid-week catch-up (Jul 3 – Jul 9)</div>
+  <h2>Grok 4.5 lands, SPCX joins the Nasdaq-100 to a whisper not a bang, and Optimus V3 gets a hard reveal date — the Muskverse spent the week converting the IPO capital into product cadence.</h2>
+  <p>Seventy-two hours after joining the Nasdaq-100 with only a ~1% pop, SpaceXAI shipped <strong>Grok 4.5</strong> — a 1.5-trillion-parameter model Musk claims is "Opus-class but 60% cheaper," priced at $2/$6 per million tokens and trained alongside newly acquired coding startup <strong>Cursor</strong>. Tesla rebounded 6.7% into a 22 July earnings print, revealed the <strong>Optimus V3 humanoid</strong> is set for late-July unveiling with production imminent at Fremont, and signed a <strong>25 GWh NatPower</strong> European storage deal. Starship <strong>Flight 13</strong> hardware (Booster 20, Ship 40) is deep into static-fire prep for a NET 31 July liftoff, and the FT reported SpaceX is drawing up a <strong>standalone US mobile carrier</strong> beyond the T-Mobile partnership. Neuralink hit patient 26; the America Party turns one year old this weekend.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">Grok 4.5</div><div class="l">Opus-class · $2/$6 · Cursor-trained</div></div>
+    <div class="stat"><div class="n">+1%</div><div class="l">SPCX on Nasdaq-100 day (7 Jul)</div></div>
+    <div class="stat"><div class="n">NET 31 Jul</div><div class="l">Starship Flight 13</div></div>
+    <div class="stat"><div class="n">22 Jul</div><div class="l">Tesla Q2 earnings</div></div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <span class="sq-label"><span class="material-icons-outlined" style="font-size:14px">history</span>Status quo — where Monday's edition left off</span>
+  <ul>
+    <li><strong>Tesla</strong> delivered 480,126 vehicles in Q2 (+25% YoY, ~18% beat), stock <em>fell</em> 7.5% on the print; robotaxi went live in Miami on 3 July.</li>
+    <li><strong>SpaceX</strong> was three weeks post-IPO at ~$164, awaiting the 7 July Nasdaq-100 inclusion (~$4.3B of forced index buying into a 3–5% float).</li>
+    <li><strong>xAI</strong> shipped enterprise integrations (Databricks, Bedrock, Cursor, Voice Agent Builder) but Grok 5 had missed both Q1 and Q2 windows — Grok 4.1 still carrying the line.</li>
+    <li><strong>Politics:</strong> Shotwell donated $320M of SPCX stock to Trump Accounts children's savings accounts; company-level talks pending.</li>
+    <li><strong>Colossus:</strong> Starlink half-price offer in Memphis to quell NAACP Clean Air Act suit over 27 unpermitted gas turbines at the xAI training complex.</li>
+  </ul>
+</div>
+
+<!-- TESLA -->
+<a id="tesla"></a>
+<div class="section-header"><span class="material-icons-outlined">electric_bolt</span><h3>Tesla</h3><span class="count-pill">4 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-green">Rebound</span><span class="date-pill">02 – 08 Jul 2026</span></div>
+  <h4>TSLA claws back the delivery-day sell-off — 22 July earnings now the whole ballgame</h4>
+  <p>After the counterintuitive <strong>−7.5% drop on the 480k delivery print</strong>, TSLA rebounded <strong>+6.7% on 6 July to close $419.77</strong>. Two catalysts moved the tape: the <strong>National Highway Traffic Safety Administration (NHTSA) formally closed its long-running Autopilot safety probe</strong> on 2 July, concluding the residual risk was "low" after Tesla's over-the-air software fixes; and the Miami robotaxi launch (3 July) landed with cleaner rider-side footage than skeptics expected in tropical rain. The unresolved question is booked for <strong>Wednesday 22 July at 4:30 pm CT</strong>: the <strong>Q2 income statement</strong>. Consensus focus per multiple sell-side desks: <strong>automotive gross margin excluding regulatory credits</strong> — >20% would validate that record volume came without deep discounting; sub-17% would confirm the "bought the volume with price" thesis and re-open the −7.5% wound.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">TSLA close 6 Jul</div><div class="data-value up">$419.77 (+6.7%)</div></div>
+    <div class="data-item"><div class="data-label">NHTSA verdict</div><div class="data-value up">Probe closed</div></div>
+    <div class="data-item"><div class="data-label">Q2 earnings</div><div class="data-value">22 Jul · 4:30 pm CT</div></div>
+    <div class="data-item"><div class="data-label">Bull threshold</div><div class="data-value">Auto GM ex-credits &gt;20%</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.tikr.com/blog/tesla-stock-fell-7-on-a-record-delivery-beat-heres-the-2026-setup">TIKR · rebound analysis</a>
+    <a href="https://www.mexc.com/news/1196267">MEXC · earnings call details</a>
+    <a href="https://easternherald.com/2026/07/02/tesla-q2-2026-deliveries-beat-stock-drops-margin/">Eastern Herald · margin focus</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — Q1 2026 automotive gross margin ex-credits printed at <strong>13.7%</strong> — a decade low outside pandemic quarters — pressured by aggressive Model 3/Y pricing in China and the $7.5k US federal-EV-tax-credit dynamic. Bulls need to see that Q2's volume beat did not come from further price cuts; bears will point at the introduction of lower-priced Model 3/Y variants and Europe-wide FSD (Full Self-Driving, Tesla's driver-assistance/autonomy stack) promotional pricing as evidence that gross margin will compress again. Tesla enters the print at roughly <strong>204x forward P/E</strong> (price-to-earnings ratio) — cars alone don't justify that, so autonomy/AI/energy commentary during the call will move the tape more than the printed number.</p>
+      <p><strong class="lbl">Die Details</strong> — The 22 July release drops before-open with the call at 4:30 pm CT / 5:30 pm ET. Sell-side is modeling <strong>revenue ~$29.5B</strong> (vs $25.5B a year ago), <strong>non-GAAP earnings per share ~$0.72</strong>, and — the key line — automotive gross margin ex-credits between <strong>15% (Deutsche Bank, cautious)</strong> and <strong>19% (Wedbush, bullish)</strong>. Watch the storage segment: Q2 deployments of 13.5 GWh (gigawatt-hours) were up 40% YoY but slightly below the ~13.8 GWh whisper number, and storage carries higher margins than autos — a beat there could offset an auto miss. Musk's operational commentary — Optimus, robotaxi expansion, FSD v15 timing — will be scored line-by-line.</p>
+      <p><strong class="lbl">Einordnung</strong> — The 6 July rebound looks like short-covering plus a "closed NHTSA probe removes tail risk" positioning trade, not a re-rating. The stock is now up ~4% for the ten sessions bracketing deliveries — essentially flat through the biggest volume beat in company history, which is itself a story about what the market thinks TSLA is (a bet on autonomy and Optimus, priced independently of the car business). The 22 July call is the first proper opportunity since the SpaceX IPO for Musk to reframe the multi-entity portfolio — expect explicit comparisons to SpaceX/xAI valuation to justify Tesla's premium.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) Auto gross margin ex-credits vs 15–19% analyst band; (2) storage gross margin trajectory; (3) FSD v15 date and Optimus V3 commentary (both flagged separately in this edition); (4) any reference to Cybercab customer-ride timeline vs the current 34-vehicle engineering-test fleet.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">5/5 · verified market data + NHTSA action of record</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-blue">Optimus</span><span class="date-pill">01 – 08 Jul 2026</span></div>
+  <h4>Optimus V3 reveal locked for late July; Musk visits Fremont line, warns output will be "extremely slow"</h4>
+  <p>Musk posted a <strong>team photo from the Fremont Optimus production line</strong> on 1 July and set the strategy clock: the <strong>V3 humanoid unveiling is targeted for late July / early August</strong>, timed deliberately close to production start to minimise the reverse-engineering window competitors get. Reported production ramp: dozens of units per week in June, <strong>100–150/week in July, ~300/week in August, targeting 1,000/week by September</strong>. Musk's caveat, posted publicly: initial output will be <em>"extremely slow — this is not like making a car"</em>, given ~10,000 unique parts and an entirely new line converted from the retired Model S/X floor in Fremont in roughly four months. Note the important asterisk: <strong>every 2026-produced Optimus stays inside Tesla</strong> for factory testing and data collection — no external commercial sales this year.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">V3 reveal</div><div class="data-value">Late Jul / early Aug</div></div>
+    <div class="data-item"><div class="data-label">July run-rate</div><div class="data-value">100–150 / week</div></div>
+    <div class="data-item"><div class="data-label">Sept target</div><div class="data-value up">1,000 / week</div></div>
+    <div class="data-item"><div class="data-label">External sales 2026</div><div class="data-value down">None</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.trendforce.com/news/2026/07/03/news-musk-shares-tesla-optimus-production-team-photo-says-initial-robot-output-will-be-extremely-slow/">TrendForce · Fremont team photo</a>
+    <a href="https://www.basenor.com/blogs/news/tesla-optimus-v3-reveal-set-for-late-july-what-we-know">Basenor · V3 reveal timing</a>
+    <a href="https://helpforce.ai/news/tesla-optimus-robot-factory-giga-texas">Helpforce · Fremont conversion + 10M target</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — Tesla ended Model S and X production in early May 2026 to convert the Fremont line to Optimus V3 — a decision that itself telegraphs the corporate priority shift. V3 is built on the Gen 2/Gen 3 platform with <strong>22 degrees-of-freedom (DoF) hands, the AI5 inference chip, and Grok voice integration</strong> — the last of those being the first visible synergy with the SpaceX-owned xAI unit. Previous V2 reveals in 2024–25 were criticised for showing capabilities Tesla could not reliably reproduce; the delayed V3 reveal (originally floated for late 2025, then Q1 2026, now late July 2026) is officially framed as a competitive-secrecy decision — Musk has said rivals have studied earlier videos "frame by frame."</p>
+      <p><strong class="lbl">Die Details</strong> — Production geography: <strong>Fremont</strong> becomes the primary Optimus V3 line, with Giga Texas planned for volume scale-up in 2027. The 10-million-robot long-run target Musk has cited would put Tesla's humanoid output on par with total global car production circa 2020 — treat it as directional, not a plan. The 100–150/week July number matters for one reason: it is fully <strong>inside Tesla's four walls</strong>, which lets the company iterate the design without a customer feedback loop, but also means there is <strong>zero external revenue</strong> or third-party validation of the product this year. The V3 reveal event has not been given a date/venue — Musk's pattern is to announce three to seven days before, timed with a Model 3/Y or SpaceX news lull.</p>
+      <p><strong class="lbl">Einordnung</strong> — Two ways to read the "extremely slow" hedge: <em>bullish</em> — Tesla is finally shifting Optimus from demo to manufacturing engineering, and slow-and-steady is what Toyota-grade humanoid production actually looks like; <em>bearish</em> — the same hedges preceded every prior V2 delivery slip, and no external units in 2026 means no market pricing signal. Either way, for the 22 July earnings call this becomes the single most-asked question: how much of the ~$25B 2026 capital expenditure is currently going into a product with no commercial deliveries this year? Note also the internal cross-flow: Optimus V3 shipping with Grok voice means any Grok safety/reputational issue (see the xAI section on adult-content traffic) becomes an Optimus product-liability issue too.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) V3 reveal event date announcement (expected 3–7 day heads-up); (2) whether Fremont hits the 300/week August cadence; (3) first external partner named for 2027 pilot use — a hyperscaler or automaker signing would validate the pricing model; (4) any Optimus-specific commentary in the 22 July earnings call.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · Musk-tweet-plus-trade-press; production numbers not corroborated by filings</span></div></div>
+</div>
+
+<div class="banner">
+  <span class="material-icons-outlined">campaign</span>
+  <div class="txt"><strong>Musk-tweet flag.</strong> The 100–150/300/1,000-per-week Optimus ramp figures are from Musk's own X posts and trade-press paraphrases, not an SEC filing or a Tesla press release. Treat the trajectory as directional. The Fremont team photo (1 Jul) and the "extremely slow" caveat are on-record.</div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-blue">Cybercab</span><span class="date-pill">30 Jun – 06 Jul 2026</span></div>
+  <h4>Cybercab public-road engineering tests widen: 34 vehicles in Austin, 85+ built at Giga Texas</h4>
+  <p>Tesla is running <strong>engineering (not customer) tests of the steering-wheel-less Cybercab on public Austin roads</strong> with a <strong>34-vehicle fleet</strong>, per Electrek's 30 June report — the first time the two-seat robotaxi has been in real-world downtown traffic. Drone footage from Giga Texas confirmed the outbound-lot count has surpassed <strong>85 completed Cybercabs</strong> as of the past week. Musk has publicly re-framed the ramp: early output will be <em>"agonisingly slow"</em> through 2026, with the exponential curve pushed to Q4 into 2027. The pointed observation from Electrek's 6 July follow-up: Tesla is currently mass-producing a vehicle it can neither legally sell to consumers (no steering wheel means no NHTSA self-certification path yet) nor operate autonomously outside the geofenced pilot cities — a paid-inventory accounting question worth flagging.</p>
+  <div class="links">
+    <a href="https://electrek.co/2026/06/30/tesla-cybercab-engineering-tests-austin/">Electrek · engineering tests 30 Jun</a>
+    <a href="https://www.basenor.com/blogs/news/85-cybercabs-spotted-at-giga-texas-as-production-ramps">Basenor · 85 Cybercabs at Giga Texas</a>
+    <a href="https://electrek.co/2026/07/06/tesla-cybercab-production-before-autonomy/">Electrek · mass-producing before autonomy</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — The Cybercab was unveiled at the "We, Robot" event in October 2024 with a promised $30k price and no steering wheel or pedals. Production formally started at Giga Texas in February 2026. Under current US federal motor-vehicle safety standards (FMVSS), vehicles lacking human controls need either an NHTSA exemption or a rewrite of the standard; Tesla has an exemption petition pending but has not been granted it. The 3 July Miami robotaxi launch used <em>modified Model Y</em> vehicles, not Cybercabs — the two programs are on parallel but separate tracks.</p>
+      <p><strong class="lbl">Die Details</strong> — Engineering tests: <strong>34 vehicles</strong> circulating downtown Austin with Tesla employees monitoring from external chase cars and remote operations centres; not open to the public, no fare charged. Giga Texas lot count of 85+ implies Tesla is producing at roughly <strong>4–5 units per day</strong> currently — orders of magnitude below the "millions per year" long-range target and consistent with the "agonisingly slow" line. The vehicles physically exist as revenue-uncertain inventory: no US sale is legal without the FMVSS exemption, and no ride-hailing deployment is authorised outside limited pilot geofences. If NHTSA denies or delays the exemption, the accounting question becomes how these units are carried on the balance sheet — write-down risk versus indefinite deferred-revenue inventory.</p>
+      <p><strong class="lbl">Einordnung</strong> — For the 22 July earnings call this is the second-largest capex line-item risk after Optimus: Tesla is spending on tooling and inventory for a product with no revenue path yet. The optimistic frame is that engineering tests prove the vehicle is <em>hardware-ready</em>, and the FMVSS exemption becomes a policy fight the administration (now visibly aligned with the Muskverse — see the Trump Accounts note in Monday's briefing) can accelerate. Watch the language on the call: any mention of an FMVSS timeline is a genuine forward signal.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) NHTSA action on Tesla's FMVSS exemption petition; (2) whether Cybercabs enter the Miami/Austin robotaxi pilot fleets (would signal Tesla has an interim operational path); (3) inventory disclosure in the Q2 10-Q; (4) any pricing commentary — the $30k target has become quietly aspirational.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · Electrek reporting + drone footage; test-vehicle count corroborated</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-green">Energy</span><span class="date-pill">08 Jul 2026</span></div>
+  <h4>NatPower signs 25+ GWh European Megapack deal; Megapack 3 / Megablock shipping H2 2026</h4>
+  <p>Tesla announced a multi-year <strong>supply-and-execution agreement with NatPower</strong> covering <strong>more than 25 gigawatt-hours (GWh) of battery-energy-storage systems (BESS) across European markets</strong> on 8 July. Context matters: 25 GWh is nearly double Tesla's <em>entire</em> Q2 2026 global storage deployment (13.5 GWh) — one deal, multi-year. Additionally, deliveries of the next-generation <strong>Megapack 3 (≈5 megawatt-hours per unit, up from 3.9 MWh)</strong> and the container-scale <strong>Megablock</strong> begin in the second half of 2026, meaning the NatPower units likely ship on the newer chemistry. Energy storage is now Tesla's fastest-growing segment by revenue and, per Deutsche Bank, the highest-margin — bulls will read this as validation that the storage business is scaling into utility-grade commitments, not just distributed customer wins.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">NatPower deal</div><div class="data-value up">&gt;25 GWh · multi-year</div></div>
+    <div class="data-item"><div class="data-label">Q2 storage</div><div class="data-value up">13.5 GWh (+40% YoY)</div></div>
+    <div class="data-item"><div class="data-label">Megapack 3</div><div class="data-value">≈5 MWh/unit</div></div>
+    <div class="data-item"><div class="data-label">Ships</div><div class="data-value">H2 2026</div></div>
+  </div>
+  <div class="links">
+    <a href="https://pv-magazine-usa.com/2026/07/02/tesla-announces-13-5-gwh-energy-storage-deployments-in-q2-sets-july-earnings-date/">PV Magazine · Q2 storage + earnings date</a>
+    <a href="https://sustainabilitymag.com/news/tesla-natpower-energy-storage-for-sustainable-grids">Sustainability Magazine · NatPower deal</a>
+    <a href="https://www.ess-news.com/2025/09/09/tesla-unveils-new-generation-of-utility-scale-batteries-megapack-3-and-megablock/">ESS-News · Megapack 3 / Megablock specs</a>
+  </div>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">5/5 · joint corporate announcement</span></div></div>
+</div>
+
+<!-- SPACEX -->
+<a id="spacex"></a>
+<div class="section-header"><span class="material-icons-outlined">rocket_launch</span><h3>SpaceX</h3><span class="count-pill">3 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-yellow">Index event</span><span class="date-pill">07 Jul 2026</span></div>
+  <h4>Nasdaq-100 inclusion delivers a whimper: SPCX +1% to $158.77 as the passive buying was already priced</h4>
+  <p>SPCX joined the <strong>Nasdaq-100 before market open on Tuesday 7 July</strong> — and the stock traded up just <strong>~1% to $158.77</strong>, well below Monday's $164.60 and roughly <strong>−28% from the post-IPO all-time high</strong>. The bulk of the forced index-fund buying was executed against the <strong>market-on-close print on 6 July and the pre-open on 7 July</strong>, meaning by the time the inclusion effective-time hit, the demand shock had already been absorbed. Coindesk and Motley Fool both flagged the pattern historically observed with <strong>Palantir and Strategy</strong> (formerly MicroStrategy): peak-around-inclusion, then fade. The other technical wrinkle: to avoid a Christmas-in-July for index constituents, Nasdaq allowed the index to <em>temporarily exceed 100 members</em> rather than removing anyone — so no forced sales elsewhere.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">SPCX 7 Jul close</div><div class="data-value">$158.77 (+1%)</div></div>
+    <div class="data-item"><div class="data-label">vs 6 Jul</div><div class="data-value down">−3.5%</div></div>
+    <div class="data-item"><div class="data-label">vs post-IPO peak</div><div class="data-value down">−28%</div></div>
+    <div class="data-item"><div class="data-label">vs $135 IPO price</div><div class="data-value up">+18%</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.coindesk.com/markets/2026/07/06/spacex-s-nasdaq-100-inclusion-comes-with-a-historical-warning">Coindesk · historical warning</a>
+    <a href="https://www.fool.com/investing/2026/07/07/spacex-join-nasdaq-100-stock-will-do-this-next/">Motley Fool · what history says</a>
+    <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262016028-spacex-spcx-stock-forecast-july-2026-nasdaq-100-palantir-comparison-tradingkey">TradingKey · Palantir comparison</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — SPCX IPO'd 12 June at $135, closed day one at $161 (+19%), spiked to roughly $220 in the first two weeks on retail-driven momentum, then rolled over into the Nasdaq-100 inclusion. The 28% peak-to-inclusion drawdown means the forced index buying became a <em>liquidity event for early holders</em>, not a demand shock — exactly the pattern Coindesk warned about. Palantir (December 2020 inclusion) peaked the day of inclusion and fell 40% over the next six months; Strategy (December 2024) fell 45% peak-to-trough within four months of joining. Both eventually recovered — the point isn't that SPCX won't work, it's that the inclusion itself doesn't add upside from here.</p>
+      <p><strong class="lbl">Die Details</strong> — SPCX enters at approximately <strong>1% index weight</strong> despite its ~$2.3T market cap, because Nasdaq weights on free-float (only 3–5% of shares trade publicly). The Invesco QQQ and QQQM ETFs alone were forced to acquire about $2.2B of stock; JPMorgan's total-passive estimate was ~$4.3B. Nasdaq's decision <em>not</em> to remove any constituent — instead running with 101 members — was practically inevitable given the size and speed of inclusion; it means no forced-selling counterweight in the rest of the index. The first lock-up expiry (~90 days from IPO, so mid-September) will float another block of shares and mechanically raise SPCX's index weight, forcing another wave of passive buying — but active supply arrives simultaneously.</p>
+      <p><strong class="lbl">Einordnung</strong> — Read this as the SpaceX equity story <em>maturing</em>: from IPO-frenzy retail vehicle to Nasdaq-100 constituent inside four weeks, with the discount and re-rating cycles that come with the territory. For portfolio positioning, the more interesting variable is now the <strong>fundamental cadence Shotwell laid out</strong>: Starship, Starlink subscriber growth, Starlink Mobile, and Grok. This week delivered on three of those four (Grok 4.5 shipped, Flight 13 hardware locked, Starlink Mobile FT report leaked, Starlink at 12M subs since 4 June) — but the stock cared about none of them, which is what a post-inclusion consolidation looks like. Next real re-rating catalyst: Starship Flight 13 outcome (see next card) and the first post-IPO earnings release later this year.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) whether SPCX holds $150 through the Palantir-analog fade window; (2) mid-September lock-up expiry mechanics; (3) sell-side initiation wave and where consensus valuation lands vs $1.75T IPO mark; (4) first quarterly report as a public company (date not yet confirmed).</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">5/5 · verified market data + exchange event</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-red">Starship</span><span class="date-pill">Late Jun – 08 Jul 2026</span></div>
+  <h4>Starship Flight 13 — Ship 40 + Booster 20 close on 31 July liftoff; static fires the last gate</h4>
+  <p>Hardware for Starship <strong>Flight 13</strong> is deep into pre-launch testing. <strong>Booster 20 (B20)</strong> and <strong>Ship 40 (S40)</strong> — both brand-new V3 vehicles — have cleared their cryogenic proof tests (Ship 40 on 4–5 May; Booster 20 in late June), and <strong>Ship 40's six Raptor 3 engines were installed in early June</strong>. Ship 40 also completed its first successful engine-ignition test in the past week — the first fire for a V3 upper stage. Full-duration static fires — <strong>33 Raptor 3s on Booster 20</strong>, and the sea-level plus vacuum-optimised Raptors on Ship 40 — are the final gate before launch. Flight 13 will <strong>repeat the Flight 12 suborbital profile</strong> rather than attempting orbit, launching from <strong>Orbital Launch Pad 2 at Starbase, Texas</strong>. Target: <strong>NET (no earlier than) 31 July 2026</strong>, though scheduling boards show flex to earlier dates if tests conclude cleanly.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Launch NET</div><div class="data-value">31 Jul 2026</div></div>
+    <div class="data-item"><div class="data-label">Booster</div><div class="data-value">B20 · 33 Raptor 3</div></div>
+    <div class="data-item"><div class="data-label">Upper stage</div><div class="data-value">S40 · V3 · engines installed</div></div>
+    <div class="data-item"><div class="data-label">Profile</div><div class="data-value">Suborbital (Flight 12 repeat)</div></div>
+  </div>
+  <div class="links">
+    <a href="https://spacelaunchlive.com/launches/starship-flight-13/">Space Launch Live · countdown</a>
+    <a href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-next-starship-breathes-fire-for-1st-time-in-prelaunch-test-video">Space.com · first V3 fire</a>
+    <a href="https://en.wikipedia.org/wiki/List_of_Starship_launches">Wikipedia · full Starship launch log</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — Starship Flight 12 (Q1 2026) was the first fully successful suborbital demo of the V3 architecture — booster caught by Mechazilla chopsticks, ship soft-splashdown in the Indian Ocean. Flight 13 is a <em>repeat</em> not an <em>upgrade</em>: SpaceX is deliberately deferring the orbital / satellite-deploy / on-orbit propellant transfer milestones until the V3 vehicle has back-to-back clean suborbitals in the log. That is a marked shift from the "test-to-failure" cadence of Flights 1–8 — post-IPO Starbase is running like a launch business, not a research programme, with the public listing raising the bar on visible failures.</p>
+      <p><strong class="lbl">Die Details</strong> — Ship 40 milestones: fully stacked in Mega Bay 2 by March 2026; nosecone thermal-protection-system (TPS) tile installation completed November 2025; two successful cryogenic proof tests (4 and 5 May); six Raptor 3 engines (three sea-level, three vacuum-optimised) installed early June; first ignition test completed this past week. Booster 20 milestones: cryo proof cleared late June; 33-engine full-duration static fire is the last hardware gate. Raptor 3 is the streamlined production version — fewer parts, higher thrust than Raptor 2, and the version SpaceX plans to run at Starbase for the rest of the year. Regulatory context: SpaceX's Boca Chica FAA launch licence covers this profile without a fresh amendment; a small notice-to-mariners / airmen ripple is expected 24–48 hours before liftoff.</p>
+      <p><strong class="lbl">Einordnung</strong> — Flight 13 is a public-market milestone as much as a technical one: it's the first Starship launch as a listed company, into a shareholder base that includes retail Trump Accounts positions (via Shotwell's donation) and passive Nasdaq-100 exposure. A clean flight has limited upside — it's a repeat, not a new capability — but a visible failure would compound the current SPCX drawdown given how much of Shotwell's investor-roadshow narrative rests on Starship cadence. Watch Elon's X activity in the 72 hours before liftoff for scope-of-mission hints; historically Musk has quietly added or removed test objectives up to 48 hours before launch.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) 33-engine Booster 20 static fire (last hardware gate); (2) any FAA notice-to-airmen / mariners in the 24 Jul – 2 Aug window; (3) whether SpaceX telegraphs Flight 14's expanded objectives (Starlink deploy? orbital? in-space refuel?); (4) SPCX price action into and out of launch.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · consistent trade-press coverage + independent test-schedule sourcing</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-blue">Starlink Mobile</span><span class="date-pill">02 Jul 2026</span></div>
+  <h4>FT: SpaceX weighing a standalone US mobile carrier — build ground network beyond T-Mobile deal</h4>
+  <p>The <strong>Financial Times reported (2 July)</strong> that SpaceX is in early planning to launch a <strong>standalone US mobile telecommunications service</strong> — meaning building its own ground-network infrastructure rather than continuing to ride solely on the current T-Mobile partnership. The FT frames it as still an "early planning stage" with no launch timeline, but the strategic direction is clear: instead of being a satellite backhaul provider, SpaceX would compete <strong>directly with Verizon, AT&T and T-Mobile for retail subscribers</strong>. This dovetails with what Shotwell told IPO-roadshow investors: Starlink Mobile is one of the four Muskverse public-market metrics she wants investors to grade the company on, targeting <strong>25 million active users by end of 2026</strong> — a number that requires more distribution than a wholesale T-Mobile deal can deliver.</p>
+  <div class="links">
+    <a href="https://www.successful-blog.com/1/elon-musk-starlink-mobile-service/">SB · FT report summary</a>
+    <a href="https://qz.com/spacex-starlink-mobile-service-us-consumers-062626">Quartz · standalone service context</a>
+    <a href="https://www.basenor.com/blogs/news/starlink-mobile-targets-25m-users-by-end-of-2026-the-numbers">Basenor · 25M user target</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — The current T-Mobile Starlink service (launched July 2025) uses SpaceX's direct-to-cell satellite constellation for text messaging where terrestrial coverage is absent, monetised through T-Mobile's plans. It's a wholesale arrangement — T-Mobile owns the customer, SpaceX gets the backhaul fee. A standalone service would flip the economics: SpaceX would own the retail customer relationship and margin, at the cost of building or leasing spectrum, ground-network sites and a billing/support stack. Starlink's residential base crossed <strong>12 million subscribers as of 4 June</strong>, with a $65 ARPU (average revenue per user) and ~$15.5B annual run-rate — those subscribers are a warm distribution asset for a mobile upsell.</p>
+      <p><strong class="lbl">Die Details</strong> — The FT report is single-sourced and early-stage: no spectrum acquisition, no acquisition target named, no timeline. What we know: Shotwell has floated the idea to investors; Starlink already raised residential prices $10/month in May 2026 (a monetisation signal); T-Mobile's five-year exclusivity terms would gate any direct competition until at least 2030 for text-and-satellite services but may not gate a broader terrestrial+satellite hybrid offering. Any US spectrum position would likely involve either an acquisition (Dish's spectrum has repeatedly been floated) or a partnership with EchoStar-adjacent spectrum holders. The regulatory piece — FCC (Federal Communications Commission) approval for a fourth national carrier — is a multi-year path even under a friendly administration.</p>
+      <p><strong class="lbl">Einordnung</strong> — Read this as SpaceX using its new public-company balance sheet to open a second front: not just internet-from-space, but domestic-carrier-scale telecom. The strategic logic is clean — Starlink's ground segment already exists globally, spectrum is the missing piece, and a listed company can raise the capital for a spectrum bid. The risk: it puts SpaceX into a business with regulated pricing, thin margins and unionised workforces — an operating profile foreign to the current culture. Also worth flagging: it puts SpaceX in direct competition with AT&T (owner of a competing satellite-broadband partner in AST SpaceMobile) and with Verizon — both of which are major DOD and federal government customers Musk's political adversaries in previous cycles.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) any FCC filing or spectrum-lease news from SpaceX; (2) whether T-Mobile publicly confirms or contests the FT framing; (3) Starlink subscriber momentum vs 25M year-end target; (4) response tone from Verizon/AT&T earnings commentary in late July.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · FT single-source, "early planning stage" — treat as directional</span></div></div>
+</div>
+
+<!-- XAI -->
+<a id="xai"></a>
+<div class="section-header"><span class="material-icons-outlined">psychology</span><h3>xAI · Grok 4.5</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">xAI</span><span class="tag t-green">Model launch</span><span class="date-pill">08 Jul 2026</span></div>
+  <h4>Grok 4.5 ships — 1.5T-parameter "Opus-class" model at $2/$6, Cursor-trained and 60% cheaper than Anthropic</h4>
+  <p>SpaceXAI released <strong>Grok 4.5</strong> to the public on <strong>Wednesday 8 July</strong> (EU availability lagging) — its first frontier model since going public. Musk framed it publicly as <em>"Opus-class, faster, more token-efficient and lower cost"</em>. The specs corroborate the pitch: a <strong>1.5-trillion-parameter V9 foundation</strong> (up from the ~500B V8-small production model), priced at <strong>$2 per million input tokens / $6 per million output tokens</strong>. For reference, Anthropic's Claude Opus 4.8 currently sits at $5 input / $25 output — Grok 4.5 undercuts the frontier tier by ~60% on input and ~76% on output. The model was <strong>co-trained with Cursor</strong> — the AI code editor SpaceXAI acquired earlier this year — with SpaceXAI claiming lift on engineering and knowledge-work benchmarks specifically. Grok 4.5 is available in <strong>Grok Build, in Cursor across all plans, and via the SpaceXAI console</strong>.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Parameters</div><div class="data-value up">1.5T · V9 foundation</div></div>
+    <div class="data-item"><div class="data-label">Input price</div><div class="data-value up">$2 / M tokens</div></div>
+    <div class="data-item"><div class="data-label">Output price</div><div class="data-value up">$6 / M tokens</div></div>
+    <div class="data-item"><div class="data-label">vs Opus 4.8</div><div class="data-value up">~60% cheaper</div></div>
+  </div>
+  <div class="links">
+    <a href="https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/">TechCrunch · the release</a>
+    <a href="https://www.axios.com/2026/07/08/spacexai-grok-new-model">Axios · scoop</a>
+    <a href="https://cybernews.com/ai-news/grok-45-public-launch/">Cybernews · public launch</a>
+    <a href="https://www.cometapi.com/grok-4-5-leak-xai-s-1-5t-v9-model-in-private-beta/">CometAPI · V9 architecture details</a>
+  </div>
+  <details class="deep">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="dd">
+      <p><strong class="lbl">Kontext</strong> — This is the single most important product event in the Muskverse this week, and it fills a specific credibility gap. Since the SpaceX acquisition of xAI in February, the flagship-model narrative had been drifting: Grok 4 dates to July 2025, Grok 4.1 to November 2025, and the promised Grok 5 had missed both a Q1 and a Q2 2026 window. Musk had told Cursor-conference audiences in late May that a fresh Opus-class model was imminent; the actual delivery arriving 90 days later — <em>and with a version number below 5</em> — is the compromise. Positioning Grok 4.5 as the "workhorse coding + knowledge-work" tier rather than the frontier reasoning tier is a rational climb-down: undercut Anthropic on cost, don't try to out-benchmark GPT-5.6 (rumoured mid-July).</p>
+      <p><strong class="lbl">Die Details</strong> — Architecture: 1.5T total parameters on the V9 foundation, roughly triple the V8-small production model. Training-data claim: <strong>co-trained with data from Cursor's editor sessions</strong> — code diffs, edit patterns, tool calls — the kind of proprietary distribution advantage Cursor's $6B acquisition price was justified by. Availability: <strong>Grok Build</strong> (SpaceXAI's dev studio), <strong>Cursor</strong> (default across all plan tiers), <strong>SpaceXAI Console</strong>, and via API for enterprise; <strong>not yet available in the EU</strong>, presumably pending EU AI Act compliance review. Musk's framing: "roughly comparable to Opus 4.7" — critically, that's Anthropic's late-2025 model, not the current Opus 4.8, so the "Opus-class" claim is <em>one generation behind</em> the actual frontier. What is not yet published: full benchmark battery vs GPT-5.6 / Opus 4.8, context window, and specific tool-use / agentic-performance numbers.</p>
+      <p><strong class="lbl">Einordnung</strong> — Three implications. <em>First</em>, the "workhorse over frontier" positioning tacitly concedes SpaceXAI is not currently winning the reasoning race — but it does have a distribution wedge (Cursor's user base) and a compute cost advantage (Colossus 2). <em>Second</em>, the price cut is aggressive enough to move enterprise budgets — the $6/M output tier is the current default for large-scale application deployments, and undercutting Anthropic by ~76% there is a genuine share-shift moment if the quality is close. <em>Third</em>, this is the first Grok release Shotwell's investors were told to grade — and it landed the day after the Nasdaq-100 inclusion, meaning the SPCX price reaction (roughly flat 8 → 9 July) doesn't yet reflect it. Grok 5 remains unshipped and undated; treat the "7 models in training on Colossus 2" chatter accordingly.</p>
+      <p><strong class="lbl">Watch-Items</strong> — (1) independent benchmark results (LMSys arena, SWE-bench, GPQA) landing this week and next; (2) EU availability timeline — silent regulatory approval or explicit reason; (3) whether large model resellers (AWS Bedrock, Databricks) update their Grok tier to 4.5 within days or hold at 4.1; (4) any Cursor-specific pricing/tier changes now that Grok 4.5 is the Cursor default.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">5/5 · company release + multi-outlet corroboration</span></div></div>
+</div>
+
+<!-- X -->
+<a id="x"></a>
+<div class="section-header"><span class="material-icons-outlined">chat</span><h3>X</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag x">X</span><span class="tag t-dark">Ads / Premium</span><span class="date-pill">Baseline 2026</span></div>
+  <h4>Ad revenue stabilised — X ads +17% YoY in Q1 to $752M; Premium+ hits 4.7M subs</h4>
+  <p>No fresh X product news this week, but the underlying tape is worth logging as the Grok-4.5-into-X-ads integration approaches. Q1 2026 X advertising revenue printed <strong>+17% YoY at $752M</strong>, marking <strong>five consecutive quarters</strong> of growth after the 2023–24 boycott era. Advertising dependence is down from ~84% of X's revenue to ~65–68%, with the diversification coming from <strong>Premium ($8/mo)</strong>, <strong>Premium+ ($16/mo, no ads)</strong> — now at <strong>4.7M subscribers</strong>, +38% YoY — and creator monetisation payouts scaling to <strong>~$100M in 2026 (vs $45M prior)</strong>. Products newly live in 2026: <strong>X Chat</strong> (end-to-end-encrypted messaging with video calling, replacing legacy DMs), long-form article publishing in Premium, and a "Priority" notifications tab. Otherwise a quiet week — the integration of Grok 4.5 into the X ads-targeting stack (hiring flagged in Monday's edition) remains the next revenue-side catalyst worth watching.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Q1 ad revenue</div><div class="data-value up">$752M (+17%)</div></div>
+    <div class="data-item"><div class="data-label">Growth streak</div><div class="data-value up">5 quarters</div></div>
+    <div class="data-item"><div class="data-label">Premium+ subs</div><div class="data-value up">4.7M (+38%)</div></div>
+    <div class="data-item"><div class="data-label">Ad dependence</div><div class="data-value">~65–68% (vs 84%)</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.businessofapps.com/data/twitter-statistics/">Business of Apps · X statistics 2026</a>
+    <a href="https://marketingltb.com/blog/statistics/twitter-ads-statistics/">Marketing LTB · X Ads statistics</a>
+    <a href="https://www.autotweet.io/blog/x-formerly-twitter-complete-guide-2026">AutoTweet · 2026 product changes</a>
+  </div>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · trade-press aggregation of Q1 figures; no SEC filing since inside SPCX</span></div></div>
+</div>
+
+<!-- NEURALINK -->
+<a id="neuralink"></a>
+<div class="section-header"><span class="material-icons-outlined">biotech</span><h3>Neuralink</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag neuralink">NEURALINK</span><span class="tag t-blue">Trial expansion</span><span class="date-pill">Early Jul 2026</span></div>
+  <h4>Patient 26 reached; international trials scaling (UAE, UK, Canada); high-volume production goal for H2</h4>
+  <p>Neuralink has quietly reached <strong>26 patients enrolled</strong> in its brain-computer-interface (BCI) trials — up from 21 as recently as January 2026. The <strong>first Canadian ALS (amyotrophic lateral sclerosis) patient</strong> received an implant in July, adding Canada to the international footprint that now includes the <strong>UAE, UK (7 patients in the GB PRIME study as of May) and the US baseline</strong>. Two studies run in parallel: <strong>PRIME</strong> (quadriplegia — thought-based control of computers and robotic arms) and <strong>VOICE</strong> (severe speech impairment — decoding words from thought). Musk restated the 2026 objective on X: <strong>high-volume production of the implant</strong> and a shift to an <strong>"almost entirely automated" surgical procedure</strong> where threads go through the dura membrane rather than requiring its removal. Separately, the <strong>Blindsight visual-cortex implant</strong> retains its FDA breakthrough device designation from earlier this year.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Patients (cumulative)</div><div class="data-value up">26 (from 21 in Jan)</div></div>
+    <div class="data-item"><div class="data-label">Countries active</div><div class="data-value">US · UAE · UK · Canada</div></div>
+    <div class="data-item"><div class="data-label">Studies</div><div class="data-value">PRIME · VOICE</div></div>
+    <div class="data-item"><div class="data-label">2026 goal</div><div class="data-value">High-volume + auto-surgery</div></div>
+  </div>
+  <div class="links">
+    <a href="https://neuralink.com/updates/">Neuralink · updates (primary)</a>
+    <a href="https://www.basenor.com/blogs/news/neuralink-reaches-26th-patient-in-ongoing-brain-computer-interface-trials">Basenor · patient 26</a>
+    <a href="https://neuralink.com/trials/">Neuralink · clinical trials</a>
+  </div>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · primary-source patient count + Musk on-record production goal</span></div></div>
+</div>
+
+<!-- BORING -->
+<a id="boring"></a>
+<div class="section-header"><span class="material-icons-outlined">construction</span><h3>Boring Company</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag boring">BORING</span><span class="tag t-yellow">Vegas Loop</span><span class="date-pill">Late Jun – Jul 2026</span></div>
+  <h4>Vegas Loop has moved 4M+ passengers across 11 stations; Chinatown tunnels break ground, airport rides delayed</h4>
+  <p>Steady, non-headline progress on the <strong>Vegas Loop</strong>. Total passenger-moves are now <strong>above 4 million across 11 operating stations</strong>. Two active build lines: a <strong>2.2-mile dual-direction tunnel from Westgate toward Paradise Road</strong> is under construction to eliminate the roughly two miles of above-ground driving currently required for the Harry Reid International Airport route; and a <strong>three-station Chinatown branch</strong> broke ground this year, tying in over 200 local businesses. The <strong>Q1 2026 airport-rides target has slipped</strong> — the tunnel-and-station buildout is now the binding constraint. The Boring Company's long-term Clark County / City of Las Vegas approval covers <strong>68 miles and 104 stations</strong>, targeting completion between 2028 and 2029, with a fleet ambition of up to <strong>1,200 Tesla vehicles</strong> in the network. Also flagged: the UNLV (University of Nevada Las Vegas) branch denial earlier this year remains an open political friction point.</p>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Passengers moved</div><div class="data-value up">4M+ cumulative</div></div>
+    <div class="data-item"><div class="data-label">Live stations</div><div class="data-value">11</div></div>
+    <div class="data-item"><div class="data-label">Approved buildout</div><div class="data-value">68 mi · 104 stations</div></div>
+    <div class="data-item"><div class="data-label">Airport rides</div><div class="data-value down">Slipped from Q1 2026</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.boringcompany.com/vegas-loop">Boring Co. · Vegas Loop (primary)</a>
+    <a href="https://www.reviewjournal.com/news/news-columns/road-warrior/boring-co-plans-vegas-loop-airport-rides-in-early-2026-3589025/">Review Journal · airport rides status</a>
+    <a href="https://www.webpronews.com/boring-company-to-expand-vegas-loop-with-3-chinatown-stations-in-2026/">WebProNews · Chinatown expansion</a>
+  </div>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · corporate + local-press; passenger numbers self-reported</span></div></div>
+</div>
+
+<!-- POLITICS -->
+<a id="politics"></a>
+<div class="section-header"><span class="material-icons-outlined">flag</span><h3>Musk personal · politics</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-yellow">America Party</span><span class="date-pill">Weekend of 05 Jul 2026</span></div>
+  <h4>America Party turns one — still no ballot lines, but polling as a real threat to the GOP</h4>
+  <p>Musk's <strong>America Party</strong> hit its <strong>one-year anniversary this weekend</strong> (announced 5 July 2025 after the split with Trump over the "One Big Beautiful Bill"). Twelve months in, the balance sheet is asymmetric: <strong>zero formal platform, zero ballot-qualified candidates, and no organisational structure</strong> — but polling that shows the party <strong>drawing enough Republican-leaning voters to swing House seats in the 2026 midterms</strong> (Newsweek/YouGov, most recent wave). Musk's stated strategy remains "two to three Senate seats, eight to ten House districts" as concentrated-force spoiler positions. Ties into this week's other Muskverse news two ways: <strong>Shotwell's $320M Trump Accounts donation</strong> (Monday's edition) is the reconciliation counterweight, and the <strong>ballot-access clock is now brutal</strong> — most states' deadlines for third-party candidacies for November 2026 fall in July, August and September, so the party either files this quarter or de facto sits out the midterms.</p>
+  <div class="links">
+    <a href="https://en.wikipedia.org/wiki/America_Party">Wikipedia · America Party</a>
+    <a href="https://www.newsweek.com/elon-musk-america-party-republicans-poll-2097385">Newsweek · polling threat to GOP</a>
+    <a href="https://www.gzeromedia.com/news/analysis/can-musks-america-party-curb-trumps-power-in-2026">GZERO · midterm analysis</a>
+  </div>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · verified history + polling; forward strategy is Musk statements</span></div></div>
+</div>
+
+<!-- EDITOR -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span>Editor's view</span>
+  <h3>The IPO capital is now getting spent — this is the week the Muskverse converted balance-sheet luck into product cadence.</h3>
+  <p>Three signals rhyme this week, and they explain what the SPCX equity is actually buying you. <strong>Grok 4.5 ships at $2/$6</strong>, undercutting Anthropic Opus by roughly <span class="num">60–76%</span> — that is not a benchmark move, that is a <strong>Colossus 2 cost-of-training move</strong>, the first visible dividend of the merged capital structure paying for compute that Anthropic and OpenAI now rent. <strong>Tesla signs a 25 GWh NatPower storage deal</strong> — 2x its entire prior-quarter global deployment in one contract — funded by a company whose ~$25B 2026 capital expenditure is only defensible if the storage business scales this way. And <strong>Optimus V3 reveals in three weeks</strong> off a Fremont line converted from Model S/X in four months — a bet that only pencils if you already assume the Muskverse can raise capital at pace.</p>
+  <p>The counter-signal is the tape: <strong>SPCX added ~1% on Nasdaq-100 inclusion day and is −28% from the IPO peak</strong>, TSLA is roughly flat through the largest volume beat in company history. Both stocks are telling the same story — the multi-year narrative (autonomy, humanoids, mobile carrier, direct-to-cell, Starship cadence) is fully priced, and the marginal buyer is now waiting for the <strong>execution proof-points</strong>: 22 July Tesla earnings (auto gross margin ex-credits, Optimus/Cybercab commentary), 31 July Starship Flight 13, Q3 Grok 4.5 enterprise take-rate. This is what the mid-cycle of a Musk portfolio looks like — capital raised, narrative extended, product not yet shipped in volume.</p>
+  <p>The <strong>political leverage</strong> reads more transactional than ideological now. Shotwell paid $320M in stock to Trump Accounts on Monday; the America Party turned one on Saturday with polling that damages the GOP; and the DOJ intervention in the NAACP Colossus case (last week) shows the administration is willing to spend national-security credit to protect Grok's training compute. That is a two-way deal in real time: the Muskverse funds a signature Republican programme <em>and</em> keeps a spoiler party alive as insurance. Neither side pretends this is stable — but for now, both sides are paid to keep it going.</p>
+  <p><strong>What to watch next 7 days:</strong> <span class="num">(1)</span> independent Grok 4.5 benchmarks (LMSys, SWE-bench) — the "Opus-class" claim gets scored publicly this week; <span class="num">(2)</span> Booster 20 33-engine static fire and the FAA notice ripple ahead of Flight 13; <span class="num">(3)</span> Optimus V3 event date announcement (Musk's pattern: 3–7 days out); <span class="num">(4)</span> Tesla into 22 July earnings, especially any Cybercab FMVSS-exemption language.</p>
+  <p class="closer">The tape is asking the Muskverse to <em>show</em> — not tell. This week it started to.</p>
+</div>
+
+<div class="colophon">
+  Muskverse Briefing · 9 July 2026 · covers 3 – 9 July · next edition Mon 13 July<br>
+  Prepared for Stefan · sources: TechCrunch, Axios, Cybernews, TrendForce, Electrek, Basenor, PV Magazine, TIKR, TradingKey, Space.com, Coindesk, Motley Fool, Neuralink, Boring Company, Newsweek, GZERO Media, FT (via Successful Blog), Quartz<br>
+  Standard: 880px fluid container · Google Material Design · deep red / black hero for Muskverse edition
+</div>
+
+</main>
+
+</body>
+</html>

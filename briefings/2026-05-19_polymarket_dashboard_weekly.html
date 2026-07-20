@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket Dashboard · Weekly · May 19, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#7627bb; --primary-soft:#f3e8fd; --primary-on-soft:#5f1d8e;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --orange:#d56e0c; --orange-soft:#feefe3;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on-soft:#1967d2;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+    --bar-bg:#e8eaed;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--purple-soft); color:var(--purple); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .caveat { display:flex; gap:12px; padding:14px 18px; background:var(--yellow-soft); border:1px solid #fde293; border-radius:12px; margin-bottom:18px; font-size:13px; line-height:1.55; }
+  .caveat .material-icons-outlined { font-size:20px; color:var(--yellow); flex-shrink:0; }
+  .caveat strong { display:block; color:var(--yellow); margin-bottom:2px; font-weight:500; }
+  .caveat div { color:#5f4400; }
+
+  .hero { background:linear-gradient(135deg,#7627bb 0%,#5f1d8e 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:26px; font-weight:500; line-height:1.25; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:15px; line-height:1.55; opacity:0.95; margin:0; max-width:880px; }
+
+  /* META SUMMARY GRID */
+  .meta-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:24px; }
+  .meta-card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:12px; padding:14px 16px; }
+  .meta-theme { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
+  .meta-direction { font-family:'Google Sans',sans-serif; font-weight:600; font-size:14px; display:flex; align-items:center; gap:6px; line-height:1.2; }
+  .meta-direction .material-icons-outlined { font-size:18px; }
+  .dir-up { color:var(--green-deep); }
+  .dir-down { color:var(--red-deep); }
+  .dir-flat { color:var(--on-surface-muted); }
+  .dir-mixed { color:var(--yellow); }
+  .dir-info { color:var(--blue-on-soft); }
+
+  /* STATUS QUO SECTION */
+  .status-quo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:24px 28px; margin-bottom:24px; }
+  .status-quo h3 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 14px; color:var(--on-surface); display:flex; align-items:center; gap:10px; }
+  .status-quo h3 .material-icons-outlined { font-size:22px; color:var(--purple); }
+  .status-quo ul { margin:0; padding:0 0 0 20px; }
+  .status-quo li { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin-bottom:8px; }
+  .status-quo li strong { color:var(--on-surface); font-weight:500; }
+  .status-quo li:last-child { margin-bottom:0; }
+
+  /* THEME CARD */
+  .theme { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:24px 28px; margin-bottom:18px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .theme:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .theme .head { display:flex; align-items:flex-start; gap:14px; margin-bottom:14px; }
+  .theme .icon-wrap { flex-shrink:0; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-size:24px; }
+  .theme .icon-wrap.geo { background:var(--purple-soft); color:var(--purple); }
+  .theme .icon-wrap.macro { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .theme .icon-wrap.politics { background:var(--red-soft); color:var(--red-deep); }
+  .theme .icon-wrap.risk { background:var(--orange-soft); color:var(--orange); }
+  .theme .icon-wrap.ai { background:var(--green-soft); color:var(--green-deep); }
+  .theme .icon-wrap.tech { background:#e8eef6; color:#1f3548; }
+  .theme .head-titles { flex:1; }
+  .theme h3 { font-family:'Google Sans',sans-serif; font-size:21px; font-weight:500; margin:0 0 4px; line-height:1.2; letter-spacing:-0.01em; }
+  .theme .scope-tag { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+  .direction-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:8px; font-family:'Google Sans',sans-serif; font-weight:600; font-size:13px; margin-bottom:14px; }
+  .direction-badge.up { background:var(--green-soft); color:var(--green-deep); }
+  .direction-badge.down { background:var(--red-soft); color:var(--red-deep); }
+  .direction-badge.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+  .direction-badge.mixed { background:var(--yellow-soft); color:var(--yellow); }
+  .direction-badge.info { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .direction-badge .material-icons-outlined { font-size:18px; }
+
+  .thesis { font-size:15px; line-height:1.65; color:var(--on-surface); margin:0 0 18px; }
+  .thesis + .thesis { margin-top:-8px; }
+  .thesis a, .would-change a, .meta-take a { color:var(--primary-on-soft); text-decoration:none; border-bottom:1px solid #d9c2f0; }
+  .thesis a:hover, .would-change a:hover, .meta-take a:hover { border-bottom-color:var(--purple); }
+
+  .signals-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--on-surface-muted); margin:18px 0 8px; }
+
+  .signals { background:var(--surface-2); border-radius:10px; padding:4px 0; }
+  .signal-row { display:flex; align-items:center; padding:10px 16px; border-bottom:1px solid var(--divider-soft); gap:12px; }
+  .signal-row:last-child { border-bottom:none; }
+  .signal-q { flex:1; font-size:13px; color:var(--on-surface-2); line-height:1.4; }
+  .signal-q strong { color:var(--on-surface); font-weight:500; }
+  .signal-price { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; padding:3px 10px; border-radius:6px; flex-shrink:0; min-width:64px; text-align:center; }
+  .signal-price.yes { background:var(--green-soft); color:var(--green-deep); }
+  .signal-price.no { background:var(--red-soft); color:var(--red-deep); }
+  .signal-price.neutral { background:var(--surface); color:var(--on-surface); border:1px solid var(--divider-soft); }
+  .signal-price.lead { background:var(--blue-soft); color:var(--blue-on-soft); }
+
+  .delta { font-size:11px; font-family:'Roboto Mono',monospace; font-weight:500; padding:2px 6px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+  .delta.up { background:var(--green-soft); color:var(--green-deep); }
+  .delta.down { background:var(--red-soft); color:var(--red-deep); }
+  .delta.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+
+  .would-change { background:var(--blue-soft); border-left:3px solid var(--blue); border-radius:6px; padding:10px 14px; margin-top:16px; font-size:13px; line-height:1.55; color:var(--blue-on-soft); }
+  .would-change strong { color:var(--blue-on-soft); font-weight:600; display:block; margin-bottom:2px; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; }
+
+  .meta-take { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .meta-take .label { display:inline-flex; align-items:center; gap:6px; background:var(--purple-soft); color:var(--purple); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .meta-take h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .meta-take p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .meta-take p strong { color:var(--on-surface); font-weight:500; }
+  .meta-take p:last-child { margin-bottom:0; }
+
+  /* CROSS-REFERENCE BANNER */
+  .xref { display:flex; gap:12px; padding:14px 18px; background:var(--purple-soft); border:1px solid #d9c2f0; border-radius:12px; margin-top:18px; font-size:13px; line-height:1.55; }
+  .xref .material-icons-outlined { font-size:20px; color:var(--purple); flex-shrink:0; }
+  .xref div { color:#3d1566; }
+  .xref strong { color:var(--purple); font-weight:500; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:21px; }
+    .theme { padding:20px 22px; }
+    .theme h3 { font-size:18px; }
+    .meta-take { padding:22px; }
+    .meta-take h3 { font-size:18px; }
+    .status-quo { padding:20px 22px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">P</div>
+    <div class="titles">
+      <h1>Polymarket Dashboard</h1>
+      <div class="sub">7 themes &middot; ~30 underlying markets &middot; Weekly &middot; May 19, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="caveat">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Data sourced via news reporting, not direct API. Prices may be delayed. Two binary catalysts hit in 24 hours.</strong>
+    Deltas vs. the May 14 mid-week edition (five days). Polymarket gamma-api allowlist still pending. <strong>The board has positioned for two events that resolve before next week's edition</strong>: Google I/O keynote today (May 19, 10am PT) and NVDA Q1 FY27 earnings tomorrow (May 20, after-close). The pre-event positioning is asymmetric: Anthropic firmed further to <strong>92.5%</strong> on May best-model, NVDA's December dominance reprice from 58.5% to <strong>69%</strong> and Alphabet collapsed from 30.5% to <strong>20%</strong>. Iran softened back up modestly; Ukraine's durable-peace market deteriorated meaningfully; Fed stayed locked.
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Weekly edition &middot; May 12 &ndash; May 19, 2026</div>
+  <h2>The board pre-positions for two binary events in 24 hours: Google I/O today, NVDA tomorrow. The crowd has already chosen sides &mdash; Anthropic firmer, NVDA December lead steepens, Alphabet halved.</h2>
+  <p>Quiet macro, loud tech repositioning. <strong>Anthropic May best-model firmed 85.5% &rarr; 92.5%</strong> ($9.4M traded) as the board priced through I/O risk rather than around it. <strong>NVDA December largest-company moved 58.5% &rarr; 69%</strong> on the May 14 surge to a $5.7T cap and the $1T+ Blackwell-plus-Rubin demand call &mdash; while <strong>Alphabet halved from 30.5% to 20%</strong>, the largest single-cluster reprice on the board. Iran softened mildly back up (May 31 10% &rarr; 15%) as Trump paused a planned strike and resumed "serious negotiations," but the enrichment-timeline dispute (US 20 yrs vs. Iran 5+5) remains unresolved. <strong>Ukraine's peace-deal-before-2027 fell hard, 34.5% &rarr; 25%</strong>: Putin signalled openness but only after a treaty is "already settled" &mdash; the structural read finally caught down to the operational reality. Fed locked at 0 cuts 68%, 1 cut 17%, June 17 no-change 98%. <strong>The master variable this week is not Iran or volatility &mdash; it is binary tech catalysts</strong>: the next 30 hours decide the AI and Tech clusters for the rest of the quarter.</p>
+</div>
+
+<!-- ─── DIRECTION SUMMARY GRID ─── -->
+<div class="meta-row">
+  <div class="meta-card">
+    <div class="meta-theme">Iran de-escalation</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">trending_flat</span>Modest reprice up, talks paused strike</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Ukraine settlement</div>
+    <div class="meta-direction dir-down"><span class="material-icons-outlined">trending_down</span>Peace-2027 falls to 25%</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Fed monetary path</div>
+    <div class="meta-direction dir-flat"><span class="material-icons-outlined">trending_flat</span>0 cuts 68%, locked</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">US politics</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">trending_flat</span>Wave flat 74%, Tsunami at 53.5%</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Risk &amp; markets</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">swap_horiz</span>S&amp;P overtakes BTC for #2</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">AI race</div>
+    <div class="meta-direction dir-up"><span class="material-icons-outlined">trending_up</span>Anthropic firms to 92.5% pre-I/O</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Tech (cap leadership)</div>
+    <div class="meta-direction dir-up"><span class="material-icons-outlined">trending_up</span>NVDA Dec 58.5%&rarr;69%, Alphabet halved</div>
+  </div>
+</div>
+
+<!-- ─── STATUS QUO (May 14 Baseline) ─── -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo &mdash; Where the 7 clusters stood on May 14</h3>
+  <ul>
+    <li><strong>Iran:</strong> Deteriorating &mdash; last edition's brief green move reversed. Nuclear deal by May 31 at 10%, June 30 at 28%, before-2027 at 56%. Trump's "totally unacceptable" rejection of Iran's counter put diplomacy "on life support."</li>
+    <li><strong>Ukraine:</strong> Deteriorating &mdash; the 3-day Victory Day truce collapsed; binary ceasefire markets re-resolved down. Ceasefire-by-2026 back to 25.5%, peace-deal-before-2027 flat at 34.5% (the "genuine signal").</li>
+    <li><strong>Fed:</strong> Deteriorating &mdash; April CPI printed hot at 3.8% on May 12, pushing "0 cuts in 2026" 57% &rarr; 69%, "1 cut" eased to 17%, June 17 FOMC no-change at 98%. Recession soft at 22%.</li>
+    <li><strong>US politics:</strong> Stuck &mdash; foreign-policy reversal cancelled out the May 11 softening. House 78.5%, Senate ~47%, Blue Wave ~74%, Trump approval ~35%.</li>
+    <li><strong>Risk &amp; markets:</strong> Deteriorating &mdash; BTC horse-race share faded 39% &rarr; 31% as the de-risking arc reversed. Gold held lead at 38%, S&amp;P residual, recession 22%.</li>
+    <li><strong>AI race:</strong> Improving &mdash; Anthropic May best-model firmed 80.5% &rarr; 85.5%, June at 69.6%, Google June 20%, OpenAI 7%. Lone clean advancer on the board.</li>
+    <li><strong>Tech:</strong> Stuck &mdash; NVDA Dec 58.5%, Alphabet 30.5%, Apple ~2&ndash;7%. NVDA May 78.7%, June ~87.5%. Waiting on late-May earnings.</li>
+  </ul>
+</div>
+
+<!-- ─── THEME 1: IRAN ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">crisis_alert</span></div>
+    <div class="head-titles">
+      <h3>Iran de-escalation</h3>
+      <div class="scope-tag">Geopolitics &middot; 5 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">swap_horiz</span>Mixed &mdash; modest reprice up, but talks now hinge on a 15-year enrichment-timeline gap
+  </div>
+  <p class="thesis">Iran softened mildly back up after Trump publicly paused a planned strike and re-entered what he called "serious negotiations." <strong>Nuclear deal by May 31 climbed 10% &rarr; 15% Yes</strong>; <strong>June 30 held at ~34%</strong>; <strong>before-2027 unchanged at 56%</strong>. The de-noised signal (before-2027) has not budged through three consecutive whipsaw editions &mdash; that is itself the read. Short-dated optimism reflects the diplomatic re-engagement; long-dated optimism reflects the structural belief that this resolves in 2026 one way or another.</p>
+  <p class="thesis">The substantive picture, however, has sharpened in an uncomfortable direction. The disclosed gap on the load-bearing term is now explicit: <strong>the US is reportedly proposing a 20-year enrichment freeze; Iran has countered with 5 years plus a possible 5-year extension</strong>. That is a 10&ndash;15 year delta on the only variable that matters. Iran would also need to export ~1,000 lbs of highly-enriched uranium (destination still disputed: US vs. IAEA) and accept full IAEA inspection access plus a no-underground-facility pledge. <strong>Enrichment-end-by-May 31 sits at 7% Yes &mdash; the cleanest "no" on the board</strong>, confirming the framework dispute is real, not procedural. Trump's Tuesday Situation Room meeting on military options keeps the asterisk attached. <a href="https://www.foxnews.com/live-news/trump-iran-war-israel-hormuz-nuclear-deal-may-18">[Fox News May 18]</a> <a href="https://polymarket.com/event/us-iran-nuclear-deal-before-2027">[Polymarket: before-2027]</a> <a href="https://en.wikipedia.org/wiki/2025%E2%80%932026_Iran%E2%80%93United_States_negotiations">[Wikipedia: 2025&ndash;2026 negotiations]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Nuclear deal by May 31</strong></div>
+      <div class="signal-price no">Yes 15%</div>
+      <div class="delta up">&uarr;5pp</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Nuclear deal by June 30</strong></div>
+      <div class="signal-price no">Yes 34%</div>
+      <div class="delta up">&uarr;6pp</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Nuclear deal before 2027</strong></div>
+      <div class="signal-price neutral">Yes 56%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Enrichment end by May 31</strong></div>
+      <div class="signal-price no">Yes 7%</div>
+      <div class="delta down">structural No</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>US &times; Iran permanent peace deal</strong></div>
+      <div class="signal-price no">Yes low</div>
+      <div class="delta flat">unchanged</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Any signed framework that splits the enrichment-timeline difference (say, 10 years with snap-back) reprices May 31 toward 25% and pushes before-2027 to 65%. A Tuesday Situation Room decision to greenlight strikes collapses the entire cluster &mdash; May 31 to single digits, before-2027 below 40% for the first time. The watch-item is no longer rhetoric: it is whether the US drops the 20-year ask or Iran moves off 5+5. Until one side concedes, expect the May 31 market to drift in a 10&ndash;20% band on headlines.
+  </div>
+</div>
+
+<!-- ─── THEME 2: UKRAINE ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">military_tech</span></div>
+    <div class="head-titles">
+      <h3>Ukraine settlement</h3>
+      <div class="scope-tag">Geopolitics &middot; 3 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge down">
+    <span class="material-icons-outlined">trending_down</span>Deteriorating &mdash; the durable-peace market finally caught down to operational reality
+  </div>
+  <p class="thesis">The structural signal the last two editions flagged as "the only one that matters" &mdash; peace-deal-before-2027 &mdash; finally repriced down meaningfully. <strong>Yes fell from 34.5% to 25%</strong>, a 9.5pp slide and the largest single-week move in this cluster since the dashboard began. <strong>Ceasefire-by-end-2026 held at 25.5%</strong> (No 74.5%); these two numbers now converge close enough that the binary-vs-durable distinction has lost most of its information value. Putin's mid-week messaging that Russia's war is "coming to an end" and his willingness to meet Zelenskyy did not move the durable-peace number up &mdash; because he attached the condition that the meeting only happens "after a peace treaty aimed at a long-term historic perspective is finalised." That is a sequencing demand designed to be unmeetable.</p>
+  <p class="thesis">Reporting through the week placed roughly 150 combat engagements in a single 24-hour period and at least three Ukrainian civilian deaths from Russian strikes &mdash; the front-line operational tempo is incompatible with diplomatic progress on the Kremlin's terms. <strong>Russia's territorial-recognition demand vs. Ukraine's full-withdrawal demand remains the irreconcilable core</strong>, and the crowd appears to have given up pricing meaningful 2026 optionality into it. The Peace Parlay (ceasefire + NATO non-membership + peace deal) sits at 81.5% No. <strong>This is now the most decisively bearish cluster on the board</strong>, and the trajectory has been one-way for two consecutive editions. <a href="https://www.aljazeera.com/news/2026/5/10/putin-suggests-russias-war-on-ukraine-coming-to-an-end">[Al Jazeera: Putin]</a> <a href="https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027">[Polymarket: peace deal before 2027]</a> <a href="https://polymarket.com/event/russia-x-ukraine-peace-parlay">[Polymarket: peace parlay]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Ceasefire by end of 2026</strong></div>
+      <div class="signal-price no">Yes 25.5%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Comprehensive peace deal before 2027</strong></div>
+      <div class="signal-price no">Yes 25%</div>
+      <div class="delta down">&darr;9.5pp</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Peace parlay (ceasefire+NATO non-mem+deal)</strong></div>
+      <div class="signal-price no">No 81.5%</div>
+      <div class="delta down">structural No</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Peace deal by June 30</strong></div>
+      <div class="signal-price no">Yes low</div>
+      <div class="delta down">heavily No</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    A binding multi-week negotiation framework with both presidents named as parties reprices peace-deal-before-2027 toward 35%. Public US pressure (sanctions snap-back, weapons surge) that visibly forces Russia off the territorial-recognition demand reprices it toward 40%. Conversely, a new Russian offensive (the operational picture suggests preparations) pushes it under 20%. The cleanest tell remains the gap between ceasefire-by-2026 and peace-deal-before-2027 &mdash; they have now converged near 25%, which means the market is pricing both binary and durable resolution as equivalently unlikely. That is structurally bearish in a way that wasn't true last edition.
+  </div>
+</div>
+
+<!-- ─── THEME 3: FED ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap macro"><span class="material-icons-outlined">account_balance</span></div>
+    <div class="head-titles">
+      <h3>Fed monetary path</h3>
+      <div class="scope-tag">Macro &middot; 4 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge flat">
+    <span class="material-icons-outlined">trending_flat</span>Locked &mdash; the post-CPI freeze persists, 0 cuts 68%, June 17 no-change at 98%
+  </div>
+  <p class="thesis">No new information, no new pricing. <strong>"0 cuts in 2026" sits at 68%</strong> (last edition 69%, the 1pp drift is noise); <strong>"1 cut" at 17%</strong> unchanged; <strong>June 17 FOMC no-change at 98%</strong>. The fed funds target holds at 3.50&ndash;3.75% with the post-April-FOMC range intact. The mechanical setup the last edition described &mdash; energy-driven inflation plus a Fed unwilling to ease into a supply shock equals "0 cuts" near 70% &mdash; remains binding. There has been no fresh CPI, no fresh jobs print, and no new public Powell guidance in the window.</p>
+  <p class="thesis"><strong>Recession sits near 22%</strong>, essentially flat, confirming the "higher-for-longer, not hard-landing" read. The right-tail (cuts later in 2026) the last edition called "shut" remains shut. The next two real catalysts are unchanged: <strong>May jobs report (June 6) and May CPI (June 9)</strong>, both of which land before the June 16&ndash;17 FOMC. A cooling May CPI toward 3.3% reopens the single-cut conversation; another hot print starts a 2027-hike conversation. Until then, the Fed cluster is the most predictable surface on the dashboard and the one Stefan can safely de-prioritize for a week. <a href="https://polymarket.com/event/how-many-fed-rate-cuts-in-2026">[Polymarket: Fed cuts 2026]</a> <a href="https://polymarket.com/dashboards/fed-rates">[Polymarket Fed dashboard]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Fed rate cuts in 2026</strong></div>
+      <div class="signal-price no">0 cuts 68%</div>
+      <div class="delta flat">&minus;1pp noise</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Fed rate cuts in 2026</strong> &middot; second</div>
+      <div class="signal-price neutral">1 cut 17%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>June 17 FOMC decision</strong></div>
+      <div class="signal-price neutral">No change 98%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>US recession by end of 2026</strong></div>
+      <div class="signal-price no">Yes ~22%</div>
+      <div class="delta flat">flat</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    May jobs on June 6 (unemployment above 4.5% forces a cut conversation regardless of inflation) and May CPI on June 9 (a print toward 3.3% reopens single-cut; another 3.8%+ starts 2027-hike chatter) are the two events that can move this cluster. Between now and them, expect drift in the 1&ndash;2pp range &mdash; do not read direction into noise. A Hormuz de-escalation followed by gasoline rolling over would soften inflation with a one-to-two-month lag, but that needs to come through the Iran cluster first.
+  </div>
+</div>
+
+<!-- ─── THEME 4: POLITICS ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap politics"><span class="material-icons-outlined">how_to_vote</span></div>
+    <div class="head-titles">
+      <h3>US political momentum</h3>
+      <div class="scope-tag">Politics &middot; 5 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">trending_flat</span>Wave flat at ~74%, but Blue Tsunami firms to 53.5% &mdash; the high-conviction Dem case is now coin-flip
+  </div>
+  <p class="thesis">The headline number didn't move. <strong>Blue Wave (218+ House, 49+ Senate) held at ~74%</strong>; House at 78.5%; Senate ~47%; Republicans-retain-Senate at 54%. The structural read is unchanged: low Trump approval plus the midterm referendum dynamic supports a generic-ballot Democratic edge of about five points, but the favorable GOP Senate map (23 of 35 seats up are GOP-held in friendly states) caps the upside. What is new this week is the optionality re-firming above it: <strong>Blue Tsunami (49+ Senate plus 235+ House) now sits at 53.5% Yes</strong>, a coin-flip on the high-conviction Democratic case.</p>
+  <p class="thesis">That Tsunami number is the one to watch. It implies the crowd is now treating an unusually strong Democratic outcome as base case rather than tail risk &mdash; a meaningful structural shift, even though the headline Wave market didn't move. Underlying it: generic ballot polling has tightened slightly (D+5 to D+2 range in May polling), but the AtlasIntel House-specific D+14.5 number from May 12 is dragging the high-end scenarios up. <strong>Trump approval is the unresolved variable</strong>: Polymarket's May 22 approval market shows the modal bucket at 39.0&ndash;39.4 (40% probability) and 37.5&ndash;37.9 (36%), with separate national polling showing as high as ~45%. The dispersion is genuine, not a measurement artifact &mdash; different pollsters are getting different numbers because the electorate is genuinely split on the war-and-inflation bundle. <a href="https://polymarket.com/event/blue-wave-in-2026">[Polymarket: Blue Wave]</a> <a href="https://polymarket.com/event/blue-tsunami-in-2026">[Polymarket: Blue Tsunami]</a> <a href="https://polymarket.com/event/trump-approval-rating-on-may-22">[Polymarket: Trump approval May 22]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Democrats win the House</strong></div>
+      <div class="signal-price yes">Yes 78.5%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Democrats win the Senate</strong></div>
+      <div class="signal-price neutral">Yes ~47%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Blue Wave (218+ H, 49+ S)</strong></div>
+      <div class="signal-price neutral">Yes ~74%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Blue Tsunami (49+ S, 235+ H)</strong></div>
+      <div class="signal-price neutral">Yes 53.5%</div>
+      <div class="delta up">firmed</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Trump approval &middot; May 22 modal bucket</strong></div>
+      <div class="signal-price no">39.0&ndash;39.4 (40%)</div>
+      <div class="delta flat">dispersion wide</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The Tsunami at 53.5% is the cleanest single number now &mdash; if it pushes above 60%, the market is signalling something unusual underneath. A sustained Iran escalation (Trump strike) that re-tanks Trump approval into the low 30s pushes Blue Wave toward 80% and Tsunami above 60%. A genuine Iran deal that re-firms approval to mid-40s softens Tsunami back below 45%. Watch Trump approval at the May 22 resolution &mdash; the dispersion across pollsters is the unresolved variable that's holding the entire political complex's signal value down.
+  </div>
+</div>
+
+<!-- ─── THEME 5: RISK & MARKETS ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap risk"><span class="material-icons-outlined">analytics</span></div>
+    <div class="head-titles">
+      <h3>Risk &amp; markets</h3>
+      <div class="scope-tag">Macro / asset prices &middot; 4 underlying markets</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed">
+    <span class="material-icons-outlined">swap_horiz</span>S&amp;P 500 overtakes Bitcoin for #2 in the horse race &mdash; the risk-on rotation continues to rotate
+  </div>
+  <p class="thesis">The single most striking move in this cluster's history: <strong>S&amp;P 500 has overtaken Bitcoin for the #2 slot in the Gold/BTC/S&amp;P 2026 horse race</strong>. Current ordering reads <strong>Gold 38%, S&amp;P 30%, BTC residual</strong> &mdash; vs. last edition's Gold 38% / BTC 31% / S&amp;P residual. Gold's lead is unchanged. The flip is between BTC and S&amp;P. The mechanical read: the rate-locked S&amp;P narrative ("higher-for-longer but no hard landing") has finally found a bid in this market as recession stays at 22% and the no-cut path is fully priced. Bitcoin, by contrast, has lost its risk-on premium without gaining the safe-haven role &mdash; the worst of both regimes.</p>
+  <p class="thesis"><strong>Year-to-date context confirms the reprice</strong>: gold is up roughly 12.6% YTD, Bitcoin has lagged and is trading more like a risk asset than digital gold. The crowd has stopped expecting BTC to act as a safe-haven hedge during geopolitical stress &mdash; that thesis has now been falsified twice in three editions (BTC didn't lift on the de-risking arc; it didn't hold on the reversal). <strong>Gold holding 38% through both moves is the durable signal</strong>, and the S&amp;P overtake means the crowd is starting to price the rate-locked equity case as more credible than the crypto-recovery case. Recession soft at 22% reinforces this: a market expecting a hard landing would not put equities into the #2 slot. <a href="https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026">[Polymarket: BTC vs Gold vs S&amp;P]</a> <a href="https://polymarket.com/event/will-bitcoin-outperform-gold-in-2026">[Polymarket: BTC vs Gold]</a> <a href="https://finviz.com/news/282883/gold-bitcoin-or-the-sp500-which-asset-polymarket-predicts-to-do-best-in-2026">[Finviz coverage]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>BTC vs Gold vs S&amp;P best 2026</strong> &middot; winner</div>
+      <div class="signal-price lead">Gold 38%</div>
+      <div class="delta flat">flat (still leads)</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>BTC vs Gold vs S&amp;P best 2026</strong> &middot; #2 (rotation)</div>
+      <div class="signal-price neutral">S&amp;P 30%</div>
+      <div class="delta up">overtook BTC</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>BTC vs Gold vs S&amp;P best 2026</strong> &middot; #3</div>
+      <div class="signal-price no">BTC residual</div>
+      <div class="delta down">slipped to #3</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>US recession by year-end</strong></div>
+      <div class="signal-price no">Yes ~22%</div>
+      <div class="delta flat">flat</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    BTC reclaiming #2 needs a Fed-pivot signal (May CPI cooling toward 3.3%) plus a clean Iran-deal headline &mdash; both at once. S&amp;P holding #2 requires Q2 earnings to confirm AI-capex translates into operating leverage, not just revenue. Gold ceding the lead needs recession dropping below 15% (no hard-landing fear) and inflation cooling enough that real rates compress. Watch the Gold-over-S&amp;P gap &mdash; at 8pp it's narrower than the Gold-over-BTC gap was last edition. If that gap closes below 5pp, the rate-locked equity case has won the rotation; if it widens above 12pp, defensive lock-in is reasserting.
+  </div>
+</div>
+
+<!-- ─── THEME 6: AI RACE ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap ai"><span class="material-icons-outlined">psychology</span></div>
+    <div class="head-titles">
+      <h3>AI race</h3>
+      <div class="scope-tag">Tech &middot; 6 underlying markets &middot; Google I/O catalyst today</div>
+    </div>
+  </div>
+  <div class="direction-badge up">
+    <span class="material-icons-outlined">trending_up</span>Anthropic firms to 92.5% for May &mdash; the crowd has priced through I/O risk, not around it
+  </div>
+  <p class="thesis">The single most decisive pre-event positioning on the board. <strong>Anthropic May best-model firmed 85.5% &rarr; 92.5%</strong> with $9.36M traded &mdash; this is the crowd pricing through Google I/O optionality, not hedging around it. <strong>Google's Gemini share for end-of-May fell from 13.5% to 12.5%</strong>; <strong>OpenAI is at 3%</strong> (down from 7% on the June market, structurally faded). The driver is unchanged dominance: Claude Opus 4.7 (April 16 release) holds top LMArena Elo around 1500 with confirmed gains on GPQA Diamond and SWE-Bench Verified. The market resolves on the May 31 LMArena snapshot &mdash; meaning Google has 12 days from today's I/O keynote to ship a model that not only beats Claude but achieves a high enough Elo, which historically requires weeks of arena votes.</p>
+  <p class="thesis"><strong>Google I/O keynote runs today (May 19) at 10am PT</strong> with rumored Gemini 3.5 or 4.0 reveal, plus the broader Aluminium OS / Android 17 / Android XR glasses package. The 92.5% number implies the crowd is pricing roughly an 8% chance Google ships something material enough to overturn the lead before May 31 &mdash; tight, but not zero. <strong>The June market is where the I/O optionality sits</strong>: Anthropic 69.6% (flat), Google 20% (flat), OpenAI 7% (flat). That spread reflects "I/O might matter for June, won't matter for May." If today's keynote disappoints, expect both June numbers to compress sharply by end of week. <strong>The cluster is now firmly the structural-trend pricing engine of the board</strong> &mdash; it ignored every macro reversal, every geopolitical whipsaw, and every Fed reprice across the last three editions. <a href="https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-may">[Polymarket: best AI model May]</a> <a href="https://polymarket.com/event/which-company-has-best-ai-model-end-of-june">[Polymarket: best AI model June]</a> <a href="https://www.androidauthority.com/what-to-expect-from-google-io-2026-3664979/">[I/O 2026 preview]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of May</strong></div>
+      <div class="signal-price lead">Anthropic 92.5%</div>
+      <div class="delta up">&uarr;7pp</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of May</strong> &middot; second</div>
+      <div class="signal-price neutral">Google 12.5%</div>
+      <div class="delta down">&darr;1pp</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of May</strong> &middot; third</div>
+      <div class="signal-price no">OpenAI 3%</div>
+      <div class="delta down">faded</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of June</strong></div>
+      <div class="signal-price lead">Anthropic 69.6%</div>
+      <div class="delta flat">flat (I/O optionality)</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Best AI model end of June</strong> &middot; second</div>
+      <div class="signal-price neutral">Google 20%</div>
+      <div class="delta flat">flat (I/O priced in)</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Anthropic IPOs before OpenAI</strong></div>
+      <div class="signal-price yes">Yes ~67.5%</div>
+      <div class="delta flat">unchanged</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Google I/O today (Tuesday) is the dominant event for the entire cluster. A Gemini 3.5 / 4.0 reveal that demonstrably beats Claude Opus 4.7 on reasoning benchmarks crashes May toward 70% and June to 50/50. A reveal that is mostly product/agentic features (Aluminium OS, XR glasses) leaves both markets near current levels and effectively resolves May for Anthropic. Confirmation of the $900B+ Anthropic round close re-prices the valuation markets. A surprise OpenAI frontier model is the only path for OpenAI's 7% June share to recover. <strong>By next week's edition, the May market will have effectively resolved one way or the other.</strong>
+  </div>
+</div>
+
+<!-- ─── THEME 7: TECH ─── -->
+<div class="theme">
+  <div class="head">
+    <div class="icon-wrap tech"><span class="material-icons-outlined">memory</span></div>
+    <div class="head-titles">
+      <h3>Tech &mdash; cap leadership</h3>
+      <div class="scope-tag">Tech / equity &middot; 5 underlying markets &middot; NVDA earnings tomorrow</div>
+    </div>
+  </div>
+  <div class="direction-badge up">
+    <span class="material-icons-outlined">trending_up</span>NVDA December reprices 58.5%&rarr;69%, Alphabet halved 30.5%&rarr;20% &mdash; largest single-cluster shift this quarter
+  </div>
+  <p class="thesis">The "stuck" cluster from the last edition unstuck violently in one direction. <strong>NVDA December largest-company probability moved 58.5% &rarr; 69%</strong>, a 10.5pp jump that is the largest single-week move in this cluster since the dashboard started. The trigger is the May 14 surge to a <strong>record $5.7T market cap</strong> on a four-day rally that added over $500B, and Jensen Huang's public guidance of "$1 trillion at least through 2027" in Blackwell-plus-Vera-Rubin purchase orders. <strong>Alphabet collapsed 30.5% &rarr; 20%</strong>, a near-halving and the second-largest move on the entire board this week. Apple holds ~7%. Near-term: NVDA May 31 at ~78.7% (flat); NVDA June at ~87.5% (flat) &mdash; the near-dated markets are saturated, the December market is where this week's repricing happened.</p>
+  <p class="thesis">The architectural read has sharpened. <strong>Anthropic at 92.5% on models, NVDA at 69% on infrastructure, Alphabet collapsed to 20% as the dual-layer tail</strong> &mdash; the crowd is now pricing the Anthropic+NVDA stack as the default scenario, and Alphabet as a clear underdog rather than a coin-flip challenger. <strong>NVDA Q1 FY27 earnings drop tomorrow (May 20, after-close)</strong> with consensus revenue at $78B; Huang has guided to $1T+ visibility on Blackwell-plus-Rubin. The forward Q2 guide carries more weight than the print itself: a strong Vera Rubin ramp signal would confirm the $5.7T cap; a Blackwell-transition stumble could halve the December move within 48 hours. <strong>The board is positioned for a beat-and-raise, leaving an asymmetric setup</strong>: a clean beat extends the December lead toward 75%; an in-line print likely leaves it at 69%; a guide miss reprices it back below 60% fast. <a href="https://polymarket.com/event/largest-company-end-of-december-2026">[Polymarket: largest company Dec 2026]</a> <a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-reports-earnings-may-20-171200265.html">[NVDA Q1 FY27 preview]</a> <a href="https://www.tikr.com/blog/nvidia-stock-pulls-back-before-may-20-earnings-heres-what-the-1-trillion-demand-story-still-needs-to-prove">[TIKR: $1T demand story]</a></p>
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA largest company end of May</strong></div>
+      <div class="signal-price lead">~78.7%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA largest company end of June</strong></div>
+      <div class="signal-price lead">~87.5%</div>
+      <div class="delta flat">flat</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>NVDA largest company Dec 2026</strong></div>
+      <div class="signal-price lead">69%</div>
+      <div class="delta up">&uarr;10.5pp</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Alphabet largest by Dec 2026</strong></div>
+      <div class="signal-price neutral">20%</div>
+      <div class="delta down">&darr;10.5pp (halved)</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-q"><strong>Apple largest by Dec 2026</strong></div>
+      <div class="signal-price no">~7%</div>
+      <div class="delta flat">flat</div>
+    </div>
+  </div>
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    NVDA Q1 FY27 earnings (May 20 after-close) is the dominant event. A beat on revenue ($78B consensus) plus a Q2 guide above $85B with Vera Rubin commentary that flags accelerating customer ramps reprices December through 75%. An in-line print with cautious Vera-Rubin transition language holds 69%. A guide miss or Blackwell-shipment delay reprices December below 60% and reopens the Alphabet challenger narrative. Google I/O today is the secondary input &mdash; a strong I/O package can recover some Alphabet share independent of NVDA. China AI export-control escalation is the one tail risk that hits NVDA across all horizons. <strong>By next week's edition, both NVDA earnings and Google I/O will have resolved &mdash; this cluster will look meaningfully different.</strong>
+  </div>
+</div>
+
+<!-- ─── META-META READ ─── -->
+<div class="meta-take">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">insights</span>The meta-meta read</span>
+  <h3>The pre-event week: two binary tech catalysts in 24 hours have already moved the board. The master variable shifted from geopolitical volatility to scheduled tech events &mdash; and the crowd has pre-positioned aggressively, not defensively.</h3>
+
+  <p><strong>The master variable changed.</strong> For two months the master variable was Iran (substance), and for one mid-week refresh it was volatility itself (operationally). This week it is neither. <strong>The two events that will resolve most of next week's deltas are scheduled, not surprise:</strong> Google I/O keynote today (May 19, 10am PT) and NVDA Q1 FY27 earnings tomorrow (May 20, after-close). The board has already priced for both: Anthropic firmed to 92.5% (pricing <em>through</em> I/O risk), NVDA December moved 58.5% &rarr; 69%, Alphabet halved 30.5% &rarr; 20%. <strong>Pre-event positioning this aggressive is the cleanest signal the cluster has produced</strong> &mdash; the crowd is not hedging the catalysts, it is leaning into the base case for both.</p>
+
+  <p><strong>The largest moves on the board this week were both in the tech complex.</strong> NVDA December (+10.5pp), Alphabet December (&minus;10.5pp), Anthropic May (+7pp), Ukraine peace-2027 (&minus;9.5pp). Three of the four largest moves are tech repricings; the fourth is a geopolitical cluster finally catching down to its operational reality. <strong>That distribution is itself the structural lesson</strong>: the AI/Tech complex is now where the crowd takes its largest convictions, and the macro/geopolitics complex is where it grinds slowly toward the truth that was always there. The Ukraine peace-deal-before-2027 move from 34.5% to 25% is consequential precisely because it took three editions of operational evidence to register.</p>
+
+  <p><strong>S&amp;P 500 overtook Bitcoin in the horse race. Read this carefully.</strong> The Gold/BTC/S&amp;P 2026 ordering has flipped &mdash; Gold 38%, S&amp;P 30%, BTC residual (was Gold 38% / BTC 31% / S&amp;P residual). Gold's lead is structural and unchanged. <strong>The flip is between BTC and S&amp;P</strong>, and it tells you two things at once: (1) BTC has lost both its risk-on premium and its safe-haven thesis &mdash; the worst of both regimes; (2) the rate-locked S&amp;P narrative ("higher-for-longer but no hard landing, recession at 22%") has found a bid. This is the cleanest sign yet that the crowd has internalized the Fed lock as a stable backdrop, not a crisis precursor.</p>
+
+  <p><strong>Geopolitics is still bifurcated, but the binary has sharpened.</strong> Iran softened modestly back up (May 31 10% &rarr; 15%) on Trump's pause-and-talk pivot &mdash; but the disclosed substance is now an explicit 10&ndash;15 year enrichment-timeline gap (US 20 years, Iran 5+5). The before-2027 number has not moved across three consecutive editions, which is itself the most informative non-move on the board: <strong>56% is what the crowd thinks the structural probability is, filtered of all headline noise</strong>. Ukraine, by contrast, deteriorated meaningfully: peace-deal-before-2027 fell to 25% as Putin's "willing to meet" was attached to a sequencing demand designed to be unmeetable. <strong>The two geopolitical clusters have decoupled &mdash; Iran is now an option chain priced for resolution; Ukraine is priced for grind</strong>.</p>
+
+  <p><strong>The architectural read &mdash; sharpened and explicit.</strong> Anthropic owns the model layer at 92.5%; NVDA owns infrastructure at 69% December (up from 58.5%); Alphabet has been demoted from dual-layer challenger to clear underdog at 20%. <strong>The crowd is now explicitly pricing the Anthropic+NVDA stack as the default scenario.</strong> Two events between now and next week's edition test this directly: Google I/O is the Alphabet defense; NVDA earnings is the infrastructure-lead confirmation. <strong>The single highest-information moment of the next 30 hours is NVDA's Q2 forward guide</strong> &mdash; not the print, not Huang's prepared comments, but the explicit revenue range and Vera Rubin ramp language. By next Monday's edition, both events will have resolved, and the architectural read will either be the loudest signal on the board or the one that took the most damage.</p>
+</div>
+
+<!-- ─── CROSS-REFERENCE BANNERS ─── -->
+<div class="xref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Cross-reference: Geopolitics Briefing</strong><br>
+    Iran softened modestly (May 31 10% &rarr; 15%) on Trump's strike pause and "serious negotiations" pivot, but the disclosed enrichment-timeline gap is now explicit (US 20 yrs vs. Iran 5+5). Ukraine peace-deal-before-2027 dropped 34.5% &rarr; 25% as Putin's "willing to meet" was conditioned on a treaty being "already finalized." The de-noised signal still to carry: before-2027 Iran at 56% (unchanged across 3 editions). The two geopolitical clusters have decoupled &mdash; Iran is priced for resolution, Ukraine is priced for grind.
+  </div>
+</div>
+
+<div class="xref" style="margin-top:10px">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Cross-reference: Markets Briefing</strong><br>
+    Fed cluster locked &mdash; 0 cuts at 68%, June 17 FOMC no-change at 98%, no new CPI or jobs data in the window. The cross-asset rotation is the news: <strong>S&amp;P 500 overtook BTC for the #2 slot in the Gold/BTC/S&amp;P horse race</strong> (Gold 38%, S&amp;P 30%, BTC residual). Recession stable at 22%. The rate-locked equity case has found a bid; BTC has lost both risk-on and safe-haven roles. Next catalysts: May jobs (June 6), May CPI (June 9), NVDA earnings tomorrow.
+  </div>
+</div>
+
+<!-- ─── COLOPHON ─── -->
+<div class="colophon">
+  Polymarket Dashboard &middot; Weekly &middot; 2026-05-19<br>
+  7 themes from ~30 underlying markets &middot; Coverage: May 12 &ndash; May 19, 2026<br>
+  Deltas vs. May 14 mid-week edition (five days) &middot; Data sourced via news reporting, not direct API<br>
+  Live API access pending domain allowlist &middot; Next edition resolves Google I/O + NVDA earnings
+</div>
+
+</main>
+
+</body>
+</html>

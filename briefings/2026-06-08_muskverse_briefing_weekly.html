@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Weekly · June 8, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #3c4043;
+    --primary-hover: #2d3134;
+    --primary-soft: #e8eaed;
+    --primary-on-soft: #3c4043;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --blue: #1a73e8;
+    --blue-soft: #e8f0fe;
+    --blue-on-soft: #1967d2;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  /* APP BAR — NOT sticky */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: #3c4043; color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 16px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--divider); background: var(--surface); color: var(--on-surface-2); font-family: 'Google Sans Text', sans-serif; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  .hero { background: linear-gradient(135deg, #5f6368 0%, #1f2937 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 26px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0; max-width: 740px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.tesla    { background: #fce8e6; color: #a50e0e; }
+  .provider.spacex   { background: #e8eef6; color: #1f3548; }
+  .provider.xai      { background: #f1f3f4; color: #3c4043; }
+  .provider.politics { background: #fef7e0; color: #b06000; }
+  .provider.trial    { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ventures { background: #e6f4ea; color: #0d652d; }
+  .provider.baseline { background: #e8f0fe; color: #1967d2; }
+
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\00b7"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 10px; }
+  .card p:last-of-type { margin-bottom: 12px; }
+  .card .takeaway { background: #f5fbf6; border-left: 3px solid var(--green); padding: 10px 14px; margin: 4px 0 12px; font-size: 13px; line-height: 1.55; color: var(--on-surface-2); border-radius: 0 8px 8px 0; }
+  .card .takeaway strong { color: var(--green); font-weight: 500; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--blue-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--blue-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+
+  .banner.cross-ref { background: var(--blue-soft); border-color: #a8c7fa; color: var(--blue-on-soft); }
+  .banner.cross-ref .material-icons-outlined { color: var(--blue-on-soft); }
+  .banner.cross-ref strong { color: var(--blue-on-soft); }
+  .banner.cross-ref div { color: #174ea6; }
+  .banner.cross-ref a { color: #1a73e8; font-weight: 500; }
+
+  .status-list { list-style: none; margin: 0; padding: 0; }
+  .status-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--divider-soft); font-size: 13px; line-height: 1.55; color: var(--on-surface-2); }
+  .status-list li:last-child { border-bottom: none; }
+  .status-list .label { flex-shrink: 0; width: 100px; font-weight: 500; color: var(--on-surface); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 1px; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 20px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 12px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: left; font-size: 12px; color: var(--on-surface-muted); line-height: 1.7; }
+  .colophon h4 { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--on-surface-2); margin: 0 0 8px; }
+  .colophon a { color: var(--blue-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Weekly &middot; June 8, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a href="#status" class="chip active"><span class="material-icons-outlined">check_circle</span>Status Quo</a>
+  <a href="#spacex" class="chip">SpaceX / IPO</a>
+  <a href="#xai" class="chip">SpaceXAI / Grok</a>
+  <a href="#tesla" class="chip">Tesla</a>
+  <a href="#doge" class="chip">DOGE / Politics</a>
+  <a href="#legal" class="chip">Legal</a>
+  <a href="#ventures" class="chip">Other Ventures</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="eyebrow">June 1 &ndash; June 8, 2026 &middot; Weekly edition</div>
+  <h2>The IPO week, minus the rocket: SPCX priced its roadshow at a fixed $135 a share, Google agreed to pay $920 million a month for SpaceXAI compute, and Grok V9 finished training &mdash; all while Starship stays grounded and the SEC settlement sits unresolved on the judge&rsquo;s desk.</h2>
+  <p>The single largest IPO in market history is now four days from pricing, and the week handed it a near-perfect demand signal: <strong>Google agreed to pay SpaceX roughly $920 million per month for 32 months</strong> &mdash; about $29 billion total &mdash; to rent SpaceXAI compute capacity, the cleanest third-party validation yet of the AI-infrastructure thesis underwriting SPCX. SpaceX launched its roadshow June 4 at a <strong>fixed $135 per share</strong>, an all-primary $75 billion raise at a ~$1.75 trillion valuation; pricing lands after the close on <strong>June 11</strong>, debut June 12 on Nasdaq. xAI &mdash; now the SpaceXAI division &mdash; finished training <strong>Grok V9-Medium at 1.5 trillion parameters</strong> with a mid-June public release expected, and shipped an image-to-video model. The two overhangs from last week persist: Starship remains <strong>grounded under the Federal Aviation Administration (FAA) mishap investigation</strong> with Flight 13 in a July&ndash;August window, and Judge Sparkle Sooknanan has <strong>not yet ruled</strong> on the Securities and Exchange Commission (SEC) Twitter-disclosure settlement after publicly refusing to &ldquo;rubber stamp&rdquo; it. Tesla, meanwhile, drifted lower &mdash; ~$432, down 16% year-to-date &mdash; with its robotaxi fleet expansion still frozen since May 10.</p>
+</div>
+
+<!-- ═══ CAVEAT BANNER ═══ -->
+<div class="banner">
+  <span class="material-icons-outlined">warning_amber</span>
+  <div>
+    <strong>Three items to treat with care</strong>
+    The <strong>Google compute deal</strong> ($920M/month &times; 32 months) is reported by CNBC citing sources; terms and exact counterparty structure (SpaceX vs. the SpaceXAI division) are as reported, not from a filing &mdash; treat the headline number as solid, the fine print as indicative. <strong>Starship mishap status</strong> is genuinely ambiguous this week: one FAA newsroom page is titled &ldquo;closes&rdquo; while May 27&ndash;June 2 trade reporting describes the investigation as open; the weight of evidence says still grounded, Flight 13 not yet licensed &mdash; flagged in-card. <strong>DOGE</strong> reporting conflicts on whether it has effectively dissolved early versus formally running to its July 4 charter end; both framings appear in credible outlets.
+  </div>
+</div>
+
+<!-- ═══ STATUS QUO ═══ -->
+<div id="status" class="section-header">
+  <span class="material-icons-outlined">check_circle</span>
+  <h3>Status Quo &middot; Where things stood at the June 1 edition</h3>
+  <span class="count">snapshot</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider baseline"><span class="dot"></span>Baseline</span>
+    <span class="meta-pill">As of June 1 2026</span>
+  </div>
+  <h4>Recap from the June 1 briefing &mdash; what has and hasn&rsquo;t moved since</h4>
+  <ul class="status-list">
+    <li><span class="label">SpaceX</span>S-1 filed; roadshow June 4, pricing June 11, debut June 12 under SPCX at ~$1.75 trillion / $75 billion raise; $28.5 trillion total addressable market (TAM) framing, majority tied to AI. <strong>Moved: roadshow opened June 4; price now fixed at $135/share, 556.6M shares, all-primary; Google compute deal landed June 5 as a demand proof-point.</strong></li>
+    <li><span class="label">Starship</span>FAA elevated Flight 12 to a formal mishap investigation; Flight 13 pushed to July&ndash;August; Starlink Version 3 H2 deployment at risk. <em>Moved: little &mdash; still grounded, investigation requirements unmet, Ship 40 + Booster 20 in flow for Flight 13; FAA newsroom signals are mixed (see caveat).</em></li>
+    <li><span class="label">Tesla</span>TSLA ~$434; negative free cash flow guided for rest of 2026; Optimus V3 reveal July&ndash;August; robotaxi gap to Waymo widening. <em>Moved down to ~$432, now &minus;16% year-to-date; robotaxi fleet expansion frozen since May 10; analyst consensus is Hold, average 12-month target $403.86 &mdash; below spot.</em></li>
+    <li><span class="label">xAI / Grok</span>xAI dissolved into the SpaceXAI division (May 6); 2025 AI segment $3.2B revenue vs $6.4B operating loss; Anthropic renting Colossus 1; ~2 GW terrestrial power target. <em>Moved: Grok V9-Medium finished training at 1.5T parameters, mid-June release expected; image-to-video model shipped; Google signed on as a major compute tenant.</em></li>
+    <li><span class="label">Legal</span>June 1 was the SEC settlement&rsquo;s written-answer deadline before Judge Sooknanan; $1.5M penalty via a Musk trust, no admission. <em>Moved: SEC and Musk filed June 1&ndash;3 defending the deal as &ldquo;fair, reasonable and appropriate&rdquo; and free of collusion after Sooknanan&rsquo;s &ldquo;red flags&rdquo;; no ruling yet.</em></li>
+    <li><span class="label">DOGE</span>Savings claim ~$170&ndash;180B (down from ~$215B); charter ends July 4 2026; OPM digital-paperwork program announced. <em>Moved: fresh reporting that DOGE has effectively wound down early with functions absorbed into the Office of Personnel Management (OPM); administration pushes back, says charter runs to July 4.</em></li>
+  </ul>
+</div>
+
+<!-- ═══ SPACEX / IPO ═══ -->
+<div id="spacex" class="section-header">
+  <span class="material-icons-outlined">rocket_launch</span>
+  <h3>SpaceX / IPO</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX &middot; IPO</span>
+    <span class="meta-pill">June 3&ndash;4 2026 &middot; fixed $135</span>
+  </div>
+  <h4>The roadshow opened June 4 at a fixed $135 a share &mdash; an all-primary $75 billion raise that, at ~109&ndash;116&times; trailing revenue, makes SPCX the largest and richest IPO ever attempted</h4>
+  <p>SpaceX dispensed with the usual price-range mechanics. Per CNBC, the company is marketing <strong>556.6 million shares at a fixed $135 each</strong> &mdash; an <strong>all-primary $75 billion raise</strong>, more than triple Alibaba&rsquo;s record &mdash; with the roadshow having launched <strong>June 4</strong>, ahead of the previously floated week-of-June-8 estimate, after a faster-than-expected SEC review. <strong>Pricing is set for after the close on June 11, first trade June 12 on Nasdaq under SPCX.</strong> The ~$1.75 trillion valuation implies roughly <strong>109 to 116 times 2025 trailing revenue</strong> &mdash; a multiple that only coheres if the buy-side accepts the AI-infrastructure and orbital-data-centre story, not a launch-and-Starlink multiple. The fixed-price, all-primary structure is itself a tell: it signals enough demand certainty that the bankers see no need to discover a price through a range, and it means every dollar raised goes to the company rather than selling holders.
+    (<a href="https://www.cnbc.com/2026/06/03/spacex-ipo-stock-price-roadshow-musk.html" style="color:var(--blue-on-soft)">CNBC fixed $135 price</a>,
+    <a href="https://www.techi.com/spacex-ipo/" style="color:var(--blue-on-soft)">TECHi S-1/A and index risk</a>,
+    <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/261904604-spacex-ipo-spcx-date-set-for-june-12-175-trillion-valuation-tradingkey" style="color:var(--blue-on-soft)">TradingKey June 12 timeline</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> A fixed price on the largest IPO in history is a confidence posture, not a neutral mechanic &mdash; it removes the downside-discovery that a range provides, and it works only because the order book is presumed oversubscribed. The 109&ndash;116&times; revenue multiple is the entire debate compressed into one number: institutions are not buying 2026 cash flows, they are buying a 10&ndash;15-year option on SpaceX owning the launch monopoly that makes off-planet compute economic. The Google deal below is the week&rsquo;s strongest argument that the option has real near-term cash underneath it. Watch the June 11 pricing for whether the book fills at $135 or whether the underwriters have to flex &mdash; and watch the low free-float dynamic, since an all-primary raise with Musk&rsquo;s 85%+ voting lock means thin tradeable supply and potentially violent early price action.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/06/03/spacex-ipo-stock-price-roadshow-musk.html"><span class="material-icons-outlined">open_in_new</span>CNBC</a>
+    <a class="link-pill" href="https://www.techi.com/spacex-ipo/"><span class="material-icons-outlined">open_in_new</span>TECHi</a>
+    <a class="link-pill" href="https://www.tradingkey.com/analysis/stocks/us-stocks/261904604-spacex-ipo-spcx-date-set-for-june-12-175-trillion-valuation-tradingkey"><span class="material-icons-outlined">open_in_new</span>TradingKey</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX &middot; Starship</span>
+    <span class="meta-pill">May 27 &ndash; June 2 2026 &middot; still grounded</span>
+  </div>
+  <h4>Starship stays grounded under the FAA mishap investigation &mdash; Flight 13 hardware (Ship 40, Booster 20) is in flow, but no launch license, and the H2 Starlink V3 risk is unchanged</h4>
+  <p>No relief for the rocket this week. The <strong>FAA</strong> requires SpaceX to complete a mishap investigation into Flight 12 &mdash; triggered by Booster 19&rsquo;s premature engine shutdown and failed boostback ignitions on May 22 &mdash; and to win FAA approval of the root-cause report and corrective actions <strong>before Starship can fly again</strong>. SpaceNews and Spaceflight Now confirm the agency-overseen process; a <strong>July&ndash;August 2026 window for Flight 13</strong> is the reported expectation, with <strong>Ship 40 and Booster 20</strong> already in flow. One wrinkle for the record: an FAA newsroom page titled &ldquo;closes&rdquo; the Starship mishap investigation circulated this week, but June 2 trade reporting (MyRGV) still describes this as SpaceX&rsquo;s third open mishap probe since January 2025 &mdash; the weight of evidence is that Flight 13 is not yet licensed. The substantive stake is unchanged from last week: a grounded Starship into July pressures the S-1&rsquo;s commitment to begin <strong>Starlink Version 3</strong> deployment in the second half of 2026, since V3 satellites fly exclusively on Starship.
+    (<a href="https://spacenews.com/faa-requires-mishap-investigation-into-latest-starship-launch/" style="color:var(--blue-on-soft)">SpaceNews mishap requirement</a>,
+    <a href="https://spaceflightnow.com/2026/05/27/faa-requires-spacex-led-mishap-investigation-before-resumption-of-starship-launches/" style="color:var(--blue-on-soft)">Spaceflight Now</a>,
+    <a href="https://myrgv.com/local-news/2026/06/02/spacex-conducting-third-mishap-investigation-since-january-2025/" style="color:var(--blue-on-soft)">MyRGV third probe</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The IPO is being marketed with the rocket on the ground &mdash; which is the cleanest possible test of whether the buy-side cares about Starlink/launch cadence or has fully bought the AI-infrastructure framing. If the book fills at $135 with Starship grounded, that tells you the marginal SPCX buyer is underwriting the option, not the operating rocket. The binding date is not Flight 13 itself but whether the corrective-action report lands in time to keep V3 deployment inside the H2 2026 window the prospectus relies on. A slip into Q4 narrows V3&rsquo;s at-scale runway to weeks. Conflicting FAA signals this week are a reminder to anchor on the launch license, not the press headline.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://spacenews.com/faa-requires-mishap-investigation-into-latest-starship-launch/"><span class="material-icons-outlined">open_in_new</span>SpaceNews</a>
+    <a class="link-pill" href="https://spaceflightnow.com/2026/05/27/faa-requires-spacex-led-mishap-investigation-before-resumption-of-starship-launches/"><span class="material-icons-outlined">open_in_new</span>Spaceflight Now</a>
+    <a class="link-pill" href="https://myrgv.com/local-news/2026/06/02/spacex-conducting-third-mishap-investigation-since-january-2025/"><span class="material-icons-outlined">open_in_new</span>MyRGV</a>
+  </div>
+</div>
+
+<!-- ═══ SPACEXAI / GROK ═══ -->
+<div id="xai" class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>SpaceXAI / Grok</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>SpaceXAI &middot; compute</span>
+    <span class="meta-pill">June 5 2026 &middot; the $29B tenant</span>
+  </div>
+  <h4>Google agreed to pay SpaceX ~$920 million a month for 32 months &mdash; about $29 billion &mdash; to rent SpaceXAI compute capacity, the strongest third-party demand signal the IPO could ask for</h4>
+  <p>The week&rsquo;s most consequential development, and the one that arms the roadshow. Per CNBC, <strong>Google has agreed to pay SpaceX roughly $920 million per month for 32 months</strong> &mdash; about <strong>$29 billion in aggregate</strong> &mdash; for compute capacity at the SpaceXAI (former xAI) data centres. This rhymes with, and dwarfs, the earlier signal that Anthropic had rented all of Colossus 1: now a second hyperscaler-tier counterparty, and Google specifically, is paying SpaceXAI for compute. Two things matter. First, it converts the &ldquo;AI infrastructure&rdquo; line in the SPCX prospectus from a forward narrative into <strong>contracted, recurring third-party revenue</strong> &mdash; landing four days before pricing. Second, it is a notable competitive irony: Google, owner of its own tensor processing units and a frontier-model lab, is renting Musk&rsquo;s clusters, implying the global compute shortage is acute enough that even a vertically integrated hyperscaler is buying capacity wherever it can find it.
+    (<a href="https://www.cnbc.com/2026/06/05/google-to-pay-spacex-920-million-a-month-for-xai-compute-capacity.html" style="color:var(--blue-on-soft)">CNBC Google&ndash;SpaceX compute deal</a>,
+    <a href="https://www.btcc.com/en-US/academy/stocks/stock-guide/spacex-xai-merger-june-12-ipo-navigating-the-low-free-float-market-reality" style="color:var(--blue-on-soft)">BTCC merger &amp; free-float</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Timing makes this almost too convenient &mdash; a ~$29 billion contracted-revenue headline dropping into the roadshow window is exactly what an all-primary, fixed-price book wants to see, and it materially de-risks the &ldquo;majority of TAM tied to AI&rdquo; pitch. The structural read is sharper: when Google &mdash; which builds its own silicon &mdash; is paying a competitor nearly a billion a month for compute, the binding constraint on the entire AI economy is power-and-capacity, not chips or models, and SpaceXAI is monetising that scarcity directly. The competitive cost: same as the Anthropic-Colossus-1 read, Grok now trains alongside paying rivals on shared infrastructure, so the moat is the cluster, not the model. Cross-reference the AI briefing&rsquo;s compute&times;power bottleneck thread &mdash; this deal is the cleanest single data point in it.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/06/05/google-to-pay-spacex-920-million-a-month-for-xai-compute-capacity.html"><span class="material-icons-outlined">open_in_new</span>CNBC</a>
+    <a class="link-pill" href="https://www.btcc.com/en-US/academy/stocks/stock-guide/spacex-xai-merger-june-12-ipo-navigating-the-low-free-float-market-reality"><span class="material-icons-outlined">open_in_new</span>BTCC</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>Grok</span>
+    <span class="meta-pill">June 5 2026 &middot; V9 + video model</span>
+  </div>
+  <h4>Grok V9-Medium finished training at 1.5 trillion parameters with a mid-June release expected; an image-to-video model shipped in the API preview</h4>
+  <p>The product cadence inside the division stayed brisk. Musk posted on <strong>June 5</strong> that <strong>Grok V9-Medium completed training at 1.5 trillion parameters</strong>, with supervised fine-tuning and reinforcement learning underway and a <strong>public release expected mid-June 2026</strong>. Separately, xAI released <strong>grok-imagine-video-1.5-preview</strong>, an image-to-video model in the application programming interface (API) preview that turns stills into short cinematic clips up to 720p with natural-language motion control. Context from prior announcements: the larger <strong>Grok 5 is in training on the Colossus 2 supercluster in variants reaching 10 trillion parameters</strong>. Naming has gotten noisy across the V9 / Grok 4.x / Grok 5 lines &mdash; treat the consistent signal as &ldquo;another frontier-scale model finishing training roughly monthly,&rdquo; not the specific version label.
+    (<a href="https://releasebot.io/updates/xai" style="color:var(--blue-on-soft)">Releasebot xAI updates</a>,
+    <a href="https://x.ai/news" style="color:var(--blue-on-soft)">xAI news</a>,
+    <a href="https://www.basenor.com/blogs/news/5-grok-updates-you-should-know-about-right-now" style="color:var(--blue-on-soft)">Basenor Grok updates</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The release tempo is the point, and it is what the ~$29 billion of rented Google compute and the ~2 GW power build exist to sustain. For the SPCX thesis, frontier model output is the demand that fills the clusters; for the competitive picture, Grok shipping a 1.5T-parameter model and a video model in the same window keeps it credibly in the frontier conversation alongside the next Claude and GPT releases. The honest caveat: parameter counts are marketing, not capability &mdash; the load-bearing question is benchmark and real-world performance on release, which these announcements do not yet show. Treat mid-June as the date to re-rate Grok, not June 5.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://releasebot.io/updates/xai"><span class="material-icons-outlined">open_in_new</span>Releasebot</a>
+    <a class="link-pill" href="https://x.ai/news"><span class="material-icons-outlined">open_in_new</span>xAI News</a>
+    <a class="link-pill" href="https://www.basenor.com/blogs/news/5-grok-updates-you-should-know-about-right-now"><span class="material-icons-outlined">open_in_new</span>Basenor</a>
+  </div>
+</div>
+
+<!-- ═══ TESLA ═══ -->
+<div id="tesla" class="section-header">
+  <span class="material-icons-outlined">electric_car</span>
+  <h3>Tesla</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">June 1&ndash;8 2026 &middot; stock + robotaxi</span>
+  </div>
+  <h4>TSLA at ~$432 and down 16% year-to-date as the robotaxi expansion stays frozen since May 10 &mdash; analysts sit at Hold, with the average target below spot</h4>
+  <p>Tesla&rsquo;s equity drifted the wrong way this week and the picture is now clearly two-track: a soft operating story and a stock partly carried by the SpaceX halo. TSLA traded around <strong>$431.65 as of June 1</strong>, <strong>down ~16% year-to-date</strong>, against the December 2024 all-time high near $498. The autonomy data is the drag: the unsupervised Full Self-Driving (FSD) robotaxi fleet grew from nine vehicles in Austin in early April to <strong>39 across Austin, Dallas and Houston by early May &mdash; then the expansion abruptly stopped on May 10</strong>, and the share price stalled with it. Capital intensity is unchanged: 2026 capital expenditure guided above <strong>$25 billion</strong>, with free cash flow negative for the remaining three quarters as Tesla funds AI compute, the AI5 inference chip, Cybercab, Megapack 3 and Optimus. Wall Street is unconvinced near term: TipRanks shows a <strong>Hold consensus &mdash; 12 Buys, 12 Holds, 5 Sells &mdash; with an average 12-month target of $403.86</strong>, below the current price. The Motley Fool explicitly tied part of May&rsquo;s strength to the SpaceX IPO read-through rather than Tesla fundamentals.
+    (<a href="https://www.mexc.com/news/1059867" style="color:var(--blue-on-soft)">MEXC &minus;16% YTD &amp; robotaxi</a>,
+    <a href="https://www.heygotrade.com/en/blog/tesla-q1-2026-earnings-recap/" style="color:var(--blue-on-soft)">HeyGoTrade Q1 recap</a>,
+    <a href="https://www.fool.com/investing/2026/06/02/heres-why-tesla-stock-soared-in-may-and/" style="color:var(--blue-on-soft)">Motley Fool SpaceX read-through</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The frozen robotaxi fleet is the tell &mdash; an expansion that halts at 39 vehicles and stays halted for a month is not a scaling curve, it is a pause, and the market read it as one. With the analyst average target ($403.86) sitting <em>below</em> spot, the sell-side is implicitly saying the stock is carrying valuation it has not yet earned operationally &mdash; consistent with the Motley Fool&rsquo;s point that the SpaceX IPO halo, not Tesla&rsquo;s own catalysts, drove May. For the portfolio, the live variables remain Optimus (V3 reveal still July&ndash;August) and any unfreezing of the robotaxi rollout; until one of those moves, Tesla is the part of the Muskverse most exposed to a &ldquo;sell-the-SPCX-news&rdquo; unwind after June 12.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.mexc.com/news/1059867"><span class="material-icons-outlined">open_in_new</span>MEXC</a>
+    <a class="link-pill" href="https://www.heygotrade.com/en/blog/tesla-q1-2026-earnings-recap/"><span class="material-icons-outlined">open_in_new</span>HeyGoTrade</a>
+    <a class="link-pill" href="https://www.fool.com/investing/2026/06/02/heres-why-tesla-stock-soared-in-may-and/"><span class="material-icons-outlined">open_in_new</span>Motley Fool</a>
+  </div>
+</div>
+
+<!-- ═══ DOGE / POLITICS ═══ -->
+<div id="doge" class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>DOGE / Politics</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider politics"><span class="dot"></span>Politics</span>
+    <span class="meta-pill">June 2026 &middot; wind-down dispute</span>
+  </div>
+  <h4>Reports say DOGE has effectively wound down early, with functions absorbed into OPM &mdash; the administration insists the charter runs to July 4</h4>
+  <p>The story this week is a dispute over whether <strong>DOGE (Department of Government Efficiency)</strong> still meaningfully exists. Fresh reporting (Decrypt, TIME, and earlier Reuters) says DOGE has <strong>effectively ceased operating</strong>, with most functions absorbed into the <strong>Office of Personnel Management (OPM)</strong>; OPM Director Scott Kupor was quoted saying DOGE &ldquo;doesn&rsquo;t exist&rdquo; as a centralised entity. The administration pushed back, stressing the <strong>charter remains active until July 4, 2026</strong> and that DOGE&rsquo;s principles continue through individual agencies even without central leadership. Musk&rsquo;s own special-government-employee role ended back in May 2025. The savings-figure debate from prior weeks (self-reported ~$170&ndash;180 billion vs. an external cost estimate near $135 billion) is unchanged; no new dashboard revision this week.
+    (<a href="https://decrypt.co/349772/department-government-efficiency-winds-down" style="color:var(--blue-on-soft)">Decrypt early wind-down</a>,
+    <a href="https://time.com/7336327/doge-disbanded-elon-musk/" style="color:var(--blue-on-soft)">TIME disbanded</a>,
+    <a href="https://thehill.com/homenews/administration/5620378-trump-doge-commission-status/" style="color:var(--blue-on-soft)">The Hill OPM pushback</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Not directly market-moving, but the framing matters for the portfolio&rsquo;s political-capital ledger. &ldquo;DOGE quietly absorbed into OPM&rdquo; is the soft-landing version &mdash; it lets Musk exit government without a hard scoreboard moment, which is the better outcome for the defence-contracting and regulatory-approval exposure across SpaceX and Tesla than a contested July 4 post-mortem would be. The substance hasn&rsquo;t changed in months; what&rsquo;s shifting is the narrative settling toward &ldquo;wound down&rdquo; rather than &ldquo;triumphant.&rdquo; Carry it as a fading variable, not an active one.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://decrypt.co/349772/department-government-efficiency-winds-down"><span class="material-icons-outlined">open_in_new</span>Decrypt</a>
+    <a class="link-pill" href="https://time.com/7336327/doge-disbanded-elon-musk/"><span class="material-icons-outlined">open_in_new</span>TIME</a>
+    <a class="link-pill" href="https://thehill.com/homenews/administration/5620378-trump-doge-commission-status/"><span class="material-icons-outlined">open_in_new</span>The Hill</a>
+  </div>
+</div>
+
+<!-- ═══ LEGAL ═══ -->
+<div id="legal" class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>Musk Legal</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>SEC &middot; OpenAI</span>
+    <span class="meta-pill">June 1&ndash;3 2026 &middot; ruling pending</span>
+  </div>
+  <h4>The SEC and Musk filed to defend the Twitter settlement after Judge Sooknanan&rsquo;s &ldquo;red flags&rdquo; &mdash; she has not yet ruled, and the deadline passed without the IPO complication materialising</h4>
+  <p>The June 1 deadline came and went without the tail risk firing. The <strong>SEC</strong> and Musk submitted written defences on <strong>June 1&ndash;3</strong> arguing the <strong>$1.5 million</strong> settlement &mdash; payable by a trust in Musk&rsquo;s name, no admission of wrongdoing &mdash; is &ldquo;<strong>fair, reasonable and appropriate</strong>&rdquo; and &ldquo;not the result of any improper collusion.&rdquo; The SEC stressed the seven-figure penalty was a defendant concession reached after nearly a year of negotiation. The backdrop: <strong>U.S. District Judge Sparkle Sooknanan</strong> publicly said in May she &ldquo;will not&rdquo; and &ldquo;cannot rubber stamp this settlement,&rdquo; flagging the trust structure, the penalty&rsquo;s size relative to the alleged <strong>$150 million</strong> benefit from Musk&rsquo;s late April-2022 Twitter-stake disclosure, and whether Musk received special treatment. She has <strong>not yet issued a ruling</strong>. The OpenAI / Musk v. Altman thread continues quietly on the 9th Circuit appeal docket; the May 18 statute-of-limitations dismissal stands.
+    (<a href="https://www.insurancejournal.com/news/national/2026/06/03/872219.htm" style="color:var(--blue-on-soft)">Insurance Journal red flags</a>,
+    <a href="https://www.benzinga.com/news/legal/26/06/52928685/elon-musk-twitter-settlement-sec-fair-reasonable-appropriate" style="color:var(--blue-on-soft)">Benzinga SEC defence</a>,
+    <a href="https://whtc.com/2026/06/01/sec-defends-musk-settlement-over-twitter-saying-it-reflects-compromises/" style="color:var(--blue-on-soft)">WHTC compromises</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The base case held: the deadline passed, both parties defended the deal, and no live SEC-action complication has surfaced to disrupt the roadshow that opened June 4. But the case is not closed &mdash; Sooknanan&rsquo;s ruling is the open variable, and her demonstrated willingness to reject (she threw out Musk&rsquo;s dismissal attempt in February) means rejection is a real, if minority, outcome. If she rejects the settlement in the next two weeks, the SEC enforcement thread reopens against the controlling shareholder precisely as SPCX prices and debuts &mdash; the one legal scenario that intersects the IPO calendar. Watch the docket through June 12.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.insurancejournal.com/news/national/2026/06/03/872219.htm"><span class="material-icons-outlined">open_in_new</span>Insurance Journal</a>
+    <a class="link-pill" href="https://www.benzinga.com/news/legal/26/06/52928685/elon-musk-twitter-settlement-sec-fair-reasonable-appropriate"><span class="material-icons-outlined">open_in_new</span>Benzinga</a>
+    <a class="link-pill" href="https://whtc.com/2026/06/01/sec-defends-musk-settlement-over-twitter-saying-it-reflects-compromises/"><span class="material-icons-outlined">open_in_new</span>WHTC</a>
+  </div>
+</div>
+
+<!-- ═══ OTHER VENTURES ═══ -->
+<div id="ventures" class="section-header">
+  <span class="material-icons-outlined">hub</span>
+  <h3>Other Ventures</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider ventures"><span class="dot"></span>Neuralink &middot; X &middot; Boring</span>
+    <span class="meta-pill">continuity &middot; one correction</span>
+  </div>
+  <h4>Neuralink&rsquo;s Blindsight wins FDA Breakthrough Device status with first patient trial targeted in 2026; plus a correction on who runs X</h4>
+  <p>Two ventures updates and one correction to last week&rsquo;s briefing. <strong>Neuralink:</strong> the <strong>Blindsight</strong> visual-prosthesis implant &mdash; which restores a crude visual signal by stimulating the brain&rsquo;s visual cortex from a head-worn camera &mdash; has received <strong>U.S. Food and Drug Administration (FDA) Breakthrough Device Designation</strong>, accelerating its regulatory path, with recruitment underway in the US, Canada and UK and a <strong>first patient trial targeted in 2026</strong>. Musk has set expectations low: early output will be &ldquo;low resolution, like Atari graphics,&rdquo; though potentially enabling sight for the congenitally blind where the visual cortex is intact. <strong>Correction &mdash; X leadership:</strong> last week&rsquo;s edition stated &ldquo;Linda Yaccarino remains CEO of record.&rdquo; That was wrong. <strong>Yaccarino resigned as X chief executive officer (CEO) in July 2025</strong>; X has had no permanent replacement CEO since, operating under Musk and the SpaceXAI structure. No fresh X platform news in the window. <strong>The Boring Company:</strong> no new development this week beyond the prior Dubai Loop (Parsons contractor) and Vegas Loop continuity items.
+    (<a href="https://neuralink.com/trials/visual-prosthesis/" style="color:var(--blue-on-soft)">Neuralink Blindsight trial</a>,
+    <a href="https://pharmaphorum.com/news/neuralink-gets-breakthrough-tag-sight-restoring-implant" style="color:var(--blue-on-soft)">pharmaphorum breakthrough tag</a>,
+    <a href="https://en.wikipedia.org/wiki/Linda_Yaccarino" style="color:var(--blue-on-soft)">Yaccarino resignation</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Neuralink&rsquo;s FDA Breakthrough Designation is the meaningful item &mdash; it is a regulatory accelerant, not a clinical result, but it moves Blindsight materially closer to a first-in-human vision trial and keeps Neuralink&rsquo;s optionality alive as the quietest high-upside piece of the portfolio. The X correction matters for hygiene: carrying &ldquo;Yaccarino is CEO&rdquo; for another week would have compounded a factual error &mdash; X has run without a permanent CEO since mid-2025, which is itself the relevant fact (advertiser-relationship continuity now sits with Musk directly, under SpaceXAI). Both are continuity-tier; neither changes the June 11&ndash;12 IPO calculus.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://neuralink.com/trials/visual-prosthesis/"><span class="material-icons-outlined">open_in_new</span>Neuralink</a>
+    <a class="link-pill" href="https://pharmaphorum.com/news/neuralink-gets-breakthrough-tag-sight-restoring-implant"><span class="material-icons-outlined">open_in_new</span>pharmaphorum</a>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Linda_Yaccarino"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+  </div>
+</div>
+
+<!-- ═══ CROSS-REF ═══ -->
+<div class="banner cross-ref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Cross-references</strong>
+    The Google&ndash;SpaceXAI compute deal is the strongest single data point in the AI briefing&rsquo;s compute&times;power-bottleneck thread &mdash; a hyperscaler with its own silicon renting a rival&rsquo;s clusters. The SPCX pricing (June 11) and debut (June 12) also belong on the market-briefing calendar as the largest IPO in history. The OpenAI / Musk v. Altman appeal continues to be tracked in the dedicated OpenAI-trial report; nothing moved there this week.
+  </div>
+</div>
+
+<!-- ═══ EDITOR'S VIEW ═══ -->
+<div class="featured">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Editor&rsquo;s View</span>
+  <h3>Six reads on the week the IPO got its proof-point &mdash; and the rocket stayed on the ground</h3>
+  <ol class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <span class="body"><strong>The Google deal is the headline, not the IPO mechanics.</strong> A ~$29 billion, 32-month compute contract from Google &mdash; a company that builds its own chips &mdash; landing four days before SPCX prices is the cleanest validation of the AI-infrastructure thesis the roadshow could have scripted. It converts a forward narrative into contracted recurring revenue at the exact moment the buy-side is adjudicating the 109&ndash;116&times; multiple.</span>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <span class="body"><strong>A fixed $135 price is a confidence signal disguised as a mechanic.</strong> Skipping a price range on the largest IPO ever only works if the book is presumed oversubscribed. Combined with an all-primary raise and Musk&rsquo;s 85%+ voting lock, it sets up a thin free float &mdash; expect violent price action after the June 12 debut, in either direction.</span>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <span class="body"><strong>The IPO is being marketed with the rocket grounded &mdash; and that&rsquo;s the real test.</strong> Starship is still under FAA mishap investigation with Flight 13 not before July&ndash;August. If the book fills at $135 anyway, the marginal SPCX buyer is underwriting the AI/orbital option, not launch cadence. The binding risk is the H2 Starlink Version 3 deployment commitment, which a Q4 slip would gut.</span>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <span class="body"><strong>Tesla is the soft spot and the unwind risk.</strong> Down 16% year-to-date, robotaxi expansion frozen at 39 vehicles since May 10, analyst average target ($403.86) below spot, and May&rsquo;s strength attributed partly to the SpaceX halo. Tesla is the Muskverse asset most exposed to a &ldquo;sell-the-news&rdquo; unwind once SPCX debuts.</span>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <span class="body"><strong>The legal tail didn&rsquo;t fire, but it isn&rsquo;t defused.</strong> The June 1 deadline passed with the SEC and Musk defending the $1.5M settlement; Judge Sooknanan has not ruled. A rejection in the next two weeks is the one legal scenario that intersects the pricing-and-debut window. Watch the docket through June 12.</span>
+    </li>
+    <li>
+      <span class="num">6</span>
+      <span class="body"><strong>The compute scarcity trade is the master variable across the portfolio.</strong> Google renting Musk&rsquo;s clusters, Grok finishing another frontier model, the ~2 GW power build, the orbital-data-centre pitch &mdash; all four reduce to one fact: power-and-capacity, not chips or models, is the binding constraint of the AI economy, and SpaceXAI is positioned to monetise it terrestrially now and from orbit later. That is the entire SPCX bull case in one sentence. <em>The wildcard: a disappointing Grok V9 benchmark on mid-June release would puncture the &ldquo;frontier lab worth the clusters&rdquo; half of it.</em></span>
+    </li>
+  </ol>
+</div>
+
+<!-- ═══ COLOPHON ═══ -->
+<div class="colophon">
+  <h4>About this briefing</h4>
+  Muskverse Portfolio Briefing &middot; Weekly edition &middot; coverage period June 1&ndash;8, 2026 &middot; compiled June 8, 2026.<br>
+  Sources are web-search-derived [tool] and linked inline per story; confidence dots (C-Scores) reflect source strength: 5 = primary/filing, 4 = mainstream corroborated, 3 = single-source or industry summary. Figures flagged in the caveat banner (Google deal terms, Starship mishap status, DOGE wind-down framing) carry residual uncertainty. The June 1 edition&rsquo;s claim that Linda Yaccarino &ldquo;remains CEO of X&rdquo; is corrected here &mdash; she resigned in July 2025. Not investment advice. Prices and legal status as of compile date and subject to change.
+</div>
+
+</main>
+</body>
+</html>

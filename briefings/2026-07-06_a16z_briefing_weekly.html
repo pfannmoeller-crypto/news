@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Briefing · 6 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#d2452a; --primary-soft:#fdeae6; --primary-on-soft:#a82e18;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--primary-soft); color:var(--primary-on-soft); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:13px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:var(--primary-soft); border-color:var(--primary-soft); color:var(--primary-on-soft); font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#e2553a 0%,#7a1f0e 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:var(--primary-on-soft); font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-orange { background:var(--primary-soft); color:var(--primary-on-soft); }
+  .tag.t-purple { background:var(--purple-soft); color:#5f1d8e; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .data-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 14px; }
+  .data-item { background:var(--surface-2); border-radius:8px; padding:10px 12px; }
+  .data-label { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .data-value { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; color:var(--on-surface); }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:var(--primary-on-soft); text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:var(--primary-soft); }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:var(--primary); }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.deep { margin-top:12px; border-top:1px dashed var(--divider-soft); padding-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:500; color:var(--primary-on-soft); background:var(--primary-soft); padding:6px 14px; border-radius:14px; user-select:none; transition:background 0.15s; }
+  details.deep summary:hover { background:#fbdcd4; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary::after { content:"expand_more"; font-family:'Material Icons Outlined'; font-size:16px; transition:transform 0.2s; }
+  details.deep[open] summary::after { transform:rotate(180deg); }
+  details.deep .dd { margin-top:14px; }
+  details.deep .dd p { font-size:13.5px; line-height:1.68; color:var(--on-surface-2); margin:0 0 12px; }
+  details.deep .dd p:last-child { margin-bottom:0; }
+  details.deep .dd strong { color:var(--on-surface); font-weight:600; }
+  details.deep .dd .lbl-dd { color:var(--primary-on-soft); font-weight:600; }
+
+  .radar { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:8px 10px; }
+  .radar-row { display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:8px; }
+  .radar-row:not(:last-child) { border-bottom:1px solid var(--divider-soft); }
+  .radar-row:hover { background:var(--surface-2); }
+  .radar-row .rtext { flex:1; font-size:13px; color:var(--on-surface-2); }
+  .radar-row .rtext strong { color:var(--on-surface); font-weight:500; }
+  .radar-row .ramt { font-family:'Roboto Mono',monospace; font-size:12px; font-weight:600; color:var(--primary-on-soft); white-space:nowrap; }
+
+  .status { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; }
+  .status ul { margin:8px 0 0; padding-left:20px; }
+  .status li { font-size:13.5px; line-height:1.65; color:var(--on-surface-2); margin-bottom:6px; }
+  .status li strong { color:var(--on-surface); font-weight:500; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:var(--primary-soft); color:var(--primary-on-soft); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:var(--primary-on-soft); font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">16z</div>
+    <div class="titles">
+      <h1>a16z Briefing</h1>
+      <div class="sub">Compiled Mon 6 July 2026 · 10-day catch-up edition · covers 26 Jun – 6 Jul (plus gap items since prior edition, 22 Jun)</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#status">Status quo</a>
+  <a class="chip" href="#policy">Policy &amp; Pentagon</a>
+  <a class="chip" href="#deals">Investments &amp; deals</a>
+  <a class="chip" href="#crypto">Crypto / Web3</a>
+  <a class="chip" href="#media">Media &amp; programs</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">10-day a16z catch-up · 26 Jun – 6 Jul 2026</div>
+  <h2>The story this window is political: Marc Andreessen took a seat on the Pentagon's Defense Policy Board — while the fund kept writing applied-AI cheques on schedule.</h2>
+  <p>On 29 June, Andreessen was named to the newly reconstituted Defense Policy Board, the advisory panel to Pentagon leadership — with a16z holding a defense-tech portfolio (Anduril, Skydio, Shield AI, Hadrian, Saronic) that benefits directly from the decisions the board shapes, and no disclosure rules yet in place. Around it: a deal cadence that surprised on the upside — Mirendil turned out to be a <strong>$200M seed at a $1B valuation</strong> (ex-Anthropic founders; one of the largest seed rounds in AI history) alongside Probook, Netris, Ornn and Prosper AI — plus a viral "Doctor ChatGPT beats 99% of doctors" flap with medical backlash, and the media machine scaling into fellowships. The crypto arm's one deployment was Ornn; otherwise quiet.</p>
+</div>
+
+<!-- STATUS QUO -->
+<a id="status"></a>
+<div class="section-header"><span class="material-icons-outlined">history</span><h3>Status quo — where the last edition (22 Jun) left off</h3></div>
+<div class="status">
+  <ul>
+    <li><strong>$15B+ war chest deploying.</strong> January's record multi-fund raise — $6.75B Growth Fund V, $1.7B Apps, $1.7B Infrastructure, $1.18B American Dynamism (defense/security), $700M Bio &amp; Health — remains the frame for everything.</li>
+    <li><strong>Thesis: AI that removes "operational drag."</strong> Application-layer bets selling AI as labour replacement to non-tech buyers (Lassie, Pit, OpenRouter, the ex-Robinhood "run-SMBs-end-to-end" round; SMB = small and medium-sized business), not frontier-model rounds.</li>
+    <li><strong>Crypto: counter-cyclical conviction.</strong> ~$2.2B fifth crypto fund closed in May "as crypto cools"; June saw the $355M Digital Asset (Canton Network) lead and the $175M Morpho co-lead — both pre-window.</li>
+    <li><strong>Media flywheel.</strong> "New Media" turned one; Andreessen's ~7,000-word open-markets-over-regulation essay was the intellectual centerpiece.</li>
+  </ul>
+</div>
+
+<!-- POLICY -->
+<a id="policy"></a>
+<div class="section-header"><span class="material-icons-outlined">account_balance</span><h3>Policy &amp; Pentagon</h3></div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-red">Headline</span><span class="date-pill">29 Jun 2026</span></div>
+  <h4>Andreessen joins the Pentagon's Defense Policy Board — no disclosure rules in place</h4>
+  <p>Defense Secretary Pete Hegseth announced the newly reconstituted <strong>Defense Policy Board</strong> — the panel (established 1985) that advises Pentagon leadership on strategic planning, force structure and national security — with former US Trade Representative <strong>Robert Lighthizer as chair</strong>, former Senator Norm Coleman as vice chair, and <strong>Marc Andreessen among 13 appointed members</strong>. The conflict-of-interest angle is the story: a16z's American Dynamism portfolio — <strong>Anduril, Skydio, Shield AI, Flock Safety, Hadrian, Saronic</strong>, plus stakes in SpaceX, xAI and OpenAI — holds multiple Department of Defense contracts and benefits from the exact regulatory environment the board shapes. Coverage (Yahoo Finance / DroneXL) notes <strong>no disclosure rules are yet in place</strong> for the board; DroneXL points out a16z-backed drone makers are winning from the ban on DJI (Da-Jiang Innovations, the dominant Chinese drone maker).</p>
+  <p>This completes a loop the briefing has tracked all year: raise a $1.18B defense fund → broadcast the deregulatory narrative through New Media → now sit inside the building where the policy gets shaped.</p>
+  <div class="links">
+    <a href="https://finance.yahoo.com/technology/articles/andreessen-joins-defense-board-no-142710045.html">Yahoo Finance · no disclosure rules</a>
+    <a href="https://insidedefense.com/insider/pentagon-names-new-defense-policy-board-nearly-year-after-renewal">InsideDefense · board named</a>
+    <a href="https://dronexl.co/2026/06/29/marc-andreessen-defense-policy-board-a16z-drone-conflict/">DroneXL · drone-portfolio conflict</a>
+    <a href="https://responsiblestatecraft.org/defense-policy-board-members/">Responsible Statecraft · full-board analysis</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> The Defense Policy Board dates to 1985 and has advised every Pentagon leadership since. Hegseth <strong>dissolved the previous panel in April 2025</strong> after an internal review, saying it needed realignment with the administration's strategic priorities — the seats then sat empty for nearly a year before this slate was named. a16z's path to the table was built deliberately: the $1.18B American Dynamism fund closed in January, and TechCrunch has reported the firm claims to have raised <strong>18% of all US venture dollars invested in 2025</strong>. Andreessen's 2023 essay "Why AI Will Save the World" — arguing against AI regulation explicitly to beat China — is the intellectual scaffolding for the appointment.</p>
+    <p><span class="lbl-dd">Die Details.</span> The board is 15 members and advises three people: Hegseth, Deputy Secretary Stephen Feinberg (himself the billionaire founder of private-equity firm Cerberus) and Under Secretary for Policy Elbridge Colby. Responsible Statecraft's count: <strong>at least 8 of 15 members have close ties to the defense industry or foreign governments</strong>. Beyond Andreessen: vice-chair Norm Coleman is a registered lobbyist for Saudi Arabia (central to rehabilitating Riyadh after the Khashoggi killing); <strong>Theo Wold is a sitting senior counselor at Palantir</strong>; Blake Masters is ex-Thiel Capital and remains on the Thiel Foundation board; Mike Garcia is a former Raytheon executive; Michael Pillsbury joined the defense-AI consultancy American Global Strategies a week before appointment; Christopher Williams served on the Iraq-War-era board while his firm held Boeing and Northrop Grumman contracts. Rounding out: Michael Anton, Rachel Bovard, Tom Feddo, Kenneth Jones, Daniel McCarthy, retired Admiral Chas Richard, Francis Sempa. Four members are Claremont Institute fellows or alumni; two come from the America First Policy Institute.</p>
+    <p><span class="lbl-dd">Einordnung.</span> There is precedent for conflicted boards — a 2003 Center for Public Integrity analysis found 9 of 30 Bush-era members tied to companies with $76B+ in defense contracts in the run-up to Iraq. What is new is the <strong>Silicon Valley concentration</strong>: Andreessen + Wold + Masters form a venture/Palantir bloc, a clear victory for techno-optimists pushing to slash regulation of AI and autonomous weapons. The internal fault line to watch is that bloc versus the America-First restrainers — board member Daniel McCarthy has written there was "no reason" for US involvement in last year's 12-day Iran war. Which faction wins the board's ear on autonomous-weapons policy is the live question.</p>
+    <p><span class="lbl-dd">Watch-Items.</span> (1) Whether disclosure or recusal rules are imposed — none exist yet. (2) New Department of Defense awards to Anduril, Saronic, Skydio or Shield AI in H2 2026, which will now carry the appearance question. (3) Implementation of the DJI ban — the most direct benefit to a16z's drone portfolio. (4) Whether Senate Armed Services Democrats force scrutiny of the board's composition.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · widely corroborated</span></div></div>
+</div>
+
+<!-- DEALS -->
+<a id="deals"></a>
+<div class="section-header"><span class="material-icons-outlined">trending_up</span><h3>Investments &amp; deals</h3></div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-green">Applied AI</span><span class="date-pill">3 Jul 2026</span></div>
+  <h4>Probook: $40M for AI dispatch in home services — a16z and Sequoia co-lead</h4>
+  <p>Probook, founded by a former tradesman, raised <strong>$40M total including a $34M Series A co-led by a16z and Sequoia</strong> to build the AI operating system for America's home-service businesses, starting with dispatch — deciding which technician goes to which job. Textbook "operational drag" thesis: AI sold as labour replacement to a deeply non-tech buyer (plumbing/HVAC — heating, ventilation and air conditioning — contractors), and notable for pulling both a16z and Sequoia onto the same cap table.</p>
+  <div class="links">
+    <a href="https://techfundingnews.com/built-by-a-tradesman-backed-by-a16z-and-sequoia-probook-raises-40m-to-reinvent-dispatch-for-americas-home-service-businesses/">TFN · Probook $40M</a>
+    <a href="https://www.globenewswire.com/news-release/2026/6/23/3316215/0/en/probook-raises-40m-from-andreessen-horowitz-and-sequoia-to-scale-the-ai-operating-system-for-home-services.html">GlobeNewswire · company release</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> Founder <strong>George Eliadis</strong> grew up working in the trades in upstate New York — six summers pressure-washing houses with his father — and later worked inside a $40M HVAC, plumbing and electrical business, where he watched dispatch decisions get made ad hoc by whoever answered the phone. The incumbent layer he's attacking: <strong>ServiceTitan</strong> (public since 2024) owns records, scheduling and billing for the trades, but dispatch — which technician goes to which job — is where a contractor's gross margin is actually decided: first-time-fix rate, drive time, matching a high-value job to the right skill level.</p>
+    <p><span class="lbl-dd">Die Details.</span> The $40M splits into a <strong>$34M Series A led by a16z</strong> and a <strong>previously unannounced $6M seed led by Sequoia</strong>, with Sequoia also participating in the A. Company release went out 23 June (New York-based); Dealroom frames the prize as the roughly <strong>$700B US trades industry</strong>. Not public: valuation, revenue, customer count, or the a16z partner leading the deal — the coverage is deal-blog and company-release sourced, and Probook hasn't published operating numbers. That caps the C-Score at 3/5.</p>
+    <p><span class="lbl-dd">Einordnung.</span> The most informative fact is the cap table: <strong>a16z and Sequoia rarely sit together this early</strong>. Both anchoring a sub-$50M company reads as consensus among the two biggest franchises that the trades vertical supports an AI-native challenger to ServiceTitan rather than a bolt-on feature — and that dispatch, not billing, is the wedge.</p>
+    <p><span class="lbl-dd">Watch-Items.</span> Expansion from dispatch into pricing and procurement; whether ServiceTitan ships a competing AI dispatcher; first disclosed customer metrics.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · deal-blog sourced</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-blue">Gap items</span><span class="date-pill">22–25 Jun 2026</span></div>
+  <h4>The gap-week cluster: compute infrastructure joins the applied-AI drumbeat</h4>
+  <p>Four rounds landed between the last edition and this window's start — worth capturing because they add a new sleeve to the thesis: <strong>AI-infrastructure picks-and-shovels</strong>, not just application-layer workflow bets.</p>
+  <div class="radar">
+    <div class="radar-row"><div class="rtext"><strong>Netris</strong> — automates network provisioning for AI "neoclouds" (new GPU-cloud providers); Series A led by a16z, partner Guido Appenzeller joins the board. <span class="date-pill">25 Jun · TechCrunch</span></div><span class="ramt">$15M</span></div>
+    <div class="radar-row"><div class="rtext"><strong>Ornn</strong> — marketplace where AI compute/power can be bought and sold; seed led by a16z. <span class="date-pill">24 Jun · Bloomberg</span></div><span class="ramt">$33M</span></div>
+    <div class="radar-row"><div class="rtext"><strong>Mirendil</strong> — training frontier models expert at AI research &amp; development itself; seed co-led by a16z and Kleiner Perkins at a <strong>$1B valuation</strong>, Nvidia participating — one of the largest seed rounds in AI history. <span class="date-pill">24–26 Jun · a16z/TFN</span></div><span class="ramt">$200M</span></div>
+    <div class="radar-row"><div class="rtext"><strong>Prosper AI</strong> — voice-AI agents running healthcare admin (scheduling, insurance verification, billing) across 150,000+ physicians; Series A led by a16z, Base10 participating. <span class="date-pill">22 Jun · GlobeNewswire</span></div><span class="ramt">$30M</span></div>
+  </div>
+  <p style="margin-top:12px;">Read: Probook and Prosper AI are the familiar operational-drag play. Netris and Ornn are new — a16z buying into the <strong>plumbing of the GPU-cloud economy</strong>. Mirendil is the biggest single cheque of the window: a genuine frontier-model bet, but aimed at automating AI R&amp;D itself rather than competing with the general-purpose labs. (Correction vs. this morning's read: the round is not undisclosed — it's $200M at $1B.)</p>
+  <div class="links">
+    <a href="https://techcrunch.com/2026/06/25/netris-raises-15m-series-a-from-a16z-to-help-ai-neoclouds-go-live-faster/">TechCrunch · Netris</a>
+    <a href="https://www.bloomberg.com/news/articles/2026-06-24/andreessen-horowitz-backs-compute-marketplace-ornn-in-seed-round">Bloomberg · Ornn</a>
+    <a href="https://a16zcrypto.com/posts/article/investing-in-ornn/">a16z crypto · Ornn thesis</a>
+    <a href="https://techfundingnews.com/ex-anthropic-researchers-raise-200m-just-weeks-after-quitting-to-build-ai-that-creates-better-ai/">TFN · Mirendil $200M</a>
+    <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/prosper-ai-lands-30m-backed-andreessen-horowitz-build-ai-workforce">Fierce Healthcare · Prosper AI</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> Four deals in four days, mapping three sleeves of the thesis: workflow AI sold to non-tech buyers (Prosper), picks-and-shovels for the GPU economy (Netris, Ornn), and a frontier-model bet (Mirendil). The Mirendil backstory is the standout: founders <strong>Behnam Neyshabur</strong> (5.5 years at Alphabet co-leading Gemini's reasoning research, then roughly one year at Anthropic) and <strong>Harsh Mehta</strong> left Anthropic in December 2025 and closed $200M within about six months — with <strong>no shipped product</strong>. It's the Thinking-Machines/Periodic-Labs playbook a16z has run before: buy the team, not the product.</p>
+    <p><span class="lbl-dd">Die Details — Mirendil.</span> $200M seed at ~$1B, co-led by a16z and Kleiner Perkins, <strong>Nvidia participating</strong>. Team of ~20 recruited from Anthropic, xAI, Google DeepMind and OpenAI, plus early xAI member Shayan Salehian. The product thesis: train models specialised in AI R&amp;D tasks — experimental design, hyperparameter search (automated tuning of training settings), evaluation, iterative training — and package them so universities, hospitals and enterprises can run frontier-style research without a machine-learning engineering team. The system controls its own GPUs and loops over research problems with progressively less human input — deliberately close to the self-improving-AI end of the map, which the founders defend openly (Gizmodo: "Don't be afraid of self-improving AI").</p>
+    <p><span class="lbl-dd">Die Details — Netris &amp; Ornn.</span> Netris' NAAM platform (Network Automation, Abstraction and Multi-Tenancy) is live at <strong>35+ GPU clusters totalling ~1 million GPUs</strong>, claims 800% annual-recurring-revenue growth last year and ~12% of the neocloud market by cluster count; partner Guido Appenzeller (ex-Big Switch Networks co-founder, ex-CTO of VMware's cloud/networking arm) takes the board seat. Notably, Netris uses <strong>no AI in its own product</strong> — deterministic algorithms. Ornn's $33M seed was led by <strong>a16z crypto</strong> (partners Ali Yahya and Elizabeth Harkavy), with Galaxy Ventures, Nordstar and SV Angel; founders Kush Bavaria and Wayne Nelms met at MIT. Core asset: the <strong>Ornn Compute Price Index (OCPI)</strong> — a GPU spot-price benchmark built from cleared trades (H100/H200/B200/RTX 5090), already live on the Bloomberg Terminal — plus new Token Price Indices benchmarking realized inference costs from Anthropic and OpenAI. In May the Intercontinental Exchange announced cash-settled <strong>GPU-compute futures referencing OCPI</strong>, pending regulatory approval.</p>
+    <p><span class="lbl-dd">Die Details — Prosper AI.</span> $30M Series A led by a16z; Base10 new, Emergence, Y Combinator and Company Ventures returning. Founded 2023 by Xavier de Gracia and Josep Mingot, narrowed to healthcare-only in 2024. Voice agents handle both patient and insurer calls — scheduling, benefits verification, billing, prior-authorization chasing — writing results back into the provider's existing systems. Claims: revenue up 5x since the prior raise, 40+ healthcare organizations, 150,000+ providers reached, and >40% reduction in administrative cost. Company-sourced numbers, not independently verified.</p>
+    <p><span class="lbl-dd">Einordnung.</span> Ornn is really a <strong>financialization bet</strong> — making compute tradable and hedgeable like oil; if the ICE futures clear regulation, OCPI becomes load-bearing for every neocloud's financing cost. Netris + Ornn together mean a16z holds both the operations layer and the price layer of the GPU economy its application portfolio runs on. One internal wrinkle: Prosper AI overlaps with a16z's existing health-voice position in Hippocratic AI — portfolio-internal competition the firm evidently tolerates.</p>
+    <p><span class="lbl-dd">Watch-Items.</span> ICE regulatory approval for GPU futures; Mirendil's first public demo or paper; whether OCPI/OTPI become industry-standard benchmarks; Prosper vs. Hippocratic positioning.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · TechCrunch/Bloomberg/primary</span></div></div>
+</div>
+
+<!-- CRYPTO -->
+<a id="crypto"></a>
+<div class="section-header"><span class="material-icons-outlined">currency_bitcoin</span><h3>Crypto / Web3</h3></div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-purple">Honest read</span><span class="date-pill">26 Jun – 6 Jul</span></div>
+  <h4>Nearly quiet window — the one crypto-arm cheque was Ornn</h4>
+  <p>Correction to this morning's read: the window's one crypto-arm deployment was hiding in the deal cluster — the <strong>$33M Ornn seed (24 Jun) was led by a16z crypto</strong>, partners Ali Yahya and Elizabeth Harkavy, not the main fund. That the crypto vehicle is writing GPU-market-infrastructure cheques is itself the story. Beyond Ornn: nothing material. The last conventional crypto activity remains pre-window — the <strong>$355M Digital Asset / Canton Network lead (11 Jun)</strong> and the <strong>$175M Morpho co-lead with Paradigm and Ribbit (9 Jun)</strong>, both from the ~$2.2B Fund V closed in May. Not padding this — it was a near-silent fortnight for the crypto arm in public.</p>
+  <div class="links">
+    <a href="https://a16zcrypto.com/posts/article/investing-in-ornn/">a16z crypto · Ornn</a>
+    <a href="https://www.theblock.co/amp/post/404386/a16z-crypto-leads-355-million-raise-for-canton-developer-digital-asset">The Block · Digital Asset (pre-window)</a>
+    <a href="https://fortune.com/2026/06/09/morpho-fundraise-a16z-crypto-paradigm-ribbit-capital-175-million/">Fortune · Morpho (pre-window)</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> Fund V (~$2.2B, closed May 2026) was raised explicitly counter-cyclically — "as crypto cools" was the firm's own framing. Its two big June deployments were both institutional-infrastructure plays rather than token bets: Digital Asset builds the Canton Network (a privacy-enabled blockchain used by banks), Morpho is a decentralized lending protocol repositioning as an open credit network.</p>
+    <p><span class="lbl-dd">Einordnung.</span> Ornn shows where the crypto team's mandate is drifting: <strong>market infrastructure for compute</strong>, not tokens. A commodity index (OCPI) plus exchange-listed futures is straight traditional-finance plumbing — that it comes out of the crypto fund suggests a16z treats "crypto" increasingly as "new market structures," whatever the settlement rail. Deep-dive kept short deliberately: beyond Ornn there was <strong>no public crypto-arm activity in the window</strong> — no new fund moves, no portfolio announcements, no policy interventions surfaced across the checked sources. What's not public: whether quiet deals closed unannounced (a16z discloses investments on its own schedule).</p>
+    <p><span class="lbl-dd">Watch-Items.</span> ICE GPU-futures approval (the Ornn thesis's regulatory gate); next Fund V deployment; whether the annual State of Crypto report cycle (autumn) resets the narrative.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · absence-of-news, checked</span></div></div>
+</div>
+
+<!-- MEDIA -->
+<a id="media"></a>
+<div class="section-header"><span class="material-icons-outlined">campaign</span><h3>Media &amp; thought leadership</h3></div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-yellow">Controversy</span><span class="date-pill">viral 29 Jun 2026</span></div>
+  <h4>"Doctor ChatGPT is a better doctor than 99% of doctors" — the claim, the backlash, the portfolio interest</h4>
+  <p>Andreessen's line from a Joe Rogan podcast appearance in early June went properly viral in this window after <strong>Polymarket's X account reshared the clip on 29 June</strong>. The medical pushback was immediate and evidence-based: a February 2026 <strong>Nature Medicine</strong> paper (Mount Sinai) testing ChatGPT Health on 60 clinical scenarios found it <strong>failed to send 51.6% of true emergencies to the emergency room</strong>. Andreessen offered no data for the 99% figure — and coverage noted the undisclosed interest: a16z holds health-AI positions in <strong>Hippocratic AI, Ambience Healthcare and Abridge</strong>. A live case study in the cost of the go-direct strategy: when the founder is the brand, an unsupported claim becomes the firm's credibility problem.</p>
+  <div class="links">
+    <a href="https://thenextweb.com/news/andreessen-doctor-chatgpt-better-than-doctors">TNW · claim vs. evidence</a>
+    <a href="https://www.ibtimes.co.uk/doctors-warn-against-overreliance-chatgpt-1805838">IBTimes · medical backlash</a>
+    <a href="https://www.nbcnews.com/health/health-news/chatgpt-health-under-triaged-half-medical-emergencies-rcna261409">NBC · under-triage study</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> The exact quote from the Rogan appearance: "99% of the time, the answer that I'm getting from the AI is better than I would get from talking to basically almost any expert." It sat quietly for weeks until Polymarket's X account reshared the clip on 29 June and the New York Post ran the video. It also isn't Andreessen's first collision with how these models actually work: in <strong>May 2026 he posted a ~300-word "custom super prompt"</strong> on X instructing ChatGPT to "never hallucinate or make anything up" — engineers and academics pointed out within hours that hallucination is an architectural property of large language models, not a behaviour a prompt can switch off.</p>
+    <p><span class="lbl-dd">Die Details.</span> The rebuttal evidence is unusually specific. The February 2026 <strong>Nature Medicine</strong> study, led by Mount Sinai urologist Dr Ashwin Ramaswamy, ran OpenAI's ChatGPT Health through 60 clinical scenarios: it failed to route <strong>51.6% of true emergencies</strong> to the emergency room, including one patient going into respiratory failure. NBC framed it as "under-triaged half of medical emergencies"; NPR ran a broader March piece on unreliable medical advice. The honest scientific nuance: models now match or beat physicians at <em>naming a likely diagnosis</em> from a clean vignette — they remain weak at triage, risk-weighing and treatment choice, which is where actual medicine (and malpractice) lives. Andreessen's 99% figure has no published basis on either axis.</p>
+    <p><span class="lbl-dd">Einordnung.</span> The undisclosed-interest layer is what turns a hot take into a firm problem: a16z holds health-AI positions in <strong>Hippocratic AI, Ambience Healthcare and Abridge</strong>, plus a stake in OpenAI itself — every one of them a beneficiary if "AI beats your doctor" becomes consumer common sense. And structurally this is the go-direct model (next card) operating exactly as designed: no editorial layer between the claim and millions of viewers, so the peer-reviewed correction arrives late, attached to the firm's credibility rather than a reporter's.</p>
+    <p><span class="lbl-dd">Watch-Items.</span> Whether portfolio health-AI marketing leans on the claim; FDA/FTC (US food-and-drug and trade regulators) attention to consumer medical-AI claims; whether Andreessen doubles down in the next podcast cycle — a walk-back would be off-pattern.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">4/5 · quote on video, corroborated</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-orange">Narrative</span><span class="date-pill">30 Jun 2026</span></div>
+  <h4>"Going direct" codified: founder-as-brand playbook, plus New Media Fellowship cohort 2 (65 fellows)</h4>
+  <p>Two moves in the window formalise the media operation. First, Marc Andreessen and Ben Horowitz laid out the <strong>"go direct" thesis</strong> at a16z's New Media Summit and in an essay — founders should speak for themselves on channels they own (the firm's own newsletters now live on Substack), making the <strong>founder the brand, not the company</strong>; TechTimes ran the analysis 30 June. Second, a16z unveiled the <strong>second New Media Fellowship cohort: 65 creators and operators</strong> including economist Noah Smith, Chris Painter (president of METR — Model Evaluation and Threat Research, the AI-evals nonprofit), and content leads from Stripe, MrBeast and Amazon. The firm is no longer just distributing its worldview — it's training a bench of aligned communicators.</p>
+  <div class="links">
+    <a href="https://www.techtimes.com/articles/319407/20260630/going-direct-a16zs-new-media-playbook-makes-founder-brand-not-company.htm">TechTimes · going-direct playbook</a>
+    <a href="https://www.startuphub.ai/ai-news/investors-news/2026/a16z-unveils-new-media-fellows">StartupHub · 65 New Media fellows</a>
+    <a href="https://www.a16z.news/p/meet-the-second-cohort-of-a16z-new">a16z · cohort 2 announcement</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> The New Media operation is a year old and already has real distribution: X, a large daily newsletter (now on Substack), and a podcast with roughly <strong>one million monthly downloads</strong> — the firm markets the package as "go-direct as a service." The historical frame Andreessen and Horowitz use: before the 1930s, companies were synonymous with founders (Ford, Edison); mass media's narrow channels forced abstract corporate brands; decentralized media — newsletters, multi-hour podcasts — reverses the constraint, so the founder can again be the primary vehicle.</p>
+    <p><span class="lbl-dd">Die Details.</span> Playbook mechanics from the New Media Summit talk and essay: (1) <strong>the founder replaces the company as the brand</strong> — not merely accelerates it; (2) "outside-in storytelling" — attach yourself to the biggest macro story rather than your product. Palantir's Alex Karp is held up as the "grand wizard": he rarely discusses Palantir software, talking geopolitics and military AI instead, which makes him the default voice when a crisis breaks. The other canonical example is Flexport's Ryan Petersen, whose October 2021 boat tour of the congested Long Beach port produced the viral thread that got the container-stacking limit doubled; (3) radical authenticity — the ability to sit a three-hour unscripted podcast is treated as a core executive skill; (4) hire internet-native storytellers, not legacy-PR veterans. The <strong>Fellowship cohort 2 (65 fellows, eight weeks)</strong> includes economist Noah Smith, Chris Painter (president of METR — Model Evaluation and Threat Research), and content leads from Stripe, MrBeast and Amazon.</p>
+    <p><span class="lbl-dd">Einordnung.</span> TechTimes' critique is the right frame and worth keeping: going direct removes the journalistic intermediary, which is exactly what makes it powerful <em>and</em> what strips out the external fact-checking layer — the "Doctor ChatGPT" card in this same window is the live demonstration. It also concentrates <strong>key-person risk</strong>: dissolving the company brand into one founder means one bad claim, scandal or departure hits everything. And the playbook's premise — that legacy journalism has abandoned objectivity for activism — is a contested political claim a founder adopts wholesale by joining the program, not a neutral fact.</p>
+    <p><span class="lbl-dd">Watch-Items.</span> Output and placement of cohort-2 fellows; whether rival funds clone the fellowship; the first go-direct blowup at a portfolio company that a journalist would have caught.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · single-source per item</span></div></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-blue">Programs</span><span class="date-pill">Jul 2026</span></div>
+  <h4>Talent pipelines: FDE Fellowship launches, Speedrun SR007 set for late July</h4>
+  <p>a16z launched the <strong>FDE Fellowship</strong> — FDE = Forward-Deployed Engineer, the Palantir-coined role for engineers embedded at customer sites — an eight-week, largely opt-in program starting July for engineers and applied-AI leads implementing AI inside enterprises. Meanwhile the <strong>Speedrun accelerator's SR007 cohort</strong> runs in-person in San Francisco 27 July – 11 October, offering up to <strong>$1M investment plus $5M in credits</strong> per company. Together with the New Media Fellowship, that's three institutional pipelines — engineering talent, startups, communicators — feeding the same ecosystem.</p>
+  <div class="links">
+    <a href="https://pulse2.com/andreessen-horowitz-introduces-the-a16z-fde-fellowship/">Pulse2 · FDE Fellowship</a>
+    <a href="https://build.a16z.com/fellowships/fde">a16z Build · FDE program page</a>
+    <a href="https://speedrun.a16z.com/faq">a16z · Speedrun FAQ</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen</summary><div class="dd">
+    <p><span class="lbl-dd">Kontext &amp; Vorgeschichte.</span> The Forward-Deployed Engineer role was coined at Palantir — engineers embedded at customer sites who make the product actually work inside a messy enterprise — and has become the scarce job title of the applied-AI wave. The fellowship comes out of a16z's Build arm, announced by Katie Kirsch.</p>
+    <p><span class="lbl-dd">Die Details.</span> FDE Fellowship: eight weeks starting July 2026, deliberately <strong>flexible and largely opt-in</strong> so fellows keep their day jobs; core offering is a curated peer network plus an in-person dinner series in San Francisco. Selection targets people actively deploying AI inside enterprises with demonstrable business impact — title-agnostic ("FDE, Applied AI Agent Builder, or Director of AI Deployment"). Applications for the inaugural cohort are already closed. <strong>Not public:</strong> cohort size, member names, participating companies, or any formal deal-flow mechanics — this is an early-stage program with thin disclosure, so the deep-dive stays short. Speedrun SR007: in-person in San Francisco, <strong>27 July – 11 October</strong>, up to $1M investment plus $5M in credits per company.</p>
+    <p><span class="lbl-dd">Einordnung.</span> Fellowships are cheap, high-signal sourcing: the FDE cohort is a directory of exactly the people who champion applied-AI purchases inside large enterprises — the buyers for a16z's application-layer portfolio. Three pipelines (engineers, startups, communicators) now feed one ecosystem, each doubling as market intelligence.</p>
+    <p><span class="lbl-dd">Watch-Items.</span> Whether the FDE cohort list is published; SR007 demo-day companies; expansion of any fellowship beyond the US.</p>
+  </div></details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">3/5 · Speedrun primary, FDE single-source</span></div></div>
+</div>
+
+<!-- EDITOR -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Editor's view</span>
+  <h3>The cheque-book was routine; the Pentagon seat was not</h3>
+  <p><span class="num">1.</span> <strong>The Defense Policy Board seat is the most consequential a16z event since the $15B raise.</strong> American Dynamism was always a three-legged strategy — capital, narrative, policy access — and the third leg just landed. Andreessen now advises the institution his portfolio sells to, with no disclosure rules in place. Whatever one thinks of it, it converts a16z from a lobbying force into an inside voice.</p>
+  <p><span class="num">2.</span> <strong>The deal thesis is broadening from apps to plumbing.</strong> Probook and Prosper AI are the familiar "AI removes operational drag" play. But Netris and Ornn mark a new sleeve: infrastructure for the GPU-cloud economy itself — the neocloud provisioning layer and a compute price benchmark heading for exchange-listed futures. Notably, Ornn came out of the <em>crypto</em> fund: a16z is starting to own the rails — operational and financial — under its own application-layer portfolio.</p>
+  <p><span class="num">3.</span> <strong>Mirendil was not a quiet one — it was a $200M seed at $1B.</strong> Two researchers a year out of Anthropic, no shipped product, co-led by a16z and Kleiner Perkins with Nvidia on the cap table. A frontier-model bet aimed at automating AI R&amp;D itself is a different risk class from workflow automation — deliberately at the recursive-improvement end of the map, and the founders defend that openly. This is the buy-the-team playbook (Thinking Machines, Periodic Labs) at its most aggressive yet.</p>
+  <p><span class="num">4.</span> <strong>The go-direct strategy showed its failure mode.</strong> The "Doctor ChatGPT" flap is what happens when founder-as-brand meets an unsupported claim with an undisclosed portfolio interest: the peer-reviewed rebuttal (51.6% of emergencies missed) attaches to the firm, not just the man. Expect more of these as 65 new media fellows scale the volume.</p>
+  <p class="closer">Cross-reference: the Pentagon seat lands as the AI briefing tracks the EU AI Act's 2 August obligations — a16z now shapes US defense-tech policy while publicly fighting the regulatory current everywhere else. The Polymarket dashboard's AI-race cluster (application layer vs. model layer value capture) reads as the market-priced version of point 2.</p>
+</div>
+
+<div class="colophon">
+  a16z Briefing · 10-day catch-up edition · Andreessen Horowitz · funds · deals · policy · media<br>
+  Compiled 2026-07-06 (deep-dive edition, replaces morning file) · covers 26 Jun – 6 Jul 2026 plus gap items since the 22 Jun edition · sources: Yahoo Finance, InsideDefense, DroneXL, Responsible Statecraft, TechCrunch, Bloomberg, a16z.com, a16zcrypto.com, Fierce Healthcare, TNW, NBC, IBTimes, TechTimes, StartupHub, TFN, GlobeNewswire, Pulse2<br>
+  Corrections vs. morning edition: Mirendil = $200M seed at $1B (was "undisclosed"); Ornn led by a16z crypto arm · Crypto section scoped honestly — near-quiet window, not padded
+</div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Briefing — 2–9 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --blue:#1a73e8; --link:#1967d2; --pill:#f1f3f4;
+  }
+  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg);font-family:'Google Sans',Roboto,Arial,Helvetica,sans-serif;color:var(--text);line-height:1.55;}
+  .wrap{max-width:880px;width:100%;margin:0 auto;padding:24px 20px;}
+  .card{background:var(--surface);border:1px solid var(--divider);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
+  .appbar{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 40px;font-family:'Google Sans';}
+  .appbar .title{font-size:18px;font-weight:500;}
+  .appbar .sub{font-size:13px;color:var(--muted);}
+  .chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .fchip{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--divider);color:var(--text2);font-size:12px;padding:5px 11px;border-radius:14px;}
+  .fchip .material-icons-outlined{font-size:14px;color:var(--muted);}
+  .fchip.active{background:#e8f0fe;border-color:#c2d7f8;color:#1967d2;}
+  .hero{background:linear-gradient(135deg,#1a73e8 0%,#1967d2 60%,#174ea6 100%);border-radius:12px;padding:26px 28px;margin-bottom:22px;box-shadow:0 1px 2px rgba(0,0,0,0.05);}
+  .hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#c2d7f8;text-transform:uppercase;}
+  .hero h1{font-size:24px;font-weight:500;color:#fff;margin:10px 0 12px;line-height:1.3;font-family:'Google Sans';}
+  .hero p{font-size:14px;color:#e8f0fe;margin:0;line-height:1.62;}
+  .section{padding:6px 6px 10px;margin-top:14px;display:flex;align-items:center;gap:8px;}
+  .section .material-icons-outlined{font-size:20px;color:var(--muted);}
+  .section .name{font-size:15px;font-weight:500;font-family:'Google Sans';}
+  .section .count{font-size:13px;color:var(--muted);}
+  .chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:0.3px;}
+  .datepill{display:inline-block;background:var(--pill);color:var(--muted);font-size:11px;padding:3px 10px;border-radius:10px;margin-left:6px;font-family:'Roboto Mono','SF Mono',ui-monospace,monospace;}
+  .c-anthropic{background:#fef7e0;color:#b06000;}
+  .c-openai{background:#e6f4ea;color:#0d652d;}
+  .c-google{background:#e8f0fe;color:#1967d2;}
+  .c-deepseek{background:#fce8e6;color:#a50e0e;}
+  .c-xai{background:#f1f3f4;color:#3c4043;}
+  .c-eu{background:#f3e8fd;color:#5f1d8e;}
+  .c-infra{background:#e8eef6;color:#1f3548;}
+  .c-mcp{background:#e6f4ea;color:#0d652d;}
+  .headline{font-size:17px;font-weight:500;margin:10px 0 6px;font-family:'Google Sans';}
+  .body{font-size:13.5px;color:var(--text2);}
+  details{margin-top:12px;}
+  summary{list-style:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#e8f0fe;color:#1967d2;font-size:12px;font-weight:500;padding:5px 12px;border-radius:14px;user-select:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary .material-icons-outlined{font-size:14px;transition:transform .2s;}
+  details[open] summary .material-icons-outlined{transform:rotate(90deg);}
+  .deep{font-size:13px;color:var(--text2);line-height:1.62;margin-top:12px;padding:14px 16px;background:#f8f9fb;border:1px solid var(--divider);border-radius:10px;}
+  .deep .lbl{display:block;font-weight:700;color:var(--text);margin:12px 0 3px;font-size:12.5px;font-family:'Google Sans';}
+  .deep .lbl:first-child{margin-top:0;}
+  .deep p{margin:0 0 6px;}
+  .divider{border-top:1px solid var(--divider);margin:12px 0 10px;}
+  .conf{font-size:12px;color:var(--muted);}
+  .conf .dots{letter-spacing:1px;color:#1a73e8;}
+  .links{padding-left:2px;}
+  .links a{display:inline-flex;align-items:center;gap:3px;background:var(--pill);color:var(--link);font-size:12px;text-decoration:none;padding:3px 10px;border-radius:10px;margin-left:4px;margin-top:4px;}
+  .links a .material-icons-outlined{font-size:12px;}
+  .banner{background:#fef7e0;border:1px solid #fde293;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:var(--text2);line-height:1.6;display:flex;gap:12px;align-items:flex-start;}
+  .banner .material-icons-outlined{color:#b06000;font-size:20px;flex-shrink:0;}
+  .banner strong.w{color:#b06000;}
+  .countdown{background:#f3e8fd;border:1px solid #d7bff2;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:#3c4043;line-height:1.6;display:flex;gap:12px;align-items:center;}
+  .countdown .material-icons-outlined{color:#5f1d8e;font-size:22px;}
+  .countdown strong{color:#5f1d8e;font-family:'Google Sans';}
+  .editor .chip{background:#e8f0fe;color:#1967d2;padding:4px 12px;border-radius:12px;font-size:12px;}
+  .editor h3{font-size:16px;font-weight:500;font-family:'Google Sans';margin:4px 0 10px;}
+  .editor ol{font-size:13.5px;color:var(--text2);line-height:1.65;margin:14px 0 8px;padding-left:22px;}
+  .editor li{margin-bottom:8px;}
+  .editor .wild{font-size:13px;color:var(--muted);font-style:italic;margin-top:6px;}
+  .foot{text-align:center;padding:14px 12px 24px;}
+  .foot div{font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+<div class="wrap">
+
+  <!-- App bar -->
+  <div class="appbar card" style="margin-bottom:14px;">
+    <div class="avatar">AI</div>
+    <div>
+      <div class="title">AI Briefing</div>
+      <div class="sub">Weekly · 2 – 9 Jul 2026 · Thursday edition</div>
+    </div>
+  </div>
+
+  <!-- Filter chip row -->
+  <div class="chiprow">
+    <span class="fchip active"><span class="material-icons-outlined">bolt</span>Frontier models</span>
+    <span class="fchip"><span class="material-icons-outlined">hub</span>MCP &amp; tooling</span>
+    <span class="fchip"><span class="material-icons-outlined">gavel</span>EU regulation</span>
+    <span class="fchip"><span class="material-icons-outlined">memory</span>Compute</span>
+    <span class="fchip"><span class="material-icons-outlined">payments</span>Funding &amp; M&amp;A</span>
+    <span class="fchip"><span class="material-icons-outlined">calendar_today</span>Release radar</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">Briefing summary</div>
+    <h1>GPT-5.6 goes public, Grok 4.5 lands, and the EU clock ticks to 2 August</h1>
+    <p>Today is the day the government gate on OpenAI opens: GPT-5.6 Sol/Terra/Luna hits general availability on 9 July after Commerce cleared broader release, ending the 13-day preview-only window. Yesterday xAI and Cursor jointly shipped Grok 4.5 at $2/1M tokens — Opus-class positioning at commodity prices — signalling the price war is now the story. Anthropic pushed Claude Cowork onto web and mobile and launched Claude Code + Cowork in FedRAMP-High Government beta. Underneath: MCP's Enterprise-Managed Auth reached stable with Anthropic/Microsoft/Okta adopters and the 28 July MCP spec RC dropped — the biggest revision since launch. Regulation dominates the calendar: <strong style="color:#fff;">24 days</strong> to full EU AI Act applicability for GPAI providers, and the Transparency Code signatory list closes 22 July. Twelve cards, one Editor's View.</p>
+  </div>
+
+  <!-- Yellow banner - unverified -->
+  <div class="banner">
+    <span class="material-icons-outlined">warning_amber</span>
+    <div><strong class="w">Aggregator caveat.</strong> Two items this week (Grok 4.5 Cursor-training claim, Gemini 3.5 Pro 17 July target) rely on trade-press reporting and a single primary post — treat specifics as directional until independent evals or Google's official launch page confirm. Details in each card's C-Score note.</div>
+  </div>
+
+  <!-- Purple countdown banner -->
+  <div class="countdown">
+    <span class="material-icons-outlined">event</span>
+    <div><strong>EU AI Act countdown — T-24 days.</strong> On <strong>2 August 2026</strong> the Commission's enforcement powers over GPAI providers kick in: fines up to €15M or 3% of global revenue, plus model-recall authority. Related deadline: signatories to the Transparency Code of Practice must submit by <strong>22 July 2026, 18:00 CEST</strong> to appear on the initial list published before 2 August.</div>
+  </div>
+
+  <!-- Section: Frontier models -->
+  <div class="section"><span class="material-icons-outlined">bolt</span><span class="name">Frontier models</span><span class="count"> · 5 stories</span></div>
+
+  <!-- Card 1: GPT-5.6 GA -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI</span><span class="datepill">09 Jul</span>
+    <div class="headline">GPT-5.6 Sol/Terra/Luna go generally available worldwide</div>
+    <div class="body">The 13-day government-supervised preview ends today: the US Department of Commerce cleared OpenAI to release Sol (flagship, $5/$30 per 1M tokens), Terra (balanced, $2.50/$15) and Luna (fast/cheap, $1/$6) to all users. Sol runs on Cerebras at up to 750 tokens/sec for select customers this month. First frontier release to survive a formal US government pre-release review — the process OpenAI publicly said it wants shortened.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>OpenAI previewed GPT-5.6 on 26 June, with initial access limited to "trusted partners" whose participation was shared with the US government under the 2 June AI Executive Order. The company was blunt at launch that it disliked the arrangement — "we don't believe this kind of government access process should become the long-term default" — while publicly cooperating. Commerce ran additional testing and inter-agency meetings during the preview window; the 9 July general-availability green light is the outcome.</p>
+        <span class="lbl">Die Details</span>
+        <p>Three tiers under one generation number: <strong>Sol</strong> as the flagship with a new <em>max</em> reasoning effort and an <em>ultra</em> mode that spins up subagents, <strong>Terra</strong> pitched as GPT-5.5-competitive at ~2× cheaper, <strong>Luna</strong> as strong capability at the lowest cost. Pricing per 1M tokens: Sol $5/$30, Terra $2.50/$15, Luna $1/$6. Sol claims state-of-the-art on Terminal-Bench 2.1, stronger GeneBench v1 (genomics) than GPT-5.5 with fewer tokens, and ExploitBench performance "competitive with Mythos Preview using only ~1/3 of the output tokens" — while <em>not</em> crossing the "Cyber Critical" threshold in OpenAI's Preparedness Framework. Cerebras hosting delivers Sol at up to 750 tok/sec for select customers in July. Prompt-caching billing changes with GA (30-min minimum cache life, 1.25× cache-write charge).</p>
+        <span class="lbl">Einordnung</span>
+        <p>The two-week gate is the shortest we can plausibly expect the new US pre-release regime to compress to. Read together with today's Grok 4.5 launch and Anthropic's Claude Cowork mobile push, the frontier tier is converging on the same product bundle: agentic coding, low-latency inference, government/enterprise-ready deployment, MCP-shaped tool access. Terra at $2.50/$15 directly competes with Claude Sonnet 5 ($3/$15) and Grok 4.5 ($2/$6) — margin compression across the mid-tier is now structural, not cyclical.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether the government access step returns for GPT-5.7 or gets codified into a lighter, cyber-EO-based process. Whether independent benchmarks (Willison, Artificial Analysis) confirm Sol's ExploitBench claim outside OpenAI's chosen suite. And whether EU-first customers get parity on GA (past releases lagged by weeks).</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — OpenAI + Neowin + multiple mainstream</span>
+    <span class="links">
+      <a href="https://openai.com/index/previewing-gpt-5-6-sol/"><span class="material-icons-outlined">open_in_new</span>OpenAI</a>
+      <a href="https://www.neowin.net/news/openai-to-release-gpt-56-sol-terra-and-luna-on-july-9/"><span class="material-icons-outlined">open_in_new</span>Neowin</a>
+      <a href="https://www.digit.in/news/general/openai-confirms-gpt-56-sol-terra-and-luna-rollout-after-us-govt-review.html"><span class="material-icons-outlined">open_in_new</span>Digit</a>
+    </span>
+  </div>
+
+  <!-- Card 2: Grok 4.5 -->
+  <div class="card">
+    <span class="chip c-xai">SPACEXAI</span><span class="datepill">08 Jul</span>
+    <div class="headline">Cursor and SpaceXAI jointly ship Grok 4.5 at $2 per million input tokens</div>
+    <div class="body">A mixture-of-experts model marketed as Opus-class fast-and-cheap, released after private beta at SpaceX and Tesla. Base rate $2 input / $6 output per 1M tokens; a faster variant runs $4/$18. Available today in Grok Build, in Cursor on all plans and via the SpaceXAI console. <em>Not</em> yet in the EU — SpaceXAI targets mid-July for EU availability. Note: this is Grok 4.5, not the long-awaited Grok 5 (still training on Colossus 2).</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>xAI was acquired by SpaceX in February 2026 — Grok is now a SpaceXAI product. The 6-trillion-parameter Grok 5 flagship has slipped repeatedly (Q1, then Q2, now widely expected Q3 at the earliest) and remains in training on Colossus 2 in Memphis. Grok 4.5 is the interim revenue-generating step: built on the 1.5T V9 foundation model with supplemental training on trillions of tokens of real Cursor user interactions with live codebases — data that no standalone lab has access to. Musk announced the public release earlier this week.</p>
+        <span class="lbl">Die Details</span>
+        <p>MoE architecture, trained "inside the harness" (the Cursor IDE data flywheel) rather than only on static benchmarks. Pricing sits below GPT-5.5 and near Claude Sonnet 5 intro pricing: $2 in / $6 out standard, $4/$18 for the faster variant. Distribution is bundled: Cursor on all plans, Grok Build, and the SpaceXAI API. Positioning language emphasises "Opus-class" for coding, agentic tasks and knowledge work. EU availability delayed — SpaceXAI has not signed the full EU GPAI Code of Practice (only the Safety &amp; Security Chapter) and is thus operating under alternative compliance framing, which likely explains the delay.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two structural signals. First, the Cursor-training claim, if it holds up on independent evals, validates the "data flywheel from usage" thesis that Cursor's $60B SpaceX-option valuation is built on — and puts standalone model labs at a disadvantage on coding-specific quality. Second, $2/$6 pricing from a frontier lab (matching Anthropic Sonnet 5 intro terms and undercutting OpenAI Terra) confirms mid-tier is now the fought-over segment. The EU delay is the third signal: regulatory geometry now materially affects rollout order.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Independent benchmarks (Willison, Artificial Analysis, LMArena) testing the "Opus-class" claim outside Cursor's IDE. EU availability date and any Code-of-Practice alignment SpaceXAI makes public. And whether Grok 5 (10T parameter variant reportedly also in training) finally gets a date this quarter.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — SpaceXAI primary + MarkTechPost + trade press; Cursor-training exclusivity is vendor-reported</span>
+    <span class="links">
+      <a href="https://x.ai/news/grok-4-5"><span class="material-icons-outlined">open_in_new</span>SpaceXAI</a>
+      <a href="https://www.marktechpost.com/2026/07/08/spacexai-releases-grok-4-5/"><span class="material-icons-outlined">open_in_new</span>MarkTechPost</a>
+      <a href="https://www.trendingtopics.eu/spacexai-and-cursor-launch-grok-4-5-not-yet-in-the-eu/"><span class="material-icons-outlined">open_in_new</span>Trending Topics</a>
+    </span>
+  </div>
+
+  <!-- Card 3: Claude Cowork mobile/web -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">07 Jul</span>
+    <div class="headline">Claude Cowork lands on web, iOS and Android — background tasks stay running</div>
+    <div class="body">Anthropic pushed its agentic desktop app onto web and mobile, starting with Max subscribers. The core promise: start a task on your laptop, get a status ping on your phone, review the finished output later — even with the laptop closed. Chat and Cowork now share one home tab (unified sidebar, search, Projects &amp; Artifacts). Doubled Cowork usage limits extended through 5 August. VentureBeat's take: usage data shows most Cowork users aren't coding — this is a bid to own knowledge work, not just dev.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Claude Cowork launched as a desktop-only agentic environment in late 2025 — a workspace where Claude drives files, tools and Microsoft 365 alongside the user. This week's expansion is the first step out of that walled garden. It also arrives days after the "coding agent wars" framing crystallised (TechCrunch headline: the wars are spilling into the rest of the office), with Cognition ($26B), Cursor (SpaceX $60B option) and Devin all pushing horizontally into knowledge work.</p>
+        <span class="lbl">Die Details</span>
+        <p>Beta rollout starts with Max users over the next several weeks; other paid tiers follow. Web and mobile users can start, steer, resume and review tasks; use connectors, skills, plugins and scheduled tasks; manage projects; and preview files Claude creates. Sessions run remotely in the cloud — work continues when the laptop closes and Claude alerts when it needs permission to proceed. Cowork also adds Microsoft 365 <em>write</em> tools: drafting/sending email, calendar management, creating and updating OneDrive/SharePoint files. Anthropic doubled Cowork usage limits through 5 August to mark the rollout. Companion release: the "ant" CLI, a command-line client for the Claude API.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The strategic bet is the same as OpenAI's Codex-to-general-work pivot and Google's Workspace agent push: agentic UX moves from a dev-shop feature to the default surface for all knowledge work. Anthropic's advantage is that Cowork is already a coherent product, not a stitched-together set of app integrations. The M365 write tools are the load-bearing addition — they turn Cowork from a reader of enterprise data into an actor inside it, which is exactly where the pilot-to-production gap has lived. Combined with today's Government beta (below), Anthropic is executing a two-front expansion: consumer/prosumer breadth and public-sector depth.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Rollout speed beyond Max. Failure modes on background tasks (permission ambiguity, silent stalls). Whether the doubled-limits promotion converts to steady-state paid usage after 5 August. And whether Google/OpenAI counter with their own "runs while closed" agentic surfaces this month.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — Anthropic primary + TechCrunch + VentureBeat + 9to5Mac</span>
+    <span class="links">
+      <a href="https://claude.com/blog/cowork-web-mobile"><span class="material-icons-outlined">open_in_new</span>Anthropic</a>
+      <a href="https://techcrunch.com/2026/07/07/the-coding-agent-wars-are-spilling-into-the-rest-of-the-office-claude-cowork/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+      <a href="https://venturebeat.com/technology/anthropic-brings-claude-cowork-to-mobile-and-web-as-usage-data-shows-most-users-arent-coding"><span class="material-icons-outlined">open_in_new</span>VentureBeat</a>
+    </span>
+  </div>
+
+  <!-- Card 4: Claude for Government -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">07 Jul</span>
+    <div class="headline">Claude Code + Cowork open in FedRAMP-High Government beta</div>
+    <div class="body">Anthropic launched public beta of Claude Code and Claude Cowork inside Claude for Government Desktop — FedRAMP High authorised, tamper-evident hash-chained audit logs, spend governance, ATO documentation. New customers can request access at claude.com/solutions/government. The public-sector wedge continues to widen post-Fable-5 export-controls episode; Anthropic is now the AI lab with the fullest US federal stack.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Anthropic's public-sector arc: Claude in Amazon Bedrock got FedRAMP High + DoD IL4/5 authorisation earlier this year; Claude for Government (baseline offering) rolled out over the spring; and the Fable-5 export-control episode in June forced Anthropic and Commerce into a working relationship on pre-release safety review. Bringing Code and Cowork — the coding and agentic surfaces — into that authorised environment is the natural next step. The Wikipedia entry on the Anthropic–DoD dispute earlier this year has been closed and the relationship reset.</p>
+        <span class="lbl">Die Details</span>
+        <p>Public beta of Claude Code and Claude Cowork in Claude for Government <em>Desktop</em>. Governance: conversation history stored locally on agency-managed devices, inference inside the authorised environment, department-level administration, fixed spend increments, model and seat limits, hash-chained audit logs administrators review in-product, two-person approval for sensitive Anthropic-side operations, usage exports as metering data only (not content) for ATO and IG requests. Use cases stressed: memo creation, RFP reviews, casework, decks — with Cowork acting directly on desktop files. Distribution partner mentions: Carahsoft.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two reads matter. First, forward-deployed enterprise AI (Microsoft's $2.5B Frontier subsidiary last week) has a public-sector twin: Anthropic is now the vendor best-positioned for classified/high-authorisation deployment inside US agencies. Second, this is the mechanical output of the Fable-5 cooperation: the incident turned into a template. For non-US operators, the durable question is whether an equivalent EU public-sector stack (Mistral is closest) can emerge — because right now the US frontier labs are pulling ahead on sovereign-cloud specification.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Named agency deployments. Whether the desktop-only approach constrains adoption at large agencies with mixed device fleets. And whether OpenAI or Google respond with matching FedRAMP High Code/Agent offerings before Q4.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — Anthropic primary + Carahsoft/CredenceWire corroborated</span>
+    <span class="links">
+      <a href="https://www.anthropic.com/news/offering-expanded-claude-access-across-all-three-branches-of-government"><span class="material-icons-outlined">open_in_new</span>Anthropic</a>
+      <a href="https://credencewire.com/article/anthropic-claude-government-classified-workloads-2026"><span class="material-icons-outlined">open_in_new</span>CredenceWire</a>
+      <a href="https://www.carahsoft.com/anthropic"><span class="material-icons-outlined">open_in_new</span>Carahsoft</a>
+    </span>
+  </div>
+
+  <!-- Card 5: Gemini 3.5 Pro delay -->
+  <div class="card">
+    <span class="chip c-google">GOOGLE</span><span class="datepill">17 Jul (target)</span>
+    <div class="headline">Gemini 3.5 Pro slips to 17 July — full architectural rebuild off the 2.5 line</div>
+    <div class="body">Google DeepMind rescheduled Gemini 3.5 Pro's general availability to 17 July after early enterprise feedback prompted a rebuild of the underlying architecture (scrapping the 2.5 Pro architecture rather than iterating). Reported feature list: 2M-token context, a "Deep Think" reasoning layer, autonomous workflow capability, upgraded SVG/scene rendering. As of 7 July it remained in limited preview for select Vertex AI enterprise customers. Rumoured Nano Banana Pro image model also on deck.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Google opened the 3.5 generation with Flash (computer-use agents, released late June) rather than Pro — an unusual choice that hinted Pro wasn't finished. The delay narrative from BigGo/CryptoBriefing/TechTimes now confirms that: quality refinements after enterprise testing forced a bigger rebuild than a normal iteration. Google reportedly shed $225B in market cap around the earlier communication of the delay.</p>
+        <span class="lbl">Die Details</span>
+        <p>Reported feature set — treat as unconfirmed until Google publishes: 2M-token context window; a "Deep Think" reasoning layer for complex problem-solving; autonomous workflow capabilities matching Anthropic/OpenAI's agentic direction; improvements in mathematical reasoning, SVG scene generation and image quality specifically positioned against GPT-5.6 Sol and Anthropic Fable 5. UI refresh with "cleaner, more intuitive" experience and stronger SVG rendering. Companion release: "Nano Banana Pro" LLM alongside the existing Nano Banana image family. Distribution: enterprise limited preview via Vertex AI now, general availability targeted 17 July.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The stakes are structural: Google needs 3.5 Pro to reclaim the top of the leaderboard now that GPT-5.6 Sol is generally available and Claude Sonnet 5 has commoditised the mid-tier. Leading with Flash was a distribution play; leading with a rebuilt Pro is a capability play. The 17 July target — one day after Grok 4.5 arrives in the EU and eight days into GPT-5.6 GA — will define the frontier ranking for the second half of Q3. Downside risk: another slip erodes the Google DeepMind credibility premium.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether 17 July holds (BigGo, TelecomTalk are the primary date sources — Google hasn't confirmed publicly). Independent benchmark landing vs Sol on maths/coding. Pricing (all rumoured points blank). And Nano Banana Pro's positioning vs Anthropic's still-untitled image tool.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●○○</span>&nbsp; 3/5 — trade press + one social post; no Google confirmation yet</span>
+    <span class="links">
+      <a href="https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a"><span class="material-icons-outlined">open_in_new</span>BigGo</a>
+      <a href="https://www.techtimes.com/articles/319318/20260629/gemini-35-pro-cleared-july-launch-fable-5-nears-return-gpt-56-stays-locked.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+      <a href="https://cryptobriefing.com/google-delays-gemini-35-pro-launch-to-july-2026/"><span class="material-icons-outlined">open_in_new</span>CryptoBriefing</a>
+    </span>
+  </div>
+
+  <!-- Section: MCP & tooling -->
+  <div class="section"><span class="material-icons-outlined">hub</span><span class="name">MCP &amp; dev tooling</span><span class="count"> · 3 stories</span></div>
+
+  <!-- Card 6: MCP spec RC -->
+  <div class="card">
+    <span class="chip c-mcp">MCP</span><span class="datepill">28 Jul (RC)</span>
+    <div class="headline">MCP 2026-07-28 Release Candidate — the biggest protocol revision since launch</div>
+    <div class="body">The Model Context Protocol team dropped the release candidate for the 28 July specification: a stateless core that runs behind plain HTTP load balancers (no more sticky sessions or shared session stores), server-rendered UIs via <em>MCP Apps</em>, long-running work via the <em>Tasks</em> extension, OAuth/OpenID-aligned authorization, and a formal deprecation policy so the protocol can evolve without breaking downstream. Stacktree and SecurityWeek both flag genuinely breaking changes for existing integrations.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>MCP shipped in late 2024 as Anthropic's proposal for a standard "USB-C for AI" — a wire protocol between models and tools/data. Adoption exploded through 2025 (Anthropic, OpenAI, Google, GitHub, Microsoft all shipped support) and 2026 has been the year of enterprise hardening. The 28 July spec is the accumulated response to production complaints: gateway complexity, auth pain, no formal task model for long-running jobs, no versioning discipline.</p>
+        <span class="lbl">Die Details</span>
+        <p>Stateless core: a remote MCP server that previously needed sticky sessions, a shared session store, and deep packet inspection at the gateway can now run behind a plain round-robin load balancer, route traffic on an <code>Mcp-Method</code> header, and let clients cache <code>tools/list</code> responses for as long as the server's <code>ttlMs</code> permits. Extensions: MCP Apps (server-rendered UIs — the tool returns a widget, not just JSON), Tasks (formal long-running-work primitive with progress/cancel/completion). Authorization: alignment with OAuth 2.1 and OpenID Connect deployment patterns. Deprecation policy: versioned, so integrators know how long a call surface stays supported. Microsoft's MCP catalog (60+ ready servers across M365 Copilot, Copilot Studio, Azure AI Foundry, GitHub Copilot) rides on top.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The New Stack's framing ("why MCP won") is broadly right — every major model vendor now speaks MCP, so protocol maturity is the constraint. This release solves the two most-cited production complaints (stateful gateways and auth) and opens the door to a real MCP-based agentic app tier (via MCP Apps + Tasks). Security implication flagged by SecurityWeek: bigger surface area, new attack vectors around server-rendered UIs and long-running tasks — expect vulnerability advisories through Q3.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Migration pain: Stacktree's "what breaks" list will be the real-world adoption filter. Speed of MCP Apps ecosystem emergence — this is the piece that could reshape "AI app" definition. And any security incidents traceable to the new stateless / server-rendered UI patterns.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — MCP primary blog + The New Stack + SecurityWeek</span>
+    <span class="links">
+      <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"><span class="material-icons-outlined">open_in_new</span>MCP blog</a>
+      <a href="https://stacktr.ee/blog/mcp-2026-spec-changes"><span class="material-icons-outlined">open_in_new</span>Stacktree</a>
+      <a href="https://www.securityweek.com/new-enterprise-ready-mcp-specification-brings-new-security-challenges/"><span class="material-icons-outlined">open_in_new</span>SecurityWeek</a>
+    </span>
+  </div>
+
+  <!-- Card 7: MCP Enterprise Auth -->
+  <div class="card">
+    <span class="chip c-mcp">MCP</span><span class="datepill">rolling</span>
+    <div class="headline">Enterprise-Managed Auth reaches stable — Anthropic, Microsoft, Okta and VS Code adopt</div>
+    <div class="body">The MCP Enterprise-Managed Authorization (EMA) extension went stable in mid-June and this week hit broad adoption: zero-touch OAuth via the customer's identity provider, replacing per-user consent screens. Anthropic implemented in Claude/Code/Cowork; Microsoft supports across its MCP stack; VS Code added in-IDE EMA; Okta is first supported IdP via Cross-App Access (XAA). Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase support live; Slack in progress.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>The most-cited enterprise blocker for MCP has been the OAuth mess: every user, every app, every SaaS — a per-user consent flow with its own token store. EMA solves this with a central IdP grant. The extension has been in draft for months; the "stable" milestone (18 June) is the signal that enterprises can build durable procurement on it.</p>
+        <span class="lbl">Die Details</span>
+        <p>Zero-touch flow: an admin authorises an MCP server for a group in their IdP; users' MCP clients pick up the grant automatically on first login. Under the hood it maps to standard OAuth 2.1 + OIDC constructs, with Okta's Cross-App Access as the first shipping implementation. Anthropic's shared MCP layer means one authorisation covers Claude chat, Claude Code and Claude Cowork. Third-party MCP servers now supporting EMA: Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase — with Slack "actively adding support" per the MCP team.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is what "MCP won" actually looks like in enterprise procurement: a stable auth pattern with named IdP support, adopted by both the AI vendor (Anthropic) and the enterprise stack (Microsoft, Okta, VS Code) at once. Combined with the 28 July stateless spec, MCP now has both the wire and the identity primitives that IT departments need. Two-year read: the next enterprise "connectivity RFP" will list EMA support as table stakes.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Second IdP support (Entra ID, Ping, Auth0). Whether Google/AWS wire their IdPs into EMA. And Slack's timing — its absence is the last big hole.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — MCP blog + InfoQ + TechTimes corroborated</span>
+    <span class="links">
+      <a href="https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/"><span class="material-icons-outlined">open_in_new</span>MCP blog</a>
+      <a href="https://www.infoq.com/news/2026/07/mcp-ema-enterprise-auth/"><span class="material-icons-outlined">open_in_new</span>InfoQ</a>
+      <a href="https://www.testingcatalog.com/anthropic-launches-managed-connector-access-with-okta/"><span class="material-icons-outlined">open_in_new</span>Testing Catalog</a>
+    </span>
+  </div>
+
+  <!-- Card 8: Databricks + OpenAI production agents -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI / DATABRICKS</span><span class="datepill">06 Jul</span>
+    <div class="headline">Databricks Agent Tools give OpenAI Codex/GPT agents governed enterprise data via MCP</div>
+    <div class="body">Databricks announced its OpenAI partnership is now centred on production agents, with Databricks Agent Tools providing Codex- and GPT-powered agents governed MCP access to enterprise data. It's the practical bridge between the frontier model tier and the "last mile" of enterprise deployment — the same problem Microsoft's $2.5B Frontier subsidiary was set up to solve last week.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Databricks + OpenAI has been a partnership signal for a year — the technical question was always what shape it would take on the enterprise data plane. This announcement moves the collaboration from "OpenAI models available inside Databricks" to "OpenAI-shaped agents with governed access to Databricks-managed data via MCP." The timing (day before Anthropic's Cowork mobile push) is not coincidental — both vendors are racing to define what "production agent" means with real customer data behind it.</p>
+        <span class="lbl">Die Details</span>
+        <p>Databricks Agent Tools exposes enterprise data through MCP servers with policy enforced at the platform level — row/column governance, lineage, audit — so an OpenAI agent (Codex, GPT-5.6) calling those tools inherits enterprise controls rather than needing them re-implemented in the agent stack. Complements the earlier SAP–Dremio agentic data foundation announcement (also 6 July, below in Editor's View). Meaning: the enterprise data plane is now being explicitly rebuilt around MCP as the interface language.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Together with EMA (auth) and Frontier (people/deployment), this closes the enterprise-agent stack: identity, connectivity, governance, forward engineering. For a mid-market operator the practical read is that the enterprise-agent value chain now has enough stability to procure against — the "wait six months" excuse is running out. The pilot-success gap will now be about business process integration, not primitives.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Named customer wins over the next 60 days. Any Snowflake response with a similar MCP-first agent tool set. Whether OpenAI's own Databricks-parallel offering (via Foundry or otherwise) makes this partnership less exclusive.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●○○</span>&nbsp; 3/5 — LetsDataScience aggregator; primary partnership post referenced but not directly fetched</span>
+    <span class="links">
+      <a href="https://letsdatascience.com/news/databricks-adds-openai-agent-tools-for-enterprise-ai-6abd2c1b"><span class="material-icons-outlined">open_in_new</span>LetsDataScience</a>
+      <a href="https://futurumgroup.com/insights/saps-dremio-acquisition-provides-agentic-ai-data-foundation/"><span class="material-icons-outlined">open_in_new</span>Futurum (SAP/Dremio)</a>
+    </span>
+  </div>
+
+  <!-- Section: EU regulation countdown -->
+  <div class="section"><span class="material-icons-outlined">gavel</span><span class="name">EU AI Act countdown</span><span class="count"> · 2 stories</span></div>
+
+  <!-- Card 9: 2 August applicability -->
+  <div class="card">
+    <span class="chip c-eu">EU AI ACT</span><span class="datepill">T-24 days</span>
+    <div class="headline">Commission enforcement powers for GPAI providers kick in on 2 August 2026</div>
+    <div class="body">The critical shift in the AI Act's phased implementation: from 2 August the AI Office gains full enforcement — information requests, model recalls, mitigation orders, fines up to €15M or 3% of global revenue. GPAI obligations themselves have been in force since August 2025; enforcement is now what gets turned on. Council also gave final green light on 29 June to a streamlining regulation that <em>defers</em> high-risk system deadlines (stand-alone high-risk to 2 Dec 2027; embedded to 2 Aug 2028) and adds a ban on non-consensual sexual deepfakes from December.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>The EU AI Act entered force in August 2024 with staggered application dates. GPAI provider obligations (transparency, copyright compliance, safety-and-security for systemic-risk models) landed on 2 August 2025. The 2 August 2026 date is when the Commission's enforcement machinery — the AI Office's power to fine, recall, mandate mitigations — becomes operational for those GPAI obligations. In parallel, the Council on 29 June 2026 formally approved a "streamlining" regulation deferring the timelines for high-risk AI systems (the other big obligations bucket) by 12–18 months, and adding a December 2026 prohibition on non-consensual sexual and CSAM-adjacent generated content.</p>
+        <span class="lbl">Die Details</span>
+        <p>GPAI is defined as any model trained with &gt;10²³ FLOPs (floating point operations) capable of generating text/audio/image/video. Fines: up to €15M or 3% of global revenue, whichever higher. The AI Office may request information, order model recalls, mandate mitigations. Signatories of the General-Purpose AI Code of Practice (26 organisations including Amazon, Anthropic, Google, IBM, Microsoft, OpenAI, Cohere, Mistral, Aleph Alpha; SpaceXAI signed only the Safety &amp; Security Chapter; Meta refused) get a presumption of conformity. High-risk deadline deferral: stand-alone high-risk systems now 2 Dec 2027, embedded 2 Aug 2028. December 2026 additions: nude image generation and non-consensual sexual deepfakes prohibited.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Three practical takeaways. First, 2 August is not a "new law" date — obligations are already in force — but it is when non-compliance can be materially expensive for the first time. Second, the streamlining regulation shows the EU institutions blinking on high-risk deadlines under industry pressure while holding the GPAI line. Third, Meta's holdout status on the Code of Practice will be an early test case: no presumption of conformity means it must prove compliance through alternative "adequate means." For any operator selling AI-enabled products into the EU, the immediate compliance surface is documentation (training data summaries, copyright policy, safety testing) and — from December — content marking obligations.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>First AI Office information requests after 2 August. Whether Meta files an alternative compliance framework or takes the fine risk. Legal challenges to the deepfake prohibition (likely from platform intermediaries). And the still-open question of how the €15M / 3% cap is calculated for AI-native businesses without traditional revenue lines.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — Council + Commission primary + multiple mainstream</span>
+    <span class="links">
+      <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"><span class="material-icons-outlined">open_in_new</span>EU Commission</a>
+      <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/"><span class="material-icons-outlined">open_in_new</span>Council of the EU</a>
+      <a href="https://artificialintelligenceact.eu/implementation-timeline/"><span class="material-icons-outlined">open_in_new</span>Timeline</a>
+    </span>
+  </div>
+
+  <!-- Card 10: Transparency Code deadline -->
+  <div class="card">
+    <span class="chip c-eu">EU AI ACT</span><span class="datepill">T-13 days</span>
+    <div class="headline">Transparency Code of Practice signatories close 22 July, 18:00 CEST</div>
+    <div class="body">Providers and deployers of generative AI systems have until 22 July, 18:00 CEST to submit signatory forms and appear on the initial published list before 2 August. Signing gives a presumption of conformity with Article 50 (marking/labelling of AI-generated content). The Code is separate from the broader GPAI Code of Practice, and applies to Article 50(2) providers of generative systems for synthetic audio, image, video or text.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>The Article 50 obligation — that AI-generated content must be marked and labelled — enters application on 2 August 2026 alongside the broader GPAI enforcement date. The Transparency Code, published June 2026, is the operational voluntary compliance path: sign, implement, get a rebuttable presumption of conformity when the Commission or a national authority comes calling.</p>
+        <span class="lbl">Die Details</span>
+        <p>Signatory deadline: 22 July 2026, 18:00 CEST — this cutoff is specifically to make the initial published list before the Article 50 obligations become operational on 2 August. Scope: providers of generative AI systems capable of producing synthetic audio, image, video or text content, and deployers subject to Article 50(2) or 50(4). Structure: watermarking/provenance signals expected, plus documentation of what the mark looks like and how it can be verified. Signatory list will be public. Note the distinction from the earlier General-Purpose AI Code of Practice (safety, transparency, copyright chapters) — that had 26 signatories including OpenAI, Anthropic, Google, Microsoft; the Transparency Code is a separate, narrower instrument.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The clean signal to watch is who signs by 22 July. Non-signature doesn't mean non-compliance, but it means the operator carries the burden of proving Article 50 alignment on its own terms — expensive if it goes to a formal enforcement inquiry. Watermarking is the load-bearing technical primitive: expect a scramble of C2PA-style provenance implementations at frontier labs and image/video vendors over the next fortnight.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>The published list on ~23 July. Whether Meta signs the Transparency Code even after refusing the broader GPAI Code. C2PA and provenance vendor traction. And any national-authority guidance clarifying what "sufficient marking" means for text output.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — EU Commission primary + ActReady + Bird &amp; Bird corroborated</span>
+    <span class="links">
+      <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content"><span class="material-icons-outlined">open_in_new</span>EU Commission</a>
+      <a href="https://getactready.com/blog/eu-ai-act-code-of-practice-signatory-deadline-july-22"><span class="material-icons-outlined">open_in_new</span>ActReady</a>
+      <a href="https://www.twobirds.com/en/insights/2026/taking-the-eu-ai-act-to-practice-the-final-transparency-code-of-practice"><span class="material-icons-outlined">open_in_new</span>Bird &amp; Bird</a>
+    </span>
+  </div>
+
+  <!-- Section: Compute & enterprise -->
+  <div class="section"><span class="material-icons-outlined">memory</span><span class="name">Compute &amp; enterprise</span><span class="count"> · 2 stories</span></div>
+
+  <!-- Card 11: SAP acquires Dremio -->
+  <div class="card">
+    <span class="chip c-infra">SAP / DREMIO</span><span class="datepill">06 Jul</span>
+    <div class="headline">SAP completes Dremio acquisition — agentic-AI data lakehouse foundation</div>
+    <div class="body">SAP closed its acquisition of Dremio, the data-lakehouse company, to run analytical and AI workloads across SAP and non-SAP data without data movement. Positioned as strengthening SAP Business Data Cloud and SAP's agentic AI roadmap. Together with Databricks' OpenAI agent-tools news the same day, "data plane rebuilt for MCP-shaped agents" is now a July theme.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>SAP has been under pressure to have a credible AI-native data story that competes with Databricks and Snowflake, both of which reoriented aggressively around agents in 2025–26. Dremio's lakehouse tech — query engine over object storage with strong performance on non-SAP data — plugs the gap in SAP's Business Data Cloud stack. The deal was announced earlier in the year; 6 July is the completion.</p>
+        <span class="lbl">Die Details</span>
+        <p>Positioning language: "run analytical and AI workloads across SAP and non-SAP data sources without data movement." Practical read: SAP customers now have a first-party path to expose their ERP/S/4HANA data alongside external data lakes to AI agents without an ETL rebuild. Ties into SAP's Joule agent framework and the emerging pattern of enterprise-data-plane-as-MCP-surface.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Three vendors, one week, one thesis: the constraint on enterprise AI is the data plane, not the model. Databricks bolts OpenAI agents on top; SAP acquires a lakehouse to hold everything in place; Microsoft's Frontier subsidiary sends humans in to make the pipes work. Different tactics, same insight — the ~95% enterprise-pilot-failure stat only moves when data governance stops being the bottleneck. For SAP-anchored enterprises (large slice of DACH), this deal is the most consequential piece of AI infrastructure news in months.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Named early joint-customer wins. Whether Snowflake responds with its own lakehouse-acquirer play. And how SAP prices the combined offering relative to Databricks.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — Futurum + secondary corroborated</span>
+    <span class="links">
+      <a href="https://futurumgroup.com/insights/saps-dremio-acquisition-provides-agentic-ai-data-foundation/"><span class="material-icons-outlined">open_in_new</span>Futurum</a>
+    </span>
+  </div>
+
+  <!-- Card 12: Meta compute + hybrid pivot -->
+  <div class="card">
+    <span class="chip c-infra">META</span><span class="datepill">04 Jul</span>
+    <div class="headline">Meta hybrid-superintelligence pivot — MediaPost reports move toward mostly closed models</div>
+    <div class="body">MediaPost (4 July) reported Meta Superintelligence Labs is shifting toward a "mostly closed" AI model strategy — a material departure from the Llama open-weights posture that defined Meta AI through 2024–25. Reads directly against last week's "Meta Compute" cloud reveal: Meta is trying to become an AI infrastructure business and a proprietary-model business simultaneously, while sitting outside the EU GPAI Code of Practice signatory list. Treat the "closed models" framing as reporter interpretation of MSL direction until Meta confirms.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Meta's AI trajectory has three chapters this year: Alexandr Wang installed as CAIO in June 2025; the first MSL model (Muse Spark) shipped closed-weight in April 2026; Meta Compute cloud-selling reveal on 1 July. The Wired/MediaPost thread now argues the closed-weights posture is durable, not experimental — implying Llama's open-weights lead is being deliberately traded for margin capture on Meta AI usage and Meta Compute rentals.</p>
+        <span class="lbl">Die Details</span>
+        <p>Reported hybrid model: keep some smaller open-weight releases for developer goodwill and academic use, but push the frontier models closed-weight through Meta AI product surfaces (WhatsApp, Instagram, Facebook, standalone Meta AI app) and via Meta Compute cloud rentals. Meta is the only major lab to refuse the EU GPAI Code of Practice — sitting outside the presumption of conformity. Combined with the aggressive talent raid (Thinking Machines founders, Apple researchers, OpenAI hires) and the $182.9B AI infrastructure commitment, the strategic bet is scale + closed distribution.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The read is Meta believes open weights don't monetise fast enough to justify the $182.9B capex. Closed weights + cloud rental + captive distribution (Facebook/Instagram/WhatsApp) is the Meta answer to the same ROI problem Microsoft's Frontier subsidiary is chasing. Second-order effect: the open-weight frontier (Mistral, DeepSeek V4, Z.ai's GLM-5.2, Alibaba Qwen 3) now has less US competition — Meta stepping back cedes the open-weight leadership Chinese labs already dominate on cost.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Official Meta framing on open vs closed roadmap. Whether Llama 5 (if it ships) is fully open or partially gated. EU regulatory response to a non-signatory operating the largest AI compute buildout. And whether the hybrid stance is consistent enough to survive the 2 August enforcement window.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●○○○</span>&nbsp; 2/5 — MediaPost only; Meta hasn't confirmed the shift</span>
+    <span class="links">
+      <a href="https://www.mediapost.com/publications/article/414114/meta-hybrid-superintelligence-could-shift-to-mostl.html"><span class="material-icons-outlined">open_in_new</span>MediaPost</a>
+    </span>
+  </div>
+
+  <!-- Section: Editor's View -->
+  <div class="section editor"><span class="material-icons-outlined">rate_review</span><span class="name">Editor's View</span></div>
+
+  <div class="card editor">
+    <span class="chip">Interpretation</span>
+    <h3>Three patterns worth naming this week</h3>
+    <ol>
+      <li><strong>The frontier tier converged on one product bundle.</strong> GPT-5.6 Sol, Grok 4.5, Claude Sonnet 5 (still on intro pricing), Gemini 3.5 Flash — all ship as agent-first, low-latency, MCP-shaped, priced $2–5 per million tokens. Differentiation is dropping to distribution (Cursor for Grok, Cerebras hosting for Sol, Mobile+Government for Anthropic, Workspace surfaces for Google). Anyone still buying frontier tokens on quality alone is fighting last quarter's war.</li>
+      <li><strong>The enterprise-agent stack got its last two primitives.</strong> Auth (EMA stable) plus data plane (Databricks+OpenAI, SAP+Dremio) means you can now procure "agents with governed enterprise data access under central IdP control" as an integrated stack, not a bespoke stitch job. The pilot-to-production gap survives — it's now a workflow-design problem, not an infrastructure problem.</li>
+      <li><strong>The EU AI Act is 24 days from being a live enforcement instrument.</strong> The Code of Practice signatory scoreboard already tells you who's playing along (26 labs signed the GPAI Code) and who isn't (Meta refused; SpaceXAI partial). By 2 August the Commission can fine 3% of global revenue for GPAI non-compliance. Frontier labs have been building compliance surfaces (training-data summaries, copyright policies, safety testing) all year — the question is who gets the first information request.</li>
+    </ol>
+    <p class="wild">Wild-card watch: If Gemini 3.5 Pro slips again past 17 July, the "Google is losing the frontier race" narrative gets a second wind — right as GPT-5.6 hits GA and Grok 4.5 shows the mid-tier is $2 territory. That's the story to watch for next week's briefing.</p>
+  </div>
+
+  <!-- Colophon -->
+  <div class="foot">
+    <div>AI Briefing · 2 – 9 Jul 2026 · Weekly · Confidence dots reflect source strength, not editorial certainty · Aggregator-only claims flagged in the banner. Voice: direct, no filler. Feedback shapes future editions.</div>
+  </div>
+
+</div>
+</body>
+</html>

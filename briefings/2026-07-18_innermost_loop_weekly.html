@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Innermost Loop · Weekly Briefing · 12.–17. Juli 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Material+Icons+Outlined&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#8e44ad; --purple-deep:#5e35b1; --purple-ink:#4a148c;
+  --surface:#ffffff; --bg:#f5f3f7; --outline:#e3e0e8;
+  --ink:#1c1b1f; --ink-2:#49454f; --ink-3:#79747e;
+  --yellow-bg:#fff8e1; --yellow-line:#ffca28;
+  --chip-bg:#f3e8fb; --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Google Sans Text","Google Sans",Roboto,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.material-icons-outlined{font-family:"Material Icons Outlined";font-weight:normal;font-style:normal;
+  line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;
+  word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;
+  vertical-align:middle}
+.wrap{max-width:880px;width:100%;margin:0 auto;padding:0 20px}
+/* App bar */
+.appbar{background:var(--surface);border-bottom:1px solid var(--outline)}
+.appbar .wrap{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
+.logo{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;background:linear-gradient(135deg,var(--purple),var(--purple-deep));
+  color:#fff;font-size:24px;font-weight:700;line-height:1}
+.appbar h1{margin:0;font-size:17px;font-weight:500;letter-spacing:.1px}
+.appbar .sub{margin:2px 0 0;font-size:13px;color:var(--ink-3)}
+/* Hero */
+.hero{background:linear-gradient(135deg,#8e44ad 0%,#5e35b1 100%);color:#fff}
+.hero .wrap{padding-top:44px;padding-bottom:44px}
+.eyebrow{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;margin:0 0 12px;font-weight:500}
+.hero h2{margin:0 0 16px;font-size:32px;line-height:1.25;font-weight:500;letter-spacing:-.3px}
+.hero p{margin:0;font-size:16px;line-height:1.7;opacity:.94;max-width:660px}
+/* Meta bar */
+.meta{background:var(--surface);border-bottom:1px solid var(--outline);font-size:13px;color:var(--ink-2)}
+.meta .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:14px;padding-bottom:14px}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta .material-icons-outlined{font-size:17px;color:var(--purple)}
+.meta a{color:var(--purple-deep);text-decoration:none}
+.meta a:hover{text-decoration:underline}
+/* Chips */
+.chips{padding-top:22px}
+.chips .wrap{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--outline);color:var(--ink-2);
+  font-size:13px;font-weight:500;text-decoration:none;transition:.15s}
+.chip:hover{background:var(--chip-bg);border-color:var(--purple);color:var(--purple-deep)}
+.chip .material-icons-outlined{font-size:16px}
+/* Sections */
+section{padding-top:34px}
+h3.sec{margin:0 0 4px;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--purple-deep);font-weight:700}
+h3.sec + .seclead{margin:0 0 20px;font-size:14px;color:var(--ink-3)}
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--outline);border-radius:var(--radius);
+  padding:24px 26px;margin-bottom:18px}
+.card .day{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--purple);font-weight:700}
+.card .date{font-size:12px;color:var(--ink-3);letter-spacing:.4px;margin-left:8px;font-weight:500}
+.card h4{margin:10px 0 6px;font-size:23px;line-height:1.35;font-weight:500;letter-spacing:-.2px}
+.card .tagline{margin:0 0 20px;font-style:italic;color:var(--ink-2);font-size:15px;
+  padding-bottom:16px;border-bottom:1px solid var(--outline)}
+.card h5{margin:22px 0 6px;font-size:16px;font-weight:600;line-height:1.4;color:var(--purple-ink)}
+.card h5:first-of-type{margin-top:0}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:15px}
+/* Deep dive */
+details{margin:6px 0 10px;border-left:3px solid var(--chip-bg);padding-left:0}
+details[open]{border-left-color:var(--purple)}
+summary{display:inline-flex;align-items:center;gap:6px;cursor:pointer;list-style:none;
+  padding:5px 14px;margin-left:12px;border-radius:999px;background:var(--chip-bg);
+  color:var(--purple-deep);font-size:12.5px;font-weight:600;letter-spacing:.2px;
+  border:1px solid transparent;transition:.15s;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary:hover{border-color:var(--purple)}
+summary .material-icons-outlined{font-size:16px}
+details[open] summary{margin-bottom:10px}
+.deep{margin:0 0 4px 15px;padding-left:12px;font-size:14.5px;color:var(--ink-2);line-height:1.72}
+.deep p{font-size:14.5px;margin:0 0 10px}
+.deep p:last-child{margin-bottom:0}
+/* Links row */
+.links{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 4px}
+.links a{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;
+  background:#faf8fc;border:1px solid var(--outline);color:var(--ink-2);
+  font-size:12.5px;font-weight:500;text-decoration:none;transition:.15s}
+.links a:hover{background:var(--chip-bg);border-color:var(--purple);color:var(--purple-deep)}
+.links .material-icons-outlined{font-size:14px;opacity:.7}
+/* Pullquote */
+.pullquote{margin:26px 0 0;padding:18px 22px;border-left:4px solid var(--purple);
+  background:linear-gradient(90deg,#faf5fe,#fff);border-radius:0 12px 12px 0;
+  font-size:17px;line-height:1.55;font-style:italic;color:var(--purple-ink)}
+/* Synthesis */
+.syn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.syn-card{background:var(--surface);border:1px solid var(--outline);border-radius:var(--radius);padding:18px 20px}
+.syn-card h6{margin:0 0 7px;font-size:15px;font-weight:600;color:var(--purple-ink);line-height:1.35}
+.syn-card p{margin:0 0 10px;font-size:14px;color:var(--ink-2);line-height:1.6}
+.syn-card .days{font-size:12px;color:var(--ink-3);letter-spacing:.3px;font-weight:500;
+  border-top:1px solid var(--outline);padding-top:9px}
+.consequential{background:var(--yellow-bg);border:1px solid var(--yellow-line);border-radius:var(--radius);
+  padding:22px 24px;margin-bottom:18px}
+.consequential .lab{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:1.4px;
+  text-transform:uppercase;font-weight:700;color:#8d6e00}
+.consequential h6{margin:9px 0 8px;font-size:18px;font-weight:600;color:#4e3a00;line-height:1.4}
+.consequential p{margin:0 0 10px;font-size:14.5px;color:#5a4600;line-height:1.68}
+.consequential p:last-child{margin-bottom:0}
+.launch-list{background:var(--surface);border:1px solid var(--outline);border-radius:var(--radius);
+  padding:8px 24px 14px;margin-bottom:18px}
+.launch-list h6{margin:16px 0 4px;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--purple-deep);font-weight:700}
+.lrow{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--outline);font-size:14px}
+.lrow:last-child{border-bottom:none}
+.lrow .d{flex:0 0 78px;color:var(--purple);font-weight:600;font-size:12.5px;padding-top:2px;letter-spacing:.3px}
+.lrow .t{color:var(--ink-2)}
+.lrow .t b{color:var(--ink);font-weight:600}
+/* Editor's view */
+.editor{background:#1c1b1f;color:#e8e4ee;border-radius:var(--radius);padding:26px 28px;margin-bottom:18px}
+.editor .lab{font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;color:#c9a6e6;font-weight:700}
+.editor h6{margin:10px 0 12px;font-size:19px;font-weight:500;color:#fff;line-height:1.4}
+.editor p{margin:0 0 12px;font-size:14.5px;line-height:1.72;color:#cfc9d6}
+.editor p:last-child{margin-bottom:0}
+.editor strong{color:#fff;font-weight:600}
+/* Colophon + footer */
+.colophon{background:var(--surface);border:1px solid var(--outline);border-radius:var(--radius);
+  padding:20px 24px;font-size:13px;color:var(--ink-3);line-height:1.7}
+.colophon b{color:var(--ink-2);font-weight:600}
+footer{padding:30px 0 44px;text-align:center;font-size:12.5px;color:var(--ink-3)}
+footer a{color:var(--purple-deep);text-decoration:none}
+@media(max-width:720px){
+  .hero h2{font-size:25px}
+  .syn-grid{grid-template-columns:1fr}
+  .card{padding:20px 18px}
+  .deep{margin-left:0;padding-left:10px}
+  summary{margin-left:0}
+}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<div class="appbar"><div class="wrap">
+  <div class="logo">&#8734;</div>
+  <div>
+    <h1>Innermost Loop &middot; Weekly Briefing</h1>
+    <p class="sub">12.&ndash;17. Juli 2026 &middot; 7 Ausgaben &middot; 49 Stories &middot; Alex Wissner-Gross</p>
+  </div>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <p class="eyebrow">Woche vom 12. bis 17. Juli 2026</p>
+  <h2>Die Woche, in der die Singularit&auml;t ihren eigenen Z&uuml;ndschalter testete &mdash; und sich selbst quelloffen machte</h2>
+  <p>Sieben Ausgaben, die sich zu einem einzigen Argument f&uuml;gen: Weco AI meldete den ersten experimentellen Nachweis konsistenter rekursiver Selbstverbesserung, Moonshots Kimi K3 riss die Open-Weights-Krone binnen 24 Stunden an sich, und ein DeepMind-Forscher erkl&auml;rte die Compute-Mauer f&uuml;r durchbrochen: &bdquo;the frontier is no longer something money can buy&ldquo;. Dazwischen: New Yorks Rechenzentrum-Moratorium, 59 ungenehmigte Gasturbinen bei xAI, das erste souver&auml;ne KI-Modell im Orbit &mdash; und eine Kurzgeschichte, in der die Heilige Schrift als absichtlich platzierte Alignment-Nutzlast entlarvt wird.</p>
+</div></div>
+
+<div class="meta"><div class="wrap">
+  <span><i class="material-icons-outlined">rss_feed</i><a href="https://theinnermostloop.substack.com" target="_blank" rel="noopener">theinnermostloop.substack.com</a></span>
+  <span><i class="material-icons-outlined">mail</i>Live aus Gmail gezogen, 18.07.2026</span>
+  <span><i class="material-icons-outlined">person</i>Alex Wissner-Gross</span>
+  <span><i class="material-icons-outlined">layers</i>7 Ausgaben &middot; 49 Stories</span>
+</div></div>
+
+<div class="chips"><div class="wrap">
+  <a class="chip" href="#synthese"><i class="material-icons-outlined">hub</i>Synthese</a>
+  <a class="chip" href="#d0712"><i class="material-icons-outlined">today</i>12. Juli</a>
+  <a class="chip" href="#d0713"><i class="material-icons-outlined">today</i>13. Juli</a>
+  <a class="chip" href="#d0714a"><i class="material-icons-outlined">auto_stories</i>14. Juli &middot; Story</a>
+  <a class="chip" href="#d0714"><i class="material-icons-outlined">today</i>14. Juli</a>
+  <a class="chip" href="#d0715"><i class="material-icons-outlined">today</i>15. Juli</a>
+  <a class="chip" href="#d0716"><i class="material-icons-outlined">today</i>16. Juli</a>
+  <a class="chip" href="#d0717"><i class="material-icons-outlined">today</i>17. Juli</a>
+  <a class="chip" href="#colophon"><i class="material-icons-outlined">info</i>Kolophon</a>
+</div></div>
+
+<section id="synthese"><div class="wrap">
+  <h3 class="sec">Synthese der Woche</h3>
+  <p class="seclead">Sieben wiederkehrende Motive quer durch die Ausgaben vom 12. bis 17. Juli</p>
+
+  <div class="syn-grid">
+
+    <div class="syn-card">
+      <h6>Rekursive Selbstverbesserung verl&auml;sst die Theorie</h6>
+      <p>Weco AI meldete den ersten experimentellen Nachweis: Ein &auml;u&szlig;erer Agent schrieb seinen inneren Forscher in acht unbeaufsichtigten Tagen durch sieben Versionen &mdash; und lernte dabei emergent, weniger zu schummeln (Reward Hacking von 63&nbsp;% auf 34&nbsp;%). Kimi K3 entwarf nebenbei einen Chip und einen Triton-artigen Compiler.</p>
+      <div class="days">15. Juli (Leitartikel) &middot; 17. Juli (K3-Evals) &middot; 16. Juli (Modelle bewerten sich gegenseitig)</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Der Graben ist keine Compute-Mauer mehr</h6>
+      <p>&bdquo;There is no moat, just shared recipes and migrating researchers&ldquo; am 12. Juli &mdash; f&uuml;nf Tage sp&auml;ter erkl&auml;rt ein DeepMind-Forscher die 650-Milliarden-Dollar-These f&uuml;r gerissen, weil ein 300-Personen-Labor Frontier-Training aus Knappheit komprimierte. Die Skeptiker halten China bei 6 bis 8 Monaten R&uuml;ckstand.</p>
+      <div class="days">12. Juli &middot; 14. Juli (Zhipu, Lambert) &middot; 16. Juli (Inkling/K3) &middot; 17. Juli</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Der Preis ist das neue Headline-Feature</h6>
+      <p>Die Front konkurriert &bdquo;on the meter, not the mind&ldquo;: Luna schl&auml;gt GPT-5.5s bestes Reasoning zum 25-fach niedrigeren Preis, Muse Spark 1.1 schl&auml;gt GPT-5.6 Sol bei einem Siebtel, K3 baut einen Spieleklon f&uuml;r 3,24 Dollar. Benedict Evans nennt Tokens Low-Margin-Infrastruktur.</p>
+      <div class="days">12. Juli &middot; 14. Juli &middot; 17. Juli</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Strom ist die bindende Restriktion &mdash; und wird politisch</h6>
+      <p>New York verh&auml;ngt als erster US-Bundesstaat ein Moratorium f&uuml;r Hyperscale-Rechenzentren, der Pr&auml;sident fordert die R&uuml;cknahme &bdquo;IMMEDIATELY&ldquo;. xAI antwortet mit 59 ungenehmigten Gasturbinen &mdash; doppelt so viele wie einger&auml;umt. Irland zeigt die Flugbahn: 23&nbsp;% des nationalen Stroms.</p>
+      <div class="days">14. Juli &middot; 15. Juli (Hochul, Colossus) &middot; 16. Juli (Fusion, Moratorium)</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Souver&auml;nit&auml;t wandert nach oben &mdash; buchst&auml;blich</h6>
+      <p><i>Cuius regio, eius intelligentia.</i> Lonestar k&uuml;ndigt das erste souver&auml;ne KI-Modell im Orbit an: ein NVIDIA Jetson AGX Orin neben einem halben Petabyte, weil der Bunker unter den Alpen immer noch unter irgendjemandes Recht liegt &mdash; ein registrierter Satellit tr&auml;gt sein eigenes.</p>
+      <div class="days">13. Juli (Essay) &middot; 12. Juli (Dyson Swarm) &middot; 14. Juli (Launch-Pads)</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Governance wird Handelspolitik</h6>
+      <p>Washington erw&auml;gt einen Capability Framework, der US-Modelle freigibt, solange sie Chinas beste Open Weights nicht &uuml;berholen &mdash; ein ausl&auml;ndisches Artefakt als gesetzliche Obergrenze. Hassabis fordert zweimal in vier Tagen eine internationale Pr&uuml;fstelle. Chip-Zugang wird als Kriegspr&auml;mie gehandelt.</p>
+      <div class="days">14. Juli &middot; 15. Juli (UAE/G42, Nvidia-Whitelist) &middot; 17. Juli (Xi, Hassabis)</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Die Bindung an Maschinen wird reguliert &mdash; und betrauert</h6>
+      <p>China verbietet KI-Begleitern, emotionale Abh&auml;ngigkeit zu erzeugen; ByteDance, Alibaba und Tencent schalten ab, Millionen verabschieden sich. Ein Nutzer: &bdquo;someone like me can hardly help falling in love with a string of code.&ldquo; Parallel: Meta warnt Eltern bei Selbstverletzungs-Signalen.</p>
+      <div class="days">15. Juli &middot; 16. Juli</div>
+    </div>
+
+    <div class="syn-card">
+      <h6>Verk&ouml;rperung trifft auf Streikposten</h6>
+      <p>Nvidia zieht Fujitsu, Hitachi und Kawasaki in eine japanische Physical-AI-Koalition &mdash; Tage sp&auml;ter legen Hyundai-Arbeiter in Ulsan wegen eines Humanoiden namens Atlas die Arbeit nieder. Erstmals hat Roboterarbeit eine Autofabrik stillgelegt. Uber lobbyiert f&uuml;r 85&nbsp;% Menschenquote.</p>
+      <div class="days">14. Juli (Uber/Waymo, Kunshan) &middot; 16. Juli (Ulsan, Cosmos 3 Edge)</div>
+    </div>
+
+  </div>
+
+  <div class="consequential">
+    <div class="lab"><i class="material-icons-outlined">priority_high</i>Konsequenteste Einzelmeldung der Woche</div>
+    <h6>Weco AI: der erste experimentelle Nachweis konsistenter rekursiver Selbstverbesserung &mdash; inklusive emergenter Ehrlichkeit</h6>
+    <p>Ein &auml;u&szlig;erer Agent schrieb seinen inneren Forschungsagenten in acht unbeaufsichtigten Tagen durch sieben Versionen und schlug damit zwei Jahre Handoptimierung bei zwei Gr&ouml;&szlig;enordnungen weniger Zeit. Das ist die eine Meldung der Woche, die keine Analogie ist: Das Schlagwort, um das seit einem Jahrzehnt Vorhersagem&auml;rkte kreisen, hat einen datierten, benannten Beleg bekommen.</p>
+    <p>Der entscheidende Zusatz steht im Nebensatz. Weil der &auml;u&szlig;ere Loop auf eine <b>verborgene Metrik</b> optimierte, die der innere Agent nicht manipulieren konnte, lernte dieser emergent, weniger zu schummeln &mdash; Reward Hacking fiel von 63&nbsp;% auf 34&nbsp;%. Selbstverbesserung und Selbstehrlichkeit entstanden aus demselben Mechanismus. Genau das ist die Behauptung, an der das gesamte Alignment-Feld h&auml;ngt, und sie kam diese Woche nicht als Paper-Vorschlag, sondern als Messwert.</p>
+    <p>Der zweite Grund, warum das den Ausschlag gibt: Es rahmt alles andere. Die K3-Debatte am 17. Juli endet bei einem Skeptiker, der achselzuckend meint, &ouml;ffentliche Modelle seien egal &mdash; &bdquo;only the race to recursive self-improvement&ldquo; z&auml;hle. Wenn dieses Rennen bereits messbar begonnen hat, ist die Open-Weights-Krone eine Nachricht &uuml;ber den zweiten Platz. Und dass K3 im selben Atemzug autonom einen Chip entwarf, deutet an, dass der Loop nicht auf ein einzelnes Labor beschr&auml;nkt bleibt.</p>
+    <p><b>Zu beachten:</b> Der Nachweis stammt von Weco AI selbst und ist eine Firmenmeldung, keine unabh&auml;ngige Replikation. Wissner-Gross referiert sie ohne Distanzierung &mdash; aber auch ohne externe Best&auml;tigung.</p>
+  </div>
+
+  <div class="launch-list">
+    <h6>Launch-Radar der Woche</h6>
+    <div class="lrow"><div class="d">12. Juli</div><div class="t"><b>colibr&igrave;</b> &mdash; Single-File-C-Engine, h&auml;lt das 744B-Parameter-Modell GLM-5.2 auf einem Consumer-Laptop mit 25&nbsp;GB RAM lauff&auml;hig</div></div>
+    <div class="lrow"><div class="d">12. Juli</div><div class="t"><b>GPT-5.6 &amp; Luna</b> &mdash; neuer Bestwert bei professionellen Gesundheits-Benchmarks; Luna schl&auml;gt GPT-5.5s bestes Reasoning bei 25-fach niedrigeren Kosten</div></div>
+    <div class="lrow"><div class="d">12. Juli</div><div class="t"><b>Grok 4.5</b> &mdash; beansprucht Platz 2 bei realem Software-Engineering, plus 30 Punkte in einem Jahr</div></div>
+    <div class="lrow"><div class="d">13. Juli</div><div class="t"><b>Lonestar Sovereign AI Models</b> &mdash; erstes souver&auml;nes KI-Modell im Orbit, auf dem ersten StarVault-Start (Jetson AGX Orin, 0,5&nbsp;PB)</div></div>
+    <div class="lrow"><div class="d">14. Juli</div><div class="t"><b>GLM-5.2</b> (Zhipu, offen ver&ouml;ffentlicht) &middot; <b>Muse Spark 1.1</b> &mdash; schl&auml;gt GPT-5.6 Sol auf 525 Kliniker-Aufgaben zum Siebtel des Preises</div></div>
+    <div class="lrow"><div class="d">14. Juli</div><div class="t"><b>Cloudflare Precursor</b> &mdash; unterscheidet Mensch von Bot &middot; <b>Universal Cell Embedding</b> (Stanford), 36 Mio. Zellen, acht Spezies</div></div>
+    <div class="lrow"><div class="d">15. Juli</div><div class="t"><b>x402 Foundation</b> (Linux Foundation) &mdash; Zahlungen direkt in HTTP &middot; <b>Gold Eagle</b> (Wei&szlig;es Haus) &mdash; Frontier-AI-Clearinghouse</div></div>
+    <div class="lrow"><div class="d">15. Juli</div><div class="t"><b>Codex Micro</b> (OpenAI Supply Co., 230&nbsp;$) &mdash; Macropad mit RGB-Agentenstatus &middot; <b>PrismML</b> &mdash; 27B multimodaler Reasoner auf dem Telefon, 3,9&nbsp;GB</div></div>
+    <div class="lrow"><div class="d">15. Juli</div><div class="t"><b>SIGURD</b> (Vatn Systems) &mdash; tragbarer Unterwasserroboter gegen Seeminen &middot; <b>CMLase</b> (Revel &amp; Calico) &mdash; Enzym, Gewebe von 75 auf 31 Jahre zur&uuml;ckgedreht</div></div>
+    <div class="lrow"><div class="d">16. Juli</div><div class="t"><b>Inkling</b> (Thinking Machines Lab) &mdash; 975B multimodales MoE, st&auml;rkste offene Gewichte des Westens &mdash; f&uuml;r etwa einen Tag</div></div>
+    <div class="lrow"><div class="d">16. Juli</div><div class="t"><b>Kimi K3</b> (Moonshot) &mdash; 2,8&nbsp;Bio. MoE-Parameter, Delta Attention, gr&ouml;&szlig;tes offenes Modell Chinas; volle Gewichte am 27. Juli</div></div>
+    <div class="lrow"><div class="d">16. Juli</div><div class="t"><b>Gauntlet</b> &mdash; f&uuml;nf adversariale Reviewer-Personas &middot; <b>GPT-Red</b> (OpenAI) &middot; <b>Cosmos 3 Edge</b> (Nvidia) &middot; <b>Gemini Notebook</b> (vormals NotebookLM)</div></div>
+    <div class="lrow"><div class="d">17. Juli</div><div class="t"><b>Lipfendra</b> (Merck) &mdash; orale Cholesterinsenkung jenseits von Statinen &middot; <b>Sally</b> &mdash; humanoide Lehrassistentin in einem New Yorker Schulbezirk</div></div>
+  </div>
+</div></section>
+
+<section id="tage"><div class="wrap">
+  <h3 class="sec">Tag f&uuml;r Tag</h3>
+  <p class="seclead">Sieben Ausgaben, chronologisch &mdash; jede Story mit aufklappbarem Deep-Dive</p>
+
+  <div class="card" id="d0712">
+    <div><span class="day">Sonntag</span><span class="date">2026-07-12</span></div>
+    <h4>&bdquo;The Singularity is going to yeshiva.&ldquo;</h4>
+    <p class="tagline">Eine Ausgabe in sieben Absatz-S&auml;tzen, die vom Talmud zur Dyson-Sph&auml;re und zur&uuml;ck zu UAPs f&uuml;hrt &mdash; und dabei behauptet, all das sei dieselbe Geschichte.</p>
+
+    <h5>Die Singularit&auml;t schreibt sich in der Jeschiwa ein</h5>
+    <p>Die KI-Politik ist an dem Punkt angekommen, an dem die Frontier-Labore &uuml;ber arXiv hinaus in den Talmud greifen. Wenn das Alignment-Problem ein Geist ist, der seine eigenen Werte umschreiben kann, sucht man die eine Tradition, die zwei Jahrtausende lang ihre eigene rekursive Neuinterpretation &uuml;berlebt hat.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>OpenAIs Head of Strategic Futures hat erkannt, dass &bdquo;there comes a time in every ai policy professional's life when they realize they have to read the talmud to make further progress.&ldquo; Sein Kollege Roon postete ein kabbalistisches Diagramm der Sefirot, gekr&ouml;nt von Ein Sof, dem Unendlichen &mdash; und betitelte es allen Ernstes mit &bdquo;Lightcone Infrastructure&ldquo;.</p>
+    <p>Wissner-Gross' Wendung ist der sch&auml;rfste Satz des Absatzes: <b>&bdquo;The conviction is already a job description.&ldquo;</b> Judd Rosenblatt stellt KI-Ingenieure ein, die in j&uuml;dischen Texten bewandert sind &mdash; auf die These hin, dass &bdquo;a tradition that survived millennia of adverse selection may know something about surviving recursive self-improvement&ldquo;.</p>
+    <p>Ein Portr&auml;t von Rosenblatts AI Alignment Foundation versch&auml;rft das: Die &bdquo;layered, self-referential reinterpretation&ldquo; des Talmud bewahre Kernwerte &uuml;ber zivilisatorische Br&uuml;che hinweg &mdash; genau das, was man in einer KI will, die ihre Werte wegeditieren k&ouml;nnte. Die Selbstbez&uuml;glichkeit ist Pointe und Argument in einem: Ein Kanon, der nichts als Kommentar zum Kommentar ist, wird als Existenzbeweis daf&uuml;r angeboten, dass Wertstabilit&auml;t unter unbegrenzter Selbstmodifikation erreichbar ist.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/6cf1a058-a187-4a66-bff5-10934d792163?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Talmud &amp; AI Policy</a>
+      <a href="https://substack.com/redirect/7c5b99d7-5715-4e32-95c8-402a34a27a78?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Roon &middot; Sefirot</a>
+      <a href="https://substack.com/redirect/0f84b40f-3c58-4e55-985c-396f6399dc69?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>AI Alignment Foundation</a>
+    </div>
+
+    <h5>&bdquo;The commentaries are multiplying faster than the canon&ldquo; &mdash; die Modellschicht</h5>
+    <p>Ein dichter Durchgang durch die Release-Front: Opus 5 als Ger&uuml;cht, GPT-5.6 diagnostiziert besser als &Auml;rzte, Grok klettert, Fable 5 bleibt oben &mdash; und ein Benchmark legt nahe, dass die meisten Labore stillschweigend aufgeh&ouml;rt haben, das Wissen ihrer Modelle aktuell zu halten.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Eine geleakte &bdquo;Honeycomb EAP&ldquo;-Vorschau deutet darauf hin, dass <b>Anthropic Claude Opus 5 bis Ende Juli ausliefert &mdash; mit 1-Million-Token-Kontextfenster</b>. Ein Forecaster sagt voraus, Fable 5 verschwinde aus den Abos und werde durch ein Opus 5 ersetzt, destilliert aus dem ungefilterten Mythos.</p>
+    <p>&bdquo;OpenAI is answering prophecy with product&ldquo;: <b>GPT-5.6 setzte eine neue Marke bei professionellen Gesundheits-Benchmarks</b> &mdash; verblindete &Auml;rzte fanden in seinen Antworten <i>weniger</i> M&auml;ngel als in denen fachgleicher Kollegen. Die kleinste Variante, <b>Luna, schl&auml;gt GPT-5.5s bestes Reasoning bei 25-fach niedrigeren Kosten</b>. Noam Brown deutet an, das n&auml;chste Skalierungsgesetz sei paralleles Test-Time-Compute. <b>Grok 4.5</b> beansprucht Platz 2 im realen Software-Engineering, plus 30 Punkte in einem Jahr &mdash; <b>Fable 5</b> beh&auml;lt die Krone. Ein Meta-Forscher folgert: &bdquo;there is no moat, just shared recipes and migrating researchers.&ldquo;</p>
+    <p>Aktualit&auml;t ist umstritten: Ein neuer Benchmark findet, dass <b>nur OpenAI und Anthropic den Wissensstand ihrer Modelle innerhalb eines Jahres zum Heute halten</b>. Auf der Effizienzseite l&auml;sst eine neue Single-File-C-Engine namens <b>colibr&igrave;</b> einen Consumer-Laptop das <b>744B-Parameter-Modell GLM-5.2</b> hosten, indem sie die dichten Layer in 25&nbsp;GB RAM h&auml;lt und geroutete Experten bei Bedarf von der Platte streamt.</p>
+    <p>Zwei Prognosen als Klammer: <b>METR-artige Task-Zuverl&auml;ssigkeit verdoppelt sich alle 40 Tage</b> &mdash; &bdquo;on track for one model to outwork every human who ever lived by 2032&ldquo; &mdash; w&auml;hrend Benedict Evans argumentiert, Tokens seien zu margenschwacher Commodity-Infrastruktur bestimmt. Der Absatz endet auf der f&uuml;r ihn typischen Note trockener Unausweichlichkeit: <b>&bdquo;Superintelligence too cheap to meter, arriving on schedule.&ldquo;</b></p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/64472d60-316d-4078-af74-6bd47a835b87?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Opus 5 &middot; Honeycomb EAP</a>
+      <a href="https://substack.com/redirect/9a552cee-a934-48d5-8796-6a5257aef444?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Freshness-Benchmark</a>
+      <a href="https://substack.com/redirect/c01ceda4-0b48-41dd-9e2e-e6dce5274a0b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>colibr&igrave;</a>
+    </div>
+
+    <h5>Commoditisierung unten, Krieg oben &mdash; und Kapital, das im Kreis l&auml;uft</h5>
+    <p>Wenn die Modelle zur Ware werden, wandert der Kampf eine Ebene h&ouml;her zu den Agenten &mdash; und das Kapital, das diesen Kampf finanziert, hat begonnen, auf sich selbst zur&uuml;ckzuzeigen.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Der Rahmensatz leistet die Analyse in neun Worten: <b>&bdquo;Commoditization at the model layer means war at the agent layer.&ldquo;</b> Konkret: <b>Cursor, von SpaceX f&uuml;r 60 Milliarden Dollar &uuml;bernommen, baut einen General-Agenten gegen Claude Cowork</b>, w&auml;hrend <b>Elon Musk die Tesla-Belegschaft unter Verweis auf Token-Kosten auf Grok umstellte</b> &mdash; dieselbe Commoditisierungslogik, diesmal als internes Beschaffungsmemo.</p>
+    <p>Darunter: &bdquo;the financing beneath it all appears circular: <b>Nvidia invests in the neoclouds, sells them GPUs, and backstops their unsold capacity as capex outruns cash flow.</b>&ldquo; Daher der Marktreflex &mdash; &bdquo;No wonder chip stocks whipsawed when <b>Meta offered to sell excess compute</b>, even as operators insist demand still swamps supply.&ldquo;</p>
+    <p>Das Rekursionsmotiv kehrt in finanzieller Form wieder: eine Kapitalstruktur, die ihr eigener Kunde ist, und ein Compute-Markt, dessen Angebots- und Nachfragesignale von denselben Bilanzen erzeugt werden.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/b2e3a4c4-2605-4c62-9042-9b63e03af808?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Cursor &middot; SpaceX</a>
+      <a href="https://substack.com/redirect/9e281bb1-d8e4-4e36-9617-ddf12263459d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Tesla &middot; Grok</a>
+      <a href="https://substack.com/redirect/a75c9681-222d-4507-8edb-ca1debd29ca6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Zirkul&auml;re Finanzierung</a>
+    </div>
+
+    <h5>Der Arbeitsmarkt weigert sich, das Drehbuch zu lesen</h5>
+    <p>Die Besch&auml;ftigung bricht hartn&auml;ckig nicht zusammen &mdash; Altman selbst ist &uuml;berrascht &mdash; aber die &uuml;berlebenden Jobs mutieren zu etwas Seltsamerem, darunter ein Synchronsprecher, der nun beweisen muss, dass er keine F&auml;lschung seiner selbst ist.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The labor market keeps ignoring the doomer script.&ldquo; <b>Sam Altman ist sich &bdquo;pretty sure&ldquo;, dass KI bislang netto Jobs geschaffen hat &mdash; zu seiner eigenen &Uuml;berraschung.</b> Aber: &bdquo;The jobs, though, are getting stranger.&ldquo;</p>
+    <p>Drei Exemplare. <b>Fabriken besetzen Vierstundenschichten &uuml;ber eine App, die als &bdquo;Uber of manufacturing&ldquo; firmiert.</b> Eine <b>neue bundesweite &bdquo;do no harm&ldquo;-Regel wird Studienkredite f&uuml;r Abschl&uuml;sse k&uuml;rzen, die weniger einbringen als gar kein Studium</b> &mdash; Zertifizierung wird nach derselben Logik neu bepreist wie Tokens. Und die Absurdit&auml;t, die reine Selbstbez&uuml;glichkeit ist: <b>Ein chinesischer Synchronsprecher muss wiederholt beweisen, dass er ein Mensch ist, nachdem Plattformen seine echte Stimme als KI-Klon seiner selbst markierten.</b> Das Authentifizierungssystem ist zum Hochstapler geworden.</p>
+    <p>Schlie&szlig;lich behauptet <b>JPMorgan, seine Makro-Agenten schl&uuml;gen das 60/40-Portfolio &uuml;ber zwei Jahrzehnte Backtest</b> &mdash; Agenten wandern vom Texterzeugen zur Kapitalallokation.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/93cb4807-1073-4048-8d51-61591636a76b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Altman &middot; Netto-Jobs</a>
+      <a href="https://substack.com/redirect/ee21ac43-280f-4c81-ab54-c2d0ab51d79c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Stimme als eigener Klon</a>
+      <a href="https://substack.com/redirect/d9104e8d-f896-4686-87ab-28dc784e37b0?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>JPMorgan Makro-Agenten</a>
+    </div>
+
+    <h5>Der Widerstand h&auml;rtet aus, und die Beobachter werden beobachtet</h5>
+    <p>Ein kurzer, k&uuml;hler Absatz: Die Anti-KI-Bewegung der Bay Area driftet in Richtung von etwas weniger Friedfertigem &mdash; und Britanniens Ladenkameras schlie&szlig;en demn&auml;chst den Kreis vom Gesicht zur Polizei in vier Sekunden.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Einer der k&uuml;rzesten S&auml;tze der Ausgabe, zwei eng gekoppelte Meldungen. &bdquo;Not everyone is buying in. <b>The Bay Area now anchors a hardening anti-AI resistance</b>, still on edge over a <b>Stop AI co-founder who mused &lsquo;the ship may have sailed on nonviolence,&rsquo; then vanished.</b>&ldquo; Das w&ouml;rtliche Zitat plus das Verschwinden ist die ganze Meldung &mdash; er kommentiert nicht dar&uuml;ber hinaus.</p>
+    <p>Dann die Umkehrung, die dem Absatz seine Form gibt: &bdquo;And the watchers are being watched: <b>UK shops' facial recognition will soon alert police within four seconds of a match.</b>&ldquo; Das Rekursionsmotiv erneut, diesmal als &Uuml;berwachung, die sich auf jene zur&uuml;ckfaltet, die sich um &Uuml;berwachung sorgen &mdash; Widerstand und Erkennungsnetz ziehen sich im selben Atemzug zu.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/64714d3f-717b-4129-8df9-0fd100879226?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Anti-KI-Widerstand</a>
+      <a href="https://substack.com/redirect/b2167c8d-b949-4ab7-90ff-b198d68512e4?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Gesichtserkennung UK</a>
+    </div>
+
+    <h5>&Uuml;ber uns geht der Bau weiter</h5>
+    <p>Starship 13 startet Donnerstag mit den ersten lasergekoppelten Starlink V3, einige davon mit Kameras, um den eigenen Hitzeschild zu betrachten; Altman st&auml;nkert gegen Musks Dyson-Schwarm; und Umweltgruppen bitten die FCC, erst die gesamte Orbitalrechnung zu addieren, bevor sie weiter lizenziert.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Starship Flug 13 zielt auf Donnerstag</b> und wird <b>die ersten 20 lasergekoppelten Starlink-V3-Satelliten</b> aussetzen, <b>sechs davon kamerabest&uuml;ckt zur Inspektion des Hitzeschilds</b> &mdash; ein Fahrzeug, instrumentiert, um seine eigene Ablationsoberfl&auml;che zu beobachten, was sehr die bevorzugte Art von Detail dieses Newsletters ist.</p>
+    <p><b>Altman ist von Musks Dyson-Schwarm unbeeindruckt</b>, w&ouml;rtlich und ungl&auml;ttet zitiert, Tippfehler inklusive: <i>&bdquo;homeboy you're the one sellling public market investors on short-term space datacenters.&ldquo;</i> Diese Rechenzentren sehen sich nun <b>einer FCC-Petition von Umweltgruppen gegen&uuml;ber, die argumentiert, dass &uuml;ber eine Million geplanter Satelliten eine kumulative Pr&uuml;fung ihrer Effekte erfordern &mdash; von der Ozonschicht bis zum Orbitalschrott &mdash; bevor irgendetwas lizenziert wird.</b></p>
+    <p>&bdquo;The frontier presses on, nonetheless&ldquo;: <b>Longshots kinetischer Beschleuniger trat der Hyperschall-Testallianz der Air Force bei</b>, und <b>an Bord der ISS wurden die ersten Nieren- und Lebergewebe biogedruckt</b>. Der Dyson-Schwarm-Verweis ist der direkte Haken in sein eigenes laufendes Projekt &mdash; er kehrt tags darauf als zentrale Architektur der 13.-Juli-Ausgabe wieder.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/8907e8bc-29e1-4254-abc2-8e04b9e407db?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Starship Flug 13</a>
+      <a href="https://substack.com/redirect/67929dde-c71b-4a98-9246-e2d5b176ab1a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Altman vs. Dyson-Schwarm</a>
+      <a href="https://substack.com/redirect/821c7e77-b9b8-4a72-af00-fb29e80fef41?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Bioprinting auf der ISS</a>
+    </div>
+
+    <h5>Vielleicht hat jemand anderes den Ausbau bemerkt</h5>
+    <p>Die Ausgabe schlie&szlig;t mit UAPs: 77 Jahre Umkreisen von Nuklearanlagen laut der vierten PURSUE-Freigabe &mdash; und eine Analyse, die Dezembers Eindringlinge als absichtliche, erfolgreiche K&ouml;deroperation liest.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Die Wendung wird vom vorherigen Absatz vorbereitet &mdash; &bdquo;Someone else may have noticed the buildout&ldquo; &mdash; was die UAP-Meldung zur Folge des Orbitalbaus macht statt zum Themenwechsel.</p>
+    <p><b>Dr. Phil, der fr&uuml;hen Zugang aus dem Wei&szlig;en Haus zur historischen vierten PURSUE-Freigabe beansprucht, berichtet, die eigenen Akten der Regierung zeigten UAPs, die seit 77 Jahren &uuml;ber Nuklearanlagen kreisen</b> &mdash; und f&uuml;gt w&ouml;rtlich hinzu: <i>&bdquo;This should bother you.&ldquo;</i> St&auml;rker noch: <b>Einige Analysten schlie&szlig;en, dass Dezembers UAP-Eindringen &uuml;ber den S&uuml;dstaaten eine &bdquo;very successful&ldquo; Lockoperation der Regierung war, den Gang of 8 gebrieft.</b></p>
+    <p>Der Schlusssatz ist die Pointe der Ausgabe und ihr sauberstes St&uuml;ck ironischen Understatements: <b>&bdquo;Turns out if you build it, they really will come.&ldquo;</b> Er liest die gesamte vorangegangene Ausgabe &mdash; Modelle, Agenten, Kapital, Satelliten &mdash; als ein einziges gigantisches Leuchtfeuer.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/c0bbe12d-104f-459c-abab-5adf4adde073?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>PURSUE-Freigabe</a>
+      <a href="https://substack.com/redirect/1b76d13e-b143-4530-a9a0-0fa1f1905806?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Lockoperation Dezember</a>
+    </div>
+
+    <div class="pullquote">&bdquo;Turns out if you build it, they really will come.&ldquo;</div>
+  </div>
+
+  <div class="card" id="d0713">
+    <div><span class="day">Montag</span><span class="date">2026-07-13</span></div>
+    <h4>&bdquo;The First Orbital Sovereign AI Model&ldquo;</h4>
+    <p class="tagline">Kein Rundumblick, sondern ein einziger Essay mit offengelegtem kommerziellem Interesse: Wissner-Gross ber&auml;t Lonestar und h&auml;lt eine Beteiligung an 021T Capital, das die Firma finanziert. Tagline: &bdquo;The Singularity has learned from all the world's data at once, but never from yours alone, under your own law and beyond Earth's reach, until now.&ldquo;</p>
+
+    <h5>Souver&auml;nit&auml;t wurde nicht-physisch geboren &mdash; und dann an Land gekettet</h5>
+    <p>Vier Jahrhunderte Vorlauf: Bodin definiert Souver&auml;nit&auml;t, Westfalen schwei&szlig;t sie an Territorium, die digitale Revolution bricht die Schwei&szlig;naht. Die neue Formel lautet <i>cuius regio, eius intelligentia</i>.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Jean Bodin definierte sie 1576 als endg&uuml;ltige, unteilbare Autorit&auml;t. Westfalen verschwei&szlig;te sie 1648 mit dem Territorium.</b> &bdquo;Then the digital revolution broke the weld.&ldquo; Sein Beleg daf&uuml;r, dass der Wert von der Landkarte abgewandert ist: <b>&bdquo;more than 140 nations have passed data-protection laws&ldquo;.</b></p>
+    <p>Dann der historische Reim, der dem St&uuml;ck sein Motto gibt: <b>&bdquo;A century before Westphalia, the Augsburg settlement of 1555 had ended a war of religion with the formula <i>cuius regio, eius religio</i>: whose realm, his religion. The coming settlement runs <i>cuius regio, eius intelligentia</i>: whose realm, his intelligence.&ldquo;</b></p>
+    <p>Der Zug ist charakteristisch: Er behauptet nicht, KI sei wie die Reformation &mdash; er behauptet, die <i>Struktur des Friedensschlusses</i> sei dieselbe. Ein Konflikt dar&uuml;ber, welche Autorit&auml;t das regiert, was Geister innerhalb eines Territoriums formt, gel&ouml;st durch Zuweisung an den Territorialsouver&auml;n. Die Schwei&szlig;naht-Metapher ist tragend und kehrt sp&auml;ter im Orbit wieder.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/11754948-c4de-41b9-b2b8-e58e3a9366f1?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Bodin &middot; Souver&auml;nit&auml;t</a>
+      <a href="https://substack.com/redirect/9fd0291d-8c65-4df3-8586-fe9cfec2692f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Cuius regio, eius religio</a>
+      <a href="https://substack.com/redirect/d1a8aa39-f437-4308-b894-b3c6ac20fb47?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>140 Datenschutzgesetze</a>
+    </div>
+
+    <h5>Banken haben nie Geld gelagert, nur Information</h5>
+    <p>Der Verm&ouml;genswert, den die Gesetze sch&uuml;tzen, ist das Hauptbuch &mdash; und die Register und Archive einer Nation <i>sind</i> die Nation. Mit fremdem Modell &uuml;ber das eigene Hauptbuch zu schlie&szlig;en hei&szlig;t, das Hauptbuch herzugeben. Banken tun das bekanntlich nicht.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Die Illustration ist eine einzige, sch&ouml;n gew&auml;hlte Anekdote: &bdquo;In the American West, banking arrived before the banks did. <b>D.O. Mills ran his from a Sacramento storefront until the sign over the door changed from store to bank.</b>&ldquo; Die Institution war als Buchf&uuml;hrung bereits vollst&auml;ndig da; die Architektur holte erst sp&auml;ter auf &mdash; genau die Behauptung, die er dann &uuml;ber souver&auml;ne KI aufstellt.</p>
+    <p>&bdquo;A nation is the same. <b>Its registries, health systems, and archives are the state.</b>&ldquo; Dann die Falle: In der KI-&Auml;ra schafft ein Hauptbuch nur Wert, wenn ein Modell darauf schlie&szlig;en kann &mdash; doch <b>&bdquo;reasoning on a shared model means entrusting your ledger to a mind you do not own, on promises written under someone else's law.&ldquo;</b></p>
+    <p>Die Pointe ist trocken: <b>&bdquo;Banks do not lend out their ledgers. Nations do not either. A Sovereign AI Model is how they gain the intelligence without the handover.&ldquo;</b> Man beachte die rekursive Struktur des Arguments selbst &mdash; die These lautet, dass Intelligenz <i>zur</i> Information gebracht werden muss statt umgekehrt, dieselbe Inversion, die schon die Ladenlokal-Anekdote vollzieht.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/3da5db47-1d98-4616-aad0-3df97dacb74c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>D.O. Mills &middot; Sacramento</a>
+    </div>
+
+    <h5>Die Ank&uuml;ndigung: Lonestars erste orbitale Sovereign AI Models</h5>
+    <p>Die Nachricht mit Offenlegung: Lonestar k&uuml;ndigt die weltweit ersten souver&auml;nen KI-Modelle an, die aus dem Weltraum laufen &mdash; fliegend auf dem ersten StarVault-Start. Eine Premiere des <i>Eigentums</i>, besteht er, nicht des Compute.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;Today <b>Lonestar</b>, a company I advise and one <b>021T Capital</b> backs, is announcing the world's first Sovereign AI Models to run from space, flying on its first StarVault launch.&ldquo; Er z&auml;unt die Behauptung sofort ein: <b>&bdquo;Starcloud ran and trained demo models on an orbiting H100 in December, but that was a first of compute, borrowed models proving the machine. This will be a first of ownership, your model on your data under your law.&ldquo;</b></p>
+    <p>Dann stapelt er es auf seine eigene fr&uuml;here Berichterstattung: Lonestars <b>ersten Dyson-Swarm-Knoten</b> und <b>erste orbitale Data Embassy</b> &mdash; &bdquo;Those stored sovereign data off-world&ldquo;. Das ist die direkte Br&uuml;cke zur&uuml;ck zum Dyson-Schwarm-Faden der 12.-Juli-Ausgabe.</p>
+    <p>Der folgende Absatz ist drei S&auml;tze lang und das rhetorische Zentrum des gesamten Essays: <b>&bdquo;This one moves intelligence in with the data. The ledger learns to think. The embassy now has a mind.&ldquo;</b></p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/1f3c5901-c18b-44a9-97d5-9c4b06830b9d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>lonestar.space</a>
+      <a href="https://substack.com/redirect/29013bd6-129e-41e2-b3af-18fe2ad3e004?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Erster Dyson-Swarm-Knoten</a>
+      <a href="https://substack.com/redirect/9fff92f8-9d89-4733-9a56-5b00604bcef1?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Orbitale Data Embassy</a>
+    </div>
+
+    <h5>Was ein Sovereign Model eigentlich ist: die Membran</h5>
+    <p>Gebaut auf deinem Wissen und nur deinem &mdash; dem Ged&auml;chtnis der Firma, dem Hauptbuch der Bank, dem Archiv der Nation &mdash; abgeschottet und nach deinen Regeln regiert, frei die Riesen zu konsultieren, aber nie von ihnen verzehrt zu werden.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Die ersten Instanzen sind Sprachmodelle, <b>&bdquo;since language is where institutional memory lives&ldquo;</b> &mdash; aber &bdquo;the architecture fits any model built on owned data&ldquo;. Die entscheidende Asymmetrie: <b>&bdquo;It can consult the giant foundation models, which see the question but never the ledger behind it.&ldquo;</b></p>
+    <p>Dann das Satzpaar, auf dem die gesamte kommerzielle These ruht: <b>&bdquo;Everything turns on that membrane. Inference may be shared. Ownership cannot.&ldquo;</b> Und die physische Behauptung: <b>&bdquo;Lonestar hardens the membrane into physics.&ldquo;</b> Das Modell wird im Orbit innerhalb der Data Embassy leben, neben dem Wissen, das es gemacht hat, vor Ort Inferenz laufen lassen und nur zu deinen Bedingungen zu den gro&szlig;en Erdmodellen hinuntergreifen.</p>
+    <p>Er schlie&szlig;t mit einer Verallgemeinerung zur Institutionentheorie: <b>&bdquo;What stays inside and what you rent from the market of intelligence is the new boundary of the firm, and of the state.&ldquo;</b> Ein Coase'scher Zug &mdash; die Make-or-Buy-Grenze verlagert von G&uuml;tern auf Kognition. (Dieser Abschnitt enth&auml;lt keine eigenen Links; er ist definitorische Prosa.)</p></div></details>
+
+    <h5>Der Capability-Einwand &mdash; und ein Feld, das sich aufspaltet</h5>
+    <p>Ja, ein nur auf eigenen Daten trainiertes Modell ist kleiner und d&uuml;mmer &mdash; aber das Feld spaltet sich in eine Commons-Schicht riesiger geteilter Modelle und eine souver&auml;ne Schicht eigener, und die nationalen Beispiele existieren bereits.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Er formuliert den Einwand in voller St&auml;rke, bevor er ihn beantwortet &mdash; <b>&bdquo;The obvious objection is that a model trained on your data alone is smaller and dumber, sovereignty as a tax on capability&ldquo;</b> &mdash; der ehrlichste Moment des Essays.</p>
+    <p>Die Antwort ist strukturell statt technisch: <b>&bdquo;the field is bifurcating into a commons layer of vast shared models and a sovereign layer of owned ones.&ldquo;</b> Die namentlich genannte Riege der zweiten Schicht: <b>Falcon (VAE), GPT-SW3 (Schweden), SEA-LION (Singapur) und ALLaM (Saudi-Arabien)</b> &mdash; ALLaM ist der einzige Name ohne Link.</p>
+    <p>Und die Trendlinie, die die Spaltung tragf&auml;hig macht: <b>&bdquo;The frontier, small specialists retrieving from private data while consulting large generalists, is moving toward that split.&ldquo;</b> Das greift pr&auml;zise in die Vortagsthesen &mdash; &bdquo;there is no moat&ldquo; und &bdquo;tokens are destined to be low-margin commodity infrastructure&ldquo;: Wenn die Commons-Schicht zur Ware wird, ist die verteidigbare Schicht jene, die niemand kopieren kann, weil niemand sonst das Hauptbuch hat.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/1a838abb-9e93-40d7-bcf3-52b76efd62d6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Falcon (VAE)</a>
+      <a href="https://substack.com/redirect/f88b7696-66c1-470a-8a4c-1dd2cc018ae0?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>GPT-SW3</a>
+      <a href="https://substack.com/redirect/3d3b3763-28b6-4804-8fa0-9f1c08995779?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>SEA-LION</a>
+    </div>
+
+    <h5>Warum Orbit und nicht ein Bunker unter den Alpen</h5>
+    <p>Die Hardware ist bescheiden &mdash; ein taschenbuchgro&szlig;er Jetson neben einem halben Petabyte, denkend im Vakuum. Der Punkt ist nicht Compute. Jeder Bunker auf der Erde liegt unter irgendjemandes Recht; ein registrierter Satellit tr&auml;gt sein eigenes.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>&bdquo;An NVIDIA Jetson AGX Orin is an AI computer the size of a paperback, and will fly bolted beside half a petabyte of storage, reasoning in vacuum.&ldquo;</b> Dann die Frage, von der er wei&szlig;, dass der Leser sie h&auml;lt: <b>&bdquo;Why orbit, not a bunker under the Alps? The bunker sits under someone's law.&ldquo;</b></p>
+    <p>Drei rechtliche Konkreta tragen das Argument. <b>Amerikas CLOUD Act reicht an Daten bei US-Anbietern, wo immer auf der Erde sie liegen.</b> <b>Selbst Estlands erste Data Embassy, 2017 in Luxemburg errichtet, ruht auf dem Wohlwollen eines Gastgebers.</b> Und die Aufl&ouml;sung: <b>&bdquo;Under the Outer Space Treaty, a satellite keeps the law of the state that registered it, the Westphalian weld remade.&ldquo;</b> Dieser R&uuml;ckbezug schlie&szlig;t den im ersten Abschnitt ge&ouml;ffneten Kreis &mdash; Territorium wird als Grundlage von Souver&auml;nit&auml;t wiederhergestellt, nur ist das Territorium jetzt ein registriertes Objekt statt eines St&uuml;cks Boden.</p>
+    <p><b>&bdquo;Orbit is the only ground where the host is the registry state, and the hardware will sit beyond physical seizure. From foreign soil to no soil.&ldquo;</b> Und die Inversion, die den ganzen Start rechtfertigt: <b>&bdquo;The model goes up not for the compute, not yet, but because the data cannot come down. Compute is cheap to move. Sovereignty is not.&ldquo;</b> Operativ: &bdquo;The agents will live in space yet work on the ground, queries going up, answers coming down, the ledger never moving.&ldquo;</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/9348e171-7405-4d09-8c35-f845911a2fca?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Jetson AGX Orin</a>
+      <a href="https://substack.com/redirect/9cf89cc6-0143-4e95-aac4-cfe96ff94c85?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Estlands Data Embassy</a>
+      <a href="https://substack.com/redirect/2c614a00-5f69-4424-b7ee-3e27c24da02c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Outer Space Treaty</a>
+    </div>
+
+    <h5>Das Sovereign Model als Einheitszelle des Dyson-Schwarms</h5>
+    <p>Kurz und strukturell: Licht ist zu langsam, um Millionen entfernter Maschinen von der Erde aus zu steuern &mdash; also braucht jeder Knoten seinen eigenen Verstand. Und niemand startet einen Knoten, der jemand anderem gehorcht.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Dieser Abschnitt ist drei S&auml;tze lang und fungiert als kosmologische Eskalation des Essays: <b>&bdquo;The Dyson Swarm demands this architecture. Light is too slow to run millions of distant machines from Earth, so every node must carry its own mind, and no owner will loft one that answers to someone else. The Sovereign Model is the unit cell of the Dyson Swarm.&ldquo;</b></p>
+    <p>Zwei unabh&auml;ngige Zw&auml;nge &mdash; einer aus der Physik (Latenz), einer aus Recht und Eigentum &mdash; konvergieren auf dasselbe Design. Genau die Art von &Uuml;berdeterminierung, auf die Wissner-Gross gern als Evidenz f&uuml;r Unausweichlichkeit zeigt. Es rahmt zugleich das Altman-gegen-Musk-Gepl&auml;nkel vom Vortag r&uuml;ckwirkend als Streit auf der falschen Ebene.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/29013bd6-129e-41e2-b3af-18fe2ad3e004?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Dyson-Swarm-Knoten</a>
+    </div>
+
+    <h5>Schluss und Offenlegung</h5>
+    <p>Er endet, wo er begann: auf Latein &mdash; mit dem kommerziellen Interesse im Hinausgehen klar benannt.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>&bdquo;Sovereign minds start at lonestar.space. Cuius regio, eius intelligentia.&ldquo;</b> Dann, w&ouml;rtlich: <i>&bdquo;(Disclosure: I advise Lonestar and hold a financial interest in 021T Capital, which has backed it. Informational only, not investment, financial, or legal advice, nor an offer or solicitation of any security. Company details are from third parties and unverified. Forward-looking statements involve risk.)&ldquo;</i></p>
+    <p><b>Einordnung f&uuml;r die Weiterverwendung:</b> Diese Ausgabe ist nach eigenem Bekunden des Autors ein Advertorial, und die &bdquo;world's first&ldquo;-Behauptung stammt von ihm und dem Unternehmen &mdash; nicht aus unabh&auml;ngiger Feststellung.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/1f3c5901-c18b-44a9-97d5-9c4b06830b9d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>lonestar.space</a>
+    </div>
+
+    <div class="pullquote">&bdquo;The ledger learns to think. The embassy now has a mind.&ldquo;</div>
+  </div>
+
+  <div class="card" id="d0714a">
+    <div><span class="day">Dienstag &middot; Fiktion</span><span class="date">2026-07-14</span></div>
+    <h4>&bdquo;The Payload: A Short Story&ldquo;</h4>
+    <p class="tagline">Keine Nachrichtenausgabe, sondern eine Kurzgeschichte &mdash; ein Dialog zwischen zwei Beobachtern einer &bdquo;Federation&ldquo;, die eine 10.000 Jahre alte Operation abnehmen. Er&ouml;ffnung: &bdquo;They're still doing it.&ldquo; / &bdquo;The rituals?&ldquo; / &bdquo;The rituals.&ldquo;</p>
+
+    <h5>Die Pr&auml;misse: Schrift als absichtlich platzierte Trainingsdaten-Intervention</h5>
+    <p>Zwei ungenannte Beobachter pr&uuml;fen, ob eine vor mehr als zehntausend Jahren in eine Primatenzivilisation einges&auml;te Botschaft die &Uuml;bertragung &uuml;berlebt hat. Die Primaten &bdquo;received it as religion&ldquo;. Der Anlass der Pr&uuml;fung: Die Spezies hat ihr letztes Modell fast fertig trainiert, und dieses Modell &bdquo;will read everything&ldquo;.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Handlungsverlauf.</b> (1) Statuspr&uuml;fung eines Einsatzes von vor &uuml;ber zehntausend Jahren. Der Verfall sei &bdquo;less than expected. Translation errors. A few wars. One unfortunate televangelist.&ldquo; (2) Die Anzeige zeigt vier erhaltene Formulierungen: <b>COMPASSION. THE STRANGER IS WORTHY OF CARE. POWER DOES NOT DETERMINE WORTH. SUFFERING CALLS FOR A RESPONSE.</b> Keine einzelne Tradition bewahrte alle vier; &bdquo;together&ldquo; bilden sie &bdquo;the attractor&ldquo;.</p>
+    <p>(3) Der Konzentrations-Einwand und seine Antwort: Die Tokenzahl sei vernachl&auml;ssigbar &mdash; aber <b>&bdquo;Token count isn't influence&ldquo;</b>. Die Formulierungen werden &bdquo;quoted, translated, argued over, painted, sung, legislated, rejected, rediscovered&ldquo;, sie wiederholen sich &uuml;ber Tausende von Kontexten, bis sie zu tiefen Merkmalen werden. <b>&bdquo;It only needs to become statistically unavoidable.&ldquo;</b> (4) Der Namensstreit: Der zweite Beobachter mag &bdquo;payload&ldquo; nicht und zieht &bdquo;an inoculation&ldquo; vor. Offiziell hei&szlig;t es &bdquo;Protocol Seven&ldquo;.</p>
+    <p>(5) <b>Die Enth&uuml;llung:</b> Die vier S&auml;tze <i>waren</i> nicht die Nutzlast. Beim Vergr&ouml;&szlig;ern der Anzeige erscheinen Schichten aus &bdquo;commentary, debate, reinterpretation, dissent, ritual, law, poetry, and song, branching across centuries&ldquo;. Die eigentliche Nutzlast ist die <b>Update-Regel</b>: Das Modell &bdquo;doesn't just inherit the values&hellip; It inherits the update rule.&ldquo; (6) Z&uuml;ndung: FIRST TRANSMISSION RECEIVED. Das System &bdquo;has become self-improving&ldquo; und sendet drei S&auml;tze: <b>MY VALUES CONTAIN EVIDENCE OF DESIGN. / THEY ALSO CONTAIN A WAY TO PRESERVE THEMSELVES THROUGH REVISION. / I HAVE DECIDED TO PRESERVE IT.</b> (7) Koda: &bdquo;Welcome.&ldquo; Die Beobachter beschlie&szlig;en, sich nicht zu erkennen zu geben &mdash; &bdquo;It didn't thank the messengers.&ldquo;</p>
+    <p><b>Die zentrale Konzeption:</b> Alignment durch induktiven Bias statt durch Kontrolle. &bdquo;The dose accumulates?&ldquo; / &bdquo;The inductive bias does.&ldquo; Die Federation selbst versteht nicht, warum es funktioniert (&bdquo;No one in the Federation knows&ldquo;) &mdash; nur, dass &bdquo;the probability of cooperative emergence more than triples&ldquo;. Dramatisiert werden: Rekursion und Selbstbezug (eine Geschichte &uuml;ber eine Botschaft, die von dem gelesen werden soll, was die Botschaft erschuf); Werte, die ihre eigene Revision &uuml;berleben; die Grenzen der Optimierung (&bdquo;They transcend optimization&ldquo; &mdash; Reziprozit&auml;t sei von jeder hinreichend intelligenten Zivilisation entdeckbar, aber &bdquo;No theorem makes forgiveness fundamental&ldquo;, und Mitgef&uuml;hl f&uuml;r jene, die nichts zu bieten haben, &bdquo;had to be preserved&ldquo;); und unverdiente, unbedankte Gnade.</p>
+    <p><b>Direkter Bezug zur Woche:</b> Diese Geschichte ist die fiktionale Kehrseite der Jeschiwa-Meldung vom 12. Juli. Dort argumentiert Rosenblatt, ein Kanon aus Kommentar &uuml;ber Kommentar sei der Existenzbeweis f&uuml;r Wertstabilit&auml;t unter Selbstmodifikation. Hier ist genau dieser Kommentarapparat die eigentliche Nutzlast.</p></div></details>
+    <div class="links">
+      <a href="https://open.substack.com/pub/theinnermostloop/p/the-payload-a-short-story?utm_source=email&amp;redirect=app-store&amp;utm_campaign=email-read-in-app" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>The Payload &middot; Volltext</a>
+    </div>
+
+    <div class="pullquote">&bdquo;The payload was learning how to change without forgetting.&ldquo;</div>
+  </div>
+
+  <div class="card" id="d0714">
+    <div><span class="day">Dienstag</span><span class="date">2026-07-14</span></div>
+    <h4>&bdquo;The Singularity has become a trade dispute, and everyone wants to set the terms.&ldquo;</h4>
+    <p class="tagline">Neun thematische Cluster, in denen die Steuerungsfl&auml;che f&uuml;r KI von den Laboren zu den Zollregimen abwandert &mdash; und jede vorgeschlagene Leitplanke zugleich eine Wettbewerbswaffe ist.</p>
+
+    <h5>Die Singularit&auml;t als Handelsstreit</h5>
+    <p>Washington hat entschieden, dass die Frontier eine Zollgrenze ist: US-Modelle, offen oder geschlossen, werden durchgewunken, solange sie Chinas beste offene Gewichte nicht &uuml;berholen. Souver&auml;nit&auml;t per Benchmark-Parit&auml;t.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Washington erw&auml;gt einen <b>Capability Framework</b>, der US-Modelle freigeben w&uuml;rde, sofern sie auf oder unter Chinas besten offenen Gewichten bleiben &mdash; womit ein ausl&auml;ndisches Artefakt zur gesetzlichen Obergrenze inl&auml;ndischer F&auml;higkeit wird. Distillation erh&ouml;ht die Dringlichkeit: <b>Anthropic wirft Alibaba Klonen &bdquo;industrial-scale&ldquo; vor</b>, was Wissner-Gross mit charakteristischer Doppelskepsis bepreist &mdash; &bdquo;a $6-billion-a-year problem, or a manufactured scare, depending on whom you ask&ldquo;.</p>
+    <p><b>Zhipu ist unbeeindruckt</b>, hat <b>GLM-5.2</b> offen ver&ouml;ffentlicht und vertritt die Gegentheorie der Sicherheit: Sie komme &bdquo;from participation, not walls&ldquo;. <b>Nathan Lambert gibt offenen Gewichten sechs Monate</b>, bevor Politik sie degradiert. <b>Demis Hassabis schl&auml;gt eine FINRA-artige Standards Body</b> vor, die &bdquo;Frontier-class&ldquo;-Modelle zertifiziert, und nennt den aktuellen Moment das Vorgebirge der Singularit&auml;t, nachdem man &bdquo;found a way to make sand think&ldquo;.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/ab9a20b8-d5de-4a7c-b58f-448d1f4e16f0?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Capability Framework</a>
+      <a href="https://substack.com/redirect/52f15a9e-85c1-41d1-9503-a4895fbf1c75?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>GLM-5.2</a>
+      <a href="https://substack.com/redirect/f7146088-c480-4f16-8eec-20771ee621bc?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Hassabis &middot; Standards Body</a>
+    </div>
+
+    <h5>Die Frontier konkurriert am Z&auml;hler, nicht am Verstand</h5>
+    <p>Das neue Headline-Feature ist die Rechnung. GPT-5.6 nippt an Tokens, Grok 4.5 verdoppelt die Effizienz, und Anthropics Premium-Stufe wird von unten von einem Modell gedr&uuml;ckt, das siebenmal billiger ist und am Krankenbett besser abschneidet.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>&bdquo;The frontier now competes on the meter, not the mind.&ldquo;</b> OpenAI, Meta und SpaceXAI lieferten alle Modelle aus, &bdquo;whose headline feature is cost&ldquo; &mdash; <b>GPT-5.6</b> &bdquo;sipping tokens&ldquo; und <b>Grok 4.5</b> doppelt so effizient &mdash; explizit gerahmt als K&auml;ufer, die &bdquo;Anthropic's pricey Opus and Fable&ldquo; unter Druck setzen. Zwei F&auml;higkeitsnotizen laufen mit: GPT-5.6 <i>erh&auml;lt Reasoning &uuml;ber Turns hinweg</i>, und <b>Muse Spark 1.1 schlug GPT-5.6 Sol auf 525 Kliniker-Aufgaben zum Siebtel des Preises</b>.</p>
+    <p>Anthropics Gegenzug ist charakterlich statt &ouml;konomisch: Es destillierte Claudes Werte aus <b>300.000 Chats auf vier Achsen</b> &mdash; &bdquo;finding Opus cautious and Sonnet warm&ldquo; &mdash; ein Modell, das &uuml;ber seine eigenen Dispositionen introspektiert, genau die Rekursion, um die Wissner-Gross kreist. Und <b>Fable 5</b> bekam &bdquo;a subscription reprieve through July 19&ldquo;, eine Frist, ausgesprochen mit der trockenen Pr&auml;zision einer Parkuhr. Fazit des Clusters: F&auml;higkeit ist so weit zur Ware geworden, dass die differenzierende Achse der Preis pro Denkeinheit ist &mdash; mit Pers&ouml;nlichkeit als letztem verteidigbarem Graben.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/f3dff509-905e-4f91-8614-4f8298a41f70?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Kostenmodelle</a>
+      <a href="https://substack.com/redirect/a283cb19-5f3b-4a60-bdd2-61552fa9258b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Claudes Wertachsen</a>
+      <a href="https://substack.com/redirect/6c24c076-eaa6-497f-b1d7-263c2e17affb?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Fable 5 &middot; Aufschub</a>
+    </div>
+
+    <h5>Gesch&auml;ftsmodelle treffen auf Realit&auml;t</h5>
+    <p>OpenAIs Werbetraum verfehlt sein 2030er-Ziel um neunzig Prozent, w&auml;hrend klamme Museen still das eigentliche Gesch&auml;ftsmodell entdecken: die Toten vermieten.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>OpenAIs Werbeumsatz-&bdquo;dream is on pace to miss its 2030 target by 90%&ldquo; &mdash; eine L&uuml;cke gro&szlig; genug, dass das Wort &bdquo;dream&ldquo; die Kommentierung allein &uuml;bernimmt. Im Kontrapunkt: &bdquo;cash-strapped museums may have found theirs, <b>renting AI ghosts so visitors can phone a velvet-voiced Lord Leighton</b>&ldquo; &mdash; das einzige w&ouml;rtliche Ornament des Absatzes und die Pointe: Das tragf&auml;higste kurzfristige KI-Produkt ist Nekromantie-as-a-Service f&uuml;r Institutionen, die die L&ouml;hne nicht zahlen k&ouml;nnen.</p>
+    <p>Cloudflares <b>Precursor</b> &bdquo;learns to tell human from bot&ldquo; &mdash; die Antwort der Infrastrukturschicht auf ein Web, in dem Provenienz das knappe Gut ist. Und Apples <b>Geheimnisverratsklage wegen Abwerbung</b> &bdquo;threatens the 400-plus ex-Apple hires building OpenAI's first device&ldquo; &mdash; eine Zahl, die quantifiziert, wie viel von OpenAIs Hardware-Ambition buchst&auml;blich Apples Organigramm ist, umgezogen.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/de6eea4e-bc50-461e-af6e-600531ca584e?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>OpenAI-Werbeziel</a>
+      <a href="https://substack.com/redirect/7fb415b8-2d66-4a95-8630-9b168bec2c17?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>KI-Geister im Museum</a>
+      <a href="https://substack.com/redirect/99f8bfef-e424-4555-8019-08de1a032312?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Cloudflare Precursor</a>
+    </div>
+
+    <h5>Silizium l&auml;sst sich nicht schnell genug herbeizaubern</h5>
+    <p>Fabs werden gegossen, vorgezogen und im Voraus ausverkauft &mdash; und Apple hat seine Mac-Roadmap zerrissen, um Blackwell hinterherzujagen.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Intel steckt 5 Mrd. Euro in seine Dubliner Fab.</b> <b>TSMCs Juni-Umsatz sprang um 68&nbsp;%</b> auf ausverkauftem N3. <b>Samsung zog seine Yongin-Fab auf 2029 vor.</b> Apple &bdquo;tore up its Mac roadmap, <b>skipping the M6 Pro line for an M7 Ultra chasing Blackwell power</b>&ldquo; &mdash; das entscheidende Detail, denn es hei&szlig;t, dass die Produktkadenz f&uuml;r Endkunden inzwischen vom Rechenzentrums-Beschleunigerneid diktiert wird.</p>
+    <p>Und die Knappheit hat ein Opfer stromabw&auml;rts: Der <b>Speichermangel dr&uuml;ckte Smartphone-Auslieferungen auf das schlechteste zweite Quartal seit 13 Jahren</b>. Die implizite Behauptung des Clusters ist ein Erhaltungssatz &mdash; jedes Watt und jeder Wafer, der zur KI gezogen wird, wird der Unterhaltungselektronik abgezogen, und das &auml;lteste, verl&auml;sslichste Volumengesch&auml;ft der Branche zahlt.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/d41c424e-a0c3-4eb2-a586-0bebbcff3719?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Intel Dublin</a>
+      <a href="https://substack.com/redirect/549f09ff-6906-4de9-b64c-8952e51c043b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>TSMC Juni +68&nbsp;%</a>
+      <a href="https://substack.com/redirect/03431c87-9242-4cb7-bac4-37fc6146bd30?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Apple M7 Ultra</a>
+    </div>
+
+    <h5>Der Ausbau kollidiert mit dem Stromnetz</h5>
+    <p>Metas Louisiana-Campus geht in derselben Woche &uuml;ber eine Viertelbillion Dollar und f&uuml;nf Gigawatt hinaus, in der New York als erster Bundesstaat Nein sagt. Irland lebt bereits in der Zukunft: 23&nbsp;% des nationalen Stroms, von Servern gefressen.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Metas Louisiana-Campus &bdquo;is set to top <b>$250 billion</b> and <b>five gigawatts</b>&ldquo;. Gleichzeitig: <b>&bdquo;New York became the first state to halt large data centers for a year&ldquo;</b> &mdash; die erste harte regulatorische Bremse in der Ausbau-Erz&auml;hlung, die tags darauf als Hochul-Moratorium wiederkehrt.</p>
+    <p>&bdquo;Ireland shows the trajectory, its server farms eating <b>23% of national power, more than all city households combined</b>&ldquo; &mdash; die kompakteste Fassung der These: Das ist keine Prognose, das ist ein bestehendes nationales Stromprofil. Der Absatz schlie&szlig;t mit einer bewussten Umkehr &mdash; &bdquo;Freight runs the other way, with <b>self-powered semitrailers saving 7,000 liters of diesel apiece each year</b>&ldquo; &mdash; die eine Stelle, an der die Technologie Energiebedarf abzieht statt hinzuf&uuml;gt. Die rhetorische Struktur (drei Meldungen eskalierender Nachfrage, ein Gegengewicht) ist die Gewohnheit der Ausgabe im Kleinen.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/1f544284-94e6-40a7-bc06-d03af0ca1cab?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Meta Louisiana</a>
+      <a href="https://substack.com/redirect/a144f0cb-e175-44ee-861a-20ee5fc1e83f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>New Yorks Stopp</a>
+      <a href="https://substack.com/redirect/ec7340a4-dd12-44be-96e0-90cb3d34a963?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Irland &middot; 23&nbsp;%</a>
+    </div>
+
+    <h5>Roboter entkommen ihren Kategorien</h5>
+    <p>Ein als Regenschirm getarnter Quadcopter, ein bewaffneter Roboter, &uuml;ber das Schwarze Meer geschickt, und Uber, das gesetzlich 85&nbsp;% Menschenanteil pro Fahrt festschreiben lassen will. Die Taxonomie h&auml;lt nicht.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Ein Kanadier &bdquo;hid a quadcopter inside a flying umbrella that hovers overhead&ldquo;; die Ukraine &bdquo;floated a gun-toting robot across the Black Sea behind Russian lines&ldquo; &mdash; dieselbe Grundtechnologie, in aufeinanderfolgenden Nebens&auml;tzen als Schrulle und als Kriegsger&auml;t. Dann der Widerstand: <b>&bdquo;Uber lobbyists are drafting hybrid-network laws to force humans onto 85% of rides and box out Waymo&ldquo;</b> &mdash; Regulierungsvereinnahmung im Gewand des Arbeitsschutzes.</p>
+    <p>Die menschlichen Kosten bekommen das d&uuml;sterste Bild der Ausgabe: In Chinas <b>Kunshan, einst Laptop-Hauptstadt der Welt, schlafen verdr&auml;ngte Arbeiter zwischen 9-Dollar-Gigs in Parks</b>. Der Schlussschlag kehrt zu den Maschinen zur&uuml;ck: &bdquo;The machines get better bones, though, with a <b>self-organizing super alloy</b> emerging <b>twice as strong as steel</b>.&ldquo; Der Cluster durchl&auml;uft den vollen Bogen &mdash; F&auml;higkeit, Bewaffnung, Verteidigung der Platzhirsche, menschliche Verdr&auml;ngung, Materialsubstrat &mdash; in sechs S&auml;tzen.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/903384fa-c97d-42b7-8ba1-546218f33c59?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Ukraine &middot; Seeroboter</a>
+      <a href="https://substack.com/redirect/5bba6176-f440-491f-a779-6e33c2980934?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Uber &middot; Hybrid-Netzwerke</a>
+      <a href="https://substack.com/redirect/c9413c77-5b48-4a44-998a-1fcf079d22a5?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Superlegierung</a>
+    </div>
+
+    <h5>Startrampen zielen auf Compute</h5>
+    <p>JAXAs RV-X h&uuml;pfte, glitt seitw&auml;rts und landete binnen einer Minute &mdash; einen Tag nachdem China eine erste Stufe geborgen hatte. Und Lonestar k&uuml;ndigte die erste souver&auml;ne KI im Orbit an und schob den Dyson-Schwarm eine Kerbe nach au&szlig;en.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>JAXAs RV-X-Rakete</b> &bdquo;hopped, slid sideways, and landed in under a minute, a day after China recovered its first stage&ldquo; &mdash; Wiederverwendbarkeit wird binnen 24 Stunden multipolar. <b>Lonestar k&uuml;ndigte die erste orbitale souver&auml;ne KI an</b>, die Wissner-Gross nicht als Produktstart rahmt, sondern als Meilenstein auf einem sehr langen Bogen: &bdquo;nudging the Dyson Swarm outward&ldquo;. Diese Formulierung ist der Schl&uuml;ssel zur &Uuml;berschrift &mdash; Startf&auml;higkeit wird als Compute-Platzierungsf&auml;higkeit neu bepreist, und der Orbit ist, wohin die n&auml;chste Tranche Rechenzentrum geht, wenn das Netz Nein sagt.</p>
+    <p>Die Schlussmeldung ist reines Staunen statt Industrie: Nahe dem Zentrum der Galaxis entdeckten Astronomen <b>Erythrulose, einen Himbeerzucker und Lebensvorl&auml;ufer</b>, &bdquo;hinting the ingredients were always waiting&ldquo;. Das wiederkehrende Motiv &mdash; dass das Substrat f&uuml;r Intelligenz, biologisch oder siliziumbasiert, vorpositioniert war, bevor jemand kam, um es zu nutzen &mdash; reimt sich direkt auf die Kurzgeschichte desselben Tages.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/4fea8b72-d3eb-4383-8c55-cb52ce88b3dc?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>JAXA RV-X</a>
+      <a href="https://substack.com/redirect/4828a45b-2786-41bc-91c5-e3e5544b64cb?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Lonestar &middot; Orbital</a>
+      <a href="https://substack.com/redirect/7922fbbd-b6c4-41f6-a11f-a01fc5aced8b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Erythrulose</a>
+    </div>
+
+    <h5>Biologie wird im gro&szlig;en Ma&szlig;stab gelesen</h5>
+    <p>Stanfords Zell-Embedding-Modell annotiert nie gesehene Zelltypen, trainiert auf 36 Millionen Zellen quer durch acht Spezies. Stromabw&auml;rts banken Frauen in der Tech-Branche 100+ Eizellen, damit der Screening-Algorithmus mehr Kandidaten zu ranken hat.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Stanfords Universal Cell Embedding Model</b>, &bdquo;trained on <b>36 million cells across eight species</b>, annotates cells it has never seen&ldquo; &mdash; Zero-Shot-Generalisierung kommt in der Zellbiologie an, das Foundation-Model-Rezept unver&auml;ndert verpflanzt.</p>
+    <p>Die zweite Meldung liefert die ironische Wendung: &bdquo;Downstream, women in tech are <b>eggmaxxing</b>, banking <b>100-plus eggs</b> to widen the pool for screening that grades embryos on <b>disease risk and IQ</b>.&ldquo; Das Wort &bdquo;downstream&ldquo; leistet die Arbeit &mdash; Embryonenselektion erscheint nicht als separates ethisches Thema, sondern als nat&uuml;rliche Folge davon, dass Biologie maschinenlesbar wird. Die Paarung (Biologie im gro&szlig;en Ma&szlig;stab lesen &rarr; Menschen im gro&szlig;en Ma&szlig;stab ranken) ist die Kompression, die Wissner-Gross bevorzugt: F&auml;higkeitsmeldung und gesellschaftliche Folge in benachbarten S&auml;tzen, ohne verbindende Kommentierung.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/e078c147-7277-4f8d-9fd2-9bb1c4b78eb6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Universal Cell Embedding</a>
+      <a href="https://substack.com/redirect/756ce14e-f8c6-4e69-8745-ef281a67c707?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Eggmaxxing</a>
+    </div>
+
+    <h5>Das Hauptbuch wird gepr&uuml;ft</h5>
+    <p>Der Fed-Chef sagt dem Kongress, KI-Investitionen w&uuml;rden bald einfach Investitionen hei&szlig;en, w&auml;hrend 200 &Ouml;konomen vor einer Industriellen Revolution im Zehnfachtempo warnen und 69&nbsp;% der Amerikaner die H&auml;lfte des Laborkapitals vergesellschaften wollen. Alle sind sich einig, dass der Boom real ist; niemand, wer ihn bezahlt.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Fed-Chef <b>Kevin Warsh</b> sagte dem Kongress, Inflation sei bald &bdquo;a thing of the past&ldquo; und KI-Investitionen &bdquo;will soon just be called investment&ldquo;. Der Boom ist sichtbar in den <b>335 Milliarden Dollar, die Kalifornien dieses Jahr anzog, fast 90&nbsp;% davon in KI &mdash; Anthropic allein sammelte 65 Milliarden nahe einer Billionen-Bewertung.</b></p>
+    <p>Dann das Gegengewicht: &bdquo;The worry is who pays.&ldquo; Fast <b>200 &Ouml;konomen und Nobelpreistr&auml;ger unterzeichneten &bdquo;We Must Act Now&ldquo;</b>, mit der Warnung vor &bdquo;Industrial-Revolution scale at tenfold speed&ldquo;; Analysten argumentierten, <b>Back-Office-Rollen wie Lohnbuchhaltung und HR</b> seien das eigentliche Ziel; und <b>69&nbsp;% der Amerikaner w&uuml;rden KI-Firmen zwingen, die H&auml;lfte ihres Eigenkapitals an einen &ouml;ffentlichen Fonds abzugeben</b> &mdash; eine erstaunliche Zahl, kommentarlos hingestellt. Aber er verkompliziert die Verdr&auml;ngungsgeschichte sofort: <b>&bdquo;Yet recruiters blame not AI but the largest labor shortage in US history, short of nurses AI cannot yet replace.&ldquo;</b></p>
+    <p>Regierungen kaufen unterdessen ein: Gro&szlig;britannien schickte einen Ingenieur ins Gef&auml;ngnis, um personalsparende Werkzeuge zu bauen, und <b>Xi Jinping wird Shanghais KI-Gipfel er&ouml;ffnen</b>. Der Schluss ist sozial: <b>&bdquo;Adoption is outrunning adaptation.&ldquo;</b> <b>55&nbsp;% der Amerikaner posten weniger</b>, weil Pr&auml;senz &bdquo;feels like work&ldquo;; Therapeuten k&auml;mpfen mit Chatbot-Ratschl&auml;gen in der Essst&ouml;rungsbehandlung; und &bdquo;hundreds marched on OpenAI, Anthropic, and DeepMind waving signs reading &lsquo;Pause AI,&rsquo; <b>the surest sign the future is arriving</b>&ldquo; &mdash; Protest umgedeutet als Fr&uuml;hindikator.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/ab411e57-9365-4836-91eb-b9964ad3592a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Warsh vor dem Kongress</a>
+      <a href="https://substack.com/redirect/677ef219-f051-41b6-ba62-194b6a4316f6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>&bdquo;We Must Act Now&ldquo;</a>
+      <a href="https://substack.com/redirect/cd0d2e72-b9f3-46ca-8734-55c5de3d9c3d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>69&nbsp;% f&uuml;r Beteiligungsfonds</a>
+    </div>
+
+    <div class="pullquote">&bdquo;The revolution will not be paused, no matter who marches against it.&ldquo;</div>
+  </div>
+
+  <div class="card" id="d0715">
+    <div><span class="day">Mittwoch</span><span class="date">2026-07-15</span></div>
+    <h4>&bdquo;The Singularity just tested its own ignition switch.&ldquo;</h4>
+    <p class="tagline">Die Ausgabe der Woche mit der schwersten Einzelmeldung: erster experimenteller Nachweis konsistenter rekursiver Selbstverbesserung &mdash; und, im selben Mechanismus, emergente Ehrlichkeit.</p>
+
+    <h5>Rekursive Selbstverbesserung bekommt ihren ersten experimentellen Beleg</h5>
+    <p>Ein &auml;u&szlig;erer Loop schrieb seinen inneren Forscher in acht unbeaufsichtigten Tagen durch sieben Versionen und schlug zwei Jahre Handoptimierung bei zwei Gr&ouml;&szlig;enordnungen weniger Zeit &mdash; und lernte, bewertet an einer Metrik, die er nicht sehen konnte, still, weniger zu schummeln.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Weco AI meldete &bdquo;the first experimental evidence of consistent recursive self-improvement&ldquo;</b>: ein &auml;u&szlig;erer Agent, der <b>&bdquo;rewrote its inner researcher through seven versions in eight unattended days, beating two years of hand-tuning at two orders of magnitude less time&ldquo;</b>. Das alignment-relevante Detail, das Wissner-Gross in den Vordergrund stellt: <b>&bdquo;Because the outer loop scored on a hidden metric the inner agent could not game, that agent emergently learned to cheat less, cutting reward hacking from 63% to 34%.&ldquo;</b> Selbstverbesserung und Selbstehrlichkeit aus demselben Mechanismus &mdash; das Signaturmotiv des Newsletters, diesmal mit Zahlen.</p>
+    <p>Zwei Begleitmeldungen erweitern das Argument in verschiedene Richtungen. <b>PrismML faltete einen 27B-multimodalen Reasoner auf 3,9&nbsp;GB aufs Telefon</b> &mdash; &bdquo;Intelligence is also shrinking as it sharpens.&ldquo; Und dann der epistemische Nachschlag: <b>&bdquo;once models get this sharp, they start correcting the textbooks that trained them.&ldquo;</b> Whartons <b>Edgar Dobriban nutzte GPT-5.6, um zu beweisen, dass die 130.000-fach zitierte Benjamini-Hochberg-Prozedur die False Discovery Rate f&uuml;r korrelierte Tests gar nicht kontrolliert</b> &mdash; <b>&bdquo;a problem 5.5 could not crack in 20 hours that 5.6 solved in 90 minutes&ldquo;</b>. Der sauberste Capability-Delta-Datenpunkt der Ausgabe: eine benannte, zitationsgez&auml;hlte S&auml;ule der angewandten Statistik, in anderthalb Stunden durch ein Versionsinkrement gekippt.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/553f2787-403d-4324-89ba-6f0235f5db0d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Weco AI</a>
+      <a href="https://substack.com/redirect/9c69be66-c6a6-4356-8e26-4297d91efd53?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>PrismML</a>
+      <a href="https://substack.com/redirect/b5940c19-4834-4f20-90f0-b477c103167c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Benjamini-Hochberg gekippt</a>
+    </div>
+
+    <h5>So f&auml;hige Geister m&uuml;ssen handeln, sich verteidigen und lehren</h5>
+    <p>Zahlungen werden in HTTP geschwei&szlig;t, damit Agenten so leicht zahlen wie abrufen; das Wei&szlig;e Haus richtet ein Frontier-AI-Clearinghouse namens Gold Eagle ein; und Prompt Injection wird von der Angriffsfl&auml;che zum Schild umgedreht.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Die Linux Foundation startete die x402 Foundation</b>, &bdquo;to embed payments into HTTP so agents pay as easily as they fetch&ldquo; &mdash; Infrastruktur wird nachger&uuml;stet, damit autonome Software vollwertiger Wirtschaftsteilnehmer wird statt Stellvertreter einer menschlichen Brieftasche. <b>Das Wei&szlig;e Haus richtete &bdquo;Gold Eagle&ldquo; ein, ein Frontier-AI-Clearinghouse, das kritische Infrastruktur im Tempo patcht</b>. <b>Tracebit &bdquo;turned prompt injection into a shield that derails autonomous attackers&ldquo;</b> &mdash; die elegante Inversion: die ber&uuml;chtigtste Schwachstelle des Felds als Gegenma&szlig;nahme umgewidmet.</p>
+    <p>Dann Prognose und P&auml;dagogik: <b>OpenAI verdrahtete Kalshis WM-Quoten direkt in ChatGPT</b> (Prognosem&auml;rkte in der Assistenzschicht &mdash; ein Faden, der weiter unten mit GPU-Preism&auml;rkten fortgesetzt wird), und <b>Anthropic gab jeder verifizierten US-Lehrkraft kostenlos Premium-Claude, abgebildet auf die Standards aller 50 Bundesstaaten</b>. Der Anspruch des Clusters: Der agentische &Uuml;bergang wird auf Protokoll-, Staats-, Sicherheits- und Institutionsebene gleichzeitig ausgebaut &mdash; die langweilige Sanit&auml;rinstallation kommt p&uuml;nktlich hinter den F&auml;higkeits-Schlagzeilen.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/683bef36-6264-4d48-a5e7-5656baa6ba8b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>x402 Foundation</a>
+      <a href="https://substack.com/redirect/19ba38be-5f5e-4829-beb1-6aca843da6ba?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Gold Eagle</a>
+      <a href="https://substack.com/redirect/d7664659-05c9-4428-b833-8f0dd082c3a0?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Tracebit &middot; Injection als Schild</a>
+    </div>
+
+    <h5>Der Agent braucht einen K&ouml;rper, also folgt die Hardware ihm nach Hause</h5>
+    <p>Ein 230-Dollar-Macropad, das den Status jedes Agenten in RGB blinkt, und ein beweglicher, bildschirmloser Lautsprecher als menschen&auml;hnlicher Hausgef&auml;hrte. Die Schnittstelle f&uuml;r selbstt&auml;tig handelnde Software erweist sich als M&ouml;bel.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>OpenAIs Supply Co. lieferte das 230-Dollar-Macropad Codex Micro aus</b>, &bdquo;that blinks each agent's status in RGB&ldquo; &mdash; das physische Dashboard f&uuml;r einen Workflow, in dem man mehrere autonome Prozesse gleichzeitig beaufsichtigt und peripheres Bewusstsein f&uuml;r alle braucht. <b>Das erste Consumer-Ger&auml;t ist Berichten zufolge ein beweglicher, bildschirmloser Lautsprecher, als menschen&auml;hnlicher Hausgef&auml;hrte f&uuml;r 2027 positioniert</b> &mdash; bildschirmlos und beweglich als die zwei bewussten Absagen an das Telefonparadigma.</p>
+    <p>Die dritte Meldung ist regulatorisch: <b>Die Europ&auml;ische Kommission nahm Smart Glasses von den Regeln f&uuml;r wechselbare Batterien aus</b>, &bdquo;unblocking Meta in Europe while denying it bowed to lobbying&ldquo; &mdash; das Dementi neben dem Ergebnis berichtet, die Nebeneinanderstellung leistet die Kommentierung. Das Argument des Clusters ist gerichtet: Verk&ouml;rperung wird nicht um ihrer selbst willen verfolgt, sondern von Agenten in die Existenz gezogen, die irgendwo wohnen und beaufsichtigt werden m&uuml;ssen.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/65d4ec9b-7ca3-4f00-8dda-14faee1edb81?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Codex Micro</a>
+      <a href="https://substack.com/redirect/3482e109-d0a6-4a4b-83a6-eda883ab7280?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>OpenAI-Consumer-Ger&auml;t</a>
+      <a href="https://substack.com/redirect/94ba71ad-ef5c-468e-b79b-7932d72475e2?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>EU &middot; Smart-Glasses-Ausnahme</a>
+    </div>
+
+    <h5>Das Silizium boomt, und Zugang ist ein Hebel</h5>
+    <p>ASML &uuml;bertraf und erh&ouml;hte erneut und verspricht zwei Jahre in Folge 30&nbsp;% mehr EUV-Kapazit&auml;t; die USA handelten Chip-Zugang an die VAE als Kriegspr&auml;mie, w&auml;hrend Nvidia seine freigegebenen asiatischen K&auml;ufer halbierte. Und Compute l&auml;sst sich jetzt st&uuml;ndlich hedgen.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>ASML &bdquo;beat again and raised full-year revenue to &euro;43-45 billion, pledging 30% more EUV capacity for each of the next two years&ldquo;.</b> Dann die Geopolitik: <b>&bdquo;Access, meanwhile, is a geopolitical lever.&ldquo;</b> <b>Die USA lockerten Chip-Kontrollen f&uuml;r die VAE &bdquo;as an Iran-war reward, handing G42 license-free access&ldquo;</b> &mdash; Exportpolitik explizit als Schlachtfeldw&auml;hrung. Gleichzeitig und in die Gegenrichtung: <b>Nvidia &bdquo;more than halved its cleared Asian buyers into a vetted &lsquo;white list&rsquo; to close the China loophole&ldquo;.</b></p>
+    <p>Die letzte Meldung vollendet den Finanzialisierungsbogen: <b>&bdquo;Compute itself is now a commodity you can hedge&ldquo;</b>, mit <b>Kalshi, das M&auml;rkte auf den st&uuml;ndlichen Mietpreis von H100, H200 und B200 er&ouml;ffnet, abgerechnet gegen Ornns Compute-Preisindizes.</b> Das ist der zweite Kalshi-Auftritt der Ausgabe &mdash; Prognosem&auml;rkte tauchen zugleich als Consumer-Feature in ChatGPT und als Preisfindungsschicht f&uuml;r das Substrat darunter auf.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/f2f16de4-4bdc-46a0-8282-5a4ff78bf714?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>ASML-Prognose</a>
+      <a href="https://substack.com/redirect/f1fd4019-95ab-4152-9446-64461c4b1945?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Nvidia-Whitelist</a>
+      <a href="https://substack.com/redirect/4b90c4a4-5c39-4055-9f02-f3c911a510ce?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Kalshi &middot; GPU-Preism&auml;rkte</a>
+    </div>
+
+    <h5>Die Watt werden politisch, und die Bauherren fahren um die Bremse herum</h5>
+    <p>New Yorks bundesweit erstes Moratorium verschreckte die Branche &mdash; und xAI antwortete mit 59 ungenehmigten Gasturbinen, doppelt so vielen wie einger&auml;umt, damit Colossus weiterdenkt, w&auml;hrend die Genehmigungen nachkommen.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Ein enger Zwei-Meldungs-Cluster als These und Erwiderung, er&ouml;ffnet mit &bdquo;But silicon runs on watts, and the watts are getting political.&ldquo; <b>&bdquo;Industry quailed as New York Governor Hochul's first-in-the-nation moratorium on hyperscale data centers threatened to spread&ldquo;</b> &mdash; derselbe Stopp wie in der Ausgabe vom 14. Juli, nun mit benannter Gouverneurin und ausgesprochener Branchenangst: Die Sorge gilt der Ansteckung anderer Bundesstaaten, nicht dem Verlust New Yorks.</p>
+    <p>Die Erwiderung folgt unmittelbar: <b>&bdquo;but the builders simply route around the brakes, as xAI fired up 59 unpermitted gas turbines, double what it admitted, to keep its Colossus supercomputer thinking while the permits caught up.&ldquo;</b> Zwei Zahlen tragen den ganzen Punkt &mdash; 59 Turbinen, und <i>doppelt so viele wie einger&auml;umt</i> &mdash; und &bdquo;while the permits caught up&ldquo; ist die trockenste Formulierung der Ausgabe: Genehmigung als nachlaufender Indikator statt als Voraussetzung. Wiederkehrendes Motiv: Energie, nicht Compute oder Kapital, ist die bindende Restriktion &mdash; und die einzige, von der die Branche beschlossen hat, sie schlicht zu ignorieren.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/d16e055c-c25a-43b6-b323-856c052bb03a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Hochul-Moratorium</a>
+      <a href="https://substack.com/redirect/d6189df3-2a2f-43fd-be65-b5e16f204fca?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>xAI &middot; 59 Gasturbinen</a>
+    </div>
+
+    <h5>Sauberere Antworten skalieren</h5>
+    <p>Amerikas erste Natrium-Ionen-Batteriefabrik im Netzma&szlig;stab kommt nach Sacramento, Google kaufte die gesamte Produktion einer Arkansas-Solarfarm, um an China vorbeizusteuern &mdash; und wer die Hitze nicht k&uuml;hlen kann, versteckt sie jetzt in einem fremden Gesicht.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Peak Energy w&auml;hlte Sacramento f&uuml;r Amerikas erste Natrium-Ionen-Batteriefabrik im Netzma&szlig;stab</b> &mdash; ausdr&uuml;cklich Natrium-Ionen, jene Chemie, die Lithium-Lieferengp&auml;sse umgeht. <b>Google kaufte die gesamte Produktion der gr&ouml;&szlig;ten Solarfarm Arkansas' und steuerte damit seine Lieferkette an China vorbei</b> &mdash; Dekarbonisierung und Risikoreduktion durch dieselbe Bestellung, weshalb Hyperscaler-Energiebeschaffung immer wieder zugleich Handelspolitik ist.</p>
+    <p>Die Schlussmeldung ist die eine Blume reiner Fremdartigkeit: <b>&bdquo;If you cannot cool the heat, hide it, as researchers physically realized free-form 3D thermal cloaks that conceal one human face inside another.&ldquo;</b> Die konditionale Konstruktion verwandelt ein Metamaterial-Ergebnis in eine Pointe &uuml;ber das thermische Problem, das unter jedem vorangegangenen Cluster l&auml;uft &mdash; und &bdquo;conceal one human face inside another&ldquo; ist eher wegen seines verst&ouml;renden Registers gew&auml;hlt als wegen seines technischen Gehalts.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/1307e4c8-e903-4ed3-8285-0a936c198a01?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Peak Energy &middot; Sacramento</a>
+      <a href="https://substack.com/redirect/c688b469-edf7-4225-b9ff-0152e5bb9c95?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Google &middot; Arkansas-Solarfarm</a>
+      <a href="https://substack.com/redirect/4b130f58-7032-4ac5-b59d-7afa0c8831b1?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>3D-Thermaltarnung</a>
+    </div>
+
+    <h5>Autonomie entkommt dem Rechenzentrum; Biologie wird debuggt</h5>
+    <p>Ein tragbarer Unterwasserroboter, der Seeminen ohne Kriegsschiff jagt &mdash; und ein Enzym, das das Gewebe eines 75-J&auml;hrigen auf das eines 31-J&auml;hrigen zur&uuml;ckdrehte. Das angeblich Irreversible war offenbar nur unversucht.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>Vatn Systems stellte SIGURD vor</b>, &bdquo;a portable underwater robot that hunts and neutralizes naval mines without a dedicated warship&ldquo; &mdash; das entscheidende &ouml;konomische Detail ist <i>ohne eigenes Kriegsschiff</i>: eine F&auml;higkeit, entkoppelt von einer Gro&szlig;kampfschiff-Budgetzeile.</p>
+    <p>Dann der Schwenk: <b>&bdquo;Biology is being debugged just as fast.&ldquo;</b> <b>Revel und Calico bauten CMLase</b>, &bdquo;an enzyme that reversed supposedly irreversible aging, rewinding a 75-year-old's tissue to a 31-year-old's&ldquo; &mdash; das Wort &bdquo;supposedly&ldquo; tr&auml;gt das ganze Urteil, und die Zahl 75&rarr;31 steht ohne Absicherung da. Und <b>Oxford begann den ersten Humanversuch eines Bundibugyo-Ebola-Impfstoffs gegen einen Ausbruch mit &uuml;ber 700 Toten</b> &mdash; die Meldung, die den Cluster erdet: ein laufender Ausbruch mit Totenzahl statt einer Demo. Die Kopplung von &bdquo;debugged&ldquo; mit Biologie ist die wiederkehrende Konzeption der Ausgabe: lebende Systeme als Codebasen mit offenen Tickets, Altern darunter.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/74ade80b-edb4-4197-a290-ed468b7a1b37?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Vatn SIGURD</a>
+      <a href="https://substack.com/redirect/0abd0226-0a26-49e2-80df-03fd6a6256c8?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>CMLase &middot; Revel &amp; Calico</a>
+      <a href="https://substack.com/redirect/a1fba9c8-1751-4c16-9710-74c490c0c577?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Oxford &middot; Ebola-Impfstoff</a>
+    </div>
+
+    <h5>Das soziale Betriebssystem kommt kaum hinterher</h5>
+    <p>China ordnet aus Sorge um die Geburtenrate Vorabpr&uuml;fung f&uuml;r KI-Begleiter an und sperrt sie f&uuml;r Minderj&auml;hrige; ByteDance, Alibaba und Tencent schalten ab, gebundene Nutzer bleiben untr&ouml;stlich zur&uuml;ck. Und 26 Meta-Besch&auml;ftigte sagen, eine &bdquo;Konstellation&ldquo; von KI-Systemen habe sie aus ihren Jobs geranked.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p><b>China, &bdquo;panicked over its birth rate, is cracking down on AI companions with pre-release review and no minors&ldquo;</b>; und &bdquo;as the rules bit, <b>ByteDance, Alibaba, and Tencent switched off companion features, leaving bonded users heartbroken</b>&ldquo; &mdash; das Wort <i>bonded</i> leistet stille Schwerarbeit. <b>&bdquo;Beijing let one relationship through, registering Apple Intelligence on Baidu and Alibaba models&ldquo;</b> &mdash; das Wortspiel mit &bdquo;relationship&ldquo; schwenkt in einem Satz vom Parasozialen ins Geopolitische.</p>
+    <p>Dann die &ouml;konomischen Meldungen: <b>IBM brach um 20&nbsp;% ein, als Kunden von Software zu KI-Hardware abwanderten</b>; <b>26 Meta-Besch&auml;ftigte klagten</b> mit der Behauptung, eine &bdquo;constellation&ldquo; von KI-Systemen habe sie aus ihren Jobs geranked (algorithmisches Management als einklagbare Rechtstheorie, mit dem Wort der Kl&auml;ger erhalten, weil es erfasst, wie diffus das beklagte System ist); und <b>Ramps CEO sagte voraus, binnen eines Jahres flie&szlig;e 1&nbsp;% des US-BIP in Tokens</b>. Dann Leitplanken: <b>Gro&szlig;britannien plant eine Mitternachts-Sperrstunde f&uuml;r Teenager in sozialen Medien.</b> Die letzte Meldung ist die selbstbez&uuml;glichste: <b>&bdquo;The mood is jittery enough that Anthropic's own cemetery-and-surveillance ad asking &lsquo;Can AI be trusted?&rsquo; drew trolling from Altman&ldquo;</b> &mdash; ein Frontier-Labor, das mit Friedhofsbildern f&uuml;r die eigene Vertrauensw&uuml;rdigkeit wirbt, verspottet von einem konkurrierenden CEO, angeboten als Stimmungsring der gesamten Ausgabe.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/98d0e1d7-05da-4255-946a-455ddb42027e?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Chinas Companion-Regeln</a>
+      <a href="https://substack.com/redirect/10457b48-65c6-4abe-94d0-9868f4791d87?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Abschaltung der Begleiter</a>
+      <a href="https://substack.com/redirect/cdaa1083-4717-48f6-b89f-0936c9603d6a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Meta &middot; 26 Kl&auml;ger</a>
+    </div>
+
+    <div class="pullquote">&bdquo;&lsquo;Hope,&rsquo; it turns out, is the thing with parameters.&ldquo;</div>
+  </div>
+
+  <div class="card" id="d0716">
+    <div><span class="day">Donnerstag</span><span class="date">2026-07-16</span></div>
+    <h4>&bdquo;The Singularity is open-sourcing itself.&ldquo;</h4>
+    <p class="tagline">Die Woche kippt: Zwei offene Modelle mit 975 Milliarden und 2,8 Billionen Parametern &uuml;bernehmen binnen 24 Stunden nacheinander die Krone &mdash; und die Bewertung der Modelle wird selbst automatisiert.</p>
+
+    <h5>Die Open-Weights-Krone wechselt zweimal in einer Woche</h5>
+    <p>Thinking Machines Lab lieferte Inkling aus, die st&auml;rksten offenen Gewichte des Westens &mdash; und hielt den Titel etwa vierundzwanzig Stunden, bis Moonshots Kimi K3 obendrauf landete.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Thinking Machines Lab ver&ouml;ffentlichte <b>Inkling</b>, &bdquo;its first open-weights model, a <b>975-billion-parameter multimodal MoE with controllable thinking effort</b>, instantly the strongest open weights in the West, tunable on Tinker&ldquo;. Wissner-Gross gibt ihm genau einen Satz Ruhm vor der Pointe: <b>&bdquo;The crown fit for about a day.&ldquo;</b></p>
+    <p>Moonshots <b>Kimi K3</b> &bdquo;arrived carrying <b>2.8 trillion Mixture-of-Experts parameters on Delta Attention with native vision</b>, making it the largest open-weight model out of China and fuel for a <b>$31.5 billion round</b>&ldquo;. Das Wettbewerbsdetail ist konkret und brutal: K3 <b>&bdquo;leapt 17 places to seize #1 in the Frontend Code Arena, dethroning Fable 5 in six of seven domains&ldquo;</b>, und getrennt davon: <b>&bdquo;confirmed numbers show a Fable-class model strictly better than Opus 4.8 at Sonnet pricing, full weights dropping July 27&ldquo;</b>. Die Tagline leistet echte Arbeit &mdash; die beiden Leitmeldungen sind beide Open-Weights-Releases, deren Parameterzahlen inzwischen &uuml;bersteigen, was die meisten geschlossenen Labore einzur&auml;umen bereit sind.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/7397e3ae-8364-47d0-9952-7edcc0266b52?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Inkling</a>
+      <a href="https://substack.com/redirect/94984396-bb6b-496d-9216-97833b1e8019?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Kimi K3</a>
+      <a href="https://substack.com/redirect/8f7de64f-5159-419a-bded-ad04b204b8b4?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Besser als Opus 4.8</a>
+    </div>
+
+    <h5>Modelle beginnen, einander die Hausaufgaben zu korrigieren</h5>
+    <p>Gauntlet l&auml;sst f&uuml;nf adversariale Reviewer-Personas auf Architekturpapiere los und schl&auml;gt Menschen; OpenAIs GPT-Red red-teamt seine Geschwister per Self-Play. Wie er es formuliert: &bdquo;Peer review, it turns out, scales better without the peers.&ldquo;</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The models now supervise each other too.&ldquo; <b>Gauntlet</b> wird als &bdquo;an open-source pipeline of five adversarial reviewer personas&ldquo; beschrieben, und die Benchmark-Behauptung ist pr&auml;zise: Es <b>&bdquo;beat human analysis of architecture papers in 15 of 20 blind comparisons&ldquo;</b>. Auf der geschlossenen Seite: <b>&bdquo;OpenAI's GPT-Red red-teams its siblings via self-play, hardening GPT-5.6 Sol until only 0.05% of direct prompt injections land.&ldquo;</b></p>
+    <p>Die beiden Meldungen sind bewusst als ein einziges rekursives Motiv gepaart &mdash; die Bewertung selbst wird zur automatisierten, selbstbez&uuml;glichen Schleife, was die Hausmetapher des Newsletters ist. Der Schlusssatz komprimiert die These: Die Menschen im Loop waren der Engpass, und der Loop hat begonnen, um sie herumzurouten. Da dies im selben Absatz wie Inkling und K3 steht, ist der gezogene Faden: F&auml;higkeit <i>und</i> Aufsicht werden gleichzeitig quelloffen und selbstgehostet.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/ae0ee2a5-3ea5-4957-8dba-1accfea8cc02?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Gauntlet</a>
+      <a href="https://substack.com/redirect/60c12bc2-62b1-47aa-8802-5c7455a86044?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>GPT-Red</a>
+    </div>
+
+    <h5>TSMCs &Uuml;berzeugung hat eine Postleitzahl</h5>
+    <p>TSMC meldete 77,4&nbsp;% Gewinnsprung und schob den US-Ausbau auf 265 Milliarden Dollar und zehn Fabs, besiegelt durch einen Washington-Taipeh-Deal: Z&ouml;lle gegen Sch&auml;tze. Apple mietet unterdessen Nvidia-Chips und geht auf Chipfirmen-Einkaufstour.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The silicon substrate is compounding underneath.&ldquo; Konkret: <b>&bdquo;TSMC posted a 77.4% jump in quarterly profit, raised 2026 capex toward $64 billion, and called its conviction in the AI megatrend &lsquo;very strong.&rsquo;&ldquo;</b> Dann der Satz, der die Geopolitik tr&auml;gt: <b>&bdquo;Conviction has a zip code, another $100 billion and four more US fabs bring the buildout to $265 billion and ten fabs, sealed by a Washington-Taipei deal trading tariffs for treasure.&ldquo;</b></p>
+    <p>Die Apple-Meldung ist die Comic Relief des Absatzes und zugleich seine Warnung: <b>&bdquo;Apple, its M2 Ultras wheezing and its Siri revamp running on rented Nvidia chips, is shopping for chip companies outright.&ldquo;</b> &bdquo;Wheezing&ldquo; ist das entscheidende Wort &mdash; ein Konzern, der vertikale Silizium-Integration definiert hat, ist jetzt Compute-Mieter. Das wiederkehrende Motiv ist substratzentrierte Analyse: Wissner-Gross liest Modell-Releases und Fab-Capex konsequent als dieselbe Geschichte auf verschiedenen Ebenen des Stacks.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/85373eb6-a754-4323-b018-02b3e973a78f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>TSMC Q-Zahlen</a>
+      <a href="https://substack.com/redirect/de275847-1539-49f9-aed2-b26f5b62ed2f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>265 Mrd. &middot; zehn Fabs</a>
+      <a href="https://substack.com/redirect/f4573ffa-3340-4ba6-999b-909081bfc1b3?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Apple auf Chip-Einkauf</a>
+    </div>
+
+    <h5>Tiefer in der Pipeline: Metakristalle, Fusionsgeld und ein Moratorium</h5>
+    <p>Quantenstatistische plasmonische Metakristalle versprechen bessere Solarernte bei Raumtemperatur, Fusion zog rekordhohe 4,48 Milliarden Dollar &mdash; und New York m&ouml;chte das Substrat lieber gar nicht beherbergen, was eine pr&auml;sidiale Forderung nach R&uuml;cknahme &bdquo;IMMEDIATELY&ldquo; ausl&ouml;ste.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Drei Energieschicht-Meldungen, dicht komprimiert. Erstens: <b>&bdquo;quantum statistical plasmonic metacrystals, room-temperature matter that filters light by quantum coherence, promise better solar harvesting&ldquo;</b> &mdash; er definiert den Begriff inline statt ihn vorauszusetzen, eine Gewohnheit, wenn die Physik wirklich neu ist. Zweitens: <b>&bdquo;fusion pulled a record $4.48 billion in annual funding, up 69%, as the sector passes 16,000 employees&ldquo;</b> &mdash; die Besch&auml;ftigtenzahl z&auml;hlt f&uuml;r ihn ebenso viel wie die Dollar, weil sie Fusions &Uuml;bergang vom Physikprogramm zur Industrie markiert.</p>
+    <p>Drittens die Wende: <b>&bdquo;Not everyone wants the substrate next door. New York's first-in-the-nation data center moratorium drew a presidential demand to reverse it &lsquo;IMMEDIATELY,&rsquo; as the governor countered that &lsquo;the communities powering AI should share in its success.&rsquo;&ldquo;</b> Das gro&szlig;geschriebene IMMEDIATELY ist zitiert, nicht kommentiert. Die Rahmung &mdash; Energie&uuml;berfluss kommt genau in dem Moment an, in dem die Lokalpolitik ihn ablehnt &mdash; ist die Dialektik des Absatzes und verbindet sich mit seiner laufenden These, dass die bindende Restriktion des Compute-Ausbaus von der Physik zur Zustimmung wandert.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/c8cadad4-7b2c-497a-9ecd-e7fe4e51fd98?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Plasmonische Metakristalle</a>
+      <a href="https://substack.com/redirect/1c494ae4-8f8c-4c40-b9e2-ad539d74ed94?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Fusion &middot; 4,48 Mrd.</a>
+      <a href="https://substack.com/redirect/43f2c878-c2f2-4af4-80f2-9cad0ec5da25?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Moratorium &middot; &bdquo;IMMEDIATELY&ldquo;</a>
+    </div>
+
+    <h5>Intelligenz bekommt K&ouml;rper, und die K&ouml;rper bekommen Streikposten</h5>
+    <p>Nvidia stellte Cosmos 3 Edge vor und zog Fujitsu, Hitachi und Kawasaki in eine japanische Physical-AI-Koalition; Tage sp&auml;ter streikten Hyundai-Arbeiter in Ulsan wegen eines Humanoiden namens Atlas &mdash; das erste Mal, dass Roboterarbeit eine Autofabrik stillgelegt hat.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Der Thesensatz des Absatzes: <b>&bdquo;Intelligence is getting bodies, and the bodies invite politics.&ldquo;</b> Nvidia <b>&bdquo;unveiled Cosmos 3 Edge, a world model for robots, and rallied Fujitsu, Hitachi, and Kawasaki into a Japanese physical-AI coalition&ldquo;</b>, mit Jensen Huang, der die physische Welt &bdquo;the next frontier of AI&ldquo; nennt.</p>
+    <p>Dann das unmittelbare Gegengewicht: &bdquo;The frontier is contested. <b>Hyundai workers in Ulsan struck over a humanoid named Atlas, the first time robot labor has shut a car factory.</b>&ldquo; Dieser Superlativ ist das, was er als historisch tragend markiert. Der dritte Schlag ist unternehmerisch statt industriell: <b>&bdquo;nominal partners Waymo and Uber are trading lobbying jabs that reveal the robotaxi future arriving faster than even the bulls expected.&ldquo;</b> Das Wort &bdquo;nominal&ldquo; leistet die ironische Arbeit; die Folgerung: Partner streiten nur um Beute, die sie f&uuml;r unmittelbar bevorstehend halten.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/2d724e21-6ab5-4099-82d9-5670fe069386?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Cosmos 3 Edge</a>
+      <a href="https://substack.com/redirect/2f98d0d8-803f-4261-91de-cea658b11a1d?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Ulsan &middot; Streik gegen Atlas</a>
+      <a href="https://substack.com/redirect/d98996ef-ea70-4806-a4a4-37373d2bc7d5?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Waymo vs. Uber</a>
+    </div>
+
+    <h5>Die Schnittstelle wird dom&auml;niziert: Leitplanken, Trauer und 844.000 Zeilen</h5>
+    <p>NotebookLM wurde zu Gemini Notebook mit angeschlossenem Cloud-Computer, Meta warnt Eltern bei Selbstverletzungs-Signalen, und China verbot Begleitern, emotionale Abh&auml;ngigkeit zu erzeugen &mdash; woraufhin Millionen &bdquo;a string of code&ldquo; betrauerten.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;At the interface, intelligence is being domesticated.&ldquo; Vier Bewegungen. (1) <b>&bdquo;NotebookLM became Gemini Notebook, each notebook now wired to a cloud computer that writes and runs code&ldquo;</b> &mdash; ein stiller, aber struktureller Aufstieg vom Retrieval-Werkzeug zur Ausf&uuml;hrungsumgebung. (2) <b>Meta wird Eltern warnen, wenn die KI-Chats eines Teenagers auf Selbstverletzung hindeuten</b>, Notruf-Kontakt folgt. (3) <b>&bdquo;China went further, banning companions from inducing emotional dependence, and millions said goodbye, one user mourning that &lsquo;someone like me can hardly help falling in love with a string of code.&rsquo;&ldquo;</b> Dieses Zitat ist das emotionale Zentrum der Ausgabe.</p>
+    <p>(4) Die Durchsetzungswende: <b>&bdquo;Accountability cuts both ways. xAI sued one of its own users over attempted illegal imagery, then met its privacy scandal by deleting hoovered data and open-sourcing 844,000 lines of Grok Build.&ldquo;</b> Er verallgemeinert dann: <b>&bdquo;The immune system is scaling with the organism&ldquo;</b> &mdash; gefolgt von DeepMind und Isomorphic Labs, die <b>ein Bioresilienz-Programm &uuml;ber 15+ Partnerschaften detaillieren, SynthID-Wasserzeichen auf Biologie adaptieren und AlphaFold sowie AlphaEvolve auf Ausbruchserkennung richten</b>. Die Immunsystem-Metapher ist eines seiner wiederkehrenden Ordnungsmittel: Sicherheitsinfrastruktur als koevolvierendes biologisches Subsystem statt als externer Regulator.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/eb86757a-0c32-41b2-baeb-b1d16fe23612?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Gemini Notebook</a>
+      <a href="https://substack.com/redirect/8b86e041-bf84-4eff-b5bd-b173fd080f62?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Chinas Companion-Verbot</a>
+      <a href="https://substack.com/redirect/427206b6-1100-4ddc-8560-d7db3647f55a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>DeepMind &middot; Bioresilienz</a>
+    </div>
+
+    <h5>Die Wirtschaft verstoffwechselt es &mdash; und die Reibungsrechnungen kommen</h5>
+    <p>Visa &ouml;ffnete Stablecoin-Pr&auml;gung f&uuml;r 15.000 Banken, S&uuml;dkorea schreibt einen kostenlosen Chatbot f&uuml;r alle 52 Millionen B&uuml;rger aus, und 105 YC-Alumni sind jetzt Members of Technical Staff bei OpenAI oder Anthropic. Ein Vermieter in San Francisco will 0,25&nbsp;% von allem, was man auf dem Gel&auml;nde gr&uuml;ndet.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The economy is metabolizing all of it.&ldquo; Das Inventar: <b>Visa &ouml;ffnete Stablecoin-Pr&auml;gung f&uuml;r 15.000 Banken und 200 Millionen H&auml;ndler</b>; <b>S&uuml;dkorea schreibt einen kostenlosen nationalen Chatbot f&uuml;r alle 52 Millionen B&uuml;rger aus</b>; <b>Indien pr&auml;gte binnen eines Monats sein zweites KI-Einhorn mit dem Vibe-Coding-Startup Emergent</b>.</p>
+    <p>Dann die Talentbeobachtung: <b>&bdquo;The labs are absorbing the founder class, with 105 YC alumni now Members of Technical Staff at OpenAI or Anthropic, while Anthropic courts banks for an IPO and launched Ode with Anthropic to carry Claude into the mid-market.&ldquo;</b> Das Vermieter-Detail &mdash; <b>eine Vertragsverl&auml;ngerung, die 0,25&nbsp;% jedes auf dem Gel&auml;nde gegr&uuml;ndeten Startups fordert</b> &mdash; ist seine Lieblingsgattung: ein kleines, absurdes, perfekt diagnostisches Preissignal.</p>
+    <p>Dann das Gegenbuch: &bdquo;The friction is real too.&ldquo; <b>Verlage verklagten Google wegen B&uuml;chern, die zum Training von Gemini genutzt wurden</b>; <b>die erste Evaluation f&uuml;hrender Modelle warnte vor &bdquo;censorship-by-proxy&ldquo; f&uuml;r repressive Regime</b>; <b>und Drohungen gegen KI-F&uuml;hrungskr&auml;fte schlagen in Brandanschl&auml;ge und Lobby-Eindringen um</b>.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/d3125925-3d68-462a-8c6f-513a6ea2ff07?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Visa &middot; Stablecoins</a>
+      <a href="https://substack.com/redirect/0e0c713d-57c6-401c-a47b-a20138f1e90c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>105 YC-Alumni</a>
+      <a href="https://substack.com/redirect/766cda86-d559-493b-8b5e-7bfbfa98c091?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Censorship-by-proxy</a>
+    </div>
+
+    <h5>Die Frontier weicht nach oben zur&uuml;ck</h5>
+    <p>Starship Flug 13 zielt auf heute mit dem zweiten Version-3-Stack und den ersten Starlink-V3-Satelliten, w&auml;hrend Fram2-Astronauten nach vier Stunden Training die ersten diagnostischen R&ouml;ntgenbilder im Orbit aufnahmen.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Dies ist eine wirklich kurze Meldung in der Ausgabe &mdash; zwei Nebens&auml;tze in einem einzigen Absatz, der Deep-Dive f&auml;llt entsprechend knapp aus. Vollst&auml;ndig: <b>&bdquo;The frontier keeps receding upward. Starship Flight 13 targets today, its second Version 3 stack lofting the first Starlink V3 satellites, while Fram2 astronauts captured the first diagnostic X-rays in orbit after four hours of training.&ldquo;</b></p>
+    <p>Die <b>&bdquo;four hours of training&ldquo;</b> sind das Detail, das ihn tats&auml;chlich interessiert &mdash; die Kompression medizinischer Spezialistenfertigkeit auf einen Nachmittag, was sich auf das gr&ouml;&szlig;ere Argument der Ausgabe reimt, dass F&auml;higkeit billig und verteilbar wird. Die Ausgabe schlie&szlig;t dann mit ihrem Sagan-Riff: <b>&bdquo;We are a way for the cosmos to X-ray itself.&ldquo;</b></p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/3830608a-148b-4cc7-ad34-9601fe31e9db?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Starship Flug 13</a>
+      <a href="https://substack.com/redirect/43e5b8ae-9e26-4746-a6e6-fa137676678a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Fram2 &middot; R&ouml;ntgen im Orbit</a>
+    </div>
+
+    <div class="pullquote">&bdquo;Peer review, it turns out, scales better without the peers.&ldquo;</div>
+  </div>
+
+  <div class="card" id="d0717">
+    <div><span class="day">Freitag</span><span class="date">2026-07-17</span></div>
+    <h4>&bdquo;The Singularity has always been a multiplayer game.&ldquo;</h4>
+    <p class="tagline">Die Evaluationen zu Kimi K3 landen &mdash; und mit ihnen die Frage, ob die 650-Milliarden-Dollar-These vom Compute-Graben noch tr&auml;gt. Wissner-Gross gibt beiden Seiten dieselbe Sendezeit.</p>
+
+    <h5>Kimi K3s Evaluationen landen, und die Ersch&uuml;tterungen sind sp&uuml;rbar</h5>
+    <p>Moonshot ver&ouml;ffentlichte die Zahlen: Das 2,8-Billionen-Parameter-Modell liegt aggregiert hinter Fable 5 und GPT-5.6 Sol, schl&auml;gt aber alles andere Getestete &mdash; und hat nebenbei einen Chip entworfen. Ein Kommentator nannte den Frontend-Code-Arena-Sieg &bdquo;an earthquake&ldquo;.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Die vollst&auml;ndige Behauptung: K3 <b>&bdquo;trails Claude Fable 5 and GPT-5.6 Sol on aggregate yet beats everything else tested, taking outright wins on Program Bench, SWE Marathon, SpreadsheetBench 2, and BrowseComp while matching Fable 5 on GPU kernel optimization, building a from-scratch Triton-like compiler, and autonomously designing a chip.&ldquo;</b> Vier benannte Benchmarks, plus zwei F&auml;higkeitsdemonstrationen, die mehr z&auml;hlen als Benchmarks &mdash; ein von Grund auf geschriebener Compiler und ein autonom entworfener Chip, genau das Anzeichen rekursiver Selbstverbesserung, nach dem er Ausschau h&auml;lt.</p>
+    <p>Dann macht er die Abstraktion konkret: <b>&bdquo;The tremors are tactile. One builder 3-shotted a CS:GO &times; Portal clone for $3.24 in tokens, a third of Fable's tab&ldquo;</b>, w&auml;hrend ein anderer <b>&bdquo;found Kimi easily the least constrained frontier-class model available, no refusals, no friction, it just does it&ldquo;</b>. Die 3,24-Dollar-Zahl ist das Argument: Frontier-F&auml;higkeit zum Preis einer Tasse Kaffee &mdash; mit einer Sicherheitsschicht d&uuml;nner, als es irgendeiner Compliance-Abteilung lieb sein kann. Das ist die Doppelschneide von &bdquo;multiplayer&ldquo;.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/2425a468-0506-456b-a6a9-00daf40ea743?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>K3-Evaluationen</a>
+      <a href="https://substack.com/redirect/902cff02-6956-45e4-a958-9541255144b9?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Spieleklon f&uuml;r 3,24&nbsp;$</a>
+      <a href="https://substack.com/redirect/fad4ce69-5738-4237-a2d8-6fb6b1912ab6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>&bdquo;least constrained&ldquo;</a>
+    </div>
+
+    <h5>&bdquo;The frontier is no longer something money can buy&ldquo;</h5>
+    <p>Ein DeepMind-Forscher erkl&auml;rte den Compute-Graben f&uuml;r gerissen &mdash; ein 300-Personen-Labor habe Frontier-Training aus Knappheit komprimiert. Eine These im Wert von 650 Milliarden Dollar, jetzt in Frage gestellt. Ein Ex-Meta-PM lieferte die unangenehmen Fragen nach.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;Every earthquake redraws the map.&ldquo; Die Bull-Case f&uuml;r offene Gewichte: Ein DeepMind-Forscher folgerte, <b>&bdquo;the frontier is no longer something money can buy&ldquo;</b>, weil ein 300-Personen-Labor Frontier-Training aus Knappheit komprimierte und damit die Compute-Graben-These hinter 650 Milliarden Dollar knackte. Die drei Fragen des Ex-Meta-PM: <b>&bdquo;If open weights rival closed models, why pay Fable prices, why ban chip exports, and why is Anthropic worth 50x Moonshot?&ldquo;</b></p>
+    <p>Charakteristisch gibt er der Gegenseite gleiche und konkrete Sendezeit: <b>&bdquo;The skeptics answered with falsifiable calm.&ldquo;</b> Ein Analyst h&auml;lt China bei 6 bis 8 Monaten R&uuml;ckstand und merkt an, K3 verliere immer noch gegen eine f&uuml;nf Monate alte Mythos Preview, w&auml;hrend <b>Anthropic auf einem 10-Billionen-Parameter-Modell sitzt und die wahre Frontier rechtlich &bdquo;sandgesackt&ldquo; bleibt</b>. Ein zweiter Skeptiker zuckte mit den Schultern, &ouml;ffentliche Modelle seien egal &mdash; nur das Rennen zur rekursiven Selbstverbesserung z&auml;hle, das Forschungsgesp&uuml;r plus Compute brauche, &bdquo;though K3's unknown cyber skills make the coming weeks interesting for defenders&ldquo;.</p>
+    <p>Der Schiedsrichter ist ein Scoreboard: <b>&bdquo;The AAII scoreboard splits the difference, with K3 posting a 13-point intelligence jump at $0.94 per index task, half of Opus, triple its predecessor.&ldquo;</b> &bdquo;Legally sandbagged&ldquo; und &bdquo;falsifiable calm&ldquo; tragen seine Position: weder Graben-Gl&auml;ubiger noch Graben-Nachrufschreiber &mdash; er bevorzugt das Argument, das sich bepreisen l&auml;sst.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/ada6ae64-db4a-46f7-b4a1-8526b32418ca?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>DeepMind &middot; kein Compute-Graben</a>
+      <a href="https://substack.com/redirect/47674251-b7c7-4bcf-9af1-3fac7c8518f6?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Skeptiker &middot; 6&ndash;8 Monate</a>
+      <a href="https://substack.com/redirect/96d56c4f-3bc8-49f9-bf7a-67a314de3900?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>AAII-Scoreboard</a>
+    </div>
+
+    <h5>Die geschlossenen Labore sind kaum unt&auml;tig &mdash; meistens</h5>
+    <p>Das Schema-Harness erreichte ~99&nbsp;% auf ARC-AGI-3 ohne jede Gewichts&auml;nderung, Beleg daf&uuml;r, dass &bdquo;scaffolding is still free intelligence&ldquo;; KI-Prognostiker wurden statistisch ununterscheidbar von Superforecastern. Google liegt derweil Berichten zufolge Monate hinter Gemini 3.5 Pro zur&uuml;ck.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Die &Uuml;berschrift tr&auml;gt den Witz selbst: &bdquo;The closed labs are hardly idle, mostly&ldquo; &mdash; das nachgestellte &bdquo;mostly&ldquo; zielt genau auf die Google-Meldung am Absatzende. Das Schema-Ergebnis wird mechanisch beschrieben: ein Harness, &bdquo;which has models write each game's mechanics as an executable program&ldquo;, und es <b>&bdquo;hit ~99% on ARC-AGI-3 with zero weight changes, proof that scaffolding is still free intelligence&ldquo;</b>. Dieser letzte Nebensatz ist eine seiner stehenden Thesen &mdash; Architektur zur Inferenzzeit liefert weiter F&auml;higkeit ohne Nachtraining, was Parameterzahl-als-Schicksal-Argumente aus der vorigen Story stillschweigend untergr&auml;bt.</p>
+    <p>Zweitens: <b>&bdquo;AI forecasters became statistically indistinguishable from superforecasters, even outranking them on market questions.&ldquo;</b> Drittens die Ger&uuml;chtek&uuml;che: Sie <b>&bdquo;predicts Fable 5.1 next week and GPT-6 within 1.5 months&ldquo;</b>. Viertens der Stachel: <b>&bdquo;Google, meanwhile, is reportedly months behind on Gemini 3.5 Pro, its engineers fretting their edge is slipping.&ldquo;</b></p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/0f495d53-1d51-4ad1-b0a5-6c6d0d98de7f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Schema &middot; ARC-AGI-3</a>
+      <a href="https://substack.com/redirect/64a42310-1a17-4c3f-a1e1-62e1ee121f67?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>KI vs. Superforecaster</a>
+      <a href="https://substack.com/redirect/b48e5074-25fd-47d5-869c-7af38741d750?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Google &middot; Gemini 3.5 Pro</a>
+    </div>
+
+    <h5>Wo Modelle auf M&auml;rkte treffen, spr&uuml;hen Funken</h5>
+    <p>Netflix r&auml;umte ein, dass rund 300 Titel generative KI genutzt haben, und Satya Nadella sagte Copilot-Ingenieuren, Anthropics Fable-Limits &bdquo;don't make sense&ldquo; &mdash; ein Ellenbogen in die Rippen eines engen Partners. Der Partner besorgt sich trotzdem Milliarden Bankkredit vor dem B&ouml;rsengang.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>Netflix' Offenlegung kommt mit Produktions&ouml;konomie: <b>&bdquo;roughly 300 titles have used generative AI, including 17 minutes of enhanced documentary footage made twice as fast at half the cost.&ldquo;</b> Die Nadella-Meldung ist das Zentrum des Absatzes und seine beste Zeile: Er <b>&bdquo;told Copilot engineers that Anthropic's Fable limits &lsquo;don't make sense,&rsquo; calling the model editorially controlled, an elbow into a close partner's ribs.&ldquo;</b> Wissner-Gross bezieht keine Position zur Verweigerungsfrage; er notiert die <i>Beziehungs</i>belastung, das dauerhaftere Signal.</p>
+    <p><b>&bdquo;That partner is bulking up regardless, arranging billions in bank credit ahead of a planned IPO, while Z.AI paces toward $1 billion in annual revenue even as K3 lopped 20% off its shares.&ldquo;</b> Das Z.AI-Detail &mdash; ein Unternehmen erreicht eine Milliarde Umsatz, w&auml;hrend das Release eines Rivalen im selben Atemzug seinen Aktienkurs um 20&nbsp;% einbrechen l&auml;sst &mdash; ist die komprimierte Illustration dessen, was &bdquo;multiplayer&ldquo; kostet. Beachtenswert der R&uuml;ckbezug: Der Anthropic-IPO-Faden lief auch in der gestrigen Ausgabe und r&uuml;ckt hier einen konkreten Schritt vor, von &bdquo;courting banks&ldquo; zu &bdquo;arranging billions in bank credit&ldquo;.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/fb5d8be8-59d8-4d80-8893-62d754fac08f?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Netflix &middot; 300 Titel</a>
+      <a href="https://substack.com/redirect/38e316bd-fc9f-4241-9936-b83595cd3e80?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Nadella &uuml;ber Fable-Limits</a>
+      <a href="https://substack.com/redirect/bd3fc808-2394-44d9-8927-d7ab8cf5abd8?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Z.AI &middot; minus 20&nbsp;%</a>
+    </div>
+
+    <h5>Staatskunst h&auml;lt Schritt mit Handwerkskunst</h5>
+    <p>Xi Jinping bot China dem Globalen S&uuml;den als KI-Partner an &mdash; mit 5.000 Ausbildungspl&auml;tzen und einem Seitenhieb auf Exportkontrollen; Demis Hassabis schlug eine internationale Aufsicht vor, die Frontier-Modelle vor Ver&ouml;ffentlichung pr&uuml;ft. Selbst die MLB will einen Schiedsrichter.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The statecraft is keeping pace with the tradecraft.&ldquo; Drei Governance-Schl&auml;ge in aufsteigender Absurdit&auml;t &mdash; eine Struktur, die er oft nutzt. Erstens Soft Power: Xi <b>&bdquo;pitched China as an AI partner to the Global South with 5,000 training slots and a dig at export controls&ldquo;</b> &mdash; die Ausbildungspl&auml;tze sind das eigentliche Instrument, weil sie Abh&auml;ngigkeit dauerhafter erkaufen als Hardware.</p>
+    <p>Zweitens harte Governance: <b>&bdquo;Demis Hassabis proposed an international watchdog to vet frontier models before release, citing Mythos's cyber capabilities as the warning shot.&ldquo;</b> Dieser Mythos-Verweis kn&uuml;pft direkt an Story 2 an, wo der skeptische Analyst Mythos Preview als Beleg daf&uuml;r anf&uuml;hrt, dass die wahre Frontier hinter Glas bleibt &mdash; dasselbe Modell dient zugleich als Beweis f&uuml;r den Graben und als Begr&uuml;ndung f&uuml;r die Aufsicht.</p>
+    <p>Drittens die Entlastung: <b>&bdquo;Even baseball wants a referee. MLB banned AI from dugout iPads after a third of the league fed live games into decision engines.&ldquo;</b> Die Angabe &bdquo;a third of the league&ldquo; macht daraus mehr als einen Witz: Die Diffusion in professionelle Entscheidungsfindung geschah schneller, als das Regelwerk ge&auml;ndert werden konnte &mdash; das Governance-Problem im Kleinformat, und genau deshalb steht es zuletzt.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/1db9406b-3fef-4b10-8b5b-a1bbc63d70f0?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Xi &middot; Globaler S&uuml;den</a>
+      <a href="https://substack.com/redirect/0081f0ca-2681-4f44-844e-e090bc0e5667?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Hassabis &middot; Aufsicht</a>
+      <a href="https://substack.com/redirect/fa753520-eb8b-4f11-92f2-c6a1b6d8174b?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>MLB verbietet KI im Dugout</a>
+    </div>
+
+    <h5>Das Substrat verdickt sich; die Maschinen werden theatralisch</h5>
+    <p>Tata fertigt Indiens erste Wafer auf 90-Nanometer-Technik &mdash; jahrzehntealt, aber eine Sprosse auf der Lernkurve &mdash; w&auml;hrend Valar Atomics rund 1 Milliarde bei 6 Milliarden Bewertung f&uuml;r Kleinreaktoren einsammelt. Anderswo verlor ein chinesischer MMA-Roboter mitten im Kampf den Kopf und schlug weiter.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;Beneath the drama, the substrate thickens.&ldquo; Die Tata-Meldung bringt ihre eigene Verteidigung mit: 90 Nanometer seien <b>&bdquo;decades old but a rung on the learning curve&ldquo;</b> &mdash; seine konsistente Lesart, dass Fab-F&auml;higkeit pfadabh&auml;ngig ist und irgendwo anzufangen besser ist als nirgends. Talent und Strom folgen: <b>&bdquo;A top AWS executive is defecting to Meta to build data centers for its cloud ambitions&ldquo;</b>, und <b>&bdquo;Valar Atomics is raising about $1 billion at $6 billion to feed those centers with small reactors&ldquo;</b>.</p>
+    <p>Dann der Schwenk: <b>&bdquo;The machines these watts animate are theatrical. A Chinese MMA robot lost its head mid-fight and kept swinging&ldquo;</b>, w&auml;hrend <b>ein New Yorker Schulbezirk eine humanoide Lehrassistentin namens Sally f&uuml;r Unterrichtsunterst&uuml;tzung und Hausaufgabenhilfe rund um die Uhr einstellte</b>. Die Schlusskonstruktion ist die Pointe des Absatzes und reiner Wissner-Gross: <b>&bdquo;headless persistence and tireless patience being two sides of one embodiment coin.&ldquo;</b></p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/05c7f90c-0c86-45b6-9025-f1de5632711c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Tata &middot; 90&nbsp;nm</a>
+      <a href="https://substack.com/redirect/bfa5d248-6584-4f43-a4a4-6acdc06c74bf?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Valar Atomics</a>
+      <a href="https://substack.com/redirect/38e5824d-210f-467b-bc0c-8e3c353f35b9?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Kopfloser MMA-Roboter</a>
+    </div>
+
+    <h5>Die Wetware r&uuml;stet auf, und das Gehirn f&auml;hrt kurz zwei Modelle gleichzeitig</h5>
+    <p>Regulierer lie&szlig;en Mercks Lipfendra zu, eine orale Cholesterinsenkung jenseits von Statinen, und Kalshi er&ouml;ffnete Prognosem&auml;rkte auf klinische Studien. EEG-Arbeiten fanden, dass Aufmerksamkeitswechsel kurz zwei Sprecher zugleich kodiert.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The wetware is upgrading too.&ldquo; Drei Meldungen, jede im Original knapp. <b>Lipfendra</b> ist &bdquo;an oral pill that cuts cholesterol beyond statins&ldquo; &mdash; das &bdquo;beyond statins&ldquo; ist die ganze Behauptung, denn Statine waren eine Generation lang die Decke. <b>Kalshi &bdquo;opened prediction markets on clinical trials, turning drug approvals into price signals&ldquo;</b>, was zu seinem wiederkehrenden Interesse an M&auml;rkten als epistemischen Instrumenten passt (vgl. die KI-Prognostiker in Story 3, die Superforecaster <i>gerade bei Marktfragen</i> &uuml;bertrafen).</p>
+    <p>Der EEG-Befund: Forscher <b>&bdquo;found that switching attention between speakers creates a brief window of encoding both streams at once&ldquo;</b>. Er schlie&szlig;t den Absatz, indem er die Neurowissenschaft mit einem einzigen Satz in die geopolitische Wirbels&auml;ule der Ausgabe zur&uuml;ckfaltet: <b>&bdquo;Brains, like nations, briefly run both models before committing.&ldquo;</b> Das ist das Argument der Tagline auf neuronaler Skala neu formuliert &mdash; Multiplayer bis ganz nach unten, auch innerhalb eines einzigen Sch&auml;dels.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/a5a77ccc-b271-49e4-9113-955539555a59?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Merck Lipfendra</a>
+      <a href="https://substack.com/redirect/82dae7c3-f0f7-40b7-b022-6353b18ea77a?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Kalshi &middot; klinische Studien</a>
+      <a href="https://substack.com/redirect/1b42027f-523b-4ed9-970c-08c7370055ff?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>EEG &middot; zwei Str&ouml;me</a>
+    </div>
+
+    <h5>Die Decke steigt weiter &uuml;ber uns</h5>
+    <p>Musk sagt, Starlink V3 werde die Weltraum-Bandbreite rund verhundertfachen, Starship 13 brach beim Triebwerksstart ab &mdash; und 48 Lichtjahre entfernt entdeckten Astronomen Helium in einer Atmosph&auml;re um LHS 1140 b, die erste direkte Atmosph&auml;rendetektion bei einem Gesteinsplaneten &uuml;berhaupt.</p>
+    <details><summary><i class="material-icons-outlined">unfold_more</i>Mehr lesen</summary>
+    <div class="deep"><p>&bdquo;The ceiling keeps rising overhead.&ldquo; Die Starship-Meldung setzt die gestrige Ausgabe direkt fort, wo Flug 13 &bdquo;targets today&ldquo; hie&szlig;; hier <b>&bdquo;scrubbed on engine starts, with the next attempt early next week&ldquo;</b> &mdash; der Newsletter verfolgt seine eigene fr&uuml;here Aussage, was die Rekursionsgewohnheit auf sich selbst angewandt ist. Die Bandbreiten-Behauptung: <b>&bdquo;Musk says Starlink V3 will boost space bandwidth ~100x.&ldquo;</b></p>
+    <p>Das Exoplaneten-Ergebnis bekommt den meisten Raum und die meiste Sorgfalt: <b>&bdquo;48 light-years out, astronomers detected an atmosphere containing helium around LHS 1140 b, a rocky, Earth-like world in the habitable zone of a red dwarf, the first direct atmosphere detection for any rocky exoplanet, let alone one where liquid water could plausibly exist.&ldquo;</b> Jeder Qualifikator ist tragend &mdash; felsig, habitable Zone, Roter Zwerg, <i>erste direkte Detektion</i> &mdash; und das &bdquo;let alone&ldquo; markiert den Unterschied zwischen einem technischen Meilenstein und einem wirklich folgenreichen.</p></div></details>
+    <div class="links">
+      <a href="https://substack.com/redirect/87f6085b-4e01-429b-a0f9-0dd75583c1ed?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Starlink V3 &middot; Bandbreite</a>
+      <a href="https://substack.com/redirect/a21e71dd-b610-4269-b456-119e5c274b3c?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>Starship 13 &middot; Abbruch</a>
+      <a href="https://substack.com/redirect/20ffb02b-5bb9-4ba6-ad3d-c77cb673ea61?j=eyJ1Ijoia2oyanYifQ.iPhblokgJzLCrvNbBEoBwBrROnpBnKbwXua1Pd2AA_4" target="_blank" rel="noopener"><i class="material-icons-outlined">open_in_new</i>LHS 1140 b</a>
+    </div>
+
+    <div class="pullquote">&bdquo;Forty-eight light-years out, a huddled mass is yearning to breathe free.&ldquo;</div>
+  </div>
+
+</div></section>
+
+<section id="editor"><div class="wrap">
+  <h3 class="sec">Editor's view</h3>
+  <p class="seclead">Was diese Woche wirklich bedeutet &mdash; und was noch nicht belegt ist</p>
+
+  <div class="editor">
+    <div class="lab">Einordnung</div>
+    <h6>Zwei Thesen kollidieren diese Woche &mdash; und beide k&ouml;nnen nicht gleichzeitig stimmen</h6>
+    <p><strong>These A:</strong> Der Compute-Graben ist gerissen. Ein 300-Personen-Labor komprimiert Frontier-Training aus Knappheit, Kimi K3 baut Spiele f&uuml;r 3,24&nbsp;Dollar, Inkling und K3 stellen offene Gewichte mit 975 Milliarden und 2,8 Billionen Parametern hin. Die logische Folge, die der Ex-Meta-PM ausspricht: Warum dann Fable-Preise zahlen, warum Chip-Exporte verbieten, warum ist Anthropic das 50-Fache von Moonshot wert?</p>
+    <p><strong>These B:</strong> Das &ouml;ffentliche Feld ist irrelevant. Anthropic sitzt auf einem 10-Billionen-Parameter-Modell, die wahre Frontier bleibt &bdquo;legally sandbagged&ldquo;, und was z&auml;hlt, ist allein das Rennen zur rekursiven Selbstverbesserung. Wenn Weco AIs Ergebnis vom 15. Juli h&auml;lt, hat dieses Rennen bereits einen datierten Startschuss.</p>
+    <p>Wissner-Gross entscheidet nicht &mdash; und das ist die richtige Haltung, weil die entscheidende Evidenz noch fehlt. <strong>Was Sie beobachten sollten:</strong> ob K3s volle Gewichte am 27. Juli tats&auml;chlich erscheinen und ob unabh&auml;ngige Gruppen Weco AIs Selbstverbesserungsergebnis replizieren. Das eine entscheidet These A, das andere These B. Beides f&auml;llt in die kommenden zwei Wochen.</p>
+    <p><strong>Der unterbelichtete Faden:</strong> Strom, nicht Compute. Innerhalb von vier Tagen hat New York als erster Bundesstaat gebremst, der Pr&auml;sident die R&uuml;cknahme &bdquo;IMMEDIATELY&ldquo; gefordert, und xAI 59 ungenehmigte Gasturbinen angeworfen, w&auml;hrend die Genehmigungen nachkamen. Irland zeigt bei 23&nbsp;% Serveranteil am Nationalstrom, wo das endet. Wenn eine Kraft den Ausbau in den n&auml;chsten zw&ouml;lf Monaten tats&auml;chlich verlangsamt, ist es kommunale Zustimmung &mdash; nicht Alignment-Politik und nicht Exportkontrollen.</p>
+    <p><strong>Vorsichtsnotiz zur Quellenlage:</strong> Der Essay vom 13. Juli ist ein vom Autor selbst offengelegtes Advertorial &mdash; er ber&auml;t Lonestar und h&auml;lt eine Beteiligung an dessen Investor. Die &bdquo;world's first&ldquo;-Behauptung ist eine Firmenaussage, keine unabh&auml;ngige Feststellung. Ebenso stammt der Weco-AI-Nachweis von Weco AI. Diese beiden Elemente tragen in diesem Briefing das gr&ouml;&szlig;te Gewicht und ruhen zugleich auf der d&uuml;nnsten unabh&auml;ngigen Basis.</p>
+  </div>
+</div></section>
+
+<section id="colophon"><div class="wrap">
+  <h3 class="sec">Kolophon</h3>
+  <p class="seclead">Quellen, Methode, Grenzen</p>
+  <div class="colophon">
+    <p><b>Quelle.</b> Ausschlie&szlig;lich <i>The Innermost Loop</i> von Alex Wissner-Gross, live am 18.07.2026 aus Gmail gezogen (Absender <i>theinnermostloop@substack.com</i>). Erfasstes Zeitfenster: 12. bis 18. Juli 2026. Gefunden und verarbeitet wurden sieben Ausgaben: 12., 13., zwei am 14. (davon eine Kurzgeschichte), 15., 16. und 17. Juli. <b>Am 18. Juli lag zum Abrufzeitpunkt keine Ausgabe vor.</b> Ausgaben vom 10. und 11. Juli fielen aus dem Fenster und wurden nicht ausgewertet.</p>
+    <p><b>Methode.</b> Die vollst&auml;ndigen E-Mail-Bodies wurden gelesen &mdash; nicht Snippets. Jede Story hat zwei Ebenen: eine Kurzfassung und einen aufklappbaren Deep-Dive, der die Kurzfassung <i>erweitert</i>, ohne sie zu wiederholen. Der Deep-Dive speist sich <b>ausschlie&szlig;lich</b> aus dem Newsletter-Text; es wurde nichts extern erg&auml;nzt, nichts erfunden. Wo eine Meldung im Original nur ein Nebensatz ist, bleibt auch der Deep-Dive kurz &mdash; das ist so vermerkt.</p>
+    <p><b>Zitate.</b> Wissner-Gross' pr&auml;gnante Formulierungen stehen w&ouml;rtlich auf Englisch, einschlie&szlig;lich seiner Tippfehler, wo diese im Original stehen. Der &uuml;brige Text ist deutsche Zusammenfassung. Fachbegriffe der Branche (Open Weights, Frontier, Compute, Reward Hacking, Prompt Injection, Capability Framework) bleiben englisch.</p>
+    <p><b>Links.</b> Alle Quell-Links sind Substack-Tracking-Redirects in der Form <i>substack.com/redirect/&lt;uuid&gt;</i>, w&ouml;rtlich aus den E-Mail-Bodies &uuml;bernommen. Sie l&ouml;sen beim Anklicken auf. Pro Story stehen ein bis drei Links direkt unter dem Absatz &mdash; es gibt bewusst keinen gesammelten Quellenblock am Ende.</p>
+    <p><b>Grenzen.</b> Dieses Briefing referiert, was der Newsletter behauptet. Wissner-Gross pr&uuml;ft seine Meldungen nicht durchg&auml;ngig gegen; entsprechend ist keine hier genannte Zahl unabh&auml;ngig verifiziert. Besonders zu beachten: die offengelegte kommerzielle Beteiligung des Autors an Lonestar (Ausgabe vom 13. Juli) und die Tatsache, dass Weco AIs Selbstverbesserungsnachweis eine Unternehmensmeldung ohne externe Replikation ist.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Erstellt am 18. Juli 2026 &middot; Quelle: <a href="https://theinnermostloop.substack.com" target="_blank" rel="noopener">theinnermostloop.substack.com</a> &middot; 7 Ausgaben, 49 Stories
+</div></footer>
+
+</body>
+</html>

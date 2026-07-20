@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Media Briefing · Weekly · May 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #0d47a1;
+    --primary-hover: #0a3d8f;
+    --primary-soft: #e3f2fd;
+    --primary-on-soft: #0d47a1;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #1a237e); color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .hero { background: linear-gradient(135deg, #1565c0 0%, #1a237e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.55; opacity: 0.95; margin: 0; max-width: 700px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .rank { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--on-surface-2); font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.fund    { background: #e3f2fd; color: #0d47a1; }
+  .provider.crypto  { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ai      { background: #e6f4ea; color: #0d652d; }
+  .provider.media   { background: #fef7e0; color: #b06000; }
+  .provider.policy  { background: #fce8e6; color: #a50e0e; }
+  .provider.portfolio { background: #e8eef6; color: #1f3548; }
+  .provider.talent  { background: #fff3e0; color: #b06000; }
+
+  .timestamp { font-family: 'Roboto Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-on-soft); font-weight: 500; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\2022"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .card a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: var(--on-surface-2); }
+
+  .status-quo { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .status-quo h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .status-quo h3 .material-icons-outlined { color: var(--primary); font-size: 20px; }
+  .status-quo ul { margin: 0; padding-left: 20px; }
+  .status-quo li { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin-bottom: 8px; }
+  .status-quo li strong { color: var(--on-surface); font-weight: 500; }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.6; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+  .colophon a { color: var(--primary-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">a16z</div>
+    <div class="titles">
+      <h1>a16z Media Briefing</h1>
+      <div class="sub">Weekly &middot; May 19, 2026 &middot; Coverage: May 14 &ndash; May 19 &middot; Andreessen Horowitz</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="hero">
+  <div class="eyebrow">Weekly &middot; May 14 &ndash; May 19, 2026</div>
+  <h2>A genuinely thin week: no new fund-shifting deals, the Speedrun SR007 deadline passed, and the Growth Engineer cohort dropped.</h2>
+  <p>This window is light. The big deals (Anduril $5B at $61B, Tessera Labs $60M, Stitch $25M GCC Series A) all hit May 11&ndash;14 and were carded in the mid-week refresh. What is actually new in May 14&ndash;19: the a16z Growth Engineer Fellowship cohort was named, Speedrun SR007 applications closed (May 17), and Stitch published its final closing press on May 18. No new flagship podcast episodes, no major essays, no fund news. Honest assessment &mdash; treat this as a quiet week and read it as a pause between the May 11 fund/deal cluster and the next visible beat (Speedrun SR007 cohort selection, expected mid-to-late June).</p>
+</div>
+
+<!-- ─── BANNER ─── -->
+<div class="banner">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Light-week disclosure</strong>
+    The May 11 weekly absorbed Crypto Fund V close, the Lazzarin GP promotion, Digital Asset Holdings, Ethos, the Andreessen "custom prompt" cycle. The May 14 mid-week absorbed Anduril, Tessera, Stitch (announcement), Pit, the "real economy" $20M raise, and the $115M political-donor framing. Those items are <em>not</em> re-listed here. This briefing covers only what surfaced May 14&ndash;19.
+  </div>
+</div>
+
+<!-- ─── STATUS QUO ─── -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo from the May 11 + May 14 Editions</h3>
+  <ul>
+    <li><strong>Crypto Fund V closed at $2.2B (May 5):</strong> 100% crypto-dedicated; Eddy Lazzarin promoted to GP (fourth GP). Total crypto AUM now ~$9.8B across five funds.</li>
+    <li><strong>Anduril Series H (May 13):</strong> $5B raise at $61B valuation, co-led by Thrive + a16z. Doubles 2025 mark. Use-of-proceeds: Arsenal-1 Ohio factory capacity for Fury / Roadrunner / Barracuda by end of 2026.</li>
+    <li><strong>Tessera Labs (May 13):</strong> $60M led by a16z for AI-native ERP modernization; Seema Amble on board. SAP ECC&rarr;S/4HANA migrations the initial wedge.</li>
+    <li><strong>Stitch (May 14):</strong> $25M Series A led by a16z &mdash; firm's first-ever GCC (Gulf Cooperation Council) check. Saudi cloud-native bank-core OS.</li>
+    <li><strong>Pit + Ciridae:</strong> Two smaller a16z-led AI rounds ($16M seed Stockholm; $20M for "real economy" AI startup founded by ex-a16z/Apple alums).</li>
+    <li><strong>Digital Asset Holdings:</strong> ~$300M @ $2B; a16z crypto expected to lead Fund V's first deployable check. Terms reported, closing not yet confirmed.</li>
+    <li><strong>$115M+ political spending:</strong> a16z confirmed as biggest 2026 midterm donor bloc (Fairshake $47.5M crypto-PAC + Leading the Future $50M AI-PAC), ahead of Soros and Musk.</li>
+    <li><strong>$15B mega-raise (Jan 2026)</strong> + $90B+ AUM remain the structural backdrop; ~1,172 portfolio companies, 105 new in trailing 12 months.</li>
+  </ul>
+</div>
+
+<!-- ─── SECTION 1: TALENT & PROGRAMS ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">school</span>
+  <h3>Talent &amp; Programs</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">1</span>
+    <span class="provider talent"><span class="dot"></span>Fellowship Launch</span>
+    <span class="timestamp">May 14&ndash;19</span>
+    <span class="meta-pill">65 fellows &middot; 8-week cohort</span>
+  </div>
+  <h4>a16z names inaugural Growth Engineer Fellowship cohort &mdash; 65 fellows from OpenAI, Replit, Notion, Coinbase, ElevenLabs, Perplexity, Clay</h4>
+  <p>a16z announced the inaugural cohort of its Growth Engineer Fellowship: 65 fellows selected from "thousands of applications," drawn from companies including OpenAI, Replit, Notion, Coinbase, ElevenLabs, Perplexity and Clay. The program is an 8-week, opt-in structure with a SF dinner series, demos and live working sessions; partner Katie Kirsch is the named lead, with David Booth framing the thesis as "the roles of growth marketer, PM, and engineer are all collapsing into one." (<a href="https://www.a16z.news/p/meet-the-a16z-growth-engineer-fellows">a16z post: Meet the Fellows</a>, <a href="https://www.a16z.news/p/introducing-the-a16z-growth-engineer">Fellowship intro</a>, <a href="https://www.startuphub.ai/ai-news/investors-news/2026/a16z-launches-growth-engineer-program">StartupHub summary</a>)</p>
+  <p>Strategic read: this is a talent-network play, not a fund vehicle. a16z is doing what it does well &mdash; building a captive pipeline of operator-engineers from the AI-native portfolio companies it already touches (OpenAI, Notion, ElevenLabs, Perplexity are all either portfolio or adjacent). The fellow list is the asset; future deal flow and hiring referrals flow through it. Compared to Speedrun (which is a checkbook program with up to $1M per startup), this is pure network-effects infrastructure. Consistent with the firm's broader "build our own pipes" posture across media (MTS, Turpentine), policy (LTF, Fairshake) and now talent. Low capital cost, high optionality.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.a16z.news/p/meet-the-a16z-growth-engineer-fellows"><span class="material-icons-outlined">open_in_new</span>a16z Fellows</a>
+    <a class="link-pill" href="https://www.a16z.news/p/introducing-the-a16z-growth-engineer"><span class="material-icons-outlined">open_in_new</span>a16z Intro</a>
+    <a class="link-pill" href="https://www.startuphub.ai/ai-news/investors-news/2026/a16z-launches-growth-engineer-program"><span class="material-icons-outlined">open_in_new</span>StartupHub</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">2</span>
+    <span class="provider talent"><span class="dot"></span>Accelerator Deadline</span>
+    <span class="timestamp">May 17</span>
+    <span class="meta-pill">Speedrun SR007 &middot; Up to $1M per startup</span>
+  </div>
+  <h4>a16z Speedrun SR007 applications closed May 17 &mdash; cohort selection now in flight</h4>
+  <p>Applications for Speedrun cohort SR007 closed at 11:59 PM PT on May 17, 2026. The program runs July 27&ndash;October 11, with Demo Day October 6 in San Francisco. Terms: up to $1M per startup ($500K for 10% upfront via SAFE, plus another $500K reserved for the next round within 18 months), plus $5M+ in cloud, AI and software credits. Historical acceptance rate is below 0.4%, with 60&ndash;70 teams selected per cohort. (<a href="https://a16z.com/applications-for-a16z-speedrun-sr007-are-now-open/">a16z announcement</a>, <a href="https://speedrun.a16z.com/apply">Speedrun apply page</a>, <a href="https://speedrun.substack.com/p/sr007-applications-open">Speedrun Substack</a>)</p>
+  <p>What to watch: SR007 cohort selection is the next dated event on the a16z calendar. Based on prior cohort rhythm, the named list should land mid-to-late June. The cohort composition is a useful read-through on where the firm sees the indie-hacker / pre-seed AI frontier shifting (the SR006 cohort was heavy on consumer AI and creator tooling; SR007 thesis pitches from the Speedrun team have emphasized vertical AI agents and physical/industrial AI per the "Big Ideas 2026" series). No surprises in the mechanics this round &mdash; same money, same timeline as SR006.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/applications-for-a16z-speedrun-sr007-are-now-open/"><span class="material-icons-outlined">open_in_new</span>a16z</a>
+    <a class="link-pill" href="https://speedrun.a16z.com/apply"><span class="material-icons-outlined">open_in_new</span>Apply Page</a>
+    <a class="link-pill" href="https://speedrun.substack.com/p/sr007-applications-open"><span class="material-icons-outlined">open_in_new</span>Substack</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 2: DEAL UPDATES ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>Deal Updates</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">3</span>
+    <span class="provider fund"><span class="dot"></span>Closing Confirmation</span>
+    <span class="timestamp">May 18</span>
+    <span class="meta-pill">Stitch &middot; $25M Series A officially closed</span>
+  </div>
+  <h4>Stitch publishes final closing press for the $25M a16z-led Series A &mdash; reiterates GCC-first status</h4>
+  <p>Saudi fintech Stitch published its final closing press on May 18, 2026, confirming the $25M Series A led by Andreessen Horowitz that was first announced May 14. Participating investors: Arbor Ventures, COTU Ventures, Raed Ventures and SVC. Total funding to date now $35M. The closing release re-emphasizes the GCC (Gulf Cooperation Council) first-investment framing and Stitch's claim of $5B+ in processed transactions over the last six months. (<a href="https://theaiinsider.tech/2026/05/18/stitch-closes-25m-series-a-led-by-andreessen-horowitz/">The AI Insider</a>, <a href="https://www.connectingthedotsinfin.tech/andreessen-horowitz-a16z-leads-series-a-round-for-stitch/">Connecting the Dots</a>, <a href="https://briefglance.com/articles/stitch-secures-25m-from-a16z-to-fix-finances-ai-foundation">BriefGlance</a>)</p>
+  <p>Incremental, not new. The substantive read is unchanged from the May 14 card: this is a16z's first GCC check and reads as either genuine MENA fintech-infrastructure appetite or a Gulf-LP relationship play (likely both). What this closing confirms: there were no last-minute conditions or pulled commitments &mdash; the round closed as announced. No a16z partner has been named to the board in any of the closing coverage, which is a small but real data point on how strategic this position is for the firm (compare to Tessera, where Seema Amble took the board seat).</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://theaiinsider.tech/2026/05/18/stitch-closes-25m-series-a-led-by-andreessen-horowitz/"><span class="material-icons-outlined">open_in_new</span>AI Insider</a>
+    <a class="link-pill" href="https://www.connectingthedotsinfin.tech/andreessen-horowitz-a16z-leads-series-a-round-for-stitch/"><span class="material-icons-outlined">open_in_new</span>Connecting Dots</a>
+    <a class="link-pill" href="https://briefglance.com/articles/stitch-secures-25m-from-a16z-to-fix-finances-ai-foundation"><span class="material-icons-outlined">open_in_new</span>BriefGlance</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">4</span>
+    <span class="provider ai"><span class="dot"></span>Coverage Update</span>
+    <span class="timestamp">May 15</span>
+    <span class="meta-pill">Smart Bricks &middot; $5M pre-seed (originally Feb)</span>
+  </div>
+  <h4>Smart Bricks $5M pre-seed re-surfaced in coverage &mdash; AI proptech for real-estate underwriting</h4>
+  <p>Coverage of Smart Bricks' $5M pre-seed round led by a16z re-surfaced in techbuzz.ai aggregation on May 15. The deal itself dates to February 2026; what's new is broader coverage rather than a new round. Smart Bricks is building an AI-powered platform for identifying high-quality real estate investment opportunities &mdash; in effect, an LLM-driven underwriting layer for the real-estate-investing workflow. (<a href="https://www.techbuzz.ai/articles/smart-bricks-lands-5m-pre-seed-led-by-a16z-for-ai-proptech">TechBuzz</a>)</p>
+  <p>Logged for completeness only &mdash; not a this-window event. Fits the same pattern as Ethos, Tessera, Pit, Ciridae and Stitch: an AI-native rebuild of a vertical B2B workflow whose incumbents are spreadsheets and legacy SaaS. The proptech specifically is a smaller and more crowded market than ERP or bank-core systems, which is why this is a pre-seed check rather than a Series A lead. C-Score downrated to 3 because this is single-aggregator surfacing, not fresh primary reporting.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.techbuzz.ai/articles/smart-bricks-lands-5m-pre-seed-led-by-a16z-for-ai-proptech"><span class="material-icons-outlined">open_in_new</span>TechBuzz</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 3: MEDIA & THOUGHT LEADERSHIP ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">podcasts</span>
+  <h3>Media &amp; Thought Leadership</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">5</span>
+    <span class="provider media"><span class="dot"></span>Output Check</span>
+    <span class="meta-pill">May 14&ndash;19 &middot; Quiet week</span>
+  </div>
+  <h4>No new podcast episodes or major essays in this window &mdash; second consecutive quiet stretch</h4>
+  <p>Honest read: a16z's owned-media machine was quiet again between May 14 and May 19. No new flagship podcast episodes (The a16z Show, AI + a16z, Ben &amp; Marc Show, In the Vault), no new long-form essays on a16z.com or a16z.news, and no notable new partner threads beyond the Growth Engineer Fellowship post and Stitch closing coverage. The most recent substantive owned essays remain the "Asserting American Leadership in Open Source AI" piece, the "Big Ideas 2026" series, and the April Tessera/Ethos/Deeptune announcement posts. (<a href="https://a16z.com/podcasts/">a16z Podcast Network</a>, <a href="https://a16z.com/news-content/">a16z News &amp; Content</a>, <a href="https://www.a16z.news/">a16z News substack</a>)</p>
+  <p>Two consecutive quiet weeks for owned media is not yet a pattern &mdash; the firm's cadence is weekly-plus, not daily, and the May 11 weekly absorbed the Fund V announcement post and the Andreessen "custom prompt" cycle. Watch the MTS livestream (the April 20-backed 24/7 X-native news venture) for whether it's actually shipping consistent output now &mdash; if it is, that's where a meaningful chunk of a16z editorial energy is going, and the legacy-format podcasts will look quieter by comparison even as the firm's media footprint grows. No padding here: the week's signal lives entirely in talent programs and incremental deal-closing confirmations.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/podcasts/"><span class="material-icons-outlined">open_in_new</span>Podcasts</a>
+    <a class="link-pill" href="https://a16z.com/news-content/"><span class="material-icons-outlined">open_in_new</span>a16z News</a>
+    <a class="link-pill" href="https://www.a16z.news/"><span class="material-icons-outlined">open_in_new</span>a16z.news</a>
+  </div>
+</div>
+
+<!-- ─── EDITOR'S VIEW ─── -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px;">edit</span> Editor's View</div>
+  <h3>Three Takeaways from a Quiet Week</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>This is a pause week, not a slowdown.</strong> Nothing in May 14&ndash;19 rivals the prior two windows for structural weight &mdash; no new fund close, no new mega-deal, no major essay. The May 11 fund/political-donor cluster and the May 13&ndash;14 Anduril/Tessera/Stitch deal sprint exhausted the inventory. Reading too much into a single quiet week would be a mistake; this is normal cadence breathing room. The next dated event is SR007 cohort selection (mid-to-late June) and the next likely owned-media beat is a podcast or essay around that.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>The Growth Engineer Fellowship is the quiet structural item.</strong> Sixty-five operators from OpenAI, Notion, Replit, ElevenLabs, Perplexity, Coinbase and Clay sitting inside an a16z program is a captive pipeline asset, not a fund vehicle. It costs the firm almost nothing relative to deploying capital and produces years of optionality on hiring referrals, deal flow and talent-network signal. Read this alongside MTS (media), Turpentine (podcasts), Speedrun (pre-seed), Leading the Future / Fairshake (policy) &mdash; same pattern: a16z is building or buying its own pipes for every input it depends on. The firm has stopped behaving like a VC and is behaving more like a vertically-integrated influence platform.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>The Stitch closing-vs-Tessera comparison is the small but real data point.</strong> Both were a16z-led Series A rounds in the same fortnight. Tessera got Seema Amble on the board; Stitch's closing coverage names no a16z board seat. That's a real strategic-weight signal: ERP modernization is being treated as a Apps-fund anchor with hands-on guidance; the Saudi fintech check is being treated as a thesis probe with arms-length governance. Worth watching whether the GCC pipeline materializes as a second deal in the next 60&ndash;90 days &mdash; if yes, the posture shifts; if no, Stitch stays a one-off and the geographic-expansion narrative dilutes.</div>
+    </li>
+  </ul>
+  <div class="closing">
+    <strong>Bottom line:</strong> A short, honest report for a short, quiet week. The structural items from the prior two editions (Fund V, Anduril, the $115M political-donor framing, the Tessera/Stitch deal pair) are the things to track; nothing this week changes that picture. The Growth Engineer Fellowship is the one new entry that adds to the "a16z as vertically-integrated platform" thesis &mdash; everything else is housekeeping. Next watch items: SR007 cohort selection, any new Ben &amp; Marc Show episode, MTS cadence, and whether a second GCC deal lands in June.
+  </div>
+</div>
+
+<!-- ─── COLOPHON ─── -->
+<div class="colophon">
+  <p>
+    a16z Media Briefing &middot; Weekly &middot; May 19, 2026 &middot; Coverage: May 14 &ndash; May 19<br>
+    5 cards across 3 sections &middot; Compiled May 19, 2026<br>
+    Sources: a16z.com, a16z.news, StartupHub, Speedrun Substack, The AI Insider, Connecting the Dots in Fintech, BriefGlance, TechBuzz<br>
+    C-Scores reflect source quality and corroboration depth (5 = multiple primary sources; 3 = single aggregator)<br>
+    This briefing is generated from web search results. No inside information. Verify before acting.
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

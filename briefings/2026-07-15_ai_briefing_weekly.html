@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Briefing — 8–15 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --blue:#1a73e8; --link:#1967d2; --pill:#f1f3f4;
+  }
+  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg);font-family:'Google Sans',Roboto,Arial,Helvetica,sans-serif;color:var(--text);line-height:1.55;}
+  .wrap{max-width:880px;width:100%;margin:0 auto;padding:24px 20px;}
+  .card{background:var(--surface);border:1px solid var(--divider);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
+  .appbar{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 40px;font-family:'Google Sans';}
+  .appbar .title{font-size:18px;font-weight:500;}
+  .appbar .sub{font-size:13px;color:var(--muted);}
+  .chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .fchip{display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--divider);color:var(--text2);font-size:12px;padding:5px 11px;border-radius:14px;}
+  .fchip .material-icons-outlined{font-size:14px;color:var(--muted);}
+  .fchip.active{background:#e8f0fe;border-color:#c2d7f8;color:#1967d2;}
+  .hero{background:linear-gradient(135deg,#1a73e8 0%,#1967d2 60%,#174ea6 100%);border-radius:12px;padding:26px 28px;margin-bottom:22px;box-shadow:0 1px 2px rgba(0,0,0,0.05);}
+  .hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#c2d7f8;text-transform:uppercase;}
+  .hero h1{font-size:24px;font-weight:500;color:#fff;margin:10px 0 12px;line-height:1.3;font-family:'Google Sans';}
+  .hero p{font-size:14px;color:#e8f0fe;margin:0;line-height:1.62;}
+  .section{padding:6px 6px 10px;margin-top:14px;display:flex;align-items:center;gap:8px;}
+  .section .material-icons-outlined{font-size:20px;color:var(--muted);}
+  .section .name{font-size:15px;font-weight:500;font-family:'Google Sans';}
+  .section .count{font-size:13px;color:var(--muted);}
+  .chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:0.3px;}
+  .datepill{display:inline-block;background:var(--pill);color:var(--muted);font-size:11px;padding:3px 10px;border-radius:10px;margin-left:6px;font-family:'Roboto Mono','SF Mono',ui-monospace,monospace;}
+  .c-anthropic{background:#fef7e0;color:#b06000;}
+  .c-openai{background:#e6f4ea;color:#0d652d;}
+  .c-google{background:#e8f0fe;color:#1967d2;}
+  .c-deepseek{background:#fce8e6;color:#a50e0e;}
+  .c-xai{background:#f1f3f4;color:#3c4043;}
+  .c-eu{background:#f3e8fd;color:#5f1d8e;}
+  .c-infra{background:#e8eef6;color:#1f3548;}
+  .c-mcp{background:#e6f4ea;color:#0d652d;}
+  .headline{font-size:17px;font-weight:500;margin:10px 0 6px;font-family:'Google Sans';}
+  .body{font-size:13.5px;color:var(--text2);}
+  details{margin-top:12px;}
+  summary{list-style:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#e8f0fe;color:#1967d2;font-size:12px;font-weight:500;padding:5px 12px;border-radius:14px;user-select:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary .material-icons-outlined{font-size:14px;transition:transform .2s;}
+  details[open] summary .material-icons-outlined{transform:rotate(90deg);}
+  .deep{font-size:13px;color:var(--text2);line-height:1.62;margin-top:12px;padding:14px 16px;background:#f8f9fb;border:1px solid var(--divider);border-radius:10px;}
+  .deep .lbl{display:block;font-weight:700;color:var(--text);margin:12px 0 3px;font-size:12.5px;font-family:'Google Sans';}
+  .deep .lbl:first-child{margin-top:0;}
+  .deep p{margin:0 0 6px;}
+  .divider{border-top:1px solid var(--divider);margin:12px 0 10px;}
+  .conf{font-size:12px;color:var(--muted);}
+  .conf .dots{letter-spacing:1px;color:#1a73e8;}
+  .links{padding-left:2px;}
+  .links a{display:inline-flex;align-items:center;gap:3px;background:var(--pill);color:var(--link);font-size:12px;text-decoration:none;padding:3px 10px;border-radius:10px;margin-left:4px;margin-top:4px;}
+  .links a .material-icons-outlined{font-size:12px;}
+  .banner{background:#fef7e0;border:1px solid #fde293;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:var(--text2);line-height:1.6;display:flex;gap:12px;align-items:flex-start;}
+  .banner .material-icons-outlined{color:#b06000;font-size:20px;flex-shrink:0;}
+  .banner strong.w{color:#b06000;}
+  .countdown{background:#f3e8fd;border:1px solid #d7bff2;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:#3c4043;line-height:1.6;display:flex;gap:12px;align-items:center;}
+  .countdown .material-icons-outlined{color:#5f1d8e;font-size:22px;}
+  .countdown strong{color:#5f1d8e;font-family:'Google Sans';}
+  .radar{font-size:13px;color:var(--text2);}
+  .radar .row{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--divider);align-items:baseline;}
+  .radar .row:first-child{border-top:none;}
+  .radar .rdate{flex:0 0 58px;font-size:11px;color:var(--muted);font-family:'Roboto Mono','SF Mono',ui-monospace,monospace;padding-top:1px;}
+  .radar .rname{font-weight:500;color:var(--text);}
+  .editor .chip{background:#e8f0fe;color:#1967d2;padding:4px 12px;border-radius:12px;font-size:12px;}
+  .editor h3{font-size:16px;font-weight:500;font-family:'Google Sans';margin:4px 0 10px;}
+  .editor ol{font-size:13.5px;color:var(--text2);line-height:1.65;margin:14px 0 8px;padding-left:22px;}
+  .editor li{margin-bottom:8px;}
+  .editor .wild{font-size:13px;color:var(--muted);font-style:italic;margin-top:6px;}
+  .foot{text-align:center;padding:14px 12px 24px;}
+  .foot div{font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+<div class="wrap">
+
+  <!-- App bar -->
+  <div class="appbar card" style="margin-bottom:14px;">
+    <div class="avatar">AI</div>
+    <div>
+      <div class="title">AI Briefing</div>
+      <div class="sub">Weekly · Week of Jul 15, 2026 · 8 – 15 Jul · Wednesday edition</div>
+    </div>
+  </div>
+
+  <!-- Filter chip row -->
+  <div class="chiprow">
+    <span class="fchip active"><span class="material-icons-outlined">bolt</span>Frontier models</span>
+    <span class="fchip"><span class="material-icons-outlined">psychology</span>Anthropic</span>
+    <span class="fchip"><span class="material-icons-outlined">hub</span>MCP &amp; tooling</span>
+    <span class="fchip"><span class="material-icons-outlined">gavel</span>EU regulation</span>
+    <span class="fchip"><span class="material-icons-outlined">payments</span>Funding &amp; talent</span>
+    <span class="fchip"><span class="material-icons-outlined">calendar_today</span>Release radar</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">Briefing summary</div>
+    <h1>OpenAI ships GPT-5.6 to everyone with a "ChatGPT Work" agent — and the whole frontier now points at 17 July</h1>
+    <p>The week's centre of gravity is a date one day past this edition: <strong style="color:#fff;">17 July</strong>, when Google's rebuilt Gemini 3.5 Pro and DeepSeek's V4 stable release are both targeted to land. OpenAI cleared the runway on 9 July, taking GPT-5.6 (Sol/Terra/Luna) to general availability and wrapping it in <em>ChatGPT Work</em>, an agent built to do whole jobs rather than answer questions. Anthropic spent the week building institutions rather than shipping models: Claude for Teachers (free for US K-12), Ben Bernanke onto the Long-Term Benefit Trust, and a public "Hard Questions" commitment. The MCP 2026-07-28 release candidate firmed up — statelessness at the protocol layer, three deprecations, a 12-month lifecycle policy. Regulation is now measured in days: <strong style="color:#fff;">T-18</strong> to EU AI Act GPAI enforcement, <strong style="color:#fff;">T-7</strong> to the Transparency Code signing cutoff. And the money confirms it all — H1 2026 hit a record $510B, with OpenAI and Anthropic alone taking 43% of it. Fourteen cards, a six-row Release Radar, one Editor's View.</p>
+  </div>
+
+  <!-- Yellow banner - unverified -->
+  <div class="banner">
+    <span class="material-icons-outlined">warning_amber</span>
+    <div><strong class="w">Aggregator caveat.</strong> The 17 July "supermerge" (Gemini 3.5 Pro GA + DeepSeek V4 stable) rests on trade-press reporting (TechTimes, BigGo, HackerNoon) and unnamed sources — Google has published no model card, pricing, or launch page as of 13 July, and every Gemini spec is unconfirmed. The Thinking Machines talent figures trace to May reporting, updated by industry trackers. Treat these specifics as directional; each card carries its C-Score and the primary caveat inline.</div>
+  </div>
+
+  <!-- Purple countdown banner -->
+  <div class="countdown">
+    <span class="material-icons-outlined">event</span>
+    <div><strong>EU AI Act countdown — T-18 days.</strong> On <strong>2 August 2026</strong> the AI Office's enforcement powers over general-purpose AI (GPAI) providers turn on: information requests, model recalls, mitigation orders and fines up to €15M or 3% of global revenue. Nearer still: signatories to the <strong>Transparency Code of Practice</strong> must submit by <strong>22 July 2026, 18:00 CEST</strong> (T-7 days) to appear on the initial list published before 2 August.</div>
+  </div>
+
+  <!-- Section: Frontier models -->
+  <div class="section"><span class="material-icons-outlined">bolt</span><span class="name">Frontier models</span><span class="count"> · 4 stories</span></div>
+
+  <!-- Card 1: GPT-5.6 GA + ChatGPT Work -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI</span><span class="datepill">09 Jul</span>
+    <div class="headline">GPT-5.6 goes generally available — bundled with "ChatGPT Work", an agent built to do whole jobs</div>
+    <div class="body">OpenAI ended the government-supervised preview and took GPT-5.6 to general availability on 9 July: Sol (flagship, $5/$30 per 1M tokens), Terra (balanced, $2.50/$15) and Luna (fast/cheap, $1/$6). The headline product isn't the model — it's <em>ChatGPT Work</em>, a cross-platform agent (web, mobile, desktop) that folds the Codex workflow into mainstream ChatGPT and is pitched to "carry out whole jobs rather than merely answer questions." Access is tiered: Pro and Enterprise reach Sol in ChatGPT; Free and Go users get Terra inside ChatGPT Work and Codex.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>GPT-5.6 was previewed on 26 June under a US Department of Commerce pre-release review tied to the 2 June AI Executive Order — the first frontier model to pass through a formal government gate before public release. OpenAI cooperated publicly while saying it disliked the arrangement as a long-term default. The 9 July general-availability decision closes a roughly two-week supervised window. Layered on top: OpenAI has spent 2026 trying to collapse "Codex the coding tool" and "ChatGPT the assistant" into a single agentic surface — ChatGPT Work is that merger shipping.</p>
+        <span class="lbl">Die Details</span>
+        <p>Three tiers under one generation: <strong>Sol</strong> claims a "step change in design judgment" — building functional interfaces from minimal direction and refining rendered output before returning it — plus a new <em>ultra</em> mode that coordinates multiple agents across parallel workstreams. <strong>Terra</strong> is the volume tier at roughly 2× cheaper than Sol; <strong>Luna</strong> is the cost floor. The upgraded desktop app now carries Codex natively: markdown editing, GitHub pull-request review, and cross-repository project support. Distribution is the story — ChatGPT Work runs on web, mobile and desktop, meaning the agent surface reaches every ChatGPT user, not just developers. Sol is gated to Pro/Enterprise; the mass tiers land on Terra.</p>
+        <span class="lbl">Einordnung</span>
+        <p>OpenAI is running the same play as Anthropic's Cowork and Google's Workspace agents: move agentic execution from a dev-shop feature to the default surface for all knowledge work. The tiering is the tell — putting Terra (not Sol) in front of Free/Go users is a deliberate cost-to-serve decision that also sets up the mid-tier price war. At $2.50/$15, Terra sits directly against Claude Sonnet 5, Grok 4.5 ($2/$6) and the incoming DeepSeek V4-Pro ($0.87 output). The GA timing — eight days before the 17 July Gemini/DeepSeek collision — front-runs the competition by a week and hands OpenAI the "already generally available" narrative.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether the Commerce review step returns for GPT-5.7 or gets codified into a lighter process. Independent benchmarks (Willison, Artificial Analysis) on Sol's coding/design claims. ChatGPT Work failure modes on long-horizon tasks — the gap between "does whole jobs" marketing and reliable autonomous execution. And EU parity on GA, which lagged on past releases.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — OpenAI + 9to5Mac + Nextgov + SpaceDaily</span>
+    <span class="links">
+      <a href="https://9to5mac.com/2026/07/09/openai-announcing-the-next-chapter-for-chatgpt-today-watch-here/"><span class="material-icons-outlined">open_in_new</span>9to5Mac</a>
+      <a href="https://www.nextgov.com/artificial-intelligence/2026/07/openais-advanced-gpt-56-models-be-available-public/414651/"><span class="material-icons-outlined">open_in_new</span>Nextgov</a>
+      <a href="https://openai.com/news/"><span class="material-icons-outlined">open_in_new</span>OpenAI</a>
+    </span>
+  </div>
+
+  <!-- Card 2: Grok 4.5 -->
+  <div class="card">
+    <span class="chip c-xai">SPACEXAI</span><span class="datepill">08 Jul</span>
+    <div class="headline">SpaceXAI ships Grok 4.5 — "smartest model for coding, agentic tasks and knowledge work"</div>
+    <div class="body">SpaceXAI released Grok 4.5 on 8 July, positioned as its flagship for coding, agentic work and knowledge tasks, at $2 input / $6 output per 1M tokens (a faster variant at $4/$18). It arrives bundled through Cursor on all plans, Grok Build and the SpaceXAI console. This is <em>not</em> the long-delayed Grok 5 (a ~6-trillion-parameter model still training on Colossus 2) — 4.5 is the interim revenue step. The company's own news page lists the launch but publishes no EU-availability date or detailed spec sheet.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>xAI was folded into SpaceX in early 2026 — Grok is now a SpaceXAI product, and SpaceX's own $1.77T IPO this quarter (the largest venture-backed listing ever) reframes the parent's balance sheet. Grok 5 has slipped repeatedly and remains in training; 4.5 fills the gap. The model builds on the earlier V9 foundation with supplemental training reportedly drawn from live coding-harness interactions, the "data flywheel from usage" thesis that Cursor's valuation rests on. SpaceXAI also shipped 21 new flagship Grok voices on 6 July (see Release Radar).</p>
+        <span class="lbl">Die Details</span>
+        <p>Mixture-of-experts architecture marketed as "Opus-class" for coding and agentic tasks. Pricing undercuts GPT-5.6 Terra and matches Claude Sonnet 5 intro terms: $2 in / $6 out standard, $4/$18 for the low-latency variant. Distribution is bundled rather than standalone — Cursor across all plan tiers, Grok Build, and the SpaceXAI API. Notably, SpaceXAI signed only the Safety &amp; Security Chapter of the EU GPAI Code of Practice, not the full instrument, which continues to shape its EU rollout order. The public news feed confirms the 8 July launch but omits the region-by-region availability and benchmark detail that a full launch page would carry.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two signals. First, $2/$6 from a frontier lab is now the reference price for the mid-tier — the segment every vendor is fighting over, and the one DeepSeek V4-Pro is about to undercut by an order of magnitude on output. Second, the bundling-through-Cursor distribution keeps SpaceXAI's model in front of the highest-intent developer audience without owning the surface. The unanswered question is independent quality: with no detailed spec page and "Opus-class" as vendor language, the "smartest model" claim awaits third-party evals on LMArena and Artificial Analysis.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Independent benchmarks testing the "smartest / Opus-class" framing outside Cursor's IDE. EU availability date and any Code-of-Practice movement before 2 August. And whether Grok 5 finally gets a firm date this quarter now that 4.5 is generating revenue.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — SpaceXAI primary + trade press; detailed specs/EU date vendor-unpublished</span>
+    <span class="links">
+      <a href="https://x.ai/news"><span class="material-icons-outlined">open_in_new</span>SpaceXAI</a>
+      <a href="https://www.techtimes.com/articles/319877/20260708/gemini-35-pro-targets-july-17-deepseeks-july-24-deadline-hits-developers-now.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+    </span>
+  </div>
+
+  <!-- Card 3: Gemini 3.5 Pro 17 Jul -->
+  <div class="card">
+    <span class="chip c-google">GOOGLE</span><span class="datepill">17 Jul (target)</span>
+    <div class="headline">Gemini 3.5 Pro targets 17 July after a full pre-training rebuild — every spec still unconfirmed</div>
+    <div class="body">As of 13 July, Google DeepMind has published no model card, pricing page or launch announcement for Gemini 3.5 Pro; <code>gemini-3.5-pro</code> is absent from the public API docs. Trade press reports a 17 July target after Google scrapped the original base model and restarted pre-training — the most expensive phase — having judged the competitive gap "structural, not fixable by fine-tuning alone." Reported (unconfirmed) specs: 2M-token context, a "Deep Think" reasoning layer, autonomous-workflow capability, and an estimated $15/$60 per 1M tokens. Slipped from June after Sundar Pichai's 19 May I/O reveal.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Google opened the 3.5 generation with Flash (computer-use agents) rather than Pro — an ordering that signalled Pro wasn't ready. The delay from June to July hardened into a rebuild narrative: reporting (HackerNoon, BigGo, TechTimes, Geeky Gadgets) says Google identified structural failures fine-tuning couldn't fix — complex SVG layout generation breaking down, and recursive tool-calling instability in agentic environments — and chose to restart pre-training. Alphabet reportedly shed ~$225B in market cap around the delay's communication, and DeepMind has faced its own talent departures.</p>
+        <span class="lbl">Die Details</span>
+        <p>Reported feature set, all unconfirmed until Google publishes: a 2-million-token context window (double the prior 1M); a "Deep Think" reasoning layer for hard problems; autonomous workflow capabilities matching the Anthropic/OpenAI agentic direction; and improved SVG scene generation, the exact weakness that reportedly triggered the rebuild. Pricing estimate of $15/$60 per 1M tokens is unverified and, if accurate, would sit well above the $2–5 mid-tier — a premium-positioning bet. The 17 July date itself comes only from unnamed sources cited by HackerNoon and Geeky Gadgets, not from Google.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The stakes are ranking. GPT-5.6 Sol is already generally available; DeepSeek V4 stable targets the same 17 July slot at a fraction of the price; and Anthropic owns the enterprise/institution narrative. Google needs 3.5 Pro to reclaim the top of the leaderboard, and choosing to eat a pre-training restart rather than iterate is a capability bet, not a schedule one. But every additional day of silence feeds the "Google is losing the frontier race" story — and a second slip past 17 July would be materially more damaging than the June one, because this time a rival (DeepSeek V4) is scheduled to land on the exact same day.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether 17 July holds and Google finally publishes a model card and pricing. Independent benchmarks vs Sol on maths, coding and the SVG/agentic weaknesses cited as rebuild triggers. Real pricing vs the $15/$60 rumour. And whether the "Nano Banana Pro" image companion ships alongside.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●○○</span>&nbsp; 3/5 — trade press + unnamed sources; no Google confirmation, model absent from API docs</span>
+    <span class="links">
+      <a href="https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+      <a href="https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a"><span class="material-icons-outlined">open_in_new</span>BigGo</a>
+      <a href="https://hackernoon.com/google-delays-gemini-35-pro-to-july-17-the-strategic-play-behind-the-scrapped-base-model"><span class="material-icons-outlined">open_in_new</span>HackerNoon</a>
+    </span>
+  </div>
+
+  <!-- Card 4: DeepSeek V4 -->
+  <div class="card">
+    <span class="chip c-deepseek">DEEPSEEK</span><span class="datepill">17 Jul / 24 Jul</span>
+    <div class="headline">DeepSeek V4 hits stable on 17 July at $0.87 output — and a 24 July deadline forces a hard migration</div>
+    <div class="body">DeepSeek's V4-Pro (a 1.6-trillion-parameter sparse model, in preview since 24 April) graduates to stable on 17 July, priced at roughly <strong>$0.87 per 1M output tokens</strong> versus ~$25 for Claude Opus and ~$30 for GPT-5.5-class models. The catch for developers is a hard deprecation: after <strong>24 July, 15:59 UTC</strong>, the legacy <code>deepseek-chat</code> and <code>deepseek-reasoner</code> aliases return errors. Teams must move to <code>deepseek-v4-pro</code> or <code>deepseek-v4-flash</code> — and note that <code>deepseek-reasoner</code> maps to Flash, not Pro, so reasoning-dependent code needs an explicit swap.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>DeepSeek has spent 2026 as the price-anchor of the open-weight frontier, repeatedly resetting the floor on cost-per-token. V4-Pro entered preview on 24 April; the 17 July stable graduation coincides — deliberately or not — with the Gemini 3.5 Pro target, turning that date into a two-front event. The 24 July alias deprecation is the operational sting: DeepSeek is retiring the friendly generic names that most integrations were built against, on a fixed clock with no announced extension.</p>
+        <span class="lbl">Die Details</span>
+        <p>V4-Pro is a 1.6T-parameter sparse (mixture-of-experts) model. Stable pricing is the headline: ~$0.87 per 1M output tokens is roughly 30× cheaper than Claude Opus-class output. A caveat lands with stability — rates reportedly <em>double</em> during Beijing business hours (09:00–12:00 and 14:00–18:00 China Standard Time), which partially overlaps overnight US batch windows, so the effective price depends on when your jobs run. Migration mechanics: same API key and base URL, but the alias mapping matters — <code>deepseek-reasoner</code> resolves to V4-Flash (thinking mode), not V4-Pro, so teams relying on top-tier reasoning must name V4-Pro explicitly or silently lose capability after 24 July.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two things are true at once. On price, DeepSeek makes the Western mid-tier ($2–5) look expensive and the premium tier (a rumoured Gemini $15/$60) look like a different market — the open-weight cost curve keeps bending down and Chinese labs keep owning it. On developer experience, the hard 24 July deprecation is a reminder that "cheap" carries switching-cost risk: aliases you built against can vanish on a fixed date. For any team running DeepSeek in production, the action item is immediate — audit alias usage this week, not next.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether 17 July stable actually lands (DeepSeek's cadence has been reliable, unlike Google's). Real-world quality of V4-Pro vs Sol and Sonnet 5 on independent evals. The peak-hours pricing mechanic and its effect on US batch economics. And whether other labs copy the "retire the generic alias" move.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — DeepSeek migration notice + TechTimes; stable date trade-press-reported</span>
+    <span class="links">
+      <a href="https://www.techtimes.com/articles/319877/20260708/gemini-35-pro-targets-july-17-deepseeks-july-24-deadline-hits-developers-now.htm"><span class="material-icons-outlined">open_in_new</span>TechTimes</a>
+      <a href="https://llm-stats.com/llm-updates"><span class="material-icons-outlined">open_in_new</span>LLM-Stats</a>
+    </span>
+  </div>
+
+  <!-- Section: Anthropic -->
+  <div class="section"><span class="material-icons-outlined">psychology</span><span class="name">Anthropic — institution-building week</span><span class="count"> · 3 stories</span></div>
+
+  <!-- Card 5: Claude for Teachers -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">14 Jul</span>
+    <div class="headline">Claude for Teachers — free premium Claude for every verified US K-12 educator</div>
+    <div class="body">Anthropic launched Claude for Teachers on 14 July: verified US K-12 educators (18+) get a full year of premium Claude free if they sign up by 30 June 2027. It ships with education-specific tooling — lesson planning tied to state academic standards, differentiation for varied readiness levels, class-data analysis, scheduled tasks (e.g. daily exit-ticket review) — and integrations with OpenSciEd, Illustrative Mathematics, Canva Education, ASSISTments, Brisk and others. Data is not used for training; student information sits under a FERPA-compliant K-12 Data Processing Addendum. Anthropic is partnering with the American Federation of Teachers on privacy standards.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>The classroom has become a contested distribution channel: OpenAI, Google and Anthropic are all racing to reach educators, on the logic that the tool a teacher learns becomes the tool a generation of students learns. Chalkbeat framed the launch explicitly as a battle "for America's classrooms." Anthropic's angle is safety-and-privacy-first positioning, which plays to its brand and pre-empts the obvious objection to AI in schools.</p>
+        <span class="lbl">Die Details</span>
+        <p>Eligibility: verified K-12 educators in the US, 18+, free, one year of access, sign-up deadline 30 June 2027. Feature set: lesson planning connected to state standards; differentiation tools; class-data analysis; automated scheduling; and integration with trusted curricula (OpenSciEd, Illustrative Mathematics) plus nine partner tools (ASSISTments, Brisk Teaching, Canva Education among them). Privacy: no training on user data; student data governed by a K-12 Data Processing Addendum compliant with FERPA; separate teacher terms built for K-12. Partnerships: the American Federation of Teachers on privacy standards (AFT President Randi Weingarten endorsed the principles publicly), plus the Gates Foundation and a Detroit Public Schools pilot. Currently individual-educator only; a district/school offering is "coming soon."</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is a distribution and trust play, not a product-revenue play — it's free. The strategic value is threefold: brand (AI-that-schools-can-trust), a top-of-funnel into a generation of future Claude users, and a policy moat (the AFT partnership and FERPA-first design make Anthropic the "responsible" option when districts and regulators write procurement rules). It slots into a week where Anthropic conspicuously built institutions — Bernanke on the Trust, the Hard Questions initiative — rather than chasing the 17 July benchmark fight. The district offering is where money eventually enters.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Uptake numbers and any comparison to OpenAI/Google classroom pushes. The district/school commercial offering and its pricing. Whether the AFT partnership becomes a template other unions or ministries adopt. And any early safety incident that would test the "safe in schools" positioning.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — Anthropic primary + Chalkbeat + The Hill + Forbes + 9to5Mac</span>
+    <span class="links">
+      <a href="https://www.anthropic.com/news/claude-for-teachers"><span class="material-icons-outlined">open_in_new</span>Anthropic</a>
+      <a href="https://www.chalkbeat.org/2026/07/14/anthropic-launches-claude-for-teachers-as-ai-companies-battle-for-classrooms/"><span class="material-icons-outlined">open_in_new</span>Chalkbeat</a>
+      <a href="https://thehill.com/policy/technology/5968601-claude-for-teachers-launch/"><span class="material-icons-outlined">open_in_new</span>The Hill</a>
+    </span>
+  </div>
+
+  <!-- Card 6: Bernanke -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">09 Jul</span>
+    <div class="headline">Ben Bernanke joins Anthropic's Long-Term Benefit Trust</div>
+    <div class="body">Former Federal Reserve chair Ben Bernanke joined Anthropic's Long-Term Benefit Trust on 9 July. The Trust is the governance body that holds a class of Anthropic stock and can appoint board members, structured to weight the company's mission against pure shareholder return. Adding a Nobel-laureate former central banker is a credibility and macro-competence signal for a company that raised $65B in Q2 and is now the most valuable private company in the world.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Anthropic's Long-Term Benefit Trust is a distinctive governance mechanism: an independent body empowered to elect a portion of the board, intended to keep the company's safety mission from being overridden by investor pressure. As Anthropic's valuation and systemic importance have climbed — $65B raised in Q2 alone, most-valuable-private-company status — the composition of that Trust becomes a matter of real economic and political weight, not just corporate hygiene.</p>
+        <span class="lbl">Die Details</span>
+        <p>Bernanke chaired the Federal Reserve from 2006 to 2014, steering monetary policy through the 2008 financial crisis, and shared the 2022 Nobel Memorial Prize in Economic Sciences for research on banks and financial crises. His appointment to the Trust brings macroeconomic and financial-stability expertise to a governance body that oversees a company whose decisions increasingly have macro implications — labour markets, productivity, capital allocation. Anthropic announced the appointment alongside a cluster of institution-building moves the same day (the Hard Questions initiative, a usage-reflection tool).</p>
+        <span class="lbl">Einordnung</span>
+        <p>Read this as Anthropic staffing its governance for the era in which frontier AI is treated as macro-critical infrastructure. Bernanke's presence does two things: it lends the Trust gravitas in Washington and among institutional investors, and it signals that Anthropic wants people who think in terms of systemic risk and financial stability sitting above the board. For a company positioning itself as the "responsible" frontier lab into the EU enforcement window and US policy debates, the symbolism is deliberate — governance as competitive advantage.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether other macro/policy heavyweights follow onto the Trust or board. How the Trust actually exercises its board-appointment power as Anthropic scales. And whether rivals respond with comparable governance signalling as scrutiny intensifies.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — Anthropic primary announcement</span>
+    <span class="links">
+      <a href="https://www.anthropic.com/news"><span class="material-icons-outlined">open_in_new</span>Anthropic</a>
+    </span>
+  </div>
+
+  <!-- Card 7: Hard Questions -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">09 Jul</span>
+    <div class="headline">Anthropic's "Hard Questions" — soliciting the public's toughest AI questions, committing to show its work</div>
+    <div class="body">Anthropic launched a public initiative on 9 July asking people for their hardest questions about AI, with a commitment to "show our work" in answering them. Paired with a new Claude usage-reflection tool (letting users review how they actually use the assistant), it reads as a transparency-and-legitimacy campaign timed to the run-up to EU AI Act enforcement and intensifying US policy debate. Low on hard product substance, high on positioning.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Frontier labs are under mounting pressure to be legible to the public and regulators — on safety, on labour impact, on how models are actually used. Anthropic has leaned into "responsible lab" branding all year. The Hard Questions initiative extends that: rather than only publishing polished safety research, it invites external questions and promises a reasoning trail in response. It landed the same day as the Bernanke appointment and a usage-reflection feature — a coordinated legitimacy cluster.</p>
+        <span class="lbl">Die Details</span>
+        <p>The initiative solicits the public's hardest AI questions and commits Anthropic to "show our work" — i.e. publish its reasoning, not just conclusions. The companion Claude Usage Reflection tool lets individual users see and review patterns in how they engage with Claude, a small transparency-toward-the-user gesture. Neither is a product-capability release; both are trust instruments. Details on cadence, selection of questions, and the format of the published answers were not fully specified at launch.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is soft power. With the EU AI Act's GPAI enforcement 18 days out and the Transparency Code deadline 7 days out, being visibly the most-transparent lab is a regulatory hedge and a brand differentiator against Meta (which refused the EU Code) and, to a lesser degree, an OpenAI focused on shipping agents. The risk is that "show our work" is judged on delivery — an initiative that collects hard questions and answers them thinly would read as PR. Treat this as a positioning move whose payoff depends entirely on the substance of what Anthropic actually publishes next.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>The first batch of questions and the depth of Anthropic's published answers. Whether the usage-reflection tool expands into anything with teeth (data portability, deletion). And whether the transparency posture converts into concrete standing in the EU/US policy processes.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — Anthropic primary; substance still to come</span>
+    <span class="links">
+      <a href="https://www.anthropic.com/news"><span class="material-icons-outlined">open_in_new</span>Anthropic</a>
+    </span>
+  </div>
+
+  <!-- Section: MCP & tooling -->
+  <div class="section"><span class="material-icons-outlined">hub</span><span class="name">MCP &amp; dev tooling</span><span class="count"> · 1 story</span></div>
+
+  <!-- Card 8: MCP RC -->
+  <div class="card">
+    <span class="chip c-mcp">MCP</span><span class="datepill">28 Jul (RC)</span>
+    <div class="headline">MCP 2026-07-28 release candidate firms up — stateless protocol, three deprecations, a lifecycle policy</div>
+    <div class="body">The Model Context Protocol (MCP) release candidate for the 28 July spec came into focus this week via the Agentic AI Foundation (AAIF), the body now stewarding the protocol. Headline change: MCP becomes <em>stateless at the protocol layer</em> — requests carry their own protocol version, client info and capabilities, so any server instance can handle any request with no sticky sessions. Application state moves to visible handles (e.g. <code>"basket_id":"bkt_123"</code>) instead of hidden session metadata. Three features are deprecated — Roots, Sampling and Logging — and a formal 12-month deprecation window is now policy.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>MCP shipped in late 2024 as Anthropic's "USB-C for AI" — a wire protocol between models and tools/data — and every major vendor adopted it through 2025. In 2026 stewardship moved to the Agentic AI Foundation (AAIF), and the protocol entered its enterprise-hardening phase. The 2026-07-28 spec is the accumulated answer to production complaints: gateway complexity, hidden state, no formal task model, no versioning discipline. Angie Jones, AAIF's VP of Developer Experience, describes the core shift as "becoming stateless at the protocol layer."</p>
+        <span class="lbl">Die Details</span>
+        <p><strong>Statelessness:</strong> requests are self-contained, carrying protocol version, client info and capabilities, so "any available server instance" can serve them — no sticky sessions, no shared session store, no gateway deep-packet inspection. <strong>Explicit state:</strong> application state uses visible handles agents can reason about and log, replacing hidden session metadata. <strong>Extensions framework:</strong> reverse-DNS identifiers, independent versioning, capability negotiation. <strong>New capabilities:</strong> MCP Apps (sandboxed HTML interfaces — a tool can return a widget, not just JSON) and Tasks (long-running operations with status tracking). <strong>Governance:</strong> feature lifecycle states (Active / Deprecated / Removed) with a minimum 12 months between deprecation and removal, and Standards-Track proposals must ship conformance scenarios before reaching Final. <strong>Deprecations:</strong> Roots (workspace boundaries), Sampling (model completions) and Logging (protocol-level logging) are deprecated, with those concerns pushed to existing external systems like OpenTelemetry. Final spec lands 28 July.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is the release that makes MCP boringly deployable — statelessness lets a remote MCP server run behind a plain round-robin load balancer, which is exactly what enterprise infra teams have been asking for. The three deprecations are the more interesting signal: MCP is narrowing its scope, handing logging to OpenTelemetry and pruning under-used primitives rather than accreting them. Combined with the 12-month lifecycle policy, the protocol is signalling maturity — it's willing to remove things on a disciplined schedule, which is what integrators need before they build durable procurement on it. MCP Apps is the wildcard: server-rendered UI could reshape what an "AI app" even is.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Migration pain for integrations relying on Roots/Sampling/Logging. Whether the MCP Apps + Tasks pairing spawns a real agentic-app tier before year-end. Security advisories around server-rendered UIs and long-running tasks. And how fast the major clients ship conformance to the final 28 July spec.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — MCP blog + AAIF (Angie Jones) corroborated</span>
+    <span class="links">
+      <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"><span class="material-icons-outlined">open_in_new</span>MCP blog</a>
+      <a href="https://aaif.io/blog/mcp-is-growing-up/"><span class="material-icons-outlined">open_in_new</span>AAIF</a>
+    </span>
+  </div>
+
+  <!-- Section: EU regulation -->
+  <div class="section"><span class="material-icons-outlined">gavel</span><span class="name">EU AI Act countdown</span><span class="count"> · 2 stories</span></div>
+
+  <!-- Card 9: 2 August -->
+  <div class="card">
+    <span class="chip c-eu">EU AI ACT</span><span class="datepill">T-18 days</span>
+    <div class="headline">Commission enforcement powers over GPAI providers switch on 2 August 2026</div>
+    <div class="body">From 2 August the EU AI Office gains full enforcement over general-purpose AI providers: information requests, model recalls, mitigation orders, and fines up to €15M or 3% of global revenue. GPAI obligations themselves have been in force since August 2025 — 2 August 2026 is when non-compliance can first become materially expensive. In parallel, a "streamlining" regulation approved in late June defers the higher-risk-system deadlines (stand-alone high-risk to Dec 2027, embedded to Aug 2028) and adds a December 2026 prohibition on non-consensual sexual deepfakes.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>The EU AI Act entered force in August 2024 with staggered application dates. GPAI provider obligations — transparency, copyright compliance, safety-and-security for systemic-risk models — landed on 2 August 2025. The 2 August 2026 date is when the Commission's enforcement machinery becomes operational for those obligations. Under industry pressure, EU institutions approved a streamlining regulation in late June that pushes the separate, heavier high-risk-system timelines out by 12–18 months while holding the GPAI line firm.</p>
+        <span class="lbl">Die Details</span>
+        <p>GPAI is defined by a compute threshold (models trained above 10²³ floating-point operations, capable of generating text/audio/image/video). Penalties: up to €15M or 3% of global revenue, whichever is higher; the AI Office may request information, order recalls, and mandate mitigations. Signatories of the General-Purpose AI Code of Practice get a presumption of conformity — the list includes Amazon, Anthropic, Google, IBM, Microsoft, OpenAI, Cohere, Mistral and Aleph Alpha; SpaceXAI signed only the Safety &amp; Security Chapter; Meta refused entirely. High-risk deferral: stand-alone high-risk systems now 2 Dec 2027, embedded 2 Aug 2028. New December 2026 prohibitions cover non-consensual sexual deepfakes and related generated content.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Three practical reads. First, 2 August is not a new-law date — obligations already apply — but it is the first date non-compliance can be fined. Second, the streamlining regulation shows the EU blinking on high-risk timelines under industry pressure while holding GPAI, which tells operators where the political energy is. Third, Meta's holdout is the marquee test case: no presumption of conformity means it must prove compliance by "adequate alternative means," and it's simultaneously running the largest compute build-out — an obvious early enforcement target. For anyone selling AI into the EU, the live compliance surface is documentation (training-data summaries, copyright policy, safety testing) now, and content-marking from December.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>The first AI Office information requests after 2 August, and who receives them. Whether Meta files an alternative compliance framework or absorbs the fine risk. How the 3% cap is computed for AI-native firms without conventional revenue lines. And legal challenges to the December deepfake prohibition.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — Commission + Council primary + multiple law-firm analyses</span>
+    <span class="links">
+      <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"><span class="material-icons-outlined">open_in_new</span>EU Commission</a>
+      <a href="https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline"><span class="material-icons-outlined">open_in_new</span>Holland &amp; Knight</a>
+      <a href="https://www.insideglobaltech.com/2026/05/28/eu-ai-act-update-timeline-relief-targeted-simplification-and-new-prohibitions/"><span class="material-icons-outlined">open_in_new</span>Covington</a>
+    </span>
+  </div>
+
+  <!-- Card 10: Transparency Code -->
+  <div class="card">
+    <span class="chip c-eu">EU AI ACT</span><span class="datepill">T-7 days</span>
+    <div class="headline">Transparency Code of Practice signatories close 22 July, 18:00 CEST</div>
+    <div class="body">Providers and deployers of generative AI systems have until 22 July, 18:00 CEST to submit signatory forms and appear on the initial list published before 2 August. Signing grants a presumption of conformity with Article 50 — the obligation to mark and label AI-generated content — which becomes operational on 2 August. The Transparency Code is separate from, and narrower than, the broader GPAI Code of Practice, and targets Article 50(2)/(4) providers of synthetic audio, image, video or text.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Article 50 — that AI-generated content must be marked and labelled — enters application on 2 August 2026 alongside the GPAI enforcement date. The Transparency Code, published in mid-2026, is the operational voluntary path: sign, implement, and receive a rebuttable presumption of conformity when the Commission or a national authority inquires. The 22 July cutoff exists specifically so the first published signatory list is ready before Article 50 goes live.</p>
+        <span class="lbl">Die Details</span>
+        <p>Deadline: 22 July 2026, 18:00 CEST. Scope: providers of generative AI systems producing synthetic audio, image, video or text, plus deployers under Article 50(2)/(4). Substance: watermarking/provenance signals plus documentation of what the mark is and how it can be verified. The signatory list will be public. It is a distinct instrument from the General-Purpose AI Code of Practice (safety, transparency, copyright chapters, ~26 signatories) — an operator can sign one and not the other. Watermarking is the load-bearing technical primitive, and C2PA-style provenance is the expected implementation pattern.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The clean signal is the ~23 July published list: who signed and who didn't. Non-signature isn't non-compliance, but it shifts the burden onto the operator to prove Article 50 alignment on its own terms — expensive in a formal inquiry. Expect a fortnight scramble of provenance implementations at frontier labs and image/video vendors. The interesting question is text: "sufficient marking" of AI-generated <em>text</em> is far less settled than for images, and national-authority guidance on that will shape a lot of product behaviour.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>The published signatory list around 23 July, and whether Meta signs the narrower Transparency Code despite refusing the broad GPAI Code. C2PA/provenance vendor traction. And any national guidance defining "sufficient marking" for text output.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●●</span>&nbsp; 5/5 — EU Commission primary + law-firm analyses</span>
+    <span class="links">
+      <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"><span class="material-icons-outlined">open_in_new</span>EU Commission</a>
+      <a href="https://www.pearlcohen.com/new-guidance-under-the-eu-ai-act-ahead-of-its-next-enforcement-date/"><span class="material-icons-outlined">open_in_new</span>Pearl Cohen</a>
+    </span>
+  </div>
+
+  <!-- Section: Funding & talent -->
+  <div class="section"><span class="material-icons-outlined">payments</span><span class="name">Funding &amp; talent</span><span class="count"> · 4 stories</span></div>
+
+  <!-- Card 11: H1 record -->
+  <div class="card">
+    <span class="chip c-infra">MACRO</span><span class="datepill">H1 2026</span>
+    <div class="headline">H1 2026 startup funding hits a record $510B — and two AI labs took 43% of it</div>
+    <div class="body">Crunchbase's half-year data: global startup investment reached $510B in H1 2026, already surpassing the $440B invested in <em>all</em> of 2025. Over 70% of Q2 capital went to AI companies (up from ~50% a year earlier), and OpenAI plus Anthropic alone captured $217B — 43% of all H1 funding. Anthropic's $65B Q2 raise made it the most valuable private company; SpaceX's $1.77T IPO ($75B raised) was the largest venture-backed listing ever. Two-thirds of Q2 money went to US companies.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>The 2025 funding cycle already tilted heavily toward AI; H1 2026 is that trend going vertical. The headline number — $510B in six months versus $440B for the whole prior year — reflects a market where capital is concentrating into a handful of frontier labs and their infrastructure, not spreading across a broad startup base. Exits have unfrozen in parallel, giving the flywheel liquidity it lacked in 2023–24.</p>
+        <span class="lbl">Die Details</span>
+        <p>Q1 invested $305B; Q2 added $205B across 5,000+ startups. Over 70% of Q2 capital went to AI-focused companies. Sixteen companies raised billion-dollar rounds in Q2, totalling $108.6B (53% of the quarter). Anthropic's $65B Q2 raise crowned it the most valuable private company; OpenAI and Anthropic together took $217B across H1 — 43% of the total. Exit side: 32 companies IPO'd above $1B valuation in Q2, headlined by SpaceX's $1.77T listing raising $75B (largest venture-backed IPO on record); 24 companies were acquired at $1B+ for $113B, a record M&amp;A quarter. Two-thirds of Q2 funding went to US-based firms.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two structural facts fall out. First, AI is no longer a sector within the startup market — at 70% of Q2 capital it effectively <em>is</em> the startup market, and the concentration into OpenAI/Anthropic means the "AI boom" is really a two-to-four-company capital event with a long tail. Second, the exit surge (record IPOs and M&amp;A) is what sustains the raising — LPs see liquidity, so they keep funding. The risk this data doesn't price: if the frontier revenue curve disappoints against $200B+ of concentrated capital, the correction is concentrated too. For operators, the read is that infrastructure and application-layer money is downstream of a very small number of model-lab bets.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether Q3 sustains the 70% AI share or mean-reverts. Any softening in the exit market that would slow the flywheel. And whether the concentration into two labs draws antitrust or systemic-risk attention.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — Crunchbase data primary</span>
+    <span class="links">
+      <a href="https://news.crunchbase.com/venture/global-startup-exits-ipo-ma-soar-ai-q2-h1-2026/"><span class="material-icons-outlined">open_in_new</span>Crunchbase</a>
+    </span>
+  </div>
+
+  <!-- Card 12: Together AI -->
+  <div class="card">
+    <span class="chip c-infra">INFRASTRUCTURE</span><span class="datepill">early Jul</span>
+    <div class="headline">Together AI raises $800M Series C at $8.3B — Aramco Ventures leads the open-model infra bet</div>
+    <div class="body">Together AI, which builds the infrastructure layer for companies running open-source AI models, raised an $800M Series C led by Aramco Ventures at an $8.3B post-money valuation. It was the largest AI round in Crunchbase's early-July tally. The Aramco lead is notable: Gulf sovereign capital is buying into the open-model inference layer specifically — the picks-and-shovels of the open-weight frontier that DeepSeek, Mistral and Qwen supply.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Together AI sits in the open-model infrastructure niche: hosting, fine-tuning and serving open-weight models for companies that don't want to depend on a single closed frontier lab. As the open-weight tier has strengthened — DeepSeek V4 at $0.87 output, Mistral, Alibaba's Qwen — the demand for a neutral serving layer has grown. The $800M round is the market pricing that thesis.</p>
+        <span class="lbl">Die Details</span>
+        <p>San Francisco-based; $800M Series C; $8.3B post-money valuation; lead investor Aramco Ventures. Positioned as "an infrastructure layer for companies running open source AI models." The Gulf-sovereign lead fits a broader pattern of Middle Eastern capital moving aggressively into AI infrastructure (compute, inference, models) as a strategic diversification play.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The bet is that enterprises will run a portfolio of open-weight models rather than standardise on one closed API — and will pay a neutral infrastructure provider to make that manageable. If DeepSeek's price trajectory holds, the economics of open-weight inference get more compelling, which is bullish for Together's positioning. The Aramco lead also signals where sovereign money sees durable value: not in the volatile race to the frontier, but in the inference and serving layer beneath it. That's a quieter, more defensible bet than backing a single model lab.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether open-weight adoption in the enterprise actually broadens or stays with cost-sensitive/regulated buyers. Together's gross margins as inference prices fall. And whether other sovereign funds follow into the infra layer specifically.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — Crunchbase funding roundup</span>
+    <span class="links">
+      <a href="https://news.crunchbase.com/venture/biggest-funding-rounds-ai-energy-biotech-joulent/"><span class="material-icons-outlined">open_in_new</span>Crunchbase</a>
+    </span>
+  </div>
+
+  <!-- Card 13: 8090 Solutions -->
+  <div class="card">
+    <span class="chip c-infra">FUNDING</span><span class="datepill">early Jul</span>
+    <div class="headline">8090 Solutions raises $135M — Chamath's "build enterprise software with agents, under human oversight"</div>
+    <div class="body">8090 Solutions, a Redwood City platform for building enterprise software using AI agents under human oversight, raised $135M led by Salesforce Ventures. Co-founder and CEO is investor Chamath Palihapitiya. The company sits squarely in the "agents build the software, humans supervise" thesis that OpenAI's ChatGPT Work and Anthropic's Cowork are also chasing — but pointed at bespoke enterprise application development rather than a general assistant.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Founded in 2024, 8090 targets the enterprise-software-build problem: instead of buying SaaS or hiring a dev shop, use AI agents (with human oversight) to construct custom software. The Salesforce Ventures lead is strategically loaded — Salesforce has its own agentic ambitions, and backing 8090 is both a bet and a hedge. Chamath Palihapitiya as operating CEO (rather than pure investor) is unusual and raises the profile.</p>
+        <span class="lbl">Die Details</span>
+        <p>$135M round; Redwood City, California; founded 2024; lead investor Salesforce Ventures. Positioning: a platform for building enterprise software with AI agents under human oversight — the "human-in-the-loop agentic development" framing rather than fully autonomous code generation. Exact valuation was not disclosed in the roundup.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is the application-layer version of the same agentic bet the frontier labs are making at the model layer. The differentiator 8090 is selling is "under human oversight" — an acknowledgement that fully autonomous agentic software development isn't reliable yet, and that the near-term value is a supervised workflow. For operators, it's a signal of where enterprise agent spend is actually landing: not general chat, but domain-specific build-and-supervise tooling. The Salesforce backing hints the incumbents would rather invest in this pattern than build it entirely in-house.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Named enterprise customers and real deployment scale. Whether "human oversight" stays central or gets marketed away as models improve. And how Salesforce's own agent products relate to a company it just funded.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●●○</span>&nbsp; 4/5 — Crunchbase funding roundup</span>
+    <span class="links">
+      <a href="https://news.crunchbase.com/venture/biggest-funding-rounds-ai-energy-biotech-joulent/"><span class="material-icons-outlined">open_in_new</span>Crunchbase</a>
+    </span>
+  </div>
+
+  <!-- Card 14: Thinking Machines talent -->
+  <div class="card">
+    <span class="chip c-infra">TALENT</span><span class="datepill">ongoing</span>
+    <div class="headline">The talent war's price tag: Thinking Machines lost a third of its founders, mostly to Meta</div>
+    <div class="body">Industry trackers this week revisited the extraordinary cost of the AI hiring battle. Mira Murati's Thinking Machines Lab (former OpenAI CTO; $12B valuation; 150+ staff) has seen roughly a third of its founding team leave — 13 members, including 3 of 6 co-founders. Meta was the most aggressive recruiter (7 founding members plus a star researcher, after failing to acquire the company outright); OpenAI took 5, xAI 1. Recruiters now pitch rank-and-file engineers on $1.5M cash alone — more than 3× Thinking Machines' $350K–$475K band — with some packages reaching nine figures.</div>
+    <details>
+      <summary><span class="material-icons-outlined">chevron_right</span>Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext &amp; Vorgeschichte</span>
+        <p>Thinking Machines Lab, founded by former OpenAI CTO Mira Murati, reached a $12B valuation and 150+ headcount, shipping its flagship "Tinker" product and, more recently, "interaction models" that process inputs and outputs simultaneously. The departures — first reported in May and tracked since — are the sharpest illustration of a market where frontier-lab talent is the scarcest input and the biggest players will pay almost anything to concentrate it. Meta had previously tried to acquire the lab outright before poaching its people instead.</p>
+        <span class="lbl">Die Details</span>
+        <p>Roughly one-third of the founding team gone: 13 total, 3 of 6 co-founders (including engineer Joshua Gross, who helped build Tinker). Destinations: Meta 7 (plus a star AI researcher), OpenAI 5, xAI 1. Compensation is the driver — nine-figure packages (hundreds of millions in cash and stock over several years) at the top; recruiters pitching ordinary engineers $1.5M cash, over 3× the company's advertised $350K–$475K range. Counter-signal: PyTorch creator Soumith Chintala joined as CTO in January 2026, so the lab still attracts elite talent even as it bleeds founders.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The macro read connects to the funding story above: when two labs command $217B of H1 capital, they can and do buy the talent supply, and mid-tier labs become farm teams. Meta's behaviour is the tell — having failed to acquire Thinking Machines, it extracted the equivalent value by hiring the people, a pattern that regulators may eventually treat as acqui-hire in substance. For anyone building an AI company outside the top two or three, the durable question is retention economics: you cannot out-pay Meta or OpenAI, so mission, equity upside and technical autonomy have to do the work.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether Thinking Machines' Chintala-led rebuild stabilises the team. Any regulatory framing of systematic poaching as de facto acqui-hire. And whether nine-figure individual packages become normalised or prove a short-lived bubble peak.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf"><span class="dots">●●●○○</span>&nbsp; 3/5 — May reporting updated by industry trackers; figures not all re-confirmed this week</span>
+    <span class="links">
+      <a href="https://americanbazaaronline.com/2026/05/14/one-third-of-thinking-machines-lab-founding-team-exits-480782/"><span class="material-icons-outlined">open_in_new</span>American Bazaar</a>
+      <a href="https://technologymagazine.com/articles/microsoft-vs-google-the-latest-case-of-ai-talent-poaching"><span class="material-icons-outlined">open_in_new</span>Technology Magazine</a>
+    </span>
+  </div>
+
+  <!-- Section: Release Radar -->
+  <div class="section"><span class="material-icons-outlined">calendar_today</span><span class="name">Release Radar</span><span class="count"> · minor-but-real, one line each</span></div>
+
+  <div class="card radar">
+    <div class="row"><div class="rdate">06 Jul</div><div><span class="rname">SpaceXAI — 21 new flagship Grok voices.</span> Audio expansion for Grok users, shipped days before the Grok 4.5 model launch. Primary: x.ai/news.</div></div>
+    <div class="row"><div class="rdate">09 Jul</div><div><span class="rname">Anthropic — Claude Usage Reflection tool.</span> Lets users review how they actually use Claude; a small transparency-toward-the-user feature bundled with the Hard Questions / Bernanke cluster.</div></div>
+    <div class="row"><div class="rdate">14 Jul</div><div><span class="rname">Anthropic — $10M pledged to Canadian AI research.</span> Institutional/goodwill spend alongside Claude for Teachers, extending the "responsible lab" posture into Canada.</div></div>
+    <div class="row"><div class="rdate">early Jul</div><div><span class="rname">Twelve Labs — $100M Series B.</span> Video-understanding AI trained on video archives; co-led by NEA and Naver Ventures. San Francisco.</div></div>
+    <div class="row"><div class="rdate">early Jul</div><div><span class="rname">Venice — $65M Series A at $1B.</span> Private, surveillance-free access to multiple AI models; led by Dragonfly Capital. A privacy-positioned aggregator hitting unicorn status.</div></div>
+    <div class="row"><div class="rdate">09 Jul</div><div><span class="rname">OpenAI — Codex in the desktop app.</span> The upgraded ChatGPT desktop now carries markdown editing, GitHub PR review and cross-repo project support natively (shipped with the GPT-5.6 GA).</div></div>
+  </div>
+
+  <!-- Section: Editor's View -->
+  <div class="section editor"><span class="material-icons-outlined">rate_review</span><span class="name">Editor's View</span></div>
+
+  <div class="card editor">
+    <span class="chip">Interpretation</span>
+    <h3>Three patterns worth naming this week</h3>
+    <ol>
+      <li><strong>17 July is the frontier's next collision — and the price war is the real headline.</strong> Gemini 3.5 Pro (rebuilt, unconfirmed) and DeepSeek V4-Pro stable are both targeted at the same day, two days after this edition. But the number that matters is DeepSeek's $0.87 per 1M output tokens — roughly 30× under Claude Opus-class output — landing the same week GPT-5.6 Terra ($2.50/$15) and Grok 4.5 ($2/$6) set the Western mid-tier. If Google really prices Gemini at a rumoured $15/$60, it's betting on a premium tier that the rest of the market is actively fleeing. Buy tokens on task-fit and switching cost now, not on a leaderboard.</li>
+      <li><strong>Anthropic didn't ship a model this week — it built a moat.</strong> Claude for Teachers (free, FERPA-first, AFT-backed), Bernanke onto the Long-Term Benefit Trust, the Hard Questions transparency push. While OpenAI and Google fight over benchmarks and launch dates, Anthropic is buying distribution (a generation of teachers), governance credibility (a Nobel central banker) and regulatory standing (visible transparency) 18 days before EU enforcement. It's the least flashy strategy on the board and possibly the most durable.</li>
+      <li><strong>The money says AI isn't a sector anymore — it's the market.</strong> $510B in H1, more than all of 2025; 70% of Q2 capital to AI; OpenAI and Anthropic alone taking 43% of everything. That concentration funds the talent war (nine-figure packages, Meta stripping Thinking Machines for parts) and the compliance build-out simultaneously. The tail risk nobody is pricing: two labs, half the capital — if their revenue disappoints, the correction is as concentrated as the boom.</li>
+    </ol>
+    <p class="wild">Wild-card watch: if Gemini 3.5 Pro slips again past 17 July — with DeepSeek V4 shipping on schedule the same day — the "Google is losing the frontier race" narrative gets a decisive second wind, and it happens on a day when a Chinese lab visibly delivers what Google couldn't. That's the single story most likely to reframe next week's briefing.</p>
+  </div>
+
+  <!-- Colophon -->
+  <div class="foot">
+    <div>AI Briefing · 8 – 15 Jul 2026 · Weekly · Confidence dots reflect source strength, not editorial certainty · Aggregator-only claims flagged in the banner · Sources current at time of writing · Voice: direct, no filler.</div>
+  </div>
+
+</div>
+</body>
+</html>

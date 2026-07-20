@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Media Briefing · Week of May 4, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #0d47a1;
+    --primary-hover: #0a3d8f;
+    --primary-soft: #e3f2fd;
+    --primary-on-soft: #0d47a1;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #1a237e); color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .hero { background: linear-gradient(135deg, #1565c0 0%, #1a237e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.55; opacity: 0.95; margin: 0; max-width: 700px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .rank { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--on-surface-2); font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.fund    { background: #e3f2fd; color: #0d47a1; }
+  .provider.crypto  { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ai      { background: #e6f4ea; color: #0d652d; }
+  .provider.media   { background: #fef7e0; color: #b06000; }
+  .provider.policy  { background: #fce8e6; color: #a50e0e; }
+  .provider.portfolio { background: #e8eef6; color: #1f3548; }
+
+  .timestamp { font-family: 'Roboto Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-on-soft); font-weight: 500; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\2022"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .card a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--primary-soft); border: 1px solid #bbdefb; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--primary); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--primary); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--primary); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: var(--on-surface-2); }
+
+  .status-quo { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .status-quo h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .status-quo h3 .material-icons-outlined { color: var(--primary); font-size: 20px; }
+  .status-quo ul { margin: 0; padding-left: 20px; }
+  .status-quo li { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin-bottom: 8px; }
+  .status-quo li strong { color: var(--on-surface); font-weight: 500; }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.6; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+  .colophon a { color: var(--primary-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">a16z</div>
+    <div class="titles">
+      <h1>a16z Media Briefing</h1>
+      <div class="sub">Week of May 4, 2026 &middot; Coverage: April 28 &ndash; May 4 &middot; Andreessen Horowitz</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="hero">
+  <div class="eyebrow">Weekly Briefing &middot; April 28 &ndash; May 4, 2026</div>
+  <h2>Prediction markets, stablecoin semantics, and a $51M political war chest shape a16z's week.</h2>
+  <p>A regulatory filing to the CFTC on prediction markets, a thought-provoking essay arguing that the word "stablecoin" should be retired, a super PAC crossing $50 million, and continued reverberations from the MTS media launch. A firm week for the policy and media arms; quieter on new deal announcements.</p>
+</div>
+
+<!-- ─── STATUS QUO ─── -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo from April 27 Baseline</h3>
+  <ul>
+    <li><strong>$15B mega-raise (Jan 2026):</strong> Six funds &mdash; American Dynamism ($1.18B), Apps ($1.7B), Bio + Health ($700M), Infrastructure ($1.7B), Growth ($6.75B), Other Venture ($3B). Over 18% of all US VC dollars raised in 2025.</li>
+    <li><strong>AUM exceeds $90B</strong> firm-wide. Portfolio spans 1,172 companies (as of April 2026), with 123 unicorns including Databricks ($43B) and Anduril ($15B).</li>
+    <li><strong>a16z Crypto Fund V</strong> targeting ~$2B, led by Chris Dixon. Fundraising expected to close H1 2026. Crypto AUM declined ~40% to $9.5B after distributions from Funds I&ndash;III (net DPI of 5.4x on Fund I).</li>
+    <li><strong>MTS (Monitoring the Situation)</strong> launched April 20 on X &mdash; a16z-backed 24/7 livestream news network. Covered in previous briefing as the centerpiece of Andreessen's media thesis.</li>
+    <li><strong>Speedrun SR007</strong> applications opened April 20, closing May 17. Program invests up to $1M per company; &lt;0.4% acceptance rate across 250+ backed companies over six cohorts.</li>
+    <li><strong>Ben Horowitz on AI anxiety (April 15):</strong> Argued pre-AI competitive moats (inability to buy solutions + customer lock-in) are both gone; "you can buy enough GPUs and solve basically anything in software."</li>
+    <li><strong>AI Super PAC "Leading the Future"</strong> crossed $51M following a $25M injection from Andreessen and Horowitz personally (reported April 15&ndash;19).</li>
+    <li><strong>Marc Andreessen</strong> serves on PCAST and operates as an unpaid DOGE volunteer. Describes AI as "bigger than the Internet" and predicts GPU overcapacity within a decade.</li>
+  </ul>
+</div>
+
+<!-- ─── SECTION 1: INVESTMENTS & DEALS ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>Investments &amp; Deals</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">1</span>
+    <span class="provider fund"><span class="dot"></span>Fund Activity</span>
+    <span class="meta-pill">Week of Apr 28 &ndash; May 4</span>
+  </div>
+  <h4>No new deal announcements this week</h4>
+  <p>No publicly disclosed new investments or follow-on rounds from Andreessen Horowitz emerged during the April 28 &ndash; May 4 window. The firm's deal pipeline remains active behind the scenes &mdash; Speedrun SR007 applications continue to collect through May 17 (<a href="https://speedrun.a16z.com/apply">apply here</a>) &mdash; but the week was dominated by policy and media activity rather than fresh deal flow.</p>
+  <p>For context, the firm made 182 investments in 2025 and has added 105 new investments in the trailing 12 months as of April 2026. The absence of announcements in any given week is not unusual.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/investment-list/"><span class="material-icons-outlined">open_in_new</span>a16z Investment List</a>
+    <a class="link-pill" href="https://a16z.com/applications-for-a16z-speedrun-sr007-are-now-open/"><span class="material-icons-outlined">open_in_new</span>Speedrun SR007</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 2: AI PORTFOLIO ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>AI Portfolio &amp; Thought Leadership</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">2</span>
+    <span class="provider ai"><span class="dot"></span>AI</span>
+    <span class="timestamp">Apr 15</span>
+    <span class="meta-pill">Ben Horowitz &middot; Fortune</span>
+  </div>
+  <h4>Ben Horowitz: "AI Anxiety" is consuming Silicon Valley founders</h4>
+  <p>In a video published mid-April and continuing to circulate this week, Horowitz described an unfolding industrial revolution where the fundamental rules of competition have been rewritten. His core claim: the two moats software CEOs relied on &mdash; the inability to throw money at engineering problems, and customer lock-in &mdash; are both gone in the AI era. "You can buy enough GPUs and solve basically anything in software," he argued, framing AI not as an incremental tool but as a category-collapsing force that makes pre-AI companies structurally uncompetitive. (<a href="https://fortune.com/2026/04/15/ben-horowitz-a16z-ai-anxiety-founders-workers-different-fears/">Fortune</a>)</p>
+  <p>Separately, Horowitz published a podcast episode on why open-source AI will determine America's future, framing the US-China AI competition through the lens of DeepSeek's capture of the global open-source AI heartbeat while the Biden administration pursued closed-model strategies. (<a href="https://a16z.com/podcast/ben-horowitz-why-open-source-ai-will-determine-americas-future-2/">a16z Podcast</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://fortune.com/2026/04/15/ben-horowitz-a16z-ai-anxiety-founders-workers-different-fears/"><span class="material-icons-outlined">open_in_new</span>Fortune</a>
+    <a class="link-pill" href="https://a16z.com/podcast/ben-horowitz-why-open-source-ai-will-determine-americas-future-2/"><span class="material-icons-outlined">open_in_new</span>Open Source AI Podcast</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">3</span>
+    <span class="provider ai"><span class="dot"></span>AI Infrastructure</span>
+    <span class="meta-pill">$1.7B allocation &middot; Ongoing</span>
+  </div>
+  <h4>AI infrastructure team: $1.7B deployed across OpenAI, ElevenLabs, Ideogram, Fal</h4>
+  <p>No new AI infrastructure deals were announced this week, but the firm's $1.7B infrastructure allocation from the January fundraise continues to deploy. The portfolio includes OpenAI, ElevenLabs, Ideogram, and Fal. Healthcare AI accounted for 40% of new healthcare investments in 2025. The $700M Bio + Health fund signals continued conviction in medical AI applications, particularly continuous-monitoring systems and voice agents for regulated healthcare workflows. (<a href="https://cryptorank.io/news/feed/6ec3f-a16z-ai-infrastructure-funding-strategy">CryptoRank analysis</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://cryptorank.io/news/feed/6ec3f-a16z-ai-infrastructure-funding-strategy"><span class="material-icons-outlined">open_in_new</span>AI Infra Strategy</a>
+    <a class="link-pill" href="https://a16z.com/ai/"><span class="material-icons-outlined">open_in_new</span>a16z AI</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 3: CRYPTO / WEB3 ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">currency_bitcoin</span>
+  <h3>Crypto &amp; Web3</h3>
+  <span class="count">3 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">4</span>
+    <span class="provider policy"><span class="dot"></span>Policy</span>
+    <span class="timestamp">May 2</span>
+    <span class="meta-pill">CFTC &middot; 18-page filing</span>
+  </div>
+  <h4>a16z files 18-page CFTC letter backing federal prediction-market oversight</h4>
+  <p>In the week's highest-profile policy move, a16z filed an 18-page comment letter with the Commodity Futures Trading Commission (CFTC) supporting federal authority over prediction markets and opposing state-level crackdowns. The letter argues that state regulators labeling prediction markets as "gaming" creates a "serious barrier to impartial access" and damages market liquidity. a16z describes prediction markets as "information machines" whose pricing mechanisms represent a distinct form of price discovery surfacing crowd intelligence on uncertain outcomes. (<a href="https://www.theblock.co/post/399752/a16z-cftc-state-by-state-rules-prediction-markets-barrier-impartial-access">The Block</a>)</p>
+  <p>Key policy proposals in the letter: prohibited-trader lists covering "Event Controllers" (those who can influence outcomes), Determinations Committees staffed by subject-matter experts, and cross-market surveillance between CFTC and SEC to prevent manipulation across correlated financial platforms. The firm also endorsed blockchain-based platforms, arguing that on-chain auditability makes regulatory oversight more effective. (<a href="https://a16zcrypto.com/posts/article/getting-prediction-market-regulation-right-cftc">a16z Crypto blog</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.theblock.co/post/399752/a16z-cftc-state-by-state-rules-prediction-markets-barrier-impartial-access"><span class="material-icons-outlined">open_in_new</span>The Block</a>
+    <a class="link-pill" href="https://a16zcrypto.com/posts/article/getting-prediction-market-regulation-right-cftc"><span class="material-icons-outlined">open_in_new</span>a16z Crypto</a>
+    <a class="link-pill" href="https://news.symplexia.com/2026/05/new-economy/cryptocurrency/a16z-backs-cftc-in-fight-against-state-prediction-market-bans/"><span class="material-icons-outlined">open_in_new</span>Symplexia</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">5</span>
+    <span class="provider crypto"><span class="dot"></span>Crypto</span>
+    <span class="timestamp">May 1</span>
+    <span class="meta-pill">Robert Hackett &middot; a16z Crypto</span>
+  </div>
+  <h4>"Retire the word stablecoin" &mdash; a16z essay argues the label has outlived its purpose</h4>
+  <p>Robert Hackett, a16z's editorial lead, published an essay on May 1 arguing that the term "stablecoin" should be retired in favor of "digital dollars," "digital euros," and "onchain assets." The core argument: stability is now table stakes, not a distinguishing feature. "The question is no longer 'will it hold its value?' but 'what else can we build with it?'" Hackett uses the "horsepower" analogy &mdash; a term James Watt coined in the 1770s to explain steam engines in familiar terms that long outlasted its usefulness. (<a href="https://www.coinreporter.io/2026/05/a16z-exec-pitches-abandoning-stablecoins-for-digital-euro-digital-dollar-just-not-the-ecb-kind/">CoinReporter</a>)</p>
+  <p>The essay was widely covered across crypto media. Notably, Hackett argues for "digital dollar" and "digital euro" framing explicitly not as CBDCs (central bank digital currencies) in the ECB/Fed sense, but as privately issued, blockchain-native instruments. This is a rhetorical move &mdash; normalizing stablecoins by shedding crypto jargon while maintaining distance from central-bank-controlled alternatives. (<a href="https://www.cryptopolitan.com/a16z-drop-stablecoins-digital-dollars-euros/">Cryptopolitan</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.coinreporter.io/2026/05/a16z-exec-pitches-abandoning-stablecoins-for-digital-euro-digital-dollar-just-not-the-ecb-kind/"><span class="material-icons-outlined">open_in_new</span>CoinReporter</a>
+    <a class="link-pill" href="https://www.cryptopolitan.com/a16z-drop-stablecoins-digital-dollars-euros/"><span class="material-icons-outlined">open_in_new</span>Cryptopolitan</a>
+    <a class="link-pill" href="https://www.cryptotimes.io/2026/05/02/a16z-says-stablecoins-will-not-age-well/"><span class="material-icons-outlined">open_in_new</span>CryptoTimes</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">6</span>
+    <span class="provider crypto"><span class="dot"></span>Crypto Fund</span>
+    <span class="meta-pill">Fund V &middot; $2B target &middot; H1 2026</span>
+  </div>
+  <h4>Crypto Fund V fundraising continues; portfolio AUM declined 40% after distributions</h4>
+  <p>a16z crypto's fifth fund continues fundraising toward a ~$2B target, expected to close by end of H1 2026. The fund is significantly smaller than the $4.5B Fund IV (2022), reflecting a shift to shorter fundraising cycles. Led by Chris Dixon, the fund will focus on blockchain infrastructure, AI-crypto intersections, and stablecoin infrastructure. (<a href="https://fortune.com/2026/03/04/a16z-crypto-chris-dixon-venture-capital-blockchain-paradigm-haun-fundraise/">Fortune exclusive</a>)</p>
+  <p>Context from mid-April: total crypto AUM across the firm's four funds declined ~40% to $9.5B between 2024 and 2025. This was partly driven by distributions to LPs from Funds I&ndash;III, timed to coincide with 2025's crypto highs. Fund I achieved a net DPI (Distributions to Paid-In capital) of 5.4x &mdash; a strong return by any VC standard. The decline in headline AUM is therefore largely a feature (capital returned), not a bug (losses). (<a href="https://fortune.com/2026/04/16/top-crypto-vcs-paradigm-pantera-a16z-multicoin-haun-dragonfly/">Fortune</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://fortune.com/2026/03/04/a16z-crypto-chris-dixon-venture-capital-blockchain-paradigm-haun-fundraise/"><span class="material-icons-outlined">open_in_new</span>Fortune (March)</a>
+    <a class="link-pill" href="https://fortune.com/2026/04/16/top-crypto-vcs-paradigm-pantera-a16z-multicoin-haun-dragonfly/"><span class="material-icons-outlined">open_in_new</span>Fortune (April)</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 4: MEDIA & THOUGHT LEADERSHIP ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">podcasts</span>
+  <h3>Media &amp; Thought Leadership</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">7</span>
+    <span class="provider media"><span class="dot"></span>Media</span>
+    <span class="timestamp">Apr 20+</span>
+    <span class="meta-pill">MTS &middot; Ongoing operations</span>
+  </div>
+  <h4>MTS (Monitoring the Situation) completes its second full week of live broadcasting</h4>
+  <p>The a16z-backed 24/7 livestream news network on X completed its second full week of operations. After the Andreessen episode (the a16z Show podcast) covered in our April 27 baseline, MTS published its second featured episode with <strong>Alana Newhouse</strong> as guest. The network continues operating with its founding host roster: Mark Halperin, Jayden Clark, Jack Farley, Amit Kukreja, Steven Sinofsky, Jesse Genet, and Nathan Labenz. (<a href="https://open.spotify.com/episode/68JTmuMVVP9fvYZJowxJk6">Spotify: MTS #2</a>)</p>
+  <p>Coverage remains polarized: Axios frames it as Silicon Valley "building its own news-industrial complex"; Gizmodo calls it "cramming every X post into your brain"; Unherd remains skeptical that "doomscrolling is a business model." No new significant media coverage or controversy emerged this specific week, suggesting the launch hype cycle has normalized. (<a href="https://www.axios.com/2026/04/21/monitoring-the-situation-livestream-news-cycle">Axios</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://open.spotify.com/episode/68JTmuMVVP9fvYZJowxJk6"><span class="material-icons-outlined">open_in_new</span>MTS Ep. 2 (Spotify)</a>
+    <a class="link-pill" href="https://www.axios.com/2026/04/21/monitoring-the-situation-livestream-news-cycle"><span class="material-icons-outlined">open_in_new</span>Axios</a>
+    <a class="link-pill" href="https://quasa.io/media/a16z-invests-in-mts-the-24-7-monitoring-the-situation-livestream-that-wants-to-own-real-time-news-on-x"><span class="material-icons-outlined">open_in_new</span>Quasa</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">8</span>
+    <span class="provider media"><span class="dot"></span>Political</span>
+    <span class="timestamp">Apr 15&ndash;19</span>
+    <span class="meta-pill">Super PAC &middot; Bloomberg</span>
+  </div>
+  <h4>AI Super PAC "Leading the Future" crosses $51M after Andreessen/Horowitz injection</h4>
+  <p>Marc Andreessen and Ben Horowitz personally contributed $25 million to the pro-AI super PAC "Leading the Future," pushing total funds on hand past $51 million. The PAC focuses on supporting candidates aligned with AI-permissive policy positions for the 2026 midterms. This represents a significant escalation of the firm's direct political engagement, building on their earlier crypto-focused Fairshake PAC activities. (<a href="https://www.bloomberg.com/news/articles/2026-04-15/andreessen-horowitz-boost-ai-super-pac-cash-to-over-50-million">Bloomberg</a>)</p>
+  <p>The move complements Andreessen's PCAST appointment and DOGE advisory role, creating a three-pronged political strategy: executive advisory access (PCAST/DOGE), legislative influence (Leading the Future PAC), and media infrastructure (MTS). Whether this level of political-financial integration from a VC firm is unprecedented is debatable, but the scale and explicitness are notable. (<a href="https://startupnews.fyi/2026/04/19/marc-andreessen-ben-horowitz-boost-ai-super-pac-to-over-50-million/">StartupNews</a>)</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.bloomberg.com/news/articles/2026-04-15/andreessen-horowitz-boost-ai-super-pac-cash-to-over-50-million"><span class="material-icons-outlined">open_in_new</span>Bloomberg</a>
+    <a class="link-pill" href="https://startupnews.fyi/2026/04/19/marc-andreessen-ben-horowitz-boost-ai-super-pac-to-over-50-million/"><span class="material-icons-outlined">open_in_new</span>StartupNews</a>
+  </div>
+</div>
+
+<!-- ─── SECTION 5: PORTFOLIO COMPANY NEWS ─── -->
+<div class="section-header">
+  <span class="material-icons-outlined">business</span>
+  <h3>Portfolio Company News</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">9</span>
+    <span class="provider portfolio"><span class="dot"></span>Portfolio</span>
+    <span class="meta-pill">Thin week for specific portfolio news</span>
+  </div>
+  <h4>Portfolio pulse: 123 unicorns, no major individual company announcements this week</h4>
+  <p>No headline-making individual portfolio company events surfaced in the April 28 &ndash; May 4 window. The broader portfolio remains anchored by <strong>Databricks</strong> ($43B valuation), <strong>Anduril</strong> ($15B), and AI-native companies like <strong>Anysphere</strong> (Cursor), <strong>ElevenLabs</strong>, and <strong>Harvey</strong> (legal AI). The firm's unicorn count stands at 123, with B2B infrastructure and AI companies driving the most recent additions.</p>
+  <p>Worth monitoring in coming weeks: the Speedrun SR007 application deadline (May 17) will shape the next cohort of early-stage bets. The broader a16z crypto portfolio continues to reflect the market downturn, but distributions from early funds have returned strong capital to LPs.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/portfolio/"><span class="material-icons-outlined">open_in_new</span>a16z Portfolio</a>
+    <a class="link-pill" href="https://growthlist.co/andreessen-horowitz-portfolio/"><span class="material-icons-outlined">open_in_new</span>GrowthList Database</a>
+  </div>
+</div>
+
+<!-- ─── EDITOR'S VIEW ─── -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px;">edit</span> Editor's View</div>
+  <h3>Five Takeaways from the Week</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>Policy is the new product.</strong> The 18-page CFTC filing is not a compliance exercise &mdash; it is a policy product. a16z is architecting the regulatory framework for prediction markets from the inside, proposing specific mechanisms (Event Controllers, Determinations Committees, cross-SEC surveillance) that would structurally favor blockchain-based platforms. This is venture capital as legislative design.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>The stablecoin rebrand is strategic, not semantic.</strong> Hackett's "retire stablecoin" essay is a deliberate framing exercise. By replacing crypto-native jargon with "digital dollars" and "digital euros," a16z positions privately-issued blockchain tokens as natural continuations of fiat currency &mdash; sidestepping both the CBDC debate and crypto's reputational baggage. Watch whether this terminology gains traction outside the crypto press.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>The three-pronged political strategy is now fully visible.</strong> PCAST/DOGE for executive access, Leading the Future ($51M) for legislative influence, MTS for media infrastructure. No other VC firm operates at this level of political integration. The 2026 midterms will be the first real test of whether this translates into policy outcomes.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>MTS is entering the "prove it" phase.</strong> The initial launch generated strong media coverage (Axios, Gizmodo, Unherd). Two weeks in, the coverage has gone quiet. The next 90 days will reveal whether the 24/7 X livestream format can sustain audience, attract sponsorship, or whether Unherd's "doomscrolling is not a business model" thesis proves correct.</div>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <div class="body"><strong>Quiet deal weeks are normal; the pipeline is deep.</strong> No new investments announced this week. With 182 deals in 2025 and Speedrun SR007 collecting applications, the flow continues. The interesting signal is where capital goes next &mdash; AI agents, defense tech, and stablecoin infrastructure are the three vectors to watch in the coming weeks.</div>
+    </li>
+  </ul>
+  <div class="closing">
+    <strong>Bottom line:</strong> a16z's week was defined by policy and narrative infrastructure, not deal flow. The CFTC letter and stablecoin rebrand essay are the most consequential outputs &mdash; both represent the firm shaping the environment in which its portfolio companies will operate, rather than just investing in companies to operate within existing rules.
+  </div>
+</div>
+
+<!-- ─── COLOPHON ─── -->
+<div class="colophon">
+  <p>
+    a16z Media Briefing &middot; Week of May 4, 2026 &middot; Coverage: April 28 &ndash; May 4<br>
+    9 cards across 5 sections &middot; Compiled May 4, 2026<br>
+    Sources: Bloomberg, Fortune, The Block, CoinReporter, Cryptopolitan, Axios, a16z.com, a16z Crypto blog, Spotify, Symplexia, StartupNews, CryptoRank, GrowthList<br>
+    C-Scores reflect source quality and corroboration depth (5 = multiple primary sources; 3 = extrapolated or thin sourcing)<br>
+    This briefing is generated from web search results. No inside information. Verify before acting.
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

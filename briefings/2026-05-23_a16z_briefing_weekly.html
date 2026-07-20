@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a16z Media Briefing · Weekly · May 23, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #0d47a1;
+    --primary-hover: #0a3d8f;
+    --primary-soft: #e3f2fd;
+    --primary-on-soft: #0d47a1;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1565c0, #1a237e); color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 13px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .hero { background: linear-gradient(135deg, #1565c0 0%, #1a237e 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.55; opacity: 0.95; margin: 0; max-width: 700px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .rank { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--on-surface-2); font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.fund    { background: #e3f2fd; color: #0d47a1; }
+  .provider.crypto  { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ai      { background: #e6f4ea; color: #0d652d; }
+  .provider.media   { background: #fef7e0; color: #b06000; }
+  .provider.policy  { background: #fce8e6; color: #a50e0e; }
+  .provider.portfolio { background: #e8eef6; color: #1f3548; }
+  .provider.talent  { background: #fff3e0; color: #b06000; }
+
+  .timestamp { font-family: 'Roboto Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-on-soft); font-weight: 500; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\2022"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .card a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: var(--on-surface-2); }
+
+  .status-quo { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .status-quo h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .status-quo h3 .material-icons-outlined { color: var(--primary); font-size: 20px; }
+  .status-quo ul { margin: 0; padding-left: 20px; }
+  .status-quo li { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin-bottom: 8px; }
+  .status-quo li strong { color: var(--on-surface); font-weight: 500; }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.6; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+  .colophon a { color: var(--primary-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">a16z</div>
+    <div class="titles">
+      <h1>a16z Media Briefing</h1>
+      <div class="sub">Weekly &middot; May 23, 2026 &middot; Coverage: May 16 &ndash; May 23 &middot; Andreessen Horowitz</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="hero">
+  <div class="eyebrow">Weekly &middot; May 16 &ndash; May 23, 2026</div>
+  <h2>An active week: a $250M Exa Series C, the first-ever Boston Tech Week, a crypto-portfolio shutdown, and a viral Andreessen meltdown.</h2>
+  <p>After two quiet stretches, the firm produced real signal. The headline is Exa's $250M Series C led by a16z at a $2.2B valuation (announced May 20) &mdash; an AI-search infrastructure bet timed to the agent boom. Around it: a16z brought its Tech Week franchise to Boston for the first time (May 26&ndash;31, announced May 20), crypto-portfolio company Syndicate Labs announced a shutdown after five years (May 21), an a16z-linked wallet kept accumulating Hyperliquid HYPE tokens, and Marc Andreessen spent the week feuding publicly with General Catalyst over a parody ad. Mixed inputs &mdash; one strong new deal, one structural-expansion move, one portfolio failure, and a partner-reputation episode worth carding honestly.</p>
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Continuity note</strong>
+    The May 11 + May 14 + May 19 editions absorbed Crypto Fund V, Anduril, Tessera, Stitch, Pit, Ciridae, the $115M political-donor framing and the Growth Engineer Fellowship. Those items are <em>not</em> re-listed. This briefing covers only what surfaced May 16&ndash;23.
+  </div>
+</div>
+
+<!-- STATUS QUO -->
+<div class="status-quo">
+  <h3><span class="material-icons-outlined">history</span> Status Quo from the Prior Three Editions</h3>
+  <ul>
+    <li><strong>Crypto Fund V closed at $2.2B (May 5):</strong> 100% crypto-dedicated; Eddy Lazzarin promoted to fourth GP. Total crypto AUM ~$9.8B across five funds.</li>
+    <li><strong>Anduril Series H (May 13):</strong> $5B at $61B valuation, co-led by Thrive + a16z. Arsenal-1 Ohio capacity the use-of-proceeds.</li>
+    <li><strong>Tessera Labs / Stitch (May 13&ndash;18):</strong> $60M for AI-native ERP modernization (Seema Amble on board); $25M Series A for Saudi bank-core OS &mdash; a16z's first GCC (Gulf Cooperation Council) check, closed May 18.</li>
+    <li><strong>Growth Engineer Fellowship (May 14&ndash;19):</strong> 65 fellows from OpenAI, Replit, Notion, Coinbase, ElevenLabs, Perplexity, Clay; 8-week opt-in cohort, talent-network play.</li>
+    <li><strong>Speedrun SR007 (May 17):</strong> Applications closed; cohort runs July 27&ndash;Oct 11; named list expected mid-to-late June.</li>
+    <li><strong>$115M+ political spending:</strong> a16z confirmed as the biggest 2026 midterm donor bloc (Fairshake crypto-PAC + Leading the Future AI-PAC).</li>
+    <li><strong>$15B mega-raise (Jan 2026)</strong> + $90B+ AUM remain the structural backdrop; ~1,172 portfolio companies.</li>
+  </ul>
+</div>
+
+<!-- SECTION 1: NEW DEALS -->
+<div class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>New Deals</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">1</span>
+    <span class="provider ai"><span class="dot"></span>Series C Lead</span>
+    <span class="timestamp">May 20</span>
+    <span class="meta-pill">Exa &middot; $250M at $2.2B valuation</span>
+  </div>
+  <h4>a16z leads Exa's $250M Series C at a $2.2B valuation &mdash; an AI-search infrastructure bet on the agent era</h4>
+  <p>Exa Labs announced a $250M Series C on May 20, 2026, led by Andreessen Horowitz, valuing the AI-search startup at $2.2B &mdash; roughly a 3x jump from the ~$700M valuation it carried last fall. Exa builds a search engine architected specifically for AI agents rather than humans; a16z framed the thesis around agents searching "thousands of times more than humans will," with CEO Will Bryk casting it as "organizing the world's knowledge, but this time for AI." a16z published its own announcement post the same day. (<a href="https://a16z.com/announcement/investing-in-exa/">a16z: Investing in Exa</a>, <a href="https://exa.ai/blog/announcing-series-c">Exa blog</a>, <a href="https://www.pymnts.com/artificial-intelligence-2/2026/exa-raises-250-million-for-ai-powered-search-infrastructure/">PYMNTS</a>)</p>
+  <p>This is the substantive new deal of the week and the clearest read on the firm's current AI thesis. Exa fits a pattern that has run through every recent a16z AI check &mdash; Tessera (ERP), Ethos (expert networks), Pit (product teams), Ciridae (real-economy AI): pick the infrastructure layer that gets consumed by agents at machine scale, not human scale. Search is the highest-volume of those layers, which is why this draws a Series C lead and a quarter-billion-dollar check rather than a probe-sized seed. The 3x valuation step-up in roughly six months is the aggressive part &mdash; it prices in agent-search volume that has not yet fully materialized. Worth tracking whether usage data backs the mark over the next two quarters.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://a16z.com/announcement/investing-in-exa/"><span class="material-icons-outlined">open_in_new</span>a16z</a>
+    <a class="link-pill" href="https://exa.ai/blog/announcing-series-c"><span class="material-icons-outlined">open_in_new</span>Exa Blog</a>
+    <a class="link-pill" href="https://www.pymnts.com/artificial-intelligence-2/2026/exa-raises-250-million-for-ai-powered-search-infrastructure/"><span class="material-icons-outlined">open_in_new</span>PYMNTS</a>
+  </div>
+</div>
+
+<!-- SECTION 2: FIRM & PROGRAMS -->
+<div class="section-header">
+  <span class="material-icons-outlined">event</span>
+  <h3>Firm &amp; Programs</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">2</span>
+    <span class="provider talent"><span class="dot"></span>Conference Expansion</span>
+    <span class="timestamp">May 20</span>
+    <span class="meta-pill">Tech Week Boston &middot; May 26&ndash;31</span>
+  </div>
+  <h4>a16z brings its Tech Week franchise to Boston for the first time &mdash; 80+ founding hosts, no central agenda</h4>
+  <p>Andreessen Horowitz announced it is running Tech Week in Boston May 26&ndash;31, 2026 &mdash; the first time the franchise has reached the city, after years in New York, San Francisco and Los Angeles. The format is decentralized: no convention center, no master agenda, no central registration; a16z solicited local players to plan their own events and the community returned 600+ ideas, with the firm providing logistical support and grants. 80+ founding hosts include a16z, Anthropic, HubSpot, Klaviyo, IBM, WHOOP, DraftKings, Wayfair, Stripe, Cursor, Pillar VC and MIT's The Engine. a16z GP Jonathan Lai is set to interview HubSpot co-founder Brian Halligan. (<a href="https://www.bostonglobe.com/2026/05/20/business/a16z-tech-week-boston-halligan-perkins/">Boston Globe</a>, <a href="https://www.tech-week.com/boston">Tech Week Boston</a>, <a href="https://hoodline.com/2026/05/tech-bros-storm-beantown-as-a16z-turns-boston-into-weeklong-startup-circus/">Hoodline</a>)</p>
+  <p>Strategic read: this is the same "build our own pipes" posture seen in the Growth Engineer Fellowship, MTS, Speedrun and the policy PACs &mdash; a16z extending an owned-platform into a new geography at near-zero capital cost. The firm does not have a Boston office; Tech Week is a way to plant a flag, harvest deal-flow signal and build relationships in the Boston/Cambridge ecosystem (robotics, bio, enterprise SaaS) without standing up a physical presence. The decentralized format means the cost is logistics and grants, not real estate. Read it as a low-cost market-entry probe; if a16z opens a Boston office or names a regional partner within 12 months, the probe converted.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.bostonglobe.com/2026/05/20/business/a16z-tech-week-boston-halligan-perkins/"><span class="material-icons-outlined">open_in_new</span>Boston Globe</a>
+    <a class="link-pill" href="https://www.tech-week.com/boston"><span class="material-icons-outlined">open_in_new</span>Tech Week</a>
+    <a class="link-pill" href="https://hoodline.com/2026/05/tech-bros-storm-beantown-as-a16z-turns-boston-into-weeklong-startup-circus/"><span class="material-icons-outlined">open_in_new</span>Hoodline</a>
+  </div>
+</div>
+
+<!-- SECTION 3: PORTFOLIO & CRYPTO -->
+<div class="section-header">
+  <span class="material-icons-outlined">currency_bitcoin</span>
+  <h3>Portfolio &amp; Crypto</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">3</span>
+    <span class="provider crypto"><span class="dot"></span>Portfolio Wind-Down</span>
+    <span class="timestamp">May 21</span>
+    <span class="meta-pill">Syndicate Labs &middot; shutting down after 5 years</span>
+  </div>
+  <h4>a16z-backed Syndicate Labs is shutting down &mdash; rollup market shrank ~36% from peak, demand shifted to custom chains</h4>
+  <p>Syndicate Labs, an on-chain development startup backed by a16z, announced on May 21, 2026 it will wind down after five years. The team said the rollup market has "fundamentally shifted" and the total addressable market shrank &mdash; demand moving away from standardized rollup infrastructure toward custom chains. Syndicate had raised $27M+. Per L2Beat, total value secured across the layer-2 rollup ecosystem has fallen roughly 36% from an October peak above $50B. The company said the shutdown is unrelated to a recent cross-chain bridge attack, which it says was fully reimbursed (~$330K). (<a href="https://www.banklesstimes.com/articles/2026/05/21/a16z-backed-syndicate-labs-to-shut-down-amid-rollup-market-crash/">Bankless Times</a>, <a href="https://ambcrypto.com/a16z-backed-syndicate-labs-winds-down-the-rollup-market-has-shrunk/">AMBCrypto</a>, <a href="https://thedefiant.io/news/blockchains/syndicate-labs-shuts-down-a16z-vesl17">The Defiant</a>)</p>
+  <p>The honest counterweight to a strong deal week. Syndicate is a small write-off in dollar terms ($27M raised across the cap table, a16z one of several backers), but the signal matters: it is a portfolio failure in exactly the crypto-infrastructure category a16z crypto just raised $2.2B to keep funding. The "narratives flip fast" line in the coverage is the real lesson &mdash; rollups were a consensus 2023&ndash;24 thesis and have now de-rated hard. It does not contradict the Fund V thesis (stablecoins, on-chain finance, regulation), which deliberately steers away from pure scaling infrastructure, but it is a useful reminder that a16z crypto's hit rate in infra plays is uneven. Carded as a portfolio data point, not a firm-level event.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.banklesstimes.com/articles/2026/05/21/a16z-backed-syndicate-labs-to-shut-down-amid-rollup-market-crash/"><span class="material-icons-outlined">open_in_new</span>Bankless Times</a>
+    <a class="link-pill" href="https://ambcrypto.com/a16z-backed-syndicate-labs-winds-down-the-rollup-market-has-shrunk/"><span class="material-icons-outlined">open_in_new</span>AMBCrypto</a>
+    <a class="link-pill" href="https://thedefiant.io/news/blockchains/syndicate-labs-shuts-down-a16z-vesl17"><span class="material-icons-outlined">open_in_new</span>The Defiant</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">4</span>
+    <span class="provider crypto"><span class="dot"></span>On-Chain Activity</span>
+    <span class="timestamp">May 18</span>
+    <span class="meta-pill">Reported a16z-linked wallet &middot; $90.87M HYPE</span>
+  </div>
+  <h4>A wallet reported as a16z-linked keeps accumulating Hyperliquid HYPE &mdash; ~$90.87M position, 1.3M staked</h4>
+  <p>On-chain trackers reported that a wallet described as a16z-linked purchased 372,000 HYPE tokens for ~$16.9M on May 18, 2026, lifting a position accumulated since April 14 to ~2.11M HYPE worth ~$90.87M, with ~1.3M HYPE (~$51M) staked. Coverage frames the staked position as a signal of long-term conviction in Hyperliquid's on-chain trading model. (<a href="https://news.bitcoin.com/a16z-hype-token-accumulation-90-million-hyperliquid-2026/">Bitcoin.com</a>)</p>
+  <p>Flagged as lower-confidence. The "a16z-linked wallet" attribution comes from on-chain analytics, not from a16z disclosure or any primary statement &mdash; this is the standard limitation of wallet-tagging coverage, where a label can be inferred from a transfer pattern rather than confirmed. If genuine, it would be consistent with a16z crypto's Fund V thesis around on-chain finance and a notable public-token position rather than a private round. But treat the attribution as unverified: C-Score 2, single aggregator, label not confirmed by the firm. Logged so the picture is complete, not as a confirmed a16z move.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c2"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://news.bitcoin.com/a16z-hype-token-accumulation-90-million-hyperliquid-2026/"><span class="material-icons-outlined">open_in_new</span>Bitcoin.com</a>
+  </div>
+</div>
+
+<!-- SECTION 4: PARTNER & MEDIA -->
+<div class="section-header">
+  <span class="material-icons-outlined">campaign</span>
+  <h3>Partner &amp; Media</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="rank">5</span>
+    <span class="provider media"><span class="dot"></span>Partner Commentary</span>
+    <span class="timestamp">May 15&ndash;19</span>
+    <span class="meta-pill">Andreessen vs. General Catalyst &middot; "Woof AI"</span>
+  </div>
+  <h4>Marc Andreessen feuds publicly with General Catalyst over a "Woof AI" parody ad &mdash; 15 posts, 1.2M+ views</h4>
+  <p>General Catalyst posted a "VC vs GC" video on X parodying Apple's old "Mac vs. PC" ads, with the "VC" character &mdash; a tall, bald figure pitching a fictional robotic dog called "Woof AI" &mdash; widely read as a dig at Marc Andreessen. Andreessen responded repeatedly: TechCrunch counted roughly 15 posts reaching 1.2M+ cumulative views, including calling the ad "smarmy" and teasing an a16z campaign, "We're the VC who doesn't sneer at your idea." Separately, Andreessen appeared on the Joe Rogan Experience (around May 19) discussing the Austin shooting and Flock Safety (an a16z portfolio company). (<a href="https://techcrunch.com/2026/05/15/general-catalyst-posted-vc-rage-bait-and-it-worked-especially-on-a16z/">TechCrunch</a>, <a href="https://www.inc.com/annabel-burba/this-vc-firms-video-took-a-swipe-at-marc-andreessen-his-reaction-helped-it-go-viral/91345522">Inc.</a>, <a href="https://futurism.com/future-society/marc-andreessen-ballistic-video">Futurism</a>)</p>
+  <p>Carded honestly because it is the week's most-covered a16z item, even though it is reputation noise rather than substance. The episode follows the early-May "custom prompt" cycle and reinforces a developing narrative &mdash; Andreessen as a founder reactive to mockery, which rival firms have now learned is cheap to provoke. It is not material to the fund, but it is a real brand data point: General Catalyst spent near-zero and got a 1.2M-view amplification by baiting a response. Expect more of this from competitors. The substantive a16z editorial output this window was thin &mdash; no new flagship podcast episodes (The a16z Show, AI + a16z, Ben &amp; Marc Show) and no major new essays beyond the Exa announcement post.</p>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://techcrunch.com/2026/05/15/general-catalyst-posted-vc-rage-bait-and-it-worked-especially-on-a16z/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+    <a class="link-pill" href="https://www.inc.com/annabel-burba/this-vc-firms-video-took-a-swipe-at-marc-andreessen-his-reaction-helped-it-go-viral/91345522"><span class="material-icons-outlined">open_in_new</span>Inc.</a>
+    <a class="link-pill" href="https://futurism.com/future-society/marc-andreessen-ballistic-video"><span class="material-icons-outlined">open_in_new</span>Futurism</a>
+  </div>
+</div>
+
+<!-- EDITOR'S VIEW -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px;">edit</span> Editor's View</div>
+  <h3>Four Takeaways from an Active Week</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>Exa is the cleanest expression yet of a16z's "infrastructure agents consume" thesis.</strong> Every recent AI check &mdash; Tessera, Ethos, Pit, Ciridae, now Exa &mdash; picks a layer that gets used at machine scale once agents take over the workflow. Search is the highest-volume of those layers, which is exactly why it earned a $250M Series C lead rather than a seed probe. The aggressive part is the ~3x valuation step-up in roughly six months: it prices in agent-search demand that is forecast, not yet realized. If usage data validates the $2.2B mark over the next two quarters, this is a model deal; if not, it is a marker of how hot the agent-infra trade has run.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>Boston Tech Week is the same playbook, applied to geography.</strong> a16z has no Boston office and is not opening one yet &mdash; instead it franchised a decentralized, community-run event into the city at the cost of grants and logistics. This is consistent with the Growth Engineer Fellowship, MTS, Speedrun and the policy PACs: build an owned platform, harvest signal and relationships, defer the capital commitment. Watch for an office or a named regional partner within 12 months as the tell on whether the probe converts to a real presence.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>Syndicate Labs is the honest counterweight &mdash; and it lands inside the crypto thesis.</strong> A rollup-infrastructure portfolio company folding in the same month a16z crypto closes a $2.2B fund is a useful reality check. It does not contradict Fund V, which deliberately steers toward stablecoins, on-chain finance and regulation rather than pure scaling infrastructure &mdash; but it shows the firm's crypto-infra hit rate is uneven and that consensus theses (rollups in 2023&ndash;24) can de-rate fast. A small write-off; a real signal about category risk.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>The General Catalyst episode is a cheap, repeatable attack vector.</strong> A rival firm spent near-zero and earned a 1.2M-view amplification simply by baiting Andreessen into 15 posts. Combined with the early-May "custom prompt" cycle, this hardens a narrative competitors will keep exploiting: provoke the founder, get free reach. It is immaterial to the fund but a real brand-management problem &mdash; and the week's substantive owned-media output was otherwise thin, so the noise filled the vacuum. Expect copycats.</div>
+    </li>
+  </ul>
+  <div class="closing">
+    <strong>Bottom line:</strong> A genuinely active week after two quiet ones. The Exa Series C is the substance &mdash; the firm's agent-infrastructure thesis at its most concentrated and most expensive. Boston Tech Week extends the owned-platform model into a new geography. Syndicate Labs is the honest portfolio failure that keeps the picture balanced, and the Andreessen/General Catalyst feud is reputation noise carded for completeness. Next watch items: Speedrun SR007 cohort selection (mid-to-late June), whether Boston Tech Week converts to a regional presence, Exa's usage data against the $2.2B mark, and any new Ben &amp; Marc Show episode.
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <p>
+    a16z Media Briefing &middot; Weekly &middot; May 23, 2026 &middot; Coverage: May 16 &ndash; May 23<br>
+    5 cards across 4 sections &middot; Compiled May 23, 2026<br>
+    Sources: a16z.com, Exa, PYMNTS, Boston Globe, Tech Week, Hoodline, Bankless Times, AMBCrypto, The Defiant, Bitcoin.com, TechCrunch, Inc., Futurism<br>
+    C-Scores reflect source quality and corroboration depth (5 = multiple primary sources; 2 = single aggregator, attribution unverified)<br>
+    This briefing is generated from web search results. No inside information. Verify before acting.
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>

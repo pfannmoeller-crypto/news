@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Briefing — 26 Jun – 6 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --blue:#1a73e8; --link:#1967d2; --pill:#f1f3f4;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:0;background:var(--bg);font-family:Roboto,Arial,Helvetica,sans-serif;color:var(--text);line-height:1.55;}
+  .wrap{max-width:880px;width:100%;margin:0 auto;padding:24px 20px;}
+  .card{background:var(--surface);border:1px solid var(--divider);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
+  .appbar{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:0 0 40px;}
+  .appbar .title{font-size:18px;font-weight:500;}
+  .appbar .sub{font-size:13px;color:var(--muted);}
+  .hero{background:var(--blue);border-radius:12px;padding:26px 28px;margin-bottom:22px;}
+  .hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#c2d7f8;text-transform:uppercase;}
+  .hero h1{font-size:23px;font-weight:500;color:#fff;margin:10px 0 12px;line-height:1.3;}
+  .hero p{font-size:14px;color:#e8f0fe;margin:0;line-height:1.6;}
+  .section{padding:2px 6px 10px;margin-top:10px;}
+  .section .name{font-size:15px;font-weight:500;}
+  .section .count{font-size:13px;color:var(--muted);}
+  .chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .datepill{display:inline-block;background:var(--pill);color:var(--muted);font-size:11px;padding:3px 10px;border-radius:10px;margin-left:6px;}
+  .c-anthropic{background:#fef7e0;color:#b06000;}
+  .c-openai{background:#e6f4ea;color:#0d652d;}
+  .c-google{background:#e8f0fe;color:#1967d2;}
+  .c-deepseek{background:#fce8e6;color:#a50e0e;}
+  .c-xai{background:#f1f3f4;color:#3c4043;}
+  .c-eu{background:#f3e8fd;color:#5f1d8e;}
+  .c-infra{background:#e8eef6;color:#1f3548;}
+  .headline{font-size:17px;font-weight:500;margin:10px 0 6px;}
+  .body{font-size:13.5px;color:var(--text2);}
+  details{margin-top:12px;}
+  summary{list-style:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#e8f0fe;color:#1967d2;font-size:12px;font-weight:500;padding:5px 12px;border-radius:14px;user-select:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary .chev{display:inline-block;transition:transform .2s;font-size:10px;}
+  details[open] summary .chev{transform:rotate(90deg);}
+  .deep{font-size:13px;color:var(--text2);line-height:1.62;margin-top:12px;padding:14px 16px;background:#f8f9fb;border:1px solid var(--divider);border-radius:10px;}
+  .deep .lbl{display:block;font-weight:700;color:var(--text);margin:12px 0 3px;font-size:12.5px;}
+  .deep .lbl:first-child{margin-top:0;}
+  .deep p{margin:0 0 6px;}
+  .divider{border-top:1px solid var(--divider);margin:12px 0 10px;}
+  .conf{font-size:12px;color:var(--muted);}
+  .links{padding-left:2px;}
+  .links a{display:inline-block;background:var(--pill);color:var(--link);font-size:12px;text-decoration:none;padding:3px 10px;border-radius:10px;margin-left:4px;margin-top:4px;}
+  .radar-row{padding:10px 0;border-bottom:1px solid var(--divider);font-size:13px;color:var(--text2);}
+  .radar-row:last-child{border-bottom:none;}
+  .radar-row a{color:var(--link);text-decoration:none;}
+  .banner{background:#fef7e0;border:1px solid #fde293;border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;color:var(--text2);line-height:1.6;}
+  .banner strong.w{color:#b06000;}
+  .editor .chip{background:#e8f0fe;color:#1967d2;padding:4px 12px;border-radius:12px;font-size:12px;}
+  .editor ol{font-size:13.5px;color:var(--text2);line-height:1.65;margin:14px 0 8px;padding-left:22px;}
+  .editor li{margin-bottom:8px;}
+  .editor .wild{font-size:13px;color:var(--muted);font-style:italic;margin-top:6px;}
+  .foot{text-align:center;padding:14px 12px 24px;}
+  .foot div{font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+<div class="wrap">
+
+  <!-- App bar -->
+  <div class="appbar card" style="margin-bottom:14px;">
+    <div class="avatar">AI</div>
+    <div>
+      <div class="title">AI Briefing</div>
+      <div class="sub">26 Jun – 6 Jul 2026 · 10-day catch-up edition</div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">Briefing summary</div>
+    <h1>Washington enters the release cycle</h1>
+    <p>Two frontier launches in ten days ran through the US government: OpenAI's GPT-5.6 (Sol/Terra/Luna) shipped as a limited preview coordinated with the White House under the 2 June AI Executive Order, and Anthropic's Fable 5 came back online worldwide on 1 July after Commerce lifted its 12 June export-control directive. Underneath, the compute layer is commoditising fast — Meta is building "Meta Compute" to rent out capacity, Microsoft stood up a $2.5B forward-deployed AI subsidiary, and Together AI doubled its valuation to $8.3B. Anthropic also shipped Claude Sonnet 5, the cheap agent workhorse of the summer, and China's Z.ai open-weight GLM-5.2 landed within a hair of Opus 4.8 on several benchmarks. Ten items sit at C-Score 4/5 or higher.</p>
+  </div>
+
+  <!-- Section: Frontier models -->
+  <div class="section"><span class="name">Frontier models</span><span class="count"> · 6 stories</span></div>
+
+  <!-- Card 1: Sonnet 5 -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">30 Jun</span>
+    <div class="headline">Claude Sonnet 5: near-Opus performance, agent-first, intro-priced</div>
+    <div class="body">Anthropic's new midsize model lands close to Opus 4.8 on most work, with the pitch centred on agentic autonomy — planning, browser/terminal tool use, and finishing multi-step tasks where prior Sonnets stalled. Introductory pricing of $2/$10 per million tokens runs to 31 August, then $3/$15; it's the new default on Free and Pro plans and available across Max, Team and Enterprise.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Anthropic frames Sonnet-class models as the birthplace of the agentic era — 3.5, 3.6 and 3.7 were the first Claudes to show strong coding and tool use. But over the past year the sharpest agentic gains had migrated up to the Opus tier, leaving Sonnet as the value pick rather than the frontier. Sonnet 5's explicit job is to close that gap: it succeeds Sonnet 4.6 and is positioned as "the most agentic Sonnet yet."</p>
+        <span class="lbl">Die Details</span>
+        <p>On the cost-performance curves Anthropic published for BrowseComp (agentic search) and OSWorld-Verified (computer use), Sonnet 5 is a strict improvement over 4.6 and, at high/xhigh effort, can match Opus 4.8 on some tasks — while spanning a far wider cost range. Opus 4.8 is priced $5/$25; Sonnet 5 sits at $3/$15 standard, $2/$10 through 31 Aug. A caveat buried in the footnotes: Sonnet 5 uses an updated tokenizer (like Opus 4.7) that maps the same text to roughly 1.0–1.35× more tokens, so the intro pricing is calibrated to make the switch "roughly cost-neutral." Anthropic also raised rate limits across Chat, Cowork, Claude Code and the Platform. It ships with the real-time cyber safeguards used on Opus 4.7/4.8 (lighter than Fable 5's), and its safety audit showed lower hallucination, sycophancy and misaligned-behaviour rates than 4.6 — though still higher than Opus 4.8 and Mythos Preview.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is the commoditisation of "good enough agentic intelligence." Named early-access partners — Cursor (Sualeh Asif), Lovable, Kiro (AWS), ClickHouse, Box, Eve — all stress the same thing: the model finishes work end-to-end and checks itself without prompting. That reliability at $2/$10 is what makes Sonnet 5 the default coding/agent workhorse for the summer, and it directly pressures OpenAI's mid-tier (Terra at $2.50/$15) and Google's Gemini 3.5 Flash on the same price/quality axis. Watch the tokenizer point: real bills may run above the headline rate depending on content type.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>The 1 September price step-up from $2/$10 to $3/$15 — re-benchmark cost-per-task before then. Whether independent evals (Willison, Artificial Analysis) confirm the "matches Opus 4.8" claim outside Anthropic's chosen benchmarks. And how the tokenizer change lands on real-world token counts for German-language and structured-data workloads.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — primary source</span>
+    <span class="links"><a href="https://www.anthropic.com/news/claude-sonnet-5">Anthropic</a><a href="https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/">TechCrunch</a><a href="https://simonwillison.net/2026/Jun/30/claude-sonnet-5/">Willison</a></span>
+  </div>
+
+  <!-- Card 2: GPT-5.6 -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI</span><span class="datepill">26 Jun</span>
+    <div class="headline">GPT-5.6 launches as Sol, Terra and Luna — under government coordination</div>
+    <div class="body">OpenAI split its new generation into three tiers — Sol (flagship, $5/$30 per 1M tokens), Terra (balanced, $2.50/$15) and Luna (fast, $1/$6) — but the launch itself is the story: initial access is a limited preview for a small group of "trusted partners" whose participation was shared with the US government, following the 2 June executive order. General availability is promised "in the coming weeks." First US frontier launch to run through an explicit government gate.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>The new naming system decouples generation (the number, 5.6) from capability tier (Sol/Terra/Luna as durable names that can advance on their own cadence). OpenAI says it previewed the models and their capabilities to the US government ahead of launch "as part of our ongoing engagement," and at the government's request is starting with a limited preview before releasing broadly. OpenAI is unusually blunt that it dislikes this: "We don't believe this kind of government access process should become the long-term default. It keeps the best tools from users, developers, enterprises, cyber defenders, and global partners who need them."</p>
+        <span class="lbl">Die Details</span>
+        <p>Sol introduces a new <em>max</em> reasoning effort and an <em>ultra</em> mode that spins up subagents for complex work. Claimed results: state-of-the-art on Terminal-Bench 2.1 (command-line workflows), stronger GeneBench v1 (genomics) than GPT-5.5 using fewer tokens, and on ExploitBench it is "competitive with Mythos Preview using only ~1/3 of the output tokens." Crucially, OpenAI states Sol does <em>not</em> cross the "Cyber Critical" threshold in its Preparedness Framework — in Chromium/Firefox tests it found bugs and exploitation primitives but did not autonomously produce a full-chain exploit. Terra is pitched as GPT-5.5-competitive at 2× cheaper; Luna as strong capability at lowest cost. OpenAI dedicated 700,000+ A100-equivalent GPU hours to automated red-teaming for universal jailbreaks, and adds prompt-caching changes (30-min minimum cache life, 1.25× cache-write billing). Sol also arrives on Cerebras at up to 750 tokens/sec in July for select customers.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The gate is the second-order story. Read alongside Fable 5's export-control episode, model availability is now a live policy variable in the US — the government is inserting itself between "model finished" and "model shipped" for frontier releases with material cyber capability. OpenAI is publicly cooperating while lobbying to make the process "repeatable" and short-lived via the cyber Executive Order framework. For buyers, the practical takeaway: the flagship you benchmark today may not be generally callable for weeks, and access can be conditioned.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>When (and whether) GA actually lands "in the coming weeks," and how wide the preview partner list is. Whether the government-access step recurs on the next release or is codified into a lighter, faster process. And the expanded eval suite OpenAI promised at GA — the preview system card is deliberately partial.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — primary + Axios/VentureBeat</span>
+    <span class="links"><a href="https://openai.com/index/previewing-gpt-5-6-sol/">OpenAI</a><a href="https://www.axios.com/2026/06/26/openai-gpt-sol-terra-luna-trump">Axios</a><a href="https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov">VentureBeat</a></span>
+  </div>
+
+  <!-- Card 3: Fable 5 back -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">1 Jul</span>
+    <div class="headline">Fable 5 returns worldwide after Commerce lifts export controls</div>
+    <div class="body">The US Department of Commerce lifted its 12 June export-control directive on 30 June, and Anthropic began redeploying Claude Fable 5 globally on 1 July across Claude.ai, the Platform, Claude Code and Cowork. Reported condition: a new safety classifier blocking the specific jailbreak at issue in over 99% of attempts. Together with the GPT-5.6 gate, this makes model availability itself a policy variable — a first.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Anthropic released Fable 5 and Mythos 5 (same underlying model, different safeguards) on 9 June. On 12 June the government applied export controls after Amazon researchers reported a method of bypassing Fable 5's safeguards — prompting it to identify software vulnerabilities and, in one case, produce code demonstrating exploitation. Because the order took effect immediately and Anthropic couldn't verify nationality in real time, it suspended access to both models for <em>all</em> users. The controls were lifted 30 June; Mythos 5 access was restored to a set of US Glasswing organisations following approval on 26 June.</p>
+        <span class="lbl">Die Details</span>
+        <p>Anthropic's own testing undercut the severity claim: less capable models — Opus 4.8, GPT-5.5, Kimi K2.7 — could identify the same vulnerabilities, and <em>every</em> model tested (down to Haiku 4.5 and Sonnet 4.6) could produce the same single exploit demonstration. The behaviour was a borderline case for Fable 5's deliberately oversized "safety margin," which blocks many benign requests out of caution. The fix: a trained classifier that blocks the reported technique in >99% of cases and reroutes blocked requests to Opus 4.8; CAISI (Commerce's Center for AI Standards and Innovation) tested and endorsed both old and new safeguards. Rollout terms: Fable 5 included for up to 50% of weekly usage limits through 7 July for Pro/Max/Team/select Enterprise, then via usage credits; AWS, Google Cloud and Microsoft Foundry re-enabled "as quickly as possible."</p>
+        <span class="lbl">Einordnung</span>
+        <p>The bigger output is institutional: Anthropic, with Amazon, Microsoft, Google and other Glasswing partners, is drafting a consensus industry framework to score jailbreak severity on four axes (capability gain, breadth, ease of weaponization, discoverability) — modelled on CVSS for software vulns. It's also committing to pre-release government access for national-security-relevant models, rapid safeguard information-sharing, and joint research/compute for government testing. In other words, the 19-day outage is being turned into a template for how frontier releases get vetted. For any workflow that depended solely on Fable 5, this was a real, unplanned 19-day availability gap.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether the four-axis jailbreak framework gets adopted beyond the Glasswing circle. False-positive rate on the new classifier during routine coding (Anthropic admits it flags more benign requests). And whether the "pre-release government access" commitment hardens into durable, transparent regulation applied equally across labs — or stays ad hoc.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — primary source (Anthropic newsroom)</span>
+    <span class="links"><a href="https://www.anthropic.com/news/redeploying-fable-5">Anthropic</a><a href="https://techcrunch.com/2026/06/15/the-us-governments-anthropic-models-ban-was-never-about-an-ai-jailbreak/">TechCrunch</a></span>
+  </div>
+
+  <!-- Card 4: Gemini 3.5 Flash -->
+  <div class="card">
+    <span class="chip c-google">GOOGLE</span><span class="datepill">late Jun</span>
+    <div class="headline">Gemini 3.5 Flash opens the 3.5 series, leads with computer use</div>
+    <div class="body">Google started the Gemini 3.5 generation with Flash — integrating computer-use agents that see, reason and act across desktop, mobile and browser environments, with improvements aimed at long-horizon and enterprise automation like continuous software testing. Notable that the cheap/fast tier now leads the generation; 3.5 Pro is still outstanding.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Google's June recap bundles a broad push rather than a single hero launch: Gemini 3.5 Flash with computer use, Gemma 4 12B (a local open model running in 16GB of memory with vision and native voice), Nano Banana 2 Lite and Gemini Omni Flash for media, plus Gemini 3.5 Live Translate. Leading a generation with Flash rather than Pro signals where Google sees the volume — cheap, fast, agentic inference embedded in products.</p>
+        <span class="lbl">Die Details</span>
+        <p>Computer use in 3.5 Flash lets developers build agents that operate across desktop, mobile and browser, with Google flagging gains on "long-horizon and enterprise automation tasks, like continuous software testing and knowledge work." Adjacent June releases fill out the stack: Nano Banana 2 Lite (fastest, cheapest Gemini image model), Gemini Omni Flash in public API preview (natively multimodal, for custom video workflows), Live Translate (speech-to-speech across 70+ languages preserving intonation, in the Live API, AI Studio and Translate). NotebookLM gained a secure cloud computer for running code plus chart/spreadsheet/deck generation.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Computer-use is becoming table stakes across all three US frontier labs simultaneously — Anthropic (Sonnet 5, OSWorld-Verified), OpenAI (Codex/Sol agentic coding) and now Google (3.5 Flash). The competitive front is shifting from raw reasoning benchmarks to reliable, cheap agentic execution inside real apps. Google's advantage is distribution: Workspace, Android 17, Chrome and Search are captive surfaces for these agents. The absence of 3.5 Pro is the tell — Google is confident enough in Flash to open with it.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>When Gemini 3.5 Pro ships and where it lands vs GPT-5.6 Sol and Opus 4.8. Independent computer-use benchmarks (OSWorld) comparing 3.5 Flash to Sonnet 5. And EU availability timing for the agentic features, which tends to lag the US.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — primary source</span>
+    <span class="links"><a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/">Google blog</a><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/">Computer use</a></span>
+  </div>
+
+  <!-- Card 5: GLM-5.2 -->
+  <div class="card">
+    <span class="chip c-deepseek">CHINA / Z.AI</span><span class="datepill">16 Jun</span>
+    <div class="headline">Z.ai's open-weight GLM-5.2 lands a hair below Opus 4.8 — for a fraction of the cost</div>
+    <div class="body">The inexpensive Chinese open-weight model is being benchmarked as competitive with leading US frontier models on long-horizon coding and tool use, reigniting the "China caught up" debate. Released 16 June under an MIT license, it beats GPT-5.5 on several coding benchmarks at roughly 1/6th the cost and finishes near-tied with Claude Opus 4.8 on some agentic evals.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>GLM-5.2 is the latest in a run of cheap, near-frontier Chinese open-weight models — the same pattern set by DeepSeek V4 and Kimi K2.6 earlier this year. Z.ai (formerly Zhipu) released it 16 June under an unrestricted MIT license, positioning open weights and low token cost as the wedge against closed US frontier models.</p>
+        <span class="lbl">Die Details</span>
+        <p>Reported architecture: ~744B total parameters, ~40B active per token via Mixture-of-Experts, a 1M-token context window. Benchmark claims circulating via VentureBeat and trackers: SWE-bench Pro 62.1 (vs GPT-5.5 58.6); FrontierSWE 74.4% (vs GPT-5.5 72.6%, near Opus 4.8's 75.1%); MCP-Atlas tool-use 77.0 (vs GPT-5.5 75.3, Opus 4.8 77.8); and clear wins over GPT-5.5 on multi-hour engineering workloads (PostTrainBench 34.3% vs 25.0%). Priced at roughly 1/6th of GPT-5.5 per token. Treat specific numbers as vendor/tracker-reported until independently replicated.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The strategic point isn't any single benchmark — it's that an MIT-licensed model you can self-host now sits within a point or two of the closed US frontier on agentic coding, at a sixth of the cost. That is exactly the dynamic feeding the Together AI thesis (open-weight inference on neoclouds tripling year-on-year) and the pricing pressure on Sonnet 5 and Terra. For a European operator, open-weight near-frontier models are the hedge against both US export politics and closed-model pricing — though data-governance and provenance questions around Chinese weights remain live.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Independent third-party benchmark replication (Artificial Analysis, LMArena) confirming or deflating the Opus-adjacent claims. Whether Western enterprises actually deploy Chinese open weights at scale given security/provenance scrutiny. And any US policy response to open-weight Chinese models nearing frontier coding capability.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — VentureBeat + release notes; benchmarks vendor-reported</span>
+    <span class="links"><a href="https://venturebeat.com/technology/z-ais-open-weights-glm-5-2-beats-gpt-5-5-on-multiple-long-horizon-coding-benchmarks-for-1-6th-the-cost">VentureBeat</a><a href="https://github.com/zai-org/GLM-5">GLM-5 GitHub</a><a href="https://openrouter.ai/z-ai/glm-5.2">OpenRouter</a></span>
+  </div>
+
+  <!-- Card 6: Grok 5 -->
+  <div class="card">
+    <span class="chip c-xai">XAI</span><span class="datepill">rolling</span>
+    <div class="headline">Grok 5 slips to Q3 at the earliest — still training on Colossus 2</div>
+    <div class="body">The ~6-trillion-parameter Grok 5 flagship remains in training on the gigawatt-scale Colossus 2 cluster in Memphis; both the Q1 and Q2 2026 windows passed without release, and Q3 is now the realistic-but-unconfirmed target. xAI is filling the gap with product breadth (voice, video generation, coding tools) rather than a frontier model jump.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Grok 4 shipped July 2025 as "the most intelligent model in the world"; Grok 4.1 followed in November. Grok 5 has been the awaited step-change, repeatedly signalled for early 2026, then slipping through Q1 and Q2. xAI itself was acquired by SpaceX in February 2026, folding its compute ambitions into the SpaceX orbit (and the Colossus data-center strategy).</p>
+        <span class="lbl">Die Details</span>
+        <p>Grok 5 is rumoured at ~6T parameters (MoE), roughly double Grok 4's scale, training now on Colossus 2 — described in trackers as xAI's gigawatt-class Memphis supercluster and the largest AI training facility in the world. No official date; Q3 (Jul–Sep) is the trade-press consensus. Instead of the flagship, xAI's June/July output was product surface area: Voice Agent Builder (1 Jul), Interactive Brokers integration, /goal autonomous coding, Grok on Databricks, Grok for Word/PowerPoint, Grok Imagine Video 1.5. On the prediction side, Polymarket's late-June contracts implied only single-digit odds of a Q3 release.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The read: xAI is monetising the current generation across enterprise and consumer surfaces while the expensive flagship trains — a rational move given the compute bill, but it cedes the frontier-benchmark narrative to Anthropic, OpenAI and Google this cycle. The SpaceX tie also reframes xAI as part of a compute-and-distribution conglomerate (Colossus, government contracts) rather than a pure model lab. Every quarter Grok 5 slips, the "6T parameters = leap" thesis carries more expectation risk.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Any concrete Grok 5 date or checkpoint from xAI/Musk. Whether Colossus 2 reaches the power/GPU scale the 6T claim implies. And whether the product-breadth strategy (voice agents, coding) generates enough revenue to justify the training spend before a flagship lands.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●○○&nbsp; 3/5 — industry trackers + prediction-market signal, no primary date</span>
+    <span class="links"><a href="https://x.ai/news">xAI news</a><a href="https://www.adwaitx.com/grok-5-release-date-colossus-2-training/">AdwaitX</a></span>
+  </div>
+
+  <!-- Section: Compute & platforms -->
+  <div class="section"><span class="name">Compute &amp; platforms</span><span class="count"> · 4 stories</span></div>
+
+  <!-- Card 7: Meta Compute -->
+  <div class="card">
+    <span class="chip c-infra">META</span><span class="datepill">1 Jul</span>
+    <div class="headline">"Meta Compute": Meta plans a cloud business selling AI capacity</div>
+    <div class="body">Per Bloomberg, Meta is building a cloud infrastructure business — internally "Meta Compute," led by infrastructure head Santosh Janardhan with Daniel Gross and Dina Powell McCormick — selling either raw compute (CoreWeave-style) or hosted model access (AWS-style), putting it against AWS, Azure and Google Cloud. It confirms Zuckerberg's May comment that a cloud business was "definitely on the table."</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Meta has committed to spending $182.9B on AI infrastructure in coming years (per its Q1 filing), including data-center megaprojects in Louisiana and Ohio — the Ohio site Zuckerberg called "the size of Manhattan," due online this year. Unlike Google and OpenAI, Meta hasn't seen material standalone demand for its own models/services (it doesn't even break out Meta AI or Llama revenue), so it faces a return-on-capex problem. Selling compute is the pressure valve.</p>
+        <span class="lbl">Die Details</span>
+        <p>Bloomberg reports two possible models: rent "raw" compute like CoreWeave, and/or sell access to hosted models (including Meta's recently launched closed-weight Muse Spark) like AWS Bedrock. TechCrunch frames it as the SpaceX/xAI playbook — in May, SpaceX (via xAI) sold Colossus 1 capacity to Anthropic, then signed Google and Reflection AI. On the market reaction: Meta stock rose sharply on the report while neocloud names CoreWeave and Nebius fell, on the read that hyperscaler overcapacity becoming a product compresses rented-GPU margins. (Meta hadn't confirmed the plan; skeptics also flag the depreciating-chip and end-user-revenue risks of the whole build-out.)</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two theses collide: "the winners own the data centers, not the best models" vs "this is a capex bubble on rapidly depreciating hardware." Either way, more sellers of compute in the same week Together AI raised $800M means inference supply is expanding fast — which is good for buyers and bad for anyone who locked in long-term inference rates. For Meta specifically, it's a hedge: monetise the superintelligence build-out even if Meta AI/Llama never becomes a big standalone revenue line.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Official confirmation and structure from Meta (still Bloomberg-sourced). Whether it sells raw compute, hosted models, or both. Pricing vs AWS/Azure/CoreWeave. And whether the neocloud sell-off (CoreWeave, Nebius down 11–12% on the day) proves durable or a knee-jerk.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — Bloomberg report, CNBC/TechCrunch corroborated, not confirmed by Meta</span>
+    <span class="links"><a href="https://www.bloomberg.com/news/articles/2026-07-01/meta-is-building-a-cloud-business-to-sell-excess-ai-compute">Bloomberg</a><a href="https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/">TechCrunch</a></span>
+  </div>
+
+  <!-- Card 8: Microsoft Frontier Co -->
+  <div class="card">
+    <span class="chip c-infra">MICROSOFT</span><span class="datepill">2 Jul</span>
+    <div class="headline">Microsoft Frontier Company: $2.5B, 6,000 people, forward-deployed AI</div>
+    <div class="body">Microsoft is standing up a dedicated subsidiary that embeds roughly 6,000 engineers, industry specialists and consultants inside large customers to design, build and operate AI systems on-site — the biggest single bet yet on forward-deployed engineering (the Palantir playbook) by a major software vendor. Announced 2 July, backed by $2.5B. Implicit admission: enterprise AI doesn't self-serve; deployment is the bottleneck, not the models.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>The move directly answers the most-cited stat in enterprise AI: MIT's Project NANDA found ~95% of enterprise generative-AI pilots deliver zero measurable P&L impact. Companies bought ChatGPT, Claude, Gemini and Copilot seats, ran impressive demos, and saw little at the bottom line — because deploying AI inside a real business is hard. Amazon, Anthropic and OpenAI all announced deployment/forward-engineering groups earlier in 2026; Microsoft's is the largest and most capitalised.</p>
+        <span class="lbl">Die Details</span>
+        <p>"Forward-deployed engineering" means Microsoft sends its own technical staff to work inside a customer's operations to design, build, deploy and run AI systems on-site — the model Palantir pioneered. Scale: ~6,000 people, $2.5B commitment. Coverage (CNBC, TechCrunch, GeekWire) frames it explicitly as targeting the pilot-failure problem, turning Azure AI capacity into governed, working enterprise systems rather than shelfware.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is a structural signal that the industry has hit the "last mile" wall: the constraint on AI value is no longer model capability but integration, change management and governance inside messy enterprises. It also reprices the consulting/SI market — Microsoft is inserting itself where Accenture, Deloitte and Palantir operate, using its model + cloud + now bodies. For a mid-sized operator, the useful read is validation of the thesis that AI ROI comes from deployment discipline, not tool procurement — and a reminder that the vendors themselves now concede demos don't equal results.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether Frontier actually moves the pilot-success rate or just re-bills consulting. How it prices vs system integrators. Margin impact (services are lower-margin than software). And whether Google/AWS respond with their own forward-deployed pushes.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — CNBC/TechCrunch/GeekWire corroborated</span>
+    <span class="links"><a href="https://www.cnbc.com/2026/07/02/microsoft-commits-2point5-billion-6000-employees-ai-implementation-unit.html">CNBC</a><a href="https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/">TechCrunch</a><a href="https://www.geekwire.com/2026/microsoft-announces-2-5b-frontier-company-to-embed-ai-engineers-inside-customers/">GeekWire</a></span>
+  </div>
+
+  <!-- Card 9: Nvidia Rubin -->
+  <div class="card">
+    <span class="chip c-infra">NVIDIA</span><span class="datepill">rolling</span>
+    <div class="headline">Rubin in full production; cloud partners deploy in H2 2026</div>
+    <div class="body">The Rubin platform (six new chips built around the Vera CPU and Rubin GPU) is in full production, with AWS, Google Cloud, Microsoft, OCI, CoreWeave, Lambda, Nebius and Nscale among the first to deploy Vera Rubin instances in H2 2026. Nvidia claims up to 10× lower inference cost per token and 4× fewer GPUs to train Mixture-of-Experts models vs Blackwell.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Rubin (unveiled at CES in January 2026, named for astronomer Vera Rubin) is Nvidia's third-generation rack-scale architecture, on the annual cadence Jensen Huang set after Blackwell. It arrives as demand for both training and inference compute "goes through the roof" — the same demand wave that underpins the Meta Compute and Together AI stories in this edition.</p>
+        <span class="lbl">Die Details</span>
+        <p>Six chips codesigned: Vera CPU (88 custom Olympus cores, Armv9.2), Rubin GPU (third-gen Transformer Engine, 50 petaflops NVFP4 inference compute), NVLink 6 switch (3.6TB/s per GPU; 260TB/s per NVL72 rack — "more bandwidth than the entire internet"), ConnectX-9 SuperNIC, BlueField-4 DPU and Spectrum-6 Ethernet. Claimed vs Blackwell: up to 10× lower cost per token on MoE inference, 4× fewer GPUs to train MoE models. Spectrum-X Ethernet Photonics co-packaged optics deliver ~5× better power efficiency and longer uptime, paving the way for million-GPU factories. Nvidia says Rubin is in full production with partner products available H2 2026; Microsoft will deploy Vera Rubin NVL72 in its Fairwater superfactories, CoreWeave in H2. The named AI-lab adopter list spans Anthropic, OpenAI, Google, Meta, xAI, Mistral, Cohere, Cursor, Perplexity and Thinking Machines Lab.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The 10× token-cost claim, if it holds even partially in production, is the mechanical engine behind falling inference prices — the same trend that makes Sonnet 5 at $2/$10 and GLM-5.2 at 1/6th cost sustainable. Rubin also cements Nvidia's grip: every frontier lab and hyperscaler on one roadmap. The structural risk the AI-bubble skeptics raise (TechCrunch, CBS) is the flip side — trillions in capex riding on chips that depreciate fast if end-user revenue doesn't materialise.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether the 10× / 4× efficiency claims survive independent H2 benchmarks. Real deployment timing across AWS/Google/Microsoft/OCI. And whether Rubin economics actually pass through to lower published inference prices, or get absorbed as margin.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — primary newsroom; production/timing spans the window</span>
+    <span class="links"><a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer">Nvidia newsroom</a></span>
+  </div>
+
+  <!-- Card 10: OpenAI IPO -->
+  <div class="card">
+    <span class="chip c-openai">OPENAI</span><span class="datepill">26 Jun</span>
+    <div class="headline">OpenAI leans toward a 2027 IPO — expecting Anthropic to list first</div>
+    <div class="body">Bloomberg reported OpenAI is weighing a public listing as soon as 2027, a timeline that would put it public after rival Anthropic. Both have already filed confidentially with the SEC. The delay is attributed to market conditions — tech-stock volatility and SpaceX's rocky post-IPO trading — and Altman's refusal to lower a $1T valuation target to list in 2026.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>The IPO question follows OpenAI's for-profit restructuring, which cleared the corporate path to a listing. It also sits against a live comparison set: SpaceX went public in June 2026 in a record mega-listing, and Anthropic has been widely expected to be the first frontier AI lab to float.</p>
+        <span class="lbl">Die Details</span>
+        <p>Per Bloomberg (26 June), OpenAI's leadership expects Anthropic will likely go public first, even though both companies have already filed confidentially with the SEC. Bankers reportedly cautioned that recent tech-stock volatility — and specifically weakness in SpaceX's shares following its record IPO — could dampen retail enthusiasm for an OpenAI offering. A separate thread: Altman rejected lowering OpenAI's ~$1T valuation target to list in 2026, opting to wait for 2027. No terms, no confirmed timetable.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two signals worth separating. First, "both filed confidentially with the SEC" is more concrete than the headline delay — the machinery is moving even if the date isn't set. Second, the SpaceX read cuts against the earlier assumption that mega-listings sail through: a rocky SpaceX debut is now cited as a reason to wait, not a green light. For AI-market watchers, an Anthropic-first listing would set the public-market comparable for frontier labs and test whether public investors will pay private-round multiples.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Banker/CFO hires and any S-1 signals from either lab. Whether Anthropic actually lists first, and at what multiple. And whether the $1T valuation target holds into a 2027 window.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — Bloomberg + NYT, early-stage</span>
+    <span class="links"><a href="https://www.bloomberg.com/news/articles/2026-06-26/openai-weighs-ipo-in-2027-after-expected-anthropic-public-debut">Bloomberg</a><a href="https://www.bloomberg.com/news/articles/2026-06-25/openai-leans-toward-waiting-until-2027-for-ipo-ny-times-says">Bloomberg/NYT</a></span>
+  </div>
+
+  <!-- Section: Money & talent -->
+  <div class="section"><span class="name">Money &amp; talent</span><span class="count"> · 3 stories</span></div>
+
+  <!-- Card 11: Together AI -->
+  <div class="card">
+    <span class="chip c-infra">FUNDING</span><span class="datepill">1 Jul</span>
+    <div class="headline">Together AI raises $800M Series C at $8.3B — Aramco leads</div>
+    <div class="body">The neocloud (Nvidia GPU-cluster rental plus open-source model inference) more than doubled its valuation in ~16 months, led by Aramco Ventures with Nvidia, Vista, General Catalyst and others participating. It reports annual bookings over $1.15B. Note the tension with Meta Compute the same day: capital is still pouring into rented compute exactly as hyperscalers threaten to undercut it.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Together AI was founded in 2022 by Vipul Ved Prakash (who sold Topsy to Apple for $200M+ in 2013), Stanford's Percy Liang and ETH/Chicago's Ce Zhang. It came out well-funded — $102.5M Series A (2023, Kleiner Perkins), then a $305M Series B at $3.3B in early 2025. The Information reported in March that Together was seeking $1B at $7.5B; the final round is smaller cash ($800M) at a higher price ($8.3B).</p>
+        <span class="lbl">Die Details</span>
+        <p>$800M Series C at $8.3B, led by Aramco Ventures, with Vista Equity Partners, General Catalyst, Emergence Capital, Nvidia, March Capital, Pegatron and SentinelOne's S Ventures. Valuation up ~2.5× in 16 months. Bookings: $1.15B+ annually as of last quarter. Named customers: Cursor, Cognition, Decagon. Together cites OpenRouter data that open-source model usage tripled in twelve months. The neocloud category is broadly hot: Upscale AI ($500M total at $2B) and TensorWave ($350M Series B at $1.55B, AMD-focused) both raised the prior month.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The thesis: enterprises are shifting inference to cheaper open-weight models (GLM-5.2, DeepSeek, Kimi) hosted on neoclouds rather than paying closed-frontier token premiums for everything — and that has tripled open-model usage. Aramco leading is notable: Gulf sovereign capital continuing to anchor AI infrastructure. The unresolved tension is the Meta Compute story on the same day — if hyperscalers dump excess capacity into the rental market, neocloud margins compress. Together's bet is that specialised, open-model-optimised inference plus 50× capacity growth outruns commoditisation.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether Meta/hyperscaler compute-selling actually erodes neocloud pricing. Together's path from $1.15B bookings to justifying $8.3B. And Gulf-capital concentration (Aramco, prior HUMAIN/Saudi deals) as a structural feature of AI infra funding.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — primary + TechCrunch</span>
+    <span class="links"><a href="https://techcrunch.com/2026/07/01/neocloud-together-ai-raises-800m-leaps-to-8-3b-valuation/">TechCrunch</a><a href="https://www.businesswire.com/news/home/20260701243402/en/Together-AI-Raises-$800-Million-at-$8.3-Billion-Valuation-to-Make-Frontier-AI-Accessible-to-All">BusinessWire</a></span>
+  </div>
+
+  <!-- Card 12: Meta talent raid -->
+  <div class="card">
+    <span class="chip c-infra">META</span><span class="datepill">late Jun</span>
+    <div class="headline">Meta's talent raid: Thinking Machines founders, a reported $1.5B package</div>
+    <div class="body">Meta hired five Thinking Machines Lab founding members; co-founder Andrew Tulloch was linked to a package reported at up to $1.5B over six years. Meta called that figure "inaccurate and ridiculous," and reports conflict on the exact terms — treat the headline number as disputed, the raid itself as real. Tulloch now sits in Meta Superintelligence Labs under Alexandr Wang.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Thinking Machines Lab is Mira Murati's startup, built with ex-OpenAI talent after she left as CTO. Meta reportedly first tried to acquire it (a ~$1B offer Murati rejected), then pivoted to picking off individuals. This sits inside Meta's broader 2025–26 superintelligence push: Alexandr Wang (28, ex-Scale AI) was installed as Meta's first chief AI officer in June 2025, and Tulloch — an ex-OpenAI researcher — now reports to him.</p>
+        <span class="lbl">Die Details</span>
+        <p>Meta hired five founding members of Thinking Machines. Tulloch's package was reported at up to $1.5B over six-plus years including top-tier bonuses and stock — but a Meta spokesman called that description "inaccurate and ridiculous," noting comp is contingent on stock performance, and sources say his actual package is less than both an earlier offer he turned down and the ~$1.5B figure. Reporting genuinely conflicts (TNW/Calcalist framed it as a landmark hire; other outlets emphasised a rejected/disputed offer). Alongside this, Meta reportedly took four Apple AI researchers in early July and multiple OpenAI researchers through late June.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Whatever the exact Tulloch number, the signal is that senior AI-researcher comp is being repriced to eight- and nine-figure territory, and that reprice ripples across every lab and startup's cost base and retention risk. It also shows Meta's strategy after failing to acquire: buy the people, not the company. Combined with Microsoft's DeepMind poaching (next card), mid-2026 is a full-blown talent war, and the biggest second-order cost is churn risk at smaller startups whose key researchers now have Meta-scale offers on the table.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Definitive confirmation of Tulloch's actual terms. Whether Thinking Machines survives losing five founders. And whether the comp escalation forces smaller labs into retention packages they can't afford — a consolidation vector.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●○○&nbsp; 3/5 — mainstream but conflicting on the headline number</span>
+    <span class="links"><a href="https://thenextweb.com/news/meta-thinking-machines-lab-talent-raid">TNW</a><a href="https://www.calcalistech.com/ctechnews/article/skr56vtpgl">Calcalist</a><a href="https://www.newsnationnow.com/business/tech/ai/meta-ai-researcher-1-5-billion/">NewsNation</a></span>
+  </div>
+
+  <!-- Card 13: Microsoft poaches DeepMind -->
+  <div class="card">
+    <span class="chip c-infra">MICROSOFT</span><span class="datepill">Jul</span>
+    <div class="headline">Microsoft has pulled at least 24 people from Google DeepMind</div>
+    <div class="body">The talent war's second front: Microsoft's AI unit has now poached at least 24 Google employees, mostly DeepMind researchers. Combined with Meta's spree, senior-researcher compensation is being repriced across the industry — a real cost line for every lab and a churn risk for every startup.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Microsoft's AI unit, under Mustafa Suleyman (himself a DeepMind co-founder), has been building an in-house model capability distinct from its OpenAI partnership. Poaching DeepMind talent is both a capability play and a symbolically pointed one given Suleyman's history there.</p>
+        <span class="lbl">Die Details</span>
+        <p>Trade press (AI Magazine and others) reports at least 24 Google employees pulled, mostly DeepMind researchers, in an ongoing run. This runs parallel to Meta's Thinking Machines/Apple/OpenAI hires — two hyperscalers simultaneously bidding up the same scarce pool of senior researchers. Exact comp terms aren't public, but the Meta $1.5B-adjacent reporting sets the ceiling the whole market is now anchored to.</p>
+        <span class="lbl">Einordnung</span>
+        <p>Two hyperscalers raiding at once means the marginal senior researcher can now credibly extract Meta- or Microsoft-scale offers, which drags up comp everywhere — including at Google/DeepMind, which must defend. The second-order effect is on startups: EquiLibre (ex-DeepMind founders, in the Release Radar below) and Thinking Machines show the flip side, where DeepMind alumni also leave to found companies. Net: talent is the binding constraint and the fastest-inflating cost line in frontier AI right now.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether Google responds with visible retention packages or counter-poaching. Departure of any named senior DeepMind figures. And whether Microsoft's in-house models (MAI series) show capability gains attributable to the hires.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●○○&nbsp; 3/5 — trade press</span>
+    <span class="links"><a href="https://aimagazine.com/news/microsoft-vs-google-the-latest-case-of-ai-talent-poaching">AI Magazine</a></span>
+  </div>
+
+  <!-- Section: Products & tooling -->
+  <div class="section"><span class="name">Products &amp; tooling</span><span class="count"> · 4 stories</span></div>
+
+  <!-- Card 14: Claude Science -->
+  <div class="card">
+    <span class="chip c-anthropic">ANTHROPIC</span><span class="datepill">30 Jun</span>
+    <div class="headline">Claude Science launches, aimed at pharma and research labs</div>
+    <div class="body">Anthropic shipped a dedicated application that integrates 60+ scientific databases and computational tools in one workspace, with pharma research as the anchor vertical — its answer to OpenAI's GPT-Rosalind (April). Northeastern scientists interviewed on launch were broadly enthusiastic but flagged early rough edges (Mac/Linux beta only, missing chemistry-database connectors).</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Claude Science is explicitly positioned against GPT-Rosalind, OpenAI's research/drug-discovery model released in April 2026. It's part of Anthropic's verticalised-app strategy (Claude Code, Claude Security, Claude for Microsoft 365, and now Science) — building domain applications on top of the base models rather than competing only on raw model quality.</p>
+        <span class="lbl">Die Details</span>
+        <p>The product integrates 60+ scientific databases and computation tools into a single workspace so researchers can pull data, run analysis and cross-reference results in one flow. It connects to data sources via MCP (Model Context Protocol). Northeastern researchers gave concrete reactions: ALS researcher Jeffrey Agar said the "Sonnet to Opus transition was big for scientists — almost 20% improvement for some areas"; drug-repurposing chemist Michael Pollastri said automating information-gathering could "increase the pace of our experimentation by orders of magnitude." Caveats: the beta is Mac/Linux only, some connector pages didn't yet show major chemical databases, and cell/gene-therapy researcher Jared Auclair warned a general-purpose AI "can hallucinate or miss nuance in regulatory guidance or assay design — errors that carry real consequences," calling it "a co-pilot that requires a skilled pilot."</p>
+        <span class="lbl">Einordnung</span>
+        <p>Verticalised frontier apps are becoming the labs' revenue answer to commoditising base models — exactly the dynamic pressuring token prices elsewhere in this edition. If a base model is a cheap commodity (Sonnet 5, GLM-5.2), the margin moves to domain workflows, proprietary data connectors and trust. Pharma is a high-value anchor: Auclair's "10–15 years down to 2–5 years" framing is the prize, but the regulated-industry hallucination risk is the gating constraint on real adoption.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Windows availability and institutional (data-protection) subscriptions, which several researchers said they're waiting for. Whether Claude Science lands validated, auditable workflows regulators accept. And head-to-head adoption vs GPT-Rosalind in actual labs.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — Northeastern + STAT coverage, primary product</span>
+    <span class="links"><a href="https://news.northeastern.edu/2026/06/30/anthropic-claude-science-launch/">Northeastern</a><a href="https://claude.com/product/claude-science">Claude Science</a></span>
+  </div>
+
+  <!-- Card 15: xAI Voice Agent Builder -->
+  <div class="card">
+    <span class="chip c-xai">XAI</span><span class="datepill">1 Jul</span>
+    <div class="headline">xAI ships Voice Agent Builder (beta) — no-code phone agents</div>
+    <div class="body">A no-code platform to configure production voice agents on Grok Voice: telephony, knowledge retrieval, tools, guardrails, MCP connections and observability in one interface, billed at $0.05/min audio (+$0.01/min telephony). Directly relevant for customer-service automation — worth a pilot look for AlphaPet/SmartPetPro support lines once EU availability is clear.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>xAI has spent 2026 building out a voice stack — Grok Voice Think Fast 1.0 (April), custom voices/voice cloning, STT/TTS APIs — and this is the productised, no-code layer on top. The pitch targets operators who want production phone agents without stitching together the usual three-vendor stack.</p>
+        <span class="lbl">Die Details</span>
+        <p>Setup: write a plain-language call flow, attach documents (knowledge base with collections shareable across agents), wire tools and MCP servers, set guardrails — "zero to a working agent in about two minutes." Out of the box: telephony (free provisioned number, or bring your own via SIP), retrieval, tools/connectors (Google/Outlook Calendar, email, order-status/refund APIs, web/X search, Linear/Notion tickets, Drive/OneDrive files), human handoff, 80+ voices or a ~2-minute voice clone, and full call recording/transcription with tool-use logs. xAI's differentiator claim: it's a single speech-to-speech path tightly coupled to Grok Voice, not three chained APIs — reducing cost, latency and failure modes. It reports Grok Voice Think Fast 1.0 leads τ-voice Bench at 67.3% vs Gemini 3.1 Flash Live (43.8%) and GPT Realtime 1.5 (35.3%), trained on hard real-world calls (noise, accents, interruptions, 25+ languages). Pricing: $0.05/min at API rate, voices included, no platform fee; +$0.01/min for a free provisioned number.</p>
+        <span class="lbl">Einordnung</span>
+        <p>For a DACH/EU commerce operator like Stefan's pet-food businesses, this is the most directly actionable item in the edition: no-code, cheap, MCP-connected phone support agents with voice cloning and call review. The τ-voice numbers (if they hold) suggest a real quality gap over Gemini/GPT voice. The gating question is EU availability, data-processing terms (xAI publishes a DPA/BAA) and German-language quality — worth a scoped pilot on a non-critical support line before any commitment.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>EU/German availability and GDPR data-processing terms. Independent verification of the τ-voice Bench lead. And real-world German-language call quality vs incumbents (and vs a human baseline) on a pilot.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●●&nbsp; 5/5 — primary (xAI newsroom)</span>
+    <span class="links"><a href="https://x.ai/news/grok-voice-agent-builder">xAI</a></span>
+  </div>
+
+  <!-- Card 16: Perplexity -->
+  <div class="card">
+    <span class="chip c-infra">PERPLEXITY</span><span class="datepill">19 Jun</span>
+    <div class="headline">Perplexity pushes Deep Research into its "Computer" agent — and into Microsoft 365</div>
+    <div class="body">Deep Research now runs inside Perplexity's Computer agent (research question → report/spreadsheet/deck/dashboard in one flow), with faster command access, forking and inline actions. Computer is also available directly inside Word, Excel, PowerPoint, Outlook and Teams (since 29 May). An assistant vendor colonising Microsoft's own surface area is a notable wedge play.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>Perplexity has spent 2026 expanding "Computer" from a Mac-only personal agent (April/May launches) into an enterprise agent surface. The 19 June changelog brings Deep Research into Computer; the 29 May release put Computer inside Microsoft 365 apps and added usage analytics for individuals and teams.</p>
+        <span class="lbl">Die Details</span>
+        <p>Per the primary changelog: Deep Research in Computer produces a full research artifact (report, spreadsheet, deck or dashboard) from one question, with a command panel for faster access, thread forking, inline actions, analytics APIs and custom credit limits for enterprises. Computer runs inside Word, Excel, PowerPoint, Outlook and Teams, with improved context/source visibility in threads. Earlier 2026 releases added Comet browser on iOS, a prebuilt "Personal CFO," and Health Computer.</p>
+        <span class="lbl">Einordnung</span>
+        <p>The strategic wedge: Perplexity is embedding its agent inside Microsoft's own productivity apps — the same surface Microsoft is monetising with Copilot. Combined with the Copilot SMB SKUs going permanent (Release Radar), Office is becoming a contested agent battleground rather than a Microsoft monopoly. For end users it means multiple agents competing inside the same document; for Microsoft it's a distribution threat on home turf. Perplexity's bet is that a research-native agent beats a general assistant for knowledge work.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether Microsoft restricts third-party agents inside 365, or leaves the surface open. Enterprise adoption of Computer vs Copilot for research tasks. And how Deep Research quality compares to Google's NotebookLM and OpenAI's agents.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — primary changelog</span>
+    <span class="links"><a href="https://www.perplexity.ai/changelog/deep-research-command-panel-forking-inline-actions-and-enterprise-controls">Changelog</a></span>
+  </div>
+
+  <!-- Card 17: MCP RC -->
+  <div class="card">
+    <span class="chip c-infra">DEV TOOLING</span><span class="datepill">28 Jul RC</span>
+    <div class="headline">MCP goes stateless: the 2026-07-28 spec release candidate lands</div>
+    <div class="body">The next Model Context Protocol revision makes requests self-contained (carrying protocol version, client info and capabilities), so any server instance can handle any call — the change that makes MCP deployable like a normal horizontally-scaled web service. Meaningful for anyone running MCP servers in production. Final spec expected 28 July 2026.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>MCP (now stewarded under the Agentic AI Foundation / Linux Foundation) started as a practical way to connect AI apps to tools and data. Prior versions used Streamable HTTP with a server-issued <em>Mcp-Session-Id</em> that clients carried across requests — forcing sticky sessions, shared session stores and MCP-aware gateways. Manageable in experiments, painful behind load balancers and rate limiters in production.</p>
+        <span class="lbl">Die Details</span>
+        <p>The 2026-07-28 release candidate makes MCP stateless at the protocol layer: a <em>tools/call</em> can be self-contained, with protocol version, client info and capabilities travelling with the request, and headers (Mcp-Method, Mcp-Name) letting infrastructure route without parsing the body. Application state doesn't vanish — it becomes explicit via visible handles (e.g. a server returns a basket_id the model passes back), which improves agent reasoning and observability. Other changes: Extensions get reverse-DNS identifiers, ext-* repos and independent versioning (first examples: MCP Apps for sandboxed HTML UIs, and Tasks for long-running work via tasks/get, tasks/update, tasks/cancel); Roots, Sampling and Logging are deprecated (annotation-only, ≥12 months to removal) in favour of tool params/resource URIs, direct LLM-provider APIs, and stderr/OpenTelemetry respectively; full JSON Schema 2020-12 support for tools; and tightened OAuth/OIDC rules for one-client-many-servers deployments. There are breaking changes — a 10-week window (RC now, final 28 July) is for SDK/client maintainers to validate.</p>
+        <span class="lbl">Einordnung</span>
+        <p>This is MCP "growing up" from clever demo to production infrastructure: statelessness makes MCP servers scale and debug like ordinary web services, and the governance additions (feature lifecycle, conformance-tested SEPs, neutral stewardship) reduce lock-in to any single vendor's implementation. For anyone building agentic systems on MCP — increasingly the default plumbing across Anthropic, OpenAI, Google and xAI tooling — this is the release to test against before it hardens. AAIF's own advice: find hidden session dependencies now.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Whether the 28 July final ships on schedule. SDK/client adoption speed given breaking changes. And whether pushing model access out to provider APIs (deprecating Sampling) hurts cross-provider portability, as the RC discussion flags.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — foundation blog + primary spec repo; final not yet shipped</span>
+    <span class="links"><a href="https://aaif.io/blog/mcp-is-growing-up/">AAIF</a><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/">MCP blog</a></span>
+  </div>
+
+  <!-- Section: Policy -->
+  <div class="section"><span class="name">Policy &amp; governance</span><span class="count"> · 1 story + unverified</span></div>
+
+  <!-- Card 18: EU AI Act -->
+  <div class="card">
+    <span class="chip c-eu">EU</span><span class="datepill">29 Jun</span>
+    <div class="headline">EU AI Act simplification advances — high-risk deadline slips 16 months</div>
+    <div class="body">The Digital Omnibus (agreed politically 7 May) heads to formal adoption, expected by July 2026 — before the original 2 August 2026 high-risk deadline. Key changes: stand-alone high-risk system obligations defer from 2 Aug 2026 to 2 Dec 2027; SME relief extends to companies up to 750 employees / €150M revenue — which would cover both of Stefan's pet food companies if AI systems ever fall in scope; new "nudifier" prohibitions from 2 Dec 2026.</div>
+    <details>
+      <summary><span class="chev">▶</span> Mehr lesen</summary>
+      <div class="deep">
+        <span class="lbl">Kontext & Vorgeschichte</span>
+        <p>The AI Act Omnibus is part of the EU's broader push to simplify digital regulation. It doesn't change the Act's risk-based architecture, but it clarifies requirements, extends deadlines, and adds targeted prohibitions — largely because the Commission hadn't yet issued the harmonised standards and guidance that high-risk operators need to comply on the original timeline.</p>
+        <span class="lbl">Die Details</span>
+        <p>Concrete deadline changes (per Latham & Watkins): stand-alone high-risk AI system (HRAIS) obligations move from 2 Aug 2026 to <em>2 Dec 2027</em>; HRAIS that are regulated products/safety components move to <em>2 Aug 2028</em>; systems placed on the market before those dates escape HRAIS rules unless "substantially modified." A grandfathering rule gives pre-existing generative-AI systems until 2 Dec 2026 to meet watermarking/labeling rules (Art. 50 transparency obligations still apply from 2 Aug 2026 for new systems). New from 2 Dec 2026: a prohibition on "nudifier" apps generating non-consensual intimate imagery/CSAM, with fines up to €35M or 7% of worldwide turnover. Scope relief: an industrial-AI carveout (machinery already regulated elsewhere), a narrower "safety component" definition, and — critically for mid-caps — the SME simplified-compliance framework extended to companies up to 750 employees and €150M revenue (simplified guidance, reduced fines, sandbox access, standardised templates). Bias-detection using GDPR special-category data is also made easier.</p>
+        <span class="lbl">Einordnung</span>
+        <p>For Stefan's pet-food companies (AlphaPet, SmartPetPro): the 750-employee / €150M mid-cap relief would cover them if any AI system they use ever falls into HRAIS scope — but note the everyday tools (customer-service chatbots, marketing content, the xAI voice agents above) are generally <em>not</em> high-risk; HRAIS covers recruitment, credit scoring, biometrics, critical infrastructure and regulated safety components. The transparency obligations (disclose AI chatbots, label AI-generated content) are the ones most likely to touch a commerce operator, and those still bite from Aug/Dec 2026. GDPR enforcement in AI contexts is already active and independent of these deferrals. Practical stance: no HRAIS scramble, but do prepare chatbot-disclosure and AI-content-labeling before the Aug/Dec 2026 dates.</p>
+        <span class="lbl">Watch-Items</span>
+        <p>Formal adoption and Official Journal publication (expected July 2026 — the agreed text wasn't published as of the law-firm analyses). Final versions of the transparency Guidelines and Code of Practice. And whether harmonised HRAIS standards actually arrive well before Dec 2027, or slip again.</p>
+      </div>
+    </details>
+    <div class="divider"></div>
+    <span class="conf">●●●●○&nbsp; 4/5 — agreement + law-firm analyses; final text pending</span>
+    <span class="links"><a href="https://www.lw.com/en/insights/ai-act-update-eu-resolves-to-change-rules-and-extend-deadlines">Latham</a><a href="https://artificialintelligenceact.eu/">AI Act tracker</a></span>
+  </div>
+
+  <!-- Yellow banner: unverified -->
+  <div class="banner">
+    <strong class="w">⚠ Still unverified</strong> — three claims circulating in aggregators without mainstream confirmation as of writing: <strong>(1)</strong> Alibaba has classified Claude Code as high-risk software and ordered employees to uninstall by 10 July; <strong>(2)</strong> Zuckerberg admitted at a 2 July town hall that Meta's AI agents "stalled for four months"; <strong>(3)</strong> Grok 4.5 was supplementally trained on Cursor IDE session data following the SpaceX–Anysphere deal. All plausible, none confirmed by a primary or major outlet. C-Score 2/5 each.
+  </div>
+
+  <!-- Section: Release Radar -->
+  <div class="section"><span class="name">Release Radar</span><span class="count"> · 12 minor-but-real items</span></div>
+  <div class="card" style="padding:8px 20px;">
+    <div class="radar-row"><strong>Anthropic — Claude apps gateway</strong> for Amazon Bedrock &amp; Google Cloud: self-hosted control plane for Claude Code with SSO, policy, per-user cost caps; plus richer Claude Enterprise admin analytics. <a href="https://releasebot.io/updates/anthropic">Releasebot</a> · 3/5</div>
+    <div class="radar-row"><strong>OpenAI × Broadcom — "Jalapeño"</strong> custom AI chip unveiled 25 Jun (day before this window): concept to tape-out in nine months. <a href="https://openai.com/news/">OpenAI</a> · 4/5</div>
+    <div class="radar-row"><strong>Google — Nano Banana 2 Lite</strong>: fastest, cheapest Gemini image model yet, now available. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/">Google</a> · 4/5</div>
+    <div class="radar-row"><strong>Google — Gemini Omni Flash</strong> in public API preview: natively multimodal model for custom video workflows. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/">Google</a> · 4/5</div>
+    <div class="radar-row"><strong>Google — Gemini 3.5 Live Translate</strong>: speech-to-speech across 70+ languages, preserving intonation, near-real-time (Live API, AI Studio, Translate). <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/">Google</a> · 5/5</div>
+    <div class="radar-row"><strong>Google — Gemma 4 12B</strong>: open model running locally in 16GB with vision + native voice in one architecture. <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/">Google</a> · 5/5</div>
+    <div class="radar-row"><strong>DeepMind × UK government</strong>: Gemini planning prototype for councils targets a 50% cut in household planning-application backlogs. <a href="https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/">DeepMind</a> · 4/5</div>
+    <div class="radar-row"><strong>xAI — Interactive Brokers integration &amp; /goal</strong>: markets access inside Grok (25 Jun) plus autonomous goal-directed coding with live checklist (22 Jun). <a href="https://x.ai/news">xAI</a> · 5/5</div>
+    <div class="radar-row"><strong>Microsoft — Copilot SMB SKUs permanent</strong> from 1 Jul: Business Standard/Premium with Copilot become always-on offerings. <a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-july">Microsoft</a> · 4/5</div>
+    <div class="radar-row"><strong>Funding — Quantum Systems</strong> (Munich, defense drones) ~$1.2B at ~$8B valuation, late June. <a href="https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups">Crescendo</a> · 3/5</div>
+    <div class="radar-row"><strong>Funding — EquiLibre</strong> (Prague, ex-DeepMind founders) Series A at $500M+ valuation led by Creandum (30 Jun); <strong>Quantifind</strong> $200M growth round led by Summit Partners (26 Jun). <a href="https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups">Crescendo</a> · 3/5</div>
+    <div class="radar-row"><strong>Funding — neocloud wave</strong>: Upscale AI reaches $500M total at $2B; TensorWave (AMD GPUs) $350M Series B at $1.55B — both context for the Together AI round. <a href="https://techcrunch.com/2026/07/01/neocloud-together-ai-raises-800m-leaps-to-8-3b-valuation/">TechCrunch</a> · 4/5</div>
+  </div>
+  <div style="height:10px;"></div>
+
+  <!-- Editor's view -->
+  <div class="card editor">
+    <span class="chip">💡 Editor's view</span>
+    <ol>
+      <li><strong>Switch agent workloads to Sonnet 5 now.</strong> Near-Opus quality at $2/$10 until 31 August is the best price/performance for agentic work — and Gemini 3.5 Flash plus open-weight GLM-5.2 give you strong second and third sources on the same tier. Re-benchmark cost-per-task (mind the new tokenizer) before the September step-up to $3/$15.</li>
+      <li><strong>Model availability is now a policy variable.</strong> GPT-5.6 launched through a government gate and Fable 5 spent 19 days export-controlled. If any workflow depends on a single frontier model, that's a new single point of failure — keep a tested fallback per workload.</li>
+      <li><strong>One concrete pilot: xAI Voice Agent Builder for support lines.</strong> No-code, MCP-connected phone agents at $0.05/min with voice cloning and call review are the most directly usable item this cycle for AlphaPet/SmartPetPro — pending EU/German-language and GDPR checks. Scope a non-critical line first.</li>
+    </ol>
+    <div class="wild">Wildcard: if the Alibaba Claude Code ban is confirmed, it's the first case of a Chinese tech major formally classifying a US frontier tool as a security risk — the decoupling arrow pointing back the other way.</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="foot">
+    <div>AI Briefing · 26 Jun – 6 Jul 2026 · compiled 6 July 2026 · sources current at time of writing</div>
+    <div style="margin-top:4px;">18 stories (all with deep-dive) + 12 Release Radar rows · 10 stories at C-Score 4/5 or higher</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Week of May 4, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #3c4043;
+    --primary-hover: #2d3134;
+    --primary-soft: #e8eaed;
+    --primary-on-soft: #3c4043;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --blue: #1a73e8;
+    --blue-soft: #e8f0fe;
+    --blue-on-soft: #1967d2;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--on-surface); font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  /* APP BAR — NOT sticky */
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo { width: 36px; height: 36px; border-radius: 50%; background: #3c4043; color: #ffffff; display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 16px; }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--on-surface-2); display: grid; place-items: center; cursor: pointer; transition: background 0.15s; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--divider); background: var(--surface); color: var(--on-surface-2); font-family: 'Google Sans Text', sans-serif; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  .hero { background: linear-gradient(135deg, #5f6368 0%, #1f2937 100%); color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: var(--shadow-1); }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 26px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0; max-width: 740px; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card { background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  .provider { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em; }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.tesla    { background: #fce8e6; color: #a50e0e; }
+  .provider.spacex   { background: #e8eef6; color: #1f3548; }
+  .provider.xai      { background: #f1f3f4; color: #3c4043; }
+  .provider.politics { background: #fef7e0; color: #b06000; }
+  .provider.trial    { background: #f3e8fd; color: #5f1d8e; }
+  .provider.ventures { background: #e6f4ea; color: #0d652d; }
+  .provider.baseline { background: #e8f0fe; color: #1967d2; }
+
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "\00b7"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 10px; }
+  .card p:last-of-type { margin-bottom: 12px; }
+  .card .takeaway { background: #f5fbf6; border-left: 3px solid var(--green); padding: 10px 14px; margin: 4px 0 12px; font-size: 13px; line-height: 1.55; color: var(--on-surface-2); border-radius: 0 8px 8px 0; }
+  .card .takeaway strong { color: var(--green); font-weight: 500; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); color: var(--blue-on-soft); text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s; }
+  .link-pill:hover { background: var(--blue-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner { display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft); border: 1px solid #fde293; border-radius: 12px; margin: 12px 0 24px; font-size: 13px; line-height: 1.55; color: var(--yellow); }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+
+  .banner.cross-ref { background: var(--blue-soft); border-color: #a8c7fa; color: var(--blue-on-soft); }
+  .banner.cross-ref .material-icons-outlined { color: var(--blue-on-soft); }
+  .banner.cross-ref strong { color: var(--blue-on-soft); }
+  .banner.cross-ref div { color: #174ea6; }
+  .banner.cross-ref a { color: #1a73e8; font-weight: 500; }
+
+  .status-list { list-style: none; margin: 0; padding: 0; }
+  .status-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--divider-soft); font-size: 13px; line-height: 1.55; color: var(--on-surface-2); }
+  .status-list li:last-child { border-bottom: none; }
+  .status-list .label { flex-shrink: 0; width: 100px; font-weight: 500; color: var(--on-surface); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 1px; }
+
+  .featured { background: var(--surface); border-radius: 16px; padding: 28px 32px; margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1); }
+  .featured .label { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary-on-soft); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 20px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-on-soft); display: grid; place-items: center; font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 12px; }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.55; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: left; font-size: 12px; color: var(--on-surface-muted); line-height: 1.7; }
+  .colophon h4 { font-family: 'Google Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--on-surface-2); margin: 0 0 8px; }
+  .colophon a { color: var(--blue-on-soft); text-decoration: none; }
+  .colophon a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Weekly portfolio digest &middot; Week of May 4, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a href="#status" class="chip active"><span class="material-icons-outlined">check_circle</span>Status Quo</a>
+  <a href="#tesla" class="chip">Tesla</a>
+  <a href="#xai" class="chip">xAI / Grok</a>
+  <a href="#spacex" class="chip">SpaceX</a>
+  <a href="#doge" class="chip">DOGE / Politics</a>
+  <a href="#trial" class="chip">OpenAI Trial</a>
+  <a href="#ventures" class="chip">Other Ventures</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="eyebrow">April 28 &ndash; May 4, 2026</div>
+  <h2>"You can't just steal a charity" &mdash; Musk takes the stand against Altman as the trial that could reshape AI governance begins in Oakland.</h2>
+  <p>The week was dominated by Musk v. Altman. Three days of testimony, an admission that xAI distilled OpenAI models, and a liability verdict expected by May 21. Meanwhile, Tesla rolled the first Semi off its high-volume line, xAI shipped Grok 4.3, and SpaceX confirmed Starship V3's maiden flight for May 12. The Muskverse is simultaneously in courtroom, factory, and launchpad mode.</p>
+</div>
+
+<!-- ═══ STATUS QUO ═══ -->
+<div id="status" class="section-header">
+  <span class="material-icons-outlined">check_circle</span>
+  <h3>Status Quo &middot; Baseline from April 27 deep dive</h3>
+  <span class="count">snapshot</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider baseline"><span class="dot"></span>Baseline</span>
+    <span class="meta-pill">As of Apr 27 2026</span>
+  </div>
+  <h4>Where the Muskverse stood entering this week</h4>
+  <ul class="status-list">
+    <li><span class="label">SpaceX</span>SpaceX-xAI merged Feb 2026 at combined $1.25T. Confidential S-1 filed Apr 1 targeting up to $2T IPO. Starlink at 9&ndash;10M subscribers, ~$20B projected 2026 revenue.</li>
+    <li><span class="label">Tesla</span>2025 revenue $94.8B (&minus;3% YoY), first annual decline as public company. Q1 2026 China rebound +35%. Cybercab pilot production started April 2026. Optimus production announced for Fremont late July/August.</li>
+    <li><span class="label">xAI / X</span>Series E $20B raised at $230B valuation (Jan 2026). 9 of 12 co-founders departed. Colossus 2 targeting 1M GPUs in Memphis. EU fined X &euro;120M under Digital Services Act (Digitale-Dienste-Gesetz).</li>
+    <li><span class="label">Politics</span>Musk&ndash;Trump relationship cyclical: DOGE departure May 2025, public break June, "America Party" July, reconciliation September. DOGE mindset embedded in federal agencies. Trump says entity concludes by July 4, 2026.</li>
+    <li><span class="label">Neuralink</span>21 BCI (Brain-Computer Interface) trial participants by early 2026. Next-gen implant with 3&times; capability announced for later 2026. Blindsight vision-restoration trial scheduled.</li>
+    <li><span class="label">Risks</span>NHTSA (National Highway Traffic Safety Administration) investigating ~2.88M FSD vehicles, 80 documented violations. EPA (Environmental Protection Agency) Memphis turbine permits. Key-person single-point-of-failure across all entities.</li>
+  </ul>
+</div>
+
+<!-- ═══ TESLA ═══ -->
+<div id="tesla" class="section-header">
+  <span class="material-icons-outlined">electric_car</span>
+  <h3>Tesla</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">Apr 29 2026</span>
+  </div>
+  <h4>Tesla Semi rolls off high-volume production line &mdash; nine years after reveal</h4>
+  <p>The first Tesla Semi rolled off the high-volume production line at Tesla's Sparks, Nevada facility on April 29, marking the transition from the pilot line that produced only a few hundred units since October 2023. The 5.4-million-square-foot factory is designed for annual capacity of 50,000 trucks, though 2026 output is expected in the 5,000&ndash;15,000 range as the ramp proceeds. Two variants ship: a 325-mile Standard Range and a 500-mile Long Range, both with tri-motor powertrains and 4680 battery cells manufactured on-site. Tesla simultaneously launched "Semi Charging for Business," a commercial charging network play.
+    (<a href="https://electrek.co/2026/04/29/tesla-semi-first-truck-high-volume-production-line/" style="color:var(--blue-on-soft)">Electrek</a>,
+    <a href="https://cleantechnica.com/2026/05/03/first-tesla-semi-at-high-production-line-completed/" style="color:var(--blue-on-soft)">CleanTechnica</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The Semi is Tesla's first new mass-production vehicle line since Model Y. It diversifies revenue away from the consumer-EV business that contracted in 2025 and positions Tesla in commercial fleet electrification &mdash; a segment where BYD has less foothold.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://electrek.co/2026/04/29/tesla-semi-first-truck-high-volume-production-line/"><span class="material-icons-outlined">open_in_new</span>Electrek</a>
+    <a class="link-pill" href="https://cleantechnica.com/2026/05/03/first-tesla-semi-at-high-production-line-completed/"><span class="material-icons-outlined">open_in_new</span>CleanTechnica</a>
+    <a class="link-pill" href="https://www.fleetmaintenance.com/equipment/battery-and-electrical/article/55374492/tesla-motors-tesla-semi-starts-high-volume-production-launches-semi-charging-for-business"><span class="material-icons-outlined">open_in_new</span>Fleet Maintenance</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider tesla"><span class="dot"></span>Tesla</span>
+    <span class="meta-pill">May 1 2026</span>
+  </div>
+  <h4>$573M in cross-entity transactions revealed; TSLA at ~$391; FSD clears Dutch regulator</h4>
+  <p>Tesla's amended 10-K filing disclosed <strong>$573 million in 2025 revenue from SpaceX and xAI</strong>, making the financial entanglement between Musk entities concrete and public for the first time. Tesla's $2B xAI Series E investment converted into SpaceX Class A common stock when SpaceX acquired xAI. Separately, TSLA traded at $391.34 on May 3, up 2.4% on the week, buoyed by two catalysts: the Dutch road authority RDW (Rijksdienst voor het Wegverkeer) approved supervised FSD (Full Self-Driving) and is now seeking EU-wide approval; and capex guidance was raised from $20B to $25B+ for 2026, signaling accelerated infrastructure investment.
+    (<a href="https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/" style="color:var(--blue-on-soft)">Electrek</a>,
+    <a href="https://www.fool.com/investing/2026/05/03/finally-some-good-news-for-tesla-investors/" style="color:var(--blue-on-soft)">Motley Fool</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The $573M disclosure is the first hard number on cross-entity revenue flow. EU FSD approval would be a significant regulatory unlock for the robotaxi narrative in Europe. The capex bump from $20B to $25B+ reflects Cybercab, Semi, and Optimus ramp spending.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/"><span class="material-icons-outlined">open_in_new</span>Electrek 10-K</a>
+    <a class="link-pill" href="https://www.fool.com/investing/2026/05/03/finally-some-good-news-for-tesla-investors/"><span class="material-icons-outlined">open_in_new</span>Motley Fool</a>
+    <a class="link-pill" href="https://www.fool.com/investing/2026/04/30/is-tesla-a-buy-sell-or-hold-in-2026/"><span class="material-icons-outlined">open_in_new</span>TSLA analysis</a>
+  </div>
+</div>
+
+<!-- ═══ xAI / GROK ═══ -->
+<div id="xai" class="section-header">
+  <span class="material-icons-outlined">smart_toy</span>
+  <h3>xAI / Grok</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>xAI</span>
+    <span class="meta-pill">Late Apr 2026</span>
+  </div>
+  <h4>Grok 4.3 launches with always-on reasoning, 1M-token context, and aggressive pricing</h4>
+  <p>xAI released <strong>Grok 4.3</strong>, featuring always-on reasoning (no toggle needed) and a 1-million-token context window. API pricing is set at $1.25 / $2.50 per million input/output tokens (up to 200K input), roughly halving the cost of its predecessor Grok 4.2 ($2/$6). Alongside the model, xAI shipped <strong>Custom Voices</strong>, a voice-cloning suite, signaling a push into personalized audio AI. The pricing undercuts OpenAI and Anthropic on most comparable tiers.
+    (<a href="https://venturebeat.com/technology/xai-launches-grok-4-3-at-an-aggressively-low-price-and-a-new-fast-powerful-voice-cloning-suite" style="color:var(--blue-on-soft)">VentureBeat</a>,
+    <a href="https://tbreak.com/xai-grok-4-3-always-on-reasoning-uae/" style="color:var(--blue-on-soft)">tbreak</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Grok 4.3's pricing is a race-to-the-bottom move enabled by Colossus scale economics. Always-on reasoning closes the UX gap with OpenAI's o-series. The voice-cloning suite is a play for consumer lock-in through personalization &mdash; expect regulatory attention in the EU under the AI Act (KI-Verordnung).</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://venturebeat.com/technology/xai-launches-grok-4-3-at-an-aggressively-low-price-and-a-new-fast-powerful-voice-cloning-suite"><span class="material-icons-outlined">open_in_new</span>VentureBeat</a>
+    <a class="link-pill" href="https://tbreak.com/xai-grok-4-3-always-on-reasoning-uae/"><span class="material-icons-outlined">open_in_new</span>tbreak</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider xai"><span class="dot"></span>xAI / X</span>
+    <span class="meta-pill">May 2&ndash;4 2026</span>
+  </div>
+  <h4>Grok Voice comes to Apple CarPlay; X rebuilds ad stack with AI; 611M monthly users</h4>
+  <p>xAI announced <strong>Grok Voice for CarPlay</strong>, enabling hands-free natural-language AI interaction while driving &mdash; competing directly with Apple's Siri and Google Assistant in the car. Separately, X rolled out a rebuilt advertising platform with AI-powered retrieval and ranking systems (tying xAI infrastructure into monetization), and penalizes ads with excess emoji by lowering quality scores. X reached <strong>611M monthly active users</strong> in Q1 2026 (up from 588M YoY), with mDAU (monetizable Daily Active Users) at 251M &mdash; an all-time high. Premium+ subscriptions ($16/month) hit 4.7M, up 38% YoY.
+    (<a href="https://9to5mac.com/2026/05/02/xai-is-bringing-grok-voice-mode-to-apple-carplay/" style="color:var(--blue-on-soft)">9to5Mac</a>,
+    <a href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/" style="color:var(--blue-on-soft)">TechCrunch</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The CarPlay move takes Grok outside the Tesla cabin into every iPhone user's vehicle &mdash; a distribution play that does not depend on Tesla hardware. The rebuilt AI-native ad platform is the first credible revenue narrative for X since the 2022 acquisition. 611M MAU validates that the user base stabilized and is growing again.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://9to5mac.com/2026/05/02/xai-is-bringing-grok-voice-mode-to-apple-carplay/"><span class="material-icons-outlined">open_in_new</span>9to5Mac</a>
+    <a class="link-pill" href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+    <a class="link-pill" href="https://www.business-standard.com/technology/tech-news/xai-may-bring-grok-voice-to-apple-carplay-for-in-car-ai-use-what-to-expect-126050400589_1.html"><span class="material-icons-outlined">open_in_new</span>Business Standard</a>
+  </div>
+</div>
+
+<!-- ═══ SPACEX ═══ -->
+<div id="spacex" class="section-header">
+  <span class="material-icons-outlined">rocket_launch</span>
+  <h3>SpaceX</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider spacex"><span class="dot"></span>SpaceX</span>
+    <span class="meta-pill">May 12 target</span>
+  </div>
+  <h4>Starship Flight 12 &mdash; V3 maiden flight targeting May 12; 50th Falcon launch of 2026 completed</h4>
+  <p>SpaceX confirmed <strong>Starship Flight 12 for May 12</strong> (22:30 UTC window), the maiden flight of the Version 3 system &mdash; a clean-sheet redesign. V3 pairs Booster 19 and Ship 39, both powered by Raptor 3 engines, stands 408 feet tall, and is designed to carry <strong>over 100 tons to LEO (Low Earth Orbit)</strong>, nearly triple V2's ~35-ton capacity. The mission is suborbital: both booster and ship target splashdown rather than a tower catch, deliberately stepping back in ambition to validate the new architecture. This will also be the first launch from Orbital Launch Pad 2 at Starbase. Separately, SpaceX completed its <strong>50th Falcon launch of 2026</strong>, maintaining a pace that competitors cannot match.
+    (<a href="https://www.basenor.com/blogs/news/starship-flight-12-targets-mid-may-with-new-v3-vehicle" style="color:var(--blue-on-soft)">Basenor</a>,
+    <a href="https://newspaceeconomy.ca/2026/04/16/spacex-starship-next-launch-targets-may-2026-for-v3-debut/" style="color:var(--blue-on-soft)">New Space Economy</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> V3 at 100+ tons to LEO is a generational leap &mdash; it turns Starship from a development program into a commercially viable heavy-lift system. Success on May 12 would de-risk the IPO narrative substantially. The deliberate splashdown-only profile for a maiden V3 flight shows SpaceX learning from Starship V2's incremental approach.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.basenor.com/blogs/news/starship-flight-12-targets-mid-may-with-new-v3-vehicle"><span class="material-icons-outlined">open_in_new</span>Basenor V3</a>
+    <a class="link-pill" href="https://newspaceeconomy.ca/2026/04/16/spacex-starship-next-launch-targets-may-2026-for-v3-debut/"><span class="material-icons-outlined">open_in_new</span>New Space Econ</a>
+    <a class="link-pill" href="https://spacedaily.com/sd-n-spacexs-50th-launch-of-2026-shows-why-competitors-cant-catch-up/"><span class="material-icons-outlined">open_in_new</span>50th launch</a>
+  </div>
+</div>
+
+<!-- ═══ DOGE / POLITICS ═══ -->
+<div id="doge" class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>DOGE / Politics</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider politics"><span class="dot"></span>Politics</span>
+    <span class="meta-pill">Apr 28 &ndash; May 4 2026</span>
+  </div>
+  <h4>DOGE lawsuits advance &mdash; judge denies dismissal; Musk unavailable for deposition; July 4 sunset looms</h4>
+  <p>A federal judge denied the Trump administration's bid to drop a lawsuit against Musk for his former advisory role in DOGE (Department of Government Efficiency), ruling that the case can proceed. Separately, CNN and the Washington Post reported that Musk's legal adversaries <strong>cannot locate him to serve deposition questions</strong> about his actions inside DOGE during its January&ndash;May 2025 operational period. New disclosures revealed how DOGE actually operated, including ChatGPT usage inside government workflows. The entity's formal sunset date remains <strong>July 4, 2026</strong>, per Trump's directive, though many DOGE staffers and ideas are now permanently embedded across federal agencies. A CBS News analysis found that claimed $160B in DOGE savings have been offset by $135B in downstream costs.
+    (<a href="https://thehill.com/regulation/court-battles/5798636-judge-musk-lawsuit-trump-adviser-role/" style="color:var(--blue-on-soft)">The Hill</a>,
+    <a href="https://www.cnn.com/2026/04/13/politics/elon-musk-doge-lawsuits-avoid-deposition-questions" style="color:var(--blue-on-soft)">CNN</a>,
+    <a href="https://www.washingtonpost.com/politics/2026/04/13/doge-musk-trump-deposition-videos-chatgpt/" style="color:var(--blue-on-soft)">Washington Post</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The DOGE lawsuits represent a slow-burn legal risk that could force Musk into sworn testimony about government decision-making &mdash; separate from and potentially more politically damaging than the OpenAI trial. The $160B savings vs. $135B costs framing undermines the efficiency narrative.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://thehill.com/regulation/court-battles/5798636-judge-musk-lawsuit-trump-adviser-role/"><span class="material-icons-outlined">open_in_new</span>The Hill</a>
+    <a class="link-pill" href="https://www.cnn.com/2026/04/13/politics/elon-musk-doge-lawsuits-avoid-deposition-questions"><span class="material-icons-outlined">open_in_new</span>CNN</a>
+    <a class="link-pill" href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/"><span class="material-icons-outlined">open_in_new</span>CBS $135B analysis</a>
+  </div>
+</div>
+
+<!-- ═══ OPENAI TRIAL ═══ -->
+<div id="trial" class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>OpenAI Trial &middot; Musk v. Altman</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>Trial</span>
+    <span class="meta-pill">Apr 28&ndash;May 2 &middot; Week 1</span>
+  </div>
+  <h4>Musk testifies for three days: "I came up with the idea, the name, recruited the key people"</h4>
+  <p>The trial opened April 28 in Oakland before Judge Yvonne Gonzalez Rogers with a nine-person jury. Musk testified over three days (Tuesday through Thursday), dominating Week 1. <strong>Core claim:</strong> Musk says his ~$38M in donations to OpenAI was used for unauthorized commercial purposes, and that Microsoft's $10B investment was the tipping point that violated the nonprofit mission. Musk told the jury: "You can't just steal a charity." He acknowledged he is not entirely against a for-profit unit, but said it became "the tail wagging the dog," accusing Altman and Brockman of self-enrichment. The trial is split into two phases: a <strong>liability phase</strong> (expected to conclude by May 21) and a <strong>remedies phase</strong> if wrongdoing is found. Altman and Brockman are expected to testify in Week 2&ndash;3.
+    (<a href="https://www.cnbc.com/2026/05/02/musk-testimony-dominated-first-week-musk-v-altman-trial-in-oakland.html" style="color:var(--blue-on-soft)">CNBC</a>,
+    <a href="https://www.washingtonpost.com/technology/2026/05/02/musk-altman-openai-trial/" style="color:var(--blue-on-soft)">Washington Post</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The trial is now the highest-visibility legal proceeding in AI history. The liability phase outcome by May 21 could either validate Musk's claim that OpenAI's for-profit conversion was unauthorized &mdash; creating regulatory precedent for nonprofit-to-commercial AI transitions &mdash; or undermine Musk's credibility as an AI-governance voice.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/05/02/musk-testimony-dominated-first-week-musk-v-altman-trial-in-oakland.html"><span class="material-icons-outlined">open_in_new</span>CNBC Week 1</a>
+    <a class="link-pill" href="https://www.washingtonpost.com/technology/2026/05/02/musk-altman-openai-trial/"><span class="material-icons-outlined">open_in_new</span>WaPo</a>
+    <a class="link-pill" href="https://www.cnn.com/2026/04/28/tech/elon-musk-sam-altman-openai"><span class="material-icons-outlined">open_in_new</span>CNN</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider trial"><span class="dot"></span>Trial</span>
+    <span class="meta-pill">Apr 30 2026 &middot; cross-examination</span>
+  </div>
+  <h4>Musk admits xAI distilled OpenAI models &mdash; calls it industry-standard practice</h4>
+  <p>Under cross-examination by OpenAI's attorneys, Musk was asked whether xAI has used distillation techniques on OpenAI models to train Grok. <strong>He confirmed it</strong>, asserting it is a "general practice among AI companies." This admission is significant because it simultaneously (a) validates OpenAI's claim that its models have proprietary value worth protecting, (b) undercuts Musk's argument that OpenAI's technology should have been freely shared, and (c) creates a potential counter-claim surface for OpenAI regarding xAI's use of their outputs. MIT Technology Review summarized Week 1 as: "Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI's models."
+    (<a href="https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/" style="color:var(--blue-on-soft)">TechCrunch</a>,
+    <a href="https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/" style="color:var(--blue-on-soft)">MIT Tech Review</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> The distillation admission is the single most consequential moment of Week 1. It gives OpenAI's lawyers a narrative weapon ("he's suing us while copying our work") and may inform the remedies phase. For xAI, the commercial risk is manageable &mdash; distillation is indeed widespread &mdash; but the reputational and legal risk during a live trial is acute.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/"><span class="material-icons-outlined">open_in_new</span>TechCrunch</a>
+    <a class="link-pill" href="https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/"><span class="material-icons-outlined">open_in_new</span>MIT Tech Review</a>
+    <a class="link-pill" href="https://www.theringer.com/2026/04/30/tech/elon-musk-testimony-open-ai-trial-sam-altman-greg-brockman"><span class="material-icons-outlined">open_in_new</span>The Ringer</a>
+  </div>
+</div>
+
+<!-- Cross-reference banner -->
+<div class="banner cross-ref">
+  <span class="material-icons-outlined">link</span>
+  <div>
+    <strong>Deep dive available</strong>
+    For full trial analysis, timeline, legal arguments, and scenario modeling, see the dedicated briefing: <a href="2026-05-01_openai_trial_musk_v_altman.html">Musk v. Altman &middot; OpenAI Trial Deep Dive</a>
+  </div>
+</div>
+
+<!-- ═══ OTHER VENTURES ═══ -->
+<div id="ventures" class="section-header">
+  <span class="material-icons-outlined">category</span>
+  <h3>Other Ventures &middot; Neuralink &amp; Boring Company</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider ventures"><span class="dot"></span>Neuralink</span>
+    <span class="meta-pill">2026 roadmap</span>
+  </div>
+  <h4>Neuralink plans high-volume BCI production and automated surgery in 2026</h4>
+  <p>Musk announced that Neuralink will begin <strong>high-volume production</strong> of BCI (Brain-Computer Interface) devices in 2026, moving to a "streamlined, almost entirely automated surgical procedure." A key technical advance: device threads will now go through the dura mater (Hirnhaut) without needing to remove it &mdash; reducing surgical invasiveness. Twelve people with severe paralysis are currently using the implants to control digital and physical tools through thought alone. The <strong>Blindsight</strong> implant for vision restoration is scheduled for its first patient trial in 2026. A former FDA (Food and Drug Administration) executive, David McMullen, joined as head of medical affairs in December 2025, bridging clinical, research, and regulatory efforts.
+    (<a href="https://www.mddionline.com/digital-health/elon-musk-s-neuralink-to-ramp-up-bci-device-production-in-2026" style="color:var(--blue-on-soft)">MDDIonline</a>,
+    <a href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices" style="color:var(--blue-on-soft)">Fierce Biotech</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Moving from individual implants to high-volume production is the step from clinical trial to commercial medical device. Automated surgery is essential for scaling beyond specialized neurosurgery centers. The Blindsight trial &mdash; if successful &mdash; would be the most publicly visible demonstration of BCI utility to date.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.mddionline.com/digital-health/elon-musk-s-neuralink-to-ramp-up-bci-device-production-in-2026"><span class="material-icons-outlined">open_in_new</span>MDDI</a>
+    <a class="link-pill" href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices"><span class="material-icons-outlined">open_in_new</span>Fierce Biotech</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider ventures"><span class="dot"></span>Boring Co</span>
+    <span class="meta-pill">Expanding footprint 2026</span>
+  </div>
+  <h4>Boring Company expanding to Nashville, Dallas, New Orleans, Dubai &mdash; but facing local resistance</h4>
+  <p>The Boring Company is in its most active expansion phase ever, with projects in <strong>Nashville</strong> (Music City Loop &mdash; two 10-mile tunnels to the airport, shaft dug, machine assembled), <strong>Dallas</strong> (mile-long tunnel study won via company contest), <strong>New Orleans</strong> (assessment phase), <strong>Orlando</strong> (Universal theme park connector), and <strong>Dubai</strong> (construction started Feb 2026, launch expected 2027). However, Nashville's Metro City Council voted to formally oppose the Music City Loop in March, citing poor track record on environmental and workplace safety. Tennessee Republican lawmakers subsequently passed legislation insulating the project from local officials. Las Vegas operations remain the core: 8 stations, 5+ miles of tunnel, 68 miles approved.
+    (<a href="https://www.cnbc.com/2026/03/26/elon-musks-boring-co-tunnels-not-wanted-by-most-nashville-residents.html" style="color:var(--blue-on-soft)">CNBC Nashville</a>,
+    <a href="https://www.texastribune.org/2026/03/24/dallas-boring-company-tunnel-underground-transit-elon-musk/" style="color:var(--blue-on-soft)">Texas Tribune</a>)</p>
+  <div class="takeaway"><strong>So what:</strong> Boring Company is the lowest-strategic-value Muskverse entity but it is quietly building a real pipeline of municipal projects. The Nashville pattern &mdash; local opposition overridden by state legislation &mdash; will likely repeat and creates political friction. Dubai is the first international project and a proof-of-concept for non-US expansion.</div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.cnbc.com/2026/03/26/elon-musks-boring-co-tunnels-not-wanted-by-most-nashville-residents.html"><span class="material-icons-outlined">open_in_new</span>CNBC Nashville</a>
+    <a class="link-pill" href="https://www.texastribune.org/2026/03/24/dallas-boring-company-tunnel-underground-transit-elon-musk/"><span class="material-icons-outlined">open_in_new</span>Texas Tribune</a>
+    <a class="link-pill" href="https://fortune.com/2026/01/16/boring-company-tunnel-tesla-gigafactory-reno/"><span class="material-icons-outlined">open_in_new</span>Fortune Reno</a>
+  </div>
+</div>
+
+<!-- ═══ EDITOR'S VIEW ═══ -->
+<div class="featured">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span> Editor's View</div>
+  <h3>Six takeaways from the week of May 4, 2026</h3>
+  <ul class="takeaways">
+    <li>
+      <span class="num">1</span>
+      <div class="body"><strong>The distillation admission reshapes the trial.</strong> Musk confirming that xAI trained Grok on OpenAI outputs is the most strategically significant disclosure of the week. It is honest, probably legally defensible as industry-standard, but it hands OpenAI's lawyers a narrative that undermines the moral framing of the entire lawsuit. Watch how this plays in Week 2 when Altman takes the stand.</div>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <div class="body"><strong>Tesla is quietly becoming a multi-vehicle manufacturer again.</strong> Semi production start, Cybercab pilot, Optimus on deck for summer. The car business that contracted 3% in 2025 is being surrounded by new product lines. Whether these lines deliver revenue at scale before the valuation thesis requires it is the open question &mdash; but the operational execution is real.</div>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <div class="body"><strong>Starship V3 on May 12 is the week's most important upcoming event.</strong> A successful maiden flight of a 100-ton-to-LEO vehicle would be the most significant launch milestone since Falcon 9 first landed. It directly de-risks the SpaceX IPO narrative. A failure would not be catastrophic (iterative testing is expected) but would shift the IPO timeline conversation.</div>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <div class="body"><strong>The $573M cross-entity revenue disclosure makes the Muskverse's financial interconnections concrete.</strong> SpaceX and xAI paying Tesla over half a billion dollars in 2025 is not a conflict-of-interest theory anymore &mdash; it is an audited financial fact. This will feature in future shareholder litigation, SEC scrutiny, and governance debates around the IPO.</div>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <div class="body"><strong>Grok's distribution strategy is expanding beyond the Musk ecosystem.</strong> CarPlay integration means Grok is no longer confined to X and Tesla cabins. The pricing aggression on Grok 4.3 ($1.25/M input tokens) is a market-share play that only works if Colossus's scale advantages are real. If they are, xAI could be the price leader in frontier AI within 12 months.</div>
+    </li>
+    <li>
+      <span class="num">6</span>
+      <div class="body"><strong>Musk is in two courtrooms simultaneously.</strong> The OpenAI trial in Oakland and the DOGE lawsuit progressing through federal court create a dual legal exposure that constrains his bandwidth and creates deposition risk. The DOGE case &mdash; where he cannot be located for service &mdash; is the slower-moving but potentially more personally damaging proceeding.</div>
+    </li>
+  </ul>
+</div>
+
+<!-- ═══ COLOPHON ═══ -->
+<div class="colophon">
+  <h4>Methodology &amp; sources</h4>
+  <p><strong>Coverage window:</strong> April 28 &ndash; May 4, 2026. <strong>Baseline:</strong> <a href="2026-04-27_muskverse_deep_dive.html">Muskverse Deep Dive, April 27, 2026</a>. <strong>Lens:</strong> Portfolio-wide weekly digest, system-level perspective. C-Score 1&ndash;5 per card.</p>
+
+  <h4 style="margin-top:16px;">Primary sources</h4>
+  <p>
+    Trial: <a href="https://www.cnbc.com/2026/05/02/musk-testimony-dominated-first-week-musk-v-altman-trial-in-oakland.html">CNBC Week 1</a>,
+    <a href="https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/">TechCrunch distillation</a>,
+    <a href="https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/">MIT Tech Review</a>,
+    <a href="https://www.washingtonpost.com/technology/2026/05/02/musk-altman-openai-trial/">Washington Post</a>.
+    Tesla: <a href="https://electrek.co/2026/04/29/tesla-semi-first-truck-high-volume-production-line/">Electrek Semi</a>,
+    <a href="https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/">Electrek 10-K</a>,
+    <a href="https://www.fool.com/investing/2026/05/03/finally-some-good-news-for-tesla-investors/">Motley Fool</a>.
+    xAI: <a href="https://venturebeat.com/technology/xai-launches-grok-4-3-at-an-aggressively-low-price-and-a-new-fast-powerful-voice-cloning-suite">VentureBeat Grok 4.3</a>,
+    <a href="https://9to5mac.com/2026/05/02/xai-is-bringing-grok-voice-mode-to-apple-carplay/">9to5Mac CarPlay</a>,
+    <a href="https://techcrunch.com/2026/04/30/x-announces-a-rebuilt-ad-platform-powered-by-ai/">TechCrunch X ads</a>.
+    SpaceX: <a href="https://www.basenor.com/blogs/news/starship-flight-12-targets-mid-may-with-new-v3-vehicle">Basenor V3</a>,
+    <a href="https://spacedaily.com/sd-n-spacexs-50th-launch-of-2026-shows-why-competitors-cant-catch-up/">SpaceDaily 50th</a>.
+    DOGE: <a href="https://thehill.com/regulation/court-battles/5798636-judge-musk-lawsuit-trump-adviser-role/">The Hill</a>,
+    <a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/">CBS cost analysis</a>.
+    Neuralink: <a href="https://www.mddionline.com/digital-health/elon-musk-s-neuralink-to-ramp-up-bci-device-production-in-2026">MDDI</a>,
+    <a href="https://www.fiercebiotech.com/medtech/elon-musks-neuralink-kickstart-high-volume-production-brain-computer-interface-devices">Fierce Biotech</a>.
+    Boring: <a href="https://www.cnbc.com/2026/03/26/elon-musks-boring-co-tunnels-not-wanted-by-most-nashville-residents.html">CNBC Nashville</a>,
+    <a href="https://www.texastribune.org/2026/03/24/dallas-boring-company-tunnel-underground-transit-elon-musk/">Texas Tribune</a>.
+  </p>
+
+  <p style="margin-top:24px; text-align:center; color:var(--on-surface-muted);">
+    Muskverse Weekly Briefing &middot; Assembled May 4, 2026 &middot; 10 cards &middot; Coverage Apr 28 &ndash; May 4
+  </p>
+</div>
+
+</main>
+
+</body>
+</html>
