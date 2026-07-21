@@ -6,25 +6,35 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Briefings</title>
 <style>
-:root{--bg:#f8f9fa;--surface:#fff;--divider:#e8eaed;--text:#202124;--sec:#3c4043;--muted:#5f6368;--blue:#1a73e8}
+:root{--bg:#f8f9fa;--surface:#fff;--divider:#e8eaed;--text:#202124;--sec:#3c4043;--muted:#5f6368;--blue:#1a73e8;--hist:#6d4c41}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font:400 16px/1.5 Roboto,Arial,Helvetica,sans-serif;
   -webkit-text-size-adjust:100%;padding:16px 12px 48px}
 .wrap{max-width:640px;margin:0 auto}
+.tabswitch{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 header{background:var(--surface);border:1px solid var(--divider);border-radius:16px;
-  padding:20px;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+  padding:18px 20px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
 .logo{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo svg{width:24px;height:24px}
 h1{font-size:20px;font-weight:500}
-.sub{color:var(--muted);font-size:13px}
+.subh{color:var(--muted);font-size:13px}
+.tabrow{display:flex;gap:6px;background:var(--surface);border:1px solid var(--divider);
+  border-radius:14px;padding:5px;margin-bottom:18px}
+.tab{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 8px;
+  border-radius:10px;font-size:15px;font-weight:500;color:var(--muted);cursor:pointer;
+  user-select:none;transition:background .12s}
+.tab svg{width:18px;height:18px}
+.edline{color:var(--muted);font-size:13px;margin:2px 4px 0}
 h2{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
-  color:var(--muted);margin:24px 4px 10px}
+  color:var(--muted);margin:22px 4px 10px}
 .card{display:flex;align-items:center;gap:14px;background:var(--surface);
   border:1px solid var(--divider);border-radius:14px;padding:14px 16px;margin-bottom:10px;
   text-decoration:none;color:var(--text)}
 .card:active{background:#f1f3f4}
 .avatar{width:40px;height:40px;border-radius:50%;color:#fff;display:flex;align-items:center;
   justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.avatar svg{width:22px;height:22px;fill:#fff}
 .cardtext{display:flex;flex-direction:column;min-width:0}
 .cardtitle{font-size:16px;font-weight:500}
 .cardteaser{font-size:13px;color:var(--muted)}
@@ -39,28 +49,79 @@ summary::-webkit-details-marker{display:none}
   color:var(--sec);font-size:15px;border-radius:8px}
 .arow:active{background:#f1f3f4}
 .adot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.pane{display:none}
+#tab-b:checked ~ .pane-b{display:block}
+#tab-h:checked ~ .pane-h{display:block}
+#tab-b:checked ~ .tabrow .lab-b{background:var(--blue);color:#fff}
+#tab-h:checked ~ .tabrow .lab-h{background:var(--hist);color:#fff}
 footer{text-align:center;color:var(--muted);font-size:12px;margin-top:32px}
 </style>
 </head>
 <body>
 <div class="wrap">
+<input class="tabswitch" type="radio" name="wztab" id="tab-b" checked>
+<input class="tabswitch" type="radio" name="wztab" id="tab-h">
 <header>
-  <div class="logo">SB</div>
+  <div class="logo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 3l-1.67 1.67L18.67 3 17 4.67 15.33 3l-1.66 1.67L12 3l-1.67 1.67L8.67 3 7 4.67 5.33 3 3.67 4.67 2 3v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V3zM11 19H4v-6h7v6zm9 0h-7v-2h7v2zm0-4h-7v-2h7v2zm0-4H4V8h16v3z"/></svg></div>
   <div><h1>Briefings</h1>
-  <div class="sub">Aktuelle Ausgabe: 27. Juli 2026</div></div>
+  <div class="subh">Privates Archiv · nicht indexiert</div></div>
 </header>
+<div class="tabrow">
+  <label class="tab lab-b" for="tab-b"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h10v2H4v-2z"/></svg> Briefings</label>
+  <label class="tab lab-h" for="tab-h"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 3a9 9 0 0 0-9 9H1l3.9 3.9.07.14L9 12H6a7 7 0 1 1 2.05 4.95l-1.42 1.42A9 9 0 1 0 13 3zm-1 5v5l4.25 2.52.72-1.21-3.47-2.06V8H12z"/></svg> History</label>
+</div>
+<div class="pane pane-b">
+<div class="edline">Aktuelle Ausgabe: 18. Juli 2026</div>
 <h2>Aktuelle Ausgabe</h2>
-  <a class="card" href="briefings/2026-07-27_history_briefing_weekly.html">
-    <span class="avatar" style="background:#6d4c41">HB</span>
-    <span class="cardtext"><span class="cardtitle">History</span>
-    <span class="cardteaser">Was vor 10, 25 & 50 Jahren in der kommenden Woche geschah.</span></span>
+  <a class="card" href="briefings/2026-07-18_ai_briefing_weekly.html">
+    <span class="avatar" style="background:#1a73e8">AI</span>
+    <span class="cardtext"><span class="cardtitle">AI Briefing</span>
+    <span class="cardteaser">Modelle, Releases, Funding, Policy — die volle AI-Landschaft.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_market_briefing_weekly.html">
+    <span class="avatar" style="background:#188038">MK</span>
+    <span class="cardtext"><span class="cardtitle">Markets</span>
+    <span class="cardteaser">Indizes, Earnings, Makro, Rohstoffe, Krypto.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_geopolitics_briefing_weekly.html">
+    <span class="avatar" style="background:#7627bb">GP</span>
+    <span class="cardtext"><span class="cardtitle">Geopolitik</span>
+    <span class="cardteaser">Ukraine/Russland, Iran, Sanktionen, hybride Kriegsführung.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_polymarket_dashboard_weekly.html">
+    <span class="avatar" style="background:#8430ce">PM</span>
+    <span class="cardtext"><span class="cardtitle">Polymarket</span>
+    <span class="cardteaser">Prediction-Market-Cluster: Richtung, Preise, Kipppunkte.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_muskverse_briefing_weekly.html">
+    <span class="avatar" style="background:#3c4043">MV</span>
+    <span class="cardtext"><span class="cardtitle">Muskverse</span>
+    <span class="cardteaser">Tesla, SpaceX, xAI, Politik, Legal.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_a16z_briefing_weekly.html">
+    <span class="avatar" style="background:#1a237e">AZ</span>
+    <span class="cardtext"><span class="cardtitle">a16z</span>
+    <span class="cardteaser">Deals, Portfolio, Crypto, Thought Leadership.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_innermost_loop_weekly.html">
+    <span class="avatar" style="background:#5e35b1">IL</span>
+    <span class="cardtext"><span class="cardtitle">Innermost Loop</span>
+    <span class="cardteaser">Wochensynthese des Wissner-Gross-Newsletters.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+  <a class="card" href="briefings/2026-07-18_cowork_briefing.html">
+    <span class="avatar" style="background:#c46210">CW</span>
+    <span class="cardtext"><span class="cardtitle">Cowork</span>
+    <span class="cardteaser">Praxis-first: Was Leute mit Claude Cowork wirklich bauen.</span></span>
     <span class="chev">&#8250;</span>
   </a>
 <h2>Archiv</h2>
-  <details class="edition">
-    <summary>18. Juli 2026 <span class="count">8 Briefings</span></summary>
-    <div class="arows"><a class="arow" href="briefings/2026-07-18_ai_briefing_weekly.html"><span class="adot" style="background:#1a73e8"></span>AI Briefing</a><a class="arow" href="briefings/2026-07-18_market_briefing_weekly.html"><span class="adot" style="background:#188038"></span>Markets</a><a class="arow" href="briefings/2026-07-18_geopolitics_briefing_weekly.html"><span class="adot" style="background:#7627bb"></span>Geopolitik</a><a class="arow" href="briefings/2026-07-18_polymarket_dashboard_weekly.html"><span class="adot" style="background:#8430ce"></span>Polymarket</a><a class="arow" href="briefings/2026-07-18_muskverse_briefing_weekly.html"><span class="adot" style="background:#3c4043"></span>Muskverse</a><a class="arow" href="briefings/2026-07-18_a16z_briefing_weekly.html"><span class="adot" style="background:#1a237e"></span>a16z</a><a class="arow" href="briefings/2026-07-18_innermost_loop_weekly.html"><span class="adot" style="background:#5e35b1"></span>Innermost Loop</a><a class="arow" href="briefings/2026-07-18_cowork_briefing.html"><span class="adot" style="background:#c46210"></span>Cowork</a></div>
-  </details>
   <details class="edition">
     <summary>15. Juli 2026 <span class="count">8 Briefings</span></summary>
     <div class="arows"><a class="arow" href="briefings/2026-07-15_ai_briefing_weekly.html"><span class="adot" style="background:#1a73e8"></span>AI Briefing</a><a class="arow" href="briefings/2026-07-15_market_briefing_weekly.html"><span class="adot" style="background:#188038"></span>Markets</a><a class="arow" href="briefings/2026-07-15_geopolitics_briefing_weekly.html"><span class="adot" style="background:#7627bb"></span>Geopolitik</a><a class="arow" href="briefings/2026-07-15_polymarket_dashboard_weekly.html"><span class="adot" style="background:#8430ce"></span>Polymarket</a><a class="arow" href="briefings/2026-07-15_muskverse_briefing_weekly.html"><span class="adot" style="background:#3c4043"></span>Muskverse</a><a class="arow" href="briefings/2026-07-15_a16z_briefing_weekly.html"><span class="adot" style="background:#1a237e"></span>a16z</a><a class="arow" href="briefings/2026-07-15_innermost_loop_weekly.html"><span class="adot" style="background:#5e35b1"></span>Innermost Loop</a><a class="arow" href="briefings/2026-07-15_cowork_briefing.html"><span class="adot" style="background:#c46210"></span>Cowork</a></div>
@@ -125,6 +186,18 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:32px}
     <summary>27. April 2026 <span class="count">1 Briefings</span></summary>
     <div class="arows"><a class="arow" href="briefings/2026-04-27_market_briefing_weekly.html"><span class="adot" style="background:#188038"></span>Markets</a></div>
   </details>
+</div>
+<div class="pane pane-h">
+<div class="edline">Aktuelle Ausgabe: 27. Juli 2026</div>
+<h2>Aktuelle Ausgabe</h2>
+  <a class="card" href="briefings/2026-07-27_history_briefing_weekly.html">
+    <span class="avatar" style="background:#6d4c41"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 3a9 9 0 0 0-9 9H1l3.9 3.9.07.14L9 12H6a7 7 0 1 1 2.05 4.95l-1.42 1.42A9 9 0 1 0 13 3zm-1 5v5l4.25 2.52.72-1.21-3.47-2.06V8H12z"/></svg></span>
+    <span class="cardtext"><span class="cardtitle">History</span>
+    <span class="cardteaser">Was vor 10, 25 & 50 Jahren in der kommenden Woche geschah.</span></span>
+    <span class="chev">&#8250;</span>
+  </a>
+<h2>Archiv</h2><p class="sub" style="padding:0 4px">Noch keine älteren Ausgaben.</p>
+</div>
 <footer>Privates Archiv · nicht indexiert</footer>
 </div>
 </body>
