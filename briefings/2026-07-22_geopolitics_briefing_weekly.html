@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geopolitics Briefing · 22 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#7627bb; --primary-soft:#f3e8fd; --primary-on-soft:#5f1d8e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --ink:#1f3548; --ink-soft:#e3ecf3; --ink-deep:#0f2536;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--primary-soft); color:var(--primary-on-soft); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; width:100%; }
+
+  .banner { display:flex; gap:12px; align-items:flex-start; background:var(--red-soft); border:1px solid #f5c6c3; border-radius:12px; padding:14px 18px; margin-bottom:20px; }
+  .banner .material-icons-outlined { color:var(--red); font-size:20px; margin-top:1px; }
+  .banner p { margin:0; font-size:13px; color:var(--on-surface-2); line-height:1.55; }
+  .banner strong { color:var(--on-surface); }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:var(--primary-soft); border-color:var(--primary-soft); color:var(--primary-on-soft); font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#7627bb 0%,#1f3548 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:22px 26px; margin-bottom:8px; }
+  .statusquo h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0 0 12px; display:flex; align-items:center; gap:10px; }
+  .statusquo h3 .material-icons-outlined { font-size:20px; color:var(--primary-on-soft); }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:13.5px; color:var(--on-surface-2); line-height:1.6; margin-bottom:8px; }
+  .statusquo li:last-child { margin-bottom:0; }
+  .statusquo strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:var(--primary-on-soft); font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; background:var(--surface-2); color:var(--on-surface-muted); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-purple { background:var(--primary-soft); color:var(--primary-on-soft); }
+  .tag.t-ink { background:var(--ink-soft); color:var(--ink-deep); }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:var(--primary-on-soft); text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:var(--primary-soft); }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:var(--primary); }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.dd { margin-top:12px; border-top:1px dashed var(--divider-soft); padding-top:12px; }
+  details.dd summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px; background:var(--primary-soft); color:var(--primary-on-soft); font-size:12px; font-weight:500; padding:5px 14px; border-radius:14px; user-select:none; }
+  details.dd summary::-webkit-details-marker { display:none; }
+  details.dd summary .chev { font-size:16px; transition:transform 0.2s; }
+  details.dd[open] summary .chev { transform:rotate(180deg); }
+  details.dd summary:hover { background:#e9d7fb; }
+  details.dd .ddbody { margin-top:12px; }
+  details.dd .ddbody p { font-size:13.5px; line-height:1.62; color:var(--on-surface-2); margin:0 0 10px; }
+  details.dd .ddbody p:last-child { margin-bottom:0; }
+  .ddlabel { color:var(--on-surface); font-weight:700; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:var(--primary-soft); color:var(--primary-on-soft); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:var(--primary-on-soft); font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .xref { background:var(--ink-soft); border:1px solid #cfe0ec; border-radius:12px; padding:16px 20px; margin-top:20px; }
+  .xref p { margin:0; font-size:13px; color:var(--ink-deep); line-height:1.6; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">GP</div>
+    <div class="titles">
+      <h1>Geopolitics Briefing</h1>
+      <div class="sub">Compiled Wed 22 July 2026 · covers 15–22 July · Kyiv takes the war's biggest missile barrage, Pickaxe Mountain strike looms, EU sanctions vote live in Brussels</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="banner">
+  <span class="material-icons-outlined">warning_amber</span>
+  <p><strong>Two frozen negotiations, two escalating wars.</strong> Neither the Iran nor the Ukraine diplomatic track moved forward this week — Iran's senior military adviser threatened "full-scale offensive operations," while Kyiv absorbed its largest ballistic-missile barrage of the war. The EU's 21st sanctions package is being voted in Brussels <strong>as this briefing is compiled</strong> (outcome not yet known at time of writing — flagged below). Casualty and target figures on all sides remain contested and self-reported; CENTCOM, Iran's Health Ministry, and Ukrainian/Russian tallies are flagged wherever they diverge. Every card carries a collapsed <strong>"Mehr lesen" deep-dive</strong> built from additionally fetched primary sources.</p>
+</div>
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#status">Status Quo</a>
+  <a class="chip" href="#ukraine">Ukraine / Russia</a>
+  <a class="chip" href="#iran">Iran / Hormuz</a>
+  <a class="chip" href="#sanctions">Sanctions</a>
+  <a class="chip" href="#other">Hybrid / Europe</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Geopolitics · Week of 15–22 July 2026</div>
+  <h2>Kyiv absorbs the war's largest ballistic-missile barrage while its government still can't resolve last week's political crisis. In Iran, Washington is naming a strike date on the war's most consequential target.</h2>
+  <p>Seven days ago the frame was "US strikes hit civilian infrastructure, Iran fires on seven states, Brent $88, Kyiv's government falls out with itself." All four threads are still live and none has resolved. On 19 July, Russia fired 41 ballistic missiles at Kyiv — the largest single barrage of the war — killing one and wounding at least 15; Ukraine intercepted fewer than half. President Zelensky still has not resolved the Fedorov dismissal that triggered protests in at least 18 cities a week ago. In Iran, the war entered roughly its 145th day with no ceasefire, Trump saying the US will hit the underground <strong>Pickaxe Mountain</strong> complex "pretty soon, and very heavily," and Iran's senior military adviser Mohsen Rezaee threatening full-scale retaliation if strikes continue "another two or three days." Hormuz transits remain near a two-month low of 7–8 vessels a day. In Brussels, EU ambassadors are voting on the 21st sanctions package today, with Greece the last holdout over LNG shipping rules — the outcome was not yet known when this briefing was compiled.</p>
+</div>
+
+<!-- STATUS QUO -->
+<a id="status"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">history</span>
+  <h3>Status Quo — where the 18 July edition left off</h3>
+</div>
+<div class="statusquo">
+  <h3><span class="material-icons-outlined">bookmark</span>Prior read (compiled 18 July, covered 12–18 July)</h3>
+  <ul>
+    <li><strong>Iran / Hormuz:</strong> CENTCOM's sixth straight night of strikes moved the target set from military assets onto civilian and energy infrastructure — bridges, telecoms, railways, and (for the first time acknowledged by Tehran) the power grid. At least seven killed in a bridge strike in Hormozgan province.</li>
+    <li><strong>Iran's response:</strong> IRGC and army fired on seven countries in one night (Bahrain, Iraq, Kuwait, Oman, Qatar, Jordan, Syria); a child was injured by shrapnel in Doha and a Kuwaiti power/desalination plant was damaged.</li>
+    <li><strong>Escalation ladder:</strong> Trump named "power plants," "all their bridges," and the underground <strong>Pickaxe Mountain</strong> nuclear-linked complex as next targets, while abandoning a proposed Hormuz transit toll.</li>
+    <li><strong>Naval blockade:</strong> The US reimposed its blockade of Iranian ports on 14 July and disabled a tanker headed for Kharg Island; Hormuz transits fell to two-month lows (seven vessels in a day). Brent closed the week at $88.10.</li>
+    <li><strong>Sanctions:</strong> The EU's 21st package failed a second time on 15 July after three days of ambassadorial talks; the oil-price-cap freeze at $44.10 was only good until 23 July.</li>
+    <li><strong>Ukraine:</strong> Zelensky fired Defence Minister Mykhailo Fedorov, triggering protests in at least 18 cities and a small wave of resignations. Ukraine's long-range naval campaign had its best week yet — 147 Russian vessels struck between 6 and 16 July.</li>
+    <li><strong>Russia / Iran internal:</strong> CSIS "abyss" framing of the Russian economy; VAT rising 20→22%; Iran's Supreme Leader Mojtaba Khamenei still unseen in public over four months after his installation.</li>
+  </ul>
+</div>
+
+<!-- UKRAINE / RUSSIA -->
+<a id="ukraine"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">shield</span>
+  <h3>Ukraine / Russia — record barrage on Kyiv, a political crisis still unresolved</h3>
+  <span class="count-pill">6 items</span>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-red">Escalation</span><span class="date-pill">19 Jul</span></div>
+  <h4>Russia fires 41 ballistic missiles at Kyiv — the largest single barrage of the war</h4>
+  <p>Overnight on 19 July, Russia launched 41 ballistic missiles at the Ukrainian capital, the largest barrage of the nearly four-and-a-half-year war. Ukraine's air force downed 18 — fewer than half. One person was killed and at least 15 injured; strikes hit six Kyiv districts, igniting fires in residential buildings, offices, industrial sites and a dormitory. Separate drone strikes killed one person in Dnipropetrovsk and a train conductor in Zaporizhzhia. Foreign Minister Andrii Sybiha called it "a brutal terrorist attack." Ukraine's Patriot-interceptor shortage is now the visible constraint on defending the capital; Trump has floated licensing domestic Patriot production, with no implementation timeline.</p>
+  <div class="links">
+    <a href="https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war">Al Jazeera · 19 Jul</a>
+    <a href="https://www.cnn.com/2026/07/19/europe/russia-ukraine-ballistic-missiles-intl-hnk">CNN · biggest barrage</a>
+    <a href="https://www.npr.org/2026/07/19/nx-s1-5899518/russia-attack-kyiv">NPR · overnight attack</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Ballistic-missile saturation attacks on Kyiv have escalated in scale roughly every few months since Russia began producing Iskander-M and North Korean-supplied KN-23-family missiles at higher tempo in 2025. What makes 19 July different is not a new weapon but volume: 41 in one night exceeds any prior single-night total against the capital, and it landed one week after Ukraine's own long-range campaign posted its best week of the war (159 Russian vessels struck 6–17 July, per Institute for the Study of War data) — suggesting the barrage functions partly as retaliation for Ukraine's naval and refinery strikes deep inside Russia, and partly as a demonstration during a week when Kyiv's government was visibly distracted by the Fedorov crisis.</p>
+      <p><span class="ddlabel">Die Details.</span> Interception numbers are the story: 18 of 41 downed is a sub-50% success rate against ballistic missiles specifically (drones, which Ukraine intercepts at far higher rates — 115 of 130 on the night of 16–17 July, per Institute for the Study of War — are a different threat class). Ballistic missiles travel at speeds and trajectories that only Patriot batteries can reliably counter, and Ukraine has a chronic shortage of Patriot interceptors, not launchers. Six Kyiv districts were hit; casualties (1 dead, 15+ injured in the capital alone) were comparatively contained given the scale, which analysts attribute to warning systems and shelter use rather than interception. Trump's response was a pledge to "license" domestic Patriot production for Ukraine — a policy change, not a delivery, and one with no stated timeline, production capacity commitment, or funding mechanism attached as of this writing.</p>
+      <p><span class="ddlabel">Einordnung.</span> The interceptor math is the crux of Ukraine's air-defence problem for the rest of the year: Patriot production is a Lockheed Martin/Raytheon supply-chain constraint measured in a handful of batteries per year globally, not something a licensing announcement fixes on any relevant timescale. A "license to produce" is meaningfully different from a NATO ally supplying interceptors directly, and if it becomes the administration's primary answer to record barrages, expect the gap between Russian missile production and Ukrainian interception capacity to keep widening through the autumn. The timing — one week after Ukraine's best naval-strike week and during Kyiv's domestic political crisis — also reads as Russia probing whether Ukrainian air defence and political cohesion are simultaneously strained.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Whether any concrete Patriot delivery or co-production agreement follows the licensing pledge within weeks rather than months. (2) Whether barrage size (now 41) continues to climb month over month. (3) Ukrainian retaliatory strikes on missile production or launch sites in the following days. (4) Whether the interception rate for ballistic missiles specifically continues to fall.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">Confidence: high (multi-outlet, Ukrainian air force data)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-purple">Ukraine internal</span><span class="date-pill">16–22 Jul, unresolved</span></div>
+  <h4>The Fedorov crisis is still open a week later — Zelensky won't confirm or deny reappointment</h4>
+  <p>The protests that erupted after Zelensky fired Defence Minister Mykhailo Fedorov have not subsided. Thousands rallied again in Kyiv and other cities on 16 July demanding his reappointment; pro-government lawmaker Mykyta Poturaev announced he would resign in protest, and the Air Force's deputy commander also resigned. Multiple Servant of the People lawmakers say Zelensky's proposed replacement, Interior Minister Ihor Klymenko, may not have the votes in parliament. Zelensky, appearing with UK Prime Minister Keir Starmer, said only "I understand, hear, and respond to what society is saying" — without confirming Fedorov's fate.</p>
+  <div class="links">
+    <a href="https://kyivindependent.com/thousands-rally-in-kyiv-other-cities-against-defense-minister-fedorovs-dismissal-demand-reappointment/">Kyiv Independent · rallies &amp; resignations</a>
+    <a href="https://www.cbsnews.com/news/ukrainian-protest-zelenskyy-oust-defense-chief-mykhailo-fedorov-russia-war/">CBS News · backlash</a>
+    <a href="https://en.wikipedia.org/wiki/Dismissal_of_Mykhailo_Fedorov">Background · dismissal timeline</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Fedorov built his reputation as the architect of Ukraine's wartime digital and drone-procurement apparatus — the Diia app, the Brave1 defence-tech accelerator, and much of the anti-corruption transparency infrastructure that kept Western donors comfortable continuing aid. His dismissal, reported last week without a clearly stated public rationale, immediately read to much of Ukrainian civil society as a loss of the one cabinet figure seen as both competent and clean, at a moment when trust in Kyiv's institutions is a precondition for continued Western support.</p>
+      <p><span class="ddlabel">Die Details.</span> The parliamentary arithmetic matters more than the street protests: Zelensky's own party is not unified behind the proposed replacement, Ihor Klymenko, and an anonymous lawmaker's assessment that "Klymenko might not have enough votes" points to a live risk that the government cannot actually execute the reshuffle it announced. Two resignations — a sitting MP and the Air Force's deputy commander — are unusual mid-war signals of institutional dissent; neither is typically a move made lightly in a country under martial law. Zelensky's own language ("I understand, hear, and respond") is calibrated ambiguity, consistent with an administration testing whether the protests fade before committing to either confirm Klymenko or reverse course.</p>
+      <p><span class="ddlabel">Einordnung.</span> This is Ukraine's most serious domestic political rupture of the full-scale war to date, and it lands in the same week as the largest missile barrage yet on the capital — a combination that tests whether wartime national unity can survive a leadership decision widely seen as arbitrary. If Zelensky reverses and reinstates Fedorov, it signals the street and the party can check him; if Klymenko is confirmed despite intra-party doubts, it signals the presidency is willing to spend political capital it may not have to spare four months before any plausible ceasefire window. Either outcome shapes how much domestic room Zelensky has for concessions in future negotiations.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) A parliamentary vote on Klymenko's confirmation and its margin. (2) Whether Fedorov is offered a different senior role as a face-saving compromise. (3) Further resignations from the military or cabinet. (4) Protest size trend — growing or fading — over the coming week.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">Confidence: high (multi-outlet, on-record quotes)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-ink">Front line</span><span class="date-pill">15–17 Jul</span></div>
+  <h4>The front is essentially static — Russia gains roughly 1.6 km² a day, both sides lean on drones over armour</h4>
+  <p>Neither side achieved confirmed territorial breakthroughs this week. The Institute for the Study of War (ISW) assessed Russian forces gaining about 1.6 square kilometres a day in July — slow positional warfare, not a mechanized offensive. Around Pokrovsk, Ukrainian drone operators conducted reconnaissance up to 30 km behind Russian lines, forcing Russian troops to march 50 km to reach combat positions; near Kostyantynivka, Ukrainian forces claim to be destroying roughly 90% of Russian armoured vehicles before they reach the front. Russian Defence Minister Andrei Belousov's 17 July guidance emphasised small motorised vehicles and drones over mechanized manoeuvre, citing 8,000 newly trained UAV specialists in the first half of 2026.</p>
+  <div class="links">
+    <a href="https://www.criticalthreats.org/analysis/russian-offensive-campaign-assessment-july-17-2026">ISW/Critical Threats · 17 Jul assessment</a>
+    <a href="https://www.russiamatters.org/news/russia-ukraine-war-report-card/russia-ukraine-war-report-card-july-15-2026">Russia Matters · war report card</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> The front line has been substantively static for over a year measured against the scale of the country: Russia Matters' report card puts Russian gains over the past 12 months at roughly 1,100–1,130 square miles, about 0.5% of Ukraine's territory — an extraordinarily high cost-per-square-kilometre in a war of this duration. A Russian source cited by ISW contradicted Moscow's own claims, saying only 11 settlements were seized in six months versus an official claim of 50, suggesting internal Russian reporting is itself inflated for domestic consumption.</p>
+      <p><span class="ddlabel">Die Details.</span> The Pokrovsk and Kostyantynivka-Druzhkivka sectors remain the most contested; both are now defined by drone-on-drone and drone-on-armour attrition rather than manoeuvre. Ukraine's claimed 90% pre-contact destruction rate of Russian armour, if accurate, explains why Russian doctrine (per Belousov's 17 July remarks) is explicitly shifting toward small motorised infiltration groups and unmanned systems rather than mechanized columns — armour simply doesn't survive the approach. Both militaries are converging on the same operating concept: dispersed, drone-saturated, low-density warfare, which favours whichever side can sustain higher production and training throughput. Russia's claim of 8,000 trained UAV specialists in six months and doubled drone deliveries versus 2025 is a capacity signal worth tracking against Ukraine's own drone output, which is not independently quantified in this week's reporting.</p>
+      <p><span class="ddlabel">Einordnung.</span> A front line moving at 1.6 km²/day translates to a war of years, not months, if nothing else changes — which is the strategic backdrop against which both the Kyiv political crisis and the record missile barrage should be read. Neither side currently has a battlefield-driven reason to seek a ceasefire on favourable terms; the war's shape this year is being decided more by production capacity (drones, interceptors, artillery) and political durability (Kyiv's cabinet crisis, Moscow's economic strain — see Russia internal, below) than by manoeuvre on the ground.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Whether Russian territorial gains accelerate or continue at the current slow rate through August. (2) Confirmed data on Ukrainian drone production volume. (3) Any breakthrough at Pokrovsk specifically, which has been contested for over a year. (4) Whether Russia's claimed settlement counts and Ukraine's claimed kill ratios get independently verified.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium-high (ISW assessment, mixed Russian/Ukrainian self-reporting)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-green">Long-range campaign</span><span class="date-pill">6–17 Jul</span></div>
+  <h4>Ukraine's deep-strike campaign keeps outperforming its front-line position — 159 vessels, a strategic bomber, a major refinery</h4>
+  <p>While the ground war stalled, Ukraine's long-range campaign had its best stretch of the war: 159 Russian vessels struck between 6 and 17 July (117 in the Sea of Azov, 42 in the Black Sea), a strike on the Engels-2 strategic air base that damaged a Tu-95 bomber, and a hit on the Slavneft-YANOS oil refinery in Yaroslavl. Ukraine also says it has expanded a private air-defence ecosystem, with 51 domestic enterprises now authorised to build counter-drone and air-defence systems.</p>
+  <div class="links">
+    <a href="https://www.criticalthreats.org/analysis/russian-offensive-campaign-assessment-july-17-2026">ISW/Critical Threats · deep-strike tally</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> This is a continuation and acceleration of the campaign flagged in last week's edition, which reported 147 vessels struck 6–16 July and roughly 42% of Russian refining capacity offline as of mid-July. The Yaroslavl refinery strike extends the target list well north of the Black Sea theatre — Yaroslavl is over 200 km northeast of Moscow, illustrating that Ukrainian long-range strike systems (naval drones, aerial drones, and missiles of increasing range) now threaten targets across most of European Russia.</p>
+      <p><span class="ddlabel">Die Details.</span> The vessel count matters because it degrades Russia's ability to move personnel, fuel and materiel by sea, particularly across the Sea of Azov corridor that supports Crimea and the southern front. The Engels-2 strike is notable because it targets Russia's strategic bomber fleet — the platform used to launch the cruise missiles hitting Ukrainian cities — directly linking Ukraine's deep-strike campaign to its own air-defence problem. The 51-enterprise private air-defence ecosystem is a data point on Ukraine's attempt to build domestic counter-drone capacity that doesn't depend on Western supply chains, a direct response to the Patriot-interceptor shortage exposed by the 19 July barrage.</p>
+      <p><span class="ddlabel">Einordnung.</span> Ukraine's theory of the war increasingly separates two axes: hold roughly static on the ground while imposing economic and military cost deep inside Russia through drones and long-range strikes. That is a sustainable strategy only if Ukraine's own air defence holds against the retaliatory barrages this campaign invites — which is precisely the vulnerability the 19 July Kyiv attack exposed. The two stories are one story: Ukraine is winning the deep-strike exchange and losing the air-defence race, and the net effect on the war's trajectory depends on which trend dominates.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Independent confirmation of Russian refining-capacity loss percentages. (2) Whether Engels-2 damage affects Russian bomber sortie rates in subsequent weeks. (3) Output data from the 51 newly authorised air-defence enterprises. (4) Whether Russia retaliates specifically against the vessels/refineries campaign with a further missile escalation.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium-high (ISW-compiled, Ukrainian-sourced claims)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-blue">Diplomacy</span><span class="date-pill">frozen</span></div>
+  <h4>No movement on Ukraine talks this week — the last diplomatic marker is still the 8 July NATO summit</h4>
+  <p>Unlike Iran, where the diplomatic track's collapse is at least being actively discussed, the Ukraine-Russia negotiating track produced no new developments this week. The most recent substantive marker remains the 8 July NATO Ankara summit, where allies pledged roughly €70–80 billion in aid for Ukraine for 2026–27, and earlier-July Trump calls with both Putin and Zelensky that produced no announced framework. No new Istanbul-track or Witkoff-channel meeting was reported between 15 and 22 July.</p>
+  <div class="links">
+    <a href="https://www.aljazeera.com/news/2026/7/8/nato-pledges-70-billion-euros-for-ukraine-as-trump-praises-peace-progress">Al Jazeera · NATO pledges, 8 Jul</a>
+    <a href="https://breakingdefense.com/2026/07/six-take-aways-from-the-2026-nato-summit/">Breaking Defense · summit takeaways</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> The Ankara summit declaration was the most concrete Ukraine-related diplomatic output of July: a multi-year aid pledge and Trump publicly describing "progress" toward peace, without a specific framework document. Earlier in the year, Zelensky had floated a June deadline (per February reporting) for a US-brokered deal; that deadline passed without a deal, and no replacement deadline has been set.</p>
+      <p><span class="ddlabel">Die Details.</span> Search of this week's reporting across wire services and specialist outlets (Al Jazeera, CFR conflict tracker, Commons Library, CSIS) turns up no new Trump-Putin or Trump-Zelensky call, no Istanbul-format meeting, and no fresh US envoy shuttle diplomacy dated 15–22 July. The silence is itself informative: it suggests US diplomatic bandwidth on the Russia-Ukraine file has been at least partially absorbed by the Iran war this month, and that neither Moscow nor Kyiv currently has an incentive to restart talks — Russia because it is not losing ground quickly, Ukraine because its deep-strike campaign is outperforming expectations even as its capital absorbs record barrages.</p>
+      <p><span class="ddlabel">Einordnung.</span> A negotiating track that goes quiet for a week is not unusual mid-war, but the coincidence with Kyiv's domestic political crisis and the record missile barrage raises the near-term question of whether either side sees value in talks right now. Historically, barrage escalation and domestic instability in Kyiv have preceded, not followed, renewed diplomatic pushes — Moscow may be testing whether pressure now yields better terms once talks do resume.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Any Trump statement referencing a new Ukraine deadline. (2) A Witkoff or Kellogg trip to Moscow or Kyiv. (3) Whether the Ankara aid pledge translates into disbursed Patriot interceptors specifically. (4) Signals from Moscow about willingness to return to the table given its own economic strain (see below).</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">Confidence: low-medium (absence of reporting, not a confirmed "no talks" statement)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-yellow">Russia internal</span><span class="date-pill">16 Jul</span></div>
+  <h4>Moscow Exchange posts its steepest drop since 2022, Putin's approval slips, and billionaires are described as "hostages" of the regime</h4>
+  <p>The Moscow Exchange Composite Index fell 4.24% on 16 July — its steepest single-day decline since September 2022 — while the Central Bank's Business Climate Indicator hit its lowest level since April 2022. State-affiliated polling shows Putin's approval down five points to roughly 66%, one of the sharpest drops of the war. Separately, a Moscow Times analysis describes Russia's billionaire class ($697bn in collective assets by mid-2026, per the piece) as trapped: unable to expand internationally under sanctions, yet exposed to state seizure at home — three billionaires lost assets to nationalisation in 2026 alone.</p>
+  <div class="links">
+    <a href="https://www.criticalthreats.org/analysis/russian-offensive-campaign-assessment-july-17-2026">ISW/Critical Threats · market &amp; approval data</a>
+    <a href="https://www.themoscowtimes.com/2026/07/14/russias-billionaires-face-a-dilemma-putin-threatens-and-protects-their-wealth-a93243">Moscow Times · billionaires' dilemma</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> This continues directly from last week's "abyss" framing (CSIS) and the VAT hike from 20% to 22% — this week adds a hard market data point. The Moscow Exchange plunge of 16 July is the sharpest since the initial invasion-adjacent shock of September 2022, a comparison Russian financial commentators themselves are making, which signals the drop registered as more than routine volatility even within a heavily state-influenced market.</p>
+      <p><span class="ddlabel">Die Details.</span> Three data points triangulate the same story: a market signal (Moscow Exchange, -4.24% in a day), a sentiment signal (Central Bank Business Climate Indicator at a 27-month low), and a political signal (Putin approval -5pts to ~66%, notable in a system where polling itself is state-adjacent and typically biased toward stability). The billionaire-class analysis adds an elite dimension: three nationalisations in 2026 alone indicate the state is actively expropriating private capital to fund the war economy, even as it publicly courts loyalty from the same class — Andrey Melnichenko's high-profile loyalty profile in The Economist is cited as evidence oligarchs have no real bargaining leverage left.</p>
+      <p><span class="ddlabel">Einordnung.</span> None of these signals individually suggest imminent instability — Putin at 66% approval and a one-day market drop are each recoverable in isolation. Together, though, they describe a regime financing an increasingly expensive war by squeezing the same elite it needs for loyalty and technical capacity, while public confidence erodes gradually rather than collapsing. The "hostage" framing in the Moscow Times piece is analytically important: it implies Russia's business elite has no organized channel to push back on economic mismanagement, meaning the pressure shows up as capital flight, quiet emigration and reduced investment rather than open elite dissent — a slow-burn constraint on Russia's war financing rather than a fast one.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Whether the Moscow Exchange drop is a one-off or the start of a trend. (2) Further nationalisations of billionaire assets. (3) Putin approval trend over the following weeks — five points is significant but needs confirmation as a trend, not a poll artifact. (4) Any visible elite dissent, however indirect (asset transfers abroad, reduced public loyalty signalling).</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium (state-adjacent data sources, cross-corroborated)</span></div>
+  </div>
+</div>
+
+<!-- IRAN -->
+<a id="iran"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">local_fire_department</span>
+  <h3>Iran / Hormuz — no ceasefire, a named strike target, and an Iranian ultimatum</h3>
+  <span class="count-pill">5 items</span>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-red">War status</span><span class="date-pill">day ~144–146</span></div>
+  <h4>The war grinds on with no ceasefire — casualty tallies diverge sharply and stay unverifiable</h4>
+  <p>As of 18–21 July, CENTCOM has run at least seven consecutive nights of strikes, now reaching deeper inland (Ahvaz, Yazd, Lar) and continuing to hit infrastructure — a strike on the Bonji desalination plant's intake left roughly 10,000 people across 20 villages without drinking water. CENTCOM's own tally: 17 US personnel killed, at least 420–427 wounded, one missing, since the war began 28 February. Iran's Health Ministry says at least 50 Iranians were killed and 500 injured in July alone, on top of a cumulative pre-ceasefire toll (through 17 June) of at least 3,468 deaths, including 376 children. Both sets of figures are self-reported by the respective militaries and ministries and are not independently verified.</p>
+  <div class="links">
+    <a href="https://www.aljazeera.com/news/2026/7/20/what-we-know-about-us-soldiers-killed-in-iran-war-and-iranian-casualties">Al Jazeera · casualties, 20 Jul</a>
+    <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity · daily war update</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> This week's strikes extend directly from last week's shift onto civilian infrastructure. What's new is geographic reach — Ahvaz, Yazd and Lar are well inland from the coastal targets that dominated the war's first months, and the stated rationale (isolating Bandar Abbas port from Tehran by hitting bridges, tunnels and power systems) increasingly describes a strategic-isolation campaign against Iran's principal Gulf port rather than a narrowly maritime-security operation.</p>
+      <p><span class="ddlabel">Die Details.</span> The US casualty count grew this week: two personnel died in an attack on Muwaffaq Salti Air Base in Jordan (18 July), one in an ordnance-detonation incident in northern Iraq (19 July), pushing the total to 17 dead and roughly 420–427 wounded — a toll the Pentagon has only partially named publicly, releasing six names initially and two more on 21 July. On the Iranian side, the Health Ministry figure of "50 killed, 500 injured in July alone" is a new monthly tally distinct from the cumulative 3,468-death figure through the June ceasefire; the two numbers are not directly comparable and Iranian officials have given inconsistent overlapping figures in past weeks (as flagged in last week's edition too). The Bonji desalination strike is a discrete, verifiable-in-principle humanitarian data point — 10,000 people across 20 villages losing drinking-water access during a summer heat emergency — that sits alongside the acknowledged power-grid damage from last week.</p>
+      <p><span class="ddlabel">Einordnung.</span> Seventeen confirmed US dead is a meaningfully higher toll than a "war of strikes without ground troops" framing would suggest, and the drip-feed of named casualties (six, then two more) indicates the Pentagon is managing disclosure pace rather than releasing full information at once — a pattern that tends to erode domestic political tolerance for extended campaigns over time. On the Iranian side, water and power infrastructure strikes during a summer heat emergency are the kind of humanitarian data point that accumulates diplomatic cost even if it does not change Tehran's calculus quickly.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Full naming of the remaining unidentified US casualties. (2) Any independent (non-Iranian-government) verification of the Iranian toll, e.g. via international humanitarian organisations. (3) Further named inland targets, which would confirm this is now a full national-infrastructure campaign, not a coastal one. (4) Congressional or public reaction in the US to a rising, drip-fed casualty count.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium-high (CENTCOM figures corroborated; Iranian figures self-reported)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-red">Named target</span><span class="date-pill">~21 Jul</span></div>
+  <h4>Trump: the US will hit Pickaxe Mountain "pretty soon, and very heavily"</h4>
+  <p>Trump escalated last week's threat from a conditional warning into a near-term commitment, saying the US would strike the underground Pickaxe Mountain complex "pretty soon, and very heavily." The site — believed to sit roughly 100 metres under granite near Natanz — remains beyond what experts say the US Massive Ordnance Penetrator (MOP) can guarantee destroying; Defense Secretary Hegseth claims US forces "can reach any target," but independent analysts suggest only ground forces, not aerial bombardment alone, could reliably neutralise it. IAEA inspectors remain barred from Iran entirely since strikes began, leaving no independent monitoring of the site.</p>
+  <div class="links">
+    <a href="https://abcnews.com/Politics/pickaxe-mountain-trump-us-hit-iranian-nuclear-site/story?id=134957036">ABC News · "pretty soon" threat</a>
+    <a href="https://isis-online.org/isis-reports/what-to-know-about-pickaxe-mountain">ISIS · site background</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Pickaxe Mountain has been the single most contested item on the nuclear file since 2020 satellite imagery first revealed tunnelling. Last week's edition documented Trump naming it as a target on 13 July via the Hugh Hewitt Show; this week the language shifted from a conditional threat ("we're going to take out Pickaxe Mountain... tell the Iranians to be ready") to an assertion of imminence ("pretty soon, and very heavily"), without yet naming a specific date. Depth estimates have themselves shifted across sources this week, from the roughly 600-metre figure cited in earlier reporting to a lower ~100-metre estimate in the 21 July ABC report — a discrepancy this briefing cannot resolve and flags as unverified pending clearer satellite-derived analysis.</p>
+      <p><span class="ddlabel">Die Details.</span> Hegseth's public claim that the US "can reach any target" is a political assertion, not a technical one; independent analysts quoted this week say the MOP cannot guarantee the complex's destruction regardless of depth estimate, and that a ground assault — politically far more costly and risky than any strike conducted so far in this war — may be the only reliable method. IAEA Director General statements from late June promised inspections would "happen" once a final deal was reached; with no ceasefire and IAEA inspectors barred throughout the strike campaign, there has been no independent verification of what remains inside the complex, what if anything has been damaged, or what continued construction (flagged by satellite imagery through late June per the Institute for Science and International Security) has produced since.</p>
+      <p><span class="ddlabel">Einordnung.</span> A strike on Pickaxe Mountain remains the single most consequential unexecuted decision of this war. It would convert an already-brutal infrastructure campaign into an explicit counter-proliferation strike against a facility the US cannot guarantee destroying by air alone — meaning a strike that visibly fails to neutralise the site could strengthen, not weaken, the case inside Tehran for accelerating toward a weapon, while a strike that requires ground forces would represent by far the largest US military escalation of the war. The gap between Hegseth's rhetoric and analysts' technical assessment is the tell: the administration may be signalling resolve for negotiating leverage more than describing an actual, technically sound plan.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Any specific date attached to "pretty soon." (2) Movement of B-2/B-21 bomber assets toward the theatre. (3) Any indication ground forces are being considered, which would be the biggest single escalation of the war. (4) Resolution of the conflicting depth estimates (100m vs. 600m) via new satellite imagery.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium (direct quotes, but technical details conflict across sources)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-yellow">Iranian ultimatum</span><span class="date-pill">18 Jul</span></div>
+  <h4>Iran's most specific escalation threat yet: "full-scale offensive operations" within two to three days</h4>
+  <p>Iran's senior military adviser Mohsen Rezaee warned that Iran would launch "full-scale offensive operations" if US strikes continued for "another two or three days" — the most concrete timeline any Iranian official has attached to a retaliation threshold in this war. The warning came as UN Secretary-General António Guterres called for urgent negotiations and China and Pakistan urged an immediate ceasefire and a return to the 17 June memorandum of understanding (MoU). Iran's official response so far has stayed within the pattern of regional strikes rather than the broader escalation Rezaee described.</p>
+  <div class="links">
+    <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity · Rezaee threat, day 141 update</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Iranian officials have issued escalation rhetoric throughout the war without attaching hard timelines, generally preferring the ambiguity that lets Tehran calibrate its response after the fact. Rezaee's "two or three days" framing is a departure from that pattern and was issued around 17–18 July, meaning the window it described has already elapsed by the time of this briefing (22 July) without a publicly identifiable "full-scale" Iranian operation distinct from the ongoing pattern of regional strikes reported last week (Bahrain, Kuwait, Qatar, Oman, Jordan, Syria).</p>
+      <p><span class="ddlabel">Die Details.</span> Rezaee holds no formal command authority over IRGC or army operations but is a senior figure in Iran's security establishment whose public statements are typically read as reflecting internal deliberations rather than being purely personal opinion. That the threshold has passed without a visibly distinct "full-scale" response could mean: (a) Iran lacks the capacity to escalate meaningfully beyond its current campaign, (b) the threat was rhetorical pressure aimed at the Chinese/Pakistani mediation track rather than a genuine trigger, or (c) an escalation is still being prepared and simply hasn't been reported yet as of this writing. This briefing cannot resolve which explanation is correct and flags it as the week's most significant unresolved data point.</p>
+      <p><span class="ddlabel">Einordnung.</span> The coincidence of Guterres's call for urgent negotiations, the China-Pakistan mediation push, and Rezaee's ultimatum suggests Tehran is using the threat of further escalation as leverage to pull mediators back to the table rather than as a genuine operational plan — consistent with Iran's posture throughout the war of using regional strikes as a pressure tool rather than pursuing direct confrontation with US forces. But ultimatums that pass unfulfilled also carry a domestic credibility cost for the issuing government, which could push toward action specifically to avoid appearing to bluff.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Any Iranian operation in the days immediately following this briefing that could retroactively fulfil the Rezaee threshold. (2) Whether Rezaee's statement is echoed or walked back by more senior IRGC or government voices. (3) Chinese/Pakistani mediation follow-through. (4) Guterres or UN Security Council action.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">Confidence: low-medium (single-source rhetoric, unresolved as of publication)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-ink">Hormuz</span><span class="date-pill">16–20 Jul</span></div>
+  <h4>Hormuz transits stay near a two-month low; Brent eases slightly to the high $80s</h4>
+  <p>Tanker transits through the Strait of Hormuz remained collapsed this week — eight vessels on 16 July, against a pre-war baseline above 100 a day — with a "severe" risk rating still in effect. Brent crude, which closed last week at $88.10, eased to $88.22 by the morning of 20 July (down $2.78 on the day before), still far above pre-crisis levels. War-risk insurance premiums remain the practical constraint on shipping through the strait, doing more to suppress traffic than any formal closure declaration from either side.</p>
+  <div class="links">
+    <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity · transit &amp; price data</a>
+    <a href="https://fortune.com/article/price-of-oil-07-20-2026/">Fortune · Brent, 20 Jul</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Last week's edition reported the reimposed US blockade collapsing daily transits to seven vessels; this week's eight-vessel count on 16 July shows no meaningful recovery — the strait remains functionally closed to normal commercial traffic regardless of what either side formally declares. This is now the structural baseline of the crisis rather than a transient shock.</p>
+      <p><span class="ddlabel">Die Details.</span> The Brent move this week (roughly $88.10 → $88.22, with a same-day $2.78 drop noted on 20 July, implying intraday volatility around the mid-to-high $80s to low $90s range) sits within the elevated band established since mid-July rather than showing a clear directional trend — consistent with a market that has priced in sustained disruption but is not yet pricing in either a resolution or a further catastrophic escalation (such as a strike on Kharg Island itself, which last week's edition flagged as the scenario that would take Iranian exports toward zero). No source this week reports Kharg being struck.</p>
+      <p><span class="ddlabel">Einordnung.</span> A market that has stopped moving sharply on daily headlines, while the underlying transit collapse persists unchanged, suggests traders increasingly view the Hormuz disruption as a persistent-but-bounded state rather than an escalating crisis — which could change quickly if either the Pickaxe Mountain strike or an Iranian "full-scale" response (see above) materialises. <strong>See this week's market briefing for the full oil-price and Hormuz-freight analysis; this section covers the geopolitical drivers only.</strong></p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Daily transit counts as the best real-time indicator. (2) Any strike on Kharg Island. (3) War-risk insurance premium levels, which lead price action. (4) OPEC+ spare-capacity signals from Saudi Arabia and the UAE.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="lbl">Confidence: high (independent traffic and price data)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-blue">Diplomacy</span><span class="date-pill">quiet</span></div>
+  <h4>The negotiating track is frozen, not advancing — Guterres and China/Pakistan are calling for talks nobody has scheduled</h4>
+  <p>Unlike Ukraine, where the diplomatic silence is passive, Iran's negotiating track this week featured active calls for engagement that went unanswered: UN Secretary-General Guterres urged "urgent negotiations," and China and Pakistan renewed calls (following their 17 July joint statement) for an immediate ceasefire and return to the 17 June MoU. No new round of talks, in Doha or elsewhere, was reported between 15 and 22 July, and IAEA inspectors remain barred from the country.</p>
+  <div class="links">
+    <a href="https://www.globalsecurity.org/military/ops/iran-war-oprep.htm">GlobalSecurity · diplomatic status</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Last week's edition described a "negotiation-shaped object kept alive for third-party audiences" — talks that existed rhetorically more than substantively, with China's entry as co-mediator alongside Pakistan the one new development. This week that framing holds and arguably worsens: the mediators are now issuing calls for talks that aren't happening at all, rather than disputing the content of talks that are ongoing.</p>
+      <p><span class="ddlabel">Die Details.</span> Guterres's intervention is notable because UN Secretary-General statements on this specific war have been relatively rare compared to the volume of US, Iranian and mediator-state statements — his "urgent negotiations" call reads as recognition that the war has moved past the point where quiet shuttle diplomacy alone is likely to work. China and Pakistan's renewed 17 June MoU framing signals they still see that agreement's structure (ceasefire, Hormuz reopening, timeframe for a final deal) as the only currently viable framework, rather than proposing something new — but neither Washington nor Tehran has responded publicly.</p>
+      <p><span class="ddlabel">Einordnung.</span> A war where every external actor agrees talks should restart, but no talks are scheduled, indicates the constraint is not a lack of a framework (the June MoU still exists on paper) but a lack of mutual willingness — Washington because it appears to prefer continuing escalation toward Pickaxe Mountain before negotiating from a position it judges stronger, and Tehran because Rezaee's ultimatum (above) suggests internal pressure to look tough rather than conciliatory. This is a diplomatically dangerous equilibrium: everyone agrees on the exit, nobody is taking it.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Any Doha, Muscat or other venue announcement for a new round. (2) A Wang Yi visit to Tehran. (3) Whether the Pickaxe Mountain strike, if it happens, kills or catalyses the diplomatic track. (4) Any softening in Rezaee-style rhetoric from Tehran.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium (statements confirmed; absence of talks inferred from no reporting)</span></div>
+  </div>
+</div>
+
+<!-- SANCTIONS -->
+<a id="sanctions"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>Sanctions &amp; Trade — a third attempt at the 21st package, live as this briefing is compiled</h3>
+  <span class="count-pill">2 items</span>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-yellow">Live vote</span><span class="date-pill">22 Jul — outcome pending</span></div>
+  <h4>EU ambassadors vote today on the 21st Russia sanctions package — Greece is the last holdout, over LNG shipping</h4>
+  <p><strong>Honesty flag: this vote was underway in Brussels as this briefing was compiled on 22 July and the outcome was not yet publicly known.</strong> Having failed twice (13 and 15 July), the package returned for a third attempt today. Greece has emerged as the key holdout, objecting to restrictions on European LNG (liquefied natural gas) carriers transporting Russian gas — Athens argues a ban would simply hand its market share to non-EU shippers without cutting Russian revenue. The package as proposed would sanction roughly 215 individuals and entities including 94 financial institutions, pushing the total number of sanctioned Russian banks above 100 — more than half of Russia's internationally connected banking sector — and would freeze the oil price cap at $44.10 a barrel for six months if adopted.</p>
+  <div class="links">
+    <a href="https://www.euronews.com/my-europe/2026/07/22/europe-today-will-greece-derail-the-eus-latest-russia-sanctions">Euronews · 22 Jul, Greece holdout</a>
+    <a href="https://athens-times.com/eu-to-vote-on-21st-sanctions-package-against-russia-in-brussels-greeces-pivotal-role/">Athens Times · vote details</a>
+    <a href="https://www.pravda.com.ua/eng/news/2026/07/15/8044278/">Ukrainska Pravda · postponement history</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> This is the third scheduled vote in ten days: it failed on 13 July after Bulgaria and Italy blocked the Patriarch Kirill listing, failed again on 15 July after three days of ambassadorial talks (both documented in last week's edition), and returns today with the sticking point shifted from a religious-figure sanction to a commercial one — LNG shipping restrictions. That shift matters: a values-based objection (Kirill) is easier to resolve through carve-outs than a commercial one where a member state's shipping industry has a direct, ongoing revenue stake. Lithuania's Foreign Minister Kestutis Budrys framed the broader stakes on 13 July as a warning against "placing economic interests above security interests" — a line aimed squarely at Greece and other reluctant states.</p>
+      <p><span class="ddlabel">Die Details.</span> Greece's argument is a substitution logic: if EU-flagged LNG carriers are barred from Russian cargo, non-EU (e.g., Chinese, Indian, or flag-of-convenience) carriers simply take the business, so the restriction imposes cost on Greek shipping without reducing Russian gas revenue. This is a serious economic argument, not merely obstruction — Greece is Europe's dominant LNG shipping nation and has a structural interest distinct from, say, Hungary's more overtly pro-Russian objections seen in earlier packages. The package's substantive content, if passed, is significant: 94 additional financial institutions would push total sanctioned Russian banks past 100, described by an EU intelligence report as risking an "explosive" banking-sector crisis in Russia. The oil price cap freeze at $44.10 (versus market Brent prices near $88) would, if extended six months, lock in the price-cap mechanism through the turn of the year.</p>
+      <p><span class="ddlabel">Einordnung.</span> The EU's serial inability to pass a sanctions package under unanimity rules is becoming its own story independent of the package's contents — three failed or contested attempts in ten days signals that sanctions escalation is running into a structural ceiling as measures increasingly touch specific member states' direct commercial interests rather than abstract solidarity. If the banking measures do pass, they would be a genuinely significant escalation — over half of Russia's internationally linked banks under sanction is a material constraint regardless of workarounds via non-Western correspondent banking. But repeated failure also signals to Moscow that EU sanctions cohesion has a shelf life, which may factor into Russian calculations about how much economic pressure to expect over the war's remaining duration.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) The vote outcome — check for confirmation after this briefing's compilation time. (2) Whether the LNG provision is stripped or delayed to secure Greek assent. (3) Whether the oil price cap freeze lapses at the 23 July deadline if no deal is reached today. (4) The Urals-Brent price spread as the practical test of whether any of this bites regardless of the vote outcome.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium (process well-documented; outcome unknown at publication)</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-red">Banking risk</span><span class="date-pill">ongoing</span></div>
+  <h4>EU intelligence: Russia's banking sector risks an "explosive" crisis if the new listings go through</h4>
+  <p>An EU intelligence assessment cited in this week's reporting on the sanctions package warns that pushing sanctioned Russian banks past the 100 mark — more than half the country's internationally connected banking sector — carries risk of an "explosive" crisis, on top of the Moscow Exchange plunge and Central Bank sentiment data covered in the Russia-internal card above. The claim has not been independently corroborated with underlying data in this week's sourcing and should be read as a directional EU policy argument as much as a neutral risk assessment.</p>
+  <div class="links">
+    <a href="https://athens-times.com/eu-to-vote-on-21st-sanctions-package-against-russia-in-brussels-greeces-pivotal-role/">Athens Times · "explosive" banking risk</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Sanctions on Russian financial institutions have escalated incrementally across all 21 EU packages since 2022, targeting an expanding share of the sector each time. The claim that this specific package could push the cumulative effect to a systemic "explosive" threshold is new language not used in prior packages' framing, suggesting either a genuine assessment of cumulative strain or an attempt to build political urgency to overcome the Greek holdout.</p>
+      <p><span class="ddlabel">Die Details.</span> The specific claim — over half of Russia's internationally connected banks under sanction — is a meaningful threshold if accurate, since it would leave the remaining unsanctioned institutions carrying a disproportionate share of what international transaction volume remains, concentrating both risk and (for Russia) strategic value in a shrinking set of banks. This dovetails with this week's Russia-internal data: the Moscow Exchange's steepest one-day drop since 2022 and the Central Bank's weakest sentiment reading since April 2022 are independent indicators consistent with — though not proof of — the banking-stress narrative.</p>
+      <p><span class="ddlabel">Einordnung.</span> "Explosive crisis" is EU policy language, not a neutral financial-stability assessment, and this briefing cannot verify the underlying intelligence. What can be said with more confidence is that multiple independent indicators (market, sentiment, banking-sanctions coverage) are pointing the same direction this week for the first time in a while — a genuine, if not yet quantified, deterioration in Russia's financial position. Whether it becomes acute enough to affect Moscow's war-financing decisions, or remains a slow-burn drag the state can manage as it has for four years, is not resolvable from this week's reporting alone.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Any specific data behind the "explosive" claim becoming public. (2) Correspondent-banking workarounds Russia uses to route around the sanctioned banks. (3) Further Moscow Exchange volatility. (4) Russian Central Bank interest-rate or currency interventions in response.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="lbl">Confidence: low-medium (single-source policy claim, unverified)</span></div>
+  </div>
+</div>
+
+<!-- OTHER / HYBRID -->
+<a id="other"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">wifi_tethering</span>
+  <h3>Hybrid warfare / Europe — Poland and the Baltics warn Russia may weaponise captured Ukrainian drones</h3>
+  <span class="count-pill">1 item</span>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag t-purple">Hybrid threat</span><span class="date-pill">21 Jul</span></div>
+  <h4>Poland's defence minister: Russia may use captured Ukrainian drones and stage false-flag operations against NATO territory</h4>
+  <p>Polish Defence Minister Władysław Kosiniak-Kamysz warned on 21 July that Russia has acquired numerous Ukrainian drones — some redirected in flight via electronic warfare — and may deploy them against NATO allies or stage false-flag incidents, alongside GPS jamming and sabotage. The warning follows a documented pattern: an oil-storage facility in Latvia was hit by a redirected drone in May 2026, triggering two high-level resignations including the prime minister's, plus persistent GPS jamming at Baltic airports and a disabled rail line in Poland. Poland, Lithuania and Latvia have all issued public warnings this month, citing shared US intelligence assessments.</p>
+  <div class="links">
+    <a href="https://www.defensenews.com/global/europe/2026/07/21/russia-may-use-captured-ukrainian-drones-against-poland-and-baltics-warsaw-warns/">Defense News · 21 Jul warning</a>
+    <a href="https://acleddata.com/report/testing-waters-suspected-russian-activity-challenges-europes-support-ukraine">ACLED · pattern tracker</a>
+  </div>
+  <details class="dd">
+    <summary>Mehr lesen<span class="material-icons-outlined chev">expand_more</span></summary>
+    <div class="ddbody">
+      <p><span class="ddlabel">Kontext &amp; Vorgeschichte.</span> Russian hybrid pressure on NATO's eastern flank has been building steadily through 2026 — GPS jamming, cable and pipeline incidents, and drone incursions have accumulated since the Baltic and Nordic states began documenting a pattern distinct from routine border friction. The May 2026 Latvian oil-facility strike, attributed to a Ukrainian-launched drone redirected by Russian electronic warfare rather than a Russian-launched one, is the clearest precedent: it caused real damage and real political consequences (the prime minister's resignation) despite Russia's plausible-deniability framing that Ukraine, not Russia, fired the weapon.</p>
+      <p><span class="ddlabel">Die Details.</span> The specific new warning this week is about captured Ukrainian drones — meaning Russia now potentially holds an inventory of weapons that, if used, would carry Ukrainian markings or characteristics, making attribution genuinely ambiguous rather than merely deniable. Latvian intelligence frames the broader signal as coercive: "missiles, drones or other actions designed to send a signal: stop supporting Ukraine, or you will have your own problems." The GPS jamming and Polish rail sabotage are lower-intensity, ongoing components of the same campaign rather than one-off incidents, and the false-flag warning specifically raises the possibility of a staged attack on Russian territory used to justify further escalation — a distinct and more serious category of risk than accidental drone redirection.</p>
+      <p><span class="ddlabel">Einordnung.</span> This is the clearest sign yet that Russia's hybrid-pressure campaign against NATO's eastern flank is intensifying in parallel with, not despite, its main-effort war in Ukraine and its indirect involvement in the Gulf-adjacent dynamics of the Iran war. The use of captured Ukrainian equipment specifically targets the West's attribution and Article 5 calculus — an attack that looks Ukrainian in origin is harder to treat as a Russian act of war, even if Russian electronic warfare or handling is involved. Three governments issuing coordinated public warnings citing shared US intelligence in the same month suggests either a genuinely elevated and specific threat assessment, or a coordinated effort to pre-position public opinion and legal justification ahead of an anticipated incident.</p>
+      <p><span class="ddlabel">Watch-Items.</span> (1) Any actual incident involving captured Ukrainian drone hardware on NATO territory. (2) Further GPS jamming incidents affecting civil aviation specifically. (3) Additional sabotage on Polish or Baltic infrastructure. (4) Any NATO Article 4 consultation request tied to these warnings.</p>
+    </div>
+  </details>
+  <div class="foot">
+    <div class="conf"><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="lbl">Confidence: medium-high (multiple government sources, one confirmed prior incident)</span></div>
+  </div>
+</div>
+
+<!-- EDITOR'S VIEW -->
+<a id="editor"></a>
+<div class="editor">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px">lightbulb</span>Editor's view</div>
+  <h3>Both wars are now running on domestic political fumes, not battlefield logic</h3>
+  <p><span class="num">1.</span> <strong>Neither theatre moved on its diplomatic track this week — and that's the story.</strong> Iran's mediators (Guterres, China, Pakistan) are calling for talks nobody has scheduled; Ukraine's negotiating track produced literally nothing dated 15–22 July. Both wars are currently being fought because talking is politically harder than fighting for at least one party on each side, not because either side lacks a framework to negotiate from.</p>
+  <p><span class="num">2.</span> <strong>Domestic political fragility is now a bigger swing factor than front-line movement.</strong> Ukraine's government still hasn't resolved a cabinet crisis a week later, with resignations spreading from politics into the military; Russia posted its steepest one-day market drop since 2022 and a five-point approval hit for Putin. Watch domestic politics in Kyiv and Moscow as closely as the map — both may move the war's trajectory faster than the current 1.6 km²/day front line does.</p>
+  <p><span class="num">3.</span> <strong>Pickaxe Mountain is the single most consequential unexecuted decision in either theatre.</strong> Trump has moved from a conditional threat to an assertion of imminence, but the technical basis for the strike (depth estimates, MOP capability) is contested even in this week's own reporting. A strike that visibly fails to destroy the site is a plausible outcome, and its second-order effect — strengthening Tehran's internal case for weaponisation — is the opposite of the stated goal.</p>
+  <p><span class="num">4.</span> <strong>Both belligerent capitals are quietly admitting air-defence and interceptor shortages.</strong> Kyiv's sub-50% ballistic-missile interception rate on 19 July and Iran's total dependence on regional strikes rather than direct confrontation with US forces both point to the same underlying reality: neither side can currently stop the other's preferred method of attack, only absorb and retaliate asymmetrically.</p>
+  <p><span class="num">5.</span> <strong>The EU's sanctions machinery is showing structural strain independent of Russia's resilience.</strong> Three failed or contested votes on one package in ten days — moving from a values dispute (Kirill) to a commercial one (Greek LNG shipping) — signals unanimity-based sanctions are running into member states' direct economic interests, not just political reluctance. Watch whether today's vote passes, and if so, whether it required gutting the LNG provisions to get there.</p>
+  <p><span class="num">6.</span> <strong>Hybrid pressure on NATO's eastern flank and Gulf-state exposure in the Iran war are testing the same underlying question simultaneously.</strong> Poland's warning about captured Ukrainian drones and last week's seven-country Iranian barrage both probe whether US allies' patience and attribution thresholds hold under sustained, ambiguous pressure — a test being run on two fronts at once.</p>
+  <div class="closer">Wildcard to watch into next week: if the EU sanctions vote fails a third time today, expect renewed questions in Brussels about whether unanimity-based sanctions policy is still fit for purpose — a structural story that could outlast this specific package.</div>
+</div>
+
+<div class="xref">
+  <p><strong>Cross-reference:</strong> for the full Brent crude, freight-rate and Hormuz war-risk-premium analysis behind this week's oil price moves, see this week's companion market briefing — this document covers the geopolitical drivers only.</p>
+</div>
+
+<div class="colophon">
+  Geopolitics Briefing · consolidated weekly (Ukraine/Russia + broader geopolitics)<br>
+  Compiled 22 July 2026 · covers 15–22 July 2026 · 14 story cards across Ukraine/Russia, Iran/Hormuz, sanctions and hybrid warfare, each with a collapsed "Mehr lesen" deep-dive<br>
+  Casualty, market and vote-outcome figures are self-reported or time-sensitive as of compilation and flagged accordingly throughout
+</div>
+
+</main>
+</body>
+</html>

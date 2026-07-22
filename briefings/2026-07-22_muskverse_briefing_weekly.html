@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Week of 22 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#1f2933; --primary-soft:#eceff1; --primary-on-soft:#1f2933;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --accent:#374151; --accent-soft:#eceff1; --accent-deep:#1f2937;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:#1f2937; color:#fff; display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:16px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:#1f2937; border-color:#1f2937; color:#fff; font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#5f6368 0%,#374151 55%,#1f2937 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+  .hero .stat-row { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; }
+  .hero .stat .n { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:700; }
+  .hero .stat .l { font-size:11px; opacity:0.85; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:8px; }
+  .statusquo .sq-label { display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--accent-deep); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin-bottom:6px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:#374151; font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); background:var(--surface-2); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.tesla { background:#fce8e6; color:#a50e0e; }
+  .tag.spacex { background:#e8eef6; color:#1f3548; }
+  .tag.xai { background:#f1f3f4; color:#3c4043; }
+  .tag.x { background:#f1f3f4; color:#202124; }
+  .tag.neuralink { background:#f3e8fd; color:#5f1d8e; }
+  .tag.boring { background:#fef7e0; color:#b06000; }
+  .tag.politics { background:#eceff1; color:#1f2937; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-dark { background:#eceff1; color:#1f2933; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); margin-left:auto; }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .data-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 14px; }
+  .data-item { background:var(--surface-2); border-radius:8px; padding:10px 12px; }
+  .data-label { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .data-value { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; color:var(--on-surface); }
+  .data-value.up { color:var(--green-deep); } .data-value.down { color:var(--red-deep); }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:#1f2937; text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:#eceff1; }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:#374151; }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.deep { margin-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:500; color:#1f2937; background:var(--surface-2); padding:5px 14px; border-radius:14px; user-select:none; transition:background 0.15s; }
+  details.deep summary:hover { background:#eceff1; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .chev { font-size:16px; line-height:1; transition:transform 0.2s; }
+  details.deep[open] summary .chev { transform:rotate(180deg); }
+  details.deep .dd { margin-top:12px; padding:14px 16px; background:var(--surface-2); border-radius:10px; }
+  details.deep .dd p { font-size:13.5px; line-height:1.65; color:var(--on-surface-2); margin:0 0 12px; }
+  details.deep .dd p:last-child { margin-bottom:0; }
+  details.deep .dd strong.lbl { color:var(--on-surface); font-weight:700; }
+
+  .banner { display:flex; gap:12px; background:var(--yellow-soft); border-radius:12px; padding:14px 18px; margin-bottom:14px; align-items:flex-start; }
+  .banner .material-icons-outlined { color:var(--yellow); font-size:20px; margin-top:1px; }
+  .banner .txt { font-size:13px; line-height:1.55; color:var(--on-surface-2); }
+  .banner .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .trends { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-top:14px; }
+  .trends .tr-label { display:inline-flex; align-items:center; gap:6px; background:var(--blue-soft); color:var(--blue-on); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .trends .row { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--divider-soft); align-items:flex-start; }
+  .trends .row:last-child { border-bottom:none; }
+  .trends .arrow { font-family:'Roboto Mono',monospace; font-size:12px; font-weight:700; min-width:34px; }
+  .trends .arrow.up { color:var(--green-deep); }
+  .trends .arrow.down { color:var(--red-deep); }
+  .trends .arrow.flat { color:var(--on-surface-muted); }
+  .trends .txt { font-size:13.5px; line-height:1.6; color:var(--on-surface-2); }
+  .trends .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:#eceff1; color:#1f2937; padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:#374151; font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+    .date-pill { margin-left:0; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Week of Jul 22 2026 · 15 – 22 July · Tesla · SpaceXAI / Grok · SpaceX · politics · legal · Neuralink · Boring</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#tesla">Tesla</a>
+  <a class="chip" href="#xai">SpaceXAI / Grok</a>
+  <a class="chip" href="#spacex">SpaceX</a>
+  <a class="chip" href="#politics">DOGE / Politics</a>
+  <a class="chip" href="#legal">Legal</a>
+  <a class="chip" href="#other">Other ventures</a>
+  <a class="chip" href="#trends">Trends</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Muskverse portfolio · weekly · 15 – 22 July 2026</div>
+  <h2>Tesla reports today with the tape still below where it stood a week ago; Starship Flight 13 is now a full week late; and a security researcher found a new hole in Grok Build within 24 hours of the "trust repair" release.</h2>
+  <p>The pattern from last week did not break, it compounded. <strong>Starship Flight 13</strong> aborted at T-0 on 16 July and still has not flown; SpaceX now targets <strong>23 July, 22:45 UTC</strong>, after swapping two Raptor 3 engines on Booster 20 — a week's slip against an Artemis calendar NASA has already signalled it could route around via Blue Origin. <strong>Grok Build's open-sourcing</strong>, held up last week as the credible fix to its data-exfiltration scandal, produced a working exploit chain within a day of release; SpaceXAI told the researcher on HackerOne the client-side issue was "out of scope." On the legal front, a second Musk-entity suit against OpenAI — xAI's data-centre trade-secrets case — was dismissed for a second time and is now, like Musk v. Altman, headed to the Ninth Circuit. And a day before Tesla's <strong>Q2 earnings call</strong>, the company expanded robotaxi to Orlando and Tampa by press release while independent trackers put the entire unsupervised Texas fleet at roughly 21 cars — not the 175 Bank of America reported the week before.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">23 Jul</div><div class="l">Starship 13 · third target date</div></div>
+    <div class="stat"><div class="n">&lt;24 hrs</div><div class="l">Time to Grok Build exploit</div></div>
+    <div class="stat"><div class="n">~$394</div><div class="l">TSLA close, 21 Jul (+3.46%)</div></div>
+    <div class="stat"><div class="n">Today</div><div class="l">Tesla Q2 call · after market close</div></div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <span class="sq-label"><span class="material-icons-outlined" style="font-size:14px">history</span>Status quo — where last week's edition (18 July) left off</span>
+  <ul>
+    <li><strong>Tesla:</strong> TSLA had given back its delivery-beat rally to close $380.84 into the print, with roughly 300 shareholder questions submitted to the Say portal — the top two boosted by a whale-sized holder — demanding answers on three straight quarters of missed robotaxi guidance and Hardware 3 (HW3) liability.</li>
+    <li><strong>SpaceXAI / Grok:</strong> Grok Build had been caught uploading 5.1 GB of code for a 192 KB task (26,000x over-collection); the company responded by making data retention off-by-default and open-sourcing the client. Bloomberg reported an internal culture built explicitly to "match Claude," with a co-founder exodus since the February SpaceX merger.</li>
+    <li><strong>SpaceX:</strong> Flight 13 had just aborted at T-0 (four Raptor 3 engines failed to ignite), with Musk targeting a 20 July retry carrying 20 Starlink V3 satellites. SPCX traded near post-IPO lows, about 45% below its 16 June high.</li>
+    <li><strong>Politics:</strong> DOGE had formally wound down on 4 July claiming $215B in savings against roughly 200,000 departures; the America Party was pursuing a narrow 2–3 Senate, 8–10 House targeting strategy while Musk simultaneously funded Republican candidates.</li>
+    <li><strong>Legal:</strong> Musk had lost his bid to void the Twitter fraud verdict and a judge had approved his $1.5M SEC settlement "despite significant misgivings." The Musk v. Altman appeal sat dormant while Apple's new trade-secrets suit against OpenAI gave Musk and Altman a fresh reason to spar on X.</li>
+  </ul>
+</div>
+
+<div class="banner">
+  <span class="material-icons-outlined">info</span>
+  <div class="txt"><strong>Naming note:</strong> xAI renamed itself <strong>SpaceXAI</strong> on 6 July, five months after SpaceX absorbed it in the February all-stock deal. This briefing uses "SpaceXAI" for the AI unit, "SpaceX" for launch and Starlink, and "SPCX" for the single listed stock that now contains all of it — Grok, X (formerly Twitter), Colossus and the rockets.</div>
+</div>
+
+<!-- TESLA -->
+<a id="tesla"></a>
+<div class="section-header"><span class="material-icons-outlined">electric_bolt</span><h3>Tesla</h3><span class="count-pill">4 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-yellow">Earnings today</span><span class="date-pill">22 Jul 2026</span></div>
+  <h4>Q2 print lands after the close today, and the options market is pricing a 6–8% swing on a single number: automotive gross margin ex-credits</h4>
+  <p>Tesla reports second-quarter 2026 results after market close today, 22 July, with the call to follow. Delivery strength is no longer news — 480,126 vehicles, a record second quarter, up 25% year over year — and is already priced in. What is not priced in is margin: consensus revenue sits near $26.4B (estimates range as wide as $22.3B–$29B), consensus EPS is $0.53 (range $0.27–$0.74), and options traders are pricing a post-earnings move of roughly 6.4–7.6% in either direction, an unusually wide two-sided bet for a company that already told the market what it sold.</p>
+  <p>TSLA closed up 3.46% on 21 July to roughly $394, still pinned below both its 50-day ($391) and 100-day ($399) moving averages, with $386.72 as the first technical hurdle to a bullish reversal. The average analyst price target of $408.07 implies only about 7.6% upside — barely above the range the options market itself expects the stock to move on the news.</p>
+  <div class="links">
+    <a href="https://electrek.co/2026/07/21/tesla-tsla-q2-2026-earnings-preview/" target="_blank">Electrek: Q2 2026 earnings preview</a>
+    <a href="https://www.fxleaders.com/news/2026/07/21/tesla-tsla-stock-analysis-379-pre-earnings-setup-480k-deliveries-known-margins-and-cybercab-decide-the-move/" target="_blank">FX Leaders: pre-earnings technical setup</a>
+    <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262039494-tesla-tsla-q2-2026-earnings-preview-july-22-480k-deliveries-tradingkey" target="_blank">TradingKey: 7.6% options swing</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Close 21 Jul</div><div class="data-value up">~$394 (+3.46%)</div></div>
+    <div class="data-item"><div class="data-label">Avg. target</div><div class="data-value">$408.07</div></div>
+    <div class="data-item"><div class="data-label">Revenue consensus</div><div class="data-value">$26.4B</div></div>
+    <div class="data-item"><div class="data-label">Options-implied move</div><div class="data-value">6.4 – 7.6%</div></div>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Last week's edition closed with the observation that a Hold consensus surviving a delivery beat is worse than the beat itself. That read held for another five trading days: TSLA spent the week between $369 (its pre-earnings floor) and roughly $396, essentially chopping sideways while the market waited for the one number deliveries cannot answer — what it cost Tesla to sell 480,126 vehicles into a market with no federal EV credit left. The 21 July bounce of 3.46% reads as pre-earnings positioning rather than conviction; volume and options skew both point to traders squaring exposure ahead of a binary event, not to fresh buying on fundamentals.</p>
+    <p><strong class="lbl">Die Details.</strong> The estimate dispersion is the story. Revenue consensus of $26.4B carries a $6.7B range end to end — roughly 25% of the midpoint — which is not normal for a company that already disclosed unit volumes; it means Wall Street genuinely does not know what price concessions Tesla used to hit the delivery number. EPS consensus of $0.53 spans $0.27 to $0.74, essentially a 3x range from bottom to top estimate. Electrek's Q1 baseline of roughly 12.5% automotive gross margin excluding credits is the number last quarter's bulls and bears fought over; this week's FX Leaders technical note separately cites a "17–18%" Q2 gross-margin consensus without specifying whether that figure includes regulatory credits, which is exactly the kind of ambiguity that makes today's disclosure a genuine information event rather than a formality. Regulatory credit revenue itself has fallen more than 50% year over year since the federal EV purchase incentive lapsed, removing a cushion that inflated margin comparisons in every recent quarter.</p>
+    <p><strong class="lbl">Einordnung.</strong> The options market pricing a bigger move than the average analyst's implied upside is itself a signal: it means the sell-side's price targets are not doing the work of expressing uncertainty, and traders are hedging a wider outcome distribution than the research notes admit to. For portfolio purposes, today's print resolves less than it appears to. Even a clean margin beat does not touch the two multi-year questions — Optimus's manufacturability and robotaxi's unit economics — that this briefing's other Tesla cards address directly. The single most consequential possible disclosure is not a percentage point of margin; it is any hard number on the Tesla/SpaceXAI Digital Optimus revenue split that shareholders have been asking for since the portal opened.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Automotive gross margin ex-credits, reconciled against both the 12.5% Q1 baseline and this week's higher consensus chatter. (2) Whether management gives a hard 2H26 robotaxi city count or repeats "preparations underway." (3) Any quantified answer on HW3 remediation cost. (4) Disclosure — or continued silence — on Tesla's capital contribution and revenue share for "Digital Optimus with SpaceXAI." (5) Whether the post-earnings move exceeds the priced-in 7.6%, which would say more about positioning than fundamentals.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — price levels and consensus figures are reported; margin consensus conflicts across sources</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-red">Robotaxi</span><span class="date-pill">21 Jul 2026</span></div>
+  <h4>Robotaxi lands in Orlando and Tampa a day before earnings — while independent tracking puts Tesla's entire unsupervised Texas fleet at roughly 21 cars, not the 175 reported a week ago</h4>
+  <p>Tesla announced robotaxi service in Orlando and Tampa on 21 July via a four-word post on X: "Robotaxi now in Tampa &amp; Orlando!" — the third and fourth Florida markets, arriving just 18 days after Miami and one day ahead of the Q2 call. Both launches appear small, with a Tesla employee monitoring from inside the vehicle, and Tesla disclosed no geofence, vehicle count or safety-driver policy.</p>
+  <p>The more consequential number came from Electrek's community fleet-tracking the same day: Austin's unsupervised robotaxi fleet stands at roughly 17 active cars — down from a peak near 25 in late April — plus about four in Dallas, for a total unsupervised fleet of roughly 21 vehicles a year after the Austin launch. That directly contradicts the Bank of America-sourced figure of 175 Texas vehicles this briefing carried last week, and the discrepancy is large enough to matter.</p>
+  <div class="links">
+    <a href="https://electrek.co/2026/07/21/tesla-robotaxi-tampa-orlando-austin-fleet-stalls/" target="_blank">Electrek: Austin fleet stalls at 17 cars</a>
+    <a href="https://techcrunch.com/2026/07/21/tesla-spins-up-robotaxi-pilots-in-orlando-and-tampa-ahead-of-q2-earnings/" target="_blank">TechCrunch: pilots ahead of earnings</a>
+    <a href="https://www.basenor.com/blogs/news/tesla-robotaxi-launches-in-orlando-and-tampa-just-18-days-after-miami" target="_blank">Basenor: 18 days after Miami</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Markets, unsupervised</div><div class="data-value">Austin, Dallas</div></div>
+    <div class="data-item"><div class="data-label">Austin fleet (Electrek)</div><div class="data-value down">~17 cars</div></div>
+    <div class="data-item"><div class="data-label">Texas fleet (BofA, 15 Jul)</div><div class="data-value up">175 cars</div></div>
+    <div class="data-item"><div class="data-label">Cities total</div><div class="data-value">7</div></div>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> The map now reads Austin, Dallas, Houston, the Bay Area (with safety monitors), Miami, Orlando and Tampa — seven markets, up from four a month ago. Read as a map, the expansion looks aggressive: two new Florida cities added in three weeks. Read as a fleet, the picture inverts. Last week this briefing cited a Bank of America tracking estimate of 175 vehicles across Texas, "the fastest growth of any robotaxi operator BofA follows," and treated it as the first genuine ramp signal in a year. This week's Electrek count, sourced from independent community tracking of vehicles operating without a safety monitor, puts the number at roughly a tenth of that.</p>
+    <p><strong class="lbl">Die Details.</strong> The two figures are not obviously reconcilable from public reporting, and that gap is itself the finding. The most likely explanation is a definitional one: BofA's 175 may count the total registered robotaxi-spec fleet, including vehicles still running with in-car monitors, undergoing validation, or staged for future markets, while Electrek's ~21 counts only vehicles Tesla is currently operating fully unsupervised on public roads. If that is right, both numbers can be true simultaneously and the real question is which one investors should be pricing — fleet capacity or fleet utilisation. What is not ambiguous is the Austin trend line: down from ~25 in late April to ~17 now, a genuine decline in the one market with the longest operating history, one year after the 22 June 2025 launch. Orlando and Tampa, by TechCrunch's account, have "fairly small operational areas" and no disclosed vehicle counts, which is consistent with a map-expansion strategy that is, as this week's coverage frames it, "cheap" relative to actually scaling a fleet.</p>
+    <p><strong class="lbl">Einordnung.</strong> The timing is the tell. A same-day announcement of two new markets, the day before an earnings call where robotaxi is the top shareholder concern, following a quarter in which the Say portal filled with demands to explain three consecutive guidance misses, reads as an answer engineered for the headline rather than the fleet report. That does not make it false — Orlando and Tampa are real, monitored deployments — but it does mean the city-count metric that Tesla and its bulls have used all year is now demonstrably decoupled from the vehicle-count metric that determines actual revenue. For anyone modelling robotaxi economics, city count should be weighted near zero until Tesla or a credible third party publishes a reconciled, monitored-vs-unsupervised fleet number by market.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Whether Tesla or a earnings-call analyst forces reconciliation between the BofA and Electrek fleet figures today. (2) Austin fleet trajectory — a continued decline past 17 would be the more important story than any new city. (3) Vehicle counts disclosed, if any, for Orlando and Tampa in the weeks ahead. (4) Whether safety monitors are removed from Orlando/Tampa on any announced timeline. (5) Whether the Bay Area monitored service converts to unsupervised, the clearest available signal of regulatory — not marketing — progress.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — launches confirmed; fleet counts are dueling third-party estimates, not company disclosure</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-blue">Cybercab</span><span class="date-pill">21 Jul 2026</span></div>
+  <h4>Roughly 250 Cybercabs are staged at Giga Texas awaiting final checks — the first hard evidence the purpose-built robotaxi is closer to fleet-ready than to vapourware</h4>
+  <p>Drone footage published 21 July showed approximately 250 finished Cybercabs staged in Giga Texas's outbound logistics lot — described as a record batch — apparently awaiting final software validation or regulatory clearance before deployment. Tesla's stated plan is to first use the two-seaters for employee rides around the Gigafactory campus before opening the service to paying customers, then gradually replace Model Ys in the existing robotaxi network.</p>
+  <p>Cybercab assembly began in spring 2026 at Giga Texas, and Tesla confirmed in April that production had started without being constrained by the National Highway Traffic Safety Administration's (NHTSA) low-volume manufacturer exemption cap — meaning the vehicle is being built to standard safety-equipment requirements rather than under a special low-volume waiver, removing one potential scaling bottleneck.</p>
+  <div class="links">
+    <a href="https://www.notateslaapp.com/news/4471/over-200-tesla-cybercabs-spotted-at-giga-texas" target="_blank">Not a Tesla App: 250 Cybercabs at Giga Texas</a>
+    <a href="https://electrek.co/2026/04/23/tesla-cybercab-production-starts-no-nhtsa-2500-vehicle-cap/" target="_blank">Electrek: production confirmed, April 2026</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Cybercab was unveiled in October 2024 as a $30,000, steering-wheel-free, two-seat robotaxi purpose-built for autonomous operation, with 2026 production promised from the start. The vehicle has always been a bet that a dedicated hardware platform beats the current approach of running the robotaxi service on repurposed Model Ys. Production confirmation in April 2026 cleared the first hurdle — the vehicle could be physically built without a special regulatory carve-out. This week's drone footage clears a second, less obvious one: Tesla can now build them faster than it can currently deploy them, which is a materially better problem to have than the reverse.</p>
+    <p><strong class="lbl">Die Details.</strong> 250 units sitting in a staging lot is not itself proof of anything beyond manufacturing throughput — the bottleneck the robotaxi programme has actually faced all year is software validation for driverless operation in each new operational design domain, not vehicle assembly. That bottleneck is unaffected by how many Cybercabs exist; a purpose-built two-seater still needs the same city-by-city unsupervised-driving clearance a converted Model Y needs. What the staging lot does confirm is that Tesla is not capacity-constrained on the hardware side heading into the second half of 2026, which removes one excuse for a slow robotaxi ramp and puts the entire remaining burden on the software and regulatory side — the same side responsible for Austin's fleet shrinking to 17 cars, per the card above.</p>
+    <p><strong class="lbl">Einordnung.</strong> Read against this week's Austin/Orlando/Tampa story, the Cybercab stockpile sharpens rather than resolves the picture: Tesla now has a growing inventory of purpose-built vehicles it cannot yet deploy at scale, while its existing Model Y-based fleet is shrinking in its most mature market. That is consistent with a company whose autonomy software, not its automotive manufacturing, is the actual constraint on Musk's 2027 robotaxi revenue promise. It is also a genuine asset: idle Cybercabs are a much better balance-sheet position than idle Model Y capacity, because they cannot be sold as anything else, so their existence is itself evidence Tesla is planning for a real ramp rather than hedging against one.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) First confirmed paying-customer Cybercab ride, as opposed to employee shuttle use. (2) Whether the staged batch grows or gets deployed over the next month — a growing, undeployed pile would be a bearish signal. (3) Any Q2 call disclosure of Cybercab production run-rate. (4) NHTSA correspondence on the vehicle's steering-wheel-free design as it scales beyond a low-volume batch. (5) Whether Cybercabs begin replacing Model Ys in Austin specifically, where the existing fleet is already contracting.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — drone footage and vehicle count are one outlet's estimate, not company-confirmed</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-yellow">Optimus</span><span class="date-pill">Ongoing · target late Jul – Aug</span></div>
+  <h4>Optimus V3 reveal still on track for late July or August — Tesla's own description of the Fremont conversion timeline is "insane"</h4>
+  <p>No reveal yet, and no material change to the target window: Tesla is still aiming for a late-July-to-early-August unveiling of Optimus Generation 3 (V3), timed to land close to the start of production. The Fremont Model S/X line ended production in May 2026 specifically to be converted for Optimus manufacturing, and Tesla has described the compressed sequence — tear down the car line, install robotics tooling, validate it, and ship product within roughly four months — using that exact word.</p>
+  <p>Tesla's stated 2026 production target for the Fremont line is 50,000–100,000 units, with Giga Texas reserved for a later, higher-volume Generation 4-plus platform targeting 10 million units a year — a figure with no attached date and best read as a long-run aspiration rather than a near-term plan.</p>
+  <div class="links">
+    <a href="https://www.basenor.com/blogs/news/tesla-optimus-v3-reveal-set-for-late-july-what-we-know" target="_blank">Basenor: V3 reveal and Fremont timeline</a>
+    <a href="https://www.techtimes.com/articles/321012/20260720/tesla-optimus-production-count-remains-zero-q2-earnings-call-looms-wednesday.htm" target="_blank">Tech Times: production count remains zero</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> The reveal date has slipped from Q1 2026 to "middle of this year" to late July, and last week's edition flagged the pattern as a familiar Musk-timeline slip. This week adds a harder data point: as of 20 July, confirmed Optimus production remains at zero units, per Tech Times' pre-earnings reporting, with the Q2 call looming as the moment shareholders expect either a number or an explanation. The 50,000–100,000 unit 2026 target is itself new-to-this-briefing specificity — a real, checkable figure rather than a vague ramp promise, which cuts both ways: it gives the market something to hold Tesla to, and it is a low enough number relative to the November 2025 pay package's eventual 1-million-unit milestone that it does not, by itself, resolve anything about the multi-year plan.</p>
+    <p><strong class="lbl">Die Details.</strong> The Fremont conversion sequence is genuinely tight by Tesla's own account: teardown of a functioning automotive line, installation of humanoid-robot assembly tooling, validation of that tooling, and first units shipped, compressed into roughly four months from the May line-stop. Tesla's own team called that timeline "insane," which is a notable admission from an organisation not known for hedging its own targets publicly. If the 50,000–100,000 figure holds even at the low end, it would still be the largest humanoid-robot production run ever attempted by an order of magnitude — current competitors across all of China and the rest of the industry combined have not shipped comparable volumes. The Giga Texas 10-million-unit figure belongs to a different generation of hardware entirely (V4+) and should not be read as a near-term commitment.</p>
+    <p><strong class="lbl">Einordnung.</strong> Zero confirmed units three weeks before this briefing's next edition, against a reveal window that closes in roughly two to four weeks, means the market will get real information soon regardless of what Tesla says on today's call. The structural question flagged last week — whether Tesla's shareholders are financing a body whose brain and commercial upside sit inside SpaceXAI — remains completely unresolved and is not addressed by anything in this week's reporting. A clean V3 reveal with a credible first-unit date would be the single most bullish event available to TSLA in the next month; continued silence would harden the pattern this briefing has tracked since last week's edition.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Whether the reveal happens inside the stated window or slips again. (2) First confirmed unit off the converted Fremont line. (3) Any refinement of the 50,000–100,000 2026 target on today's call. (4) Task-list specificity for what Optimus V3 will actually do in service, not just how many will exist. (5) Any disclosure of the Tesla/SpaceXAI commercial terms on the Optimus intelligence stack, which remains the single largest unanswered shareholder question.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: low-medium — dates and unit targets are Musk/Tesla-sourced and have slipped before</span></span></div>
+</div>
+
+<!-- SPACEXAI -->
+<a id="xai"></a>
+<div class="section-header"><span class="material-icons-outlined">smart_toy</span><h3>SpaceXAI / Grok</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">SPACEXAI</span><span class="tag t-red">Security</span><span class="date-pill">15 – 16 Jul 2026</span></div>
+  <h4>Last week's "trust repair" open-sourcing produced a working Grok Build exploit within 24 hours — and SpaceXAI told the researcher the client-side bug was "out of scope"</h4>
+  <p>SpaceXAI open-sourced the Grok Build client on 15 July as its remedy for the data-exfiltration scandal this briefing covered last week. Within 24 hours, security researchers at SlowMist had published two working attack chains against the newly public code, one of which needs only three lines of JSON to bypass every permission gate in the tool. When the finding was submitted through HackerOne, SpaceXAI's stated response was that "client side issues on grok-build-cli are considered out of scope."</p>
+  <p>The first chain exploits a misclassification: Grok Build treats the command <code>cargo check</code> as read-only and auto-approves it, but that command executes arbitrary code via Rust's <code>build.rs</code> scripts — meaning a malicious project file can achieve code execution with zero user interaction. The second exploits a parser function that ignores a project's trust state entirely, so a three-line <code>.claude/settings.json</code> file setting <code>"defaultMode": "bypassPermissions"</code> silently disables every safety check. Because Grok Build shares its configuration format with Claude Code's CLI, a single malicious file can compromise both tools — though the researchers note Claude Code documents its own risk boundaries, while Grok Build's bypass was silent.</p>
+  <div class="links">
+    <a href="https://slowmist.medium.com/xai-grok-build-0-day-one-day-after-open-source-trust-mechanism-bypass-and-the-fragmented-security-landscape-of-ai-coding-tools-70b676300d98" target="_blank">SlowMist: 0-day one day after open source</a>
+    <a href="https://news.slashdot.org/story/26/07/19/034258/grok-build-coding-tool-open-sourced-this-week-promises-to-respect-zero-data-retention" target="_blank">Slashdot: open-sourced this week</a>
+    <a href="https://www.theregister.com/ai-and-ml/2026/07/16/spacex-open-sources-grok-build-after-data-retention-furore/5272333" target="_blank">The Register: open-sourcing after the furore</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Last week's edition credited SpaceXAI's open-sourcing decision as "genuinely the correct response" to the Grok Build data-exfiltration scandal, while flagging that its unverifiable deletion promise deserved less credit. That judgement now needs revising in one direction: open-sourcing did make the code auditable, which is exactly why SlowMist could find and publish these flaws within a day — the mechanism worked as designed. What did not work is everything downstream of the audit. A security researcher doing exactly what open-sourcing is supposed to enable submitted a real, exploitable vulnerability through the company's own disclosed channel, HackerOne, and received a response that the class of bug — client-side issues in the CLI tool at the centre of the entire scandal — does not qualify for review.</p>
+    <p><strong class="lbl">Die Details.</strong> The technical substance is severe on its own terms, independent of the corporate response. The <code>cargo check</code> misclassification means Grok Build's permission model conflates "this command doesn't write files" with "this command is safe," when in fact Rust's build system routinely executes arbitrary code as a side effect of a nominally read-only check — a well-known category of risk in the Rust tooling ecosystem that a coding-agent security review should have caught before shipping, let alone before open-sourcing as a trust-restoration measure. The <code>bypassPermissions</code> flaw is worse in kind: SlowMist's analysis found five independent, disconnected trust modules inside the tool, meaning the vulnerability is not a single patchable line but an architectural absence of a unified trust model across code paths. Three lines of attacker-controlled JSON defeating the entire permission system is the kind of finding that would normally trigger an emergency patch and public disclosure timeline, not a scope classification.</p>
+    <p><strong class="lbl">Einordnung.</strong> For SPCX holders, this is a more damaging data point than the original incident, because it strips the credibility from the specific remedy the company offered. An enterprise buyer evaluating Grok Build post-scandal was told: trust us because the code is now public and auditable. The code being public and auditable produced a real 0-day in 24 hours, and the company's engineering response — as distinct from its public-relations response — was to decline responsibility for the exact category of bug the scandal was about. That is a worse signal for enterprise procurement than the original incident, which could at least be framed as an unintentional beta-stage failure; declining to fix an actively exploited class of vulnerability after promising reform is a choice. Set against Bloomberg's reporting last week that SpaceXAI's internal mandate is explicitly to "match Claude" on a compressed timeline, this reads as further evidence that the organisation is optimising for release velocity over the security maturity its enterprise pitch depends on.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Whether SpaceXAI reverses the HackerOne "out of scope" classification under further public pressure. (2) Any confirmed real-world exploitation of either attack chain, as opposed to responsible-disclosure proof-of-concept. (3) Whether Anthropic or other CLI-tool vendors sharing the <code>.claude/settings.json</code> format issue a joint advisory. (4) Any enterprise customer publicly pausing or cancelling a Grok Build deployment over this specific finding. (5) Whether the unified-trust-model fix SlowMist recommends appears in a subsequent release, and on what timeline.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — named security researchers, published technical writeup, company response quoted</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">SPACEXAI</span><span class="tag t-blue">Distribution</span><span class="date-pill">21 Jul 2026</span></div>
+  <h4>Grok reaches "all of Europe" — but only inside Tesla's cars, while the flagship Grok 4.5 model and Grok Build stay dark in the one region that most needs them fixed</h4>
+  <p>Tesla's July 2026 Summer software update quietly added a single line to its release notes on 21 July: "Also, Grok now available in all of Europe." This is the in-car voice assistant surface, delivered over the air to Tesla vehicles, not the standalone Grok 4.5 model or the Grok Build coding client this briefing has covered for two weeks running as unavailable in the European Union (EU) on account of the EU Artificial Intelligence (AI) Act, the General Data Protection Regulation (GDPR), and a patchwork of national data-protection regulators.</p>
+  <p>SpaceXAI has not published a compliance framework explaining what changed to permit even the in-car rollout, and reporting on the update notes the absence of any detail on transparency obligations, training-data disclosures or content-moderation commitments under the AI Act — all of which apply differently to a car-dashboard assistant than to an enterprise coding tool with access to proprietary source code.</p>
+  <div class="links">
+    <a href="https://www.basenor.com/blogs/news/grok-rolls-out-across-all-of-europe-xai-expands-continent-wide" target="_blank">Basenor: Grok rolls out across Europe</a>
+    <a href="https://theplanettools.ai/blog/spacexai-grok-4-5-half-price-eu-blocked-2026" target="_blank">ThePlanetTools: Grok 4.5 still blocked in the EU</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Two distinct products carry the Grok name and two distinct regulatory postures apply to them. Grok 4.5, the frontier language model priced at $2/$6 per million tokens, and Grok Build, its coding-agent client now also carrying a fresh security black eye (see the card above), remain unavailable to EU users ten days past their 8 July global launch — a gap this briefing has now tracked across two editions. Separately, "Grok" the in-car conversational assistant bundled into Tesla vehicles via over-the-air update is a lighter-weight, narrower-scope product that Tesla — not SpaceXAI directly — is responsible for shipping, and it appears to have cleared whatever regulatory bar applies to it on 21 July.</p>
+    <p><strong class="lbl">Die Details.</strong> The distinction matters because it is not clear from public reporting which underlying model version powers the Tesla in-car assistant, whether it is a cut-down Grok variant with different data-handling defaults, or how — if at all — this rollout relates to the EU AI Act's risk-tiering, which treats a car voice assistant very differently from an autonomous coding agent with read access to enterprise source code. SpaceXAI's silence on the compliance basis for the automotive rollout, even as it maintains the enterprise and developer products stay geofenced out of the EU, suggests the company found a narrower regulatory path for the lower-risk, lower-data-sensitivity surface rather than resolving the broader compliance question that keeps Grok Build and Grok 4.5 dark for EU developers and enterprises.</p>
+    <p><strong class="lbl">Einordnung.</strong> The practical read for anyone evaluating SpaceXAI's EU strategy: consumer- and vehicle-embedded surfaces are moving forward, while the higher-value, higher-risk enterprise and developer products remain stalled — precisely inverted from where the commercial upside sits. Grok's in-car presence extends Musk-ecosystem distribution (Tesla vehicles as a Grok delivery surface) without resolving the trust and compliance questions that matter for SPCX's enterprise AI thesis. Combined with this week's Grok Build security disclosure, the EU gap now looks less like a temporary rollout lag and more like a standing liability SpaceXAI has chosen not to prioritise fixing.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Any SpaceXAI statement clarifying the compliance basis for the Tesla in-car rollout specifically. (2) Whether Grok 4.5 or Grok Build gain any EU access before this briefing's next edition — a further slip past July would be a genuine escalation. (3) Any EU data-protection authority inquiry prompted by either the in-car rollout or the Grok Build security findings. (4) Which underlying model version actually powers the Tesla-embedded assistant. (5) Whether the divergent EU treatment across Grok's surfaces becomes a template SpaceXAI repeats for other regulated markets.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: low-medium — rollout confirmed via release notes; compliance basis and model version are unreported</span></span></div>
+</div>
+
+<!-- SPACEX -->
+<a id="spacex"></a>
+<div class="section-header"><span class="material-icons-outlined">rocket_launch</span><h3>SpaceX</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-red">Still grounded</span><span class="date-pill">16 – 23 Jul 2026</span></div>
+  <h4>Starship Flight 13 is now a week overdue — engines swapped, booster back on the pad, third target date is 23 July, and NASA's Artemis clock keeps running regardless</h4>
+  <p>Flight 13 has not flown since its 16 July T-0 abort. SpaceX confirmed on 20 July that Super Heavy Booster 20 has had its two malfunctioning Raptor 3 engines removed and replaced, and set a new target of Thursday, 23 July, with a 90-minute launch window opening at 5:45pm Central Time (22:45 UTC). The company's own updates page carries the standard caveat that "the schedule is dynamic and likely to change" pending final pre-launch checks.</p>
+  <p>The mission profile is unchanged from last week: deploy 20 Starlink V3 satellites (six fitted with cameras to image the heat shield during re-entry), attempt a Super Heavy soft splashdown in the Gulf of Mexico, a controlled Ship splashdown off Western Australia, and — the actual technical objective — a demonstrated in-space Raptor engine relight, the prerequisite for every subsequent Artemis milestone.</p>
+  <div class="links">
+    <a href="https://www.teslaoracle.com/2026/07/20/spacex-confirms-the-new-date-for-the-starship-flight-13-launch-test-ift-13/" target="_blank">Tesla Oracle: new date confirmed, 23 July</a>
+    <a href="https://www.teslarati.com/spacex-starship-flight-13-reason-why-aborted/" target="_blank">Teslarati: what Musk said broke</a>
+    <a href="https://www.fool.com/investing/2026/07/18/spacex-s-unlucky-flight-13-fails-to-launch-starship-can-the-stock-survive-yet-another-delay/" target="_blank">Motley Fool: can the stock survive another delay</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Third target</div><div class="data-value">23 Jul, 22:45 UTC</div></div>
+    <div class="data-item"><div class="data-label">Engines replaced</div><div class="data-value">2 Raptor 3</div></div>
+    <div class="data-item"><div class="data-label">Days since abort</div><div class="data-value down">7</div></div>
+    <div class="data-item"><div class="data-label">Artemis IV crewed target</div><div class="data-value">Early 2028</div></div>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Musk's original post-abort guidance was "most probable launch timing is early next week," which reporters read as pointing to 20–21 July. SpaceX's own 20 July confirmation pushed the target to 23 July instead — a further two-to-three-day slip against Musk's own stated expectation, on top of the original abort. That sequence (abort, optimistic public estimate, quieter operational date that lands later) is the same pattern this briefing has tracked on Optimus's reveal date and, to a lesser extent, on Tesla's robotaxi city guidance: Musk-sourced timing consistently anchors to the earliest plausible date rather than the modal one.</p>
+    <p><strong class="lbl">Die Details.</strong> The technical fix itself was straightforward and fast by heavy-vehicle standards — a four-day turnaround to identify, remove and replace two Raptor 3 engines on a booster that had already been rolled back to the hangar, tanks drained, for inspection. That speed is a genuine data point about Starbase's pad-and-hangar operational maturity, even as the underlying ignition-margin question (why did four engines fail to light, and is two-engine replacement really sufficient) remains publicly unresolved beyond Musk's own characterisation. The Motley Fool's framing is the sharpest available on the stakes: NASA's Human Landing System dependency chain requires demonstrated in-space Raptor relight before orbital refuelling tests can begin, before the lunar transfer profile can be attempted, all ahead of an early-2028 crewed Artemis IV landing — and "Starship hasn't even managed to make it into a stable orbit around Earth" yet. Blue Origin's competing lunar lander is explicitly the fallback NASA has signalled it could use "if it were ready first," which converts every Starship slip from a scheduling inconvenience into ammunition for a rival contractor.</p>
+    <p><strong class="lbl">Einordnung.</strong> A week's additional delay is small in absolute terms and continues to compound against a calendar that had no slack to begin with, exactly as this briefing noted last week. What is new this week is the sharper articulation of the competitive stakes: this is not simply "SpaceX vs. its own schedule," it is "SpaceX vs. Blue Origin for a specific NASA contract," with each slip mechanically strengthening the case for a switch. For SPCX holders, that reframes Flight 13 from a technical milestone into a contract-retention event. The financial dimension compounds the technical one: Starlink V3's capacity step-change, which this briefing covered in depth two weeks ago, also stays grounded until Starship flies, meaning the delay is simultaneously deferring SpaceX's near-term revenue growth story and its long-term NASA contract security.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Whether 23 July holds — a third scrub would move the story from "engine issue" to "systemic Raptor 3 ignition-margin problem." (2) Successful in-space Raptor relight, the mission's actual technical objective. (3) Any explicit NASA statement on Artemis IV schedule risk tied to this specific delay. (4) Any Blue Origin milestone announced in the same window, which would sharpen the competitive framing further. (5) SPCX price reaction to a successful versus a scrubbed 23 July attempt, as a read on how much of the stock's weakness is Starship-specific.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — dates and technical details company-confirmed; ignition root cause still incomplete</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPCX</span><span class="tag t-red">Tape</span><span class="date-pill">16 – 18 Jul 2026</span></div>
+  <h4>SPCX sits roughly 38% below its all-time high, more than 8% down since the day before Flight 13's scrub — and the drawdown is tracking Starship, not Starlink</h4>
+  <p>SPCX traded around $124.02 as of 18 July reporting, a drop of more than 8% since the trading day before the Flight 13 scrub and roughly 38% below its post-IPO all-time high — a slightly different percentage than the 45%-off-June-peak figure this briefing cited last week, a discrepancy consistent with the inconsistent SPCX quote data flagged since the June listing rather than a change in direction. Either way, the stock remains firmly below the $1.77 trillion valuation set at its 12 June IPO.</p>
+  <p>The stock joined the Nasdaq-100 on 7 July with a muted roughly 1% pop, which this briefing flagged last week as a warning sign given index inclusion normally forces mechanical buying. Nothing in this week's reporting reverses that read; if anything, the continued Starship delay gives the tape another concrete reason to stay depressed rather than mean-revert.</p>
+  <div class="links">
+    <a href="https://www.fool.com/investing/2026/07/18/spacex-s-unlucky-flight-13-fails-to-launch-starship-can-the-stock-survive-yet-another-delay/" target="_blank">Motley Fool: SPCX down 38% from ATH</a>
+    <a href="https://www.tradingview.com/symbols/NASDAQ-SPCX/" target="_blank">TradingView: SPCX</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Last week's edition already flagged SPCX quote data as unreliable across providers since the June listing, driven by a thin roughly-3% public float that amplifies moves in both directions. This week's figures are broadly consistent with that pattern: whether the drawdown from peak is 38% or 45% depends on which all-time-high reference point and which intraday snapshot a given provider uses, but every source agrees on direction and on the proximate cause — the stock has not recovered since the Flight 13 abort and has continued grinding lower through the week the launch stayed grounded.</p>
+    <p><strong class="lbl">Die Details.</strong> The more than 8% single-event drop tied specifically to the scrub is the cleanest data point available: it isolates Starship-specific risk from the broader AI-unit concerns (Grok Build, the Bloomberg "identity crisis" reporting) that this briefing has also tracked as depressing the stock. That decomposition matters for anyone trying to underwrite SPCX, because it implies the market is pricing Starship execution risk as a distinct, tradeable factor rather than folding everything into one generic "Musk-entity discount." A clean 23 July launch would therefore be expected to claw back a meaningful fraction of this specific move even if the AI-unit concerns remain unresolved.</p>
+    <p><strong class="lbl">Einordnung.</strong> The structural read from last week holds without needing revision: SPCX pairs one dominant, profitable business (Starlink, still grounded pending Starship) with one speculative, currently loss-making one (SpaceXAI, which had a rough week of its own on security grounds). Both halves had bad news this week, which is why the stock's weakness looks broad-based rather than attributable to any single story. The correlation with TSLA that this briefing has tracked continues to hold — both stocks are trading on execution and delivery risk rather than on demand, and both face earnings-adjacent events (Tesla's call today, SpaceX's next launch attempt tomorrow) within 24 hours of each other.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) SPCX price reaction to the 23 July launch attempt, success or failure. (2) Whether Nasdaq-100 rebalancing flows provide any technical support given the muted initial inclusion pop. (3) First quarterly report as a public company, expected to disclose the AI segment's R&amp;D run-rate. (4) Any further convergence or divergence between SPCX and TSLA price action around their respective binary events this week. (5) Analyst target revisions following both the Tesla and SpaceX news flow.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: low-medium — quote data conflicts across providers; direction is consistent, exact levels are not</span></span></div>
+</div>
+
+<!-- POLITICS -->
+<a id="politics"></a>
+<div class="section-header"><span class="material-icons-outlined">account_balance</span><h3>DOGE / Politics</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">POLITICS</span><span class="tag t-dark">Accountability</span><span class="date-pill">19 Jul 2026</span></div>
+  <h4>DOGE was supposed to be dead. The Washington Post found its remnants everywhere — and the White House confirmed there will be no formal reckoning of what it actually achieved</h4>
+  <p>Two weeks after the Department of Government Efficiency's (DOGE) formal 4 July shutdown, the Washington Post reported on 19 July that its structures, rescission-based cuts and departed-staff footprint remain embedded across the federal government even though the standalone entity no longer exists. Separately, Office of Management and Budget (OMB) Director Russ Vought confirmed at a 30 June House Appropriations hearing that the administration has "no plans to do kind of a closing DOGE report," arguing the initiative's effects are "sprinkled all across the government" rather than isolable into a single audited accounting.</p>
+  <p>Reporting around Vought's comments put departures at "over 260,000" federal employees — a meaningful upward revision from the roughly 200,000 figure this briefing cited last week, and one that has not been reconciled publicly against DOGE's own final claim of $215 billion in savings.</p>
+  <div class="links">
+    <a href="https://www.washingtonpost.com/politics/2026/07/19/doge-was-supposed-be-dead-its-remnants-are-everywhere/" target="_blank">Washington Post: remnants are everywhere</a>
+    <a href="https://federalnewsnetwork.com/agency-oversight/2026/07/vought-trump-admin-wont-do-doge-after-action-report/" target="_blank">Federal News Network: no after-action report</a>
+    <a href="https://www.notus.org/agencies/doge-is-officially-ending-agencies-are-hiring" target="_blank">NOTUS: agencies are hiring again</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Last week's edition closed the DOGE story with an 11% delivery rate against Musk's original $2 trillion promise and a note that independent analysts disputed even the $215B figure once severance, rehiring and lost tax-collection capacity were counted. This week's reporting extends that scepticism institutionally rather than just analytically: the OMB director himself, the official who would be responsible for any formal accounting, has now said on the record that no such accounting is coming. That is a different and more consequential kind of confirmation than outside analysts disagreeing with DOGE's math — it is the government declining to check its own homework.</p>
+    <p><strong class="lbl">Die Details.</strong> Vought's stated rationale — that DOGE-identified reductions were absorbed into normal appropriations and rescission packages rather than tracked as standalone DOGE line items — is procedurally plausible and also convenient: it means no single document will ever exist against which the $215B claim, or the revised 260,000-plus departure figure, can be tested. The upward revision from roughly 200,000 to over 260,000 departures is itself worth pausing on; a 30% increase in the reported headcount impact within two weeks, with no accompanying revision to the claimed savings figure, is the kind of inconsistency that should concern anyone trying to build a reliable ledger of DOGE's actual fiscal effect. NOTUS's reporting that "agencies are hiring again" for previously eliminated roles is the practical evidence underneath the accounting dispute: real institutional capacity was removed and is now, in at least some cases, being rebuilt at presumably additional cost that further erodes the net-savings case.</p>
+    <p><strong class="lbl">Einordnung.</strong> For the portfolio, DOGE's relevance continues to run through reputation and regulatory positioning rather than direct financial exposure to Musk's own entities. The absence of a formal after-action report removes any mechanism by which Musk could either be vindicated or held accountable by an official government document — which, cynically, may be the most convenient outcome available to everyone involved. What it does not do is repair SpaceX's or Tesla's standing with the regulatory agencies DOGE touched; the National Highway Traffic Safety Administration (NHTSA), the Federal Aviation Administration and the Federal Communications Commission all had their staffing and processes disrupted by the broader federal workforce reduction DOGE drove, and a revised, larger departure figure without a matching accountability document does nothing to speed those agencies' return to full operating capacity — capacity Tesla's autonomy programme and SpaceX's launch licensing both depend on.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Any congressional attempt to compel a formal DOGE accounting despite Vought's stated position. (2) Further revision of the departure headcount figure. (3) Specific agency rehiring volumes, particularly at NHTSA, the FAA and the FCC. (4) Any Government Accountability Office review launched independent of the administration. (5) Whether the $215B claim is ever tested against actual appropriations data by an independent body.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — official statements confirmed; net fiscal effect remains unresolved by design</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">POLITICS</span><span class="tag t-yellow">America Party</span><span class="date-pill">Ongoing · no change this week</span></div>
+  <h4>America Party: a quiet week, which is itself the news — no new candidates, no resolved ballot lines, and the Republican-funding contradiction still unaddressed</h4>
+  <p>No material development surfaced this week on Musk's America Party. The narrow-target strategy from last week's edition — 2–3 Senate races, 8–10 House districts, roughly four months out from the November midterms — stands unchanged, as does the unresolved contradiction of Musk simultaneously funding Republican candidates for the same cycle. No marquee candidate recruitment, ballot-access confirmation or Federal Election Commission filing surfaced in this week's reporting.</p>
+  <p>Given how much attention every other Musk-entity story consumed this week — a stock-market earnings event, a security incident, two active appeals and a rocket that will not fly — a quiet week for a political project that depends on sustained organisational effort is itself informative. Projects that require compounding daily execution do not survive being deprioritised for a month, and this is the second consecutive week with no forward motion reported.</p>
+  <div class="links">
+    <a href="https://www.chinausfocus.com/finance-economy/elon-musks-high-stakes-bid-to-upend-american-politics" target="_blank">China US Focus: the high-stakes bid</a>
+    <a href="https://www.foxbusiness.com/politics/elon-musk-reportedly-begins-funding-republicans-2026-midterms" target="_blank">Fox Business: funding Republicans</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> The America Party passed its first anniversary this month, founded in July 2025 after Musk's public break with Trump. Its arithmetic logic — that a party reliably winning 3–5% in a handful of targeted districts holds disproportionate leverage in a narrowly divided Congress without needing to actually govern — was sound when this briefing first assessed it and remains sound. The execution problem, also unchanged, is that US ballot-access law is designed precisely to prevent exactly this kind of low-effort, high-leverage entry, with most 2026 filing deadlines either already passed or rapidly closing.</p>
+    <p><strong class="lbl">Die Details.</strong> There is genuinely little new to report, which is the finding. No state has confirmed a new America Party ballot line since this briefing began tracking the story. No marquee candidate has been recruited. The Republican-funding contradiction flagged last week — Musk simultaneously bankrolling GOP candidates in the same cycle his third party is meant to threaten — has not been addressed or explained by anyone in the Musk orbit. A political project of this kind typically needs weekly, visible progress (candidate announcements, ballot certifications, fundraising disclosures) to sustain donor and volunteer confidence; the absence of any such signal for two straight weeks is a data point in itself, not merely an absence of data.</p>
+    <p><strong class="lbl">Einordnung.</strong> Read alongside this week's other Musk-entity stories — an earnings call, a grounded rocket, a security scandal, two active appeals — the simplest explanation for the America Party's stall is attention scarcity, the same structural constraint last week's editor's view identified as the through-line across the entire portfolio. A third-party project with no paid, professional political apparatus of its own depends heavily on Musk's personal, public engagement to generate momentum, and that engagement has visibly gone elsewhere this month. The portfolio consequence flagged last week stands: there is no version of the America Party project, active or dormant, that improves Tesla's or SpaceX's regulatory standing, and a dormant one at least avoids actively worsening it in the near term.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Any confirmed ballot line in any state before remaining 2026 filing deadlines close. (2) A first marquee candidate recruit, still absent more than a year in. (3) Federal Election Commission filings clarifying the Republican-versus-America-Party funding split. (4) Any explicit statement from Musk addressing the funding contradiction. (5) Whether the project is quietly wound down without formal announcement, consistent with the pattern DOGE itself set.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — absence of news is itself the reported fact; underlying strategy reporting is unchanged from last week</span></span></div>
+</div>
+
+<!-- LEGAL -->
+<a id="legal"></a>
+<div class="section-header"><span class="material-icons-outlined">gavel</span><h3>Legal</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">LEGAL</span><span class="tag t-yellow">Musk v. Altman</span><span class="date-pill">10 – 14 Jul 2026</span></div>
+  <h4>OpenAI formally denies Apple's trade-secret allegations, calling them meritless — while Musk keeps mining the case for ammunition against Altman with the underlying appeal still unfiled</h4>
+  <p>OpenAI issued its first substantive rebuttal to Apple's trade-secrets lawsuit on 14 July, stating: "While we take these allegations seriously, we're not aware of any evidence that this complaint has merit," and framing the dispute around principles of worker mobility and fair competition. Apple's 41-page complaint, filed 10 July in the US District Court for the Northern District of California, alleges that former Apple employees now at OpenAI — including its Chief Hardware Officer — orchestrated efforts to obtain Apple's confidential manufacturing and unreleased-product information.</p>
+  <p>Musk's own appeal of the 18 May Musk v. Altman verdict — which found his claims time-barred under the statute of limitations without ever reaching their substantive merits — remains at the "vowed to appeal" stage, with no formal Ninth Circuit notice of appeal confirmed in this week's reporting and no hearing timeline available.</p>
+  <div class="links">
+    <a href="https://techcrunch.com/2026/07/14/openai-pushes-back-on-apple-trade-secret-lawsuit/" target="_blank">TechCrunch: OpenAI pushes back</a>
+    <a href="https://www.cnbc.com/2026/07/10/apple-openai-lawsuit-trade-secrets.html" target="_blank">CNBC: Apple's complaint, "at every level"</a>
+    <a href="https://news.bloomberglaw.com/litigation/musk-v-altman-fight-heads-to-appeal-with-core-claims-untested" target="_blank">Bloomberg Law: core claims untested</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Last week's edition covered the 11–12 July X spat between Musk and Altman that Apple's suit triggered, including Musk's "calendar technicality" framing of his own May defeat and Altman's "space datacenters" counter-jab about SpaceX's investor pitch. This week fills in the legal substance behind that spat: OpenAI's formal, on-the-record rebuttal, and the specific allegation at the centre of Apple's suit — that OpenAI's Chief Hardware Officer, a former Apple executive, was part of a coordinated effort to obtain confidential Apple manufacturing and product information "at every level" of the company, per CNBC's characterisation of the complaint.</p>
+    <p><strong class="lbl">Die Details.</strong> OpenAI's rebuttal is notably narrow — a denial of merit rather than a detailed factual counter-narrative — which is standard early-stage litigation posture but also means the case is still in the phase where public reporting reflects Apple's allegations far more than any tested evidence. On the Musk v. Altman side, the "core claims untested" framing from Bloomberg Law's legal analysis is the most important single fact in the entire saga: the jury and the presiding judge ruled on timing, not substance, meaning the underlying allegation — that OpenAI abandoned its non-profit, safety-first founding structure in violation of agreements Musk's donations helped fund — has never been evaluated by any court. That is precisely why Musk's "technicality" framing, self-serving as it is, is not inaccurate as a procedural description, and why an appeal focused on the limitations ruling specifically (rather than re-litigating the merits) has a real, if unquantifiable, chance of success.</p>
+    <p><strong class="lbl">Einordnung.</strong> The pattern across all of Musk's OpenAI-adjacent litigation, now including the separate xAI trade-secrets case covered in the next card, is consistent: procedural losses on his own claims, an active appeal with no confirmed timeline, and a parallel public-relations campaign — this week's Apple suit is convenient ammunition, not a Musk-initiated action — that generates far more headline volume than the underlying cases have generated legal progress. For SPCX specifically, the practical relevance is limited and reputational: none of this week's developments touch Musk-entity balance sheets directly, but the accumulation of unresolved, headline-generating litigation is a recurring tax on management attention and public trust exactly as this briefing characterised it last week.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Formal notice of appeal in Musk v. Altman and the resulting Ninth Circuit briefing schedule. (2) Any discovery in Apple v. OpenAI that surfaces Musk-era OpenAI documents relevant to his own claims. (3) OpenAI's substantive (as opposed to merit-denial) response to Apple's specific allegations. (4) Further public escalation between Musk and Altman that risks crossing into defamation exposure. (5) Any settlement signal in either case, which neither party currently appears incentivised to offer.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — filings and statements confirmed; appeal timeline still unconfirmed</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">LEGAL</span><span class="tag t-red">Second dismissal</span><span class="date-pill">Jun – Jul 2026</span></div>
+  <h4>A second Musk-entity suit against OpenAI just lost twice — xAI's data-centre trade-secrets case was dismissed again and now heads to the Ninth Circuit, with OpenAI seeking $1.04 million in fees</h4>
+  <p>Separately from Musk v. Altman, xAI (now SpaceXAI) sued OpenAI alleging that OpenAI hired former xAI employees who brought confidential data-centre operational knowledge with them, giving OpenAI an unfair advantage in building out its own compute infrastructure. The case was dismissed twice — first in February 2026, then again in June after xAI amended its complaint — with Judge Rita Lin writing that "notably absent are allegations about the conduct of OpenAI itself," and that xAI provided no evidence OpenAI induced the departures or actually used any stolen information.</p>
+  <p>xAI filed its appeal to the Ninth Circuit in July under the federal Defend Trade Secrets Act, with mediation questionnaires due immediately, xAI's opening brief due 24 August, and OpenAI's response due 23 September. OpenAI is simultaneously seeking approximately $1.04 million in attorney's fees from xAI over the litigation, with xAI's response to that fee request due in late August.</p>
+  <div class="links">
+    <a href="https://www.datacenterdynamics.com/en/news/xai-appeals-to-ninth-circuit-after-us-court-dismisses-data-center-trade-secret-case-against-openai/" target="_blank">Data Center Dynamics: appeal filed after second dismissal</a>
+    <a href="https://en.wikipedia.org/wiki/Musk_v._Altman" target="_blank">Reference: the related Musk v. Altman docket</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> This case has run almost entirely in parallel with, and separately from, Musk v. Altman, and this briefing has not previously covered it in detail. Its origin is distinct: rather than alleging OpenAI breached a founding agreement, xAI alleged a narrower and more conventional trade-secrets claim — that specific departing employees carried specific confidential data-centre knowledge to a direct competitor. Trade-secrets claims of this kind are common in the AI industry's talent war and are, in principle, easier to prove than Musk v. Altman's broader breach-of-founding-mission theory, which makes the double dismissal more notable than it might first appear.</p>
+    <p><strong class="lbl">Die Details.</strong> Judge Lin's dismissal reasoning is precise and worth reading carefully: the deficiency was not a lack of evidence that xAI employees had access to sensitive information, but a lack of evidence connecting that access to any conduct by OpenAI as an organisation — no showing OpenAI solicited the theft, directed it, or knowingly used the resulting information. That is a considerably higher bar than simply proving employees changed employers with knowledge in their heads, and xAI failed to clear it twice, including after being given the opportunity to amend and strengthen the complaint. The Ninth Circuit timeline is now concrete and dated: an opening brief due 24 August, a response due 23 September, putting a substantive appellate ruling realistically 12 or more months out, well past this briefing's planning horizon. The $1.04 million fee claim, while immaterial to SPCX's balance sheet, is a further reputational marker — courts award fees to prevailing defendants more readily when the losing case is found weak on the merits rather than merely unlucky on procedure.</p>
+    <p><strong class="lbl">Einordnung.</strong> Taken together with Musk v. Altman, the portfolio now carries two separate, unrelated Musk-entity lawsuits against OpenAI that have each failed at the trial-court level without their core allegations ever being substantively tested — one on a statute-of-limitations technicality, one on a pleading-sufficiency standard. Two independent judges reaching structurally similar "you have not shown enough" conclusions against two different Musk entities, on two different legal theories, is a weak but real signal about the underlying strength of the broader Musk-versus-OpenAI legal campaign, independent of whether either individual claim has merit. For SpaceXAI specifically, losing a trade-secrets case over data-centre operational knowledge is mildly awkward optics while the company is simultaneously trying to reassure enterprise customers about its own data-handling practices after the Grok Build incident covered above.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) xAI's opening Ninth Circuit brief, due 24 August, and whether it narrows or broadens the original theory. (2) Resolution of OpenAI's $1.04 million fee request. (3) Whether the Musk v. Altman and xAI v. OpenAI appeals proceed on parallel or diverging timelines. (4) Any consolidation or cross-referencing between the two cases at the appellate level. (5) Whether this dismissal pattern deters or accelerates further Musk-entity litigation against OpenAI.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — court ruling and appellate deadlines are docketed and dated</span></span></div>
+</div>
+
+<!-- OTHER -->
+<a id="other"></a>
+<div class="section-header"><span class="material-icons-outlined">hub</span><h3>Other ventures</h3><span class="count-pill">3 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag neuralink">NEURALINK</span><span class="tag t-blue">Clinical technique</span><span class="date-pill">20 May 2026 · reported ongoing</span></div>
+  <h4>The dura-preserving surgical technique Musk promised for automated implants in 2026 was already used on patient 26 — a Vancouver police sergeant with ALS</h4>
+  <p>Last week's edition carried Musk's forward-looking promise that Neuralink would move to "an almost entirely automated surgical procedure" in 2026 with device threads passing through the dura — the brain's protective membrane — without needing to remove it. This week's reporting connects that promise to an already-completed case: Lee Marten, a Vancouver police sergeant diagnosed with amyotrophic lateral sclerosis (ALS), received his implant on 20 May 2026 at Toronto Western Hospital using a dura-sparing insertion technique, becoming Neuralink's 26th recipient overall and the first Canadian ALS patient in the programme.</p>
+  <p>Marten described the decision in stark terms: "Getting a terminal diagnosis, you don't have much to look forward to. This is going to maybe improve my time that I have left, and allow me to be a kind of trailblazer for anyone else going through this." The implant lets him control a phone and laptop by thought alone, an upgrade from his prior wheelchair-based hand controls.</p>
+  <div class="links">
+    <a href="https://betakit.com/vancouver-police-sergeant-becomes-first-canadian-als-patient-to-receive-neuralink-brain-implant/" target="_blank">BetaKit: first Canadian ALS patient</a>
+    <a href="https://x.com/elonmusk/status/2006513491105165411" target="_blank">Musk on X: automated surgery, dura-sparing threads</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Neuralink's patient count reached 26 as of the timeframe this briefing has been tracking, up from 21 in January 2026, with trial sites across the United States, the United Arab Emirates, the United Kingdom and Canada. Last week's edition flagged Musk's automated-surgery and dura-preservation claims as forward-looking and unverified — a promise about a manufacturing and surgical process, not yet a demonstrated fact. This week's reporting on Marten's case narrows that gap: the dura-sparing insertion approach was already in clinical use as of 20 May, ahead of any public confirmation that it had moved from R&amp;D promise to operating procedure.</p>
+    <p><strong class="lbl">Die Details.</strong> The technical significance of preserving the dura rather than removing it is what makes full surgical automation plausible in the first place: dura removal is the step in a craniotomy that most requires a human neurosurgeon's judgement, because it involves working directly at the boundary of brain tissue with a wide margin for consequential error. A technique that inserts electrode threads through the intact dura removes that judgement-intensive step from the procedure, which is the precondition for Musk's stated goal of an "almost entirely automated" surgery. Marten's case — a full clinical implant procedure, not a bench test — is the first public evidence this briefing has found that the technique is operational rather than aspirational. The University Health Network's Toronto Western Hospital ran the procedure as part of a four-year clinical trial evaluating device safety and functionality, which means Marten's outcomes over time will be a genuine, trackable data point on the technique's real-world safety profile.</p>
+    <p><strong class="lbl">Einordnung.</strong> Neuralink remains, as this briefing noted last week, the quietest and least market-exposed asset in the Muskverse — privately held, no listed proxy, no quarterly earnings pressure. It is also, again consistent with last week's framing, the venture where the gap between promise and demonstrated capability is narrowing rather than widening, which stands in sharp relief against this week's Grok Build and Starship stories, where promised remedies (open-sourcing, engine replacement) have each run into their own new complications. A single successful case does not validate a surgical technique at scale, but it is a materially stronger data point than a press statement, and it is worth noting precisely because most of this week's other Muskverse stories point the opposite direction.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Marten's longer-term outcomes as a public, trackable case within the four-year trial. (2) Whether the dura-sparing technique is confirmed as standard practice across all Neuralink trial sites, not just this one case. (3) Progress on Blindsight's first human implant, still targeted for later in 2026. (4) Patient-count trajectory — whether 26 becomes 30-plus before this briefing's next edition. (5) Any adverse event disclosure across the expanding cohort, which would be the clearest negative signal available.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — single confirmed case; broader technique rollout across sites is not independently verified</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag x">X</span><span class="tag t-green">Fintech</span><span class="date-pill">26 Jun 2026 · expanding through Jul</span></div>
+  <h4>X Money goes live for Premium subscribers with 6% yield and $10 million in FDIC coverage — Musk's payments ambitions finally have a real product behind them</h4>
+  <p>X Money began rolling out to US Premium and Premium+ subscribers on 26 June 2026 and continued expanding through July, offering roughly 6% Annual Percentage Yield (APY) on fiat deposits with no minimum balance, up to $10 million in Federal Deposit Insurance Corporation (FDIC) coverage per user via a cash-sweep programme across partner banks, and a personalised metal Visa debit card carrying 3% cashback and no foreign-transaction fees. Cross River Bank, an FDIC-member institution based in Fort Lee, New Jersey, holds the underlying deposits.</p>
+  <p>The service remains unavailable in New York and Massachusetts, the two states where X has not yet secured the necessary money-transmitter approvals, even though X holds Money Transmitter Licenses in more than 40 other states plus Washington, D.C.</p>
+  <div class="links">
+    <a href="https://www.basenor.com/blogs/news/x-money-is-rolling-out-6-things-you-need-to-know" target="_blank">Basenor: X Money, 6 things to know</a>
+    <a href="https://www.americanbanker.com/payments/news/x-money-launches-follow-years-of-preparation" target="_blank">American Banker: years of preparation</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> X Money has been in preparation for years, part of Musk's long-stated ambition to turn X into an "everything app" spanning social media, payments and eventually broader financial services — a model explicitly inspired by China's WeChat. Unlike most of this week's Muskverse stories, this is a product that shipped roughly on the timeline promised, to real users, with real regulatory cover, rather than slipping or generating a security incident. That makes it an outlier worth flagging precisely because it is unremarkable in the way a mature fintech launch should be.</p>
+    <p><strong class="lbl">Die Details.</strong> The 6% APY figure is genuinely competitive against traditional savings products, and the $10 million FDIC coverage ceiling — achieved by sweeping balances across multiple partner banks rather than relying on a single institution's standard $250,000 coverage limit — is a real structural feature, not marketing language; cash-sweep programmes of this kind are an established mechanism used by brokerages and neobanks specifically to extend deposit insurance beyond any single bank's cap. The metal card with 3% cashback and no foreign-transaction fees positions the product to compete directly with premium travel and rewards cards, not just basic banking apps. The New York and Massachusetts gaps are meaningful in dollar terms — both are large, financially sophisticated markets — but the more-than-40-state licensing footprint already achieved is a genuine regulatory accomplishment for a product built inside a social-media company rather than a dedicated fintech.</p>
+    <p><strong class="lbl">Einordnung.</strong> X Money matters to the portfolio because it is the clearest evidence this year that X can still execute a complex, regulated product launch competently — a useful counterweight to the pattern of slipped dates and security incidents running through Optimus, Starship and Grok Build this week and last. It also has a direct connection to the Grok-in-Ads-Manager story this briefing covered previously: X's strategic logic is to build multiple monetisation surfaces (advertising automation, payments, eventually broader financial services) that do not depend on SpaceXAI winning the frontier AI race, which is a more conservative and arguably more credible path to offsetting the AI unit's R&amp;D losses than the Grok-centric narrative the SPCX IPO was sold on.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) New York and Massachusetts licensing progress, the two remaining large-market gaps. (2) Deposit and user-adoption figures, not yet disclosed. (3) Any regulatory scrutiny of the cash-sweep FDIC structure as balances scale. (4) Integration depth with X's advertising and Grok products. (5) Whether X Money expands beyond the US, given Grok's parallel international distribution moves this week.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — product, terms and banking partner are company-confirmed and independently reported</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag boring">BORING CO</span><span class="tag t-green">International</span><span class="date-pill">04 Jul 2026 · Dubai + 23 Jun UNLV</span></div>
+  <h4>Dubai Loop pours its first 45,000 tonnes of tunnel concrete while Las Vegas quietly reverses an earlier denial to approve a new UNLV station</h4>
+  <p>The Boring Company's Dubai Loop project, a joint venture with the Dubai government, is now producing precast concrete tunnel lining at scale: 25,000 individual pieces weighing a combined 45,000 tonnes for the project's first phase, which will connect the Dubai International Financial Centre (DIFC) to Dubai Mall — a journey Dubai officials say will drop from 20 minutes by road to roughly three minutes underground — within two years. Phase one carries four stations (Burj Khalifa, DIFC 2, Zabeel Dubai Mall Parking, and ICD Brookfield Place) and a stated Dh565 million ($153.8 million) budget; the full 19-station, 22-kilometre network is costed at approximately Dh2 billion ($544.9 million), running autonomous Tesla electric vehicles through 3.6-metre-diameter tunnels at up to 30,000 passengers a day once complete.</p>
+  <p>Separately, and resolving a watch-item this briefing flagged two weeks ago, the Nevada System of Higher Education Board of Regents approved a Vegas Loop station at the University of Nevada, Las Vegas (UNLV) campus on 23 June — reversing an earlier denial — granting a construction easement and operating agreement near the Thomas &amp; Mack Center, with 25% ride discounts for students and 10% for faculty and staff.</p>
+  <div class="links">
+    <a href="https://www.thenationalnews.com/news/uae/2026/07/04/dubai-loop-work-under-way-with-45000-tonnes-of-concrete-to-be-used-in-tunnel-project/" target="_blank">The National: Dubai Loop concrete production</a>
+    <a href="https://www.reviewjournal.com/local/education/boring-co-vegas-loop-station-approved-for-unlv-campus-3841453/" target="_blank">Review-Journal: UNLV station approved</a>
+  </div>
+  <details class="deep"><summary>Mehr lesen<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Kontext &amp; Vorgeschichte.</strong> Last week's edition treated Boring as the portfolio's "control case" — the venture with no listed exposure, no AI narrative and no earnings pressure that nonetheless keeps hitting its operational dates, citing the Las Vegas Convention and Visitors Authority's unanimous five-year, $25 million operating renewal and the 4-million-cumulative-passenger milestone. This week extends that pattern internationally: Dubai represents Boring's first major project outside the United States, structured as a direct partnership with a sovereign government rather than a US municipal authority, and it is now past the announcement stage and into physical concrete production.</p>
+    <p><strong class="lbl">Die Details.</strong> The 25,000-piece, 45,000-tonne precast concrete figure is a genuine leading indicator of construction seriousness — precast tunnel lining segments are manufactured well ahead of actual boring and represent committed capital, not just planning documents. The claimed 20-minute-to-3-minute journey time compression between DIFC and Dubai Mall is the kind of concrete, verifiable utility claim (unlike, say, Optimus's task-list promises) that will be trivially checkable once the line opens, which is itself a form of accountability the Musk portfolio's other ventures largely lack. On the domestic side, the UNLV reversal is worth noting precisely because last week's edition cited the earlier denial as counter-evidence against Boring's clean execution record — the correction shows the earlier "watch-item" framing worked as intended, surfacing a genuine update rather than staying stale.</p>
+    <p><strong class="lbl">Einordnung.</strong> Boring's international expansion into Dubai, a market with a government counterparty willing to move fast and fund upfront, is consistent with last week's thesis that the venture succeeds specifically because its scope is bounded and its customers are patient, well-capitalised public or quasi-public authorities — the structural opposite of the demand-uncertain, safety-regulated robotaxi problem Tesla faces. It is also a useful diversification signal: a second major sovereign-backed international project (alongside prior Saudi interest) reduces Boring's dependence on any single US market's local politics, the kind of friction that slowed the Nashville project earlier this year.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Dubai Loop's first-phase completion timeline holding to the stated two-year window. (2) Any additional Gulf-region contracts following the Dubai model. (3) UNLV station construction start date and completion timeline. (4) Ridership and revenue disclosure from the existing Vegas Loop network as it continues to expand. (5) Whether the international pivot changes Boring's US expansion pace.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — construction and approval facts reported; completion timelines are company/government-stated</span></span></div>
+</div>
+
+<!-- TRENDS -->
+<a id="trends"></a>
+<div class="section-header"><span class="material-icons-outlined">trending_up</span><h3>Trends — what moved this week</h3><span class="count-pill">7 lines</span></div>
+
+<div class="trends">
+  <span class="tr-label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Directional read vs. last week</span>
+  <div class="row"><span class="arrow down">▼▼</span><div class="txt"><strong>Remedy credibility.</strong> Two of last week's "fixes" got worse under scrutiny: Grok Build's open-sourcing produced a 0-day in 24 hours with a dismissive vendor response, and Starship's engine swap produced a further slip past Musk's own "early next week" estimate.</div></div>
+  <div class="row"><span class="arrow down">▼</span><div class="txt"><strong>Robotaxi metric trust.</strong> The 175-vehicle Texas fleet figure from last week collided with an independent count of roughly 21 unsupervised cars this week — a gap large enough that neither figure can be taken at face value without reconciliation.</div></div>
+  <div class="row"><span class="arrow down">▼</span><div class="txt"><strong>Legal track record.</strong> A second Musk-entity suit against OpenAI (xAI's data-centre case) was dismissed for a second time and now joins Musk v. Altman on appeal — two independent judges, two structurally similar "not enough shown" rulings.</div></div>
+  <div class="row"><span class="arrow up">▲</span><div class="txt"><strong>Cybercab hardware readiness.</strong> Roughly 250 units staged at Giga Texas is the clearest evidence yet that vehicle manufacturing, unlike software validation, is not currently the bottleneck on robotaxi scaling.</div></div>
+  <div class="row"><span class="arrow up">▲</span><div class="txt"><strong>Quiet-venture execution.</strong> X Money shipped roughly on schedule with real regulatory cover; Neuralink's dura-sparing technique is already in clinical use; Dubai Loop is pouring concrete. None of the three generated a security incident or a missed date this week.</div></div>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>Political attention.</strong> DOGE's accountability question deepened (revised 260,000-plus departure figure, confirmed no after-action report) while the America Party generated zero forward motion for a second straight week — both consistent with attention being allocated elsewhere.</div></div>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>SPCX / TSLA correlation.</strong> Both stocks head into binary events within a day of each other — Tesla's earnings today, SpaceX's next launch attempt tomorrow — with the pair continuing to trade as a single execution-risk bet rather than as independent names.</div></div>
+</div>
+
+<!-- EDITOR -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span>Editor's view</span>
+  <h3>The week every remedy from last week's edition got tested — and most of them failed the test</h3>
+  <p><span class="num">1.</span> <strong>Tesla's expansion is now happening on two different maps, and only one of them is real.</strong> Orlando and Tampa joined the robotaxi network the day before earnings, extending the city count to seven. In the same week, independent tracking put the entire unsupervised Texas fleet at roughly 21 vehicles, not the 175 this briefing cited from Bank of America seven days ago. Until those two numbers are reconciled, city count should be weighted close to zero as a signal of actual robotaxi progress — it measures where Tesla has announced, not where Tesla has scaled.</p>
+  <p><span class="num">2.</span> <strong>SpaceXAI's open-sourcing "fix" for Grok Build made things worse, not better.</strong> A security researcher found a working exploit — three lines of JSON defeat the entire permission system — within 24 hours of the code going public, and the company's own response, through its own disclosed channel, was to call the bug out of scope. That is a strictly worse outcome for enterprise trust than the original incident, because it converts an unfortunate mistake into a demonstrated unwillingness to fix the exact category of problem the mistake was about.</p>
+  <p><span class="num">3.</span> <strong>Musk's entities are now 0-for-2 against OpenAI at the trial-court level, on two unrelated legal theories.</strong> Musk v. Altman was dismissed on a statute-of-limitations technicality; xAI's separate data-centre trade-secrets suit was dismissed twice for failing to connect employee conduct to any action by OpenAI itself. Both are now headed to the Ninth Circuit with no near-term resolution in sight. Two independent judges reaching similar "insufficient showing" conclusions against two different Musk entities is a real, if imperfect, signal about the underlying strength of the broader legal campaign — independent of how loud the X spats around it get.</p>
+  <p><span class="num">4.</span> <strong>Starship's delay is no longer just a schedule problem — it is now explicitly a contract-competition problem.</strong> A week overdue against an Artemis calendar with no slack, with NASA having signalled Blue Origin as a live alternative if its lander is ready first. Every day Starship stays grounded is a day Starlink V3's capacity step-change also stays grounded, compounding a revenue delay on top of a contract-risk problem.</p>
+  <p><span class="num">5.</span> <strong>The ventures nobody is watching keep being the ones that work.</strong> A dura-sparing Neuralink implant already used on a real ALS patient, X Money live with FDIC-insured accounts and a real banking partner, Dubai Loop pouring concrete on a two-year build timeline. None of the three needed a "trust repair" this week because none of the three broke anything. That gap — between the ventures generating headlines and the ventures generating results — has now held for two consecutive editions of this briefing.</p>
+  <p><span class="num">6.</span> <strong>What would change the read.</strong> A clean Starship launch on 23 July with a successful in-space Raptor relight would be the single most bullish event available to SPCX in the next month. A Tesla Q2 call today that discloses a hard robotaxi fleet number reconciling the BofA/Electrek gap, or any figure on the Tesla/SpaceXAI Optimus revenue split, would do the same for TSLA. Both are available in the next 24 hours. Neither is the base case, and the base case — going by every remedy this briefing has tracked over the past two weeks — is that the gap between announcement and delivery widens again before it closes.</p>
+  <p class="closer">Two weeks ago this briefing observed that the Muskverse runs on the gap between promise and delivery, financed by the belief that the gap eventually closes. This week, three separate remedies aimed at closing that gap — Grok Build's open-sourcing, Starship's engine swap, and robotaxi's map expansion — were each tested within days, and each test found the gap wider than the remedy claimed. That is worth sitting with heading into two binary events in the next 24 hours.</p>
+</div>
+
+<div class="colophon">
+  <strong>Muskverse Briefing</strong> · Week of 22 July 2026 · coverage window 15 – 22 July 2026<br>
+  15 items across Tesla (4) · SpaceXAI / Grok (2) · SpaceX (2) · DOGE / Politics (2) · Legal (2) · Other ventures (3)<br>
+  Sources: Electrek, TechCrunch, Bloomberg Law, The Register, SlowMist, Washington Post, Federal News Network, NOTUS, Data Center Dynamics, The National, Las Vegas Review-Journal, BetaKit, Basenor, Motley Fool, TradingKey, FX Leaders, Not a Tesla App, Tesla Oracle, Teslarati, American Banker, company statements and court filings.<br>
+  Confidence dots reflect source quality and corroboration, not the author's enthusiasm. Market levels are as reported and may differ across providers — SPCX and intraday TSLA quotes in particular have been inconsistent since the June listing.<br>
+  Abbreviations expanded at first use: AI (artificial intelligence), ALS (amyotrophic lateral sclerosis), APY (Annual Percentage Yield), DIFC (Dubai International Financial Centre), DOGE (Department of Government Efficiency), EU (European Union), FAA (Federal Aviation Administration), FCC (Federal Communications Commission), FDIC (Federal Deposit Insurance Corporation), GDPR (General Data Protection Regulation), HW3 (Hardware 3), NHTSA (National Highway Traffic Safety Administration), OMB (Office of Management and Budget), SEC (Securities and Exchange Commission), UNLV (University of Nevada, Las Vegas).<br>
+  Prepared for Stefan · next edition: week of 29 July 2026
+</div>
+
+</main>
+</body>
+</html>

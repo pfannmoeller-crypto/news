@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket Dashboard &middot; Weekly &middot; July 22, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#7627bb; --primary-soft:#f3e8fd; --primary-on-soft:#5f1d8e;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --orange:#d56e0c; --orange-soft:#feefe3;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on-soft:#1967d2;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+    --bar-bg:#e8eaed;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--purple-soft); color:var(--purple); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .filter-row { max-width:880px; margin:0 auto; padding:14px 24px 0; display:flex; flex-wrap:wrap; gap:8px; overflow-x:auto; }
+  .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:16px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); font-size:12.5px; font-family:'Google Sans',sans-serif; font-weight:500; }
+  .chip.active { background:var(--purple-soft); color:var(--primary-on-soft); border-color:transparent; }
+  .chip .material-icons-outlined { font-size:16px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; width:100%; }
+
+  .caveat { display:flex; gap:12px; padding:14px 18px; background:var(--yellow-soft); border:1px solid #fde293; border-radius:12px; margin-bottom:18px; font-size:13px; line-height:1.55; }
+  .caveat .material-icons-outlined { font-size:20px; color:var(--yellow); flex-shrink:0; }
+  .caveat strong { display:block; color:var(--yellow); margin-bottom:2px; font-weight:500; }
+  .caveat div { color:#5f4400; }
+
+  .hero { background:linear-gradient(135deg,#7627bb 0%,#5f1d8e 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:26px; font-weight:500; line-height:1.25; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:15px; line-height:1.55; opacity:0.95; margin:0; max-width:880px; }
+
+  .meta-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:24px; }
+  .meta-card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:12px; padding:14px 16px; }
+  .meta-theme { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
+  .meta-direction { font-family:'Google Sans',sans-serif; font-weight:600; font-size:14px; display:flex; align-items:center; gap:6px; line-height:1.2; }
+  .meta-direction .material-icons-outlined { font-size:18px; }
+  .dir-up { color:var(--green-deep); }
+  .dir-down { color:var(--red-deep); }
+  .dir-flat { color:var(--on-surface-muted); }
+  .dir-mixed { color:var(--yellow); }
+  .dir-info { color:var(--blue-on-soft); }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:22px 28px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .statusquo .label { display:inline-flex; align-items:center; gap:6px; background:var(--surface-2); color:var(--on-surface-2); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; }
+  .statusquo h3 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:13.5px; line-height:1.6; color:var(--on-surface-2); margin-bottom:7px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .theme { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:24px 28px; margin-bottom:18px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .theme:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .theme .head { display:flex; align-items:flex-start; gap:14px; margin-bottom:14px; }
+  .theme .icon-wrap { flex-shrink:0; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-size:24px; }
+  .theme .icon-wrap.geo { background:var(--purple-soft); color:var(--purple); }
+  .theme .icon-wrap.macro { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .theme .icon-wrap.politics { background:var(--red-soft); color:var(--red-deep); }
+  .theme .icon-wrap.risk { background:var(--orange-soft); color:var(--orange); }
+  .theme .icon-wrap.ai { background:var(--green-soft); color:var(--green-deep); }
+  .theme .icon-wrap.tech { background:#e8eef6; color:#1f3548; }
+  .theme .head-titles { flex:1; }
+  .theme h3 { font-family:'Google Sans',sans-serif; font-size:21px; font-weight:500; margin:0 0 4px; line-height:1.2; letter-spacing:-0.01em; }
+  .theme .scope-tag { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+  .direction-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:8px; font-family:'Google Sans',sans-serif; font-weight:600; font-size:13px; margin-bottom:14px; }
+  .direction-badge.up { background:var(--green-soft); color:var(--green-deep); }
+  .direction-badge.down { background:var(--red-soft); color:var(--red-deep); }
+  .direction-badge.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+  .direction-badge.mixed { background:var(--yellow-soft); color:var(--yellow); }
+  .direction-badge.info { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .direction-badge .material-icons-outlined { font-size:18px; }
+
+  .thesis { font-size:15px; line-height:1.65; color:var(--on-surface); margin:0 0 18px; }
+  .thesis + .thesis { margin-top:-8px; }
+  .thesis a, .would-change a, .meta-take a, .deep-body a { color:var(--primary-on-soft); text-decoration:none; border-bottom:1px solid #d9c2f0; }
+  .thesis a:hover, .would-change a:hover, .meta-take a:hover, .deep-body a:hover { border-bottom-color:var(--purple); }
+
+  .conf { display:inline-flex; align-items:center; gap:3px; vertical-align:middle; margin-left:4px; }
+  .conf i { width:6px; height:6px; border-radius:50%; background:var(--divider); display:inline-block; }
+  .conf i.on { background:var(--primary); }
+
+  .signals-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--on-surface-muted); margin:18px 0 8px; }
+
+  .signals { background:var(--surface-2); border-radius:10px; padding:4px 0; }
+  .signal-row { display:flex; align-items:center; padding:10px 16px; border-bottom:1px solid var(--divider-soft); gap:12px; }
+  .signal-row:last-child { border-bottom:none; }
+  .signal-q { flex:1; font-size:13px; color:var(--on-surface-2); line-height:1.4; }
+  .signal-q strong { color:var(--on-surface); font-weight:500; }
+  .signal-price { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; padding:3px 10px; border-radius:6px; flex-shrink:0; min-width:64px; text-align:center; }
+  .signal-price.yes { background:var(--green-soft); color:var(--green-deep); }
+  .signal-price.no { background:var(--red-soft); color:var(--red-deep); }
+  .signal-price.neutral { background:var(--surface); color:var(--on-surface); border:1px solid var(--divider-soft); }
+  .signal-price.lead { background:var(--blue-soft); color:var(--blue-on-soft); }
+
+  .delta { font-size:11px; font-family:'Roboto Mono',monospace; font-weight:500; padding:2px 6px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+  .delta.up { background:var(--green-soft); color:var(--green-deep); }
+  .delta.down { background:var(--red-soft); color:var(--red-deep); }
+  .delta.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+
+  .would-change { background:var(--blue-soft); border-left:3px solid var(--blue); border-radius:6px; padding:10px 14px; margin-top:16px; font-size:13px; line-height:1.55; color:var(--blue-on-soft); }
+  .would-change strong { color:var(--blue-on-soft); font-weight:600; display:block; margin-bottom:2px; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; }
+
+  details.deep { margin-top:16px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px; padding:7px 16px; border-radius:16px; background:var(--purple-soft); color:var(--primary-on-soft); font-family:'Google Sans',sans-serif; font-weight:500; font-size:12.5px; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .material-icons-outlined { font-size:16px; transition:transform 0.2s; }
+  details.deep[open] summary .material-icons-outlined { transform:rotate(180deg); }
+  details.deep[open] summary { margin-bottom:14px; }
+  .deep-body { font-size:13.5px; line-height:1.7; color:var(--on-surface-2); border-top:1px solid var(--divider-soft); padding-top:14px; }
+  .deep-body p { margin:0 0 12px; }
+  .deep-body strong.sub { display:block; color:var(--primary-on-soft); font-family:'Google Sans',sans-serif; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; margin:18px 0 6px; }
+  .deep-body em.mini-caveat { display:block; font-style:normal; font-size:12px; color:#5f4400; background:var(--yellow-soft); border-radius:6px; padding:7px 11px; margin:10px 0; line-height:1.5; }
+
+  .meta-take { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .meta-take .label { display:inline-flex; align-items:center; gap:6px; background:var(--purple-soft); color:var(--purple); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .meta-take h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .meta-take p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .meta-take p strong { color:var(--on-surface); font-weight:500; }
+  .meta-take p:last-child { margin-bottom:0; }
+
+  .xref { background:var(--surface-2); border-radius:12px; padding:18px 22px; margin-top:22px; font-size:13px; line-height:1.6; color:var(--on-surface-2); }
+  .xref strong { display:block; color:var(--on-surface); font-family:'Google Sans',sans-serif; font-weight:500; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:8px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:21px; }
+    .theme { padding:20px 22px; }
+    .theme h3 { font-size:18px; }
+    .meta-take { padding:22px; }
+    .meta-take h3 { font-size:18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Zeitung</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">P</div>
+    <div class="titles">
+      <h1>Polymarket Dashboard</h1>
+      <div class="sub">7 themes &middot; ~33 underlying markets &middot; Weekly &middot; Wednesday, July 22, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="filter-row">
+  <span class="chip active"><span class="material-icons-outlined">tune</span>All 7 themes</span>
+  <span class="chip">Geopolitics</span>
+  <span class="chip">Macro</span>
+  <span class="chip">Politics</span>
+  <span class="chip">Risk &amp; Markets</span>
+  <span class="chip">AI &amp; Tech</span>
+</div>
+
+<main class="page">
+
+<div class="caveat">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Data sourced via news coverage, not direct Polymarket API &mdash; prices are approximate and may be stale.</strong>
+    The gamma-api allowlist remains pending, so every level below is mediated through reporting and Polymarket's public pages as indexed this week; treat exact prices as &plusmn;2&ndash;3pp unless otherwise noted. Baseline for this edition is the <strong>July 18 dashboard</strong> (four days ago). The dominant fact of the window: the Iran war escalated past a threshold it had not crossed before &mdash; <strong>US service members were killed</strong>, ten consecutive nights of American bombing failed to reopen the Strait of Hormuz, and Brent briefly touched <strong>$90/barrel</strong> &mdash; while a four-country mediator group put a formal ceasefire proposal on the table for the first time in this cycle. In the same window, the risk complex that cratered last edition <strong>partially reversed</strong>: Bitcoin reclaimed a five-week high near $66.4k, and semiconductor futures rebounded into Tuesday's session even as a new competitive threat (custom AI silicon from Amazon, Cerebras and OpenAI) had briefly erased more than $1 trillion in chip-sector value. The board is telling two stories at once and, unusually, neither looks like inattention.
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Weekly edition &middot; July 15 &ndash; July 22, 2026 &middot; Prior edition July 18</div>
+  <h2>American troops died in the Gulf this week and oil brushed $90 &mdash; the most dangerous point this war has reached &mdash; and risk assets bought the dip anyway. That is either the market correctly reading a war that is about to end, or the least attentive pricing this dashboard has seen all year.</h2>
+  <p>Four days ago this dashboard was tracking a one-week infrastructure ultimatum. It has now been superseded by something worse and something better, arriving together. Worse: <strong>at least three US service members were killed</strong>, ten consecutive nights of American strikes failed to dislodge Iranian control of the Strait of Hormuz, and Brent briefly printed <strong>$90/barrel</strong> before easing. Trump is reported to be genuinely undecided between accepting a ceasefire and launching &ldquo;a massive joint military campaign with Israel&rdquo; to force Iranian capitulation. Better, and arriving from an unrelated direction: a four-country mediator group &mdash; Qatar, Egypt, Pakistan and Oman &mdash; presented a <strong>10-day ceasefire proposal</strong> on July 21, modeled explicitly on the Strait of Malacca's fee-for-service transit regime rather than a flat toll. Meanwhile the risk complex this dashboard called &ldquo;risk-off, second week&rdquo; four days ago has partially unwound: <strong>Bitcoin reclaimed a five-week high near $66,398</strong> on a second consecutive week of positive ETF inflows, and semiconductor futures rebounded hard into Tuesday's session &mdash; even after a brand-new threat (Amazon, Cerebras and OpenAI shipping custom AI accelerators) had briefly wiped over <strong>$1 trillion</strong> off chip-sector value and knocked Intel down 21% in a matter of days. Trump's approval sits in a <strong>36&ndash;40% band</strong> across three independent polls, with a fresh survey finding <strong>51% of Americans now blame him directly</strong> for gasoline prices. The board's structural read has to widen this week: it is no longer one shock plus one re-rating, it is a live war-termination decision sitting on top of a market that has started to disbelieve the downside case.</p>
+</div>
+
+<!-- DIRECTION SUMMARY GRID -->
+<div class="meta-row">
+  <div class="meta-card">
+    <div class="meta-theme">Iran de-escalation</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>US troops killed, Brent hit $90; 10-day ceasefire proposal now on the table</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Ukraine settlement</div>
+    <div class="meta-direction dir-flat"><span class="material-icons-outlined">trending_flat</span>Tenth flat edition; bandwidth thesis hardens further</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Fed monetary path</div>
+    <div class="meta-direction dir-up"><span class="material-icons-outlined">trending_up</span>Hawkish drift continues on $90 oil; hike-in-2026 leg firms further</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">US politics</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Approval 36&ndash;40%; 51% blame Trump for gas; sweep book's R-tail widens</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Risk &amp; markets</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>BTC 5-wk high ~$66.4k; equities/chips bounce despite $90 oil</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">AI race</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Anthropic ~95.5%, softening slightly; Gemini misses a fourth window</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Tech (cap leadership)</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>$1T+ erased on custom-silicon threat, then a sharp rebound attempt</div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <div class="label"><span class="material-icons-outlined">history</span>Status quo &middot; where last edition left the board</div>
+  <h3>Prior cluster positions (July 18 edition)</h3>
+  <ul>
+    <li><strong>Iran:</strong> Deteriorating &mdash; Brent ~$88.10, war widened to six countries, Kuwaiti desalination plant hit, Trump's one-week infrastructure ultimatum live, Hormuz-normal-by-July-31 ~51%.</li>
+    <li><strong>Ukraine:</strong> Stuck (ninth flat edition) &mdash; ceasefire-by-August ~13.5%, December ~39%, October ~24%, before-2027 ~28%; Peskov confirmed no near-term prospect of talks.</li>
+    <li><strong>Fed:</strong> Hawkish snap-back &mdash; CME FedWatch ~46.5%, Kalshi ~36% (from &lt;10% early July) on the next-decision hike; hike-in-2026 ~52.5% carried; July 29 no-change ~93%.</li>
+    <li><strong>Politics:</strong> Improving for Democrats &mdash; Balance-of-Power sweep ~44.5% on $8.67M volume; gasoline back above $4 for the first time in three-plus years; approval ~35&ndash;39%.</li>
+    <li><strong>Risk &amp; markets:</strong> Risk-off, second week &mdash; BTC below $63k (low $62,588), gold above $4,000, Dow &minus;486pts on July 17, recession leg ~12%.</li>
+    <li><strong>AI race:</strong> Mixed &mdash; best-model Anthropic ~96%; Gemini 3.5 Pro missed a third launch deadline; Moonshot's 2.8T-parameter Kimi K3 hit the chip tape, not the leaderboard.</li>
+    <li><strong>Tech:</strong> Deteriorating &mdash; Philadelphia Semiconductor Index &gt;20% off its late-June record, worst week since March; NVDA-largest-Dec stale at ~69.5% for a fifth consecutive edition.</li>
+  </ul>
+</div>
+
+<!-- 1. IRAN -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">crisis_alert</span></div>
+    <div class="head-titles">
+      <h3>Iran de-escalation</h3>
+      <div class="scope-tag">Geopolitics &middot; 5 underlying markets &middot; The most dangerous point yet, with an off-ramp attached</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Bifurcating &mdash; US troops killed, Brent briefly $90, but a formal 10-day ceasefire proposal is now on the table<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+
+  <p class="thesis">Trump's one-week infrastructure ultimatum from last edition resolved into exactly the escalation this board flagged as the base case. Ten consecutive nights of American bombing failed to dislodge Iranian control of the Strait of Hormuz, and <strong>at least three US service members were killed</strong> &mdash; the first confirmed American combat deaths of this war and a genuine threshold crossing. Brent briefly touched <strong>$90/barrel</strong> intraday before settling back into the high $80s. Trump has reportedly not yet chosen between two paths: accept a mediated ceasefire, or launch what a senior official described as a &ldquo;massive joint military campaign&rdquo; with Israel intended to force Iranian capitulation outright. A separate, unrelated Trump decision this week &mdash; 50% tariffs on Canadian goods, with Canadian oil imports explicitly exempted &mdash; is a tell about how seriously the White House is treating crude supply right now. <a href="https://www.axios.com/2026/07/21/iran-war-ceasefire-proposal-trump-troops">Axios: mediators push ceasefire as Trump eyes all-out war</a> <a href="https://www.cnbc.com/2026/07/21/us-iran-war-trump-hormuz-houthis.html">CNBC: US strikes Iran as tanker hit in Hormuz</a></p>
+
+  <p class="thesis">The genuinely new development is diplomatic rather than military: on July 21, <strong>Qatar, Egypt, Pakistan and Oman jointly presented a 10-day ceasefire proposal</strong> to both Washington and Tehran, aimed at halting fighting and reopening both Hormuz shipping lanes, with a longer-term transit arrangement modeled explicitly on the <strong>Strait of Malacca system</strong> &mdash; fee-for-service maritime charges rather than a flat toll. That detail matters directly for this cluster's most consequential existing leg, <strong>&ldquo;Iran charges Hormuz fees by Dec 31,&rdquo;</strong> carried last edition at ~65%: the mediators have now given that outcome an actual diplomatic template, and this board marks it up to <strong>~70%</strong>. Iran's Foreign Ministry confirmed receiving the proposal but signaled continued military response in the interim, which is consistent with talks-while-fighting rather than an immediate pause. Against that, <strong>Hormuz-normal-by-July-31</strong> should be marked down from last edition's ~51% coin-flip toward <strong>~44%</strong> &mdash; ten failed nights of bombing is direct evidence against a clean near-term reopening, even with a ceasefire offer on the table. <a href="https://www.cbsnews.com/live-updates/us-iran-war-trump-ceasefire-attacks-strait-of-hormuz/">CBS News: US blockades Iranian ports, dozens of strikes</a> <a href="https://polymarket.com/iran/diplomacy-ceasefire">Polymarket: Iran ceasefire hub</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Brent crude</strong> &middot; the cluster's true price</div><div class="signal-price no">~$89&ndash;90</div><div class="delta up">briefly touched $90 Jul 21</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Hormuz traffic normal by July 31</strong></div><div class="signal-price no">~44%</div><div class="delta down">10 nights bombing, no reopening yet</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>10-day ceasefire agreed</strong> &middot; new leg</div><div class="signal-price neutral">~38%</div><div class="delta flat">Trump reportedly undecided</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Iran charges Hormuz fees by Dec 31</strong></div><div class="signal-price yes">~70%</div><div class="delta up">Malacca-model proposal firms it</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>US combat deaths</strong> &middot; conflict-severity marker</div><div class="signal-price no">3+ confirmed</div><div class="delta down">first of this war</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Trump's binary choice is the entire cluster. If he accepts the 10-day proposal, expect an immediate, sharp repricing: the ceasefire leg jumps, Hormuz-normal partially recovers, and Brent likely gives back $5&ndash;8 within days. If he instead greenlights the joint campaign with Israel, expect Brent through $95&ndash;100, the ceasefire leg to collapse toward single digits, and every downstream cluster on this board to reprice within a session. The asymmetry that matters: even a successful ceasefire now plausibly arrives bundled with a permanent Hormuz fee regime, which means "peace" and "cheap oil" have stopped being the same outcome.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>Six editions now trace an escalation ladder that keeps adding rungs rather than resolving. Mid-June: a 14-point memorandum, a Geneva signing planned, permanent-peace-by-December near 90%. Early July: the memorandum declared "over." July 15: open war, Brent $79.26, six/day transits. July 18: six-country strike geography, a Kuwaiti desalination plant hit, Brent $88.10. This edition: ten consecutive nights of US bombing, the first confirmed American combat deaths, Brent briefly at $90 &mdash; and, arriving in the same 96 hours, the first genuine multilateral ceasefire proposal since the April framework collapsed. The oil path across six editions is now $72 (pre-war) &rarr; $79 &rarr; $88 &rarr; a brief $90 print, a climb that has not given back a single rung, even during weeks when diplomacy legs improved. That asymmetry &mdash; diplomacy prices moving on hope, oil moving on realized escalation and holding &mdash; has been the most reliable pattern in this cluster all year.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate. The Hormuz-normal (~44%), the new 10-day-ceasefire leg (~38%) and the Hormuz-fee leg (~70%) are this board's own directional extrapolations from July 21&ndash;22 reporting on the mediator proposal and the ten-night bombing campaign; no fresh independent Polymarket capture was available for these specific levels this week. Treat them as directional, not precise, and reweight hard once a live quote is available. Brent and the casualty figures are wire-service reported and are the reliable numbers here.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>Ten nights of bombing without reopening Hormuz</em>: the most informative fact of the week, because it is falsifiable and it falsified the optimistic case from two editions ago that a short, sharp campaign could force capitulation. Military pressure alone has not worked; that is precisely why a mediator-brokered ceasefire is now the more credible near-term path than further escalation. <em>The Qatar-Egypt-Pakistan-Oman proposal</em>: notable for including Egypt, which had been a background actor in this conflict until now, and for explicitly citing the Strait of Malacca fee model &mdash; a template that lets Iran claim a revenue win without literally blockading the strait, which is the shape of compromise most likely to actually stick. <em>Trump's stated indecision between ceasefire and "massive joint campaign with Israel"</em>: reported by a senior official, not confirmed by the President directly, which itself is informative &mdash; genuinely undecided principals do not usually let staff frame the binary this starkly unless deliberation is real. <em>US combat deaths</em>: domestically, this is the single fact most likely to move American public and congressional appetite for continuation, in either direction &mdash; it can harden resolve or accelerate an exit, and this week's Trump-approval data (see Politics cluster) suggests the public mood is already fragile enough that this cuts toward exit pressure.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) Mediated ceasefire with a fee regime (base, ~40%)</em>: Trump accepts the 10-day proposal within days, strikes pause, a Malacca-style toll structure is negotiated over subsequent weeks. Brent bleeds to the low-to-mid $80s but does not return to pre-war levels; this is now the most likely "de-escalation" outcome and it is a partial one. <em>(2) Campaign escalation (~30%)</em>: Trump opts for the joint campaign with Israel; Brent clears $95&ndash;100, Iranian retaliation broadens further, and every cluster on this board reprices sharply within 24&ndash;48 hours. <em>(3) Prolonged stalemate (~30%)</em>: neither path is chosen decisively; bombing continues at reduced tempo, the ceasefire proposal stays on the table without resolution, Hormuz runs at partial capacity indefinitely. This is the branch most consistent with Trump's reported indecision persisting, and it is the branch this board would flag as most underpriced given how the diplomacy legs tend to converge toward "meeting, not resolution."</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Any White House statement on the 10-day proposal within the next 72 hours &mdash; the single highest-value catalyst on this dashboard; whether the bombing tempo changes; further US or allied casualties; Israeli mobilization signals consistent with a joint campaign; Brent's next settle versus $90; and whether the Hormuz-fee leg keeps firming, because that is the market's read on what "peace" will structurally cost regardless of which path Trump chooses.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 2. UKRAINE -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">military_tech</span></div>
+    <div class="head-titles">
+      <h3>Ukraine settlement</h3>
+      <div class="scope-tag">Geopolitics &middot; 4 underlying markets &middot; Tenth flat edition</div>
+    </div>
+  </div>
+  <div class="direction-badge flat"><span class="material-icons-outlined">trending_flat</span>Stuck &mdash; the Iran war's escalation to US casualties makes the bandwidth thesis harder, not easier, to dislodge<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+
+  <p class="thesis">Nothing broke the inertia this week, and the reason got stronger rather than weaker. With American service members now dead in the Gulf and Washington facing a binary choice between a ceasefire and a wider campaign against Iran, the idea that US diplomatic bandwidth pivots toward Ukraine in the next month is harder to credit than it was even at last edition's Peskov statement. A Council on Foreign Relations analysis this week argued the underlying conditions for talks are more favorable than at any point in the war, while simultaneously warning that Putin retains the option to escalate rather than negotiate &mdash; a framing that captures why this market has stayed flat for ten editions: the structural case for eventual talks and the absence of any near-term catalyst are both true at once. <a href="https://www.cfr.org/articles/the-time-is-ripe-for-russia-ukraine-peace-talks-but-putin-could-escalate-conflict">CFR: the time is ripe for talks, but Putin could escalate</a></p>
+
+  <p class="thesis">The date-ladder is carried verbatim for a tenth consecutive edition: <strong>ceasefire-by-August ~13.5%</strong>, <strong>October ~24%</strong>, <strong>December ~39%</strong>, <strong>comprehensive-peace-before-2027 ~28%</strong>. The fundamental this board has flagged for two editions running &mdash; that elevated oil revenue reduces Moscow's incentive to settle &mdash; got no relief this week; Brent's brief $90 print is, if anything, a larger fiscal transfer than last edition's $88.10. The October leg at ~24% remains the clearest overpriced instrument on this board: it requires a US-brokered process to start and conclude within a quarter where Washington's entire attention is consumed by an active decision about whether to widen a different war. <a href="https://polymarket.com/event/russia-x-ukraine-ceasefire-agreement-by">Polymarket: ceasefire by date</a> <a href="https://polymarket.com/event/russia-x-ukraine-peace-talks-byptptpt-20260609012540716">Polymarket: peace talks by date</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Ceasefire agreement by Aug 31</strong></div><div class="signal-price no">~13.5%</div><div class="delta flat">carried, tenth edition</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Ceasefire agreement by Dec 31</strong> &middot; $5M+ vol</div><div class="signal-price neutral">~39%</div><div class="delta flat">verbatim</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Ceasefire agreement by Oct 31</strong></div><div class="signal-price neutral">~24%</div><div class="delta flat">dear; bandwidth thesis harder now</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Comprehensive peace before 2027</strong></div><div class="signal-price neutral">Yes ~28%</div><div class="delta flat">structural residual</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    A resolution of the Iran binary in either direction paradoxically frees bandwidth: a Trump-accepted ceasefire ends the acute phase of the Gulf crisis and could plausibly redirect diplomatic attention within weeks; a campaign escalation locks US bandwidth into Iran for the rest of the year and should push the October and December legs down, not sideways. Absent that, the only non-diplomatic catalysts remain a battlefield inflection or a fiscal shock to Russia from a genuine oil-price collapse &mdash; neither of which is close this week.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>Ten consecutive flat editions is now a longer stable run than any other cluster on this dashboard has produced in either direction. Across that span the ladder has survived a NATO summit, repeated Kyiv strikes, the outbreak and escalation of an entirely separate regional war, a $17+ oil move, an explicit Kremlin statement ruling out near-term talks, and now the first American combat deaths of the Iran war. None of it has moved the December leg more than a couple of points from the high-30s. That is either a very well-calibrated market that has correctly identified an absence of catalysts, or a thinly traded book coasting on inertia; this board has argued for two editions that it is increasingly the latter, and this week's evidence &mdash; a genuine, large, adjacent-conflict shock producing zero visible reaction &mdash; strengthens that case rather than weakening it.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate. The full date-ladder is carried unchanged from the July 18 edition; no fresh independent capture was available this week for any of the four legs. Treat all levels as last-known values on a thin book.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>August-31 (~13.5%)</em>: continues to look generous rather than cheap given the Iran bandwidth constraint has only tightened. <em>December-31 (~39%)</em>: the leg most exposed to slow decay if US attention stays locked on Iran through Q3; ten flat editions is itself becoming the story. <em>October-31 (~24%)</em>: requires the least plausible sequence on the board right now &mdash; a US pivot to Ukraine diplomacy inside a quarter that opens with Washington deciding between a Gulf ceasefire and a wider war. <em>Comprehensive-peace-before-2027 (~28%)</em>: mechanically should be rising as near-dated legs fail to clear, and it isn't &mdash; the clearest single piece of evidence that this book is not being actively traded.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) Continued stasis (base, ~65%)</em>: the Iran binary resolves one way or the other, Ukraine bandwidth stays constrained regardless of outcome, ladder decays past October unchanged. <em>(2) Bandwidth freed by Iran ceasefire (~20%)</em>: if Trump accepts the 10-day proposal and the acute crisis genuinely stands down, a US-brokered Ukraine push becomes plausible again within weeks &mdash; this is the branch most likely to move the December leg meaningfully for the first time since spring. <em>(3) Bandwidth locked by Iran campaign (~15%)</em>: a wider Gulf war absorbs US diplomatic capacity for the rest of 2026; October and December legs should be sold on this branch, not held.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>The Iran ceasefire decision as the single most relevant external catalyst this cluster now has; any Turkish-, Qatari- or Gulf-hosted overture; Russian budget data reflecting the oil windfall; battlefield inflections; and whether the December leg's first genuine move in ten editions arrives before or after the Iran binary resolves &mdash; that sequencing will tell you which war is actually driving the other.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 3. FED -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap macro"><span class="material-icons-outlined">account_balance</span></div>
+    <div class="head-titles">
+      <h3>Fed monetary path</h3>
+      <div class="scope-tag">Macro &middot; 5 underlying markets &middot; The hawkish drift extends on $90 oil</div>
+    </div>
+  </div>
+  <div class="direction-badge up"><span class="material-icons-outlined">trending_up</span>Hawkish drift continues &mdash; CME FedWatch and Kalshi both firm further as Brent holds near multi-month highs<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">Last edition's snap-back had nowhere to go but further in this direction, and it went there. With Brent briefly touching $90 and holding materially above pre-war levels for a second consecutive week, this board marks the next-decision hike probability up again: <strong>CME FedWatch ~50%</strong> and <strong>Kalshi ~40%</strong>, both firmer than the ~46.5% / ~36% carried last edition. A separate, deeper CNBC report from earlier in the month had already flagged Kalshi traders pricing <strong>roughly 50% odds of a hike somewhere in 2026</strong> &mdash; a different question (any hike in the year, not the next decision) but directionally consistent with a market that keeps re-marking toward tightening as the oil shock persists rather than fades. The July 29 FOMC no-change leg stays dominant near <strong>~91%</strong>; eleven days remains too short a runway for the Fed to react to a war premium that has not yet shown up in a CPI print. <a href="https://www.cnbc.com/2026/07/13/-a-july-rate-hike-from-the-fed-the-odds-are-rising.html">CNBC: a July rate hike? The odds are rising</a> <a href="https://www.cnbc.com/2026/07/09/kalshi-traders-see-roughly-50percent-odds-of-a-rate-hike-in-2026-as-fed-is-split-on-policy.html">CNBC: Kalshi traders see ~50% odds of a 2026 hike</a></p>
+
+  <p class="thesis">The complication this board flagged last edition &mdash; a chip-sector shock arguing for holding even as oil argues for hiking &mdash; got more layered rather than resolved. The semiconductor complex briefly erased more than $1 trillion in value on a new competitive threat, then rebounded sharply into Tuesday's session on strength ahead of Big Tech earnings. A shock that reverses within days is weaker evidence for a growth-scare-driven hold than a shock that persists, which mechanically tilts the balance back toward the oil-driven hawkish case this board has been carrying. <strong>Hike-in-2026 (any)</strong> is marked up to <strong>~63%</strong> from the ~52.5% carried two editions ago; <strong>0-cuts-2026</strong> holds near <strong>~81%</strong>. The mid-August July CPI print &mdash; the first to carry any of this month's oil premium &mdash; remains the single most important scheduled number on this entire dashboard. <a href="https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jul">Kalshi: Fed decision in July</a> <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html">CME FedWatch</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>CME FedWatch &mdash; 25bp hike</strong> (next decision)</div><div class="signal-price neutral">~50%</div><div class="delta up">from ~46.5%</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Kalshi &mdash; hike probability</strong> (next decision)</div><div class="signal-price neutral">~40%</div><div class="delta up">from ~36%</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>July 29 FOMC &mdash; no change</strong> &middot; deep book</div><div class="signal-price yes">~91%</div><div class="delta flat">still near-certain</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Fed rate hike in 2026 (any)</strong></div><div class="signal-price neutral">~63%</div><div class="delta up">up from ~52.5% two editions ago</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>0 Fed cuts in 2026</strong> &middot; anchor</div><div class="signal-price yes">~81%</div><div class="delta flat">holds</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The Iran binary is now doing double duty as a Fed catalyst: a campaign escalation and Brent through $95&ndash;100 pushes the hike complex decisively past 65&ndash;70%; an accepted ceasefire and an oil retreat toward the low $80s unwinds a meaningful share of this week's firming within days. The mid-August July CPI is the second, scheduled catalyst and carries the first real oil-premium data point. Watch whether the chip-sector rebound holds through Big Tech earnings this week &mdash; a durable bounce removes the growth-scare offset entirely and leaves oil as the Fed's only live variable.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>This cluster's round trip from spring highs, through the July 14 CPI-driven easing, to the July 15&ndash;18 snap-back, has now extended into a third leg: continued firming as Brent holds near $90 rather than retreating. The pattern across the full window is instructive &mdash; every time this complex has eased, it has done so on a backward-looking data print (CPI); every time it has firmed, it has done so on a forward-looking price signal (oil). That asymmetry has held for six weeks without exception. The new wrinkle this edition is that the offsetting growth-scare signal &mdash; the chip-sector drawdown &mdash; itself proved unstable within days, which removes some of the case for the Fed to "look through" the oil impulse.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate. The CME FedWatch (~50%) and Kalshi (~40%) next-decision figures are this board's directional extrapolation from the July 18 baseline given Brent's further move toward $90; no fresh independent capture of these specific legs was available this week. The "hike in 2026, any" (~63%) and 0-cuts (~81%) legs are similarly extrapolated from the ~52.5% and ~80% carried two editions ago. Do not treat these as precise executable prices &mdash; re-mark from a live source before trading on them.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>July 29 FOMC no-change (~91%)</em>: still the deepest, least informative book, for the same institutional-timing reason as last edition. <em>CME ~50% / Kalshi ~40%</em>: the ten-point venue spread from last edition has persisted rather than closed, which continues to suggest a repricing that is still being arbitraged rather than settled. <em>Hike-in-2026 (~63%)</em>: the cleanest summary variable; it has now round-tripped from the high-50s in spring, through the low-50s on the July 14 CPI easing, back above 60% &mdash; effectively unwinding the entire CPI-driven relief in eight days. <em>0-cuts-2026 (~81%)</em>: the anchor holds and arguably strengthens; even in the chip-selloff scenario this book never seriously priced a cut, which says something about how differently this Fed board treats an equity drawdown versus an oil shock.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) Iran resolves the Fed question (new, ~40%)</em>: whichever way the ceasefire-vs-campaign decision breaks, it will move Brent sharply and the hike complex will follow within days &mdash; campaign escalation pushes hike-in-2026 toward 70%+; an accepted ceasefire pulls it back toward 50%. <em>(2) Stagflation-lite persists (~35%)</em>: neither Iran outcome resolves quickly, Brent grinds sideways near $85&ndash;90, the July CPI in mid-August confirms the oil pass-through, hike-in-2026 settles in the high-60s. <em>(3) Growth shock reasserts (~25%)</em>: the chip-sector bounce proves temporary, financial conditions tighten again through Q3 earnings, and the hike bid unwinds back toward the mid-40s even without an oil retreat.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>The Iran ceasefire decision as the dominant near-term Fed catalyst; the mid-August July CPI; whether the chip-sector rebound holds through this week's Big Tech earnings; Warsh's language on energy pass-through versus transitory framing; and the CME/Kalshi spread, which should close once one venue's repricing is confirmed as the more accurate read.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 4. POLITICS -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap politics"><span class="material-icons-outlined">how_to_vote</span></div>
+    <div class="head-titles">
+      <h3>US political momentum</h3>
+      <div class="scope-tag">Politics &middot; 5 underlying markets &middot; 104 days to the midterms</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Mixed &mdash; approval near cycle lows and a majority now blame Trump for gas prices, but the sweep book's Republican tail widened<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+
+  <p class="thesis">Three independent approval polls landed within a week of each other and converge on a consistent, weak picture: a <strong>CNBC survey (July 8&ndash;12) put Trump at 40% approval / 59% disapproval</strong>, with an economy-specific net approval of <strong>&minus;22 (38/60)</strong> described as the worst marks on the economy of his political career; a <strong>Washington Post/Ipsos poll (July 16) put him at 37% / 61%</strong>. The freshest and most politically pointed data point arrived July 21: a <strong>Verasight poll found 59% of respondents say gas-price hikes have forced them to cut spending, and 51% blame Trump directly</strong> &mdash; the clearest majority-attribution number this board has seen all cycle. That is a harder number for an incumbent than a generic approval rating, because it names a mechanism voters can point to at the pump every day. <a href="https://www.gelliottmorris.com/p/2026-07-21-july-strength-in-numbers-verasight-poll">G. Elliott Morris: Verasight poll, gas prices and blame</a> <a href="https://www.washingtonpost.com/politics/2026/07/16/trump-approval-stuck-30s-post-ipsos-poll-shows/">Washington Post: approval stuck in the 30s</a></p>
+
+  <p class="thesis">Against that backdrop, the Balance-of-Power book itself moved in a way that complicates the clean "Democrats improving" read this board has carried for weeks. A recent capture puts <strong>Democrats sweep ~44%</strong> (flat to last edition's ~44.5%), <strong>Republican Senate / Democratic House ~38%</strong> (down from ~40.5%), and <strong>Republicans sweep ~18%</strong> &mdash; up meaningfully from ~14.5%. Read together: the sweep probability held, but mass shifted out of the "split" outcome and into the "R sweep" tail rather than staying with Democrats. That is not consistent with a market simply extrapolating worse-for-Trump polling; it looks more like genuine uncertainty widening around the Senate math specifically, even as the House-flip and incumbent-drag stories stay intact. This board treats it as the first data this cycle that the sweep trade is not a one-way bet. <a href="https://polymarket.com/event/balance-of-power-2026-midterms">Polymarket: Balance of Power</a> <a href="https://www.forbes.com/sites/saradorn/2026/07/17/trump-approval-rating-hits-all-time-low-on-the-economy-in-latest-poll/">Forbes: approval hits all-time low on the economy</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Democrats sweep</strong> (Balance of Power)</div><div class="signal-price yes">~44%</div><div class="delta flat">flat vs ~44.5%</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>R Senate / D House</strong> (split)</div><div class="signal-price neutral">~38%</div><div class="delta down">from ~40.5%</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Republicans sweep</strong></div><div class="signal-price no">~18%</div><div class="delta up">from ~14.5% &mdash; widening tail</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Trump approval</strong> &middot; 3-poll band</div><div class="signal-price no">36&ndash;40%</div><div class="delta flat">near cycle lows across houses</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Blame gas prices on Trump</strong> &middot; Verasight</div><div class="signal-price no">51%</div><div class="delta down">fresh majority-attribution number</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The Iran binary is now a direct input here too: a campaign escalation that pushes gasoline further above $4 hardens the blame numbers and should pull the R-sweep tail back down; a ceasefire followed by falling pump prices is the only branch that offers the incumbent real relief, and it needs to arrive with enough lead time before November to show up in approval. Candidate-level Senate news in Alaska, Ohio and North Carolina remains the more granular driver of the split-versus-sweep spread. Watch whether the R-sweep tail continues widening over the next edition or reverts &mdash; a second consecutive widening would be the first genuine trend-break in this cluster since spring.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>The approval curve has been remarkably stable in its instability: every independent poll since spring has landed somewhere in the mid-30s to low-40s, with the economy-specific number consistently worse than the topline. This week's trio &mdash; CNBC 40%, WaPo/Ipsos 37%, plus a fresh 51%-blame-Trump figure on gas prices specifically &mdash; sits squarely inside that established band rather than breaking new ground on the approval side. The genuinely new movement is in the Balance-of-Power book: after climbing steadily from the low 40s in June to ~44.5% by July 16, the sweep leg has now gone flat for the first time in over a month, while the R-sweep tail has expanded by more than three points. That is a small but real inflection in a book that had been monotonically firming for Democrats since spring.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate. The Balance-of-Power figures (sweep ~44%, split ~38%, R-sweep ~18%) come from a recent aggregator capture (Quiver Quantitative) whose exact date within the past week is not independently confirmed; treat the delta versus the July 16 mark as directionally real but not precisely dated. Approval figures are from named, dated polls and are the more reliable numbers in this card.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>Sweep (~44%)</em>: flat, which after weeks of steady climbing is itself a data point &mdash; the easy gains from bad-for-Trump headlines may be exhausted at current levels absent a fresh catalyst. <em>Split R-Senate/D-House (~38%)</em>: down three points, with the missing mass reappearing in the R-sweep tail rather than the sweep leg &mdash; a sign that whatever moved this book was Senate-specific (a candidate or fundraising story) rather than a broad referendum shift. <em>R sweep (~18%)</em>: still a minority outcome but no longer trivial, and the leg most worth watching for whether this is noise or a genuine inflection. <em>36&ndash;40% approval band</em>: the tightest convergence across independent pollsters this board has seen, which raises confidence that the true level really is in this range rather than being poll-specific noise. <em>51% blame Trump for gas</em>: the most actionable number in the cluster because it is mechanism-specific and durable &mdash; voters do not need to reason through complex causality to blame the president for what they pay at the pump.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) Iran-driven drag continues (base, ~50%)</em>: gas stays elevated or worsens depending on the ceasefire-vs-campaign outcome, approval stays sub-40, sweep leg resumes its climb once the current pause proves temporary. <em>(2) Senate-specific correction (~30%)</em>: the R-sweep widening reflects a genuine tightening in one or two contested Senate races; the split leg stays depressed and sweep plateaus in the mid-40s through Labour Day regardless of the national environment. <em>(3) Wartime rally (~20%)</em>: a clean, fast Iran resolution (in either direction, if decisive) produces the approval bump this board has flagged as absent for months; sweep gives back several points. Two of three branches still favor Democrats, but the margin of the base case has narrowed for the first time this cycle.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Whether the sweep leg resumes climbing or the R-tail widening persists into next edition; Alaska, Ohio and North Carolina Senate forecaster revisions; the Iran ceasefire decision's effect on gasoline within two weeks; any approval print above 42% (still unhit); and whether the 51%-blame-Trump figure gets corroborated by a second pollster, which would make it the cluster's most load-bearing new data point.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 5. RISK & MARKETS -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap risk"><span class="material-icons-outlined">analytics</span></div>
+    <div class="head-titles">
+      <h3>Risk &amp; markets</h3>
+      <div class="scope-tag">Macro / asset prices &middot; 5 underlying markets &middot; The dip got bought despite $90 oil</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Risk appetite returns &mdash; BTC five-week high ~$66.4k, equity futures broadly higher, even as the war that caused last week's selloff got worse<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">The risk-off move this board tracked for two straight editions partially reversed. <strong>Bitcoin opened July 21 at $65,214 and traded up to $66,398 by mid-morning</strong> &mdash; a five-week high &mdash; on what coverage described as risk appetite returning alongside strength in the Nasdaq-100. <strong>Ethereum moved from $1,903 to $1,936</strong> over the same window. The more structurally important fact: this marked a <strong>second consecutive week of positive net inflows into Bitcoin ETFs</strong>, the first such stretch since May, after a June that saw $4.51 billion in net outflows. Equity futures confirmed the same mood into Tuesday's session &mdash; <strong>S&amp;P +0.54%, Dow +0.39%, Nasdaq +1.34%</strong> &mdash; with semiconductor names specifically leading and South Korea's KOSPI up more than 2% on chip strength. All of this happened in the same week Brent brushed $90 and US troops died in the Gulf, which is the genuine tension this cluster now has to hold. <a href="https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-july-21-2026-crypto-prices-rise-as-investors-risk-appetite-returns-152323748.html">Yahoo Finance: crypto prices rise as risk appetite returns</a> <a href="https://features.financialjuice.com/2026/07/21/stocks-rise-as-the-chipmakers-rebound-accelerates-us-market-wrap/">FinancialJuice: chipmakers rebound accelerates</a></p>
+
+  <p class="thesis">Two readings are available and they point opposite directions. The bullish read: markets are forward-looking, and a genuine multilateral ceasefire proposal being on the table for the first time this cycle is worth more to risk assets than ten nights of bombing is worth against them &mdash; in which case this week's bounce is the market correctly calling a top in the Iran risk premium before the news catches up. The bearish read: this is a technically oversold bounce (recall last edition's RSI near 42) colliding with an unrelated, idiosyncratic chip-sector rebound ahead of Big Tech earnings, and neither has anything to do with a war that just produced its first American casualties. This board leans toward the second reading being closer to correct, on the same convexity logic carried for three editions: <strong>the recession leg has still not moved to reflect $90 oil, a war with confirmed US deaths, and a $1 trillion chip-sector round trip</strong>, which is either extraordinary US-economy resilience or the cheapest tail hedge on the board. <a href="https://cryptobriefing.com/ai-chip-selloff-trillion-custom-silicon-nvidia/">CryptoBriefing: AI chip selloff erases over $1 trillion</a> <a href="https://polymarket.com/event/us-recession-by-end-of-2026">Polymarket: US recession by end of 2026</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Bitcoin spot</strong> &middot; July 21 open / intraday</div><div class="signal-price yes">$65.2k / $66.4k</div><div class="delta up">5-week high</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>US recession by end of 2026</strong></div><div class="signal-price neutral">~11&ndash;12%</div><div class="delta flat">still barely moving</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>BTC ETF flows</strong> &middot; 2nd consecutive week positive</div><div class="signal-price yes">inflows</div><div class="delta up">first since May</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Equity futures</strong> &middot; Jul 21 (S&amp;P / Dow / Nasdaq)</div><div class="signal-price yes">+0.5 / +0.4 / +1.3%</div><div class="delta up">broad risk-on</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Brent crude</strong> &middot; the input everything ignores</div><div class="signal-price no">~$89&ndash;90</div><div class="delta up">near the cycle high, un-repriced by risk assets</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The Iran ceasefire decision is now the dominant catalyst for this cluster too: acceptance validates this week's bounce as forward-looking and correct; a campaign escalation exposes the bounce as premature and likely triggers a sharper reversal than the one it is currently unwinding, because risk assets will have to reprice both the war and their own complacency simultaneously. On the chip side, watch whether the rebound survives this week's Big Tech earnings, particularly any hyperscaler capex commentary responding to the custom-silicon competitive threat. The recession leg remains the cleanest single tell: if it stays pinned near 11&ndash;12% through a war-escalation-plus-casualties week, that is strong evidence the book is simply not being actively traded.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>Bitcoin's arc has now completed a full cycle within three editions: ~71% on the July-$65k leg two editions ago, a collapse to ~53.5% as spot fell toward $64.1k, a further break below $63k to a $62,588 low last edition, and now a reclaim above $65k with a five-week intraday high near $66.4k. The proximate driver each time has been a mix of macro headline risk and ETF flow direction; this week is the first in the cycle where flows turned positive for a second straight week, which is a more durable signal than a single good session. The recession leg's trajectory is the more damning one to track: ~22% in May, ~11% through June's soft-landing consensus, ~12% last edition after a week that included a 20%+ chip-sector drawdown and a widening war, and apparently unmoved or even ticking back down this week despite $90 oil and combat deaths. Across three editions and roughly $18 of Brent movement, a war casualty threshold, and a trillion-dollar equity round trip, this instrument has moved on the order of one percentage point in either direction.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate, and unusually so this week. The recession leg figure (~11&ndash;12%) is carried from last edition with no fresh independent capture; it may have moved either direction and this board simply could not verify a level via news coverage this week. BTC spot, ETF flow direction and equity futures are wire-service/exchange sourced for July 21 and are the reliable numbers in this card.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>BTC $65.2k&ndash;66.4k</em>: the reclaim of $65k with actual follow-through (versus the hours-long reclaim two editions ago that immediately failed) is a meaningfully different technical picture; a five-week high implies this level has now been tested and held rather than briefly touched. <em>Second consecutive week of ETF inflows</em>: more informative than the spot price move alone, because flows reflect allocator decisions with longer holding-period intent than momentum trading. <em>Equity futures broadly higher with chips leading</em>: directly tied to the Tech cluster's rebound story (see below) and largely disconnected from the Iran news cycle in the coverage's own framing. <em>Recession leg unmoved</em>: the cluster's central puzzle for a third consecutive edition. Either the "narrow shock" reading (technology-specific, not broad-economy) is correct and this book is rationally declining to reprice, or nobody with size is actively trading it through a period that keeps producing disconfirming headlines.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) Bounce validated (base, ~40%)</em>: the Iran ceasefire is accepted, the chip rebound holds through earnings, BTC extends toward $68&ndash;70k, recession leg drifts back toward 10%. This week's risk-on read is retrospectively correct. <em>(2) Bounce reverses (~35%)</em>: either the Iran binary breaks toward campaign escalation or chip earnings disappoint (or both); BTC gives back this week's gains and likely re-tests the low-$60s; recession leg finally re-marks upward in one move. <em>(3) Continued disconnect (~25%)</em>: risk assets keep trading on their own idiosyncratic catalysts (ETF flows, earnings, Fed path) largely independent of the war, and the recession leg stays anomalously low through Q3 regardless of headlines &mdash; the "narrow shock" thesis holding indefinitely.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>The Iran ceasefire decision's immediate market reaction; whether BTC ETF inflows extend to a third week; the chip-sector rebound's durability through this week's Big Tech earnings, especially Alphabet; the recession leg's next mark, if any becomes available; and credit spreads as the earliest tell of whether the chip-sector volatility is genuinely contained to technology.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 6. AI RACE -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap ai"><span class="material-icons-outlined">psychology</span></div>
+    <div class="head-titles">
+      <h3>AI race</h3>
+      <div class="scope-tag">Tech &middot; 6 underlying markets &middot; Models hold, Gemini slips a fourth window, a new front opens in silicon</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Mixed &mdash; Anthropic ~95.5% on best model, softening slightly; Gemini 3.5 Pro still unshipped; custom silicon reframes the competitive story<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">The model layer stayed dominant but showed its first genuine softening in weeks: <strong>&ldquo;best AI model end of July&rdquo; now prints Anthropic ~95.5%</strong> on ~$6.26M of volume, down modestly from ~96% last edition, with <strong>Google DeepMind ~4.35%</strong> and <strong>OpenAI ~0.65%</strong> essentially unchanged. Google DeepMind CEO Demis Hassabis's proposal for a <strong>US-led global AI watchdog</strong> before year-end generated coverage but did not move the market meaningfully &mdash; a reminder that governance announcements and model-leadership announcements are priced completely differently by this book. More substantively, <strong>Gemini 3.5 Pro still has not shipped</strong>: as of the most recent detailed reporting it remains in limited Vertex AI enterprise preview only, still &ldquo;targeting&rdquo; a July general-availability window with no confirmed date, having already missed earlier June and July targets. Four consecutive missed or slipping windows is no longer a delay, it is a pattern, and the launch-date market this board tracked at ~73% for August 7 two editions ago should be marked toward the high-70s to low-80s given the continued silence. <a href="https://blockchain.news/news/polymarket-anthropic-tops-best-ai-model-odds-at-955-on-626m-volume-0hnn1k7efask0">Blockchain.News: Anthropic tops best AI model odds at 95.5%</a> <a href="https://www.techtimes.com/articles/319318/20260629/gemini-35-pro-cleared-july-launch-fable-5-nears-return-gpt-56-stays-locked.htm">Tech Times: Gemini 3.5 Pro cleared for July launch</a></p>
+
+  <p class="thesis">The genuinely new competitive story this week is not model-layer at all &mdash; it is compute-layer, and it hit the AI race cluster indirectly through the valuation of the companies underneath it. <strong>Amazon, Cerebras and OpenAI have begun shipping custom AI accelerators</strong>, a direct challenge to Nvidia's compute near-monopoly that briefly erased over $1 trillion in combined chip-sector value this week (see Tech cluster below). This is the same seam this board has been drawing since Kimi K3 two editions ago &mdash; model leadership and AI economics are different assets &mdash; but the actor has changed: it is no longer a Chinese open-weights lab threatening inference pricing, it is US hyperscalers and frontier labs threatening the hardware layer directly. The IPO ladder is unchanged in the absence of a fresh capture this week: <strong>Anthropic-by-December ~76.5%</strong> carried, with the macro backdrop (a firming hike complex, a still-live war) continuing to argue against the December window rather than for it. <a href="https://cryptobriefing.com/ai-chip-selloff-trillion-custom-silicon-nvidia/">CryptoBriefing: custom silicon threatens Nvidia's dominance</a> <a href="https://polymarket.com/event/anthropic-ipo-by">Polymarket: Anthropic IPO by</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Best AI model end of July</strong> &middot; ~$6.26M vol</div><div class="signal-price yes">Anthropic ~95.5%</div><div class="delta down">softened from ~96%</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Gemini 3.5 Pro</strong> &middot; still unshipped</div><div class="signal-price no">Vertex preview only</div><div class="delta down">fourth window slipping</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Anthropic IPO by Dec 31</strong></div><div class="signal-price yes">~76.5%</div><div class="delta flat">carried, no fresh mark</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Anthropic or OpenAI IPO first</strong></div><div class="signal-price yes">Anthropic ~87%</div><div class="delta flat">carried</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>New entrant</strong> &middot; custom silicon (AMZN, Cerebras, OpenAI)</div><div class="signal-price neutral">shipping now</div><div class="delta down">hits hardware layer, not leaderboard</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>US-led global AI watchdog proposal</strong> &middot; Hassabis</div><div class="signal-price neutral">no market move</div><div class="delta flat">governance &ne; leadership pricing</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Only a confirmed Gemini 3.5 Pro general-availability date with banked benchmarks touches the best-model leg meaningfully before July 31 &mdash; and the window for that is now genuinely closing. The larger open question is whether the custom-silicon threat is a one-week valuation scare or a durable re-rating of the entire compute layer; that resolves largely through this week's Big Tech earnings and any hyperscaler commentary on accelerator diversification. The IPO ladder remains a rates-and-multiples bet layered on top of an AI-valuation bet layered on top of a war-outcome bet &mdash; three compounding uncertainties that make December-by-2026 one of the hardest legs on this board to have real conviction in either direction.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>Four layers are now moving on four different clocks. The <em>model layer</em> remains the most stable regime on the entire dashboard: Anthropic in the low-to-high 90s on the monthly best-model market for months running, this week easing marginally to ~95.5% &mdash; still a near-lock, but the first sequential softening this board has recorded rather than a fresh high. The <em>listing layer</em> went quiet this edition with no fresh capture, holding at the ~76.5% December / ~87% IPO-first levels carried since mid-July. The <em>frontier-competitive layer</em> (Gemini's repeated slippage, GPT-5.6, Grok 4.5, Kimi K3) continues its established pattern &mdash; competitors stumbling or shipping open-weights alternatives without touching Anthropic's benchmark lead. The <em>compute-economics layer</em> is the new one: where Kimi K3 two editions ago threatened inference pricing from outside the US frontier-lab ecosystem, this week's custom-silicon story is a threat from inside it &mdash; Amazon, Cerebras and OpenAI are simultaneously customers of and now competitors to Nvidia, which is a structurally different and arguably more durable threat to accelerator pricing power than an external open-weights release.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate. The best-model figure (~95.5%) is a fresh capture this week and the most reliable number in this card. The Gemini launch-date, IPO ladder and cap-leadership legs are carried from prior editions with no independent re-mark available this week; treat the "high-70s to low-80s" Gemini launch-date estimate as this board's own directional inference from the continued lack of a confirmed ship date, not a quoted price.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>Best-model-July (~95.5%)</em>: still overwhelming, but the first downtick in this board's tracking of the series is worth flagging even at this magnitude &mdash; it is consistent with a market that is, at the margin, pricing slightly more uncertainty into the July 31 resolution window as it approaches, perhaps on the theory that a late Gemini surprise becomes marginally more plausible the closer the deadline gets even without confirming evidence. <em>Gemini 3.5 Pro's fourth slip</em>: the pattern is now the story more than any individual missed date &mdash; a model that has been rebuilt from a scrapped base, delayed from June to July with no confirmed date even as July nears its close, is functionally absent from this year's model race regardless of what eventually ships. <em>Custom silicon from Amazon, Cerebras and OpenAI</em>: the more consequential development for the sector's economics than anything in the model-leaderboard book, because it attacks Nvidia's position from its own customer base rather than from an external competitor &mdash; a harder problem to price around, and part of why the chip-sector reaction was sharper (>$1T erased, even briefly) than Kimi K3's reaction two editions ago. <em>Hassabis's AI-watchdog proposal</em>: a useful null result &mdash; confirms this book prices capability and shipping dates, not governance positioning, even from a lab currently trailing on the leaderboard.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) Model layer stays resolved, compute layer re-rates (base, ~45%)</em>: Anthropic's July win is a formality; the real action through Q3 is whether custom silicon structurally compresses accelerator margins, which flows through to the Tech and IPO clusters rather than the model-race book. <em>(2) Late Gemini surprise (~15%)</em>: a confirmed ship with strong benchmarks lands before July 31, genuinely contesting the best-model leg for the first time in months &mdash; the branch this week's marginal softening may be sensing. <em>(3) Compute-threat overreaction unwinds (~40%)</em>: the custom-silicon story proves to be a supply-diversification narrative rather than a genuine pricing-power threat, chip valuations largely recover (consistent with this week's rebound), and the sector story reverts to "Nvidia's lead is intact, just briefly re-tested."</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Any confirmed Gemini 3.5 Pro GA date and its benchmark performance if it lands; hyperscaler capex and custom-silicon commentary in this week's Big Tech earnings, especially Amazon and Alphabet; the best-model leg's behavior into July 31 resolution; the Anthropic IPO ladder for any public S-1 signal; and whether the custom-silicon threat gets a second data point beyond this week's initial shipments, which would confirm it as durable rather than a one-time headline.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 7. TECH -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap tech"><span class="material-icons-outlined">memory</span></div>
+    <div class="head-titles">
+      <h3>Tech &mdash; cap leadership</h3>
+      <div class="scope-tag">Tech / equity &middot; 5 underlying markets &middot; $1 trillion erased, then a sharp bounce</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Selloff then rebound &mdash; custom silicon briefly wipes $1T+ off the chip sector; futures point to a sharp Tuesday recovery into Big Tech earnings<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">The 20%+ semiconductor drawdown this board tracked last edition deepened before it turned. Coverage this week put the additional damage in stark terms: <strong>over $1 trillion in combined chip-sector market value erased</strong>, <strong>Micron alone losing roughly $38 billion in a single session</strong>, and <strong>Intel falling 21% over several days</strong> &mdash; even as Samsung's stock declined despite reporting an 1,800% year-over-year profit increase for Q2, underlining that this was a valuation and competitive-threat story, not an earnings story. The proximate cause is the same one flagged in the AI race cluster above: <strong>Amazon, Cerebras and OpenAI shipping custom AI accelerators</strong>, threatening the pricing power underlying Nvidia's compute dominance more directly than any single open-weights model release could. <a href="https://cryptobriefing.com/ai-chip-selloff-trillion-custom-silicon-nvidia/">CryptoBriefing: AI chip selloff erases over $1 trillion</a> <a href="https://phemex.com/blogs/ai-chip-trade-nvidia">Phemex: AI chip selloff and why Nvidia held the line</a></p>
+
+  <p class="thesis">Then, within days, sentiment reversed sharply. Tuesday's pre-market action showed <strong>Nasdaq futures up 1.34%</strong> with <strong>semiconductor names specifically leading the recovery</strong> ahead of this week's Big Tech earnings; <strong>Nvidia edged higher</strong> on news of an investment in neocloud provider Nebius; and <strong>South Korea's KOSPI gained more than 2%</strong> on chip-sector strength. The cap-leadership book itself is unchanged in the absence of a fresh capture: <strong>NVDA-largest-Dec-2026 carried at ~69.5%</strong> for a sixth consecutive edition, against <strong>Alphabet ~14.5%</strong>, <strong>Apple ~10.1%</strong> and <strong>SpaceX ~5.3%</strong>. That is now six editions of an unchanged price against an underlying that has round-tripped through a >20% drawdown, a further trillion-dollar shock, and the beginnings of a recovery &mdash; the strongest evidence yet for this board's standing thesis that the December leg is a stale price on a thin book rather than a considered view. <a href="https://www.fxleaders.com/news/2026/07/21/nvidia-stock-forecast-can-nvda-break-212-as-q2-revenue-targets-91b/">FX Leaders: Nvidia targets $91B Q2 revenue</a> <a href="https://polymarket.com/event/largest-company-end-of-december-2026">Polymarket: largest company end of December 2026</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Chip sector value erased</strong> &middot; custom-silicon shock</div><div class="signal-price no">&gt;$1 trillion</div><div class="delta down">Micron &minus;$38B single session</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Intel</strong> &middot; multi-day move</div><div class="signal-price no">&minus;21%</div><div class="delta down">several trading days</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Nasdaq futures</strong> &middot; Jul 21 rebound</div><div class="signal-price yes">+1.34%</div><div class="delta up">chips leading recovery</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>NVDA largest company Dec 2026</strong></div><div class="signal-price yes">~69.5%</div><div class="delta flat">sixth verbatim edition; not re-marked</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Alphabet (#2) / Apple (#3) / SpaceX (#4)</strong></div><div class="signal-price neutral">~14.5 / 10.1 / 5.3%</div><div class="delta flat">carried</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    This week's Big Tech earnings, especially Alphabet's, are the immediate arbiter of whether the rebound has legs &mdash; strong capex commentary and any explicit response to the custom-silicon threat (reaffirmed Nvidia orders, diversification framed as complementary rather than substitutive) would validate the bounce; guidance that acknowledges accelerator diversification as cost-driven would validate the selloff instead. The NVDA-Dec leg is now overdue for a re-mark by any reasonable standard: a sector that has moved more than 20% down and meaningfully back up within a month, on a book still quoting the same number for six editions, is the cleanest inattention signal on this entire dashboard.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Mehr lesen &middot; Deep-dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Preis-Trajektorie</strong>
+      <p>NVDA-largest-Dec has now printed ~69.5% for six straight editions across a period that included an all-time sector high, a 20%+ drawdown to its worst week since March, and now a further trillion-dollar shock followed by the beginnings of a rebound. No single price on this dashboard has demonstrated a wider gap between its own stability and its underlying's volatility. The equity side's path this edition: continued pressure into early this week (Micron's $38B single-session loss, Intel's multi-day 21% decline) followed by a sharp Tuesday reversal (Nasdaq futures +1.34%, KOSPI +2%+, Nvidia itself higher on the Nebius investment news). That V-shape, if it holds, would be the fastest full-cycle move this cluster has seen all year &mdash; roughly a week from shock to partial recovery, versus the multi-week grind of the original late-June-to-mid-July drawdown.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate, and this remains the card where the caveat bites hardest. All four December cap-leadership legs are carried unchanged from prior editions and were not independently re-marked this week despite the underlying securities moving sharply in both directions. The $1 trillion, Micron and Intel figures are from a dated (mid-July) cryptobriefing report describing the initial shock; the Tuesday rebound figures are futures/index data for July 21 and are more current. Treat the cap-leadership legs as stale on a book that has now failed to reprice through two consecutive large moves in the underlying.</em>
+
+      <strong class="sub">Die Signale im Detail</strong>
+      <p><em>&gt;$1 trillion erased</em>: a larger single-shock figure than anything cited in this cluster's prior two editions, and driven by a structurally different threat &mdash; competition from Nvidia's own customer base rather than an external open-weights release. <em>Micron &minus;$38B in one session, Intel &minus;21% over several days</em>: the equipment- and memory-adjacent names again taking disproportionate damage, consistent with a capex-durability story rather than a pure Nvidia-specific competitive story. <em>Samsung falling despite an 1,800% profit beat</em>: the cleanest illustration this cluster has produced that the market is pricing forward competitive dynamics, not trailing fundamentals. <em>Tuesday's rebound (Nasdaq futures +1.34%, KOSPI +2%+, Nvidia up on the Nebius investment)</em>: a genuine, broad-based bounce rather than a single-name story, and timed directly ahead of the earnings window that will either confirm or undercut it. <em>NVDA-Dec at ~69.5% for six editions</em>: no longer a stability story by any reasonable interpretation &mdash; it is now the dashboard's clearest standing example of a book that has stopped updating on new information.</p>
+
+      <strong class="sub">Szenarien</strong>
+      <p><em>(1) V-shaped recovery confirmed (~35%)</em>: this week's earnings validate continued hyperscaler capex commitment to Nvidia's platform; the custom-silicon threat is reframed as diversification at the margin rather than substitution; NVDA-Dec is retrospectively vindicated at ~69.5% even though it never should have stayed there without re-marking through the volatility. <em>(2) Structural re-rating resumes (~40%, still the modal case)</em>: earnings commentary confirms genuine diversification away from single-vendor accelerator dependence; the Tuesday bounce proves to be a technical relief rally inside a larger downtrend; the December leg eventually re-marks toward 55&ndash;65% in one move once a large participant finally re-prices the book. <em>(3) China export-control or new geopolitical shock (~25%)</em>: an independent catalyst, potentially connected to the Iran binary's effect on broader risk appetite, moves the leg regardless of the earnings outcome.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Alphabet, Amazon and other Big Tech capex guidance this week, specifically any language on accelerator diversification; whether the December cap leg finally re-marks after six unchanged editions and two large underlying moves; the durability of Tuesday's semiconductor rebound through the rest of the week; Nvidia's own Q2 print and the cited $91B revenue target; and the KOSPI/SOX relationship as a read on whether the recovery is US-specific or genuinely global.</p>
+    </div>
+  </details>
+</section>
+
+<!-- META-META -->
+<div class="meta-take">
+  <div class="label"><span class="material-icons-outlined">insights</span>The meta-meta read</div>
+  <h3>The war just crossed its most dangerous threshold yet &mdash; American troops died, Brent brushed $90 &mdash; and risk assets bought the dip anyway. For the first time this year, the market's disbelief looks less like inattention and more like a genuine, testable forecast.</h3>
+
+  <p><strong>Two things happened simultaneously that should, on their face, point in opposite directions, and only one side of this dashboard moved.</strong> US combat deaths and a $90 oil print are unambiguous escalation signals. A five-week Bitcoin high, a second week of positive ETF inflows, and a sharp semiconductor futures rebound are unambiguous risk-on signals. Both are true in the same 96-hour window. The honest explanation requires believing that markets are pricing the <em>mediator ceasefire proposal</em> &mdash; genuinely new, genuinely multilateral, arriving for the first time since April &mdash; more heavily than the military escalation that produced it. That is a coherent, defensible forecast. It is also exactly the kind of call that looks brilliant in hindsight if the ceasefire holds and reckless if Trump instead chooses the "massive joint campaign" option his own officials are floating.</p>
+
+  <p><strong>The recession leg is still refusing to move, and this week it had less excuse than ever.</strong> This board has flagged the ~11&ndash;12% recession probability as underpriced for three consecutive editions. In the window since, it has absorbed a war widening to six countries, then to American casualties; Brent moving from $79 to a brief $90; a hawkish Fed repricing that has now round-tripped and extended past its prior high; and a >$1 trillion equity shock that, even in reversing, confirms genuine fragility in the sector carrying the most market-cap concentration in the index. The cumulative move in the recession leg across all of that: roughly flat to slightly down. Either the "narrow, technology-specific shock" reading this board has offered as the charitable explanation is exactly right, or this is now the most stubbornly mispriced instrument on the entire dashboard, three editions running.</p>
+
+  <p><strong>The AI complex's two-layer split, first visible three editions ago, gained a second front this week.</strong> Kimi K3 threatened the sector from outside the US frontier-lab ecosystem; this week's custom-silicon shipments from Amazon, Cerebras and OpenAI threaten it from inside &mdash; Nvidia's own customers becoming competitors. That the model-leadership book (Anthropic ~95.5%) barely flinched while the compute-economics book lost and then partially regained over $1 trillion in a week confirms, more cleanly than any single prior data point, that these are genuinely different assets requiring genuinely different forecasts. Anyone still holding one undifferentiated "AI exposure" view is running two live bets that are currently telling opposite stories.</p>
+
+  <p><strong>Politics produced this cycle's first real crack in an otherwise one-directional trend.</strong> Approval stayed pinned in the high-30s across three independent pollsters, and a fresh 51%-blame-Trump number on gas prices is the most mechanistically damaging data point this board has seen all year &mdash; and yet the Balance-of-Power sweep leg went flat for the first time in over a month, with mass shifting from the "split" outcome into the "Republican sweep" tail rather than toward Democrats. That is not what a market simply extrapolating bad approval polling would do. It is either genuine, granular Senate-race information this board does not yet have visibility into, or the first sign that the sweep trade's easy gains are behind it. Worth tracking closely: two consecutive editions of a widening R-tail would be the first real trend-break in this cluster since spring.</p>
+
+  <p><strong>And Ukraine's inertia just got a harder floor under it, from an unexpected direction.</strong> The bandwidth thesis this board has carried for ten editions predicted that Ukraine stays stuck as long as Washington's attention is consumed by Iran. This week's escalation to American casualties and a binary presidential decision between ceasefire and wider war is the single strongest confirmation of that mechanism this board has recorded &mdash; it is difficult to construct a scenario where US diplomatic bandwidth for Ukraine improves while that decision remains unresolved. Paradoxically, the fastest plausible route to Ukraine bandwidth freeing up is the Iran ceasefire proposal succeeding, which would make this the rare case where a Gulf de-escalation is a bullish signal for a completely unrelated European peace process.</p>
+
+  <p>Signal concentration this edition: <strong>one threshold crossed</strong> (first confirmed US combat deaths of the Iran war), <strong>one genuine diplomatic first</strong> (the four-country, ten-day ceasefire proposal), <strong>one risk-asset disconnect worth taking seriously rather than dismissing</strong> (BTC and chip futures rallying through a worse war), <strong>one price that still refuses to move and probably should</strong> (recession, still ~11&ndash;12%), <strong>one book showing its first real crack in a month-long trend</strong> (the Balance-of-Power split-versus-sweep shift), and <strong>one price that has now ignored two consecutive large moves in its own underlying</strong> (NVDA-Dec, unchanged for six editions). Trade the gap between what just happened and what the thin books have actually processed &mdash; and this week, watch the Iran ceasefire decision first, because it is now upstream of nearly everything else on this board.</p>
+</div>
+
+<div class="xref">
+  <strong>Cross-references</strong>
+  This edition should be read alongside the week's geopolitics briefing (the ten-night US bombing campaign, the first confirmed American combat deaths, the Qatar-Egypt-Pakistan-Oman ceasefire proposal and its Strait-of-Malacca fee model, Trump's reported indecision between ceasefire and a joint campaign with Israel, and the continuing bandwidth effect on Ukraine) and the markets/macro briefing (Brent's brief $90 print, the further hawkish Fed repricing, the custom-silicon shock that erased and then partially recovered over $1 trillion in chip-sector value, and the mid-August July CPI as the still-pending first oil-carrying print). The AI briefing covers the model-layer detail behind cluster 6 &mdash; Gemini 3.5 Pro's continued slippage, the Hassabis AI-watchdog proposal, and the custom-silicon entrants &mdash; and is the necessary companion to the valuation story in cluster 7.
+</div>
+
+<div class="colophon">
+  Polymarket Dashboard &middot; Weekly &middot; 2026-07-22 (Wednesday) &middot; 7 themes from ~33 underlying markets<br>
+  Coverage: July 15 &ndash; July 22, 2026 &middot; Baseline: July 18 edition (4-day deltas)<br>
+  Data sourced via news coverage, not direct Polymarket API &mdash; prices approximate, possibly stale &middot; Live API access pending domain allowlist<br>
+  Next edition tracks: the Iran ceasefire decision (accept vs. campaign escalation), the Hormuz-normal and Hormuz-fee legs, whether NVDA-Dec finally re-marks after two large moves, the recession leg's response, and whether the Balance-of-Power R-tail widening persists
+</div>
+
+</main>
+</body>
+</html>
