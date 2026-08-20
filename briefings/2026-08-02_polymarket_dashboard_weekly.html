@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket Dashboard &middot; Weekly &middot; August 2, 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#7627bb; --primary-soft:#f3e8fd; --primary-on-soft:#5f1d8e;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --orange:#d56e0c; --orange-soft:#feefe3;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on-soft:#1967d2;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+    --bar-bg:#e8eaed;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--purple-soft); color:var(--purple); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .filter-row { max-width:880px; margin:0 auto; padding:14px 24px 0; display:flex; flex-wrap:wrap; gap:8px; overflow-x:auto; }
+  .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:16px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); font-size:12.5px; font-family:'Google Sans',sans-serif; font-weight:500; }
+  .chip.active { background:var(--purple-soft); color:var(--primary-on-soft); border-color:transparent; }
+  .chip .material-icons-outlined { font-size:16px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; width:100%; }
+
+  .caveat { display:flex; gap:12px; padding:14px 18px; background:var(--yellow-soft); border:1px solid #fde293; border-radius:12px; margin-bottom:18px; font-size:13px; line-height:1.55; }
+  .caveat .material-icons-outlined { font-size:20px; color:var(--yellow); flex-shrink:0; }
+  .caveat strong { display:block; color:var(--yellow); margin-bottom:2px; font-weight:500; }
+  .caveat div { color:#5f4400; }
+
+  .hero { background:linear-gradient(135deg,#7627bb 0%,#5f1d8e 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:26px; font-weight:500; line-height:1.25; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:15px; line-height:1.55; opacity:0.95; margin:0; max-width:880px; }
+
+  .meta-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:24px; }
+  .meta-card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:12px; padding:14px 16px; }
+  .meta-theme { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
+  .meta-direction { font-family:'Google Sans',sans-serif; font-weight:600; font-size:14px; display:flex; align-items:center; gap:6px; line-height:1.2; }
+  .meta-direction .material-icons-outlined { font-size:18px; }
+  .dir-up { color:var(--green-deep); }
+  .dir-down { color:var(--red-deep); }
+  .dir-flat { color:var(--on-surface-muted); }
+  .dir-mixed { color:var(--yellow); }
+  .dir-info { color:var(--blue-on-soft); }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:22px 28px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .statusquo .label { display:inline-flex; align-items:center; gap:6px; background:var(--surface-2); color:var(--on-surface-2); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; }
+  .statusquo h3 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:13.5px; line-height:1.6; color:var(--on-surface-2); margin-bottom:7px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .theme { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:24px 28px; margin-bottom:18px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .theme:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .theme .head { display:flex; align-items:flex-start; gap:14px; margin-bottom:14px; }
+  .theme .icon-wrap { flex-shrink:0; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-size:24px; }
+  .theme .icon-wrap.geo { background:var(--purple-soft); color:var(--purple); }
+  .theme .icon-wrap.macro { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .theme .icon-wrap.politics { background:var(--red-soft); color:var(--red-deep); }
+  .theme .icon-wrap.risk { background:var(--orange-soft); color:var(--orange); }
+  .theme .icon-wrap.ai { background:var(--green-soft); color:var(--green-deep); }
+  .theme .icon-wrap.tech { background:#e8eef6; color:#1f3548; }
+  .theme .head-titles { flex:1; }
+  .theme h3 { font-family:'Google Sans',sans-serif; font-size:21px; font-weight:500; margin:0 0 4px; line-height:1.2; letter-spacing:-0.01em; }
+  .theme .scope-tag { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+  .direction-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:8px; font-family:'Google Sans',sans-serif; font-weight:600; font-size:13px; margin-bottom:14px; }
+  .direction-badge.up { background:var(--green-soft); color:var(--green-deep); }
+  .direction-badge.down { background:var(--red-soft); color:var(--red-deep); }
+  .direction-badge.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+  .direction-badge.mixed { background:var(--yellow-soft); color:var(--yellow); }
+  .direction-badge.info { background:var(--blue-soft); color:var(--blue-on-soft); }
+  .direction-badge .material-icons-outlined { font-size:18px; }
+
+  .thesis { font-size:15px; line-height:1.65; color:var(--on-surface); margin:0 0 18px; }
+  .thesis + .thesis { margin-top:-8px; }
+  .thesis a, .would-change a, .meta-take a, .deep-body a { color:var(--primary-on-soft); text-decoration:none; border-bottom:1px solid #d9c2f0; }
+  .thesis a:hover, .would-change a:hover, .meta-take a:hover, .deep-body a:hover { border-bottom-color:var(--purple); }
+
+  .conf { display:inline-flex; align-items:center; gap:3px; vertical-align:middle; margin-left:4px; }
+  .conf i { width:6px; height:6px; border-radius:50%; background:var(--divider); display:inline-block; }
+  .conf i.on { background:var(--primary); }
+
+  .signals-label { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--on-surface-muted); margin:18px 0 8px; }
+
+  .signals { background:var(--surface-2); border-radius:10px; padding:4px 0; }
+  .signal-row { display:flex; align-items:center; padding:10px 16px; border-bottom:1px solid var(--divider-soft); gap:12px; }
+  .signal-row:last-child { border-bottom:none; }
+  .signal-q { flex:1; font-size:13px; color:var(--on-surface-2); line-height:1.4; }
+  .signal-q strong { color:var(--on-surface); font-weight:500; }
+  .signal-price { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; padding:3px 10px; border-radius:6px; flex-shrink:0; min-width:64px; text-align:center; }
+  .signal-price.yes { background:var(--green-soft); color:var(--green-deep); }
+  .signal-price.no { background:var(--red-soft); color:var(--red-deep); }
+  .signal-price.neutral { background:var(--surface); color:var(--on-surface); border:1px solid var(--divider-soft); }
+  .signal-price.lead { background:var(--blue-soft); color:var(--blue-on-soft); }
+
+  .delta { font-size:11px; font-family:'Roboto Mono',monospace; font-weight:500; padding:2px 6px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+  .delta.up { background:var(--green-soft); color:var(--green-deep); }
+  .delta.down { background:var(--red-soft); color:var(--red-deep); }
+  .delta.flat { background:var(--surface-2); color:var(--on-surface-muted); }
+
+  .would-change { background:var(--blue-soft); border-left:3px solid var(--blue); border-radius:6px; padding:10px 14px; margin-top:16px; font-size:13px; line-height:1.55; color:var(--blue-on-soft); }
+  .would-change strong { color:var(--blue-on-soft); font-weight:600; display:block; margin-bottom:2px; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; }
+
+  details.deep { margin-top:16px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px; padding:7px 16px; border-radius:16px; background:var(--purple-soft); color:var(--primary-on-soft); font-family:'Google Sans',sans-serif; font-weight:500; font-size:12.5px; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .material-icons-outlined { font-size:16px; transition:transform 0.2s; }
+  details.deep[open] summary .material-icons-outlined { transform:rotate(180deg); }
+  details.deep[open] summary { margin-bottom:14px; }
+  .deep-body { font-size:13.5px; line-height:1.7; color:var(--on-surface-2); border-top:1px solid var(--divider-soft); padding-top:14px; }
+  .deep-body p { margin:0 0 12px; }
+  .deep-body strong.sub { display:block; color:var(--primary-on-soft); font-family:'Google Sans',sans-serif; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; margin:18px 0 6px; }
+  .deep-body em.mini-caveat { display:block; font-style:normal; font-size:12px; color:#5f4400; background:var(--yellow-soft); border-radius:6px; padding:7px 11px; margin:10px 0; line-height:1.5; }
+
+  .meta-take { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .meta-take .label { display:inline-flex; align-items:center; gap:6px; background:var(--purple-soft); color:var(--purple); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .meta-take h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .meta-take p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .meta-take p strong { color:var(--on-surface); font-weight:500; }
+  .meta-take p:last-child { margin-bottom:0; }
+
+  .xref { background:var(--surface-2); border-radius:12px; padding:18px 22px; margin-top:22px; font-size:13px; line-height:1.6; color:var(--on-surface-2); }
+  .xref strong { display:block; color:var(--on-surface); font-family:'Google Sans',sans-serif; font-weight:500; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:8px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:21px; }
+    .theme { padding:20px 22px; }
+    .theme h3 { font-size:18px; }
+    .meta-take { padding:22px; }
+    .meta-take h3 { font-size:18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">P</div>
+    <div class="titles">
+      <h1>Polymarket Dashboard</h1>
+      <div class="sub">7 themes &middot; ~35 underlying markets &middot; Weekly &middot; Sunday, August 2, 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="filter-row">
+  <span class="chip active"><span class="material-icons-outlined">tune</span>All 7 themes</span>
+  <span class="chip">Geopolitics</span>
+  <span class="chip">Macro</span>
+  <span class="chip">Politics</span>
+  <span class="chip">Risk &amp; Markets</span>
+  <span class="chip">AI &amp; Tech</span>
+</div>
+
+<main class="page">
+
+<div class="caveat">
+  <span class="material-icons-outlined">info</span>
+  <div>
+    <strong>Data sourced via news coverage, not direct Polymarket API &mdash; prices are approximate and may be stale.</strong>
+    The gamma-api allowlist remains pending, so every level below is mediated through reporting and Polymarket's public pages as indexed this week; treat exact prices as &plusmn;2&ndash;3pp unless otherwise noted. Baseline for this edition is the <strong>July 28 dashboard</strong>. The dominant fact of the window: the Iran pause that edition celebrated broke within days &mdash; a Kuwait drone strike and tanker hits on July 31 &mdash; only for Trump to announce a new deal-in-principle on August 1, the fastest full escalation-de-escalation cycle this board has tracked. The Fed's live July 29 decision resolved as a hold, but with an unusually hawkish 3-dissent vote. And Big Tech's earnings week produced the sharpest capex-tolerance divergence yet: three hyperscalers rewarded, two punished, on stories that looked similar a fortnight ago.
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Weekly edition &middot; July 27 &ndash; August 2, 2026 &middot; Prior edition July 28</div>
+  <h2>The Iran pause broke, then a new deal-in-principle replaced it inside a single week. The Fed held, hawkishly. And markets drew a sharper line than ever between AI capex that's paying off and capex that isn't.</h2>
+  <p>Last edition's best news &mdash; a mutual, conditional US-Iran stand-down &mdash; did not survive the week: Iranian drones and missiles hit US-linked targets in Kuwait and Bahrain and two oil tankers in the strait on July 31, the fastest reversal this board has tracked. Then, on Saturday night, President Trump said he was cancelling a planned new strike because "the perimeters of a deal has been agreed to," with the Strait of Hormuz and Iran's nuclear program as its stated core. Whether that holds any better than the last one is the open question heading into next edition. Meanwhile the Fed's July 29 meeting, flagged as a live coin-flip for two straight editions, resolved as a hold at 3.50&ndash;3.75% &mdash; but three dissenting votes in favor of a hike is an unusually hawkish signal to attach to a "no change" outcome, and Polymarket's own September pricing now runs well ahead of institutional futures. And in the week's biggest earnings cycle, Microsoft, Amazon and Alphabet were rewarded for AI infrastructure spend tied to visible demand while Meta and Apple were not &mdash; a reversal, in Alphabet's case, from the very story that punished it two editions ago.</p>
+</div>
+
+<!-- DIRECTION SUMMARY GRID -->
+<div class="meta-row">
+  <div class="meta-card">
+    <div class="meta-theme">Iran de-escalation</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Pause breaks in Kuwait/Bahrain strikes, then Trump announces a new deal-in-principle within 48 hours</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Ukraine settlement</div>
+    <div class="meta-direction dir-down"><span class="material-icons-outlined">trending_down</span>Date-ladder compresses across every timeframe; bandwidth thesis's first real test comes up short</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Fed monetary path</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>July resolves HOLD with 3 hawkish dissents; September hike odds diverge sharply from futures</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">US politics</div>
+    <div class="meta-direction dir-down"><span class="material-icons-outlined">trending_down</span>Approval brackets settle in the low-40s; Democrats favored 84.5% for House control</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Risk &amp; markets</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Capex-driven equity split; gold eases to ~$4,020; Bitcoin flat near $63k</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">AI race</div>
+    <div class="meta-direction dir-mixed"><span class="material-icons-outlined">sync_alt</span>Anthropic still favored at 88.5% for August, but Gemini 3.1 Pro Preview narrows the gap</div>
+  </div>
+  <div class="meta-card">
+    <div class="meta-theme">Tech (cap leadership)</div>
+    <div class="meta-direction dir-down"><span class="material-icons-outlined">trending_down</span>Nvidia's year-end lead slides further, 61%&rarr;~54.5%, as Apple and Alphabet both climb</div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <div class="label"><span class="material-icons-outlined">history</span>Status quo &middot; where last edition left the board</div>
+  <h3>Prior cluster positions (July 28 edition)</h3>
+  <ul>
+    <li><strong>Iran:</strong> Improving &mdash; first genuinely positive edition in seven weeks; US paused strikes, Iran reciprocated, Trump cited "good talks," Brent gave back most of its spike from $100.69.</li>
+    <li><strong>Ukraine:</strong> Mixed &mdash; the first Ukraine-specific diplomatic movement in eleven flat editions, via a dated Zelensky-Trump meeting and reported US-Ukraine air-ceasefire talks, framed as the cleanest test yet of the "Iran bandwidth" thesis.</li>
+    <li><strong>Fed:</strong> Mixed &mdash; July 29 hike odds cooled from a Thursday peak near 40% back to roughly one-in-three; September priced near 80% for a hike; decision due the day after publication.</li>
+    <li><strong>Politics:</strong> Mixed &mdash; approval still 34&ndash;40% across pollsters; Republican-sweep tail narrowed to ~15.5% from ~18%.</li>
+    <li><strong>Risk &amp; markets:</strong> Mixed &mdash; gold at a two-week high near $4,150; Bitcoin easing to ~$63.4k; recession leg flat at ~12%.</li>
+    <li><strong>AI race:</strong> Improving &mdash; Anthropic near-total lock at ~99% for end-of-July; Gemini 3.5 Pro missed a sixth launch window.</li>
+    <li><strong>Tech:</strong> Deteriorating &mdash; NVDA-largest-December finally re-marked after seven stale editions, 69.5%&rarr;61%, following Apple's brief market-cap overtake.</li>
+  </ul>
+</div>
+
+<!-- 1. IRAN -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">crisis_alert</span></div>
+    <div class="head-titles">
+      <h3>Iran de-escalation</h3>
+      <div class="scope-tag">Geopolitics &middot; 5 underlying markets &middot; A pause broke, then a new deal-in-principle replaced it within 48 hours</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Whipsawed &mdash; the pause this board tracked last edition collapsed in a Kuwait drone strike, then a fresh deal-in-principle emerged within two days<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">The mutual stand-down this board called the first genuinely positive Iran edition in seven weeks did not survive the following week. On July 31, Iran's military struck Kuwait's Ahmed Al-Jaber Air Base with precision drones &mdash; hitting fighter-aircraft hangars, satellite-communications systems and equipment depots &mdash; while Iran's Revolutionary Guard Corps said it hit two oil supertankers in the strait and launched missile and drone strikes against US assets in both Kuwait and Bahrain. Yemen's Houthis grew more directly involved and Saudi forces joined US operations against Iran-backed groups in Iraq, meaning the "second straight quiet night" this board reported on July 27 turned out to be the low point of the pause rather than the start of a durable one. <a href="https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Inch-Higher-as-Iran-Strikes-US-Bases-in-Kuwait-and-Bahrain.html">OilPrice: Iran strikes US bases in Kuwait and Bahrain</a></p>
+
+  <p class="thesis">Then, on Saturday night, August 1, President Trump announced he was cancelling a planned new US strike on Iran, saying the US was "locked and loaded and ready to go" but agreed to hold off "at the request of Iran and other Middle Eastern countries" because "the perimeters of a deal has been agreed to." The stated core of that deal: immediate reopening of the Strait of Hormuz and an end to Iran's nuclear threat, with Israel joining the pause contingent on rapid dealmaking. Iran's own military separately announced it was halting offensive operations. But Israel's own assessment, per Israeli officials, is that Iran will fire ballistic missiles at it regardless of whether the IDF joins any renewed US offensive, Netanyahu warned of a forceful response to any new attack, and the State Department issued a fresh warning for US citizens across the Middle East the same day. <a href="https://www.cnn.com/2026/08/01/world/live-news/iran-war-trump">CNN: US-Iran war live updates, August 1</a> <a href="https://www.timesofisrael.com/liveblog-august-01-2026/">Times of Israel: Israel assesses Iran will strike regardless</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>US x Iran effective ceasefire by Aug 31</strong></div><div class="signal-price neutral">~48%</div><div class="delta flat">fresh capture, post deal-in-principle</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>US announces halt in Iran offensive ops by Aug 31</strong></div><div class="signal-price yes">~54%</div><div class="delta flat">narrower bar than a full ceasefire</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Israel x Iran ceasefire continuation market</strong> &middot; trading activity</div><div class="signal-price neutral">$17.95M traded</div><div class="delta up">elevated volume, no clean price captured</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Brent crude</strong> &middot; range, week of Jul 27&ndash;Aug 1</div><div class="signal-price neutral">~$86&ndash;91</div><div class="delta flat">spiked toward $90 on strike threats, eased on pause news</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>US combat deaths, conflict-severity marker</strong></div><div class="signal-price no">5+ confirmed*</div><div class="delta flat">*carried from Jul 25, no fresh capture</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Whether the August 1 deal-in-principle produces a verifiable, signed framework this week &mdash; starting with actual tanker traffic through the Strait of Hormuz &mdash; versus staying a verbal understanding like the one that broke down four days earlier. Netanyahu's own warning and Israel's independent assessment that Iran will strike it regardless of the US track mean this cluster could keep moving on an axis the headline US-Iran deal doesn't fully control.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>This is now the fastest full escalation-de-escalation cycle this board has tracked: a mediator-ceasefire proposal collapsed two editions ago, a 13-night bombing campaign peaked at $100.69 oil, a genuine mutual pause held through July 27&ndash;28, that pause broke within three days in a coordinated Kuwait-Bahrain-tanker strike, and a new deal-in-principle appeared within 48 hours of the break. Previous cycles played out across two or three editions; this one played out inside a single week, which argues either for a genuinely compressed negotiating dynamic on both sides, or for a pattern of stand-downs too informal to survive the first provocation.</p>
+      <em class="mini-caveat">Prices via news, not API &mdash; approximate. Brent's exact settle for this window is reported inconsistently across sources (a Jul 29 spike above $90 on strike threats, a slide back below $90 as the pause looked to hold, then renewed upward pressure around the Jul 31 strikes) and should be read as a band, not a single number, until a clean Tuesday print is available.</em>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>The 48% vs 54% split</em>: a "ceasefire" (48%) is a materially higher bar than a unilaterally-announced "halt in offensive operations" (54%) &mdash; the latter is closer to what Iran's military actually announced August 1, which is why it prices higher despite describing a weaker commitment. <em>The Hormuz-and-nuclear framing</em>: this is the first time either side has attached specific, verifiable terms (strait reopening, nuclear-threat resolution) to a stand-down, rather than the vaguer "talks are progressing" language of prior pauses &mdash; a structurally different, more falsifiable claim than what collapsed on July 31. <em>Israel's independent track</em>: Israeli officials' assessment that Iran will strike regardless of IDF involvement is a reminder that this is at minimum a two-axis conflict (US-Iran and Israel-Iran), and a deal covering one axis does not automatically cover the other.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Deal-in-principle formalizes (~35%)</em>: Hormuz traffic resumes verifiably, a signed framework follows within two weeks, and Brent settles into the $75&ndash;85 range as the war-risk premium unwinds further than it has all summer. <em>(2) Informal stand-down holds but stays fragile (~35%)</em>: no signed agreement, but both sides avoid triggering the other for now &mdash; essentially a repeat of the July 25&ndash;28 pattern, vulnerable to the same kind of provocation that broke it last time. <em>(3) Breaks again within days (~30%)</em>: Israel's independent strike track, or a fresh Iranian provocation, restarts the cycle, likely re-testing $95&ndash;100+ oil given how compressed the spike-to-pause cycle has become.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Verifiable tanker movement through the Strait of Hormuz as the first hard test of the deal's substance; whether a written framework follows the verbal understanding within the coming week; Israel's own strike posture independent of the US-Iran track; and Brent's actual settle price to resolve this week's unusually wide reported range.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 2. UKRAINE -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap geo"><span class="material-icons-outlined">military_tech</span></div>
+    <div class="head-titles">
+      <h3>Ukraine settlement</h3>
+      <div class="scope-tag">Geopolitics &middot; 4 underlying markets &middot; The date-ladder compresses for the first time since the bandwidth thesis was floated</div>
+    </div>
+  </div>
+  <div class="direction-badge down"><span class="material-icons-outlined">trending_down</span>Cooling &mdash; every dated leg of the ceasefire ladder moved down this week, the opposite of what last edition's bandwidth thesis anticipated<span class="conf"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+
+  <p class="thesis">Last edition flagged the July 28 Zelensky-Trump meeting and reported US-Ukraine air-ceasefire talks as the cleanest live test yet of this board's long-running "bandwidth" thesis &mdash; that Ukraine diplomacy is gated less by willingness than by scarce US attention, currently monopolized by Iran. This week's fresh capture of the date-ladder points the other way: a ceasefire by August 31 still prices around 13.5% (7.4-to-1 payout, effectively unchanged), but October 31 has slipped to 23% from roughly 29%, and December 31 to 37% from roughly 44%. A distinct, harder-bar market on Ukraine signing a full peace deal with Russia by August 31 sits at just 6%. <a href="https://www.ainvest.com/news/polymarket-bet-pays-7-4-1-russia-ukraine-ceasefire-august-war-hit-boiling-point-2607/">ainvest: Polymarket pays 7.4-to-1 on an August ceasefire</a></p>
+
+  <p class="thesis">The most plausible read connects directly to cluster 1: the same days that should have freed US diplomatic bandwidth for Ukraine were instead consumed by the Iran pause breaking and a new deal-in-principle needing to be negotiated, which is exactly the kind of high-touch, presidential-attention diplomacy that competes for the same scarce resource. Worth noting for calibration: both the May 31 and June 30 deadline markets on this same ladder resolved NO, so some of this week's cooling may simply be traders pricing a realistic base rate for missed deadlines rather than reacting to any single negative signal from Washington or Kyiv this week. <a href="https://www.periskopi.com/en/What-do-the-odds-say-about-the-end-of-the-Ukraine-Russia-war/">Periskopi: what the odds say about the end of the war</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Ceasefire agreement by Aug 31</strong></div><div class="signal-price no">~13.5%</div><div class="delta flat">7.4-to-1 payout, roughly unchanged</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Ceasefire agreement by Oct 31</strong></div><div class="signal-price neutral">~23%</div><div class="delta down">from ~29% last edition</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Ceasefire agreement by Dec 31</strong></div><div class="signal-price neutral">~37%</div><div class="delta down">from ~44% last edition</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Ukraine signs full peace deal by Aug 31</strong> &middot; new tracked market</div><div class="signal-price no">~6%</div><div class="delta flat">harder bar than a ceasefire</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Any concrete, confirmed readout from the July 28 Zelensky-Trump meeting on the specific air-ceasefire idea, rather than generic supportive language; and whether the Iran deal-in-principle (cluster 1) stabilizes enough to actually free up the bandwidth this board's thesis says Ukraine needs.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>Eleven-plus flat editions were broken last week by the first Ukraine-specific diplomatic movement this board had tracked in months: a dated meeting, named US officials, and a narrower, more achievable air-ceasefire concept rather than the generic "conditions are ripe" commentary of prior editions. This edition is the first real chance to see whether that news-layer change actually moved the ladder &mdash; and on the fresh capture available, it has not, at least not in the direction the bandwidth thesis predicted.</p>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>The 6% vs 13.5% gap</em>: a signed, comprehensive peace deal is a structurally harder outcome than a ceasefire, so the wide gap between the two markets is expected rather than a fresh signal on its own &mdash; but the 6% level for full peace by the same August 31 date does confirm just how far markets are from pricing a genuine resolution. <em>The Oct/Dec compression</em>: both further-dated legs moved down by five to seven points, a real if modest shift, and one that runs against the "diplomacy is just gated by bandwidth" story if Iran genuinely freed up over the week &mdash; except Iran did not stay freed up, given cluster 1's own reversal. <em>The May/June precedent</em>: two consecutive missed deadlines on this same ladder is relevant base-rate information that should temper how much weight any single week's move deserves.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Iran stabilizes, bandwidth frees up, ladder recovers (~30%)</em>: if the August 1 deal-in-principle holds through the coming week, Ukraine diplomacy could get the attention this board's thesis expects, and the October/December legs could retrace their recent compression. <em>(2) Continued drift as the missed-deadline pattern repeats (~45%)</em>: the ladder keeps cooling gradually, consistent with two prior resolved-NO deadlines and no clear catalyst yet visible. <em>(3) A surprise breakthrough despite competing attention (~25%)</em>: the July 28 meeting's substance turns out to be more concrete than currently confirmed, producing a genuine re-rating independent of the Iran track.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Confirmation, one way or the other, of what the July 28 Zelensky-Trump meeting actually produced on the air-ceasefire concept; whether the Iran deal-in-principle survives the coming week; and the next fresh capture of the date-ladder to confirm whether this week's compression is a trend or noise.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 3. FED -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap macro"><span class="material-icons-outlined">account_balance</span></div>
+    <div class="head-titles">
+      <h3>Fed monetary path</h3>
+      <div class="scope-tag">Macro &middot; 5 underlying markets &middot; The meeting this cluster tracked for two editions resolved &mdash; hawkishly, for a hold</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Mixed &mdash; July resolved as a hold, but three dissenting votes for a hike and a wide Polymarket-vs-futures gap keep September genuinely unresolved<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+
+  <p class="thesis">The July 29 FOMC meeting this board tracked as a live coin-flip across two editions resolved as a hold: rates unchanged at 3.50&ndash;3.75%. But the vote split was notably hawkish for a "no change" outcome &mdash; three dissents in favor of a 25bp hike, an unusually visible show of internal disagreement under Chair Warsh's deliberately guidance-light regime, which submitted no personal rate projection at the June meeting and has run statements well below the historical word-count norm.</p>
+
+  <p class="thesis">September pricing reflects that hawkish undercurrent and diverges sharply depending on the venue: Polymarket's own "Fed Decision in September" market leads with a 25bp increase at 60% against 39% for no change, while a separate capture puts Polymarket's implied hike odds at 53% versus just 32% in traditional CME/SOFR futures &mdash; a persistent, unusually wide gap between prediction-market and institutional pricing worth treating as its own signal, whether that reflects genuinely different information or simply a more retail, momentum-driven trader base on Polymarket. Gold pulled back to roughly $4,020, down from the $4,140&ndash;4,175 two-week high tracked last edition, consistent with the hold removing some acute pre-meeting uncertainty even as the hawkish dissent record keeps a floor under further hike bets. <a href="https://www.kucoin.com/news/flash/polymarket-prices-53-odds-of-fed-rate-hike-in-september-2026-vs-32-in-futures">KuCoin: Polymarket prices 53% odds of a September hike vs. 32% in futures</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>July 29 FOMC outcome</strong></div><div class="signal-price neutral">HOLD, 3.50&ndash;3.75%</div><div class="delta flat">3 dissents favored a 25bp hike</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>September FOMC &mdash; 25bp hike</strong> &middot; Polymarket event market</div><div class="signal-price neutral">~60%</div><div class="delta up">vs. ~39% no-change on same market</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>September hike odds</strong> &middot; Polymarket vs. CME/SOFR futures</div><div class="signal-price neutral">53% vs. 32%</div><div class="delta flat">unusually wide cross-venue gap</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Gold (XAU/USD)</strong> &middot; spot, week of Aug 1</div><div class="signal-price no">~$4,020</div><div class="delta down">from ~$4,140&ndash;4,175 last edition</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Recession odds, 2026</strong></div><div class="signal-price neutral">~12%*</div><div class="delta flat">*carried, no fresh capture this week</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    The August 12 CPI print is the next hard data point that could move September pricing decisively in either direction, and would be the first real test of whether the Polymarket-futures gap converges toward one venue or the other, or simply persists as a structural feature of this market's trader base.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>The July-hike leg traced an unusually sharp arc across three editions: ~10% two weeks before the meeting, ~35% one edition ago, a peak near 40% the Thursday before, back to ~33% by the following Monday, and then resolution as a hold with three hawkish dissents. That the actual outcome landed on the dovish side of the peak pricing, while the vote record landed on the hawkish side of what a simple "hold" headline implies, is exactly the kind of split outcome that keeps a market genuinely two-sided into the next meeting rather than settling it.</p>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>The three dissents</em>: a rare, visible crack in what is otherwise a guidance-light, low-transparency Fed under Warsh, and arguably a stronger forward signal than the "no change" headline on its own, since dissents at a hold typically presage the next live meeting being close. <em>The Polymarket-futures divergence</em>: 53% vs. 32% (or 60% vs. 39% on the alternate framing) is too large a gap to dismiss as noise; it could reflect Polymarket's trader base weighting the dissent record more heavily than professional futures desks, or simply reflect different liquidity and hedging dynamics between the two venues &mdash; this board does not have enough information this edition to say which. <em>Gold's pullback</em>: consistent with the hold removing acute pre-meeting uncertainty premium, though the persistently hawkish September pricing argues the pullback may be partial rather than a full unwind.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Hawkish drift continues into a September hike (~45%)</em>: the dissent record proves predictive, September data comes in firm, and the Polymarket pricing turns out to be the better read. <em>(2) Gradual, data-driven cooling back toward another hold (~35%)</em>: the CPI print and other August data soften, the futures-market read (32%) proves closer to the eventual outcome. <em>(3) A dovish surprise if Iran/oil de-escalation sustains (~20%)</em>: if cluster 1's deal-in-principle holds and oil settles meaningfully lower, the inflation case for a hike weakens further and September could resolve as another hold.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>The August 12 CPI report; any follow-up commentary from the three dissenting FOMC members; whether the Polymarket-futures gap narrows or widens over the coming weeks; and gold's trajectory as a read on how much uncertainty premium remains priced in.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 4. POLITICS -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap politics"><span class="material-icons-outlined">how_to_vote</span></div>
+    <div class="head-titles">
+      <h3>US political momentum</h3>
+      <div class="scope-tag">Politics &middot; 4 underlying markets &middot; Approval brackets resolve low, House-control odds push toward a new high for Democrats</div>
+    </div>
+  </div>
+  <div class="direction-badge down"><span class="material-icons-outlined">trending_down</span>Deteriorating for the administration &mdash; approval floor brackets settle in the low-40s and Democrats' House-control odds reach 84.5%<span class="conf"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+
+  <p class="thesis">Two threshold markets on how low Trump's approval rating would go have effectively settled this window: the "before August" version resolved with the market assigning full confidence to a 45% floor, while the broader "in 2026" version puts the crowd's consensus floor at 40%. That's a different way of reading approval erosion than the raw pollster ranges (34&ndash;40%) this board has cited in prior editions, but it points the same direction &mdash; markets treating the erosion as settled fact rather than a live, contested number. <a href="https://polymarket.com/event/how-low-will-trumps-approval-rating-go-before-august">Polymarket: how low will Trump's approval rating go before August</a></p>
+
+  <p class="thesis">On the midterms, Polymarket's House-control market now favors Democrats at 84.5% &mdash; a narrower, differently-defined market than the Balance-of-Power sweep bucket this board tracked last edition (Republican-sweep tail ~15.5%, Democrat-sweep ~44%), so the two figures should not be read as directly comparable. Both nonetheless point the same way: a Newsweek poll of likely voters in battleground states this window showed a close Senate race tilting toward Democrats, citing Trump's declining approval and growing economic concerns as the drivers. <a href="https://www.tradetheoutcome.com/polymarket-midterm-odds-shift-2026/">Trade the Outcome: how Polymarket midterm odds have shifted in 2026</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Approval floor, before Aug 2026</strong> &middot; resolved bracket</div><div class="signal-price no">45%</div><div class="delta flat">market assigns full confidence</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Approval floor, full-year 2026</strong> &middot; resolved bracket</div><div class="signal-price no">40%</div><div class="delta down">lower bound than the Aug-only bracket</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>House control 2026</strong> &middot; Democrats</div><div class="signal-price yes">84.5%</div><div class="delta up">narrower market than last edition's sweep bucket</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Balance-of-Power, Republican sweep</strong></div><div class="signal-price no">~15.5%*</div><div class="delta flat">*carried from Jul 25, no fresh capture</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Whether the Iran deal-in-principle (cluster 1) holds and gets credited to the administration in polling, which is the most plausible near-term upside catalyst for approval; and a fresh Balance-of-Power sweep capture to compare directly against the July 25 baseline.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>This board has tracked approval erosion all summer via raw pollster ranges; this edition, the freshest available capture is instead a pair of resolved Polymarket threshold brackets, which read as markets converging on a floor rather than still actively pricing where approval lands next. That's a structurally different kind of signal &mdash; less a live probability, more a settled record of where the number bottomed &mdash; and should be read accordingly rather than as directly comparable to a weekly poll average.</p>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>The 45% vs. 40% brackets</em>: the tighter, before-August window resolving at a higher floor (45%) than the full-year window (40%) is consistent with approval having room to erode further later in 2026 than it already had by early August. <em>The House-control number</em>: 84.5% is a genuinely high conviction level for an out-party, and while it isn't the same market as last edition's sweep bucket, a Newsweek battleground poll citing the same declining-approval, rising-economic-concern drivers gives some independent corroboration that the direction, if not the exact magnitude, is real.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Approval stabilizes as Iran/Fed uncertainty resolves (~30%)</em>: a holding Iran deal and a less volatile Fed path give the administration room to recover some ground into fall. <em>(2) Continued drift down into campaign season (~45%)</em>: the current trajectory simply continues absent a clear positive catalyst. <em>(3) A rebound if the Iran deal holds and is credited to the administration (~25%)</em>: foreign-policy wins have moved approval before, and a genuinely stabilized Middle East would be the most visible one available.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Whether the Iran deal-in-principle survives the week and shows up in polling; the next fresh Balance-of-Power capture; and any further approval-bracket resolutions that would refine the 40&ndash;45% floor range.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 5. RISK & MARKETS -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap risk"><span class="material-icons-outlined">monitoring</span></div>
+    <div class="head-titles">
+      <h3>Risk &amp; markets</h3>
+      <div class="scope-tag">Risk &amp; markets &middot; 6 underlying markets &middot; The sharpest capex-tolerance split this board has tracked yet</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Mixed &mdash; equities diverge sharply by capex story, gold eases post-Fed, Bitcoin holds steady near $63k<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">Big Tech's earnings week produced one of the sharpest capex-driven divergences this board has tracked: Microsoft (+8%), Amazon (+10%) and Alphabet were all rewarded for tying massive AI-infrastructure spending to visible demand, adding nearly $1.5 trillion in combined market value between the three of them this week alone, while Meta (-10%) and Apple (-4%) were punished, Meta specifically for capex investors still can't square with returns. That's a real reversal from two editions ago, when Alphabet itself was the one being punished for capex jitters &mdash; a sign of just how fast the market's tolerance threshold for AI spending is moving. Combined 2026 capex guidance across the four hyperscalers now sits near $725 billion, up roughly 77% year-on-year. <a href="https://www.cnbc.com/2026/07/31/apple-aapl-amazon-amzn-stock-today.html">CNBC: Alphabet, Amazon and Microsoft add nearly $1.5 trillion this week</a></p>
+
+  <p class="thesis">Elsewhere, gold eased back to roughly $4,020, down from the two-week high near $4,140&ndash;4,175 tracked last edition, consistent with the Fed's hold removing some acute uncertainty premium (see cluster 3). Bitcoin held essentially flat around $62,700&ndash;63,300, little changed from last edition's ~$63.4k. A separate "Bitcoin vs. Gold vs. S&amp;P 500" market for full-year 2026 performance still favors the S&amp;P 500 at 68%, with gold a distant second at 19% and Bitcoin implied around 13% &mdash; a market read that equities, not hedges, are still expected to win the year even after two months of geopolitical and Fed-driven volatility. <a href="https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026">Polymarket: Bitcoin vs. Gold vs. S&amp;P 500 in 2026</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Microsoft, Amazon</strong> &middot; earnings-week move</div><div class="signal-price yes">+8% / +10%</div><div class="delta up">rewarded for demand-linked capex</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Meta, Apple</strong> &middot; earnings-week move</div><div class="signal-price no">-10% / -4%</div><div class="delta down">punished on capex-ROI doubts</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Gold (XAU/USD)</strong></div><div class="signal-price no">~$4,020</div><div class="delta down">from ~$4,140&ndash;4,175 last edition</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Bitcoin</strong></div><div class="signal-price neutral">~$62.7&ndash;63.3k</div><div class="delta flat">roughly unchanged from ~$63.4k</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>2026 performance winner</strong> &middot; S&amp;P 500 / Gold / BTC</div><div class="signal-price lead">68% / 19% / ~13%</div><div class="delta flat">equities still favored over hedges</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Recession odds, 2026</strong></div><div class="signal-price neutral">~12%*</div><div class="delta flat">*carried, no fresh capture this week</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    No major earnings catalysts remain until Q3 reporting season; watch instead for a fresh recession-odds capture, and for whether Meta's next guidance update narrows or widens the gap with its capex-rewarded peers.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>Two editions ago, Alphabet and Tesla were the names punished for AI-capex jitters, down 5&ndash;7% and 14.5% respectively. This week Alphabet is on the rewarded side of the same basic story, alongside Microsoft and Amazon, while Meta &mdash; largely spared the earlier round of skepticism &mdash; is now the clearest name being punished. The pattern that's emerging is name-specific and guidance-specific rather than a blanket sector view: investors appear to be differentiating on whether a company can point to concrete, near-term demand for its spending, not simply on the size of the number.</p>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>The scale of this week's value creation</em>: nearly $1.5 trillion added across three companies in a single week is an unusually large single-week swing even by this year's standards, and underscores how much of 2026's overall market action is now concentrated in the AI-capex earnings calendar rather than macro data. <em>The 2026-winner market</em>: the S&amp;P 500's 68% lead over gold's 19% suggests traders are not currently treating this year's volatility &mdash; two wars, a hawkish Fed surprise, and a capex scare &mdash; as enough to dethrone equities as the year's best performer, a genuinely bullish underlying read despite the week's mixed headlines. <em>Gold and Bitcoin's divergence from geopolitics</em>: both assets moved on the Fed story this week (gold down on the hold, Bitcoin flat) rather than on the Iran whipsaw, continuing the pattern flagged last edition that Fed uncertainty, not geopolitical headlines, is currently the dominant driver of precious metals and crypto alike.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Capex tolerance stays selective and name-specific through year-end (~40%)</em>: investors keep rewarding demand-linked spending and punishing vaguer guidance, much as this week did. <em>(2) A broader re-rating downward if even "good" capex stories get punished next quarter (~30%)</em>: a genuine AI-ROI scare could widen from Meta to the currently-rewarded names. <em>(3) A full sector re-rating upward if AI revenue keeps showing through (~30%)</em>: continued demand confirmation could pull even Meta and Apple back into favor.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Meta's next guidance update and whether it narrows the gap with Microsoft and Amazon; a fresh recession-odds capture; and the S&amp;P 500 / gold / Bitcoin performance-leader market's trajectory as a read on overall risk appetite.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 6. AI RACE -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap ai"><span class="material-icons-outlined">smart_toy</span></div>
+    <div class="head-titles">
+      <h3>AI race</h3>
+      <div class="scope-tag">AI &middot; 5 underlying markets &middot; Anthropic still favored, but the margin has visibly narrowed, alongside the sharpest IPO-timeline split yet</div>
+    </div>
+  </div>
+  <div class="direction-badge mixed"><span class="material-icons-outlined">sync_alt</span>Mixed &mdash; Anthropic remains the heavy favorite for August, but Gemini 3.1 Pro Preview's leaderboard debut is the first concrete sign of a real challenge<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">Anthropic remains heavily favored to hold the best-model title through August 31, priced at 88.5% &mdash; still commanding, but a meaningfully lower number than the ~99% "near-total lock" this board tracked for the July window, on a market with a slightly different bar. The gap that's opened is Google's: a 13-to-1 market (roughly 7&ndash;8% implied) on Google "stealing the AI crown" by August 31 is now trading actively, backed by Gemini 3.1 Pro Preview's live placement on the Arena leaderboard at 1486 Elo &mdash; the "preview" tag reads as a signal that a full launch, and a fresh challenge to Anthropic's lock, is the next move. Anthropic's own bench continues to be led by Claude Fable 5 and Opus 4.8/4.7 across multiple leaderboard categories, the direct source of its continued edge. <a href="https://www.ainvest.com/news/polymarket-bet-pays-13-1-google-stealing-ai-crown-august-31-receipts-hit-leaderboard-2607/">ainvest: Polymarket pays 13-to-1 on Google stealing the AI crown</a></p>
+
+  <p class="thesis">Away from the model layer, the IPO race sharpened into a genuine timeline split. Anthropic's confidential S-1, filed June 1, is still targeting an October Nasdaq listing at a $965 billion private valuation &mdash; potentially the first company to debut publicly above $1 trillion &mdash; on a 2026 ARR estimate of $47 billion, roughly double OpenAI's. OpenAI itself, valued near $920 billion after its most recent round and having filed its own S-1 a week later, is now reportedly leaning toward 2027 rather than 2026, per Bloomberg, citing market volatility and Sam Altman's own hard floor of a $1 trillion listing price. Combined with SpaceX, the three companies are targeting roughly $3.8 trillion in combined market capitalization upon listing &mdash; a scale of simultaneous mega-IPO with no real precedent. <a href="https://techcrunch.com/2026/06/08/following-anthropic-openai-files-confidentially-for-ipo/">TechCrunch: OpenAI files confidentially for IPO, following Anthropic</a></p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Best AI model, end of August</strong> &middot; Anthropic</div><div class="signal-price yes">88.5%</div><div class="delta down">from ~99% "near-total lock" for end of July</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Google "steals the AI crown" by Aug 31</strong></div><div class="signal-price no">~7&ndash;8%</div><div class="delta up">13-to-1 payout, first active pricing of this specific bet</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Anthropic IPO</strong> &middot; private valuation, Oct target</div><div class="signal-price neutral">$965B</div><div class="delta flat">2026 ARR estimate ~$47B</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>OpenAI IPO</strong> &middot; valuation, timeline leaning 2027</div><div class="signal-price neutral">$920B</div><div class="delta down">timeline slipping per Bloomberg</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Combined 3-company IPO target</strong> &middot; Anthropic + OpenAI + SpaceX</div><div class="signal-price neutral">~$3.8T</div><div class="delta flat">no real historical precedent at this scale</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    An actual full launch of Gemini 3.1 Pro (rather than the current Preview tag) would be the cleanest test of whether Google can genuinely contest Anthropic's lock; on the IPO side, any amendment or roadshow update from either Anthropic or OpenAI's S-1 filings would be the next hard data point.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>This board has tracked at least five consecutive missed launch windows for Gemini's flagship challenger, with the "near-total lock" framing for Anthropic reinforced edition after edition. A "Preview" tag appearing on the Arena leaderboard at a genuinely competitive Elo score (1486) is the first concrete sign in that run that a real challenge might be imminent, rather than another slipped date &mdash; which is consistent with the softer 88.5% figure even before any full launch has happened.</p>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>The ARR gap</em>: Anthropic's $47 billion 2026 ARR estimate against OpenAI's roughly half that figure is the fundamental case for Anthropic's higher near-term valuation floor, even though OpenAI's total valuation ($920B) sits close to Anthropic's ($965B) &mdash; implying very different revenue multiples are being applied to the two companies. <em>The timeline divergence</em>: Anthropic targeting October 2026 versus OpenAI reportedly leaning toward 2027 is itself informative about relative confidence &mdash; Altman's stated $1 trillion floor suggests OpenAI would rather wait than list below its target valuation, a materially different risk posture than Anthropic's apparent willingness to go first.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Gemini 3.1 fully launches within the window and genuinely contests the lock (~30%)</em>: Anthropic's 88.5% would likely compress further on confirmation of a full launch. <em>(2) Anthropic holds through August as currently priced, Google's launch slips again (~45%)</em>: consistent with the five-plus prior missed windows. <em>(3) A third factor disrupts the two-way framing (~25%)</em>: an OpenAI model release or an unexpected Anthropic update could reshape the race entirely.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Confirmation of a full Gemini 3.1 Pro launch date; any Anthropic S-1 amendment or roadshow news ahead of the October target; and whether OpenAI's 2027 lean firms up or reverses.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 7. TECH -->
+<section class="theme">
+  <div class="head">
+    <div class="icon-wrap tech"><span class="material-icons-outlined">leaderboard</span></div>
+    <div class="head-titles">
+      <h3>Tech (cap leadership)</h3>
+      <div class="scope-tag">Tech &middot; 4 underlying markets &middot; Nvidia's lead keeps sliding as Apple and Alphabet both climb</div>
+    </div>
+  </div>
+  <div class="direction-badge down"><span class="material-icons-outlined">trending_down</span>Deteriorating for Nvidia &mdash; the cap-leadership market continues sliding after last edition's first re-mark in seven editions<span class="conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+
+  <p class="thesis">The "largest company, end of December 2026" market kept moving in the direction flagged last edition: Nvidia's implied probability of holding the year-end crown has continued down to roughly 54.5%, from 61% two editions ago and the seven-edition-stale 69.5% before that. Apple has risen further to about 31.7%, and Alphabet has emerged as a genuine third leg at 10.5% &mdash; a name that wasn't part of this board's framing of the race until this edition. Some cached sources still show the older 69.5%/23.5% split, a live reminder of this dashboard's standing caveat about news-mediated pricing lag: the freshest read is the one used here. <a href="https://cryptobriefing.com/nvidia-polymarket-apple-market-cap-race/">CryptoBriefing: Nvidia favored to maintain lead amid Apple's competitive push</a></p>
+
+  <p class="thesis">This week's earnings cycle offers a plausible mechanical driver (see cluster 5): Microsoft, Amazon and Alphabet were all rewarded for AI-infrastructure spend tied to visible demand, adding nearly $1.5 trillion in combined value, while Apple's steadier multi-quarter momentum has proven more durable than Nvidia's single-story AI-buildout narrative even with a -4% earnings-week print of its own. If Alphabet's market cap keeps climbing on the back of a well-received earnings report, the "largest company" race could plausibly become a genuine three-way contest rather than the two-way Nvidia-Apple framing this board has used since the market first appeared.</p>
+
+  <div class="signals-label">Underlying signals</div>
+  <div class="signals">
+    <div class="signal-row"><div class="signal-q"><strong>Largest company, end of Dec 2026</strong> &middot; Nvidia</div><div class="signal-price no">~54.5%</div><div class="delta down">from 61% two editions ago</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Largest company, end of Dec 2026</strong> &middot; Apple</div><div class="signal-price neutral">~31.7%</div><div class="delta up">from ~23.5%</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>Largest company, end of Dec 2026</strong> &middot; Alphabet</div><div class="signal-price neutral">~10.5%</div><div class="delta up">newly emerged as a tracked third leg</div></div>
+    <div class="signal-row"><div class="signal-q"><strong>MSFT + AMZN + GOOGL combined weekly gain</strong></div><div class="signal-price yes">~$1.5T</div><div class="delta up">earnings-week value creation</div></div>
+  </div>
+
+  <div class="would-change">
+    <strong>What would shift this</strong>
+    Nvidia's own next earnings date is the clearest scheduled catalyst; watch also whether Alphabet's cap gain proves durable over the following two weeks or was a one-week earnings pop, and whether the 69.5%-vs-54.5% source discrepancy resolves toward a single clean number.
+  </div>
+
+  <details class="deep">
+    <summary><span class="material-icons-outlined">expand_more</span>Read more &middot; Deep dive</summary>
+    <div class="deep-body">
+      <strong class="sub">Context &amp; background</strong>
+      <p>Seven editions at a stale 69.5% gave way last edition to a first re-mark, down to 61%, following Apple's brief market-cap overtake in mid-July. This edition's fresh capture shows the slide continuing to roughly 54.5% &mdash; the second consecutive edition of real movement on a price that spent nearly two months not moving at all, and genuinely a live, actively-traded number now rather than a stale one.</p>
+
+      <strong class="sub">The signals in detail</strong>
+      <p><em>Alphabet's emergence</em>: a 10.5% share for a company this board had not previously tracked as a serious contender for the year-end crown is the most novel development in this cluster this edition, and follows directly from Alphabet's own well-received earnings this week &mdash; a reversal from two editions ago when Alphabet was the name being punished for capex jitters. <em>The source discrepancy</em>: this edition's clearest example of the standing news-mediated-pricing caveat &mdash; one cached source still shows the pre-re-mark 69.5%/23.5% split, while multiple fresher sources converge closer to 54.5%/31.7%/10.5%. Readers should treat the fresher split as the operative number.</p>
+
+      <strong class="sub">Scenarios</strong>
+      <p><em>(1) Nvidia stabilizes in the low-50s through year-end on AI-buildout durability (~40%)</em>: the core AI-infrastructure demand story that built Nvidia's lead continues to outweigh Apple and Alphabet's recent gains. <em>(2) Apple's momentum continues, the race becomes a genuine toss-up by Q4 (~35%)</em>: a continuation of the last two editions' trend. <em>(3) Alphabet's earnings pop proves durable and the race becomes a true three-way contest (~25%)</em>: would be a genuinely new framing for this market.</p>
+
+      <strong class="sub">Watch-Items</strong>
+      <p>Nvidia's next earnings date; Alphabet's market-cap trajectory over the following two weeks; and resolution of this edition's source discrepancy toward a single clean, current number.</p>
+    </div>
+  </details>
+</section>
+
+<!-- META-META -->
+<div class="meta-take">
+  <div class="label"><span class="material-icons-outlined">insights</span>Editor's view</div>
+  <h3>Two clusters this board called "improving" last edition &mdash; Iran and Ukraine &mdash; both moved the other way this week. The common thread is that de-escalation, this year, keeps proving faster to claim than to sustain.</h3>
+
+  <p><strong>The Iran cycle just got faster, not slower.</strong> Two editions ago this board tracked a 13-night bombing campaign; last edition, the first genuine pause; this edition, that pause broke and was replaced by a new deal-in-principle inside 48 hours. Each cycle is now compressing rather than lengthening, which argues for treating any single week's headline &mdash; positive or negative &mdash; with real humility about how long it will hold.</p>
+
+  <p><strong>Ukraine's bandwidth thesis got its cleanest test yet, and came up short, at least on this week's evidence.</strong> The same week Iran diplomacy should have freed up US attention for Ukraine, that attention was instead consumed by the Iran deal breaking and needing to be renegotiated. The date-ladder's compression across every timeframe is exactly what the bandwidth thesis would predict if Iran re-consumed the resource rather than releasing it &mdash; a real, if modest, piece of evidence for a thesis this board has been unable to test cleanly until now.</p>
+
+  <p><strong>The Fed's hold-with-hawkish-dissent outcome is the most genuinely two-sided macro signal on this board right now.</strong> A "no change" headline paired with three dissenting votes for a hike, and a Polymarket-vs-futures gap of nearly twenty points on September, is not a market that has settled anything &mdash; it's a market that has simply moved its uncertainty forward one meeting.</p>
+
+  <p><strong>The capex-tolerance story is now the same story in two different clusters.</strong> Microsoft, Amazon and Alphabet's nearly $1.5 trillion combined weekly gain, against Meta's -10% and a continuing slide in Nvidia's year-end cap-leadership odds, all trace back to the same underlying market judgment: spending tied to demonstrated demand is being rewarded, spending that isn't is being punished, and that judgment is now selective enough to separate companies that looked similarly exposed just two editions ago.</p>
+
+  <p><strong>Anthropic's lock is real but visibly softer than it was a month ago.</strong> A move from ~99% to 88.5% on a similar underlying question, alongside a live 13-to-1 market on Google specifically, is the first quantifiable crack in a dominance streak this board has otherwise described as near-total since spring.</p>
+
+  <p>Signal concentration this edition: <strong>one de-escalation that broke and was replaced within 48 hours</strong> (Iran, the fastest full cycle yet), <strong>one bandwidth thesis getting its first real, if discouraging, test</strong> (Ukraine, date-ladder compressing), <strong>one Fed decision that resolved without actually resolving anything</strong> (hold, hawkish dissents, a widening cross-venue gap), <strong>one capex story now sorting winners from losers by name rather than by sector</strong> (Microsoft/Amazon/Alphabet up, Meta/Apple down, Nvidia's lead still sliding), and <strong>one AI dominance streak showing its first real crack</strong> (Anthropic 99%&rarr;88.5%). Trade the gap between what just happened and what the thin books have actually processed &mdash; and this week, the priority order is whether the Iran deal-in-principle survives past the first week first, the August 12 CPI print second, and Gemini 3.1's actual launch date third.</p>
+</div>
+
+<div class="xref">
+  <strong>Cross-references</strong>
+  This edition should be read alongside the week's geopolitics briefing (the Iran pause's collapse and rapid replacement by a deal-in-principle, the Strait-of-Hormuz and nuclear-threat terms specifically, and the still-unconfirmed substance of the July 28 Zelensky-Trump meeting) and the markets/macro briefing (the July 29 FOMC hold and its hawkish dissent record, gold's pullback, and the full hyperscaler earnings scorecard behind this edition's capex-tolerance split). The AI briefing covers the model-layer detail behind cluster 6 &mdash; Gemini 3.1 Pro Preview's Arena debut and the Anthropic/OpenAI S-1 timelines behind cluster 6's IPO detail.
+</div>
+
+<div class="colophon">
+  Polymarket Dashboard &middot; Weekly &middot; 2026-08-02 (Sunday) &middot; 7 themes from ~33 underlying markets<br>
+  Coverage: July 27 &ndash; August 2, 2026 &middot; Baseline: July 28 edition<br>
+  Data sourced via news coverage, not direct Polymarket API &mdash; prices approximate, possibly stale &middot; Live API access pending domain allowlist<br>
+  Next edition tracks: whether the August 1 US-Iran deal-in-principle survives a full week and produces verifiable Hormuz traffic, any confirmed readout from the July 28 Zelensky-Trump meeting, the August 12 CPI print and its effect on September Fed pricing, Gemini 3.1 Pro's full-launch date, and whether Alphabet's cap-leadership gain proves durable
+</div>
+
+</main>
+</body>
+</html>

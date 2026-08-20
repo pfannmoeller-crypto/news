@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools Briefing — 11–19 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <!-- APP BAR -->
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>Second edition under the widened scope &middot; Week of August 19, 2026 &middot; Window 11–19 August</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Auto mode shipped exactly on schedule Aug 14 — the real story this week is quieter</h2>
+    <p>The Aug-14 auto-mode flip landed on time, with Enterprise, API and cloud-platform accounts still opt-in. Beyond that, this window is mostly follow-through: eight Claude Code point releases, wider Cowork reach, and quiet MCP adoption. Six items cleared the filter; one is worth an hour.</p>
+  </div>
+
+  <!-- HOME STACK -->
+  <h3 class="sec">Home Stack — Claude Code &amp; Cowork</h3>
+
+  <!-- H1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Shipped Aug 14, 2026</span>
+    </div>
+    <h4 class="headline">Claude Code's auto-mode default shipped exactly on schedule — but Enterprise, API and cloud-platform accounts stayed opt-in</h4>
+    <p>The flip to auto-mode-by-default for Pro, Max and Team plans landed on August 14 as announced the week before, with no reported delay or rollback. What last week's coverage didn't nail down: the default only applies to those three consumer/team tiers. Claude Enterprise, the Claude API, Claude Platform on AWS Bedrock, Google Cloud's Agent Platform and Microsoft Foundry all remain opt-in — auto mode has to be turned on deliberately there, not switched off.</p>
+    <p>That carve-out is the operationally relevant fact this week, more than the classifier numbers already covered: it determines whether a given Claude-based workflow inherited the new default automatically or not.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Default-on now</div><div class="stat-value">Pro / Max / Team</div></div>
+      <div class="stat"><div class="stat-label">Still opt-in</div><div class="stat-value">Enterprise, API, Bedrock, Cloud Agent Platform, Foundry</div></div>
+      <div class="stat"><div class="stat-label">Ship date</div><div class="stat-value">Aug 14, 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/auto-mode-default-in-claude-code">Anthropic, Auto mode is now the default</a>
+      <a href="https://9to5mac.com/2026/08/14/psa-claude-code-enabling-auto-mode-as-default-next-week-anthropic-says/">9to5Mac, Aug 14</a>
+      <a href="https://www.theregister.com/ai-and-ml/2026/08/10/claude-code-puts-auto-mode-in-the-drivers-seat/5285326">The Register</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Last week's edition flagged one open question ahead of the flip: whether this pipeline's own Sonnet subagent dispatches, run through Cowork's own orchestration rather than a raw interactive Claude Code CLI session, would be swept into the new default. This week's carve-out list answers part of that — anything running on an API key rather than a Pro/Max/Team login stays on the opt-in track by default.</p>
+        <p><span class="lbl">The details.</span> The carve-out was not prominent in the original announcement or last week's coverage; it surfaced only in the fuller product documentation once the flip actually shipped. No practitioner report this week describes a Claude-Code-run pipeline breaking or unexpectedly auto-approving a destructive step — the rollout reads as clean so far, though a week is a short window to judge an unattended-automation change.</p>
+        <p><span class="lbl">Why it still matters.</span> The action item from last week narrows rather than closes: confirm which access path this pipeline's own Claude usage actually runs on. If it's the API/Enterprise track, the Aug-14 default never applied and nothing needs to change; if any part of the setup runs through a Pro/Max/Team login, the one-time prompt should already have appeared, and the current permission mode is worth a deliberate check before the next unattended <code>publish.sh</code> run.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own blog and product documentation, corroborated by 9to5Mac and The Register; no contrary or delay reports found</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 11–18, 2026 · v2.1.228–v2.1.235</span>
+    </div>
+    <h4 class="headline">Eight Claude Code point releases in eight days include a critical OAuth fix and the first cross-session collaboration feature</h4>
+    <p>Between v2.1.228 (Aug 11) and v2.1.235 (Aug 18), Claude Code shipped roughly one release a day: a fix for interactive sessions freezing visually while still running, a critical OAuth sign-in fix (v2.1.231, Aug 13) that had been blocking connections to services like Slack, GitLab merge-request support in the worktree view plus memory limits against runaway build commands (v2.1.233), the ability to <code>@</code>-mention and collaborate across separate Claude sessions by name (v2.1.232), automatic session continuation when usage limits reset (v2.1.234), and optional inline spellcheck plus background-task handling improvements (v2.1.235, the day before this edition).</p>
+    <p>None of the eight is a breaking change to scripted, non-interactive use the way the auto-mode default is — this is reliability and UX hardening at a denser cadence than the four-release window covered last week.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Point releases</div><div class="stat-value">8</div></div>
+      <div class="stat"><div class="stat-label">Version range</div><div class="stat-value">v2.1.228 → v2.1.235</div></div>
+      <div class="stat"><div class="stat-label">Critical fix</div><div class="stat-value">OAuth sign-in (v2.1.231)</div></div>
+    </div>
+    <div class="links">
+      <a href="https://www.havoptic.com/tools/claude-code">Havoptic, release tracker</a>
+      <a href="https://releasebot.io/updates/anthropic/claude-code">Releasebot, Claude Code updates</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Last week's four-release window (v2.1.221–v2.1.227) was itself called denser than usual; this window doubled that pace to roughly one release per day, continuing the same trust-and-safety-plus-reliability focus rather than shipping new capability surfaces.</p>
+        <p><span class="lbl">The details.</span> The OAuth fix matters more than a routine bug: v2.1.230 (or the release immediately prior) apparently shipped with a sign-in regression that blocked service connections including Slack, and it was patched within roughly a day at v2.1.231. That is exactly the failure class — an auth regression breaking a connector — that would silently break a scheduled, unattended pipeline run rather than surfacing as an obvious crash.</p>
+        <p><span class="lbl">Why it still matters.</span> No action today: this pipeline's dispatches don't authenticate through Claude Code's own OAuth-based service connections, relying instead on the dedicated MCP connectors already in use. Worth remembering only if that changes, and worth noting that at roughly a release a day, the "check the changelog before a big publish run" habit needs to look at what shipped since the last check, not since last week.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">3/5 · single third-party tracker (Havoptic) fetched in full for release-by-release detail; not independently cross-checked against Anthropic's own changelog page this edition</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H3 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">Aug 12, 2026</span>
+    </div>
+    <h4 class="headline">Claude Cowork replaces the old Chrome side panel — full sessions, skills and connectors now run inside the browser</h4>
+    <p>On August 12, Anthropic replaced the "Claude in Chrome" side panel with a full Claude Cowork session: conversation history, skills and connectors carry over, and a task started in a browser tab can be picked up on desktop, web or mobile. It's live now for Max and Team plans, rolling out to Pro over the coming weeks.</p>
+    <p>This widens where a Cowork session can be started, not what one can do — the underlying capability is the same Cowork already running this pipeline's sessions elsewhere.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Live now</div><div class="stat-value">Max, Team</div></div>
+      <div class="stat"><div class="stat-label">Rolling out</div><div class="stat-value">Pro</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/cowork-chrome-side-panel">Anthropic, Cowork comes to Chrome</a>
+      <a href="https://9to5mac.com/2026/08/12/claude-cowork-chrome/">9to5Mac, Aug 12</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This follows the same "Cowork everywhere" pattern as its earlier expansion to web and mobile — another entry point added to the same product, not a new one.</p>
+        <p><span class="lbl">The details.</span> Skills and connectors carrying over into the browser session is the one functionally new piece: a session started from inside a webpage could, in principle, invoke the same house skill this pipeline already runs, without switching to desktop first.</p>
+        <p><span class="lbl">Why it still matters.</span> Skip for now — this pipeline's dispatch happens from an orchestrator session, not a Chrome side panel, and no step in the current publish workflow starts from inside a web page. Revisit only if a future workflow step needs to be triggered from within a browser tab rather than from the existing session.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own blog post, corroborated by 9to5Mac, TechRadar and Engadget</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LIST -->
+  <h3 class="sec">Across the stack</h3>
+
+  <!-- M1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI / Codex</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 7–13, 2026</span>
+    </div>
+    <h4 class="headline">Codex ships a new model, a plugin system and MCP's stateless spec support in one week — and a Linux app that imports straight from Claude Code</h4>
+    <p>OpenAI's Codex had a dense week: GPT-5.3-Codex became available, a new Agent Plugins system lets Codex search and install from local, personal, workspace and remote plugin catalogs, and the CLI (rust-v0.147.0, Aug 7) added an <code>--approve-for-me</code> auto-approval flag alongside support for MCP's 2026-07-28 stateless spec. Codex also crossed 15 million active users on August 13, triggering a one-off rate-limit reset for existing accounts.</p>
+    <p>The detail worth watching: a Linux desktop app preview now imports project setup and recent work directly from Claude Code and Cursor sessions — built explicitly to make trying Codex against an existing Claude-based workflow closer to frictionless.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Active users</div><div class="stat-value">15M+</div></div>
+      <div class="stat"><div class="stat-label">New model</div><div class="stat-value">GPT-5.3-Codex</div></div>
+      <div class="stat"><div class="stat-label">CLI version</div><div class="stat-value">rust-v0.147.0</div></div>
+    </div>
+    <div class="links">
+      <a href="https://developers.openai.com/codex/changelog">OpenAI Codex changelog</a>
+      <a href="https://releasebot.io/updates/openai/codex">Releasebot, Codex updates</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This follows last week's Ona cloud-development-environment integration story — OpenAI is now shipping on model, plugin-ecosystem, protocol-support and distribution fronts in parallel rather than around one headline feature.</p>
+        <p><span class="lbl">The details.</span> No report located this week describes precisely what "importing recent work" from a Claude Code project actually captures — session history, configuration files, or just directory structure. That specificity gap is the reason this stays a watch item rather than a concrete migration-cost estimate.</p>
+        <p><span class="lbl">Why it still matters.</span> Trigger to flip to TRY: once the Linux desktop app is out of preview and a concrete account exists of what a Claude-Code-project import actually carries over, worth a side-by-side test importing one real briefing-dispatch project to see whether Codex's Agent Plugins can approximate a Sonnet subagent's structured research output.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">3/5 · confirmed via secondary technology writeups (note.com, Releasebot); OpenAI's own Codex changelog page was linked but not fetched in full this edition</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-infra">MCP ecosystem</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Spec Jul 28 — adoption through Aug 19</span>
+    </div>
+    <h4 class="headline">MCP's stateless spec picks up its first named adopters: Codex, Cloudflare's Agents SDK, and an enterprise-auth trio</h4>
+    <p>Last week's protocol change — dropping session state, the <code>Mcp-Session-Id</code> header, and the requirement to pin a client to one server instance — now has concrete adopters. OpenAI's Codex CLI added support for the 2026-07-28 spec this week; Cloudflare's Agents SDK supports it "from day zero," letting customers such as Sentry and Linear pick it up without a server-side migration; and the previously-stabilized Enterprise-Managed Authorization extension is being adopted jointly by Anthropic, Microsoft and Okta.</p>
+    <p>Two client-side vendors and one infrastructure vendor moving in the same three-week window is the first real evidence the spec is being built against, not just published.</p>
+    <div class="links">
+      <a href="https://developers.googleblog.com/scaling-ai-agent-infrastructure-with-the-mcp-stateless-updates/">Google Developers Blog, MCP stateless adoption</a>
+      <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">MCP Blog, the 2026-07-28 specification</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> The spec itself shipped July 28 and was covered at 5/5 confidence last week as a primary-source protocol change; this week is the first evidence of adoption rather than a further protocol revision.</p>
+        <p><span class="lbl">The details.</span> Cloudflare's "day zero" framing matters because it means any Cloudflare-hosted MCP server gets the stateless, horizontally-scalable behavior automatically — the benefit lands for customers without them doing anything, which is a faster adoption path than most protocol changes get. Codex's adoption is the more directly relevant signal: a major agent CLI now speaks the new handshake, which is the kind of cross-vendor interoperability MCP's stateless design was built to enable.</p>
+        <p><span class="lbl">Why it still matters.</span> Unchanged trigger from last week — this pipeline consumes hosted MCP connectors rather than running its own server, so the simplification stays a watch item until that changes. Worth logging that three vendors moved in the first three weeks after the spec shipped, faster than a typical protocol-adoption curve.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Google's own developer blog and the Model Context Protocol project's own blog, both primary sources for the adoption claims</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M3 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Cursor</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">As of Aug 19, 2026 — unchanged</span>
+    </div>
+    <h4 class="headline">Cursor's Opus-4.8-beating router claim still has no independent benchmark behind it, a week later</h4>
+    <p>Following up on last week's open question: no third-party benchmark of Cursor's Auto Balance router against Opus 4.8 has surfaced. What exists instead is more detail on Cursor's own methodology — the company measures the router through large online A/B tests against live production traffic rather than offline evals, on the stated logic that model selection should be learned from real developer work rather than inferred from benchmark scores.</p>
+    <p>That's a defensible argument for why an offline benchmark might understate a router's real-world value, but it also means the 41%-cheaper, Opus-4.8-beating headline number is still Cursor grading Cursor, on data no outside party can reproduce.</p>
+    <div class="links">
+      <a href="https://aicatchup.com/news/cursor-router-auto-intelligence-balance">AI Catchup, Cursor router methodology</a>
+      <a href="https://releasebot.io/updates/cursor">Releasebot, Cursor updates</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This is the specific trigger last week's edition named for flipping this item from WATCH to TRY — an independent, non-Cursor benchmark — and it has not fired in this window.</p>
+        <p><span class="lbl">The details.</span> The A/B-test methodology is actually a reasonable argument for why a static offline benchmark might miss real value: routing decisions interact with live traffic patterns an offline eval can't reproduce. But it also means there is no number in this space a third party could independently reproduce even if they wanted to, since the underlying live-traffic data belongs to Cursor alone.</p>
+        <p><span class="lbl">Why it still matters.</span> Stays WATCH. No test recommended this week — the trigger condition is unmet, and testing Cursor's own dashboard numbers against this pipeline's subagent dispatches would just be re-measuring Cursor's claim on Cursor's terms rather than an independent check.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">2/5 · vendor-reported methodology and figures only (Cursor's own changelog/blog, relayed by a secondary explainer); no independent benchmark located this week either</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR'S VIEW -->
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>The biggest Home Stack story this week is confirmation, not novelty.</strong> Auto mode shipped exactly when Anthropic said it would, with no reported delay, rollback, or incident report in the days after — an unusually clean landing for a permission-model change this consequential. The carve-out for Enterprise/API/cloud-platform accounts, not the classifier numbers, is the new fact worth acting on.</li>
+      <li><strong>Following up on open threads did more work than scanning for new launches.</strong> Two of last week's three named triggers stayed unmet — Cursor's independent benchmark hasn't appeared, and Cognition's reported talks for a new round at a higher valuation is still just a funding number with no product consequence. Naming a specific trigger last week, then checking it rather than re-covering the same story, is exactly what kept this week's list short instead of padded.</li>
+      <li><strong>MCP's ecosystem is moving faster than the tool layer built on top of it.</strong> Three vendors — Codex, Cloudflare's Agents SDK, and an Anthropic/Microsoft/Okta authorization trio — adopted the stateless spec within three weeks of its release, while the CLI/agent tools that actually carry operator consequence for this stack shipped only incremental hardening.</li>
+    </ol>
+    <p class="closer">Wildcard for the week: Codex's Linux desktop app quietly importing Claude Code project state is the one item worth remembering if migration risk is ever a live question — not because Codex looks better today, but because it's the first tool this window explicitly built to make switching away from Claude Code cheap.</p>
+  </div>
+
+  <!-- WHAT CHANGED FOR THIS PIPELINE -->
+  <h3 class="sec">What changed for this pipeline</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>This week, worth confirming:</strong> check which access path covers this pipeline's own Claude usage — API/Enterprise (stayed opt-in on Aug 14) or a Pro/Max/Team login (defaulted to auto mode on Aug 14). If it's the latter and no deliberate permission mode is pinned, decide before the next unattended <code>publish.sh</code> force-push whether auto mode should stay on.</li>
+      <li><strong>No action from the point-release bundle (v2.1.228–v2.1.235):</strong> the OAuth fix (v2.1.231) only matters if a future step starts using Claude Code's own OAuth-based service connections rather than the dedicated MCP connectors already in use.</li>
+      <li><strong>Leave Cursor's router at WATCH:</strong> nothing to test until an independent, non-Cursor benchmark exists — re-check next edition rather than re-running Cursor's own dashboard numbers.</li>
+      <li><strong>Leave MCP's stateless spec at WATCH:</strong> log the three-vendor adoption but stand up nothing — this pipeline still consumes hosted connectors, not its own MCP server.</li>
+      <li><strong>No action on Codex, Cowork-on-Chrome, or Cognition/Devin:</strong> none earned a TRY this week, and none block anything currently running.</li>
+    </ul>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Wednesday, August 19, 2026 &middot; <strong>Research window:</strong> 11–19 August 2026, 8 days &middot; <strong>Scope:</strong> second edition under the widened Practical AI Tools scope — 3 Home Stack cards, 3 cross-vendor cards, 6 items total; 1 TRY, 4 WATCH, 1 SKIP.</p>
+    <p><strong>Confidence legend:</strong> ●●●●● 5/5 vendor primary source corroborated by independent press &middot; ●●●●○ 4/5 reputable press or multiple independent trackers confirming a primary source &middot; ●●●○○ 3/5 single credible source &middot; ●●○○○ 2/5 aggregator- or vendor-only figures not independently verified.</p>
+    <p><strong>Editorial notes:</strong> The agent compiling this briefing cannot run any of these tools directly — every verdict rests on documented vendor behaviour and practitioner reports, not hands-on testing; WATCH was preferred over TRY wherever the only evidence was a vendor's own claim about itself (Cursor's router, capped at 2/5). Sources are exclusively English-language. Model releases (GPT-5.3-Codex included, mentioned here only for its Codex tool-layer changes) are deliberately out of scope for capability review — they belong to the Frontier Tech briefing's Release Radar; this issue covers only the operable tool surface built on top of them. Cognition/Devin's reported talks for a new round at a higher valuation were checked and found to carry no product or operator consequence this window, so the item stays out of active coverage as it was last week.</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Week of 28 July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#1f2933; --primary-soft:#eceff1; --primary-on-soft:#1f2933;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --accent:#374151; --accent-soft:#eceff1; --accent-deep:#1f2937;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:#1f2937; color:#fff; display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:16px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:#1f2937; border-color:#1f2937; color:#fff; font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#5f6368 0%,#374151 55%,#1f2937 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+  .hero .stat-row { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; }
+  .hero .stat .n { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:700; }
+  .hero .stat .l { font-size:11px; opacity:0.85; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:8px; }
+  .statusquo .sq-label { display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--accent-deep); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin-bottom:6px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:#374151; font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); background:var(--surface-2); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.tesla { background:#fce8e6; color:#a50e0e; }
+  .tag.spacex { background:#e8eef6; color:#1f3548; }
+  .tag.xai { background:#f1f3f4; color:#3c4043; }
+  .tag.x { background:#f1f3f4; color:#202124; }
+  .tag.neuralink { background:#f3e8fd; color:#5f1d8e; }
+  .tag.boring { background:#fef7e0; color:#b06000; }
+  .tag.politics { background:#eceff1; color:#1f2937; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-dark { background:#eceff1; color:#1f2933; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); margin-left:auto; }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .data-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 14px; }
+  .data-item { background:var(--surface-2); border-radius:8px; padding:10px 12px; }
+  .data-label { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .data-value { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; color:var(--on-surface); }
+  .data-value.up { color:var(--green-deep); } .data-value.down { color:var(--red-deep); }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:#1f2937; text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:#eceff1; }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:#374151; }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.deep { margin-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:500; color:#1f2937; background:var(--surface-2); padding:5px 14px; border-radius:14px; user-select:none; transition:background 0.15s; }
+  details.deep summary:hover { background:#eceff1; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .chev { font-size:16px; line-height:1; transition:transform 0.2s; }
+  details.deep[open] summary .chev { transform:rotate(180deg); }
+  details.deep .dd { margin-top:12px; padding:14px 16px; background:var(--surface-2); border-radius:10px; }
+  details.deep .dd p { font-size:13.5px; line-height:1.65; color:var(--on-surface-2); margin:0 0 12px; }
+  details.deep .dd p:last-child { margin-bottom:0; }
+  details.deep .dd strong.lbl { color:var(--on-surface); font-weight:700; }
+
+  .banner { display:flex; gap:12px; background:var(--yellow-soft); border-radius:12px; padding:14px 18px; margin-bottom:14px; align-items:flex-start; }
+  .banner .material-icons-outlined { color:var(--yellow); font-size:20px; margin-top:1px; }
+  .banner .txt { font-size:13px; line-height:1.55; color:var(--on-surface-2); }
+  .banner .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .trends { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-top:14px; }
+  .trends .tr-label { display:inline-flex; align-items:center; gap:6px; background:var(--blue-soft); color:var(--blue-on); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .trends .row { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--divider-soft); align-items:flex-start; }
+  .trends .row:last-child { border-bottom:none; }
+  .trends .arrow { font-family:'Roboto Mono',monospace; font-size:12px; font-weight:700; min-width:34px; }
+  .trends .arrow.up { color:var(--green-deep); }
+  .trends .arrow.down { color:var(--red-deep); }
+  .trends .arrow.flat { color:var(--on-surface-muted); }
+  .trends .txt { font-size:13.5px; line-height:1.6; color:var(--on-surface-2); }
+  .trends .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:#eceff1; color:#1f2937; padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:#374151; font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+    .date-pill { margin-left:0; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Week of Jul 28 2026 · 25 – 28 July · Tesla · xAI / Grok · SpaceX · politics · legal · Neuralink · Boring</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#tesla">Tesla</a>
+  <a class="chip" href="#xai">xAI / Grok</a>
+  <a class="chip" href="#spacex">SpaceX</a>
+  <a class="chip" href="#politics">DOGE / Politics</a>
+  <a class="chip" href="#legal">Legal</a>
+  <a class="chip" href="#other">Other ventures</a>
+  <a class="chip" href="#trends">Trends</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Muskverse portfolio · short week · 25 – 28 July 2026</div>
+  <h2>Tesla stopped falling but didn't recover; SpaceX's booster failure got confirmed, not disputed; and Grok 4.6's "two weeks" already became "late August"</h2>
+  <p>This is another short edition — the last one closed just three days ago, on 25 July — but the four days since resolved two of that edition's biggest open questions rather than adding new binary events. Tesla's stock stopped crashing and settled into a narrow <strong>$308–313</strong> band, even as <strong>Piper Sandler</strong> cut its price target to $450 and <strong>Cathie Wood's ARK</strong> bought the dip twice in four trading days. TechCrunch's own reporting on <strong>Starship Flight 13</strong> resolved last week's disputed booster outcome in favour of the harsher account: the Super Heavy booster failed its landing burn for the second consecutive V3 flight. And Musk's promised "two weeks" for <strong>Grok 4.6</strong> quietly became "late August to mid-September" — the widest gap this briefing has tracked yet between a Musk-stated ship date and the number that followed it. DOGE, legal and X generated nothing new; Neuralink and Boring stayed exactly where 25 July left them.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">$308–313</div><div class="l">TSLA range, four flat sessions</div></div>
+    <div class="stat"><div class="n">2nd failure</div><div class="l">Super Heavy booster, confirmed</div></div>
+    <div class="stat"><div class="n">"~2 wks" → "~6 wks"</div><div class="l">Grok 4.6 ship-date slip</div></div>
+    <div class="stat"><div class="n">Aug 6</div><div class="l">SPCX's $116B lock-up expiry</div></div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <span class="sq-label"><span class="material-icons-outlined" style="font-size:14px">history</span>Status quo — where the 25 July edition left off</span>
+  <ul>
+    <li><strong>Tesla:</strong> TSLA had crashed 14.52% on 23 July to $319.69 after a Q2 print that beat on revenue ($28.24B) but missed hard on profit (EPS $0.33 vs. ~$0.53 est.) and turned free cash flow negative (-$1.09B); the stock fell a further 3.2% on 24 July. The robotaxi fleet-count dispute (Bank of America's 175-vehicle Texas estimate vs. Electrek's ~21) leaned toward the smaller figure via earnings-call framing, and Hardware 3 (HW3) remediation cost stayed undisclosed.</li>
+    <li><strong>xAI / Grok:</strong> Musk said on 24 July that Grok 4.6 (2 trillion parameters) would ship "in about two weeks," with Grok 4.7 (4–6 trillion, unconfirmed) roughly two weeks after that; part of 4.6's training reportedly draws on SpaceX engineering data. Grok Build's "out of scope" security-exploit classification, from the prior week's data-exfiltration scandal, remained unresolved.</li>
+    <li><strong>SpaceX:</strong> Starship Flight 13 launched 24 July on its third attempt; the in-space Raptor relight succeeded without dispute, but sourcing conflicted sharply on the Super Heavy booster's landing burn — one account cited only 5 of 13 engines firing and a hard impact, another described a "flawless" performance. SPCX closed at $115.07, roughly 50% below its post-IPO peak, with the first full post-launch trading session still to come.</li>
+    <li><strong>Politics:</strong> Musk told The Economist "I got carried away, frankly" about his DOGE-and-Trump chapter on 23 July — a personal admission of overreach, not a substantive walkback — while DOGE (Department of Government Efficiency) itself remained formally wound down since 4 July with no closing report and the America Party stalled for a second straight week.</li>
+    <li><strong>Legal:</strong> Musk v. Altman and xAI's separate data-centre trade-secrets suit against OpenAI both remained headed to the Ninth Circuit Court of Appeals after trial-court dismissals, with no near-term resolution expected.</li>
+    <li><strong>Other ventures:</strong> The Boring Company was reported (25 July, WSJ) to be negotiating a $4B round at a $20B valuation — more than 3x its 2022 mark — with the round not yet closed.</li>
+  </ul>
+</div>
+
+<div class="banner">
+  <span class="material-icons-outlined">info</span>
+  <div class="txt"><strong>Short-week note:</strong> the previous edition published just three days ago, on 25 July. This edition covers 25–28 July only. Genuinely new material this window clusters in three places — Tesla's post-crash price action, Starship's booster outcome getting confirmed rather than disputed, and Grok 4.6's ship date slipping — so this edition is intentionally shorter than the 25 July one rather than padded to match its length. DOGE, legal, Neuralink, X and Boring generated no new reporting in this window and are noted briefly rather than given manufactured cards.</div>
+</div>
+
+<!-- TESLA -->
+<a id="tesla"></a>
+<div class="section-header"><span class="material-icons-outlined">electric_bolt</span><h3>Tesla</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-yellow">Aftermath</span><span class="date-pill">24 – 27 Jul 2026</span></div>
+  <h4>TSLA stops crashing but doesn't recover — the stock drifts flat near $308–313 for four straight sessions as Piper Sandler cuts its target and Cathie Wood buys the dip twice</h4>
+  <p>After the 14.52% crash on 23 July, TSLA found what looks like a rough floor rather than a rebound: the stock opened Friday, 24 July, at $313.03 (down a further 2.1% intraday), and by Monday, 27 July, Cathie Wood's ARK bought more Tesla shares at a $309.22 close — a four-session range of roughly $308 to $313, essentially flat after the crash rather than continuing to fall or bouncing back. Piper Sandler cut its price target to $450 from $500 on Friday morning while keeping an Overweight rating, one of several post-earnings target cuts; MarketBeat's tracked consensus across 46 analysts stands at $404.95 (21 Buy, 21 Hold, 4 Sell) — roughly 30% above where the stock is actually trading, a gap this briefing has repeatedly flagged as sell-side targets not doing the work of pricing in real risk.</p>
+  <p>Cathie Wood's ARK bought Tesla twice inside four trading days: roughly $51.2 million (160,151 shares) on Thursday, 23 July, right after the earnings crash, and a further $8.6 million (18,730 ARKK shares plus 9,134 ARKQ shares) on Monday, 27 July — nearly $60 million added in under a week, even as ARK simultaneously trimmed its Robinhood position on the same Monday. Reuters separately reported on 23 July that Tesla's "once-bullish tone on robotaxis" has shifted to more hedged language on the earnings call, consistent with last week's read that management's own framing, not a hard fleet number, is the only signal available.</p>
+  <div class="links">
+    <a href="https://www.fool.com/investing/2026/07/26/down-30-on-the-year-is-tesla-stock-a-buy-on-this-l/" target="_blank">Motley Fool: down 30% on the year, is TSLA a buy</a>
+    <a href="https://www.defenseworld.net/2026/07/25/tesla-nasdaqtsla-price-target-lowered-to-450-00-at-piper-sandler.html" target="_blank">Defense World / MarketBeat: Piper Sandler cuts PT to $450</a>
+    <a href="https://www.benzinga.com/etfs/broad-u-s-equity-etfs/26/07/60714602/spacex-stock-slides-but-cathie-wood-keeps-buying-tesla-gets-an-ark-boost-too" target="_blank">Benzinga: ARK buys Tesla again Monday</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">4-session range</div><div class="data-value">$308 – $313</div></div>
+    <div class="data-item"><div class="data-label">Piper Sandler PT</div><div class="data-value down">$450 (was $500)</div></div>
+    <div class="data-item"><div class="data-label">Consensus PT</div><div class="data-value up">$404.95 (46 analysts)</div></div>
+    <div class="data-item"><div class="data-label">ARK bought, 4 days</div><div class="data-value up">~$60M combined</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> The 25 July edition closed its Tesla coverage with an open question: whether the three-day slide (22–24 July) would extend further or find a floor before the next edition. Four additional trading days answer that question, at least provisionally — TSLA has not fallen meaningfully further since Friday's open, but it has not recovered any of the 14.5% either. The stock remains below both its 50-day ($400.74) and 200-day ($402.53) simple moving averages, and its one-year range now spans $297.82 to $498.83 — meaning TSLA is trading only about 3.5% above its 52-week low, a level it has not tested since before this briefing began tracking the stock's post-earnings trajectory.</p>
+    <p><strong class="lbl">The details.</strong> The Piper Sandler cut is notable less for its size than for what it kept: an Overweight rating survives a 10% target reduction, meaning the firm's directional view on Tesla is unchanged even as its price math resets lower — a pattern consistent with several other post-earnings cuts referenced in the same MarketBeat roundup (Truist at $370 Hold, Jefferies at $400 Hold). Cathie Wood's two separate purchases — one immediately after the crash, one three trading days later at a lower price — are a genuine double-down rather than a single headline-grabbing dip-buy, and the simultaneous Robinhood trim on Monday suggests ARK is rotating conviction toward Tesla specifically, not simply deploying fresh cash across its fintech-adjacent names. The Reuters robotaxi story adds texture rather than new numbers: management's shift toward hedged language on the earnings call is the same signal last week's edition inferred from the "cumulative miles, not fleet size" framing, now stated more explicitly by a wire service.</p>
+    <p><strong class="lbl">Context.</strong> A stock that stops falling without recovering is, in market terms, a stalemate between two theses this briefing has tracked in parallel for weeks: the bear case (deteriorating margins, negative free cash flow, an unprecedented capital-expenditure run-rate) and the bull case (record deliveries, FSD subscription growth, robotaxi and Optimus optionality). Neither side won this week; the roughly 30% gap between the $308–313 trading range and the $404.95 analyst consensus is the clearest numerical expression of that stalemate, and it is a wider gap than this briefing has previously flagged for TSLA specifically. Whether the next move is toward the consensus or away from it likely depends on data this briefing doesn't yet have — Q3 delivery trends, and any hard robotaxi fleet disclosure Tesla has still not made.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Whether TSLA holds the $308–313 band through the next edition, or breaks it in either direction. (2) Any further analyst price-target revisions beyond Piper Sandler's. (3) Whether ARK continues buying at a third, lower price point, which would be a stronger signal than two purchases inside a single post-earnings week. (4) Further reporting on the Reuters robotaxi-tone-shift story, which this briefing has not yet seen independently corroborated. (5) The roughly 30% gap between trading price and consensus target, and whether it closes from either direction.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — price levels and analyst actions are directly reported; the "floor vs. pause" framing is this briefing's interpretation, not a stated fact</span></span></div>
+</div>
+
+<!-- XAI -->
+<a id="xai"></a>
+<div class="section-header"><span class="material-icons-outlined">smart_toy</span><h3>xAI / Grok</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">XAI</span><span class="tag t-red">Slipped</span><span class="date-pill">as of 25 – 27 Jul 2026</span></div>
+  <h4>Grok 4.6's "two weeks" quietly became "late August to mid-September" — the widest gap yet between a Musk ship-date and the number that followed it</h4>
+  <p>Musk's 24 July claim that Grok 4.6 would ship "in about two weeks" — which would put a launch around 7 August — does not match the timeline now circulating in coverage of xAI's own framing: multiple outlets describe Grok 4.6 as having finished initial pre-training the week of 20 July, with public launch now estimated for late August to mid-September. That is a slip of roughly four to six weeks against the figure this briefing cited just three days ago, and it happened without any public correction or acknowledgment from Musk or xAI of the discrepancy. Grok 4.7 (estimated 4–6 trillion parameters, still unconfirmed) remains on the roadmap behind 4.6, with xAI's stated ambition to beat Moonshot AI's Kimi K3 — the 2.8-trillion-parameter open-weight model whose release triggered a semiconductor selloff comparable to the 2025 DeepSeek shock.</p>
+  <p>No independent benchmarks, confirmed context window, or pricing exist yet for Grok 4.6. Separately, there was no update in this window on Grok Build's unresolved "out of scope" security-exploit classification from the prior data-exfiltration scandal, which remains exactly where the 25 July edition left it.</p>
+  <div class="links">
+    <a href="https://startupfortune.com/xai-is-shipping-grok-46-and-47-back-to-back-in-a-release-cadence-no-frontier-lab-has-matched/" target="_blank">Startup Fortune: Grok 4.6/4.7 cadence and Colossus context</a>
+    <a href="https://kie.ai/blog/what-is-grok-4-6" target="_blank">Kie.ai: what is Grok 4.6</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Grok 4.6 size</div><div class="data-value">2T parameters</div></div>
+    <div class="data-item"><div class="data-label">Musk-stated ship (24 Jul)</div><div class="data-value">"~2 weeks" (~7 Aug)</div></div>
+    <div class="data-item"><div class="data-label">Now-reported ship window</div><div class="data-value down">Late Aug – mid-Sep</div></div>
+    <div class="data-item"><div class="data-label">Colossus GPU count</div><div class="data-value">~555,000 (Jan 2026)</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last week's edition specifically flagged, as a watch-item, "whether Grok 4.6 actually ships on the roughly two-week timeline, given this briefing's running tally of Musk-sourced dates slipping" — a pattern this briefing has tracked across Starship launch dates, HW3 remediation timelines, and now a second consecutive frontier-model release. What makes this instance notable is the speed of the slip: the "two weeks" framing was itself only three days old when the later-August-to-September window started appearing in coverage, meaning the correction happened almost immediately rather than emerging gradually as a deadline approached and was missed.</p>
+    <p><strong class="lbl">The details.</strong> The technical framing has not changed — Grok 4.6 is still described as a 2-trillion-parameter model explicitly benchmarked against Kimi K3 rather than against Grok 4.5, and xAI's Colossus supercluster in Memphis (roughly 555,000 GPUs as of January 2026, building toward a stated 1 million GPU, 2 gigawatt target) is still cited as the infrastructure basis for a monthly-release cadence claim through the end of 2026. What has changed is purely the calendar. It is worth noting this briefing cannot independently confirm which date is more accurate — the "two weeks" figure came directly from Musk on 24 July, while the later window comes from secondary coverage synthesizing xAI's own pre-training-completion framing — but the fact that two credible-seeming dates diverge this widely, this quickly, is itself the story, independent of which one turns out to be right.</p>
+    <p><strong class="lbl">Context.</strong> For enterprise buyers evaluating whether to renew with OpenAI or Anthropic versus waiting for Grok 4.6, a ship-date that moves by a month or more inside three days materially changes the calculus the Startup Fortune piece describes: xAI's pressure on competitors' renewal conversations depends on Grok 4.6 actually showing up on a predictable cadence, not merely on being announced. A pattern of announcement-then-quiet-slippage, if it continues into Grok 4.7, would undercut the "monthly releases" claim that is central to xAI's competitive pitch, regardless of how capable the eventual model turns out to be.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) Whether Grok 4.6 actually ships within the newly-cited late-August-to-mid-September window, or slips again. (2) Any public acknowledgment from Musk or xAI of the discrepancy between the "two weeks" claim and the later reporting. (3) Independent benchmark results once the model does ship, particularly against Kimi K3. (4) Whether the Grok Build security classification is addressed before or alongside the 4.6 release. (5) Whether Grok 4.7's own timeline (originally "roughly two weeks" behind 4.6) undergoes a similar slip.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: low-medium — both the original and the revised timelines are secondary-sourced, not a formal xAI release note</span></span></div>
+</div>
+
+<!-- SPACEX -->
+<a id="spacex"></a>
+<div class="section-header"><span class="material-icons-outlined">rocket_launch</span><h3>SpaceX</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-red">Confirmed</span><span class="date-pill">24 Jul 2026, reported 24 – 25 Jul</span></div>
+  <h4>TechCrunch resolves last week's disputed booster outcome: Starship Flight 13's Super Heavy did fail its landing burn, again</h4>
+  <p>Last week's edition flagged sharply conflicting sourcing on Super Heavy's Gulf of Mexico landing burn — one account describing only 5 of 13 engines firing and a hard impact, another calling the splashdown "flawless." TechCrunch's own reporting, filed the night of the launch, resolves that discrepancy in favour of the harsher account: "the booster made it farther into its planned flight but wasn't able to properly fire up all of the engines required for its simulated landing burn," and it "exploded after a faster-than-expected impact with the water." This is the second consecutive failure of a Super Heavy V3 booster, after May's flight, where the booster failed during stage separation rather than landing.</p>
+  <p>The upper stage performed better than in May: Starship's six Raptor engines had no issues this time (versus losing one engine on the May flight), and all 20 third-generation Starlink V3 satellites deployed cleanly before their planned atmospheric burn-up roughly 20 minutes later — Starship still cannot reach stable orbit. SPCX fell a further 2% in after-hours trading following the booster failure before paring some of the loss.</p>
+  <div class="links">
+    <a href="https://techcrunch.com/2026/07/24/spacex-launches-new-v3-starlink-satellites-but-suffers-another-booster-failure/" target="_blank">TechCrunch: booster fails landing burn, again</a>
+    <a href="https://www.space.com/news/live/spacex-starship-flight-13-launch-updates-july-24-2026" target="_blank">Space.com: Flight 13 live coverage</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Upper-stage engines</div><div class="data-value up">6/6 nominal</div></div>
+    <div class="data-item"><div class="data-label">Starlink V3 deployed</div><div class="data-value up">20 / 20</div></div>
+    <div class="data-item"><div class="data-label">Booster landing burn</div><div class="data-value down">Failed — hard water impact</div></div>
+    <div class="data-item"><div class="data-label">Consecutive V3 booster failures</div><div class="data-value down">2 (May, Jul)</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last week's edition explicitly declined to pick a side between the two conflicting booster-outcome accounts, flagging one source's SPCX price figures (a claimed 74% drawdown, $1 trillion in erased value) as internally inconsistent with every other outlet's much smaller ~50%-off-peak figure, and weighting the more internally consistent account — successful ship splashdown, troubled booster — as more credible without treating it as confirmed. TechCrunch's own reporting, from a named reporter with direct sourcing on SpaceX and Tesla coverage, now removes that ambiguity: the booster failure is a stated fact, not a disputed claim between anonymous accounts.</p>
+    <p><strong class="lbl">The details.</strong> The mechanism matters: this was a booster engine-ignition failure during a simulated landing burn, the same general failure mode — insufficient engines relighting for a controlled descent — that has now occurred on both flights of the V3-generation Super Heavy booster, albeit at different stages (May's failure was during stage separation; July's was during the landing attempt itself). SpaceX had replaced six engines on Booster 20 specifically to fix the ignition problem that aborted the first Flight 13 attempt on 16 July — meaning this week's landing-burn failure is a different failure mode from the one SpaceX explicitly addressed, not a recurrence of the same fixed problem. That distinction is significant for assessing SpaceX's diagnostic accuracy: the company correctly fixed the problem it identified, but a related problem it had not identified then surfaced in a different phase of flight.</p>
+    <p><strong class="lbl">Context.</strong> This confirms, rather than revises, the reading this briefing offered last week: the flight's one load-bearing objective for NASA's Artemis timeline — the in-space Raptor relight — succeeded cleanly and without dispute, keeping that dependency chain alive. But Starship's second consecutive Super Heavy landing-adjacent failure on the V3 vehicle is now a documented pattern, not a one-off, and it directly bears on the economic premise behind Starship's entire Starlink V3 capacity step-change: rapid booster reusability. A booster that has failed its return in two straight flights, for two different reasons, is a harder engineering problem than "fix the engines that failed last time," and the market's sub-2%-after-hours reaction suggests investors had already substantially priced in booster risk after May's failure and this week's pre-launch abort.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) SpaceX's own technical post-flight report, if one is published, and whether it identifies a root cause distinct from May's separation failure. (2) Whether Flight 14 attempts another landing burn or reverts to an expendable-booster profile while the issue is diagnosed. (3) Any NASA statement on how this affects Artemis schedule confidence, given the successful relight. (4) Timeline to Flight 14, and whether it slips as Flight 13 did. (5) Whether SPCX's after-hours dip becomes a larger move once a full trading session prices in the confirmed failure.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — booster failure and upper-stage performance directly reported by TechCrunch with named sourcing, resolving last week's flagged discrepancy</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPCX</span><span class="tag t-yellow">Catalyst ahead</span><span class="date-pill">25 – 27 Jul 2026, catalyst 4 – 6 Aug</span></div>
+  <h4>SPCX grinds lower toward 6 August — the largest share lock-up expiration in stock-market history</h4>
+  <p>SPCX continued drifting lower through the window, trading around $112–113 (Monday, 27 July) against last week's $115.07 close — down further from a post-IPO peak of $225.64 and now within a few dollars of its 52-week low of $108.66. The stock's next scheduled catalysts are dated rather than speculative: SpaceX reports its first-ever public-company earnings on 4 August, which triggers the lock-up expiration of an initial, unconditional tranche of roughly 911.5 million shares — worth an estimated $116 billion — becoming tradable on 6 August. A second, larger tranche of 455.8 million shares unlocks only if SPCX trades at or above $175.50 for 5 of 10 sessions through the earnings date — a level roughly 55% above current trading and, on the present trajectory, unlikely to trigger.</p>
+  <p>Cathie Wood's ARK kept buying SPCX-linked positions through the slide even as commentators split on what the stock's level means: Ross Gerber was reported framing the drop as a forming bargain, while Gary Black argued that investors "shocked" by the price simply hadn't done the valuation math on a re-rating that was always coming.</p>
+  <div class="links">
+    <a href="https://www.cnbc.com/2026/07/21/spacex-spcx-earnings-lock-up-expiration.html" target="_blank">CNBC: earnings date sets up first lock-up expiration</a>
+    <a href="https://www.fool.com/investing/2026/07/19/spacexs-ipo-lockup-starts-expiring-in-august-heres/" target="_blank">Motley Fool: lock-up mechanics and the real test ahead</a>
+    <a href="https://www.benzinga.com/markets/tech/26/07/60714529/gary-black-tesla-spacex-stock-ross-gerber-buying-opportunity" target="_blank">Benzinga: Black vs. Gerber on SPCX/TSLA valuations</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Recent close</div><div class="data-value down">~$112 – 113</div></div>
+    <div class="data-item"><div class="data-label">Off post-IPO peak</div><div class="data-value down">~50%+</div></div>
+    <div class="data-item"><div class="data-label">First unlock (6 Aug)</div><div class="data-value">~911.5M shares (~$116B)</div></div>
+    <div class="data-item"><div class="data-label">Price-contingent unlock</div><div class="data-value">Needs ≥$175.50, unlikely now</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last week's edition closed its SPCX coverage noting that the entire week's price action predated the evening Starship launch, and that Monday, 27 July would be "the first real reaction window." That window has now passed, and the stock did not rally toward the $150 level retail positioning was reportedly betting on — instead it continued the multi-week downward drift this briefing has tracked since the IPO, with the confirmed booster failure (see card above) adding a fresh negative data point rather than reversing the trend.</p>
+    <p><strong class="lbl">The details.</strong> The lock-up mechanics are the more structurally important story than any single week's price move: SpaceX's IPO in June left only roughly 4–5% of total shares in the public float, which this briefing has repeatedly cited as the reason SPCX's quote data and volatility behave differently from a normal large-cap listing. The 6 August unlock of ~911.5 million shares — worth an estimated $116 billion at recent prices — is, per multiple sources, the largest single lock-up expiration in market history, and it arrives two days after SpaceX's first public earnings report, meaning the company's first quarterly disclosure and its first genuine test of price discovery under a much larger float land almost simultaneously. The price-contingent second tranche (455.8 million shares, requiring ≥$175.50 for 5 of 10 sessions) is, at current levels around $112, a roughly 55% rally away from triggering — a gap wide enough that this briefing treats that tranche as unlikely to unlock on the current trajectory, though a single strong earnings surprise could change that quickly given the stock's demonstrated volatility.</p>
+    <p><strong class="lbl">Context.</strong> The Black-versus-Gerber split captures the genuine uncertainty here better than either position alone: a five-fold increase in tradable float, landing right after a mixed earnings report and a second consecutive booster failure, is exactly the kind of event that could produce either a valuation reset toward fundamentals (Black's framing) or a buying opportunity if the sell-off overshoots (Gerber's framing) — and this briefing has no basis yet to prefer one over the other. What is clear is that 4–6 August, not this week, is the actual test of SPCX's post-IPO price discovery, and everything observed in this window is pre-positioning ahead of it.</p>
+    <p><strong class="lbl">Watch-Items.</strong> (1) SpaceX's first public earnings report on 4 August — the actual content, not just the timing. (2) SPCX's price action in the days immediately following the 6 August unlock, the first real test of demand at a much larger float. (3) Whether the stock approaches the $175.50 threshold for the second, price-contingent tranche, however unlikely that looks now. (4) Whether the confirmed booster failure (see above) factors into earnings-call commentary or guidance. (5) Whether ARK's buying continues through the unlock event or pauses ahead of it.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — lock-up mechanics and dates are well-sourced across multiple outlets; the price-contingent tranche's likelihood is this briefing's own read of the gap to trigger</span></span></div>
+</div>
+
+<!-- POLITICS / LEGAL -->
+<a id="politics"></a>
+<div class="section-header"><span class="material-icons-outlined">account_balance</span><h3>DOGE / Politics</h3><span class="count-pill">no movement</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">POLITICS</span><span class="tag t-dark">No change</span><span class="date-pill">Ongoing · no movement 25 – 28 Jul</span></div>
+  <h4>Nothing new on DOGE or the America Party since the "carried away" remark</h4>
+  <p>No further reporting surfaced in this window on DOGE's institutional afterlife, the disputed $215 billion savings claim, or the America Party, which this briefing has now flagged as stalled for three consecutive editions. Musk's 23 July "I got carried away, frankly" comment to The Economist, covered fully in the 25 July edition, generated no follow-up quotes, White House reaction, or policy consequence in this window that this briefing could find.</p>
+  <div class="links">
+    <a href="https://www.washingtonpost.com/politics/2026/07/19/doge-was-supposed-be-dead-its-remnants-are-everywhere/" target="_blank">Washington Post: DOGE's remnants, still current as background</a>
+  </div>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — absence of new reporting in a short window is the observed fact, not independently confirmed as "nothing happened"</span></span></div>
+</div>
+
+<!-- LEGAL -->
+<a id="legal"></a>
+<div class="section-header"><span class="material-icons-outlined">gavel</span><h3>Legal</h3><span class="count-pill">no movement</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">LEGAL</span><span class="tag t-dark">No change</span><span class="date-pill">Ongoing · no movement 25 – 28 Jul</span></div>
+  <h4>Musk v. Altman and the xAI data-centre suit remain exactly where the 25 July edition left them</h4>
+  <p>No new filings, rulings, or reporting surfaced in this window on either Musk v. Altman or xAI's separate trade-secrets suit against OpenAI over data-centre technology, both headed to the Ninth Circuit Court of Appeals after May's trial-court dismissal on statute-of-limitations grounds. Appellate timelines of this kind typically run into 2027; a four-day gap without movement is expected, not notable, and is recorded here rather than manufactured into a story.</p>
+  <div class="links">
+    <a href="https://en.wikipedia.org/wiki/Musk_v._Altman" target="_blank">Wikipedia: Musk v. Altman case background</a>
+  </div>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — absence of news is the reported fact, not independently confirmed as "nothing happened"</span></span></div>
+</div>
+
+<!-- OTHER VENTURES -->
+<a id="other"></a>
+<div class="section-header"><span class="material-icons-outlined">hub</span><h3>Other ventures</h3><span class="count-pill">quiet</span></div>
+
+<div class="banner">
+  <span class="material-icons-outlined">visibility_off</span>
+  <div class="txt"><strong>Neuralink, X and Boring — quiet four days.</strong> No material developments surfaced in this window for any of the three. Neuralink's most recent substantive news (the transdural implant technique, the first Canadian ALS patient, high-volume production plans) predates this coverage window and was already reported in prior editions; reporting this window described Neuralink's broader 2026 trajectory (scaling reliability across more patients, the planned Blindsight vision-restoration trial, a speech-impairment study) without any new dated event. X generated no notable platform, X Money or regulatory news beyond features (multi-language captioning, an updated livestreaming interface) already in motion before this window. The Boring Company's reported $4B/$20B funding talks, covered fully in the 25 July edition, had not closed or otherwise progressed as of this edition.</div>
+</div>
+
+<!-- TRENDS -->
+<a id="trends"></a>
+<div class="section-header"><span class="material-icons-outlined">trending_up</span><h3>Trends — what moved this week</h3><span class="count-pill">5 lines</span></div>
+
+<div class="trends">
+  <span class="tr-label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Directional read vs. last week</span>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>Tesla financial credibility.</strong> The stock stopped falling but did not recover — a four-session $308–313 range against a $404.95 analyst consensus is a stalemate between the bear and bull cases this briefing has tracked, not a resolution in either direction.</div></div>
+  <div class="row"><span class="arrow down">▼</span><div class="txt"><strong>Starship / Super Heavy reusability.</strong> Last week's disputed booster outcome resolved to the harsher account: a second consecutive V3 booster failure, this time during the landing burn rather than separation. The in-space relight's success stands, but rapid reusability remains unproven across two straight flights.</div></div>
+  <div class="row"><span class="arrow down">▼</span><div class="txt"><strong>xAI release-cadence credibility.</strong> Grok 4.6's ship date moved from "about two weeks" to "late August to mid-September" within three days of the original claim — the fastest and widest Musk-timeline slip this briefing has recorded, undercutting the "monthly releases" pitch central to xAI's competitive positioning.</div></div>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>SPCX price discovery.</strong> The stock kept drifting lower ahead of 4–6 August, when SpaceX's first public earnings and the largest lock-up expiration in market history land almost simultaneously — the real test is still two weeks out, not behind us.</div></div>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>Political and legal attention.</strong> DOGE, the America Party, and both Musk-adjacent OpenAI suits generated zero new movement this window, consistent with last edition's read that political and legal bandwidth is a background constant right now, not an active story.</div></div>
+</div>
+
+<!-- EDITOR -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span>Editor's view</span>
+  <h3>A quiet four days that mostly resolved last week's open questions rather than raising new ones</h3>
+  <p><span class="num">1.</span> <strong>Tesla found a floor, not a recovery — and that gap to consensus is the story.</strong> Four flat sessions in a narrow $308–313 band, against a $404.95 analyst consensus, is neither the continued crash nor the rebound either side of this briefing's running Tesla debate was hoping for. Cathie Wood buying twice in four days is a genuine signal of conviction, but it is a bet on a gap closing, not evidence that it already has.</p>
+  <p><span class="num">2.</span> <strong>The Starship booster story got worse, not better, once the sourcing resolved.</strong> Last week this briefing declined to pick a side between a "5 of 13 engines" account and a "flawless" one. TechCrunch's own reporting settled it: the booster failed its landing burn for the second straight V3 flight, a different failure mode than the one SpaceX explicitly fixed after the 16 July abort. The in-space relight's success is real and matters for Artemis — but Starship's path to rapid reusability is now a documented two-flight pattern of booster failure, not a one-off.</p>
+  <p><span class="num">3.</span> <strong>Grok 4.6's timeline slip is the fastest this briefing has caught a Musk-stated date move.</strong> "About two weeks," stated 24 July, had become "late August to mid-September" within three days of coverage — before the original deadline was even close to arriving. That speed matters more than the size of the slip: it suggests the "two weeks" framing was never a firm commitment in the first place, which has implications for how much weight this briefing should give future Musk-stated ship dates.</p>
+  <p><span class="num">4.</span> <strong>SPCX's real test hasn't happened yet.</strong> Everything observed in this window — the continued drift to $112–113, the Black-versus-Gerber valuation debate — is positioning ahead of 4–6 August, when SpaceX's first public earnings and the largest lock-up expiration in market history land two days apart. This briefing has no basis yet to call that outcome either way.</p>
+  <p><span class="num">5.</span> <strong>Silence across DOGE, legal, Neuralink, X and Boring is itself informative.</strong> Five separate threads generated zero new reporting in four days — not because this briefing stopped looking, but because the portfolio's political, legal and quieter-venture stories are genuinely between events right now. That is worth stating plainly rather than manufacturing cards to fill the section.</p>
+  <p class="closer">Four days that mostly answered last week's questions rather than posing new ones: Tesla stalled instead of recovering, Starship's booster problem got confirmed instead of resolved in SpaceX's favour, and Grok 4.6's release date moved before it was even due. The next edition, assuming a fuller week, should have SpaceX's actual earnings and lock-up event to judge, and possibly a first look at whether Grok 4.6's new window holds any better than its first one did.</p>
+</div>
+
+<div class="colophon">
+  <strong>Muskverse Briefing</strong> · Week of 28 July 2026 · coverage window 25 – 28 July 2026 (short week — previous edition published 25 July)<br>
+  6 items across Tesla (1) · xAI / Grok (1) · SpaceX (2) · DOGE / Politics (1, no change) · Legal (1, no change)<br>
+  Sources: Motley Fool, Defense World / MarketBeat, Benzinga, TechCrunch, Space.com, Startup Fortune, Kie.ai, CNBC, Washington Post, Wikipedia, company statements and earnings-related disclosures.<br>
+  Confidence dots reflect source quality and corroboration, not the author's enthusiasm. Where last week's sourcing conflicted — the Starship booster outcome — this edition reports the resolution rather than re-litigating the dispute. Market levels are as reported and may differ slightly across providers.<br>
+  Abbreviations expanded at first use: EPS (earnings per share), FCF (free cash flow), FSD (Full Self-Driving), HW3 (Hardware 3), IPO (initial public offering), PT (price target).<br>
+  Prepared for Stefan · next edition: week of 4 August 2026
+</div>
+
+</main>
+</body>
+</html>

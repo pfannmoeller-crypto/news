@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools Briefing — 4–11 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <!-- APP BAR -->
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>First edition under the widened scope (formerly Cowork Briefing) &middot; Week of August 11, 2026 &middot; Window 4–11 August</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Claude Code goes autonomous by default Aug 14 as rivals race for the agent layer</h2>
+    <p>First issue under the widened scope: every vendor now, not Anthropic alone. Big fact — Claude Code flips to autonomous-by-default on August 14. Codex, Cursor and Google moved the same way: fewer approvals, more persistent agents. Ten items cleared the filter; two are worth an hour.</p>
+  </div>
+
+  <!-- HOME STACK -->
+  <h3 class="sec">Home Stack — Claude Code &amp; Cowork</h3>
+
+  <!-- H1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Ships Aug 14, 2026</span>
+    </div>
+    <h4 class="headline">Claude Code switches new sessions to autonomous "auto mode" by default on August 14 — three days out</h4>
+    <p>Starting August 14, every new Claude Code session on Pro, Max and Team plans runs in auto mode unless a user has already pinned a different default. Under auto mode, a classifier screens each tool call and only stops for confirmation when it reads an action as irreversible, destructive, or aimed outside the working environment — everything else executes without a prompt. Anthropic's own justification is a usability finding, not a marketing claim: in a controlled study of 1,053 paid users, manual human review caught only 13.6% of dangerous commands slipped into a workflow, against 89% for the auto-mode classifier, because reviewers were approving 97% of all prompts reflexively.</p>
+    <p>Anyone who has already set a non-default permission mode keeps it; everyone else gets a one-time prompt, then the new default going forward. Anthropic also stopped charging Pro/Max/Team users for the classifier's extra per-call tokens, effective the same day.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Auto-mode catch rate</div><div class="stat-value">89%</div></div>
+      <div class="stat"><div class="stat-label">Manual review catch rate</div><div class="stat-value">13.6%</div></div>
+      <div class="stat"><div class="stat-label">Reflexive approval rate</div><div class="stat-value">97%</div></div>
+      <div class="stat"><div class="stat-label">Study size</div><div class="stat-value">1,053 users</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/auto-mode-default-in-claude-code">Anthropic, Auto mode is now the default</a>
+      <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch, Aug 9</a>
+      <a href="https://news.ycombinator.com/item?id=49239021">Hacker News thread</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This is a permission-model change, not a capability change — the underlying model does not get new abilities, the software around it gets less willing to interrupt. The classifier's stated boundary ("irreversible, destructive, or aimed outside your environment") is deliberately broad; Anthropic has not published the full taxonomy of what trips it, which is exactly the gap practitioners are probing.</p>
+        <p><span class="lbl">The details.</span> Hacker News reaction split along a predictable line: several long-time auto-mode users (one describing months of unattended sysadmin work over SSH across multiple servers) reported no catastrophic incidents, while others flagged that the previous manual-approval flow was already being rubber-stamped and this simply makes that honest. No one in the threads reviewed raised the case that matters most for a scripted, unattended pipeline: what happens when a legitimate but genuinely irreversible action — a force-push, a bulk delete, a destructive rebuild — is a normal, intended part of the workflow rather than a mistake to catch.</p>
+        <p><span class="lbl">Why it still matters.</span> This pipeline already dispatches Sonnet subagents non-interactively and its own publish step force-pushes a rebuilt site with no history. If any future session in this pipeline runs under Claude Code rather than Cowork's own orchestration, auto mode's classifier is precisely tuned to flag a force-push as irreversible — worth confirming before Aug 14 whether that stops the run, prompts, or silently reroutes, rather than discovering it mid-publish.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own blog post, corroborated by TechCrunch, InfoWorld and a live Hacker News thread, 9–10 August</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 3–10, 2026</span>
+    </div>
+    <h4 class="headline">Four Claude Code point releases this week harden the permission and sandbox layer without touching the CLI's scripting surface</h4>
+    <p>Between v2.1.221 (Aug 3) and v2.1.227 (Aug 10), Claude Code shipped a Focus view that declutters the chat interface, a workspace-trust prompt for Claude agents opened against untrusted directories, prevention of destructive commands inside isolated sessions, and gateway spend-limit support for usage warnings — alongside routine fixes to feature-flag evaluation, Bash command failures and the slash-command menu.</p>
+    <p>None of the four changes this week alter how the CLI behaves in non-interactive, scripted use — the kind this pipeline's subagent dispatches rely on — but the workspace-trust prompt is the same defensive instinct behind next week's auto-mode default, applied to a different trigger.</p>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://www.havoptic.com/tools/claude-code">Havoptic, release tracker</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Claude Code has been on a roughly weekly release cadence through August; this run of four (2.1.221–2.1.227) is denser than most and clusters entirely around trust and safety surfaces — Focus view is the one purely cosmetic change in the batch.</p>
+        <p><span class="lbl">The details.</span> The workspace-trust prompt specifically targets Claude agents launched against a directory the CLI hasn't seen before; it is separate from the Aug 14 auto-mode default but shares its logic of inserting a check exactly where users have historically clicked through without reading.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth a look only once this pipeline's dispatches start pointing subagents at directories outside the established News-folder root — not the case today, so this stays a watch item rather than a test.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · corroborated across three independent changelog trackers mirroring Anthropic's official release notes; the primary changelog page was checked via search snippet, not fetched in full</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H3 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Ecosystem</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">As of Aug 4, 2026</span>
+    </div>
+    <h4 class="headline">Claude Code's plugin marketplace crosses 4,384 skills and 727 MCP servers — a scale number, not a functional change</h4>
+    <p>Third-party trackers put the open Claude Code marketplace at over 4,384 skills and 727-plus MCP servers as of early August, with one open-source directory alone listing 471 plugins, 3,069 skills and 347 agents. Plugins remain the distribution unit (bundling skills, hooks, MCP configs); skills remain the thing actually invoked.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Skills listed</div><div class="stat-value">4,384+</div></div>
+      <div class="stat"><div class="stat-label">MCP servers</div><div class="stat-value">727+</div></div>
+      <div class="stat"><div class="stat-label">Monthly visitors</div><div class="stat-value">150,000+</div></div>
+    </div>
+    <div class="links">
+      <a href="https://www.agensi.io/learn/claude-code-plugin-marketplace-guide">Agensi, marketplace guide</a>
+      <a href="https://github.com/jeremylongshore/claude-code-plugins-plus-skills">GitHub, plugins-plus-skills</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This pipeline already runs its own house skill (webzeitung-briefings) rather than a marketplace one, and nothing in this week's growth numbers changes that calculus — bigger doesn't mean more relevant to a single, already-working pipeline.</p>
+        <p><span class="lbl">Why it still matters.</span> Skip: a directory-size metric with no bearing on how this specific pipeline runs. Only worth revisiting if a specific, named skill in the marketplace solves a concrete gap the house skill doesn't.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">3/5 · single aggregator source for the specific counts, not independently cross-checked against the marketplace itself</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LIST -->
+  <h3 class="sec">Across the stack</h3>
+
+  <!-- M1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Google</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Cutoff June 18, still live Aug 2026</span>
+    </div>
+    <h4 class="headline">Google finished forcing Gemini CLI users onto Antigravity — and the anger from May hasn't faded</h4>
+    <p>Google's May 19 decision to retire the standalone Gemini CLI and Code Assist IDE extensions in favor of its unified Antigravity platform took effect June 18 for Google AI Pro, Ultra and free-tier users; any automation that shells out to <code>gemini</code> on an affected tier — cron jobs, Git hooks, CI workflows, deploy scripts — broke that day. The official GitHub transition thread collected roughly 143 thumbs-down reactions against 4 in its first 24 hours; the standalone open-source <code>gemini-cli</code> repo continues shipping point releases (v0.54.0, Aug 6) in parallel, in what reads as an unresolved split between the enterprise/open-source CLI and the consumer product Google is discontinuing.</p>
+    <p>Antigravity CLI itself is not open source, and multiple reports describe developers hitting weekly usage quotas within a couple of requests — the opposite of what a forced migration needs to land well.</p>
+    <div class="links">
+      <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google Developers Blog</a>
+      <a href="https://www.theregister.com/ai-ml/2026/05/20/bye-bye-gemini-cli-google-nudges-devs-toward-antigravity/5243605">The Register</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Antigravity is Google's bet on a single agent-first platform rather than a CLI plus a separate IDE extension; the pitch is consolidation, the practitioner experience so far is closer to a downgrade with a mandatory migration deadline attached.</p>
+        <p><span class="lbl">The details.</span> The still-shipping open-source <code>gemini-cli</code> repository muddies the "retirement" framing: what actually died June 18 was free/Pro/Ultra consumer-tier access, not the CLI codebase itself, which continues to take patches under Google Cloud's release notes.</p>
+        <p><span class="lbl">Why it still matters.</span> Not part of this pipeline's stack today, so no migration cost to absorb. The watch trigger is narrow: if Antigravity CLI open-sources or its quota complaints get resolved, it becomes worth a side-by-side hour against Claude Code on one real task — not before.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Google's own developer blog, corroborated by The Register, TechRadar and a public GitHub reaction count</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">July–Aug 2026, deprecation Aug 31</span>
+    </div>
+    <h4 class="headline">OpenAI folds a cloud-development-environment acquisition into Codex, pointing toward agents that outlive the laptop that started them</h4>
+    <p>OpenAI is integrating Ona, a company it is acquiring that builds secure cloud development environments, into what it calls the "next phase of Codex" — agents that keep working in a customer's cloud after the local session that started the job is closed. Alongside that, Codex removed the deprecated <code>--full-auto</code> flag in favor of <code>--sandbox workspace-write</code>, applied safer automatic-review defaults for cyber-capable models, and will drop GPT-5.4/5.4-mini from ChatGPT-authenticated Codex sessions on August 31 (API-key sessions keep access).</p>
+    <p>The direction — a coding agent that persists independent of any one device — is the same one Cowork itself already ships as background task execution; this is OpenAI's version of the same bet.</p>
+    <div class="links">
+      <a href="https://developers.openai.com/codex/changelog">OpenAI Codex changelog</a>
+      <a href="https://thenewstack.io/openai-codex-cloud-evolution/">The New Stack</a>
+      <a href="https://openai.com/index/codex-for-almost-everything/">OpenAI, Codex for (almost) everything</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Codex has passed 8 million users this year on OpenAI's own count; the Ona move reads as capacity-building for that scale rather than a new capability aimed at any single workflow.</p>
+        <p><span class="lbl">The details.</span> The flag removal (<code>--full-auto</code> → <code>--sandbox workspace-write</code>) is a breaking change for any script still calling the old flag directly — the kind of change that costs nothing to a pipeline not using Codex, and everything to one that is.</p>
+        <p><span class="lbl">Why it still matters.</span> This pipeline runs on Claude Code/Cowork, not Codex, so none of this is an action item today. Worth a comparison once Ona-backed persistent cloud agents actually ship broadly and can be benchmarked against Cowork's background execution on a real research-dispatch task.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">3/5 · technical changelog items confirmed on OpenAI's own Codex changelog; the Ona strategic framing rests on a single secondary tech write-up, not an OpenAI press release</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M3 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Cursor</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 2026</span>
+    </div>
+    <h4 class="headline">Cursor claims its new model router beats Opus 4.8 at 41% lower cost — on Cursor's own numbers, not an independent benchmark</h4>
+    <p>Cursor Router now ships two modes: Auto Intelligence, which Cursor says delivers above-Fable-5-level satisfaction at 68% lower cost, and Auto Balance, which it says outperforms Opus 4.8 at 41% lower cost while lifting satisfaction 3% further — both figures presented as improvements over Cursor's own numbers at launch, not against a third-party baseline. The same release adds side chats, agent-transcript search, expanded cloud-agent hooks, and a public iOS beta with always-on agents and remote review.</p>
+    <p>If the cost/quality claims hold under outside testing, automatic model routing that beats a named frontier model on price is directly relevant to any multi-agent pipeline paying per-token across several subagents per run.</p>
+    <div class="links">
+      <a href="https://cursor.com/changelog">Cursor changelog</a>
+      <a href="https://releasebot.io/updates/cursor">Releasebot, Cursor</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Model routing that picks the cheapest model clearing a quality bar is not a new idea, but Cursor naming specific frontier models (Opus 4.8, Fable 5) in its own marketing copy as the comparison point is a more concrete claim than most routers make.</p>
+        <p><span class="lbl">The details.</span> No independent benchmark of Auto Balance against Opus 4.8 was located this week — every number traces back to Cursor's own changelog and blog. That does not make the claim false, but it means the 41%-cheaper figure should be read as a vendor number until someone outside Cursor reproduces it.</p>
+        <p><span class="lbl">Why it still matters.</span> The trigger that flips this to TRY: an independent practitioner benchmark (not Cursor's own post) confirming Auto Balance holds output quality at that price point on a real coding or research task — worth an hour testing against this pipeline's own subagent dispatches once that exists.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">2/5 · vendor-reported performance numbers only (Cursor's own changelog/blog); no independent benchmark located this week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M4 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-agent">Cognition / Devin</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">July–Aug 2026</span>
+    </div>
+    <h4 class="headline">Cognition raises $1B at a $26B valuation as Devin writes over 90% of its own maker's code</h4>
+    <p>Cognition closed a $1B Series D at a $26B valuation, with CEO Scott Wu framing the raise as a way to stay independent as OpenAI, Anthropic and Google all push their own coding agents into the same market. Cognition says Devin now writes more than 90% of Cognition's own codebase, is in production at Citi, Goldman Sachs, Mercedes-Benz and the US Army, and has grown enterprise usage more than 10x in 2026 to roughly $492M in annualised revenue.</p>
+    <p>This is a large-engineering-org story — Devin is built for organizations with substantial existing codebases and dedicated engineering headcount, not a single-operator research and publishing pipeline.</p>
+    <div class="links">
+      <a href="https://theaiworld.org/news/cognition-ai-raises-1b-at-26b-valuation-in-2026">The AI World, funding</a>
+      <a href="https://en.wikipedia.org/wiki/Cognition_AI">Wikipedia, Cognition AI</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cognition's July release calendar was unusually dense — a security-remediation program, a new benchmark methodology, the SWE-1.7 model, FedRAMP High status, an acquisition — but nearly all of it targets enterprise codebase-scale software engineering.</p>
+        <p><span class="lbl">Why it still matters.</span> Skip: no part of this funding round or product cadence changes how a solo research-and-briefing pipeline gets built. Named here only because Devin is one of the stack's most-funded work agents and a reader tracking "who's winning the agent race" should see the number.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · funding and adoption figures widely reported and consistent across Wikipedia and independent trade coverage</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M5 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-research">Google / NotebookLM</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Renamed July 16, 2026</span>
+    </div>
+    <h4 class="headline">NotebookLM is now Gemini Notebook, and picked up a per-notebook cloud computer for code execution along the way</h4>
+    <p>Google renamed NotebookLM to Gemini Notebook on July 16 — old links and bookmarks still resolve — and folded it deeper into the Gemini product family, reportedly adding a secure cloud computer to each notebook for native code execution and data analysis. The Studio panel now spans Audio Overview, Video Overview, Short Video Overview, Mind Map, Reports, Flashcards, Quiz, Infographic, Slide Deck and Data Table, all generated from whatever sources are loaded into the notebook.</p>
+    <p>That "Reports" output — a structured synthesis drawn from a fixed source set — is close to the job this pipeline's research subagents already do by hand; worth a direct side-by-side.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Ultra entry tier</div><div class="stat-value">$99.99/mo</div></div>
+      <div class="stat"><div class="stat-label">Ultra top tier</div><div class="stat-value">$200/mo</div></div>
+      <div class="stat"><div class="stat-label">Plus tier</div><div class="stat-value">$4.99/mo</div></div>
+    </div>
+    <div class="links">
+      <a href="https://www.nlmtools.com/blog/notebooklm-is-now-gemini-notebook">NLM Tools, rename explainer</a>
+      <a href="https://www.jeffsu.org/notebooklm-changed-completely-heres-what-matters-in-2026/">Jeff Su, what changed</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> The rename lands after a run of feature additions through 2026 (Short Video Overviews on Ultra/Pro first, restructured Ultra pricing at I/O in May) — this is Google positioning source-grounded research as a Gemini-family pillar, not shutting the product down.</p>
+        <p><span class="lbl">The details.</span> The Reports Studio output takes whatever sources are uploaded and produces a structured writeup with citations back to the source set — mechanically close to what this pipeline's dispatched research agents already do for each briefing card, minus the house card anatomy and C-Scoring.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth 30 minutes this week: load one briefing's actual source set into Gemini Notebook and compare its Reports output against what a dispatched Sonnet agent produces for the same cards — not to replace the pipeline, but to see whether it catches anything the agents miss, or vice versa.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · Google's own rename and feature list, corroborated by multiple independent practitioner writeups</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M6 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-infra">MCP ecosystem</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Spec dated July 28, 2026</span>
+    </div>
+    <h4 class="headline">The Model Context Protocol goes stateless at the protocol layer — a deployment simplification, not a new capability</h4>
+    <p>The Model Context Protocol (MCP, the open standard that lets an AI agent call external tools and data sources through a common interface) shipped its 2026-07-28 specification, making the transport stateless: protocol-level sessions and the Mcp-Session-Id header are gone, so any server instance behind ordinary HTTP load-balancing can answer the same request. The release also adds Multi Round-Trip Requests, header-based routing, cacheable list results, authorization hardening, and a now-stable Enterprise-Managed Authorization extension being adopted by Anthropic, Microsoft and Okta. Across Tier-1 SDKs, MCP now sees close to half a billion downloads a month, with both the TypeScript and Python SDKs past 1 billion total downloads.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Monthly SDK downloads</div><div class="stat-value">~500M</div></div>
+      <div class="stat"><div class="stat-label">TS + Python SDK lifetime</div><div class="stat-value">1B+ each</div></div>
+    </div>
+    <div class="links">
+      <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">MCP Blog, 2026-07-28 spec</a>
+      <a href="https://www.scworld.com/brief/model-context-protocol-releases-major-update-to-ai-interaction-technology">SC Media</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Removing protocol-level session state matters most for anyone running MCP servers at scale behind standard infrastructure — a server can now be stateless and horizontally scaled the way an ordinary REST API is, instead of pinning a client to one instance.</p>
+        <p><span class="lbl">The details.</span> Enterprise-Managed Authorization going stable means an organization can centrally manage login across every connected MCP server rather than authorizing each one separately — the direction most enterprise MCP deployments were already heading, now formalized.</p>
+        <p><span class="lbl">Why it still matters.</span> This pipeline consumes MCP servers (the connectors already in use) but does not run its own — the stateless simplification only becomes actionable if that changes. Watch trigger: the day this pipeline stands up a dedicated MCP server rather than relying on hosted connectors.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · the Model Context Protocol project's own blog post, corroborated by independent trade coverage</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M7 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-research">Perplexity</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">Aug 2026</span>
+    </div>
+    <h4 class="headline">Perplexity brings its Computer agent to Mac and widens Agent API model choice, but ships no new research capability this week</h4>
+    <p>Perplexity's Computer agent — previously integrated into Microsoft 365 apps — shipped on Mac this week with tighter personal-context integration, including a prebuilt "Personal CFO" mode, and the Agent API added third-party model support for Claude Opus 4.7, GPT-5.5 and Grok 4.20 Reasoning. Both are polish and reach extensions of features already in place (enterprise roles, Brain memory, Check Sources) rather than a new deep-research mode.</p>
+    <div class="links">
+      <a href="https://releases.sh/perplexity">Releases.sh, Perplexity changelog</a>
+      <a href="https://blog.mean.ceo/perplexity-news-august-2026/">Perplexity news roundup, Aug 2026</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Perplexity's valuation stands at $22.6B after a January Series E-6 round; this week's shipments extend Computer's reach (Mac, more models routed through the Agent API) rather than changing what Perplexity's research mode can actually do.</p>
+        <p><span class="lbl">Why it still matters.</span> Skip: no operator consequence for a pipeline that already runs its own multi-source research dispatch through Agent/WebSearch tooling. Named for completeness given the spec's explicit research-tools scope.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">2/5 · aggregator-tracked changelog only; no Perplexity primary post fetched this edition</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR'S VIEW -->
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>Every major vendor moved on the same axis this week: less human-in-the-loop, more agent persistence.</strong> Claude Code's auto-mode default, Codex's cloud-persistent Ona direction, and Cowork's own background execution are three vendors converging on the same bet — that supervision is the bottleneck, not capability. Cursor's cost-routing and NotebookLM's rename are smaller moves in the same spirit: make the tool need less hand-holding, not more.</li>
+      <li><strong>Vendor-reported numbers dominate this week's evidence, and that shows up directly in the C-Scores.</strong> Three of nine cards sit at 2/5 or 3/5 specifically because a vendor's own blog is the only source for its own performance claim (Cursor's cost figures, Perplexity's changelog, Codex's Ona framing). None of that makes the claims false — it means none of them earned a TRY on this evidence, which is exactly what the spec's "prefer WATCH over an unearned TRY" rule is for.</li>
+      <li><strong>Google is running two contradictory playbooks in the same product family this week.</strong> Gemini CLI users got a forced, resented migration to a closed platform; NotebookLM users got a voluntary rename with real added depth and no forced cutover. Same company, same week, opposite lessons about how to move users off a product they already like.</li>
+    </ol>
+    <p class="closer">Wildcard for the notebook: if Gemini Notebook's Reports output holds up against a real briefing's source set, the more interesting question isn't whether to switch — it's whether a second, independently-built synthesis of the same sources is worth running every week as a cheap cross-check on the agents already doing this work.</p>
+  </div>
+
+  <!-- WHAT CHANGED FOR THIS PIPELINE -->
+  <h3 class="sec">What changed for this pipeline</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>Before August 14:</strong> if any part of this pipeline is ever run through Claude Code directly rather than Cowork's own dispatch, confirm the account's permission default before the auto-mode flip lands — pin the current mode deliberately if the force-push step in <code>publish.sh</code> should never run unattended without a human check.</li>
+      <li><strong>This week, low effort:</strong> load one already-published briefing's actual source list into Gemini Notebook and generate a Report; compare it against the dispatched agent's output for the same cards as a cheap independent-synthesis check, not a replacement.</li>
+      <li><strong>No action needed:</strong> Gemini CLI/Antigravity, Codex, Cursor and Devin all stay outside this stack for now — none earned a TRY this week, and none block anything currently running.</li>
+      <li><strong>Standing watch:</strong> revisit MCP's stateless spec only if this pipeline ever stands up its own MCP server instead of relying on hosted connectors; revisit Cursor's router only once an independent (non-Cursor) benchmark of its cost claims exists.</li>
+    </ul>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Tuesday, August 11, 2026 &middot; <strong>Research window:</strong> 4–11 August 2026, 7 days &middot; <strong>Scope:</strong> first edition under the widened Practical AI Tools scope (formerly Cowork Briefing, Anthropic-only) — 3 Home Stack cards, 7 cross-vendor cards, 10 items total; 2 TRY, 5 WATCH, 3 SKIP.</p>
+    <p><strong>Confidence legend:</strong> ●●●●● 5/5 vendor primary source corroborated by independent press &middot; ●●●●○ 4/5 reputable press or multiple independent trackers confirming a primary source &middot; ●●●○○ 3/5 single credible source &middot; ●●○○○ 2/5 aggregator-only, vendor-reported figures not independently verified.</p>
+    <p><strong>Editorial notes:</strong> The agent compiling this briefing cannot run any of these tools directly — every verdict rests on documented vendor behaviour and practitioner reports, not hands-on testing; WATCH was preferred over TRY wherever the only evidence was a vendor's own claim about itself. Sources are exclusively English-language. Model releases (Opus 5, Gemini 3.5 Pro, GPT-5.6 and similar) are deliberately out of scope here — they belong to the Frontier Tech briefing's Release Radar; this issue covers only the operable tool surface built on top of them.</p>
+  </div>
+
+</div>
+</body>
+</html>

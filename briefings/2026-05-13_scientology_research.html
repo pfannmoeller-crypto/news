@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientology · A Research Brief</title>
+<meta name="wz-icon" content="people">
+<meta name="wz-color" content="#6a1b9a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #1a73e8;
+    --primary-hover: #174ea6;
+    --primary-soft: #e8f0fe;
+    --primary-on-soft: #1967d2;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--on-surface);
+    font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner { max-width: 880px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+  .appbar .logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--purple-soft); color: var(--purple);
+    display: grid; place-items: center;
+    font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 16px;
+  }
+  .appbar .titles { flex: 1; }
+  .appbar h1 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0; line-height: 1.2; }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: none; background: transparent; color: var(--on-surface-2);
+    display: grid; place-items: center; cursor: pointer; transition: background 0.15s;
+  }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 8px;
+    border: 1px solid var(--divider); background: var(--surface);
+    color: var(--on-surface-2);
+    font-family: 'Google Sans Text', sans-serif; font-size: 13px; font-weight: 500;
+    white-space: nowrap; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s; text-decoration: none;
+  }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+
+  .hero {
+    background: linear-gradient(135deg, #7627bb 0%, #5f1d8e 100%);
+    color: #ffffff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px;
+    box-shadow: var(--shadow-1);
+  }
+  .hero .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; margin-bottom: 8px; }
+  .hero h2 { font-family: 'Google Sans', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0 0 8px; max-width: 880px; }
+  .hero p:last-child { margin-bottom: 0; }
+
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 { font-family: 'Google Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--on-surface); margin: 0; flex: 1; }
+  .section-header .count { font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--divider-soft); border-radius: 12px;
+    padding: 20px 24px; margin-bottom: 12px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .provider {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 12px;
+    font-family: 'Google Sans Text', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+  }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.history    { background: #fef7e0; color: #b06000; }
+  .provider.beliefs    { background: #f3e8fd; color: #5f1d8e; }
+  .provider.org        { background: #e8f0fe; color: #1967d2; }
+  .provider.money      { background: #e6f4ea; color: #0d652d; }
+  .provider.legal      { background: #fce8e6; color: #a50e0e; }
+  .provider.current    { background: #e8eef6; color: #1f3548; }
+
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "•"; margin-right: 8px; color: var(--divider); }
+
+  .card h4 { font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--on-surface); margin: 0 0 8px; line-height: 1.35; letter-spacing: -0.005em; }
+  .card p { font-size: 14px; line-height: 1.65; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-of-type { margin-bottom: 14px; }
+  .card .inline-links { margin: -4px 0 12px; font-size: 12.5px; }
+  .card .inline-links a { color: var(--primary-on-soft); text-decoration: none; margin-right: 12px; }
+  .card .inline-links a:hover { text-decoration: underline; }
+
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 12px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+
+  .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 12px; border-top: 1px solid var(--divider-soft); }
+  .link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 8px;
+    background: var(--surface-2); color: var(--primary-on-soft);
+    text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s;
+  }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+
+  .banner {
+    display: flex; gap: 12px; padding: 14px 18px;
+    background: var(--yellow-soft); border: 1px solid #fde293;
+    border-radius: 12px; margin: 12px 0;
+    font-size: 13px; line-height: 1.55; color: var(--yellow);
+  }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 8px 0 4px; }
+  .twocol .col {
+    background: var(--surface-2); border-radius: 10px; padding: 14px 16px;
+    border: 1px solid var(--divider-soft);
+  }
+  .twocol .col .lab {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--on-surface-muted); margin-bottom: 6px;
+  }
+  .twocol .col .val { font-size: 13.5px; color: var(--on-surface-2); line-height: 1.55; }
+  @media (max-width: 600px) { .twocol { grid-template-columns: 1fr; } }
+
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--purple-soft); color: var(--purple);
+    display: grid; place-items: center;
+    font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px;
+  }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.6; color: var(--on-surface-2); }
+  .takeaways strong { color: var(--on-surface); font-weight: 500; }
+
+  .featured {
+    background: var(--surface); border-radius: 16px; padding: 28px 32px;
+    margin: 32px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1);
+  }
+  .featured .label {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--purple-soft); color: var(--purple);
+    padding: 4px 12px; border-radius: 12px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .featured h3 { font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500; color: var(--on-surface); margin: 0 0 16px; line-height: 1.3; }
+  .featured .closing { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--divider-soft); font-size: 14px; color: var(--on-surface-2); line-height: 1.65; }
+
+  .colophon { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--divider-soft); text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8; }
+
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 22px; }
+    .card { padding: 18px 18px; }
+    .card h4 { font-size: 16px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">SC</div>
+    <div class="titles">
+      <h1>Scientology · A Research Brief</h1>
+      <div class="sub">Comprehensive overview · Compiled 13 May 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Refresh"><span class="material-icons-outlined">refresh</span></button>
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a href="#all" class="chip active"><span class="material-icons-outlined">view_agenda</span>All sections</a>
+  <a href="#origins" class="chip">Origins</a>
+  <a href="#beliefs" class="chip">Beliefs</a>
+  <a href="#organization" class="chip">Organization</a>
+  <a href="#money" class="chip">Money</a>
+  <a href="#controversies" class="chip">Controversies</a>
+  <a href="#current" class="chip">Current state</a>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Brief summary</div>
+  <h2>A new religion, a billion-dollar real-estate engine, and a shrinking flock.</h2>
+  <p>Scientology was founded in 1954 by science-fiction author L. Ron Hubbard out of an earlier self-help system called Dianetics. It teaches that the true self — the "thetan" — is an immortal spiritual being trapped in cycles of reincarnation, and that paid one-on-one counselling called "auditing" can free it.</p>
+  <p>Three structural facts cut through the noise: (1) the organisation runs a real-estate and IP empire estimated at well over $1.5 billion, largely tax-exempt in the United States since 1993; (2) actual membership is a small fraction of the 10+ million the Church claims — credible independent estimates put it in the tens of thousands; (3) decades of court records, defector testimony, and journalism document a consistent pattern of harassment of critics, coercive internal discipline, and suppression of abuse allegations.</p>
+</div>
+
+<!-- ─────────── ORIGINS ─────────── -->
+<div id="origins" class="section-header">
+  <span class="material-icons-outlined">history_edu</span>
+  <h3>Origins &amp; history</h3>
+  <span class="count">3 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider history"><span class="dot"></span>History</span>
+    <span class="meta-pill">1950 – 1954</span>
+  </div>
+  <h4>From Dianetics to a church</h4>
+  <p>In May 1950 Hubbard published <em>Dianetics: The Modern Science of Mental Health</em>. The book sat on the New York Times bestseller list for 26 weeks and launched a national self-help movement built around a theory that traumatic memories ("engrams") could be erased through a counselling technique he called auditing. After Hubbard lost the intellectual-property rights to Dianetics in a 1952 bankruptcy, he reframed the same techniques inside a new theological wrapper. <strong>The Church of Scientology of California was incorporated in Los Angeles on 18 February 1954.</strong></p>
+  <p>The religious framing was not incidental — it solved the legal and tax problem of selling psychological services without medical credentials, and it survived Hubbard's loss of the Dianetics name. Whether Hubbard himself believed it is contested; defectors have cited the well-known 1948 remark attributed to him about religion being the way to make real money, while the Church disputes its authenticity.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/L._Ron_Hubbard" target="_blank">Wikipedia · L. Ron Hubbard ↗</a>
+    <a href="https://www.history.com/articles/history-of-scientology" target="_blank">History.com ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Scientology" target="_blank"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+    <a class="link-pill" href="https://www.ebsco.com/research-starters/history/hubbard-founds-church-scientology" target="_blank"><span class="material-icons-outlined">open_in_new</span>EBSCO</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider history"><span class="dot"></span>History</span>
+    <span class="meta-pill">1960s – 1980s</span>
+  </div>
+  <h4>Sea Org, exile, and the war with governments</h4>
+  <p>By the late 1960s Hubbard had relocated headquarters onto a small fleet of ships in the Mediterranean — partly to escape inquiries by the United Kingdom, Australia, and the United States Food and Drug Administration. The on-board crew became the <strong>Sea Organization</strong> ("Sea Org"), whose members sign a symbolic billion-year service contract. The Sea Org still runs the executive layer of Scientology today.</p>
+  <p>Hubbard went into permanent seclusion in 1980 and died in 1986. Control passed not to his family but to <strong>David Miscavige</strong>, a young Sea Org officer who consolidated power as Chairman of the Board of the Religious Technology Center (RTC) — the entity that owns the Scientology trademarks. He has run the organisation since 1987.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Sea_Org" target="_blank">Wikipedia · Sea Org ↗</a>
+    <a href="https://en.wikipedia.org/wiki/David_Miscavige" target="_blank">Wikipedia · David Miscavige ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Church_of_Scientology" target="_blank"><span class="material-icons-outlined">open_in_new</span>Church of Scientology</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider history"><span class="dot"></span>History</span>
+    <span class="meta-pill">1977 – 1993</span>
+  </div>
+  <h4>Operation Snow White and the IRS settlement</h4>
+  <p>In the 1970s Scientology's intelligence arm — the Guardian's Office — ran <strong>Operation Snow White</strong>, a coordinated infiltration of 136 government agencies and private organisations in 30+ countries with the goal of stealing and destroying records the Church considered damaging. The Federal Bureau of Investigation (FBI) raided Church offices in 1977; eleven senior officials, including Hubbard's wife Mary Sue, were convicted in 1979 of burglary, theft of government property, and obstruction of justice. It remains one of the largest known infiltrations of the US federal government by a private organisation.</p>
+  <p>The conflict with the Internal Revenue Service (IRS) ran another sixteen years. After more than two decades of litigation, harassment campaigns directed at IRS staff, and a reported $12.5 million settlement payment by the Church, the IRS granted tax-exempt status to 153 Scientology-related entities in October 1993. The settlement terms stayed secret until 1997, when they leaked. <strong>This single 1993 ruling is the foundation of Scientology's modern financial model.</strong></p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Operation_Snow_White" target="_blank">Wikipedia · Operation Snow White ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Tax_status_of_Scientology_in_the_United_States" target="_blank">Wikipedia · IRS tax status ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://fortune.com/2015/04/08/scientology-tax-exempt/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Fortune</a>
+    <a class="link-pill" href="https://www.philanthropy.com/news/scientology-agreement-with-irs-comes-to-light/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Chronicle of Philanthropy</a>
+  </div>
+</div>
+
+<!-- ─────────── BELIEFS ─────────── -->
+<div id="beliefs" class="section-header">
+  <span class="material-icons-outlined">auto_stories</span>
+  <h3>Beliefs &amp; practices</h3>
+  <span class="count">3 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider beliefs"><span class="dot"></span>Doctrine</span>
+    <span class="meta-pill">Cosmology</span>
+  </div>
+  <h4>Thetans, the reactive mind, and Xenu</h4>
+  <p>The core claim: every person is a <strong>thetan</strong> — an immortal spiritual being, billions of years old, that has lived through countless lifetimes and is currently inhabiting a body. The thetan's true powers are blocked by the <strong>reactive mind</strong>, an accumulated layer of traumatic memories ("engrams") from this life and past lives. Auditing exists to discharge those engrams and return the thetan to its native, godlike state.</p>
+  <p>The Xenu story is part of the upper-level confidential material, specifically <strong>Operating Thetan level III (OT III)</strong>. According to OT III, 75 million years ago a galactic dictator named Xenu transported billions of beings to Earth (then called "Teegeeack"), placed them around volcanoes, and killed them with hydrogen bombs. The disembodied spirits — "body thetans" — are said to remain attached to living humans today, and removing them is the work of the upper OT levels. The Church does not deny the material but treats it as confidential scripture not meant for outsiders; it became public through court filings in the 1980s and widely known after a 2005 episode of <em>South Park</em>.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Xenu" target="_blank">Wikipedia · Xenu ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Thetan" target="_blank">Wikipedia · Thetan ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Scientology_beliefs_and_practices" target="_blank"><span class="material-icons-outlined">open_in_new</span>Beliefs &amp; practices</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider beliefs"><span class="dot"></span>Practice</span>
+    <span class="meta-pill">Auditing</span>
+  </div>
+  <h4>Auditing and the E-meter</h4>
+  <p>Auditing is the central paid practice. A trained "auditor" asks structured questions while the recipient holds two metal cans wired to an <strong>E-meter</strong> (electropsychometer) — a galvanometer that measures small changes in skin resistance. The Church teaches that needle movements reveal mental "charge" attached to engrams, which the session aims to discharge. Sessions are recorded in a personal folder ("preclear folder") that follows the member through their career.</p>
+  <p>Two points outsiders consistently miss. First: every auditing session is fee-based, and the per-hour rate scales sharply with the level being audited. Second: the contents of the folder — what a member confessed about their life, their family, their sexual history — has been used as leverage against defectors. This is documented in court testimony from multiple ex-members and is central to the "Fair Game" critique below.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Auditing_(Scientology)" target="_blank">Wikipedia · Auditing ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Scientology_beliefs_and_practices" target="_blank"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider beliefs"><span class="dot"></span>Practice</span>
+    <span class="meta-pill">The Bridge</span>
+  </div>
+  <h4>The Bridge to Total Freedom</h4>
+  <p>The path is mapped on a wall-sized chart called the <strong>Bridge to Total Freedom</strong>. It has two parallel tracks: an <em>auditing</em> track for personal advancement, and a <em>training</em> track for becoming an auditor yourself. The two named milestones members aim for are <strong>Clear</strong> (the reactive mind has been erased — the original Dianetics goal) and <strong>Operating Thetan (OT)</strong>, organised in levels OT I through OT VIII, with higher levels said to be in development.</p>
+  <p>The economic shape of the Bridge matters as much as the theology. Independent estimates from former members and journalists put the total cost of progressing from entry to OT VIII at several hundred thousand US dollars, sometimes more — paid in increments tied to specific courses and auditing intensives. The Church does not publish a public price list. This pricing structure is what most distinguishes Scientology economically from any mainline religion.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/The_Bridge_to_Total_Freedom" target="_blank">Wikipedia · The Bridge ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Operating_Thetan" target="_blank">Wikipedia · Operating Thetan ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.learnreligions.com/how-much-does-scientology-cost-95805" target="_blank"><span class="material-icons-outlined">open_in_new</span>Cost overview</a>
+  </div>
+</div>
+
+<!-- ─────────── ORGANIZATION ─────────── -->
+<div id="organization" class="section-header">
+  <span class="material-icons-outlined">account_tree</span>
+  <h3>Organisation</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider org"><span class="dot"></span>Structure</span>
+    <span class="meta-pill">Corporate</span>
+  </div>
+  <h4>A network of entities, not a single church</h4>
+  <p>"Church of Scientology" is a collective label, not a single corporation. The structure is deliberately fragmented to compartmentalise legal liability and to separate the trademark holders from the operating "orgs" (the public-facing churches). The four entities worth knowing:</p>
+  <div class="twocol">
+    <div class="col">
+      <div class="lab">RTC — Religious Technology Center</div>
+      <div class="val">Top of the hierarchy. Owns the Dianetics and Scientology trademarks. Chaired by David Miscavige. Founded 1982.</div>
+    </div>
+    <div class="col">
+      <div class="lab">CSI — Church of Scientology International</div>
+      <div class="val">The "mother church." Oversees the global network of local orgs. The Watchdog Committee (WDC) inside CSI handles operations.</div>
+    </div>
+    <div class="col">
+      <div class="lab">CST — Church of Spiritual Technology</div>
+      <div class="val">Owns the copyrights to Hubbard's writings and lectures. Maintains the "vault" archives of his work in titanium-encased underground sites.</div>
+    </div>
+    <div class="col">
+      <div class="lab">Sea Org</div>
+      <div class="val">Not a corporation but the staffing pool that runs the management entities. Members sign a billion-year contract and live communally on a paramilitary structure.</div>
+    </div>
+  </div>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Religious_Technology_Center" target="_blank">Wikipedia · RTC ↗</a>
+    <a href="https://scientologymoneyproject.com/2014/06/27/church-of-scientology-corporate-structure/" target="_blank">Scientology Money Project ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Church_of_Scientology" target="_blank"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider org"><span class="dot"></span>Structure</span>
+    <span class="meta-pill">Sea Org</span>
+  </div>
+  <h4>The Sea Org as the operational core</h4>
+  <p>The Sea Organization is the engine that runs the management layer. Members live and work on Sea Org bases — the largest are Gold Base in Hemet, California, and the Flag Land Base in Clearwater, Florida — under conditions multiple former members and court filings describe as paramilitary: shared dormitories, restricted contact with the outside world, weekly pay reported by defectors at $50 per week or less, and internal disciplinary facilities including the "Rehabilitation Project Force" (RPF). Allegations of forced labour, forced abortions for female members, and physical confinement have been made in sworn declarations and in federal civil suits over the past two decades. The Church denies the more serious allegations and characterises Sea Org service as voluntary religious commitment.</p>
+  <p>This is where the most-litigated abuse claims originate. It is also why "leaving Scientology" is often non-trivial for a Sea Org member — they may have no money, no civilian work history, and family members still inside whom they will be required to "disconnect" from.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Sea_Org" target="_blank">Wikipedia · Sea Org ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.scientologyreligion.org/religious-expertises/the-SO-and-its-role/the-sea-organization.html" target="_blank"><span class="material-icons-outlined">open_in_new</span>Church position</a>
+  </div>
+</div>
+
+<!-- ─────────── MONEY ─────────── -->
+<div id="money" class="section-header">
+  <span class="material-icons-outlined">payments</span>
+  <h3>Money &amp; real estate</h3>
+  <span class="count">1 card</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider money"><span class="dot"></span>Finance</span>
+    <span class="meta-pill">Estimates</span>
+  </div>
+  <h4>$1.5B+ in property, no public books</h4>
+  <p>The Church publishes no audited financials. The most-cited independent estimate (the Scientology Money Project, run by former senior accountant Jeffrey Augustine) puts the consolidated book value of Scientology entities at roughly <strong>$1.75 billion</strong>, of which approximately <strong>$1.5 billion is real estate</strong>. Holdings are concentrated in Hollywood, Los Angeles (the historic Cedars-Sinai hospital site, the "Big Blue" complex, and roughly 26 Hollywood properties); in Clearwater, Florida, which is the spiritual headquarters and home of the Flag Building; and at Gold Base in Hemet, California.</p>
+  <p>Revenue is harder to pin down and the figures vary widely. Estimates from court filings, leaked documents, and independent analysts suggest annual revenue in the low-to-mid hundreds of millions of US dollars, dominated by member fees for auditing and training, real-estate operations, and donations to the International Association of Scientologists (IAS). All of it is shielded from federal income tax by the 1993 IRS ruling, and most of the real estate is shielded from local property tax through religious-use exemptions.</p>
+  <div class="banner">
+    <span class="material-icons-outlined">info</span>
+    <div>
+      <strong>How to read these numbers</strong>
+      Independent estimates rely on county property records, leaked internal documents, and former-staff testimony — not on Church disclosure. Treat the $1.5–3B range as the best public guess, not a verified figure. The directional pattern (large real-estate base, opaque revenue, tax-shielded structure) is well-established.
+    </div>
+  </div>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Scientology_properties" target="_blank">Wikipedia · Properties ↗</a>
+    <a href="https://www.hollywoodreporter.com/news/general-news/scientologys-hollywood-real-estate-empire-213141/" target="_blank">Hollywood Reporter ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Scientology_as_a_business" target="_blank"><span class="material-icons-outlined">open_in_new</span>Wikipedia</a>
+    <a class="link-pill" href="https://fortune.com/2015/04/08/scientology-tax-exempt/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Fortune</a>
+  </div>
+</div>
+
+<!-- ─────────── CONTROVERSIES ─────────── -->
+<div id="controversies" class="section-header">
+  <span class="material-icons-outlined">gavel</span>
+  <h3>Controversies &amp; legal history</h3>
+  <span class="count">3 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider legal"><span class="dot"></span>Doctrine of conflict</span>
+    <span class="meta-pill">1965 onwards</span>
+  </div>
+  <h4>Fair Game and Suppressive Persons</h4>
+  <p>In a 1965 policy letter, Hubbard introduced two categories that still shape the organisation's behaviour. A <strong>Suppressive Person (SP)</strong> is anyone declared an enemy of Scientology — typically defectors, journalists, government officials investigating the Church, and family members of critics. Under the original <strong>Fair Game</strong> policy, an SP "may be deprived of property or injured by any means by any Scientologist without any discipline of the Scientologist. May be tricked, sued or lied to or destroyed." Hubbard formally cancelled the term "Fair Game" in 1968 because of public-relations damage, while explicitly stating the underlying practices would continue.</p>
+  <p>The downstream consequence — and the most-criticised single feature of Scientology — is <strong>disconnection</strong>: members are required to cut all contact with anyone declared an SP, including immediate family. This has been the basis of large numbers of US civil suits, the central theme of Leah Remini's reporting, and a recurring finding in foreign-government reviews (Germany, Belgium, France).</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Scientology_controversies" target="_blank">Wikipedia · Controversies ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Fair_game_(Scientology)" target="_blank"><span class="material-icons-outlined">open_in_new</span>Fair Game</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider legal"><span class="dot"></span>Defectors</span>
+    <span class="meta-pill">2013 – present</span>
+  </div>
+  <h4>The Remini era and <em>Going Clear</em></h4>
+  <p>The most consequential public-relations damage in Scientology's modern history was inflicted by two pieces of journalism and one celebrity defection. Lawrence Wright's 2013 book <em>Going Clear: Scientology, Hollywood, and the Prison of Belief</em> (and Alex Gibney's 2015 HBO documentary adaptation) used dozens of on-record former senior staff interviews to document abuse, financial coercion, and Miscavige's personal conduct. <strong>Leah Remini</strong>, a King of Queens actress who left in 2013, then ran a three-season A&amp;E series, <em>Scientology and the Aftermath</em> (2016–2019, Emmy-winning), interviewing former members on camera.</p>
+  <p>These together moved the public narrative away from celebrity-curiosity territory and toward sustained coverage of human-rights complaints. They also catalysed a wave of civil litigation by former members alleging human trafficking, forced labour, and child abuse — many of which remain in active US litigation as of 2026.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Going_Clear:_Scientology,_Hollywood,_and_the_Prison_of_Belief" target="_blank">Wikipedia · Going Clear ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Scientology_and_the_Aftermath" target="_blank">Wikipedia · Aftermath ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://x.com/LeahRemini/status/1699882357300539689?lang=en" target="_blank"><span class="material-icons-outlined">open_in_new</span>Remini statement</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider legal"><span class="dot"></span>Litigation</span>
+    <span class="meta-pill">2023 – 2026</span>
+  </div>
+  <h4>Masterson conviction; Miscavige dodges service</h4>
+  <p>The single most damaging individual case has been <strong>Danny Masterson</strong>'s, the <em>That '70s Show</em> actor convicted in May 2023 of two counts of rape and sentenced to 30 years to life. His three accusers were all Scientologists at the time of the assaults (2001–2003). Their core public claim — supported by their own civil suit — is that the Church instructed them not to report the assaults to police and threatened them with expulsion and disconnection from their families if they did. Masterson filed a habeas petition in November 2025 seeking to overturn the conviction, blaming "anti-Scientology bias" in the trial.</p>
+  <p>Separately, federal judges in California and Florida have repeatedly expressed frustration that <strong>David Miscavige cannot be located for personal service of summons</strong> in multiple civil suits brought by former Sea Org members alleging forced labour and human trafficking. He has not been seen in public regularly for several years. The Church maintains he is actively leading the organisation; defectors argue the avoidance is deliberate.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Danny_Masterson" target="_blank">Wikipedia · Masterson ↗</a>
+    <a href="https://www.courthousenews.com/judges-frustrated-as-scientology-head-david-miscavige-dodges-summons/" target="_blank">Courthouse News · Miscavige summons ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://www.rollingstone.com/tv-movies/tv-movie-features/danny-masterson-rape-conviction-scientology-accountability-1234764377/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Rolling Stone</a>
+    <a class="link-pill" href="https://www.thedailybeast.com/scientologist-actor-danny-masterson-sentenced-to-30-years-for-rape/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Daily Beast</a>
+  </div>
+</div>
+
+<!-- ─────────── CURRENT STATE ─────────── -->
+<div id="current" class="section-header">
+  <span class="material-icons-outlined">today</span>
+  <h3>Current state (2026)</h3>
+  <span class="count">2 cards</span>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider current"><span class="dot"></span>Membership</span>
+    <span class="meta-pill">As of 2026</span>
+  </div>
+  <h4>The 10-million-vs-30-thousand gap</h4>
+  <p>The Church's official public claim is over 11 million members worldwide across 170+ countries. Independent data tells a different story. The American Religious Identification Survey (ARIS) recorded 45,000 US Scientologists in 1990, 55,000 in 2001, and 25,000 in 2008 — at which point the sample size became so small that Scientology dropped off mainstream survey monitoring entirely. The UK 2021 census, which directly asks the religion question, counted <strong>1,781 Scientologists in England and Wales</strong>. Most independent analysts (defector-turned-journalist Tony Ortega; former Inspector General Mike Rinder; former senior accountant Jeffrey Augustine) converge on a current active worldwide membership in the range of <strong>20,000 to 40,000</strong>.</p>
+  <p>The methodological gap is partly definitional — the Church counts anyone who has ever bought a Dianetics book or taken an introductory course, while critics count people currently active in services. Even so, the gap between "11 million" and "tens of thousands" cannot be reconciled by definitions alone. The directional fact is that membership has declined steadily since 2008 while real-estate holdings have grown — a structural pattern several analysts have called "a real-estate empire serving a shrinking flock."</p>
+  <div class="inline-links">
+    <a href="https://www.mikerindersblog.org/the-incredible-shrinking-world-of-scientology/" target="_blank">Mike Rinder · Shrinking world ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Scientology_in_the_United_States" target="_blank">Wikipedia · US membership ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://medium.com/how-many-scientologists-are-there-really/5-factoring-in-reality-3f0bb2d4e4cf" target="_blank"><span class="material-icons-outlined">open_in_new</span>Counting Scientology</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header-row">
+    <span class="provider current"><span class="dot"></span>International</span>
+    <span class="meta-pill">Legal status</span>
+  </div>
+  <h4>A recognised religion in some countries, a commercial enterprise in others</h4>
+  <p>Scientology's legal status varies sharply by jurisdiction. The United States grants it federal tax exemption as a church (1993). The United Kingdom recognised it as a religion for legal purposes after a 2013 Supreme Court ruling. Australia recognised it earlier, in 1983. By contrast, <strong>Germany</strong> has refused religious recognition since the 1990s, with several state-level interior ministries treating Scientology as a "commercial enterprise pursuing anti-constitutional aims" and placing parts of the organisation under observation by the Verfassungsschutz (the federal domestic intelligence service). <strong>France</strong> convicted the Church's local office of organised fraud in 2009 (upheld on appeal). <strong>Belgium</strong> tried the Church on similar charges; the case ended in acquittal in 2016 on procedural grounds. <strong>Russia</strong> banned the Moscow branch in 2015.</p>
+  <p>The German position is the most consequential in continental Europe because it is the largest single market that explicitly refuses religious status. For Stefan, given DACH (Germany / Austria / Switzerland) business presence, the practical relevance is that Scientology's organisations in Germany operate as commercial entities and are visible in the state-level religion-and-sect monitoring reports each year.</p>
+  <div class="inline-links">
+    <a href="https://en.wikipedia.org/wiki/Scientology_status_by_country" target="_blank">Wikipedia · Status by country ↗</a>
+  </div>
+  <div class="footer-row">
+    <span class="confidence">C-Score <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+    <a class="link-pill" href="https://en.wikipedia.org/wiki/Scientology_status_by_country" target="_blank"><span class="material-icons-outlined">open_in_new</span>Status by country</a>
+  </div>
+</div>
+
+<!-- ─────────── EDITOR'S VIEW ─────────── -->
+<div class="featured">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">lightbulb</span>What to carry forward</span>
+  <h3>Five things worth remembering after the noise fades</h3>
+  <ul class="takeaways">
+    <li><span class="num">1</span><div class="body"><strong>It is a religion by US law and a commercial enterprise in much of continental Europe.</strong> The 1993 IRS ruling is the single most important fact in the modern organisation; everything else — real-estate strategy, internal financial structure, response to litigation — flows from it.</div></li>
+    <li><span class="num">2</span><div class="body"><strong>The cosmology is unusually testable in one way: paywalled scripture.</strong> Most religions reveal their core stories at no cost. Scientology's upper-level material (OT III and above) is sold for tens to hundreds of thousands of dollars and is treated as trade secrets in court. This pricing structure, more than any specific doctrine, is what most distinguishes it from mainline religions.</div></li>
+    <li><span class="num">3</span><div class="body"><strong>The 11-million claim is not credible; the 20–40k estimate probably is.</strong> The directional truth — that membership has declined significantly while real-estate holdings have grown — is well-supported across independent sources. This shapes everything from the ideal-org building campaign (often called a real-estate fundraising scheme by critics) to the organisation's growing reliance on a small donor base.</div></li>
+    <li><span class="num">4</span><div class="body"><strong>The most-litigated criticisms are operational, not doctrinal.</strong> Critics are not primarily fighting about whether Xenu existed. They are fighting about disconnection of family members, alleged forced labour and trafficking inside the Sea Org, the use of confidential auditing folders against defectors, and active interference with criminal complaints — as in the Masterson case. These are evidence-based claims, not theological ones.</div></li>
+    <li><span class="num">5</span><div class="body"><strong>Leadership succession is unresolved.</strong> Miscavige is 65 and has been a defendant or person of interest in multiple federal civil suits he has personally avoided service in. There is no public successor. A leadership transition — whenever it occurs — is the single largest discontinuity risk to the organisation's structure.</div></li>
+  </ul>
+  <p class="closing">The most useful single book remains Lawrence Wright's <em>Going Clear</em> (2013). The best free secondary sources are Tony Ortega's long-running blog <em>The Underground Bunker</em>, Mike Rinder's blog and 2022 memoir <em>A Billion Years</em>, and Jeffrey Augustine's <em>Scientology Money Project</em>. For the doctrine itself, Hubbard's <em>Dianetics</em> (1950) is the foundational text; everything theological after that is in the OT materials, most of which are only legally accessible inside the Church.</p>
+</div>
+
+<div class="colophon">
+  Scientology · Research Brief<br>
+  Compiled 13 May 2026 · Sources current at time of writing<br>
+  Confidence Scores: 5 = well-established · 4 = solid inference · 3 = best public estimate
+</div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', e => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

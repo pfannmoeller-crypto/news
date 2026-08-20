@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special — a16z-led AI rollup · Deep dive</title>
+<meta name="wz-icon" content="deal">
+<meta name="wz-color" content="#1a237e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --surface-2: #f1f3f4;
+    --on-surface: #202124;
+    --on-surface-2: #3c4043;
+    --on-surface-muted: #5f6368;
+    --divider: #dadce0;
+    --divider-soft: #e8eaed;
+    --primary: #1a73e8;
+    --primary-hover: #174ea6;
+    --primary-soft: #e8f0fe;
+    --primary-on-soft: #1967d2;
+    --green: #188038;
+    --green-soft: #e6f4ea;
+    --green-on-soft: #0d652d;
+    --yellow: #b06000;
+    --yellow-soft: #fef7e0;
+    --red: #c5221f;
+    --red-soft: #fce8e6;
+    --purple: #7627bb;
+    --purple-soft: #f3e8fd;
+    --purple-on-soft: #5f1d8e;
+    --shadow-1: 0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2: 0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--on-surface);
+    font-family: 'Google Sans Text', 'Roboto', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .appbar { background: var(--surface); border-bottom: 1px solid var(--divider-soft); }
+  .appbar-inner {
+    max-width: 940px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .appbar .logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--primary-soft); color: var(--primary);
+    display: grid; place-items: center;
+    font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 15px;
+  }
+  .appbar .titles { flex: 1; }
+  .appbar h1 {
+    font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500;
+    color: var(--on-surface); margin: 0; line-height: 1.2;
+  }
+  .appbar .sub { font-size: 12px; color: var(--on-surface-muted); margin-top: 2px; }
+  .appbar .actions { display: flex; gap: 6px; align-items: center; }
+  .icon-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: transparent; color: var(--on-surface-2);
+    display: grid; place-items: center; cursor: pointer; transition: background 0.15s;
+  }
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size: 20px; }
+  .page { max-width: 940px; margin: 0 auto; padding: 24px 24px 80px; }
+  .chips {
+    display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;
+    margin-bottom: 24px; scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;
+    border-radius: 8px; border: 1px solid var(--divider); background: var(--surface);
+    color: var(--on-surface-2); font-family: 'Google Sans Text', sans-serif;
+    font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s; text-decoration: none;
+  }
+  .chip:hover { background: var(--surface-2); }
+  .chip.active { background: var(--primary-soft); border-color: transparent; color: var(--primary-on-soft); }
+  .chip .material-icons-outlined { font-size: 16px; }
+  .hero {
+    background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+    color: #ffffff; border-radius: 16px; padding: 30px 34px;
+    margin-bottom: 14px; box-shadow: var(--shadow-1);
+  }
+  .hero .eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.85; margin-bottom: 8px;
+  }
+  .hero h2 {
+    font-family: 'Google Sans', sans-serif; font-size: 30px; font-weight: 500;
+    line-height: 1.22; margin: 0 0 12px; letter-spacing: -0.015em;
+  }
+  .hero p { font-size: 15px; line-height: 1.6; opacity: 0.95; margin: 0; max-width: 880px; }
+  .banner {
+    display: flex; gap: 12px; padding: 14px 18px; background: var(--yellow-soft);
+    border: 1px solid #fde293; border-radius: 12px; margin: 14px 0 4px;
+    font-size: 13px; line-height: 1.55; color: var(--yellow);
+  }
+  .banner .material-icons-outlined { font-size: 20px; color: var(--yellow); flex-shrink: 0; }
+  .banner strong { display: block; color: var(--yellow); margin-bottom: 2px; font-weight: 500; }
+  .banner div { color: #5f4400; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin: 36px 4px 12px; }
+  .section-header .material-icons-outlined { color: var(--primary); font-size: 22px; }
+  .section-header h3 {
+    font-family: 'Google Sans', sans-serif; font-size: 17px; font-weight: 500;
+    color: var(--on-surface); margin: 0; flex: 1;
+  }
+  .section-header .count {
+    font-size: 12px; color: var(--on-surface-muted); background: var(--surface-2);
+    padding: 2px 10px; border-radius: 12px; font-weight: 500;
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--divider-soft);
+    border-radius: 12px; padding: 20px 24px; margin-bottom: 12px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow-2); border-color: var(--divider); }
+  .card h4 {
+    font-family: 'Google Sans', sans-serif; font-size: 18px; font-weight: 500;
+    color: var(--on-surface); margin: 0 0 8px; line-height: 1.35;
+  }
+  .card p { font-size: 14px; line-height: 1.62; color: var(--on-surface-2); margin: 0 0 12px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card .lead { font-size: 15px; color: var(--on-surface); line-height: 1.6; }
+  .card strong { color: var(--on-surface); font-weight: 500; }
+  .header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .provider {
+    display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px;
+    border-radius: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+  }
+  .provider .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .provider.blue   { background: var(--primary-soft); color: var(--primary-on-soft); }
+  .provider.green  { background: var(--green-soft);   color: var(--green-on-soft); }
+  .provider.amber  { background: var(--yellow-soft);  color: var(--yellow); }
+  .provider.red    { background: var(--red-soft);     color: #a50e0e; }
+  .provider.purple { background: var(--purple-soft);  color: var(--purple-on-soft); }
+  .provider.ink    { background: #e8eef6;             color: #1f3548; }
+  .meta-pill { font-size: 12px; color: var(--on-surface-muted); font-family: 'Roboto Mono', monospace; }
+  .meta-pill::before { content: "•"; margin-right: 8px; color: var(--divider); }
+  .footer-row {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+    padding-top: 12px; border-top: 1px solid var(--divider-soft);
+  }
+  .confidence { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); margin-right: 4px; }
+  .conf-dots { display: inline-flex; gap: 2px; }
+  .conf-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--divider); }
+  .conf-dots.c5 span:nth-child(-n+5),
+  .conf-dots.c4 span:nth-child(-n+4),
+  .conf-dots.c3 span:nth-child(-n+3),
+  .conf-dots.c2 span:nth-child(-n+2),
+  .conf-dots.c1 span:nth-child(-n+1) { background: var(--primary); }
+  .link-pill {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+    border-radius: 8px; background: var(--surface-2); color: var(--primary-on-soft);
+    text-decoration: none; font-size: 12px; font-weight: 500; transition: background 0.15s;
+  }
+  .link-pill:hover { background: var(--primary-soft); }
+  .link-pill .material-icons-outlined { font-size: 14px; }
+  .takeaways { list-style: none; margin: 0; padding: 0; }
+  .takeaways li { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--divider-soft); }
+  .takeaways li:last-child { border-bottom: none; }
+  .takeaways .num {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--primary-soft); color: var(--primary-on-soft);
+    display: grid; place-items: center;
+    font-family: 'Google Sans', sans-serif; font-weight: 600; font-size: 13px;
+  }
+  .takeaways .body { flex: 1; font-size: 14px; line-height: 1.6; color: var(--on-surface-2); }
+  .takeaways .body .th {
+    display: block; font-family: 'Google Sans', sans-serif; font-weight: 600;
+    color: var(--on-surface); margin-bottom: 2px; font-size: 14.5px;
+  }
+  .takeaways .body .cscore {
+    font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--on-surface-muted);
+    background: var(--surface-2); padding: 1px 7px; border-radius: 8px; margin-left: 6px;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cell { border: 1px solid var(--divider-soft); border-radius: 10px; padding: 14px 16px; background: var(--bg); }
+  .cell-head {
+    font-family: 'Google Sans', sans-serif; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 9px;
+    display: flex; align-items: center; gap: 6px; color: var(--primary-on-soft);
+  }
+  .cell-head .material-icons-outlined { font-size: 15px; }
+  .cell p { font-size: 13.5px; line-height: 1.6; color: var(--on-surface-2); margin: 0 0 8px; }
+  .cell p:last-child { margin-bottom: 0; }
+  .cell strong { color: var(--on-surface); font-weight: 500; }
+  .disp { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--divider-soft); }
+  .disp:last-child { border-bottom: none; }
+  .disp-icon { flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary-on-soft); }
+  .disp-icon .material-icons-outlined { font-size: 20px; }
+  .disp .dtitle { font-family: 'Google Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--on-surface); margin: 1px 0 4px; }
+  .disp .dtext { font-size: 13.5px; line-height: 1.6; color: var(--on-surface-2); }
+  .disp .dtext b { color: var(--on-surface); font-weight: 500; }
+  .gap-row { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--divider-soft); }
+  .gap-row:last-child { border-bottom: none; }
+  .gap-row .material-icons-outlined { color: var(--on-surface-muted); font-size: 19px; flex-shrink: 0; margin-top: 1px; }
+  .gap-row .gt { font-size: 13.5px; line-height: 1.6; color: var(--on-surface-2); }
+  .gap-row .gt b { color: var(--on-surface); font-weight: 500; }
+  .featured {
+    background: var(--surface); border-radius: 16px; padding: 28px 32px;
+    margin: 36px 0 0; border: 1px solid var(--divider-soft); box-shadow: var(--shadow-1);
+  }
+  .featured .label {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--primary-soft); color: var(--primary-on-soft);
+    padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .featured h3 {
+    font-family: 'Google Sans', sans-serif; font-size: 22px; font-weight: 500;
+    color: var(--on-surface); margin: 0 0 14px; line-height: 1.3;
+  }
+  .featured .closing {
+    margin-top: 16px; padding: 14px 16px; background: var(--primary-soft);
+    border-radius: 10px; font-size: 14px; color: var(--primary-on-soft); line-height: 1.6;
+  }
+  .colophon {
+    margin-top: 52px; padding-top: 24px; border-top: 1px solid var(--divider-soft);
+    text-align: center; font-size: 12px; color: var(--on-surface-muted); line-height: 1.8;
+  }
+  @media (max-width: 600px) {
+    .page { padding: 16px 16px 60px; }
+    .hero { padding: 24px 22px; border-radius: 12px; }
+    .hero h2 { font-size: 23px; }
+    .card { padding: 18px 18px; }
+    .featured { padding: 22px; }
+    .featured h3 { font-size: 18px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .appbar-inner { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">AI</div>
+    <div class="titles">
+      <h1>Special — the ex-DOGE "AI rollup", in depth</h1>
+      <div class="sub">a16z-led round · company · verticals · approach · timing · 9 June 2026</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="chips">
+    <a href="#top" class="chip active"><span class="material-icons-outlined">view_agenda</span>All</a>
+    <a href="#deal" class="chip">The deal</a>
+    <a href="#model" class="chip">Company &amp; model</a>
+    <a href="#vertical" class="chip">Figure Health</a>
+    <a href="#founders" class="chip">Founders</a>
+    <a href="#captable" class="chip">Cap table</a>
+    <a href="#market" class="chip">Market</a>
+    <a href="#timing" class="chip">Timing</a>
+    <a href="#gaps" class="chip">Open questions</a>
+    <a href="#editor" class="chip">Editor's view</a>
+  </div>
+
+  <div id="top" class="hero">
+    <div class="eyebrow">Deep dive · venture · politics-adjacent</div>
+    <h2>Special is not a software company. It's an AI-powered private-equity rollup wearing a venture jacket.</h2>
+    <p>Two former DOGE staffers raised an a16z-led round to buy real-economy services businesses, push an AI layer ("SpecialOS") through their back offices, strip cost, and keep the spread. The first target is elder care. The model, the cap table, and the timing all point the same direction — and so do the reputational risks.</p>
+  </div>
+
+  <div class="banner">
+    <span class="material-icons-outlined">warning_amber</span>
+    <div>
+      <strong>What is not disclosed</strong>
+      Round size and valuation were not published; a16z is the named lead. The Texas acquisition is "under contract", not closed, and the target's name is undisclosed. Treat all financials as unknown rather than estimated — no figures are invented below.
+    </div>
+  </div>
+
+  <!-- ───────────────────────── THE DEAL ───────────────────────── -->
+  <div id="deal" class="section-header">
+    <span class="material-icons-outlined">handshake</span>
+    <h3>The deal — what was actually announced</h3>
+    <span class="count">2 Jun 2026</span>
+  </div>
+
+  <div class="card">
+    <div class="header-row">
+      <span class="provider blue"><span class="dot"></span>Financing</span>
+      <span class="meta-pill">02 Jun 2026</span>
+    </div>
+    <h4>a16z leads a round in Special; amount and valuation undisclosed</h4>
+    <p>On 2 June 2026, founders <strong>Nate Cavanaugh</strong> and <strong>Justin Fox</strong> announced a financing "led by Andreessen Horowitz" via an a16z-hosted Substack post and a mirror on Special's own site. No dollar figure or valuation was given. The company frames itself as "a new kind of holding company, building an AI operating system to transform critical American industries" — explicitly pitched in press coverage as "<strong>DOGE for the private sector</strong>."</p>
+    <p>This is the structurally important detail: the primary source is a16z's own publication, with the founders as bylined authors. It is a launch announcement, not independent reporting. The corroboration of the <em>model</em> and <em>backers</em> is strong across outlets; the absence of a priced figure is itself the signal — see the timing section.</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://www.a16z.news/p/introducing-special" target="_blank"><span class="material-icons-outlined">open_in_new</span>a16z post</a>
+      <a class="link-pill" href="https://www.special.co/vision" target="_blank"><span class="material-icons-outlined">open_in_new</span>Special.co</a>
+      <a class="link-pill" href="https://www.nextgov.com/people/2026/06/former-doge-duo-launches-ai-company-doge-private-sector/413927/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Nextgov</a>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── MODEL ───────────────────────── -->
+  <div id="model" class="section-header">
+    <span class="material-icons-outlined">account_tree</span>
+    <h3>The company &amp; the model</h3>
+    <span class="count">structure</span>
+  </div>
+
+  <div class="card">
+    <h4>The thesis: the $10 trillion "Main Street services economy" is the new deficit to cut</h4>
+    <p>The founders argue that Main Street services — they cite childcare centers and hospice businesses, many funded by taxpayer dollars — are "massive, highly unoptimized," and full of waste, just like the government they say they cut. AI, in their framing, is the lever to root out that waste and reset how these businesses operate. The rhetorical move is deliberate: it transplants DOGE's "find the waste" narrative onto privately-owned, often Medicare/Medicaid-reimbursed, service firms.</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://www.special.co/vision" target="_blank"><span class="material-icons-outlined">open_in_new</span>Vision post</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="header-row">
+      <span class="provider ink"><span class="dot"></span>How it actually works</span>
+    </div>
+    <h4>"SpecialOS" + vertical integration: own the company, not the licence</h4>
+    <p><strong>SpecialOS</strong> is described as frontier AI models wrapped in proprietary tools that automate manual back-office tasks — billing, scheduling, insurance processing, patient intake. The crucial design choice: rather than <em>licence</em> this software broadly (the classic SaaS path), Special intends to <strong>acquire and operate</strong> the businesses themselves, "to control the deployment and customer experience" — and, implicitly, to capture the full economic upside of the efficiency it creates rather than a subscription fee.</p>
+    <p>That is the definition of an <strong>AI-enabled rollup</strong>: a holding company that buys cash-flowing service businesses, installs a shared technology/ops layer, lifts margins, and compounds by acquiring more. It is capital-intensive and operationally heavy — far closer to growth private equity or a Berkshire-style operating holdco than to venture software.</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c5"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://www.a16z.news/p/introducing-special" target="_blank"><span class="material-icons-outlined">open_in_new</span>a16z post</a>
+      <a class="link-pill" href="https://startupfortune.com/special-turns-doge-cost-cutting-into-an-ai-acquisition-strategy/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Startup Fortune</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="disp">
+      <div class="disp-icon"><span class="material-icons-outlined">savings</span></div>
+      <div><div class="dtitle">Where the return comes from</div><div class="dtext">Not software margin — <b>operating margin</b>. Buy a services business, automate its labor-heavy admin, and the cost saved drops to the holdco. The bet is that AI now makes that automation cheap and fast enough to justify owning the asset.</div></div>
+    </div>
+    <div class="disp">
+      <div class="disp-icon"><span class="material-icons-outlined">volunteer_activism</span></div>
+      <div><div class="dtitle">The "good DOGE" wrapper</div><div class="dtext">In elder care, Special says it will redirect efficiency gains into <b>higher nurse pay</b> to attract talent in a supply-constrained market, and will <b>open-source all Medicare/Medicaid billing claims</b> for public transparency. Whether efficiency truly funds raises rather than holdco margin is the claim to watch.</div></div>
+    </div>
+    <div class="disp">
+      <div class="disp-icon"><span class="material-icons-outlined">public</span></div>
+      <div><div class="dtitle">The endgame they state</div><div class="dtext">"To build a public company that anyone can own and everyone can believe in." A populist-flavored eventual IPO — consistent with the retail-ownership framing and the patriotic branding.</div></div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── VERTICAL ───────────────────────── -->
+  <div id="vertical" class="section-header">
+    <span class="material-icons-outlined">elderly</span>
+    <h3>The first vertical — Figure Health</h3>
+    <span class="count">elder care</span>
+  </div>
+
+  <div class="card">
+    <div class="header-row">
+      <span class="provider green"><span class="dot"></span>Vertical #1</span>
+      <span class="meta-pill">figurehealth.com</span>
+    </div>
+    <h4>Figure Health: aging-population services, first acquisition in Texas (under contract)</h4>
+    <p>Special's debut vertical, <strong>Figure Health</strong>, targets the aging US population. The company is <strong>under contract — not yet closed — on a Texas business serving 1,400+ patients and employing "hundreds of nurses."</strong> Coverage describes the use case as improving common tasks like <strong>patient intake and billing</strong>, with efficiencies routed to nurse pay. The patient-and-nurse profile points to home health or hospice rather than a clinic or facility, though Special has not labeled the sub-sector precisely and did not respond to a request for additional detail.</p>
+    <p>The transparency pledge is the distinctive flourish: Figure Health says it will <strong>open-source all of its Medicare and Medicaid billing claims</strong>. That is unusual, brand-defining, and — if honored — auditable by outsiders. It also conveniently fits a business whose marketing rests on "rooting out waste."</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://www.special.co/vision" target="_blank"><span class="material-icons-outlined">open_in_new</span>Vision post</a>
+      <a class="link-pill" href="https://www.zerohedge.com/ai/doge-alumni-launch-ai-startup-target-waste-main-street-and-already-have-their-first-target" target="_blank"><span class="material-icons-outlined">open_in_new</span>Coverage</a>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── FOUNDERS ───────────────────────── -->
+  <div id="founders" class="section-header">
+    <span class="material-icons-outlined">groups</span>
+    <h3>The founders</h3>
+    <span class="count">2</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="cell">
+      <div class="cell-head"><span class="material-icons-outlined">person</span>Nate Cavanaugh</div>
+      <p>Pittsburgh-raised serial founder, ~28, Indiana University dropout (cites Mark Cuban as inspiration). Built and sold an esports business, then founded <strong>Brainbase</strong> — an IP/licensing-management platform that raised ~$8M and counted Sanrio and BuzzFeed as clients; <strong>acquired in 2022</strong>. Later co-founded <strong>FlowFi</strong> (outsourced accounting/CFO for startups). At DOGE he led the Small Agencies team and was installed to run the <strong>US Institute of Peace</strong>.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-head"><span class="material-icons-outlined">person</span>Justin Fox</div>
+      <p>Cavanaugh's DOGE deputy on the Small Agencies team. <strong>Worked in private equity before DOGE</strong> — the relevant pedigree for an acquisition-led holdco. At the National Endowment for the Humanities he reportedly used ChatGPT to screen which grants to cut by asking whether they involved diversity, equity and inclusion. Named, with Cavanaugh, as a defendant in the resulting lawsuit.</p>
+    </div>
+  </div>
+
+  <div class="banner">
+    <span class="material-icons-outlined">gavel</span>
+    <div>
+      <strong>The litigation overhang is real, not cosmetic</strong>
+      Both founders are named defendants in the NEH grant-cancellation suit. In May 2026, US District Judge Colleen McMahon ruled the mass termination of 1,400+ grants <em>unconstitutional</em> — "a textbook example of unconstitutional viewpoint discrimination," also citing due-process violations and lack of statutory authority. A launch video reportedly features Cavanaugh saying "No" twice when asked if he regrets people losing income; coverage notes the video omits his admission that DOGE did not, in fact, reduce the deficit.
+    </div>
+  </div>
+
+  <!-- ───────────────────────── CAP TABLE ───────────────────────── -->
+  <div id="captable" class="section-header">
+    <span class="material-icons-outlined">diversity_3</span>
+    <h3>The cap table — read it as a political-economic network</h3>
+    <span class="count">backers</span>
+  </div>
+
+  <div class="card">
+    <h4>a16z leads; the angel ring is a Musk-adjacent, administration-aligned cluster</h4>
+    <p>Beyond a16z as lead, the disclosed backers include <strong>Steve Davis</strong> (Musk's longtime cost-cutting lieutenant, who ran DOGE), <strong>Antonio Gracias</strong> (Valor Equity Partners, longtime Musk ally), <strong>Anthony Armstrong</strong> (the former Morgan Stanley banker who became an xAI/Musk-world finance figure), and <strong>Donald Park</strong> — all flagged as "DOGE teammates." Institutional support comes from <strong>Human Capital</strong> (Baris Akis, who informally helped DOGE recruit) and <strong>BANNER VC</strong> (itself founded by ex-DOGE members). Strategic angels include <strong>Brian Armstrong</strong> (Coinbase CEO) and <strong>Shyam Sankar</strong> (Palantir CTO). Special's own page additionally lists <strong>Mantis VC</strong>.</p>
+    <p>This is not a diversified syndicate; it is a concentrated alignment with the Musk/DOGE/Palantir/Coinbase axis and, by extension, the current administration's tech-policy orbit. That concentration cuts both ways — see the disposition rows.</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://www.a16z.news/p/introducing-special" target="_blank"><span class="material-icons-outlined">open_in_new</span>Backer list (a16z)</a>
+      <a class="link-pill" href="https://www.special.co/vision" target="_blank"><span class="material-icons-outlined">open_in_new</span>Backer list (Special)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="disp">
+      <div class="disp-icon"><span class="material-icons-outlined">trending_up</span></div>
+      <div><div class="dtitle">Why this cap table is an asset</div><div class="dtext"><b>Deal access and air cover.</b> Palantir (data/ops), Coinbase (capital-markets reach), Valor (operational PE), and DOGE-network operators give Special unusual reach into regulated, reimbursement-driven sectors — and political insulation in industries where policy is the business model.</div></div>
+    </div>
+    <div class="disp">
+      <div class="disp-icon"><span class="material-icons-outlined">report_problem</span></div>
+      <div><div class="dtitle">Why it is a concentration risk</div><div class="dtext"><b>Reputational and regulatory beta.</b> The brand is fused to DOGE and the administration. A change in political winds, a hostile state regulator (these are licensed, often Medicaid-funded businesses), or further fallout from the NEH ruling could impair acquisitions and recruiting in ways a neutral holdco would not face.</div></div>
+    </div>
+    <div class="disp">
+      <div class="disp-icon"><span class="material-icons-outlined">swap_horiz</span></div>
+      <div><div class="dtitle">The quiet pivot</div><div class="dtext">WIRED previously reported Special described itself as "a technology investment platform" focused on <b>crypto investments</b>. The entity has repositioned to an AI-services rollup. Worth noting the name predates the current thesis — a sign of a fast-evolving concept, not necessarily a red flag, but a reminder the strategy is young.</div></div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── MARKET ───────────────────────── -->
+  <div id="market" class="section-header">
+    <span class="material-icons-outlined">insights</span>
+    <h3>Market context — is elder care a good first bet?</h3>
+    <span class="count">why this sector</span>
+  </div>
+
+  <div class="card">
+    <div class="header-row">
+      <span class="provider amber"><span class="dot"></span>Sector read</span>
+    </div>
+    <h4>The economics line up with the thesis — which is exactly why it's crowded</h4>
+    <p>Home health and hospice are labor-intensive, admin-heavy, and reimbursement-driven — the ideal substrate for "automate the back office and keep the spread." The supporting facts: Medicare <strong>hospice payments are expected to exceed $30 billion in 2026</strong> (a 2.6% base-rate increase); home health faced CMS's largest-ever proposed rate cut, later softened. The labor pain is acute — home health <strong>clinician turnover runs near 80% within the first 100 days</strong>, with documentation cited as nurses' top complaint. That is precisely the pain SpecialOS claims to remove, and it lends credibility to the "efficiency funds higher pay" pitch.</p>
+    <p>But the same logic has drawn heavy private-equity interest: hospice M&amp;A rebounded in late 2025 to its highest volume since 2021, and PE-backed home-health/hospice deals are a well-trodden path. Special is entering a sector where roll-ups are common and reimbursement is politically exposed — meaning competition for assets and margin compression risk are both real.</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c4"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://hospicenews.com/2026/01/12/5-hospice-trends-to-watch-in-2026/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Hospice News</a>
+      <a class="link-pill" href="https://homehealthcarenews.com/2026/01/top-home-health-trends-for-2026/" target="_blank"><span class="material-icons-outlined">open_in_new</span>Home Health News</a>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── TIMING ───────────────────────── -->
+  <div id="timing" class="section-header">
+    <span class="material-icons-outlined">schedule</span>
+    <h3>Timing — why now, and why it matters for a16z</h3>
+    <span class="count">read</span>
+  </div>
+
+  <div class="card">
+    <h4>Three clocks are aligned</h4>
+    <p><strong>The capability clock:</strong> frontier models are finally good enough to automate messy, document-heavy admin work — making it economically rational to <em>own</em> a services business rather than sell it tools. <strong>The political clock:</strong> the founders left DOGE in September 2025 and are monetizing the brand and network while it is still potent. <strong>The capital clock:</strong> a16z has been openly stretching the definition of "venture" toward growth- and PE-style bets (the Casado/Wang "venture vs growth" framing); funding an operating rollup is the logical next step of that boundary-pushing — and a way to deploy large checks into the real economy.</p>
+    <p>The undisclosed round size fits this read. Launch announcements that lead with a marquee investor but withhold the number are usually either (a) a seed/early check where the figure is small relative to the ambition, or (b) a deliberately staged reveal. Either way, this is carded one notch below fully-priced rounds because the number — the single most decision-relevant fact for a rollup's firepower — is missing.</p>
+    <div class="footer-row">
+      <span class="confidence">Confidence <span class="conf-dots c3"><span></span><span></span><span></span><span></span><span></span></span></span>
+      <a class="link-pill" href="https://www.a16z.news/p/introducing-special" target="_blank"><span class="material-icons-outlined">open_in_new</span>a16z post</a>
+    </div>
+  </div>
+
+  <!-- ───────────────────────── GAPS ───────────────────────── -->
+  <div id="gaps" class="section-header">
+    <span class="material-icons-outlined">visibility_off</span>
+    <h3>What we don't know — the questions that decide whether this works</h3>
+    <span class="count">open</span>
+  </div>
+
+  <div class="card">
+    <div class="gap-row"><span class="material-icons-outlined">attach_money</span><span class="gt"><b>Round size, valuation, and structure.</b> Undisclosed. For a capital-intensive rollup, dry powder is the whole game — is this a $20M seed or a $200M+ platform raise? Unknown.</span></div>
+    <div class="gap-row"><span class="material-icons-outlined">business</span><span class="gt"><b>The Texas target.</b> Name, price, sub-sector (home health vs hospice vs other), and whether the deal actually closes. "Under contract" is not "closed."</span></div>
+    <div class="gap-row"><span class="material-icons-outlined">memory</span><span class="gt"><b>Does SpecialOS exist as a differentiated product, or is it a wrapper?</b> "Frontier models + proprietary tools" is a description, not a moat. The defensibility claim is unproven.</span></div>
+    <div class="gap-row"><span class="material-icons-outlined">balance</span><span class="gt"><b>Will efficiency really fund nurse raises?</b> The populist promise and the holdco-margin incentive are in tension. No mechanism or commitment has been published.</span></div>
+    <div class="gap-row"><span class="material-icons-outlined">policy</span><span class="gt"><b>Regulatory and reputational exposure.</b> Licensed, Medicaid-funded care businesses face state regulators; the NEH ruling and DOGE association are live liabilities for a brand built on "cutting waste" in taxpayer-funded services.</span></div>
+  </div>
+
+  <!-- ───────────────────────── EDITOR'S VIEW ───────────────────────── -->
+  <div id="editor" class="featured">
+    <span class="label"><span class="material-icons-outlined" style="font-size:14px">lightbulb</span>Editor's view</span>
+    <h3>The interesting bet is the structure; the risk is that the brand and the business model are the same thing.</h3>
+    <ul class="takeaways">
+      <li><span class="num">1</span><div class="body"><span class="th">This is PE in venture clothing, and that's the point.</span>a16z is funding an operating holdco that buys real businesses and runs them — not a software licensor. The return depends on operational execution at acquired companies, not on shipping code. Judge it as you'd judge a roll-up sponsor, not a startup. <span class="cscore">C 4/5</span></div></li>
+      <li><span class="num">2</span><div class="body"><span class="th">The cap table is the strategy.</span>Palantir, Coinbase, Valor, and the DOGE network aren't passive money — they're distribution, data, capital-markets reach, and political air cover in sectors where policy <em>is</em> the business. The same concentration is the single largest non-execution risk. <span class="cscore">C 4/5</span></div></li>
+      <li><span class="num">3</span><div class="body"><span class="th">Elder care is a shrewd and crowded first vertical.</span>Labor-heavy, admin-burdened, reimbursement-funded — exactly where AI back-office automation has the clearest ROI. But hospice/home-health roll-ups are already a PE staple, so Special is buying into competition and reimbursement-policy risk from day one. <span class="cscore">C 4/5</span></div></li>
+      <li><span class="num">4</span><div class="body"><span class="th">The "transparency" pledge is brand strategy as much as governance.</span>Open-sourcing Medicare/Medicaid claims is genuinely novel and auditable — and it neatly arms the "we root out waste" narrative. Watch whether it actually ships, and whether it survives contact with competitive and privacy realities. <span class="cscore">C 3/5</span></div></li>
+      <li><span class="num">5</span><div class="body"><span class="th">The missing number is the tell.</span>For a capital-intensive rollup, an undisclosed round size is the most important omission. Until it's known, you can't size the ambition against the firepower. The launch reads as brand-and-network-first, capital-second. <span class="cscore">C 3/5</span></div></li>
+    </ul>
+    <div class="closing"><strong>The one question for Special:</strong> can an operation whose brand is fused to DOGE and the current administration actually buy, license, and recruit inside heavily-regulated, Medicaid-funded care — or does the political identity that opens doors in 2026 become the liability that closes them later? The structure is sound; the brand is the wildcard.</div>
+  </div>
+
+  <!-- ───────────────────────── SOURCES ───────────────────────── -->
+  <div class="section-header">
+    <span class="material-icons-outlined">link</span>
+    <h3>Sources</h3>
+  </div>
+  <div class="card">
+    <p style="font-size:13px">Primary / launch: <a href="https://www.a16z.news/p/introducing-special" target="_blank">a16z — "Introducing Special"</a> · <a href="https://www.special.co/vision" target="_blank">Special.co — Vision</a></p>
+    <p style="font-size:13px">Independent coverage: <a href="https://www.nextgov.com/people/2026/06/former-doge-duo-launches-ai-company-doge-private-sector/413927/" target="_blank">Nextgov/FCW</a> · <a href="https://startupfortune.com/special-turns-doge-cost-cutting-into-an-ai-acquisition-strategy/" target="_blank">Startup Fortune</a> · <a href="https://www.startuphub.ai/ai-news/investors-news/2026/special-os-ai-targets-main-street" target="_blank">StartupHub.ai</a> · <a href="https://www.zerohedge.com/ai/doge-alumni-launch-ai-startup-target-waste-main-street-and-already-have-their-first-target" target="_blank">ZeroHedge</a></p>
+    <p style="font-size:13px">Founder background: <a href="https://en.wikipedia.org/wiki/Nate_Cavanaugh" target="_blank">Cavanaugh — Wikipedia</a> · <a href="https://dot.la/meet-the-24-year-old-trying-to-disrupt-the-intellectual-property-industry-2646319922.html" target="_blank">dot.LA (Brainbase)</a> · <a href="https://www.newsweek.com/who-nate-cavanaugh-doge-official-now-running-us-institute-peace-2053170" target="_blank">Newsweek</a></p>
+    <p style="font-size:13px">Sector context: <a href="https://hospicenews.com/2026/01/12/5-hospice-trends-to-watch-in-2026/" target="_blank">Hospice News</a> · <a href="https://homehealthcarenews.com/2026/01/top-home-health-trends-for-2026/" target="_blank">Home Health Care News</a> · <a href="https://www.mcknightsseniorliving.com/news/private-equity-has-notable-role-in-home-health-hospice/" target="_blank">McKnight's</a></p>
+  </div>
+
+  <div class="colophon">
+    Special — deep dive · a16z-led round, ex-DOGE founders, elder-care rollup<br>
+    Compiled 9 June 2026 · launch announcement is a16z-published (founders as authors); round size and valuation undisclosed; Texas acquisition under contract, not closed · C-Scores reflect source strength, not endorsement
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

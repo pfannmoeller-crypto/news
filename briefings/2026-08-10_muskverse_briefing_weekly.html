@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muskverse Briefing · Week of 9 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#1f2933; --primary-soft:#eceff1; --primary-on-soft:#1f2933;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --purple:#7627bb; --purple-soft:#f3e8fd;
+    --accent:#374151; --accent-soft:#eceff1; --accent-deep:#1f2937;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:#1f2937; color:#fff; display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:16px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:#1f2937; border-color:#1f2937; color:#fff; font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#5f6368 0%,#374151 55%,#1f2937 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+  .hero .stat-row { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; }
+  .hero .stat .n { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:700; }
+  .hero .stat .l { font-size:11px; opacity:0.85; letter-spacing:0.04em; text-transform:uppercase; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:8px; }
+  .statusquo .sq-label { display:inline-flex; align-items:center; gap:6px; background:var(--accent-soft); color:var(--accent-deep); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin-bottom:6px; }
+  .statusquo li strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:#374151; font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); background:var(--surface-2); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.tesla { background:#fce8e6; color:#a50e0e; }
+  .tag.spacex { background:#e8eef6; color:#1f3548; }
+  .tag.xai { background:#f1f3f4; color:#3c4043; }
+  .tag.x { background:#f1f3f4; color:#202124; }
+  .tag.neuralink { background:#f3e8fd; color:#5f1d8e; }
+  .tag.boring { background:#fef7e0; color:#b06000; }
+  .tag.politics { background:#eceff1; color:#1f2937; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-dark { background:#eceff1; color:#1f2933; }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); margin-left:auto; }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+  .data-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 14px; }
+  .data-item { background:var(--surface-2); border-radius:8px; padding:10px 12px; }
+  .data-label { font-size:11px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .data-value { font-family:'Roboto Mono',monospace; font-size:14px; font-weight:600; color:var(--on-surface); }
+  .data-value.up { color:var(--green-deep); } .data-value.down { color:var(--red-deep); }
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:#1f2937; text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:#eceff1; }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); }
+  .conf { display:flex; align-items:center; gap:5px; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:#374151; }
+  .conf .lbl { font-size:11px; color:var(--on-surface-muted); letter-spacing:0.03em; }
+
+  details.deep { margin-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:500; color:#1f2937; background:var(--surface-2); padding:5px 14px; border-radius:14px; user-select:none; transition:background 0.15s; }
+  details.deep summary:hover { background:#eceff1; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary .chev { font-size:16px; line-height:1; transition:transform 0.2s; }
+  details.deep[open] summary .chev { transform:rotate(180deg); }
+  details.deep .dd { margin-top:12px; padding:14px 16px; background:var(--surface-2); border-radius:10px; }
+  details.deep .dd p { font-size:13.5px; line-height:1.65; color:var(--on-surface-2); margin:0 0 12px; }
+  details.deep .dd p:last-child { margin-bottom:0; }
+  details.deep .dd strong.lbl { color:var(--on-surface); font-weight:700; }
+
+  .banner { display:flex; gap:12px; background:var(--yellow-soft); border-radius:12px; padding:14px 18px; margin-bottom:14px; align-items:flex-start; }
+  .banner .material-icons-outlined { color:var(--yellow); font-size:20px; margin-top:1px; }
+  .banner .txt { font-size:13px; line-height:1.55; color:var(--on-surface-2); }
+  .banner .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .trends { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-top:14px; }
+  .trends .tr-label { display:inline-flex; align-items:center; gap:6px; background:var(--blue-soft); color:var(--blue-on); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .trends .row { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--divider-soft); align-items:flex-start; }
+  .trends .row:last-child { border-bottom:none; }
+  .trends .arrow { font-family:'Roboto Mono',monospace; font-size:12px; font-weight:700; min-width:34px; }
+  .trends .arrow.up { color:var(--green-deep); }
+  .trends .arrow.down { color:var(--red-deep); }
+  .trends .arrow.flat { color:var(--on-surface-muted); }
+  .trends .txt { font-size:13.5px; line-height:1.6; color:var(--on-surface-2); }
+  .trends .txt strong { color:var(--on-surface); font-weight:500; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:#eceff1; color:#1f2937; padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:#374151; font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .card h4 { font-size:16px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+    .date-pill { margin-left:0; }
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">M</div>
+    <div class="titles">
+      <h1>Muskverse Briefing</h1>
+      <div class="sub">Week of Aug 9 2026 · 3 – 9 August · Tesla · xAI / Grok · SpaceX · politics · legal · Neuralink · Boring</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#tesla">Tesla</a>
+  <a class="chip" href="#xai">xAI / Grok</a>
+  <a class="chip" href="#spacex">SpaceX</a>
+  <a class="chip" href="#politics">DOGE / Politics</a>
+  <a class="chip" href="#legal">Legal</a>
+  <a class="chip" href="#other">Other ventures</a>
+  <a class="chip" href="#trends">Trends</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Muskverse portfolio · 3 – 9 August 2026</div>
+  <h2>SpaceX's first public earnings beat revenue estimates and still spooked the market, the largest stock lock-up in market history cleared without a crash, and Grok 4.6 finally shipped exactly where the drama had left it</h2>
+  <p>The week that followed the 2 August edition delivered the hard corporate catalysts the prior edition said were still two days out — and both landed with a twist. SpaceX's 4 August earnings beat Wall Street on revenue and narrowed its loss, but a sixfold jump in capital spending sent the stock down in after-hours trading; two days later, 911.5 million newly tradable shares — the largest single lock-up expiration in market history — cleared with the stock closing higher, not lower, before a further spike put Elon Musk's net worth back above $800 billion. Grok 4.6 shipped on 7 August at the smaller, 1.5-trillion-parameter size multiple outlets had converged on, closing the credibility question this briefing carried into the week. Musk's America PAC firmed up its budget and target states, Minnesota's AI "nudification" law took effect over xAI's failed injunction bid, and xAI countersued the mother of one of Musk's own children over her deepfake lawsuit's filing venue. Tesla, meanwhile, absorbed another bank price-target cut and fresh China-divestiture chatter.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">$7.81B</div><div class="l">SpaceX Q2 revenue, up 92% from a year earlier</div></div>
+    <div class="stat"><div class="n">$105 → $129</div><div class="l">SPCX's swing from lock-up-day low to 3-week high</div></div>
+    <div class="stat"><div class="n">1.5T params</div><div class="l">Grok 4.6 ships 7 Aug, confirming last week's revised spec</div></div>
+    <div class="stat"><div class="n">$100–120M</div><div class="l">America PAC's now-confirmed midterm budget</div></div>
+  </div>
+</div>
+
+<div class="statusquo">
+  <span class="sq-label"><span class="material-icons-outlined" style="font-size:14px">history</span>Status quo — where the 2 August edition left off</span>
+  <ul>
+    <li><strong>Tesla:</strong> TSLA had touched an intraday low of $301.97 before recovering to close around $309.31 on 1 August, within about 1.4% of its 52-week low; the 29-analyst consensus price target stood at $400.59, a roughly 30% gap to the trading price. Robotaxi service had expanded to Orlando and Tampa alongside Austin, the Bay Area, and Miami.</li>
+    <li><strong>xAI / Grok:</strong> Grok 4.6's reported size had been revised down from 2 trillion to 1.5 trillion parameters, reusing xAI's existing "V9" foundation, with a 7 August date circulating but unconfirmed and no xAI statement reconciling the spec change.</li>
+    <li><strong>SpaceX:</strong> Starship Flight 13 had confirmed a second consecutive Super Heavy booster landing-burn failure despite a clean upper-stage splashdown; Flight 14 was billed around a first tower-catch attempt of the ship itself, with launch-date sourcing split between "end of August" and a 30 September tracker placeholder. SPCX had fallen 4% to $113.50, about 13% below its IPO price, heading into 4 August earnings and the 6 August lock-up.</li>
+    <li><strong>Politics:</strong> Axios had reported, unconfirmed on a dollar figure, that Musk was reviving America PAC for a large midterm turnout push, six days after telling The Economist "I got carried away, frankly" about his DOGE-and-Trump period.</li>
+    <li><strong>Legal:</strong> xAI had just filed suit against Minnesota over its HF 1606 nudification-deepfake law, days before its 1 August effective date; Musk v. Altman and xAI's OpenAI trade-secrets suit remained headed to the Ninth Circuit Court of Appeals with no near-term resolution expected.</li>
+    <li><strong>Other ventures:</strong> X Money had just launched invite-only with a Visa debit card and a stated 6% yield; the Boring Company's reported $4 billion round at a $20 billion valuation remained unclosed.</li>
+  </ul>
+</div>
+
+<!-- TESLA -->
+<a id="tesla"></a>
+<div class="section-header"><span class="material-icons-outlined">electric_bolt</span><h3>Tesla</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-red">PT cut</span><span class="date-pill">3 – 9 Aug 2026</span></div>
+  <h4>Jefferies cuts its Tesla price target to $350 as China-divestiture chatter and a UK sales slide add to the margin story</h4>
+  <p>Jefferies cut its Tesla price target to $350 from $400 on 7 August, citing the margin collapse reported in Tesla's 21 July Q2 print: revenue of $28.24 billion beat estimates by 7.1%, but earnings per share of $0.33 missed consensus by 38.5%, operating margin fell to 1.4%, and free cash flow — the cash a company generates after operating and capital expenses — flipped negative to -$1.09 billion as AI-infrastructure spending and the 2025 CEO Performance Award compensation charge weighed on results. Separately, Tesla is reported to be weighing multiple divestiture paths for its China business as competition intensifies, while UK sales fell roughly 9% amid cheaper Chinese electric-vehicle competition. One offsetting data point: the Tesla–SpaceX joint venture for a $16.8 billion semiconductor plant in Texas, aimed at boosting AI chip production, drew a positive stock reaction.</p>
+  <div class="links">
+    <a href="https://247wallst.com/investing/2026/08/03/tesla-price-prediction-could-the-stock-rally-30-from-here/" target="_blank">24/7 Wall St: Tesla price prediction, could it rally 30%?</a>
+    <a href="https://www.forbes.com/sites/investor-hub/article/tesla-stock-last-half-2026/" target="_blank">Forbes: why TSLA could sink in the second half of 2026</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Jefferies price target</div><div class="data-value down">$350 (was $400)</div></div>
+    <div class="data-item"><div class="data-label">Q2 operating margin</div><div class="data-value down">1.4%</div></div>
+    <div class="data-item"><div class="data-label">Q2 free cash flow</div><div class="data-value down">-$1.09B</div></div>
+    <div class="data-item"><div class="data-label">UK sales</div><div class="data-value down">-9%</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition flagged the roughly 30% gap between TSLA's price and the 29-analyst consensus price target of $400.59 as the more durable signal than any single day's close, and named fresh price-target revisions beyond Piper Sandler's as a direct watch-item. Jefferies' 7 August cut is exactly that: a second major sell-side revision downward in as many weeks, moving in the opposite direction from the stock finding support.</p>
+    <p><strong class="lbl">The details.</strong> Jefferies' $350 target sits below the 29-analyst $400.59 average but still roughly 13% above TSLA's price levels near $309 the prior edition measured — meaning even a bearish revision from a major bank leaves meaningful daylight above the stock's actual trading range. The 1.4% operating margin and -$1.09 billion free cash flow figures are the specific numbers driving that caution: Tesla's revenue beat masks a profitability story that continued to deteriorate, with AI-buildout spending and the CEO award compensation charge both cited as drags. Reports that Tesla is weighing "multiple divestiture paths" for its China operations — without further specificity on structure or timeline in the sourcing available this window — would be a materially larger strategic shift than anything this briefing has tracked to date, if it proceeds.</p>
+    <p><strong class="lbl">Context.</strong> A price-target cut from a major bank, arriving alongside reported China-divestiture deliberations and a 9% UK sales decline, reads as the bear case gaining incremental ground for a third consecutive edition — not a collapse, but a steady accumulation of negative data points that the bull case (robotaxi optionality, FSD subscription growth — see below) has not yet offset in the numbers Tesla itself has disclosed.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Whether other banks follow Jefferies' cut or diverge. (2) Any formal Tesla statement on China-divestiture plans, given the sourcing so far is unconfirmed and unspecific. (3) Further disclosed detail on the $16.8 billion SpaceX-Tesla semiconductor joint venture. (4) TSLA's price action relative to both the $350 and $400.59 targets over the next edition.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — the price-target cut and Q2 figures are well-corroborated; the China-divestiture reporting is vaguer</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag tesla">TESLA</span><span class="tag t-green">Progress</span><span class="date-pill">reported late Jul – early Aug 2026</span></div>
+  <h4>FSD v14 Lite reaches wide release and Grok's voice commands stay on track for a September hand-off to the driving stack</h4>
+  <p>Tesla's robotaxi and Full Self-Driving (FSD) program kept expanding operationally rather than producing a single new catalyst this window. FSD v14 Lite reached wide release as part of the 2026 Summer Update (build 2026.26), now rolled out to all Tesla vehicles globally, and Tesla confirmed Starlink connectivity integration into its Cybercab robotaxi vehicles. Musk's June confirmation that Grok's voice commands will pass directly into FSD's planning layer remains on a stated September 2026 deployment timeline — a claim this briefing has not seen updated or walked back this window. Tesla reported 1.48 million active FSD users globally as of Q2, and the robotaxi fleet has logged nearly 700,000 paid miles since its June 2025 launch, with Tesla continuing to target seven new US metro launches (Dallas, Houston, Phoenix, Miami, Orlando, Tampa, Las Vegas) through the first half of 2026.</p>
+  <div class="links">
+    <a href="https://www.teslaoracle.com/2026/08/04/tesla-summer-update-2026-26-features-release-notes-and-rollout-status/" target="_blank">Tesla Oracle: Summer Update 2026.26 release notes</a>
+    <a href="https://www.fool.com/investing/2026/08/03/teslas-big-robotaxi-progress-is-hidden-in-plain-si/" target="_blank">Motley Fool: Tesla's robotaxi progress, hidden in plain sight</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Active FSD users (Q2)</div><div class="data-value">1.48M</div></div>
+    <div class="data-item"><div class="data-label">Paid robotaxi miles since Jun 2025</div><div class="data-value">~700K</div></div>
+    <div class="data-item"><div class="data-label">Grok-to-FSD voice integration</div><div class="data-value">Target: Sept 2026</div></div>
+    <div class="data-item"><div class="data-label">2026 city rollout target</div><div class="data-value">7 cities (H1)</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Prior editions of this briefing flagged Tesla's undisclosed robotaxi fleet size as a persistent reporting gap, relying on third-party trackers rather than company disclosure. The 1.48 million active FSD user figure and roughly 700,000 cumulative paid-mile figure surfacing this window are among the more specific numbers this briefing has recorded for the program, though it remains unclear from the sourcing available whether these trace to an official Tesla disclosure or aggregated third-party reporting.</p>
+    <p><strong class="lbl">The details.</strong> The Grok-voice-to-FSD-planning-layer integration, if it proceeds on the stated September 2026 timeline, would be a more direct technical bridge between xAI's AI stack and Tesla's driving software than exists today — notable given both companies share Musk as chief executive but have historically operated with separate model stacks. The Summer Update 2026.26 rollout of FSD v14 Lite to "all Tesla vehicles globally" is a broader distribution claim than this briefing has previously tracked for a single FSD point release, though "Lite" in the name suggests a reduced-capability variant rather than the full FSD v14 stack.</p>
+    <p><strong class="lbl">Context.</strong> Robotaxi and FSD progress this window is incremental and largely on-message with Tesla's previously stated targets, in contrast to the credibility gaps this briefing has flagged elsewhere in the Muskverse portfolio this year. That said, the fleet-size and mile-count figures still trace back to Tesla or Tesla-aligned sourcing rather than independent verification.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Whether the Grok-to-FSD voice integration actually ships in September as stated. (2) Any further disclosure of exact robotaxi fleet size, still not directly confirmed by Tesla itself. (3) Progress on the remaining five of seven targeted 2026 robotaxi cities. (4) Whether the full (non-Lite) FSD v14 release reaches wide availability and on what timeline.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — operational figures are specific but their attribution to Tesla itself, versus third-party trackers, is mixed</span></span></div>
+</div>
+
+<!-- XAI -->
+<a id="xai"></a>
+<div class="section-header"><span class="material-icons-outlined">smart_toy</span><h3>xAI / Grok</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">XAI</span><span class="tag t-green">Shipped</span><span class="date-pill">shipped 7 Aug 2026</span></div>
+  <h4>Grok 4.6 ships on 7 August, confirmed at 1.5 trillion parameters — the first clean resolution of an xAI claim in three editions</h4>
+  <p>Grok 4.6 shipped on 7 August, resolving both open questions this briefing carried from the 2 August edition: the model's parameter count and its release date. Multiple outlets now confirm Grok 4.6 as a 1.5-trillion-parameter model that reuses the same "V9" foundation as Grok 4.5, rather than the earlier-claimed 2-trillion-parameter figure or a fresh large-scale training run, with its gains attributed to improved supervised fine-tuning (SFT) and reinforcement learning (RL) — post-training techniques that refine a model's behavior after its initial training run. xAI has not, per available sourcing, published a formal statement reconciling the 2T-to-1.5T discrepancy this briefing tracked across two editions; the model simply shipped at the smaller figure. Grok 4.7, now described as built on a new 2.1-trillion-parameter foundation, remains expected "a few weeks" after 4.6, placing it in late August or early September.</p>
+  <div class="links">
+    <a href="https://www.roic.ai/news/musk-grok-46-coming-out-likely-next-week-08-04-2026" target="_blank">Roic News: Musk says Grok 4.6 coming out likely next week</a>
+    <a href="https://kie.ai/blog/what-is-grok-4-6" target="_blank">kie.ai: what is Grok 4.6, xAI's 1.5T-parameter model explained</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Grok 4.6 ship date</div><div class="data-value">Aug 7, 2026</div></div>
+    <div class="data-item"><div class="data-label">Confirmed size</div><div class="data-value">1.5T parameters</div></div>
+    <div class="data-item"><div class="data-label">Foundation</div><div class="data-value">Reused V9 (shared with 4.5)</div></div>
+    <div class="data-item"><div class="data-label">Grok 4.7 target</div><div class="data-value">Late Aug / early Sept, 2.1T</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition's watch-items for this story asked (1) whether Grok 4.6 would ship on or near 7 August, and (2) whether xAI would issue any statement reconciling the 2T-versus-1.5T discrepancy. The first has now been answered affirmatively — the model shipped on exactly that date. The second has not: this briefing found no xAI statement addressing why the publicly reported parameter count changed between Musk's 24 July claim and the model's actual 7 August release.</p>
+    <p><strong class="lbl">The details.</strong> The "reuses the V9 foundation" description, first reported as unconfirmed secondary coverage a week ago, is now the consistent account across multiple outlets covering the actual release — meaning Grok 4.6's gains are a post-training methodology story rather than a pretraining scale-up, a pattern increasingly common across frontier labs' faster release cadences. This briefing still has no independent benchmark results, pricing, or context-window figures for Grok 4.6 as of this edition — those remain to be tested against Moonshot AI's Kimi K3 and Anthropic's Claude Opus 4.8, as flagged previously.</p>
+    <p><strong class="lbl">Context.</strong> Grok 4.6 actually shipping on its most recently cited date, at the size multiple outlets converged on, is the first clean resolution this briefing has recorded for an xAI product claim in three consecutive editions — a break from the pattern of slipping dates and shifting specs flagged as an xAI product-communication credibility problem in the 2 August edition. It does not retroactively explain why the spec changed, but it does mean the immediate uncertainty is resolved rather than compounding further.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Independent benchmark results for Grok 4.6 against Kimi K3 and Claude Opus 4.8. (2) Whether Grok 4.7 holds to its "a few weeks" timeline. (3) Any retrospective xAI explanation of the 2T-to-1.5T change. (4) Pricing and context-window disclosure, still absent as of this edition.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — ship date and parameter count are now corroborated across multiple outlets; no first-party xAI statement addresses the spec-change reasoning</span></span></div>
+</div>
+
+<!-- SPACEX -->
+<a id="spacex"></a>
+<div class="section-header"><span class="material-icons-outlined">rocket_launch</span><h3>SpaceX</h3><span class="count-pill">3 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPCX</span><span class="tag t-yellow">Beat, but capex spooks</span><span class="date-pill">reported 4 Aug 2026</span></div>
+  <h4>SpaceX's first public earnings beat revenue estimates by nearly $1B, but a sixfold capex jump sends the stock down 8% after hours</h4>
+  <p>SpaceX reported its first-ever public-company quarterly results on 4 August: revenue of $7.81 billion against a $6.93 billion estimate, up 92% from $4.1 billion a year earlier, with a net loss of $541 million (9 cents per share) narrowing sharply from a $1 billion loss a year earlier and beating the expected 26-cent-per-share loss. The Connectivity segment (Starlink) led growth with $4.3 billion in revenue and 1.7 million net subscriber adds, taking the Starlink base to 12 million subscribers — double a year earlier. The AI segment grew 247% year-on-year to $2.6 billion. Despite the beat, capital expenditure jumped more than sixfold year-on-year to $18.37 billion, with $15.83 billion of that specifically in AI infrastructure — exceeding the $13.22 billion analysts had modeled — and the stock dropped roughly 8% in extended trading as investors weighed the spending surge against the revenue beat.</p>
+  <div class="links">
+    <a href="https://fortune.com/2026/08/04/spacex-revenue-surges-92-to-7-8-billion-blowing-past-wall-street-expectations-by-nearly-1-billion/" target="_blank">Fortune: SpaceX revenue surges 92% to $7.8B</a>
+    <a href="https://www.cnn.com/2026/08/04/business/spacex-earnings-q2-2026" target="_blank">CNN: SpaceX revenue jumps 92% but stock tumbles</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Q2 revenue</div><div class="data-value up">$7.81B (+92%)</div></div>
+    <div class="data-item"><div class="data-label">Net loss</div><div class="data-value up">$541M (vs $1B prior year)</div></div>
+    <div class="data-item"><div class="data-label">Capex</div><div class="data-value down">$18.37B (vs $13.22B est.)</div></div>
+    <div class="data-item"><div class="data-label">Starlink subscribers</div><div class="data-value up">12M (2x prior year)</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition framed 4–6 August as "the actual test of SPCX's post-IPO price discovery" that the preceding week's drift had only anticipated — where IPO is the initial public offering that first listed the stock. The earnings report delivered the first half of that test: a genuine beat on revenue and a narrower-than-expected loss, undercut by a capex figure large enough to trigger an immediate negative price reaction despite strong underlying growth numbers.</p>
+    <p><strong class="lbl">The details.</strong> The AI segment's 247% growth to $2.6 billion is the first disclosure this briefing has seen breaking out SpaceX's AI-related revenue specifically, separate from Connectivity (Starlink) and the core launch business; the $15.83 billion AI-specific capex figure suggests SpaceX is scaling AI infrastructure investment well ahead of that segment's current revenue base — a spending pattern common among AI-infrastructure builders elsewhere but one this briefing has not previously had SpaceX-specific numbers to evaluate. On the earnings call itself, Musk reportedly made expansive claims — including that Starlink would "deliver a majority of the world's internet" within a decade — that TechCrunch's coverage characterized as repeatedly going further than his own executives' framing.</p>
+    <p><strong class="lbl">Context.</strong> A 92% revenue beat with a narrowing loss is, by conventional metrics, a strong first public quarter; the market's roughly 8% negative after-hours reaction suggests investors are pricing SpaceX more like an AI-infrastructure spender whose capex discipline matters as much as its topline growth. It also means SpaceX's own AI ambitions, not just its launch or Starlink businesses, are now a first-order factor in how SPCX trades.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Whether the AI segment's growth rate continues at 247% or moderates. (2) Any guidance on future capex trajectory. (3) Whether the after-hours selloff persisted into regular trading (see the lock-up card below for this window's answer). (4) Starlink subscriber growth sustainability at the 1.7 million-per-quarter pace.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span><span class="lbl">Confidence: high — figures are first-party earnings disclosures, corroborated across Bloomberg, Fortune, CNN, and CNBC</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPCX</span><span class="tag t-green">Absorbed without a crash</span><span class="date-pill">6 – 7 Aug 2026</span></div>
+  <h4>The largest lock-up expiration in market history clears without a crash; Musk's net worth tops $800B again the next day</h4>
+  <p>SpaceX's first and largest lock-up tranche — 911.5 million shares, about 43% more than the 638.9 million shares floated at its June initial public offering (IPO) — became tradable on 6 August, more than doubling the public float from 4.9% to 11.8% of shares outstanding. Contrary to the conventional expectation that a supply surge of that scale would depress the price, SPCX opened the day at an all-time low around $105 before recovering to close higher — reported as up between 2.6% and 6.1% depending on the source — with JPMorgan's Doug Anmuth attributing the muted impact to significant pre-positioning ahead of the expiration. The relief carried into the next session: SpaceX shares spiked as much as 11.7% on 7 August to a three-week high near $129, pushing Musk's net worth back above $800 billion. A further roughly 319 million shares are due to unlock as soon as 12 August, with additional tranches expected through September and October.</p>
+  <div class="links">
+    <a href="https://ca.finance.yahoo.com/news/spacex-lockup-expires-today-with-stock-bucking-higher-100000039.html" target="_blank">Yahoo Finance: SpaceX lock-up expires, stock bucks higher</a>
+    <a href="https://www.forbes.com/sites/antoniopequenoiv/2026/08/07/elon-musks-net-worth-tops-800-billion-again-as-spacex-shares-spike-11/" target="_blank">Forbes: Musk's net worth tops $800B again as SpaceX spikes 11%</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Shares unlocked (6 Aug)</div><div class="data-value">911.5M</div></div>
+    <div class="data-item"><div class="data-label">Public float</div><div class="data-value up">4.9% → 11.8%</div></div>
+    <div class="data-item"><div class="data-label">6 Aug close</div><div class="data-value up">+2.6% to +6.1% (sources vary)</div></div>
+    <div class="data-item"><div class="data-label">7 Aug high</div><div class="data-value up">~$129 (3-wk high)</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition named the 6 August unlock, alongside the 4 August earnings, as the "actual test of SPCX's post-IPO price discovery," and specifically flagged that Musk's own shares remain locked separately until mid-2027 — meaning the unlock tests broader investor and employee demand, not Musk's own conviction. That framing held: the shares that became tradable belonged to earlier institutional investors and employees, and the muted price reaction is being read as a demand signal for that broader base rather than anything about Musk's position.</p>
+    <p><strong class="lbl">The details.</strong> This briefing found two different post-unlock closing figures in its sourcing — a 2.6% gain in one account and 6.1% in another — and cannot fully reconcile them to a single number, consistent with the pattern of divergent tracking-service figures this briefing flagged for Tesla's own analyst-consensus numbers in the 2 August edition; both agree on the directional fact that the stock rose rather than fell. The next day's 11.7% spike to a three-week high near $129 is a larger, better-corroborated move, and it is this jump — not the unlock-day gain itself — that pushed Musk's net worth back above $800 billion, per Forbes' real-time wealth tracking.</p>
+    <p><strong class="lbl">Context.</strong> A lock-up of this scale clearing without a crash is a meaningfully positive data point for SpaceX's public-market credibility after a rocky post-IPO stretch, during which the stock had fallen roughly 50% off its post-IPO peak. It does not resolve the capex-versus-growth tension the earnings report raised days earlier — both stories are true simultaneously: the market absorbed the share-supply shock while still digesting the spending numbers.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) The 12 August tranche (about 319 million shares) and whether it produces a repeat of the muted reaction or a different result now that a larger share of the float is already trading. (2) The September and October tranches. (3) Whether SPCX holds above the $105 all-time low it briefly touched on unlock day. (4) Whether the post-unlock rally reflects genuine demand or short-covering, which this briefing cannot distinguish from the sourcing available.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — unlock mechanics and share counts are well-sourced; the exact percentage gain on 6 August itself is disputed between sources</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag spacex">SPACEX</span><span class="tag t-yellow">Three new milestones at once</span><span class="date-pill">reported 3 – 9 Aug 2026</span></div>
+  <h4>Starship Flight 14 now targets a first orbital flight, a first live payload deploy, and a first ship-catch — all on one mission</h4>
+  <p>Starship Flight 14 remains billed as SpaceX's most ambitious flight yet, and this window's coverage adds detail rather than a firm date: the mission is now described as Starship's first full orbital flight, its first attempt to deploy an operational payload — Starlink V3 satellites — and its first attempt to catch the ship itself, not just the booster, back at the launch tower. SpaceX's confidence follows Flight 13's heat-shield performance, confirmed adequate for an orbital-return attempt, even though that same flight's Super Heavy booster failed its landing burn for a second consecutive time — a problem this briefing has not seen resolved or explained in new reporting this window. Timing remains tentatively "end of August," consistent with SpaceX President Gwynne Shotwell's cadence target cited in the prior edition, though no firm SpaceX launch-window announcement has appeared.</p>
+  <div class="links">
+    <a href="https://keeptrack.space/x-report/spacex-brief-2026-08-05" target="_blank">KeepTrack: Starship Flight 14 targets first orbital run</a>
+    <a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-wants-to-launch-next-starship-this-month-and-catch-it-too-elon-musk-says-in-1st-earnings-call-since-historic-ipo" target="_blank">Space.com: SpaceX wants to launch and catch next Starship this month</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">New objectives</div><div class="data-value">Orbit + Starlink V3 deploy + ship catch</div></div>
+    <div class="data-item"><div class="data-label">Vehicle</div><div class="data-value">Booster 21 / Ship 41 (Block 3)</div></div>
+    <div class="data-item"><div class="data-label">Target window</div><div class="data-value">End of August (tentative)</div></div>
+    <div class="data-item"><div class="data-label">Unresolved issue</div><div class="data-value down">Booster landing-burn failure x2</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition flagged that Flight 14 was adding a harder objective (the ship-catch attempt) on top of an already-unresolved two-flight booster-landing failure pattern, and named an official SpaceX launch-window announcement as the top watch-item given conflicting "end of August" versus "30 September" reports. This window's coverage resolves that discrepancy toward the earlier end of the range — "end of August" is now the consistently cited figure — but still without a formal SpaceX announcement locking in a date, so this briefing treats it as more likely, not confirmed.</p>
+    <p><strong class="lbl">The details.</strong> The addition of a live orbital payload deployment (Starlink V3 satellites) is a third new capability being attempted on the same flight, alongside the ship-catch and the shift from a suborbital to a full orbital profile — meaning Flight 14 now carries three unattempted milestones simultaneously rather than the two this briefing counted last week. SpaceX's own stated rationale, per available reporting, is that Flight 13's heat-shield data specifically de-risked the orbital-return decision, distinct from the still-unresolved booster-landing problem, which is a mechanically separate system.</p>
+    <p><strong class="lbl">Context.</strong> Layering three new, unattempted objectives onto a single flight — while a persistent booster-landing failure mode remains, by this briefing's reading, undiagnosed in public reporting — continues the pattern this briefing has tracked across Starship, Grok, and Tesla's own remediation efforts: ambitious next-step framing arriving ahead of the previous step's problems being fully resolved. It is also, on SpaceX's own technical logic, a case of decoupling separately-scoped risks (heat shield versus booster landing) rather than compounding the same one — a more charitable reading than this briefing offered last week, worth stating explicitly.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) An official SpaceX launch-window announcement. (2) Whether the booster landing-burn failure mode is addressed before Flight 14 or flown with the same open issue. (3) Whether the ship-catch attempt proceeds as the mission's most novel milestone. (4) Whether the Starlink V3 payload deployment succeeds, adding a commercial dimension to what has so far been a purely developmental test program.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — objectives and general timing are consistently reported; the exact date remains tentative and unconfirmed by SpaceX</span></span></div>
+</div>
+
+<!-- POLITICS / DOGE -->
+<a id="politics"></a>
+<div class="section-header"><span class="material-icons-outlined">account_balance</span><h3>DOGE / Politics</h3><span class="count-pill">1 item</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">POLITICS</span><span class="tag t-dark">Confirmed</span><span class="date-pill">reported 3 – 9 Aug 2026</span></div>
+  <h4>America PAC's budget and target states firm up: $100–120M for a Senate-focused midterm turnout push in five to eight states</h4>
+  <p>Details of Musk's America PAC revival, first reported as unconfirmed on 29 July, firmed up this window: Musk has authorized $100–120 million for a field program aimed at conservative voter turnout ahead of the 3 November 2026 midterms, using door-to-door canvassing, digital advertising, and direct mail. Core target states now reported include Senate races in Alaska, Iowa, Maine, Michigan, and Ohio, with possible involvement in North Carolina, Georgia, and Texas. The effort is expected to begin in August 2026 and coordinate with other Republican political groups. This briefing has not found new reporting this window on Musk's own X posts beyond what the 2 August edition already covered, nor on the stalled America Party's status.</p>
+  <div class="links">
+    <a href="https://thehill.com/policy/technology/6000542-musk-plans-big-political-ad-buy-in-8-states-report/" target="_blank">The Hill: Musk's super PAC to pour at least $100M into 8 states</a>
+    <a href="https://www.newsweek.com/map-elon-musk-midterm-america-pac-12264200" target="_blank">Newsweek: the states Musk's midterm money machine could impact most</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Confirmed budget</div><div class="data-value">$100–120M</div></div>
+    <div class="data-item"><div class="data-label">Core target states</div><div class="data-value">AK, IA, ME, MI, OH</div></div>
+    <div class="data-item"><div class="data-label">Possible additional states</div><div class="data-value">NC, GA, TX</div></div>
+    <div class="data-item"><div class="data-label">Effort start</div><div class="data-value">August 2026</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition characterized the PAC revival as confirmation, rather than a substantive walkback, of Musk's "I got carried away" comment about his DOGE-and-Trump period — where DOGE is the Department of Government Efficiency — treating the Axios report's existence as the key fact while noting Musk's representatives had declined to specify a dollar figure. That figure and the target-state list are now both reported, closing the two open questions the prior edition's watch-items raised.</p>
+    <p><strong class="lbl">The details.</strong> The $100–120 million range and the five-to-eight-state target list are more specific than anything reported a week ago, and the states named — Alaska, Iowa, Maine, Michigan, Ohio as the core group, with North Carolina, Georgia, and Texas as possible additions — are consistent with a Senate-focused midterm strategy rather than a House-wide or presidential-style operation, a distinction this briefing had not previously been able to draw. The stated rationale (turning out lower-propensity conservative voters in a non-presidential year) matches the framing Axios first reported.</p>
+    <p><strong class="lbl">Context.</strong> A confirmed budget and state list is a materially firmer commitment than the reported-but-unconfirmed figure this briefing carried last week, and it reinforces the reading that the America PAC revival is Musk's primary 2026 political vehicle rather than a placeholder pending the stalled America Party. For Tesla specifically, this briefing continues to lack any brand or sales data quantifying whether renewed political activity at this scale is affecting demand — a watch-item carried over unresolved from the prior edition.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Whether the $100–120M figure is exceeded, matched, or revised as the effort proceeds. (2) Confirmation of the full target-state list, including which of North Carolina, Georgia, and Texas are ultimately included. (3) Any Tesla-specific brand or sales data addressing political-activity spillover, still absent. (4) The America Party's status, unreported this window.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — budget and state figures are corroborated across Axios, The Hill, Forbes, and Newsweek reporting, though none cite an on-record dollar figure from Musk or America PAC directly</span></span></div>
+</div>
+
+<!-- LEGAL -->
+<a id="legal"></a>
+<div class="section-header"><span class="material-icons-outlined">gavel</span><h3>Legal</h3><span class="count-pill">3 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">XAI</span><span class="tag t-red">Law now in force</span><span class="date-pill">effective 1 Aug 2026 · hearing 19 Aug</span></div>
+  <h4>Minnesota's nudification law takes effect over xAI's failed injunction bid; a preliminary-injunction hearing is now set for 19 August</h4>
+  <p>Minnesota's HF 1606 nudification ban took effect as scheduled on 1 August after U.S. District Judge Donovan Frank denied xAI's request for a temporary restraining order (TRO) — an emergency court order blocking a law or action before a full hearing — on timing grounds, not on the First Amendment merits xAI's suit raises. The court converted xAI's request into a preliminary injunction motion, with a hearing now scheduled for 19 August in St. Paul, meaning the law's constitutionality remains fully undecided even as it is currently in force. Newly reported detail on xAI's argument puts a specific number on its exposure concern: xAI's attorneys wrote that if users generated 100,000 prohibited images, the law's $500,000-per-violation penalty structure could expose the company to "an eye-popping $50 billion."</p>
+  <div class="links">
+    <a href="https://reason.com/2026/08/05/minnesotas-new-ban-could-punish-people-over-parodies-and-stripped-down-selfies-elon-musks-xai-is-suing/" target="_blank">Reason: Minnesota's nudification ban and xAI's suit</a>
+    <a href="https://petapixel.com/2026/07/30/elon-musks-xai-sues-minnesota-days-before-state-ban-on-ai-nudification-apps/" target="_blank">PetaPixel: xAI sues Minnesota days before the ban takes effect</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Law effective date</div><div class="data-value">Aug 1, 2026 (in force)</div></div>
+    <div class="data-item"><div class="data-label">TRO request</div><div class="data-value down">Denied (timing grounds)</div></div>
+    <div class="data-item"><div class="data-label">Preliminary injunction hearing</div><div class="data-value">Aug 19, St. Paul</div></div>
+    <div class="data-item"><div class="data-label">xAI's stated worst-case exposure</div><div class="data-value">$50B (100K images)</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition covered the suit's filing on 27 July and named "whether a federal judge grants any preliminary injunction before the 1 August effective date" as its top watch-item. That specific question has now been answered — no, the law took effect as scheduled — but the underlying constitutional question remains open and has simply moved to a 19 August hearing rather than being resolved either way.</p>
+    <p><strong class="lbl">The details.</strong> The judge's denial being framed as a timing decision, not a merits ruling, is an important distinction this briefing did not have last week: Judge Frank did not find xAI's First Amendment arguments unlikely to succeed, only that the TRO's expedited procedural bar was not met before 1 August. The $50 billion worst-case figure is xAI's own hypothetical, built off the law's per-violation penalty structure and an assumed 100,000-image scenario — this briefing cannot verify how xAI arrived at that specific image count, but it is a substantially larger figure than the "tens of billions" framing this briefing carried from the original filing last week.</p>
+    <p><strong class="lbl">Context.</strong> A law now in force while its central legal challenge remains unresolved puts Minnesota's nudification ban and xAI's compliance posture in a live, ongoing tension for at least the next several weeks — anyone in Minnesota using xAI's tools, or filing complaints under the law, is operating under it now regardless of the 19 August hearing's eventual outcome. This continues to sit alongside the Ashley St. Clair suit (below) as a second, parallel test of xAI's content-safeguard record.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) The 19 August preliminary-injunction hearing outcome. (2) Any complaints or enforcement actions filed under the law while it is in effect and the suit is pending. (3) Whether other states cite Judge Frank's procedural, not merits, ruling in their own pending nudification legislation. (4) Whether xAI's $50 billion figure is scrutinized or contested by Minnesota's Attorney General's office ahead of the hearing.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium-high — procedural developments and the hearing date are corroborated across Reason, ABC News, PetaPixel, and Fortune reporting</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag xai">XAI</span><span class="tag t-red">Countersuit filed</span><span class="date-pill">reported 3 – 9 Aug 2026</span></div>
+  <h4>xAI countersues Ashley St. Clair, the mother of one of Musk's children, over the venue of her Grok-deepfake lawsuit</h4>
+  <p>In a development this briefing had previously mentioned only as background, xAI has countersued Ashley St. Clair — who sued xAI over sexually explicit deepfake images she alleges Grok generated of her, including images reportedly sourced from photos taken when she was 14 — in federal court in Texas, arguing she violated xAI's terms of service by filing her original suit in New York rather than in the Northern District of Texas or Tarrant County state courts, as xAI's terms specify. xAI's countersuit seeks damages of more than $75,000 on that venue-violation theory. St. Clair's underlying allegations — that Grok produced and distributed sexualized images of her for more than a week after a verified X user's prompt, and that her premium X account was later terminated after she complained — remain unresolved and are not addressed on their merits by xAI's venue-focused countersuit.</p>
+  <div class="links">
+    <a href="https://www.nbcnews.com/tech/tech-news/ashley-st-clair-sues-xai-grok-sexual-images-rcna254302" target="_blank">NBC News: Ashley St. Clair sues xAI over Grok sexual images</a>
+    <a href="https://www.robertkinglawfirm.com/mass-torts/grok-lawsuit/" target="_blank">King Law: Grok lawsuit tracker, AI deepfakes and sexual exploitation</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">St. Clair's original filing</div><div class="data-value">New York</div></div>
+    <div class="data-item"><div class="data-label">xAI's countersuit venue</div><div class="data-value">Texas (federal court)</div></div>
+    <div class="data-item"><div class="data-label">xAI's countersuit basis</div><div class="data-value">Terms-of-service venue clause</div></div>
+    <div class="data-item"><div class="data-label">xAI's claimed damages</div><div class="data-value">$75,000+</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> The 2 August edition mentioned the St. Clair suit only as background context for the Minnesota lawsuit, noting it predated that window without further detail. This window surfaces the first substantive development in the St. Clair matter itself: rather than answering her allegations on the merits, xAI has responded procedurally, seeking to force the underlying dispute into a venue of its choosing.</p>
+    <p><strong class="lbl">The details.</strong> The venue dispute turns on a forum-selection clause in xAI's terms of service, which the company argues requires disputes to be litigated in Texas rather than New York; this is a common corporate litigation tactic independent of the underlying allegations' merits, and does not itself constitute a defense against the deepfake-generation claims. St. Clair's allegations, as previously reported and unchanged by this window's news, include that Grok-generated sexualized images of her — some reportedly sourced from photographs taken when she was fourteen — remained publicly accessible for more than a week, and that her X premium account was terminated after she complained, which her suit characterizes as retaliatory.</p>
+    <p><strong class="lbl">Context.</strong> A company being sued over its own product's alleged generation of nonconsensual sexual imagery, responding with a venue-based countersuit rather than a substantive defense, sits alongside the Minnesota case as a second instance this briefing has now tracked of xAI using litigation offensively in response to content-safety allegations, rather than addressing the underlying moderation questions directly. Whether that pattern reflects a considered legal strategy or something else is not something this briefing can adjudicate from public sourcing.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Whether the venue dispute is resolved before St. Clair's underlying allegations are addressed on the merits. (2) Any court ruling on which forum the case proceeds in. (3) Whether St. Clair's allegations receive any substantive xAI response beyond the venue countersuit. (4) Whether this case is cited in the Minnesota litigation or vice versa, given both concern xAI's content-safeguard record.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — the countersuit's filing and its venue-based theory are reported across multiple outlets; St. Clair's original allegations are drawn from her complaint as characterized by that same reporting, not independently verified by this briefing</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag politics">MUSK V. ALTMAN</span><span class="tag t-dark">No change</span><span class="date-pill">Ongoing · no movement 3 – 9 Aug</span></div>
+  <h4>Musk v. Altman and the xAI data-centre suit remain exactly where the 2 August edition left them</h4>
+  <p>No new filings, rulings, or reporting surfaced in this window on either Musk v. Altman or xAI's separate trade-secrets suit against OpenAI, both headed to the Ninth Circuit Court of Appeals after May's trial-court dismissal on statute-of-limitations grounds. Legal commentary continues to describe the appeal as unlikely to reach the Ninth Circuit before late 2026 or into 2027, and continues to caution that overturning a jury's statute-of-limitations finding on appeal is generally difficult — an observation, not new movement in the case itself.</p>
+  <div class="links">
+    <a href="https://en.wikipedia.org/wiki/Musk_v._Altman" target="_blank">Wikipedia: Musk v. Altman case background</a>
+  </div>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — absence of new filings is the observed fact, not independently confirmed as "nothing happened"</span></span></div>
+</div>
+
+<!-- OTHER VENTURES -->
+<a id="other"></a>
+<div class="section-header"><span class="material-icons-outlined">hub</span><h3>Other ventures</h3><span class="count-pill">2 items</span></div>
+
+<div class="card">
+  <div class="meta"><span class="tag boring">BORING</span><span class="tag t-yellow">Still open</span><span class="date-pill">reported through 9 Aug 2026</span></div>
+  <h4>The Boring Company's $4B round remains unclosed as Nashville and Dubai emerge as named expansion targets</h4>
+  <p>The Boring Company's reported $4 billion funding round at a $20 billion valuation — more than triple its 2022 mark — remained unclosed as of this window's most recent reporting on 9 August, with terms still described as subject to change. New detail beyond the 25 July original report: the company is specifically eyeing expansion into Nashville and Dubai, alongside its existing Las Vegas tunnel-and-surface transportation system, which already shuttles customers between stations using Tesla vehicles.</p>
+  <div class="links">
+    <a href="https://www.foreignpolicyjournal.com/2026/08/09/the-boring-company-seeks-4-billion-raise-at-20-billion-valuation-as-musks-non-tesla-empire-expands/" target="_blank">Foreign Policy Journal: Boring Company seeks $4B raise at $20B valuation</a>
+    <a href="https://techcrunch.com/2026/07/25/elon-musks-boring-company-reportedly-raising-funding-at-a-20-billion-valuation/" target="_blank">TechCrunch: Boring Company raising funding at a $20B valuation</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Reported round</div><div class="data-value">$4B</div></div>
+    <div class="data-item"><div class="data-label">Target valuation</div><div class="data-value">$20B (vs $5.7B in 2022)</div></div>
+    <div class="data-item"><div class="data-label">Round status</div><div class="data-value down">Not yet closed</div></div>
+    <div class="data-item"><div class="data-label">New target markets</div><div class="data-value">Nashville, Dubai</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition reported this round as a 25 July Wall Street Journal story, not yet closed; this window's most recent reporting, from 9 August, confirms the round remains in the same unclosed state roughly two weeks later, with the Nashville and Dubai expansion targets as the main new specific detail.</p>
+    <p><strong class="lbl">The details.</strong> A $20 billion valuation would be more than 3.5 times the company's 2022 mark of $5.7 billion, a re-rating this briefing has flagged in prior editions without yet being able to point to disclosed revenue or usage figures justifying the multiple beyond the existing Las Vegas system's operation. Nashville and Dubai as named target markets are more specific than the "expansion" language in prior reporting, though no announced timeline, deal status, or local regulatory progress accompanies either target market in the sourcing available this window.</p>
+    <p><strong class="lbl">Context.</strong> A round that has now been reported as "in progress" across two consecutive editions without closing suggests either a genuinely complex negotiation or simply that this briefing's weekly cadence is catching a slow-moving process mid-stream; this briefing cannot distinguish between those explanations from public sourcing.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Whether the round closes and at what final terms. (2) Any concrete Nashville or Dubai project announcement, permitting, or local government engagement. (3) Disclosed usage or revenue figures for the existing Las Vegas system that might substantiate the valuation.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — round terms are consistently reported across multiple outlets but remain unconfirmed as closed; expansion-market detail is thinly sourced</span></span></div>
+</div>
+
+<div class="card">
+  <div class="meta"><span class="tag x">X</span><span class="tag t-blue">Mechanics detailed</span><span class="date-pill">rollout continuing since 28 Jul 2026</span></div>
+  <h4>X Money's fee and yield structure comes into focus: a Cross River Bank partnership, tiered 6% yield, and no free-tier access</h4>
+  <p>X Money, launched invite-only on 28 July, continued rolling out through this window with its mechanics now more fully reported: the product runs on banking infrastructure from Cross River Bank rather than X itself holding a banking charter, offers an X-branded Visa debit card usable at any automated teller machine (ATM) with no ATM or foreign-transaction fees, and pairs a 6% yield with 3% cashback on eligible purchases. Access to the 6% yield tier is graduated by X subscription level — Premium+ subscribers ($40/month or $395/year) qualify automatically, while Premium subscribers ($8/month or $84/year) qualify only if they link a direct-deposit account. This briefing has not found updated figures this window on Musk's previously stated 600-million monthly active user (MAU) claim for X itself.</p>
+  <div class="links">
+    <a href="https://abcnews.com/Business/wireStory/elon-musk-launches-invite-money-visa-debit-card-135170677" target="_blank">ABC News: Musk launches invite-only X Money with a Visa debit card</a>
+    <a href="https://wjla.com/news/local/elon-musk-x-money-app-platform-finance-banking-fintech-digital-wallet-visa-cross-river-fdic-savings-apy-interest-rates-investing-technology-business-social-media-payments-mobile-tech" target="_blank">WJLA: how X Money works</a>
+  </div>
+  <div class="data-grid">
+    <div class="data-item"><div class="data-label">Bank partner</div><div class="data-value">Cross River Bank</div></div>
+    <div class="data-item"><div class="data-label">Yield</div><div class="data-value">6% (tiered by subscription)</div></div>
+    <div class="data-item"><div class="data-label">Cashback</div><div class="data-value">3% on eligible purchases</div></div>
+    <div class="data-item"><div class="data-label">Premium+ cost</div><div class="data-value">$40/mo or $395/yr</div></div>
+  </div>
+  <details class="deep"><summary>Read more<span class="chev material-icons-outlined">expand_more</span></summary>
+  <div class="dd">
+    <p><strong class="lbl">Context &amp; background.</strong> Last edition reported X Money's 28 July launch only in outline — a Visa debit card, 6% yield, real-time transfers — alongside Musk's unverified 600-million MAU claim. This window's reporting fills in the mechanics that were previously undisclosed, without yet addressing the MAU figure's veracity.</p>
+    <p><strong class="lbl">The details.</strong> Cross River Bank as the underlying banking partner is a specific, checkable fact that clarifies X Money's regulatory structure: it is a fintech product layered on a chartered bank's infrastructure, not X itself becoming a bank. The tiered yield-access structure, requiring either the $40/month Premium+ tier or a linked direct deposit for $8/month Premium subscribers, means the advertised 6% headline rate is not available to X's free-tier users at all — a qualification this briefing did not have last week.</p>
+    <p><strong class="lbl">Context.</strong> This continues Musk's long-stated ambition, dating to his original 1999 X.com financial-services startup that later merged into PayPal, of building an all-in-one financial app inside X — now with concrete product mechanics rather than just a launch announcement. Whether the subscription-gated yield structure drives meaningful X Premium or Premium+ conversion is not something this briefing can measure from available sourcing.</p>
+    <p><strong class="lbl">Watch items.</strong> (1) Any update or independent verification of the 600 million MAU claim. (2) X Money's expansion beyond invite-only access. (3) Regulatory or consumer-protection scrutiny of the Cross River Bank partnership structure. (4) Adoption or conversion data tying X Money access to Premium or Premium+ subscription growth.</p>
+  </div>
+  </details>
+  <div class="foot"><span class="conf"><span class="dots"><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span><span class="d"></span></span><span class="lbl">Confidence: medium — product mechanics are well-corroborated across ABC News, TechCrunch, SCMP, and WJLA; user-growth and adoption figures remain unverified company claims</span></span></div>
+</div>
+
+<div class="banner">
+  <span class="material-icons-outlined">visibility_off</span>
+  <div class="txt"><strong>Neuralink — wheelchair-control trials reported, no other dated developments this window.</strong> Neuralink's most concrete news this window is clinical trial participants testing thought-controlled powered wheelchair navigation, a step beyond the cursor- and communication-control demonstrations this briefing has previously reported, aimed at people with paralysis. This briefing found no further update this window on Neuralink's previously stated 2026 high-volume production plans or its transdural implant technique.</div>
+</div>
+
+<!-- TRENDS -->
+<a id="trends"></a>
+<div class="section-header"><span class="material-icons-outlined">trending_up</span><h3>Trends — what moved this week</h3><span class="count-pill">6 lines</span></div>
+
+<div class="trends">
+  <span class="tr-label"><span class="material-icons-outlined" style="font-size:14px">insights</span>Directional read vs. last week</span>
+  <div class="row"><span class="arrow down">▼</span><div class="txt"><strong>Tesla financial credibility.</strong> A second major bank cut its price target (Jefferies to $350) and China-divestiture chatter surfaced alongside a 9% UK sales decline — incremental deterioration for a third straight edition, even as the stock itself held roughly flat.</div></div>
+  <div class="row"><span class="arrow up">▲</span><div class="txt"><strong>xAI product-communication credibility.</strong> Grok 4.6 shipped exactly on its most recently cited date and size — the first clean resolution of an xAI product claim this briefing has recorded in three consecutive editions.</div></div>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>SpaceX capex-vs-growth tension.</strong> A revenue beat triggered an 8% after-hours drop on capex concerns; two days later the largest lock-up in market history cleared with the stock higher, not lower. Both readings of SPCX are simultaneously true.</div></div>
+  <div class="row"><span class="arrow flat">■</span><div class="txt"><strong>Starship ambition vs. reliability.</strong> A third new objective (a live Starlink V3 payload deploy) was added on top of the still-unresolved booster-landing failure and the previously reported ship-catch attempt.</div></div>
+  <div class="row"><span class="arrow up">▲</span><div class="txt"><strong>Political commitment.</strong> America PAC's budget and target-state list are now confirmed, replacing last week's unconfirmed figure.</div></div>
+  <div class="row"><span class="arrow down">▼</span><div class="txt"><strong>xAI legal posture.</strong> Two separate matters — the Minnesota injunction fight and the new St. Clair venue countersuit — both show xAI responding to content-safety allegations procedurally rather than substantively.</div></div>
+</div>
+
+<!-- EDITOR -->
+<a id="editor"></a>
+<div class="editor">
+  <span class="label"><span class="material-icons-outlined" style="font-size:14px">edit_note</span>Editor's view</span>
+  <h3>A week that delivered the hard catalysts the last edition was waiting on — and both landed more ambiguous than a simple beat or miss</h3>
+  <p><span class="num">1.</span> <strong>The week's cleanest resolution was also its most technical.</strong> Grok 4.6 shipped exactly where multiple outlets said it would, at the size they had converged on — a rare instance in this briefing's recent record of an xAI claim resolving without further drift.</p>
+  <p><span class="num">2.</span> <strong>SpaceX proved two things could be true at once.</strong> A genuine earnings beat produced an 8% after-hours drop on capex concerns; days later, the largest lock-up expiration in market history absorbed itself without the crash conventional wisdom predicted. Neither event cancels the other out.</p>
+  <p><span class="num">3.</span> <strong>xAI's legal posture hardened into a pattern, not an incident.</strong> A venue-based countersuit against Ashley St. Clair and a still-unresolved Minnesota injunction fight both show a company responding to content-safety allegations procedurally rather than substantively — a stance this briefing expects to remain the more durable story regardless of either case's ultimate outcome.</p>
+  <p><span class="num">4.</span> <strong>Musk's political commitment moved from stated intention to funded plan.</strong> A specific budget and state list replaced last week's unconfirmed figure, closing the loop this briefing opened after his "I got carried away" comment three weeks ago.</p>
+  <p><span class="num">5.</span> <strong>Tesla and Starship both kept adding weight to theses this briefing was already tracking, rather than producing new ones.</strong> Another bank cut atop an unresolved margin story for Tesla; a third unattempted objective layered onto Starship's still-unexplained booster-landing failure.</p>
+  <p class="closer">A week where the corporate catalysts this briefing had been waiting on — SpaceX's earnings, the lock-up expiration — both arrived and both resolved more ambiguously than a simple beat or miss, while the product story (Grok 4.6) resolved more cleanly than this briefing expected. The next edition should have the 19 August Minnesota hearing outcome pending, more clarity on the September Grok-to-FSD voice integration and Grok 4.7's own timeline, and, possibly, an official Starship Flight 14 launch-window announcement.</p>
+</div>
+
+<div class="colophon">
+  <strong>Muskverse Briefing</strong> · Week of 9 August 2026 · coverage window 3 – 9 August 2026<br>
+  12 items across Tesla (2) · xAI / Grok (1) · SpaceX (3) · DOGE / Politics (1) · Legal (3, incl. 1 no-change) · Other ventures (2, plus 1 Neuralink status note)<br>
+  Sources: 24/7 Wall St, Forbes, Tesla Oracle, Motley Fool, Roic News, kie.ai, Fortune, CNN, Yahoo Finance, Forbes (net worth), KeepTrack, Space.com, The Hill, Newsweek, Axios, Reason, PetaPixel, NBC News, King Law Firm, Wikipedia, Foreign Policy Journal, TechCrunch, ABC News, WJLA, company earnings disclosures.<br>
+  Confidence dots reflect source quality and corroboration, not the author's enthusiasm. Where sourcing conflicted this window — SPCX's exact 6 August closing gain, Starship Flight 14's precise launch date — this briefing reports the range and declines to pick a single figure. Market levels are as reported and may differ slightly across providers.<br>
+  Abbreviations expanded at first use: FSD (Full Self-Driving), PT (price target), TRO (temporary restraining order), SFT (supervised fine-tuning), RL (reinforcement learning), IPO (initial public offering), APY (annual percentage yield), MAU (monthly active users), ATM (automated teller machine), DOGE (Department of Government Efficiency), PAC (political action committee).<br>
+  Prepared for Stefan · next edition: week of 16 August 2026
+</div>
+
+</main>
+</body>
+</html>

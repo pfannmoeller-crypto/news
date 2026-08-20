@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ramez Naam on Powering AI: The Grid Is the Bottleneck, and Two Hundred Gigawatts Are Already There</title>
+<meta name="description" content="A clean-energy investor argues electricity is cheap but time-to-power is everything. Thirteen claims checked, the options compared on firm cost, and the one axis the conversation never touches.">
+<meta name="wz-icon" content="bolt">
+<meta name="wz-color" content="#0e5c63">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#0e5c63;
+    --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#0e5c63 0%,#0a3f44 55%,#062529 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:29px;line-height:1.25;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:13px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);line-height:1.6}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card h4{font-size:15px;margin:22px 0 6px;color:var(--grey-900)}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .n{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{margin:14px 0;padding:13px 18px;background:var(--grey-50);
+             border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+             font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote .src{display:block;margin-top:7px;font-style:normal;font-size:12.5px;color:var(--grey-600)}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.58;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout.green{background:#e6f4ea;border-left-color:var(--green);color:#0d4720}
+  .callout.grey{background:#eef4f4;border-left-color:var(--accent);color:#0b474d}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);
+     font-family:'Google Sans',sans-serif;font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+  .mono{font-family:'Roboto Mono',monospace;font-size:12.5px;white-space:nowrap}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:23px}
+    .card{padding:20px 16px}
+    .wrap{padding:10px 10px 48px}
+    table{font-size:11.5px}
+    td,th{padding:6px 6px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Research long-read · Moonshots EP #280 · 20 August 2026</div>
+  <h1>Ramez Naam on powering AI: the grid is the bottleneck, and 200 gigawatts are already sitting there</h1>
+  <p>A clean-energy investor walks a podcast through seven ways to get electricity to AI data centres — from rewiring how the existing grid is used, through solar and nuclear, to computers on buoys and in orbit. His central move is to reframe the problem: electricity is cheap, but the wait for a connection is everything. This piece follows his argument, checks the numbers, and puts the options side by side on the one measure that matters.</p>
+  <div class="meta">
+    <span>Guest: Ramez Naam, Planetary VC</span>
+    <span>Host: Peter Diamandis</span>
+    <span>13 claims checked</span>
+    <span>~3.5 hours, 21,500 words</span>
+  </div>
+</div>
+
+<div class="epistemic">
+  <b>How this was built.</b> Full auto-generated transcript read in the original order; obvious speech-to-text errors silently corrected (ERCOT, FERC, ITER, Cerebras, Sivaram, Panthalassa), anything where the error could change the meaning is flagged in place. <b>13 factual claims checked</b> against Lawrence Berkeley National Laboratory, ERCOT filings, the Duke Nicholas Institute, BloombergNEF, Lazard, the World Nuclear Association, ITER, the NRC and Gallup. A separate agent gathered named counter-positions; a third checked track record and holdings. A fourth reviewed the finished piece for unfair compression of the speaker. — <b>Not independently verified:</b> the slide deck shown on screen is not public, so figures described only verbally could not be read off the slides; two company names in the transcript could not be resolved with confidence and are marked. — <b>Not investment advice. I am not a financial adviser.</b> Naam is an investor in several companies he names; those positions are set out in a table below rather than treated as an accusation. As of 20 August 2026.
+</div>
+
+<div class="navchips">
+  <a href="#brief">His argument in brief</a>
+  <a href="#framework">A framework for judging it</a>
+  <a href="#walk">The argument, walked through</a>
+  <a href="#numbers">The options, side by side</a>
+  <a href="#back">Stepping back</a>
+  <a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="n">1</div><h2>His argument in brief</h2></div>
+
+<div class="card">
+  <p class="sub">Stated as strongly as he would state it himself.</p>
+  <ul class="tight">
+    <li><b>Electricity is not an AI cost problem. It is an AI schedule problem.</b> On a gigawatt-scale build, chips dominate capital cost so completely that five years of power is a rounding error. A hyperscaler offered power at twice the price tomorrow takes it without hesitating. What it cannot buy is time.</li>
+    <li><b>The binding constraint is poles and wires, not generation.</b> The United States can still build solar, wind, batteries and gas quickly. What it can no longer do quickly is connect things. Utilities have been re-engineered around regulatory compliance rather than speed, and permitting sits with states, counties and the federal government at once.</li>
+    <li><b>Roughly 200 GW of usable capacity already exists inside the grid</b> — the difference between average and peak load. It is stranded because everything is designed for a peak that occurs a few hours a year. Make a load flexible for a hundred hours annually and much of that gap opens up.</li>
+    <li><b>That, not new generation, is where the near-term returns are</b>, and it is badly undervalued because it is unglamorous. Texas changed its rules in June 2026 and cut multi-year waits to a year or so for interruptible loads.</li>
+    <li><b>Solar plus batteries is now genuinely competitive for round-the-clock power in sunny places</b>, and it is the fastest thing anyone can build — twelve months, against gas turbines sold out for years.</li>
+    <li><b>Learning rates, not calendars, drive cost.</b> Costs fall with cumulative volume, which is why factory-built things get cheap and construction does not. This is the argument for small modular reactors and against large bespoke ones — and it is also why he says solar has perhaps four to eight more doublings of cost decline in it, not a thousandfold.</li>
+    <li><b>Fission is expensive because the West does it rarely.</b> Nothing done occasionally is cheap. China and Korea are cheaper because they build continuously.</li>
+    <li><b>Fusion is no longer a joke, but it is still a bet.</b> The regulatory treatment changed decisively in its favour; the timelines announced by startups will slip; some of these companies will fail outright, and some may succeed and still be too expensive.</li>
+    <li><b>Space and ocean compute are real hedges against regulation, not near-term answers.</b> On his own arithmetic, a single gigawatt in orbit needs several times SpaceX's best launch year.</li>
+    <li><b>The largest unlock is one nobody can forecast:</b> algorithms that do more with less. A brain runs on 20 watts. Scaling was never the efficient path, only the predictable one.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="framework"><div class="n">2</div><h2>A framework for judging any of these claims</h2></div>
+
+<div class="card">
+  <p>Most arguments in this field are won or lost on which number gets quoted. Five axes have to be stated together, or a comparison is meaningless. Four of them Naam uses himself; the fifth is the one his conversation never reaches.</p>
+
+  <table>
+    <tr><th>Axis</th><th>The question it forces</th><th>Where claims usually break</th></tr>
+    <tr><td><b>1. Time-to-power</b></td><td>Months from decision to electrons</td><td>Ignored entirely in cost comparisons. Naam's central and strongest point.</td></tr>
+    <tr><td><b>2. Firm capex, $/W</b></td><td>Per watt <i>delivered around the clock</i>, not per watt of nameplate</td><td>The most abused number in the debate. A gigawatt of solar is not a gigawatt of gas.</td></tr>
+    <tr><td><b>3. Delivered cost, $/MWh</b></td><td>At the availability the buyer actually needs</td><td>Headline LCOE usually assumes no firming and no curtailment.</td></tr>
+    <tr><td><b>4. Doublings remaining</b></td><td>How much learning-curve headroom is actually left</td><td>Past cost declines get extrapolated forward without asking how many doublings the market can still supply.</td></tr>
+    <tr><td><b>5. Incidence — who pays</b></td><td>Whose bill absorbs the cost of accommodating the load</td><td>Absent from this conversation. It is the axis with the hardest available numbers.</td></tr>
+  </table>
+
+  <div class="callout grey"><b>Axis 2 in one example, because it explains most of the confusion.</b> The Abu Dhabi solar-plus-storage project is 5.2 GW of panels and 19 GWh of batteries for about $6.1bn, contracted to deliver 1 GW continuously. Divide by nameplate and you get <b>$1.17 per watt</b>. Divide by firm output and you get <b>$6.10 per watt</b>. Both are true. Only the second can be compared with a nuclear plant — and Naam does use the firm figure, correctly. Almost everyone quoting him does not.</div>
+
+  <p><b>Axis 4 is the one that disciplines the optimism</b>, and Naam applies it against his own field — while describing his own method with unusual flatness: <i>"I'm one of the top five forecasters of solar costs in the world. And it's not because I'm that smart. It's because I came out of tech and I came from a Moore's law world and came into energy and just applied Moore's law to it."</i>  Solar follows Wright's law, roughly 30 % cost decline per cumulative doubling. He counts four to six doublings left in the plausible market, which implies a further four- to eightfold decline — not another thousandfold. That is a striking piece of self-limitation from the person best known for the solar cost curve, and it should survive into any summary of what he said.</p>
+
+  <p><b>Axis 5 is my addition, and it is where the episode has a blind spot.</b> The entire conversation treats power as a procurement problem for the buyer. Nobody asks who absorbs the cost of accommodating a 500 MW load on a shared network. That question has an answer with real numbers in it, and it appears in the walkthrough below.</p>
+</div>
+
+<div class="sechead" id="walk"><div class="n">3</div><h2>The argument, walked through</h2></div>
+
+<div class="card">
+  <h3>One — AI is power hungry, but not power poor</h3>
+
+  <div class="quote">"If you look at building a gigawatt data center you're going to spend $50 billion, 35 billion of that for chips… When you say AI is power hungry, it's not really a cost issue. It is that energy is the bottleneck for AI."
+  <span class="src">Ramez Naam</span></div>
+
+  <p>The move here is to separate two things that get bundled together. Energy is a bottleneck in the sense that a shortage of it stops the project — but not in the sense that its price changes the economics. His illustration is blunt: tell OpenAI or Anthropic they can have power at twice the price starting tomorrow and they take it, because the revenue per unit of electricity dwarfs its cost. They will not say so publicly, because every hyperscaler runs teams whose job is to shave that cost. But the ratio decides.</p>
+
+  <div class="inbox check" id="c1"><span class="tag">Check — the $50bn / $35bn split</span>
+  <span class="pill p-most">mostly true</span> Epoch AI puts total capex for a 1 GW AI data centre at around <b>$38bn</b>; industry breakdowns put servers and accelerators at 60–70 % of capex, so $25–35bn for chips is the right shape. Five years of electricity at market rates lands in the low single-digit billions — a small fraction, as claimed. The exact pairing $50bn/$35bn is not traceable to a single published source. <span class="cs">C 3/5</span></div>
+
+  <p>Underneath sits a stronger claim, drawn out by Alex Wissner-Gross: that intelligence is roughly logarithmic in compute, so exponentially more energy buys linearly more capability. Naam accepts the framing and then complicates it in his own favour and against it at once — algorithmic progress keeps bending the curve, so it is <i>better</i> than log-linear, but still somewhere between a steep power law and a true exponential in difficulty. Asked whether recursive self-improvement changes this, he does not hedge:</p>
+
+  <div class="quote">"Every model of RSI in software fizzles over time… There is no mathematical model of RSI that's valid that I can see that leads to an actual, like, vertical asymptote take-off."
+  <span class="src">Ramez Naam</span></div>
+
+  <p class="weight">Worth noticing how unfashionable that is in the room he is in. He is on an abundance-themed podcast, and he uses his slot to say the intelligence explosion does not close.</p>
+
+  <p>He goes further later, and it is the sharpest thing he says all episode. Pressed by Wissner-Gross on whether AI systems are becoming autonomous agents, he declines the premise:</p>
+
+  <div class="quote">"I do not see AI as a being and I do not see it as particularly volitional… We anthropomorphize these things… AI models don't actually have a built-in desire to even survive."
+  <span class="src">Ramez Naam</span></div>
+
+  <p>His reasoning is evolutionary rather than technical: our drives to survive, propagate and dominate are products of hundreds of millions of years of being animals, and language models mimic our language and logic without inheriting any of that. He immediately supplies the counterweight — he is, he says, not a carbon chauvinist, digital intelligence has every reason to surpass us, and if we wanted to build actual beings we probably could. He also flags that he can be persuaded by evidence and knows the view is unpopular. It is a position held with stated conditions, not a dismissal.</p>
+
+  <h3>Two — speed to power, and why the queue is the whole story</h3>
+
+  <div class="quote">"If you put in a request for a hundreds of megawatts of power to build a data center today, good luck getting that power before 2031, 2032."
+  <span class="src">Ramez Naam, on ERCOT — the fastest-moving grid in the United States</span></div>
+
+  <p>He is careful about which queue he means. Generation interconnection — plugging in a new power plant — has stretched from around fifteen months two decades ago to something approaching forty-five. The load side, where data centres sit, has worse data but the same direction: three American locations he shows added six or seven months of waiting in a seven-month window. The cause is two-part and neither part is villainous. Demand growth slowed for decades, so utilities reorganised themselves around customer service and regulatory compliance rather than speed. And permitting is fragmented across land controlled by counties, states and the federal government.</p>
+
+  <div class="inbox check" id="c2"><span class="tag">Check — 15 months to 45 months</span>
+  <span class="pill p-mis">misleading as stated</span> The direction is right and well documented; the specific numbers are not the Berkeley Lab metric. LBNL's "Queued Up" series measures typical duration from request to commercial operation rising from <b>under two years</b> for projects built 2000–2007 to <b>over four years</b> for 2018–2023, with a five-year median for projects completed in 2023. Naam's figures are in the right region but should not be cited as LBNL's. <span class="cs">C 3/5</span></div>
+
+  <div class="inbox check" id="c3"><span class="tag">Check — ERCOT at 80 GW peak against a 200 GW queue</span>
+  <span class="pill p-most">mostly true, and conservative</span> ERCOT's summer peak runs nearer <b>85–90 GW</b>. The large-load queue stood at roughly <b>238 GW</b> in March 2026, with further filings pushing toward 380 GW — so "well over 200" understates it. His own caveat holds up too: only about 9 GW has approval to energize and observed large-load consumption is around 3.9 GW, which is exactly the picture of a queue stuffed with speculative filings that he describes. <span class="cs">C 4/5</span></div>
+
+  <p>He does not treat the speculative filings as fraud, but as congestion. Anyone can file without financing or a customer; most of it evaporates; and in the meantime the operator is buried. That is a systems observation rather than a complaint about bad actors, and it survives checking.</p>
+
+  <div class="inbox views" id="v1"><span class="tag">Other views — is it really the wires?</span>
+  Mostly supported, with a refinement. The World Economic Forum frames grid connectivity as the strategic bottleneck in the same terms. A more granular reading breaks it into three sub-constraints — <b>high-voltage transformers, switchgear and grid-side batteries</b>, with substation lead times of three to five years. That is a friendly amendment rather than a rebuttal.<br><br>
+  <b>Negative finding worth stating:</b> I looked for a named expert arguing the opposite — that generation, turbines or skilled labour is the real bottleneck — and did not find one. Gas turbine lead times get treated as part of the same complex rather than as a competing explanation.</div>
+
+  <h3>Three — behind the meter, because waiting is worse</h3>
+
+  <p>If the grid makes you wait, build your own. The default is a large gas turbine, and here the constraint moves rather than disappears: several-hundred-megawatt units are sold out for roughly seven years. So buyers move down the size curve to 38 MW units mounted on trailers — forty of them make a gigawatt — and even those have backlogs. Naam's example of how far the pivot has spread is Boom Supersonic adapting its engine design into a gas turbine for data centres, because the demand is that intense.</p>
+
+  <div class="inbox check" id="c4"><span class="tag">Check — turbines sold out seven years</span>
+  <span class="pill p-true">true</span> Lead times for large H/J-class turbines run five to seven years; GE Vernova's backlog stands at around 116 GW with slots booked through 2029–2030. <span class="cs">C 4/5</span> — The Boom Supersonic pivot could <b>not</b> be confirmed. <span class="pill p-unv">unverifiable</span> <span class="cs">C 2/5</span></div>
+
+  <p>Alex Wissner-Gross presses the obvious question twice: if power is the overhang on Nvidia's ability to sell GPUs, why is Nvidia not in the power business? Naam's answer is that the incentives are already large enough without them: behind-the-meter economics are so good that Nvidia does not have to, though it might invest in some of the companies doing it. <i>(Wissner-Gross then offers the margin explanation — that power generation is simply lower-margin than chips — and Naam neither adopts nor rejects it.)</i> What he would do instead is change the incentive structure for regulated utilities, which are paid a percentage above capital spend:</p>
+
+  <div class="quote">"Utilities instead of just getting paid for a percentage over capex, they should be paid on things like how fast they can deliver power. Their executives should get bonuses for delivering power fast."
+  <span class="src">Ramez Naam</span></div>
+
+  <p>Also in this stretch, and easy to miss, is his most falsifiable near-term prediction. Nvidia's moat, he argues, was never the silicon — AMD's chips are comparable and Huawei is closing — but CUDA, the software layer. And he thinks it is going: <i>"the CUDA moat is broken this year and next year"</i>, partly because AI can now recompile code onto rival hardware. He names a portfolio company working on it, whose name the transcript renders unrecognisably. That is a dated, checkable call on a company worth trillions, and it is worth returning to in 2027.</p>
+
+  <p>He follows the utilities point with an admission that doubles as evidence: in his own deal flow he has seen only two or three startups working on speeding up the building of poles and wires, and none he thought were good. Not because the problem is unsolvable, but because nobody is paid to solve it.</p>
+
+  <h3>Four — the 200 gigawatts already in the wires</h3>
+
+  <p>This is the centre of the argument and the part he is most emphatic about. American grids average around 500 GW of demand, dropping to roughly 400 GW on winter nights and rising to about 600 GW on summer afternoons. Everything — transmission lines, substations, transformers — is sized for the top of that range. The gap is real capacity that exists and goes unused.</p>
+
+  <div class="quote">"If we just used the poles and wires more efficiently, we could power up a lot of stuff because we're not short on generation. We're not short on power plants. We are short on capacity in the poles and wires."
+  <span class="src">Ramez Naam</span></div>
+
+  <div class="inbox check" id="c5"><span class="tag">Check — the load numbers, and which way the error runs</span>
+  <span class="pill p-unv">unverified, and probably understated</span> I could not confirm the 400/500/600 GW figures against EIA series within budget. One data point suggests US summer peaks have reached around <b>769 GW</b>, well above the 600 GW he cites. If so, the headroom between average and peak is <i>larger</i> than his 200 GW, not smaller — the error runs against his own thesis. <span class="cs">C 2/5</span></div>
+
+  <p>The intellectual anchor is a paper he praises without reservation — Tyler Norris and colleagues at Duke's Nicholas Institute, which he calls the best electricity paper of the year. His summary: be flexible for a hundred hours a year, about 1 % downtime, and roughly 100 GW of capacity opens up, worth some $5tn of data centre capex including chips.</p>
+
+  <div class="inbox check" id="c6"><span class="tag">Check — the Norris paper, precisely</span>
+  <span class="pill p-mis">threshold mislabelled</span> The paper gives a schedule, not a single number: <b>0.25 % curtailment unlocks 76 GW; 0.5 % unlocks 98 GW; 1.0 % unlocks 126 GW.</b> Naam pairs "1 %" with "100 GW", which belongs to 0.5 %. Note the direction: at the 1 % he actually states, the paper says <b>126 GW</b> — so his headline number is conservative even though his threshold is wrong.<br><br>
+  The authors' own limits matter more than the mislabel. It is a system-level model built on historical load shapes, not a line-by-line congestion study, and it assumes reductions that are reliable and predictable. Practitioners have pushed back that interconnection is decided far more granularly than the model represents. <span class="cs">C 5/5</span></div>
+
+  <div class="inbox views" id="v2"><span class="tag">Other views — will data centres actually flex?</span>
+  This is the strongest objection to his strongest section, and it is not technical. Latitude Media asked directly whether data centre flexibility is a <b>"regulatory fiction"</b>: operators can throttle, but the value of uninterrupted compute exceeds almost any flexibility payment, and a grid operator left holding an unmet promise must buy expensive reserve.<br><br>
+  <b>Where the authoritative reference supports him:</b> the money is moving as if flexibility is real. Emerald AI — founded by Varun Sivaram, correctly identified in the episode — has raised from Nvidia's venture arm alongside Eaton, GE Vernova, Siemens and In-Q-Tel, with pilots at utilities including AES, Constellation and NextEra, and a first deployment at an Nvidia site in Virginia. That is not proof the thesis works. It is evidence that serious counterparties are betting it does.</div>
+
+  <div class="callout red"><b>And here is axis five, which the conversation never reaches.</b> PJM's capacity price rose from $77.78 to $136.53 per MWh between the 2025 and 2026 auctions, up 75 %. PJM's independent market monitor attributes about <b>63 % of that increase to data centres</b> — roughly <b>$9.3bn</b> of additional consumer cost in a single auction, and $29.4bn across four.<br><br>
+  This does not contradict anything Naam says. His claim is that power is cheap <i>relative to GPUs</i>, and it is. But "cheap for the buyer" and "cheap" are different statements, and the difference is landing on household bills in Ohio, Maryland and Virginia. In three and a half hours on the economics of powering AI, the question of who pays does not come up. <span class="cs">C 4/5 — the monitor's attribution is contested by PJM itself; the auction figures are not</span></div>
+
+  <h3>Five — solar, and the winter he does not skip</h3>
+
+  <p>The cost history is the chart he is best known for: a watt of solar cost about $100 in 1975 and costs roughly 8 cents from China today, for a panel that is smaller, more durable and longer-lived. Batteries have fallen by a factor of fourteen since 2010. His claim for what comes next is sodium-ion, which he says could cut battery cost by a factor of ten.</p>
+
+  <div class="inbox check" id="c7"><span class="tag">Check — solar, lithium, and sodium</span>
+  <span class="pill p-true">solar and lithium: true</span> Mid-1970s modules exceeded $100/W; current Chinese spot prices are $0.08–0.10/W. BloombergNEF puts lithium-ion pack prices down 93 % since 2010 to <b>$108/kWh</b> in 2025 — a 93 % fall is a factor of 14.3, so his figure is exact.<br><br>
+  <span class="pill p-mis">sodium at 10x: unsupported as a projection</span> He says sodium-ion <i>"could"</i> cut battery cost tenfold, and separately that batteries will fall another 10x <i>"ultimately"</i> — both hedged, neither given a date. As a statement about today it is wrong by roughly fivefold: sodium-ion cells run <b>$55–70/kWh</b> against $105–108 for lithium, a factor of <b>1.7 to 1.8</b>. As a claim about an eventual floor it is simply unevidenced rather than false. CATL's Naxtra reaches 175 Wh/kg in mass production and HiNa targets 8,000–10,000 cycles by 2027, so the technology is real and improving fast. <span class="cs">C 4/5</span></div>
+
+  <p>On whether solar simply wins, he declines the easy answer and names the unsolved problem himself. Cost is not the obstacle and nor is night, because batteries handle a daily cycle and are still falling. Winter is the obstacle:</p>
+
+  <div class="quote">"In London, for instance, you get a sixteenth or seventeenth as much insolation in January as you do in June or July. So you're going to build out your solar plant by a factor of six or seven? No."
+  <span class="src">Ramez Naam</span></div>
+
+  <p>The economics of seasonal storage are, as he puts it, battery capex divided by how many times it cycles — daily cycling amortises over thousands of uses, seasonal shifting over two. Compressed air, sand and power-to-gas exist as ideas; none is close. And electrifying heat makes it worse, roughly doubling UK winter demand. His conclusion is not a solar conclusion:</p>
+
+  <div class="quote">"I do believe nuclear is super useful, as are efforts to get seasonal storage, as are all of our efforts on fusion, as is advanced geothermal — especially for those places that are further from the equator."
+  <span class="src">Ramez Naam</span></div>
+
+  <div class="inbox views" id="v3"><span class="tag">Other views — on extrapolating learning curves</span>
+  The Oxford Institute for Energy Studies has published a critical assessment of exactly this method, warning against straight extrapolation of solar and wind learning curves. On the winter gap, published modelling suggests winter output can fall to 20–30 % of summer and that heating loads can raise winter demand several-fold.<br><br>
+  <b>Negative finding:</b> I could not find anyone engaging with Naam's specific concession. The literature exists; a direct exchange does not. His own statement of the problem is currently the sharpest version of it in this conversation.</div>
+
+  <div class="inbox check" id="c8"><span class="tag">Check — Abu Dhabi, and the nuclear comparison</span>
+  <span class="pill p-mis">one figure is wrong, and it cuts against him</span> The Masdar/EWEC project is confirmed: 5.2 GW solar, 19 GWh storage, about $6.1bn, contracted for 1 GW round the clock — so $6.10 per firm watt, as he says. It does not begin operating until 2027, so the 24/7 guarantee is contracted rather than demonstrated.<br><br>
+  Vogtle at roughly <b>$15/W</b> is confirmed. But standardised Chinese plants come in nearer <b>$2/W</b>, not the $4/W he quotes — $4/W is closer to recent French builds. <b>Correcting this makes nuclear look better than he presented it</b>, and narrows the case for solar. Not every error here runs his way. <span class="cs">C 4/5</span></div>
+
+  <h3>Six — fission and fusion</h3>
+
+  <p>His fission diagnosis is a single sentence with a lot of load on it: it is ruinously expensive outside China and perhaps Korea because we do it rarely, and nothing done occasionally is cheap. From that follows both the case for large reactors — stamp out enough AP1000s and the price falls — and the case for small modular ones, because factories learn faster than construction sites. He is precise about the mechanism and about the cost of ignoring it: the first unit of any new design runs over on time and budget, and an industry that stops building loses its supply chain, its crews and its engineers, and then everything gets more expensive.</p>
+
+  <p>He is also candid that he has been round this loop before — enthusiastic about SMRs fifteen years ago, less so later, cautiously hopeful again now — and that the sector is running hot. His example is Valar Atomics raising $1bn at a $6bn valuation without a working reactor.</p>
+
+  <div class="inbox check" id="c9"><span class="tag">Check — Valar, France, and a naming slip</span>
+  <span class="pill p-true">Valar: true</span> A Sequoia-led $1bn round in August 2026 at $6bn, tripling a prior $2bn valuation, pre-operational. <span class="cs">C 4/5</span><br>
+  <span class="pill p-mis">France: overstated — but not by him</span> France has 56–57 reactors; asked whether it was "like 60", Naam said "something on that order", which is right. The <b>80 %</b> figure that follows comes from a different speaker after a speaker change in the transcript, and Naam's own sentence resumes afterwards. The correct share is about <b>70 %</b>. I had originally scored this against him; on checking the transcript it is not his number. <span class="cs">C 4/5 — speaker attribution in an auto-transcript</span><br>
+  <span class="pill p-false">Commonwealth Fusion is an MIT spin-out, not Harvard.</span> A slip in passing, not an argument. <span class="cs">C 5/5</span></div>
+
+  <p>On his own SMR timelines he is the sceptic in the room. Optimistic company projections cluster around 2030 to the early 2030s; he expects them to be missed, says plainly that he does not expect a commercial SMR in 2030 or 2031, and adds that the first units will not be cheap regardless. He also names his own uncertainty about the middle of the size range — designs like Natrium and the BWRX-300 that are neither large enough for scale economies nor small enough to be truly factory-built — while allowing they might turn out to be optimal.</p>
+
+  <div class="inbox check" id="c10"><span class="tag">Check — ITER, and what Commonwealth actually shrank</span>
+  <span class="pill p-false">the ITER figure is wrong by an order of magnitude</span> ITER is designed for <b>500 MW of fusion power</b>, not the "at least 5 GW" stated. The transcript is auto-generated and this may be a transcription artefact rather than his error, but as it stands the claim overstates by 10x — and it flatters the achievement of shrinking the design. Commonwealth's SPARC targets roughly 50–140 MW of fusion power and the planned ARC around 400 MW electric; the "600 MW" figure matches neither exactly. <span class="cs">C 4/5</span></div>
+
+  <div class="inbox check" id="c11"><span class="tag">Check — the regulatory change, which is the real news</span>
+  <span class="pill p-true">true and consequential</span> The NRC has moved commercial fusion out of the power-reactor framework and under byproduct-material rules — the same regime as radiological equipment — on the reasoning that fusion has no chain reaction and no decay-heat risk. Naam's framing of the distinction as "default on versus default off" is a fair summary of the physics. Helion's power purchase agreement with Microsoft for 50 MW targeted at 2028 is confirmed. <span class="cs">C 5/5</span></div>
+
+  <p>Asked whether fusion being close means the problem is solved, he refuses the invitation twice over:</p>
+
+  <div class="quote">"All of these companies might fail. They might 100 % fail. And in addition to that, they might succeed but be too expensive. Just because your fuel source costs very little doesn't mean your energy will cost little."
+  <span class="src">Ramez Naam</span></div>
+
+  <h3>Seven — orbit and ocean</h3>
+
+  <p>He places himself explicitly in the middle of a polarised debate, and then does arithmetic that lands closer to the sceptics. One gigawatt of compute in orbit, on SpaceX's own design, takes roughly six times SpaceX's best launch year and twice its cumulative launch mass to date. Ten gigawatts a year is five or six Starship launches <i>a day</i>. Elon Musk's stated target of 100 GW a year implies something near 30,000 launches annually — a launch every fifteen minutes.</p>
+
+  <div class="quote">"Unless we hit that exponential absolutely full-on and go right down that path, this looks prohibitive for 15, 20 years."
+  <span class="src">Ramez Naam</span></div>
+
+  <p>What he grants is the strategic logic rather than the near-term economics. Space compute is a hedge against terrestrial regulation, and — the more interesting point — AI demand may be the thing that finally finances the launch cadence Mars requires, because there is not enough communications demand on Earth to pay for it. He caps his own expectation precisely: if SpaceX has a single gigawatt in orbit by 2030, he will be impressed.</p>
+
+  <div class="inbox views" id="v4"><span class="tag">Other views — the heat problem</span>
+  Technical analysis is, if anything, harsher than he is. Radiating one megawatt of waste heat at around 300 K needs roughly 1,200 m² of radiator; a 250,000 m² radiator array implies 100–500 Starship flights on its own. Google's own Project Suncatcher estimate is over 50 dedicated launches for a 100 MW constellation.<br><br>
+  <b>The named dissent, for balance:</b> engineer Sean Goedecke argues the cooling problem is overstated and more tractable than presented, and Starcloud already runs an H100 in orbit under immersion cooling — an existence proof at 700 watts. Economic parity is generally pegged to launch costs around $200–250/kg.</div>
+
+  <p>The public-opinion constraint runs underneath all of this, and he cites it in passing: <i>"71 % of Americans are against data centers, which is a higher percentage than are against a nuclear plant in their backyard."</i> Gallup's April 2026 polling puts opposition to nearby AI data centres at roughly <b>70 %</b>, with 48 % strongly opposed — close enough to stand. The comparison with nuclear I could not verify directly. It is the reason his siting arguments keep pointing abroad: he describes advising the state of Chihuahua in Mexico to change a law capping private generation at half a megawatt, and names Australia — friendly government, space, world-class sun — as where he would build if he were starting now.</p>
+
+  <p>The ocean version is the same idea with better thermodynamics. Buoys off Antarctica-adjacent waters, where the strongest waves are, bobbing to drive a turbine, with free cooling from 4 °C seawater that appears to extend GPU life. He discloses the miss in his own words: <i>"I'm an idiot because I said no to these guys five years ago, when they were raising a seed round. And I invested twice this year at much, much, much higher valuations."</i></p>
+
+  <div class="inbox check" id="c12"><span class="tag">Check — the wave-power company</span>
+  <span class="pill p-most">mostly confirmed</span> Panthalassa, of Oregon, founded by Garth Sheldon-Coulson. A $140m Series B led by Peter Thiel at a valuation near $1bn in May 2026; target cost $0.02/kWh; connectivity via satellite rather than subsea cable. Naam's investment is confirmed by his own public post. <b>The prior Bitcoin-mining history he mentions could not be confirmed.</b> <span class="cs">C 4/5</span></div>
+
+  <h3>And the coda he calls the real unlock</h3>
+
+  <div class="quote">"Scaling is not everything in AI. Scaling is just what we knew how to do… If you want to know what the biggest unlock that we cannot predict of AI and power will be — to learn new ways to manipulate information, to do more with less."
+  <span class="src">Ramez Naam</span></div>
+
+  <p>A brain runs inference on 20 watts. He is careful not to make this a claim of human superiority — he says outright he is not a carbon chauvinist and that digital intelligence has every reason to surpass us — but rather a claim that current architectures are leaving efficiency on the table that evolution already found. It is the one place where the energy problem could dissolve rather than be solved, and he flags that he has no graph for it.</p>
+</div>
+
+<div class="sechead" id="numbers"><div class="n">4</div><h2>The options, side by side</h2></div>
+
+<div class="card">
+  <p class="sub">Assembled from Lazard, BloombergNEF, IRENA, MIT, DOE and company filings. Where firm and nameplate figures differ, both are shown. Blank cells are gaps in the public record, not omissions.</p>
+
+  <table>
+    <tr><th>Option</th><th>Capex $/W</th><th>$/MWh</th><th>Capacity factor</th><th>Time to power</th></tr>
+    <tr><td><b>Grid connection</b><br><span class="sub">the reference case</span></td><td>—</td><td class="mono">50–90 ERCOT<br>~100 PJM</td><td>~100 %</td><td><b>PJM &gt;8 yrs</b><br>ERCOT ~4.2 yrs</td></tr>
+    <tr><td><b>Gas turbine, large, behind the meter</b></td><td class="mono">0.75–1.25</td><td class="mono">48–107</td><td>85–90 %</td><td>Turbine slots booked to 2029–30</td></tr>
+    <tr><td><b>Gas turbine, 38 MW mobile</b></td><td class="mono">0.95–2.00</td><td>—</td><td>—</td><td>Weeks to months <span class="sub">(vendor claim)</span></td></tr>
+    <tr><td><b>Solar + storage, 24/7, sunny</b><br><span class="sub">Abu Dhabi</span></td><td class="mono"><b>6.10 firm</b><br>1.17 nameplate</td><td class="mono">54–82 firm</td><td>~90 %+ by design</td><td><b>~12 months</b></td></tr>
+    <tr><td><b>Solar + storage, mid-latitude winter</b></td><td>no reliable figure</td><td>no reliable figure</td><td>winter 20–30 % of summer</td><td>—</td></tr>
+    <tr><td><b>Onshore wind + storage</b></td><td class="mono">1.15–1.80</td><td class="mono">26–54 unfirmed<br>~71 firmed</td><td>40–45 % US plains</td><td>ERCOT ~27 months</td></tr>
+    <tr><td><b>Nuclear, US (Vogtle)</b></td><td class="mono"><b>~15</b></td><td class="mono">141–220</td><td>~90 %</td><td><b>&gt;10 yrs</b></td></tr>
+    <tr><td><b>Nuclear, China</b></td><td class="mono"><b>~2</b></td><td>—</td><td>~90 %</td><td>~5–6 yrs</td></tr>
+    <tr><td><b>Nuclear, Korea (APR1400)</b></td><td class="mono">2.3–2.5 domestic<br>3.8–4.5 Barakah</td><td>—</td><td>~90 %</td><td>—</td></tr>
+    <tr><td><b>SMR</b></td><td class="mono">3.99–4.84 est.<br>~20 NuScale actual</td><td class="mono">80–90</td><td>90 % design, unproven</td><td><b>none operating</b></td></tr>
+    <tr><td><b>Fusion</b></td><td>n/a</td><td>PPA prices undisclosed</td><td>n/a</td><td>Helion targets 50 MW in 2028</td></tr>
+    <tr><td><b>Enhanced geothermal (Fervo)</b></td><td>—</td><td class="mono">45 target</td><td>~90 % design</td><td>100 MW Oct 2026<br>400 MW 2028</td></tr>
+    <tr><td><b>Wave (Panthalassa)</b></td><td>—</td><td class="mono">20 target</td><td>—</td><td>3 units in water</td></tr>
+    <tr><td><b>Orbital</b></td><td>—</td><td>—</td><td>—</td><td>~50+ launches per 100 MW</td></tr>
+  </table>
+
+  <div class="callout grey"><b>Three things fall out of this table that the conversation does not say.</b><br><br>
+  <b>One.</b> On firm capex, the cheapest round-the-clock power on the board is not solar and not American — it is a Chinese nuclear plant at roughly $2 per firm watt, against $6.10 for the Abu Dhabi solar-and-storage project. Naam's own quoted figure of $4/W obscures this by half.<br><br>
+  <b>Two.</b> Time-to-power and cost point in opposite directions almost everywhere. The cheapest firm option takes five to six years and cannot be built in the United States; the fastest options are the mobile turbines and the twelve-month solar build. If his axis-one argument is right — that schedule dominates — then the cost table is close to irrelevant, which is a stronger version of his own case than he makes.<br><br>
+  <b>Three.</b> The Vogtle-to-Barakah-to-China spread of roughly seven-to-one is the single largest number in the table, and it is not a technology difference. Barakah unit 4 cost about 40 % of unit 1 on the same site with the same design. That is the learning-rate argument with the cleanest available evidence, and it is an argument for building repeatedly, whatever the technology.</div>
+
+  <p class="weight">Gaps I could not close: firm winter economics for northern Europe, per-dollar capacity unlocked by flexibility investment, and any independent costing of wave or orbital compute. The German Energy Efficiency Act requires data centres to run on 100 % renewable electricity from January 2027, which makes the missing winter figure a live commercial question rather than an academic one.</p>
+</div>
+
+<div class="sechead" id="back"><div class="n">5</div><h2>Stepping back</h2></div>
+
+<div class="card">
+  <h3>Which way the errors lean</h3>
+  <p>Across thirteen checks the pattern is genuinely mixed, which is worth stating plainly because in earlier pieces in this series it has not been.</p>
+  <ul class="tight">
+    <li><b>Leaning toward his thesis:</b> the sodium-ion "10x", hedged as a possibility but roughly fivefold beyond today's 1.8x gap — the largest single overstatement, and the one that most flatters the storage case. The ITER figure, which makes fusion's compaction look more dramatic. The Texas and FERC actions, described as one movement when they are separate and ERCOT is not FERC-jurisdictional at all.</li>
+    <li><b>Leaning against his thesis:</b> Chinese nuclear quoted at twice its actual cost, which understates his own competition. Summer peak load quoted at 600 GW when the real figure may be nearer 769, which understates the headroom his central argument depends on. ERCOT's queue described as "over 200 GW" when it is 238 and rising.</li>
+    <li><b>Conservative even where mislabelled:</b> on the Duke paper he states a 1 % threshold and a 100 GW result. At 1 % the paper actually says 126 GW.</li>
+  </ul>
+  <p>A speaker whose errors run in both directions is behaving differently from a speaker whose errors all run one way. Three or four favourable overstatements against three unfavourable ones is not a pattern of advocacy. It is closer to the error profile of someone working from memory at speed. <b>One run is not a base rate, and this is a single episode.</b></p>
+
+  <h3>The messenger</h3>
+  <p>Naam's reputation rests on solar cost forecasting, and the documented record is unusual: his 2011 and 2015 projections were <b>too conservative</b> — prices fell roughly twice as fast as he predicted — and he has said so publicly himself. Independent write-ups confirm it. I searched specifically for cases where he was too optimistic and found none, but the search was oriented toward finding errors of conservatism, so treat that as an incomplete test rather than a clean bill.</p>
+  <p>The venue is not adversarial. Moonshots is a sponsored weekly roundtable hosted by Peter Diamandis with recurring co-hosts and an explicit abundance orientation; guests are ideologically adjacent and there is no fact-checking function in the room. That said, the pushback in this episode is real: Alex Wissner-Gross presses hard on scaling laws, on why Nvidia is not vertically integrating, and on orbital cooling, and Naam gives ground on none of them by reflex. It is a friendly format in which the guest is nonetheless argued with.</p>
+
+  <h3>Positions, stated as positions</h3>
+  <table>
+    <tr><th>What he argues</th><th>What he holds</th><th>Verified?</th></tr>
+    <tr><td>Grid flexibility is the undervalued near-term win</td><td>A load-shifting battery startup he says drove the Texas rule change and holds 10 GW of sites</td><td>Reported via secondary source only; company name unresolved in the transcript</td></tr>
+    <tr><td>EV-managed charging frees grid capacity</td><td>WeaveGrid, as angel investor</td><td>Confirmed in WeaveGrid's own releases</td></tr>
+    <tr><td>Ocean compute is a credible fourth path</td><td>Panthalassa, invested twice in 2026</td><td>Confirmed by his own public statement</td></tr>
+    <tr><td>Fleet-financed large reactors are the way to scale fission</td><td>Says he backed a founder of "the nuclear company"</td><td><b>Not confirmed</b> — Planetary VC does not appear on the public investor list</td></tr>
+    <tr><td>Nvidia's CUDA moat breaks this year or next</td><td>A portfolio company working on cross-compilation</td><td><b>Name unresolved</b> — the transcript rendering matches no company I could find</td></tr>
+  </table>
+  <p class="weight">He discloses each of these in the moment, unprompted, including the Panthalassa investment and the fact that he passed on it five years earlier. Disclosure does not neutralise an interest, but its absence would be the more telling fact.</p>
+
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li><b>The slides.</b> No public deck for this episode exists on his blog, his firm's site, or the usual hosting services. A structurally similar two-hour talk from March 2026 is on his blog with chapter markers, including a section making the same time-to-power argument — that is the nearest thing to a citable source for the visuals.</li>
+    <li><b>Two company names</b> rendered unrecognisably by the transcription, one of them a disclosed holding.</li>
+    <li><b>The GPU-production-implies-230 GW calculation</b>, which I could not trace to any published source. Related figures exist — around 156 GW of AI data centre capacity expected by 2030 — but not his.</li>
+    <li><b>Named SMR optimists</b> willing to defend 2029–2030 dates publicly, which would have balanced his scepticism. Their absence from the search is not evidence they do not exist.</li>
+    <li><b>One substantial block is summarised here rather than walked through:</b> roughly seven hundred words on oil markets and geopolitics, in which Naam rejects a co-host's theory that recent military action in Venezuela and Iran was designed to deny China backup oil ahead of a Taiwan scenario. His counter is that oil is fungible, that China kept buying from Iran throughout, and that the actual contingency plans involve submarines rather than embargoes. Worth noting because it cuts against a lazy reading of him as the man who agrees with the room.</li>
+  </ul>
+  <p>These are unreviewed, not rejected.</p>
+</div>
+
+<div class="sechead" id="score"><div class="n">6</div><h2>Scorecard and takeaways</h2></div>
+
+<div class="card">
+  <table>
+    <tr><th>#</th><th>Claim</th><th>Verdict</th><th>C</th></tr>
+    <tr><td><a href="#c1">c1</a></td><td>1 GW data centre ≈ $50bn, $35bn chips</td><td><span class="pill p-most">mostly true</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c2">c2</a></td><td>Interconnection queue 15 → 45 months</td><td><span class="pill p-mis">misleading</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c3">c3</a></td><td>ERCOT 80 GW peak vs 200 GW+ queue</td><td><span class="pill p-most">mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c4">c4</a></td><td>Large gas turbines sold out ~7 years</td><td><span class="pill p-true">true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c5">c5</a></td><td>US load 400/500/600 GW, 200 GW headroom</td><td><span class="pill p-unv">unverified</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c6">c6</a></td><td>1 % flexibility unlocks 100 GW (Duke)</td><td><span class="pill p-mis">threshold mislabelled</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c7">c7</a></td><td>Solar $100/W → 8¢; batteries ÷14</td><td><span class="pill p-true">true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c7">c7</a></td><td>Sodium-ion "could" cut battery cost 10x</td><td><span class="pill p-mis">unsupported</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c8">c8</a></td><td>Abu Dhabi $6/W firm; Vogtle $15/W</td><td><span class="pill p-true">true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c8">c8</a></td><td>Cheapest Chinese nuclear $4/W</td><td><span class="pill p-mis">~2x too high</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c9">c9</a></td><td>Valar $1bn at $6bn, pre-reactor</td><td><span class="pill p-true">true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c9">c9</a></td><td>France ~60 reactors <span class="sub">(the 80 % figure is another speaker's)</span></td><td><span class="pill p-true">true as he said it</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c10">c10</a></td><td>ITER designed for 5 GW</td><td><span class="pill p-false">500 MW</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c11">c11</a></td><td>NRC regulates fusion outside reactor rules</td><td><span class="pill p-true">true</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c12">c12</a></td><td>Wave-powered data centres, Thiel-led round</td><td><span class="pill p-most">mostly true</span></td><td class="cs">4/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>The central reframe.</b> Time-to-power, not cost per megawatt-hour, is the binding constraint. Every independent source consulted points the same way, and the comparison table makes it visible: the cheapest firm power on the board is also among the slowest and cannot be built in the United States.</li>
+    <li><b>The flexibility argument, with its threshold corrected.</b> The Duke paper is real, the capacity is real, and the regulatory movement is real. Whether data centre operators will actually accept curtailment is the open question, and it is commercial rather than technical.</li>
+    <li><b>His scepticism.</b> On SMR dates, on fusion companies failing, on orbital compute for fifteen to twenty years, and on recursive self-improvement — in each case he is the most conservative voice in an optimistic room, and in each case the outside evidence supports him.</li>
+    <li><b>The learning-rate argument</b>, best evidenced not by solar but by Barakah unit 4 costing roughly 40 % of unit 1.</li>
+  </ul>
+
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>The sodium-ion tenfold</b>, if read as a present-day figure. Today the gap is under two. He hedged it as something sodium "could" eventually deliver, which is a weaker and more defensible claim than the number sounds when repeated without the hedge — and it will be repeated without the hedge.</li>
+    <li><b>Any single-number version of the Duke finding.</b> The paper is a schedule across curtailment levels; the headline "100 GW" only means anything attached to a threshold.</li>
+    <li><b>His $4/W for Chinese nuclear</b> — in the other direction. Corrected, it strengthens the nuclear case relative to everything else in the table.</li>
+    <li><b>The framing that power is cheap</b>, full stop. It is cheap <i>for the buyer</i>. PJM's capacity market says the accommodation cost is real and lands elsewhere.</li>
+    <li><b>Enthusiasm on either side of the orbital question.</b> The heat-rejection numbers are unforgiving and the launch-cadence numbers are his own — but Starcloud's H100 in orbit is a real existence proof and the sceptics should account for it.</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <ul class="tight">
+    <li><b>Primary:</b> <a href="https://www.youtube.com/watch?v=LUFJE5QkINg">Moonshots EP #280</a>, auto-generated transcript · <a href="https://www.rameznaam.com/p/two-hours-of-ai-optimism-grounded">Naam's March 2026 Abundance 360 talk</a>, the nearest citable version of the same argument</li>
+    <li><b>Grid and queues:</b> <a href="https://emp.lbl.gov/publications/queued-2025-edition-characteristics">LBNL, Queued Up 2025</a> · <a href="https://www.latitudemedia.com/news/ercots-large-load-queue-has-nearly-quadrupled-in-a-single-year/">Latitude Media on the ERCOT queue</a> · <a href="https://www.carbon-direct.com/research-and-reports/ai-meets-the-grid-interconnection-queue-analysis-in-pjm-and-ercot">Carbon Direct, PJM and ERCOT</a></li>
+    <li><b>Flexibility:</b> <a href="https://nicholasinstitute.duke.edu/publications">Norris et al., Nicholas Institute, Duke</a> · <a href="https://www.latitudemedia.com/news/is-data-center-flexibility-a-regulatory-fiction/">Latitude Media, "a regulatory fiction?"</a> — single-source for the sceptical framing</li>
+    <li><b>Who pays:</b> <a href="https://ieefa.org/resources/projected-data-center-growth-spurs-pjm-capacity-prices-factor-10">IEEFA on the PJM auction</a> — advocacy organisation, energy-transition mission · <a href="https://www.theregister.com/on-prem/2026/05/15/datacenters-slurping-juice-help-drive-75-jump-in-pjm-power-prices/">The Register on the 75 % rise</a></li>
+    <li><b>Costs:</b> <a href="https://www.lazard.com/media/uounhon4/lazards-lcoeplus-june-2025.pdf">Lazard LCOE+ June 2025</a> · <a href="https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/">BloombergNEF battery prices</a> · <a href="https://web.mit.edu/kshirvan/www/research/ANP201%20TR%20CANES.pdf">MIT on AP1000 costs</a> · <a href="https://www.pv-magazine.com/2025/01/14/masdar-ewec-announce-5-gw-19-gwh-solar-plus-storage-project-in-abu-dhabi/">pv magazine on Masdar/EWEC</a></li>
+    <li><b>Nuclear and fusion:</b> <a href="https://world-nuclear.org/information-library/country-profiles/countries-a-f/france">World Nuclear Association, France</a> · <a href="https://www.iter.org/facts-figures">ITER facts and figures</a> · <a href="https://www.fusionindustryassociation.org/nrc-decision-separates-fusion-energy-regulation-from-nuclear-fission/">Fusion Industry Association on the NRC decision</a> — industry body, interested party · <a href="https://ieefa.org/resources/small-modular-reactors-still-too-expensive-too-slow-and-too-risky">IEEFA on SMRs</a></li>
+    <li><b>Orbital and ocean:</b> <a href="https://www.eetimes.com/the-hidden-physics-of-running-data-centers-in-orbit/">EE Times on orbital heat rejection</a> · <a href="https://www.seangoedecke.com/space-ai-datacenters-do-not-have-a-cooling-problem/">Goedecke, the dissenting view</a> — individual engineer, self-published · <a href="https://www.geekwire.com/2026/data-centers-at-sea-oregons-panthalassa-nets-140m-led-by-peter-thiel-for-wave-powered-ai/">GeekWire on Panthalassa</a></li>
+    <li><b>Public opinion:</b> <a href="https://news.gallup.com/poll/709772/americans-oppose-data-centers-area.aspx">Gallup, April 2026</a></li>
+  </ul>
+</div>
+
+<div class="foot">
+  Research long-read · 20 August 2026 · Claims checked against primary sources where available<br>
+  Not investment advice. I am not a financial adviser. Positions held by the speaker are disclosed above.<br>
+  The slide deck shown in the episode is not public; figures described only verbally could not be read off the slides.
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ed Zitron's Case Against the AI Boom — The Argument, Walked Through</title>
+<meta name="description" content="The AI industry's most prominent critic argues OpenAI is a systemic liability. His sources check out better than his arithmetic — and one of his own scoops cuts against him.">
+<meta name="wz-icon" content="decline">
+<meta name="wz-color" content="#b3261e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#b3261e; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#b3261e 0%,#8c1d18 55%,#5c1512 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Newsletter corpus · Where's Your Ed At · Format v2</div>
+  <h1>Ed Zitron's case against the AI boom — the argument, walked through</h1>
+  <p>The tech industry's loudest critic argues that the AI build-out rests on a single company that cannot pay its bills, that hyperscalers manufactured the demand they claim to be serving, and that the collapse of OpenAI would be the Lehman moment of the era. His central essay, "The OpenAI Bubble," pulls six months of that work together. This is the argument as he makes it, with the numbers checked and the named opposition where it belongs.</p>
+  <div class="meta">
+    <span>Primary source: "The OpenAI Bubble", 15 July 2026</span>
+    <span>16 claims checked</span>
+    <span>Compiled 4 August 2026</span>
+  </div>
+</div>
+
+<div class="epistemic">
+  <b>How this was checked:</b> 16 claims verified against primary sources where they exist (SEC filings, NVIDIA 10-Q, SoftBank press releases, Epoch AI, OpenAI announcements) · several figures he sources to paywalled outlets could only be confirmed as <i>reported</i>, not verified at the underlying number — those are marked · counter-positions from named analysts on both sides · track record and conflicts researched separately · fairness-reviewed against his own text · <b>not independently verified:</b> the research agents' source readings, and the paywalled Information/Bloomberg figures themselves · as of 4 August 2026. Companion piece: the <a href="2026-08-04_dwarkesh_theses_research.html">Dwarkesh Patel corpus</a>, which argues the opposite failure mode — that AI is real and underrated, just slower than advertised.
+</div>
+
+<div class="navchips">
+  <a href="#brief">His argument in brief</a>
+  <a href="#walk">The argument, walked through</a>
+  <a href="#back">Stepping back</a>
+  <a href="#score">Scorecard</a>
+</div>
+
+<!-- ============ 1. IN BRIEF ============ -->
+<div class="sechead" id="brief"><div class="num">1</div><h2>His argument in brief</h2></div>
+<div class="card">
+  <p class="sub">The theses at full strength, before any checking — including the bracket he places around the question most people assume he is answering.</p>
+
+  <h3>The AI bubble is an OpenAI bubble.</h3>
+  <p>Strip OpenAI out of the years 2020 to 2024 and nothing inflates. No other AI company showed signs of life; no one else was buying compute at that scale; the hundreds of billions in data-centre debt were underwritten against one company's appetite. Every argument for the build-out reduces to the belief that because one OpenAI exists, many will follow — and there is no second OpenAI.</p>
+
+  <h3>The demand was manufactured by the people selling the supply.</h3>
+  <p>You cannot venture-fund an AI lab. OpenAI and Anthropic raised enormous sums, but their actual infrastructure was paid for by hyperscalers who then pointed at the resulting demand as proof that more capacity was needed. Treating OpenAI as a startup created the illusion of a new category of customer, when the customer existed because the suppliers willed it into existence and let it burn without limit.</p>
+
+  <h3>Whether LLMs are useful is beside the point.</h3>
+  <p>This is the bracket he places deliberately, and it is routinely lost in summaries of him. He does not argue the technology does nothing. He argues that whatever utility people get from it is not, <b>for the most part</b>, what underpins the capital expenditure — and he leaves the exception in place, granting that real gains in code generation may have helped grow Anthropic. The money, on his account, was committed chasing what AI <em>could</em> become, disconnected from any company's actual revenue. The build-out has to be judged on its own economics, not on whether the product works.</p>
+
+  <h3>The obligations are real, enormous, and unpayable.</h3>
+  <p>OpenAI has made compute commitments to some of the best-lawyered companies in the world while generating a fraction of the revenue needed to service them. Its consumer business loses money at scale, its advertising forecast is an order of magnitude above what the entire chatbot ad market is projected to earn, and it must keep raising tens of billions repeatedly, in an environment where hyperscalers can no longer fund their own capex from cash flow.</p>
+
+  <h3>There is no bailout, and it would not work anyway.</h3>
+  <p>Even large state support would not cover a single year of compute. The argument that AI is too big to fail is, in his reading, a way of avoiding the arithmetic — catastrophising as a substitute for looking at the numbers.</p>
+</div>
+
+<!-- ============ 2. WALKED THROUGH ============ -->
+<div class="sechead" id="walk"><div class="num">2</div><h2>The argument, walked through</h2></div>
+<div class="card">
+  <p class="sub">In his own order. Checks and other views sit under the claim they belong to. Verdict scale: 5/5 primary source · 4/5 corroborated press · 3/5 single credible source · 2/5 aggregator only.</p>
+
+  <h3>The opening move: everything rests on one man's credibility</h3>
+  <div class="quote">"How much do you trust Sam Altman? The stock market and (to some extent) the global economy rests on your answer."</div>
+  <p>He frames the whole essay as a single question, and then supplies the number meant to answer it: on his accounting, OpenAI intends to burn more than $852 billion by the end of 2030. The components are a stack of compute commitments — roughly $748 billion in remaining performance obligations sitting on the books of Microsoft, Amazon and Oracle, at least $70 billion more across Cerebras, CoreWeave, Nebius, IREN, Lambda and Nscale, and an indeterminate amount of Broadcom silicon.</p>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-mis">Sourced parts real, the total is his own construction</span> <span class="cs">C 2/5</span> — No outlet has reported "$852 billion" as a figure; the link goes to his own earlier piece. It is his summation, and it mixes categories — multi-year contracted backlog added to a single year's spending. The components are individually well-sourced; the headline number is an aggregation that no one else has audited.</div>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-mis">Misleading in its precision</span> <span class="cs">C 5/5 filings / 2/5 attribution</span> — The raw RPO totals are real and in the filings (Microsoft has disclosed $625–678bn, Oracle $455–638bn). But <b>neither company discloses OpenAI's share</b>, and the $748bn attribution comes from a Substack analyst writing as Kakashii, not from the filings. More important: <b>RPO is contracted future revenue, not debt.</b> He does not call it debt, but framing it as money OpenAI "will burn" only holds if the contracts are genuinely non-cancellable — a point he himself has questioned elsewhere.</div>
+  <p class="weight">The direction survives; the precision does not. Cite the components, not the total.</p>
+
+  <h3>Why there is no second OpenAI</h3>
+  <p>His explanation for the missing competitors is the sharpest turn in the essay: the reason no third lab emerged at this scale is that the first two were not really startups. Their compute was built and paid for by Microsoft, Google and Amazon — the only organisations with the capital <em>and</em> the industrial experience to build clusters that size. Before 2023, a 50-megawatt facility was a notable development; the people who had built at that scale were hyperscalers and, tellingly, crypto miners. CoreWeave began life running warehouses of mining hardware.</p>
+  <p>He is careful about what this does and does not claim. In a sidenote he grants that Anthropic has grown rapidly and taken real attention — while arguing it was able to do so because it too was incubated and permitted to run at a large loss. He also concedes the limits of his own visibility: outside the named players there is, he says, very little evidence of more than a few billion in genuine compute demand, "and that's being generous."</p>
+  <div class="inbox views"><span class="tag">Other views</span>The strongest factual challenge to the single-point-of-failure frame arrived after he built it: <b>Anthropic reportedly overtook OpenAI on revenue in 2026</b> — around $30bn annualised against OpenAI's ~$25bn — with a very different mix, over a thousand customers above $1m a year and the large majority of revenue from pay-per-token API rather than consumer subscriptions. That is a second leg with different economics, which complicates "remove OpenAI and nothing exists". <b>Gavin Baker</b> (Atreides) argues the opposite case directly: inference margins of 60–70%, $300bn of inference revenue by 2027 as a conservative figure, and the real risk located in capex rather than valuation. <b>Jensen Huang</b> calls the circular-financing charge ridiculous. On his side: <b>Jim Chanos</b> on CoreWeave's depreciation, <b>Michael Burry</b>, whose short thesis centres on the same companies, and <b>Jeremy Grantham</b>, who calls it the biggest investment bubble in American history. The milder version he skips: not one company or nothing, but a <em>two</em>-company bubble with materially different risk profiles.</div>
+
+  <h3>The consumer business as a liability</h3>
+  <p>The pivot from macro to unit economics. ChatGPT's scale, on his reading, is the problem rather than the asset: roughly 900 million weekly users of whom about 5% pay, with the free majority a permanent drain. He reports OpenAI projecting its $20 tier to fall from 44 million subscribers in 2025 to 9 million in 2026 — an 80% collapse, to be offset by cheaper plans. And he sets the company's advertising hopes against the market's size.</p>
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 3/5</span> — 900m weekly users and ~5% paid conversion are widely reported, though the underlying numbers are OpenAI's own and unaudited. The 44m→9m subscription projection traces to reporting in The Information (April 2026) and to his own follow-up.</div>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-true">Both figures confirmed as reported</span> <span class="cs">C 3/5</span> — The Information did report OpenAI forecasting $2.4bn in 2026 ad revenue rising to $102bn by 2030; eMarketer does project the AI-chatbot ad market at under $1bn in 2026 and $5.41bn by 2030. <b>One caveat he glosses:</b> several eMarketer citations scope those figures to the <em>US</em> market, not globally, which makes "the entire AI chatbot ad industry combined" slightly generous. The gap is still roughly twentyfold.</div>
+  <p class="weight">This is the argument at its most effective — a company's own forecast set against the size of the market it is forecasting into.</p>
+
+  <h3>The subsidy nobody can see</h3>
+  <p>He returns repeatedly to the claim that the true cost of inference is deliberately obscured, and that the industry's confident talk of very high inference margins is unproven assertion repeated until it reads as fact. His concrete illustration: on a $200-a-month subscription, a heavy user can consume many thousands of dollars of tokens at list API prices.</p>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-most">Mostly true — a stress test, not an average</span> <span class="cs">C 3/5</span> — The figure originates with a SemiAnalysis benchmark rather than his own arithmetic: long coding tasks run to the rate limit of the $200 tier, then priced at list API rates, produce roughly $14,000 at OpenAI and $8,000 at Anthropic. That is a maximum-extraction scenario, not typical usage — but the implied subsidy is real and the order of magnitude is defensible.</div>
+  <div class="inbox views"><span class="tag">Other views</span>Public margin estimates are genuinely contradictory, which is itself his point. OpenAI's gross margin has been reported falling from around 40% to 33% against a 46% target; Anthropic's is variously put at 40–44%, at 60%, and projected by SemiAnalysis as high as 77% by 2028. Baker rejects the 90% claim too and lands at 60–70%. <b>But this cuts against him as well:</b> the analysis site obsolete.pub argues that the OpenAI financials <em>he himself obtained and published</em> show positive and improving gross margins on ChatGPT — which sits awkwardly with the claim that the unit economics are unsalvageable.</div>
+
+  <h3>The financing runs in a circle</h3>
+  <p>NVIDIA sells to hyperscalers who build for OpenAI and Anthropic, who are funded by the same hyperscalers and by NVIDIA, whose revenue then justifies the next round. He cites NVIDIA's own quarterly filing noting that one AI research and deployment company contributed meaningfully to its revenue by purchasing cloud services from NVIDIA's customers — a sentence that describes the loop in the company's own words.</p>
+  <div class="inbox check" id="c12"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — That language appears verbatim in NVIDIA's 10-Q. Bloomberg has separately mapped the circular deals, and the individual legs are documented: NVIDIA's commitment to OpenAI, and OpenAI's obligations to Azure, Oracle, AWS, CoreWeave and Broadcom.</div>
+  <div class="inbox views"><span class="tag">Other views</span>The disagreement is about interpretation, not existence. <b>Noah Smith</b> and NVIDIA argue this is ordinary vendor financing, not fraud-adjacent. The historical test is Lucent, Nortel and Cisco, who extended roughly $8.1bn, $3.1bn and $2.4bn of vendor financing in 1999–2001 — all three failed to survive the crash intact, which supports his analogy. <b>Tom Tunguz</b> has examined the comparison directly and finds it partial: the scale, customer credit quality and balance-sheet structures differ materially from 1999. Both things are true, and the piece is stronger for saying so.</div>
+
+  <h3>The funding runway, and why it ends</h3>
+  <p>The mechanism of collapse, in his telling, is timing rather than any single event. OpenAI must raise tens of billions repeatedly. The money arrives from a $122 billion round of which a portion has landed, with SoftBank tranches scheduled through October 2026. Meanwhile hyperscalers cross the point at which they can no longer fund capex from operating cash flow, banks grow wary of data-centre debt, and both labs arrive with their hands out exactly when everyone is pulling back.</p>
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-true">True, with an important qualifier</span> <span class="cs">C 5/5</span> — Epoch AI does model aggregate hyperscaler capex crossing operating cash flow around Q3 2026. But it is an <b>aggregate projection, not a uniform event</b>: on Epoch's own breakdown Oracle has already crossed, Amazon is crossing now, Alphabet follows around Q1 2027, Meta Q3 2027, and Microsoft not until roughly Q3 2028. The crunch he describes is real and staggered, not simultaneous.</div>
+  <div class="inbox check" id="c8"><span class="tag">Check</span><span class="pill p-most">Round confirmed; the causal claim runs slightly ahead of sourcing</span> <span class="cs">C 5/5 / 3/5</span> — The $122bn round is official — a round he himself flags as "assuming it fully closes" — and the SoftBank tranche schedule matches SoftBank's own releases. On the IPO he writes "likely delaying its IPO to 2027", which matches the reporting: OpenAI filed confidentially in June 2026 and is said to be leaning toward waiting. His added causal clause — that this is because it <em>couldn't</em> list at $1 trillion — is firmer than sources state, which describe valuation concerns rather than a tested ceiling. He does not claim a failed flotation.</div>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-true">Reported figure true; the share is his estimate</span> <span class="cs">C 3/5 / 2/5</span> — Bloomberg did report Greg Brockman testifying to roughly $50bn of 2026 compute spending. That this represents more than half of all global AI compute spend is unverified — and to his credit he labels it "which I estimate" rather than asserting it.</div>
+
+  <h3>No bailout, and the Lehman comparison</h3>
+  <p>He closes by refusing the escape hatch. Even substantial federal support, he argues, would not cover a year of compute; arguments that OpenAI will be nationalised or indefinitely funded by the military are, in his framing, a way of feeling in control of the future without doing the work of looking at it. The collapse, when it comes, would be the Lehman Brothers moment of the AI era — the event that ends one epoch and breaks the spell. The circularity of that position is one he states openly rather than hides: he fully believes, he writes, that the only reason any of this has continued is that OpenAI has yet to collapse.</p>
+  <div class="inbox views"><span class="tag">Other views</span>The institutional risk warnings are real and support the general shape of his concern: the <b>Bank of England</b>'s July 2026 Financial Stability Report notes AI-linked firms now around half the S&P 500 by weight, with valuation measures approaching dot-com levels; <b>Moody's</b> flags unprecedented AI spending as a credit-quality risk across the hyperscalers and CoreWeave. Market pricing agrees in places — CoreWeave sits at B+/Ba3 with credit-default swaps at distressed levels, and Oracle's spreads have reached territory unseen since 2009. <b>Against him:</b> the risk is structured rather than uniform — some GPU-backed CoreWeave tranches carry investment-grade ratings. And on bailouts, the policy door is not as shut as he suggests: Executive Order 14318 permits loans, guarantees and tax relief for qualifying projects.</div>
+  <p class="weight">The systemic-risk case is better supported by central banks and rating agencies than by his own headline number.</p>
+</div>
+
+<!-- ============ 3. STEPPING BACK ============ -->
+<div class="sechead" id="back"><div class="num">3</div><h2>Stepping back</h2></div>
+<div class="card">
+
+  <div class="callout"><b>The error pattern is specific: his facts are sound, his arithmetic is not.</b> Almost every individual figure traces to a filing, an earnings call, a major outlet or a company release — the RPO totals, the NVIDIA 10-Q language, the SoftBank tranches, the Epoch projection, the ad forecasts. The failures cluster in <em>aggregation and framing</em>: the $852bn headline is his own summation across incompatible categories, the OpenAI share of RPO comes from an unaudited Substack analyst, and a causal clause here and there runs firmer than its sourcing. These lean the same way — toward the bubble thesis. <b>But the pattern is not uniform</b>, and the exception is the most interesting thing in this piece: the OpenAI financials he obtained and published are also the strongest public evidence <em>against</em> his unit-economics claim. He published data that undercuts him.</div>
+
+  <h3>The messenger</h3>
+  <p>English, born 1986, a games journalist before a PR career; he founded the tech PR firm EZPR in 2013 and still runs it. The newsletter began in 2020 and broke through with "The Rot Economy" in 2023; the podcast <i>Better Offline</i> followed on iHeart's Cool Zone Media and won a Webby. Subscriber counts are second-hand — over 50,000 as of early 2025 per the New Yorker, over 80,000 per the Guardian in January 2026 (C 2/5, no disclosed figures).</p>
+  <p><b>His record splits cleanly in three.</b> The <em>loss</em> thesis has been vindicated, sometimes precisely: his estimate of roughly $5bn in 2024 OpenAI losses was near-exact, and the audited 2025 figures he later obtained — around $13.07bn of revenue against far larger costs — were <b>independently verified by the Financial Times before he published</b>. That is original investigative work, not aggregation, and it is the strongest item on his CV. The <em>efficiency</em> thesis from "The Subprime AI Crisis" (2024) has been falsified: he predicted providers would be forced into price rises, and instead cost per token fell by orders of magnitude while adoption grew. The <em>collapse</em> thesis remains open — he has been calling the burst since "Peak AI" in March 2024, and as of August 2026 no market-wide reckoning has arrived. Early, or wrong, cannot yet be distinguished.</p>
+  <p>Notably, <b>no company has publicly disputed the facts of his reporting</b>, including the FT-verified OpenAI numbers. Google responded to "The Man Who Killed Google Search" not with a rebuttal but by moving Prabhakar Raghavan out of the Search role six months later — while framing it as a promotion.</p>
+
+  <h3>Interests, stated as stakes</h3>
+  <table>
+    <tr><th style="width:38%">Position</th><th>Stake</th></tr>
+    <tr><td><b>CEO of EZPR, a tech PR firm</b></td><td>Disclosed on his own About page. No evidence the firm represents major AI labs, which limits the direct conflict. Since 2025 EZPR also does research and diligence for hedge funds and private-equity clients — who may benefit commercially from a bust narrative. A stake, not a finding of misconduct.</td></tr>
+    <tr><td><b>Premium newsletter (~$60–70/yr) plus podcast as primary income</b></td><td>The plainest one: a continuous bubble-collapse narrative generates attention, subscriptions and bookings. This incentive exists whether or not the thesis is correct, and should be read alongside the work rather than instead of it.</td></tr>
+    <tr><td><b>Better Offline on iHeart</b></td><td>Advertiser-funded format. No documented instance of influence.</td></tr>
+    <tr><td><b>Short positions or financial stake in an AI decline</b></td><td><b>No evidence found.</b> One finance portal described him in passing as a short-seller; nothing corroborates it and it appears to be an error. Stated as a finding, not a clearance.</td></tr>
+  </table>
+
+  <h3>How he is criticised — and by whom</h3>
+  <p>The most useful criticism comes from people who are not AI bulls. <b>Kelsey Piper</b> (The Argument, formerly Vox) argues in "AI's biggest critic has lost the plot" that his 2024 core claim — that progress had unmistakably slowed — was falsified by the data, and that he has since migrated from an economic case to a fraud case without correcting the first. She pays for Claude and thinks AI is economically valuable; her demand is for better scepticism, not less. <b>Nathan Tankus</b> (Notes on the Crises) published the most rigorous technical rebuttal, arguing his data-centre-SPV-to-CDO comparison does not hold and his use of the global-savings-glut concept is amateur — and sent the draft to Zitron in advance, noting his graciousness in response. Piper separately observes that he treats both over-aggressive capacity build-out and insufficient build-out as incriminating, rather than weighing them against each other.</p>
+  <p>On the other side, the <b>Financial Times</b> profiled him at length in 2025, and the substance of his reporting has held. His register is deliberately combative — "Clammy Sammy" for Altman, "cult-like psychosis" for the industry — which Piper reads as increasingly standing in for economic argument where the argument is harder to make.</p>
+
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li><b>The $852bn figure</b> as an auditable total — it exists only in his own accounting.</li>
+    <li><b>The $748bn OpenAI share of RPO</b> — neither Microsoft nor Oracle discloses customer-level RPO; the attribution is a third-party estimate.</li>
+    <li><b>"More than 50% of all global AI compute spend"</b> — his own labelled estimate, no independent confirmation.</li>
+    <li><b>The Amazon capex comparison</b> ($29.7bn, 2003–2015, inflation-adjusted) — rests on his own unaudited spreadsheet.</li>
+    <li><b>Paywalled underlying figures</b> from The Information and Bloomberg — confirmed as reported, not verified at source.</li>
+    <li><b>Whether the collapse thesis is early or wrong</b> — undecidable today, and this piece does not pretend otherwise.</li>
+  </ul>
+</div>
+
+<!-- ============ 4. SCORECARD ============ -->
+<div class="sechead" id="score"><div class="num">4</div><h2>Scorecard &amp; takeaways</h2></div>
+<div class="card">
+  <table>
+    <tr><th style="width:56%">Claim</th><th>Verdict</th><th>C</th></tr>
+    <tr><td><a href="#c12">NVIDIA 10-Q describes the circular revenue loop</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c3">900m weekly users, ~5% paying; Plus tier projected 44m→9m</a></td><td><span class="pill p-true">True</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c4">OpenAI's ad forecast vs. the whole chatbot ad market</a></td><td><span class="pill p-true">True (US/global scope glossed)</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c5">Hyperscaler capex crosses cash flow around Q3 2026</a></td><td><span class="pill p-true">True, but staggered not simultaneous</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c7">$14,000 of tokens on a $200/month plan</a></td><td><span class="pill p-most">Mostly true — stress test, not average</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c8">$122bn round and SoftBank tranche schedule</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c6">~$50bn OpenAI compute spend in 2026</a></td><td><span class="pill p-true">True (reported)</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c6">That this is &gt;50% of global AI compute spend</a></td><td><span class="pill p-unv">Unverifiable — his labelled estimate</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c2">$748bn of Microsoft/Amazon/Oracle RPO is OpenAI's</a></td><td><span class="pill p-mis">Misleading precision; RPO ≠ debt</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c1">OpenAI will burn $852bn by 2030</a></td><td><span class="pill p-mis">His own aggregation, mixed categories</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c8">IPO delayed to 2027 because it "couldn't list" at $1tn</a></td><td><span class="pill p-mis">Delay accurate; the causal clause is firmer than sourced</span></td><td class="cs">3/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>The sourcing.</b> This is not a vibes-based critic. The filings, the 10-Q language, the SoftBank schedule, the Epoch projection — he reads primary documents, and he obtained OpenAI's audited financials and had the FT verify them before publishing.</li>
+    <li><b>The advertising gap.</b> A company forecasting $102bn from a market projected at $5.41bn is a real problem, whatever the scope caveat.</li>
+    <li><b>The consumer subsidy.</b> Even as a stress test, the token arithmetic exposes economics that nobody has publicly defended with numbers.</li>
+    <li><b>The financing crunch.</b> Epoch, the Bank of England, Moody's and the CDS market all point the same direction. He is early to a concern institutions now share.</li>
+    <li><b>The bracket around utility.</b> He is careful not to claim the technology is worthless. Read him as attacking the capital structure, not the product.</li>
+  </ul>
+
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>The $852bn headline.</b> Use the components; the total is unaudited and mixes backlog with annual spend.</li>
+    <li><b>RPO framed as money to be burned.</b> It is contracted revenue at the supplier, and cancellability is the whole question.</li>
+    <li><b>The IPO causality.</b> The delay is well sourced; that it happened because the company <em>couldn't</em> reach $1tn is his inference, not the reporting.</li>
+    <li><b>"Remove OpenAI and nothing exists."</b> Anthropic's 2026 revenue and enterprise mix complicate this more than the essay allows.</li>
+    <li><b>Timing.</b> He has been calling the burst since March 2024. His loss thesis was right and his efficiency thesis was wrong; the collapse call is simply not yet resolvable, and anyone citing him should say so.</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <p class="sub">Primary: <a href="https://www.wheresyoured.at/the-openai-bubble/">The OpenAI Bubble</a> (15 Jul 2026) · <a href="https://www.wheresyoured.at/exclusive-openai-financials/">the OpenAI financials scoop</a> · <a href="https://www.wheresyoured.at/the-subprime-ai-crisis-is-here/">The Subprime AI Crisis</a> (2024) · <a href="https://www.wheresyoured.at/the-men-who-killed-google/">The Man Who Killed Google Search</a> · <a href="https://www.wheresyoured.at/let-ai-burn/">Let AI Burn</a>.</p>
+  <p class="sub">Checks and counter-positions: <a href="https://epoch.ai/data-insights/hyperscaler-capex-vs-cash-flow">Epoch AI, hyperscaler capex vs cash flow</a> · <a href="https://www.bloomberg.com/graphics/2026-ai-circular-deals/">Bloomberg on circular deals</a> · <a href="https://www.theargumentmag.com/p/ais-biggest-critic-has-lost-the-plot">Kelsey Piper, AI's biggest critic has lost the plot</a> · <a href="https://www.crisesnotes.com/sigh-no-ed-zitron-ai-bond-issuance-is-not-ais-subprime-mortgage-crisis/">Nathan Tankus's rebuttal</a> · <a href="https://tomtunguz.com/nvidia_nortel_vendor_financing_comparison/">Tom Tunguz on the Nortel comparison</a> · <a href="https://www.ft.com/content/4c8d6420-d088-4660-8973-c4996cd990fb">FT profile</a>.</p>
+  <p class="sub"><b>Single-source flags:</b> the $748bn RPO attribution rests on one Substack analyst · the $14,000 token figure on one SemiAnalysis benchmark · the 44m→9m subscription projection on The Information plus his own follow-up · Anthropic's revenue overtaking OpenAI on trade reporting, not audited accounts · subscriber counts are journalist estimates.</p>
+</div>
+
+<div class="foot">
+  Compiled 4 August 2026 · 16 claims checked, 6 theses given named counter-positions.<br>
+  A reading of an argument, not an endorsement of it — and not investment advice.
+</div>
+
+</div>
+</body>
+</html>
