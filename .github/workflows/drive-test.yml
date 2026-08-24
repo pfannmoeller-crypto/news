@@ -10,10 +10,15 @@ jobs:
       - name: Install gdown
         run: pip install --quiet gdown
 
+      - name: Show gdown version and options
+        run: |
+          gdown --version || true
+          gdown --help || true
+
       - name: Download the public inbox folder
         run: |
-          gdown --folder --remaining-ok -O inbox \
-            "https://drive.google.com/drive/folders/1cFGIyPjVUthXbyYT7My9zk6reHgyOeOZ" || true
+          gdown --folder -O inbox \
+            "https://drive.google.com/drive/folders/1cFGIyPjVUthXbyYT7My9zk6reHgyOeOZ" || echo "gdown exited non-zero"
 
       - name: Report what arrived
         run: |
@@ -25,5 +30,7 @@ jobs:
             cat inbox/hallo.txt 2>/dev/null && echo "" || echo "hallo.txt NOT FOUND"
           else
             echo "FAILED - no folder downloaded"
+            echo "--- what is in the working dir ---"
+            ls -la
           fi
           echo "=============================="
