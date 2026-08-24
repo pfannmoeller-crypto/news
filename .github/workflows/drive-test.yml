@@ -1,0 +1,29 @@
+name: Drive-Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install gdown
+        run: pip install --quiet gdown
+
+      - name: Download the public inbox folder
+        run: |
+          gdown --folder --remaining-ok -O inbox \
+            "https://drive.google.com/drive/folders/1cFGIyPjVUthXbyYT7My9zk6reHgyOeOZ" || true
+
+      - name: Report what arrived
+        run: |
+          echo "=========== RESULT ==========="
+          if [ -d inbox ]; then
+            echo "Folder downloaded. Contents:"
+            ls -la inbox
+            echo "--- hallo.txt ---"
+            cat inbox/hallo.txt 2>/dev/null && echo "" || echo "hallo.txt NOT FOUND"
+          else
+            echo "FAILED - no folder downloaded"
+          fi
+          echo "=============================="
