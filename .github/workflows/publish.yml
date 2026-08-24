@@ -1,0 +1,45 @@
+name: Publish Webzeitung
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-webzeitung
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install gdown
+        run: pip install --quiet gdown
+
+      - name: Fetch the Drive inbox
+        run: |
+          gdown --folder -O inbox \
+            "https://drive.google.com/drive/folders/1cFGIyPjVUthXbyYT7My9zk6reHgyOeOZ" \
+            || echo "gdown exited non-zero (inbox may be empty)"
+          ls -la inbox || true
+
+      - name: Process inbox and rebuild index
+        run: python _build/publish_inbox.py inbox .
+
+      - name: Commit if anything changed
+        run: |
+          rm -rf inbox
+          git config user.name "Webzeitung Bot"
+          git config user.email "noreply@anthropic.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git add -A
+          git commit -m "Webzeitung auto-publish $(date -u +%F\ %H:%M) UTC"
+          git push
