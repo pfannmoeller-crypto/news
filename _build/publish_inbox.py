@@ -2,8 +2,11 @@
 
 Usage:  python publish_inbox.py <inbox_dir> <repo_root>
 
-The inbox is append-only (we cannot delete from a read-only Drive share), so this
-is idempotent: re-processing an unchanged article produces an identical file and
+Only the TOP LEVEL of the inbox is read. Subfolders are ignored on purpose, so
+already-published articles can be moved into an `_archiv/` subfolder inside the
+Drive inbox and stop being re-downloaded on every run.
+
+Re-processing an unchanged article is harmless: it produces an identical file and
 git sees no change.
 """
 import sys
@@ -22,7 +25,7 @@ if not inbox.is_dir():
     sys.exit(0)
 
 processed = []
-for f in sorted(inbox.rglob("*.html")):
+for f in sorted(inbox.glob("*.html")):
     m = bs.DATE_RE.match(f.name)
     if not m:
         print(f"  skip (filename not YYYY-MM-DD_*): {f.name}")
