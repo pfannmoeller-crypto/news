@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools Briefing — 20–26 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <!-- APP BAR -->
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>Third edition under the widened scope &middot; Week of August 26, 2026 &middot; Window 20–26 August</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Claude's memory now spans chat and Cowork, on by default for Free, Pro and Max</h2>
+    <p>Anthropic merged Claude's chat and Cowork memory on August 25 — the window's biggest default-behaviour change. Around it: eight Claude Code point releases with security hardening, while Cursor, Codex and GitHub Copilot pushed further into standing, always-on agent work. Five items cleared the filter; two are worth an hour.</p>
+  </div>
+
+  <!-- HOME STACK -->
+  <h3 class="sec">Home Stack — Claude Code &amp; Cowork</h3>
+
+  <!-- H1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Shipped Aug 25, 2026</span>
+    </div>
+    <h4 class="headline">Claude's memory now follows you from chat into Cowork by default — no more re-briefing between surfaces</h4>
+    <p>Anthropic merged its two separate memory systems on August 25: Claude now "starts from what it already knows about you" whether the conversation began in chat or in a Cowork session, and updates that memory continuously as a conversation happens rather than summarizing only at the end. It's on by default for Free, Pro and Max plans, on web, desktop and mobile (Team/Enterprise leaves activation to admins). Users can view, edit, pause or fully reset what's stored.</p>
+    <p>Anthropic's stated default exclusions match the sensitive-category list this pipeline's own memory guidance already follows — health, race, ethnicity, religion, politics, gender identity are kept out unless a user opts in, and government IDs, criminal history and immigration status are refused outright.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Default-on plans</div><div class="stat-value">Free, Pro, Max</div></div>
+      <div class="stat"><div class="stat-label">Team / Enterprise</div><div class="stat-value">admin-gated</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Aug 25, 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it">Anthropic, Claude's memory works everywhere</a>
+      <a href="https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/">TechCrunch, Aug 25</a>
+      <a href="https://www.engadget.com/2243753/claude-memory-now-works-across-both-chats-and-cowork-sessions/">Engadget, Aug 25</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Before this merge, a fact learned in a chat conversation stayed invisible to a Cowork session working the same problem, and vice versa — exactly the kind of re-briefing friction the Aug-14 auto-mode default and the Aug-12 Cowork-on-Chrome expansion (both covered in prior editions) were chipping away at from the automation and reach angles rather than the context-continuity angle.</p>
+        <p><span class="lbl">The details.</span> The real-time update behaviour is the more consequential change than the cross-surface merge itself: memory used to be written as an end-of-conversation summary, so a correction made mid-session (a changed deadline, a corrected fact) could be lost if the conversation ended abruptly. Continuous updating closes that gap. The opt-in sensitive-category list is disclosed, not just implied — Anthropic names the excluded categories explicitly in the announcement, which is unusually specific for a memory-launch post.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth an hour this week: open Memory settings on whichever plan runs this pipeline's own Claude usage and check what's already been captured, particularly from any session that touched confidential business context (Pet Food supplier relationships, unreleased content). If Team/Enterprise governs this pipeline's account, confirm with the admin whether memory has been activated org-wide before assuming it's off.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own blog post, corroborated by TechCrunch, Engadget and Digital Trends; no contrary reports found</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Aug 20–25, 2026 · v2.1.237–v2.1.246</span>
+    </div>
+    <h4 class="headline">Claude Code's security defaults tighten again — a wildcard Bash-rule warning and mandatory approval before a plugin can mint its own auth tokens</h4>
+    <p>Across eight point releases this window (v2.1.237 to v2.1.246), two changes are worth checking your own setup for. v2.1.246 (Aug 25) added a startup warning when a Bash allow rule has a wildcard placed before the subcommand — e.g. <code>Bash(git * main)</code> — because such rules also match options inserted ahead of the subcommand, a gap that could silently widen what a rule actually permits. v2.1.238 (Aug 20) introduced <code>headersHelper</code> for plugin marketplaces: a plugin can now mint its own short-lived HTTP auth tokens, but only after its minting command is shown to you and you approve it at install or update time, and MCP servers using the same mechanism now require the folder's trust dialog to have been accepted first.</p>
+    <p>Both read as direct responses to the failure class this briefing has tracked before: April's "deny rules silently bypassed after 50 subcommands" disclosure and August's CVE-2026-54316 API-key-exfiltration flaw both involved untrusted content or configuration reaching a Claude Code session without the operator noticing.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Point releases</div><div class="stat-value">8</div></div>
+      <div class="stat"><div class="stat-label">Version range</div><div class="stat-value">v2.1.237 → v2.1.246</div></div>
+      <div class="stat"><div class="stat-label">Critical fix</div><div class="stat-value">Linux glibc 2.44 startup crash (v2.1.245)</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Anthropic, Claude Code changelog</a>
+      <a href="https://www.havoptic.com/tools/claude-code">Havoptic, release tracker</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Last week's edition covered a separate eight-release window (v2.1.228–v2.1.235) as reliability hardening with one critical OAuth fix; this window keeps the same one-release-a-day cadence but shifts weight toward permission-and-trust surfaces specifically, rather than connector reliability.</p>
+        <p><span class="lbl">The details.</span> The Linux crash fix (v2.1.245, Aug 25) is the other headline item: a startup crash on distributions shipping glibc 2.44 — Arch Linux, CachyOS, Fedora Rawhide — that would have blocked Claude Code entirely on affected machines until patched, though it is a compatibility bug rather than a security issue. Separately, v2.1.245 fixed cross-session messaging silently turning off inside user namespaces and rootless containers, a regression traced back to the 2.1.232 socket-directory hardening two weeks ago — a reminder that security hardening itself can introduce its own quiet breakage.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth the hour: run <code>/permissions</code> and look specifically for any Bash allow rule with a wildcard before the subcommand, since that is the exact pattern v2.1.246 now flags at startup — this pipeline's own auto-mode classifier rules are worth a pass. No plugin marketplace with a <code>headersHelper</code> is currently installed on this pipeline's setup, so the approval-gate change itself needs no action beyond noting it exists before adding one.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own published changelog, fetched in full for this window; cross-checked against Havoptic's independent release tracker</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LIST -->
+  <h3 class="sec">Across the stack</h3>
+
+  <!-- M1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Cursor</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 19–20, 2026</span>
+    </div>
+    <h4 class="headline">Cursor's cloud agents move from one-shot triggers to standing subscriptions — "swarms" of isolated subagents and a /goal command for unattended work</h4>
+    <p>Cursor shipped a set of changes aimed squarely at reducing babysitting: cloud agents can now subscribe to a PR, a Slack thread or a cron schedule and wake only when something happens, rather than running once and stopping; a new <code>/goal</code> command gives an agent a long-lived objective to keep working toward; and subagents now each get an isolated VM with a clean project copy, enabling parallel "swarms" that can't step on each other's file edits. This builds on Cursor's existing Automations (launched March 2026) rather than replacing them.</p>
+    <p>The framing is explicit: Cursor wants agents to "operate as a system... without the need for intervention at each loop" — a materially bigger autonomy claim than a faster completion or a new panel.</p>
+    <div class="links">
+      <a href="https://cursor.com/changelog/08-19-26">Cursor, official changelog, Aug 19</a>
+      <a href="https://www.explainx.ai/blog/cursor-event-driven-cloud-agents-isolated-vms-august-2026">explainx.ai, event-driven cloud agents writeup</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This is Cursor's most direct move yet toward the always-on, cross-session agent behaviour Claude Code has been building piecemeal (cross-session <code>SendMessage</code>/<code>ListAgents</code>, background sessions, <code>/goal</code> check-ins of its own) — the two products are now visibly converging on the same shape rather than differentiating.</p>
+        <p><span class="lbl">The details.</span> Cursor's own changelog carries no disclaimer about autonomy limits, failure rates or when a subscribed agent should be expected to ask for human input rather than act — a gap this briefing flagged for Cursor's router-benchmark claim two weeks running, now showing up again for a capability claim rather than a performance one.</p>
+        <p><span class="lbl">Why it still matters.</span> Trigger to flip to TRY: an independent practitioner report of a subscribed cloud agent running unattended for multiple wake cycles without a bad edit or a runaway action — nothing that specific has surfaced yet. Worth testing only once that evidence exists, given this pipeline's own scheduled-task history includes exactly the kind of unattended-automation risk this feature is designed for.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · Cursor's own changelog for what shipped, corroborated by an independent writeup; the autonomy claim itself is vendor-stated and not yet independently tested</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub / Copilot</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 21 &amp; 25, 2026</span>
+    </div>
+    <h4 class="headline">GitHub Copilot lands as a full agentic surface inside Slack and Microsoft Teams, plus an MCP-based Customize tab</h4>
+    <p>GitHub shipped Copilot into Slack (public preview, Aug 21) and Teams (Aug 21) as a shared, collaborative agent: mentioning <code>@GitHub</code> in a channel starts a session the whole team can watch and steer, not just a single user's DM. Four days later (Aug 25), a new Customize tab in the Copilot app added direct Model Context Protocol integration, letting Copilot reach into whatever MCP servers a team already runs.</p>
+    <p>This is the same "meet the team where they already work" bet Cowork made with its own web and mobile expansion in July and Chrome side-panel move in August — GitHub is making it inside chat tools this pipeline doesn't currently route through.</p>
+    <div class="links">
+      <a href="https://github.blog/changelog/2026-08-25-github-copilot-app-customize-tab-is-generally-available/">GitHub Changelog, Copilot Customize tab, Aug 25</a>
+      <a href="https://github.blog/changelog/month/08-2026/">GitHub Changelog, August 2026 index</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> GitHub also shipped enterprise-managed settings for Copilot in JetBrains this window (Aug 18) — MCP server access, plugin governance and permission modes enforceable centrally — the same administrative-control pattern Claude Code has been building into its own managed-settings and org-policy surfaces.</p>
+        <p><span class="lbl">The details.</span> The Slack and Teams integrations both frame the value as shared visibility — teammates observing and directing one agent session together — rather than raw individual productivity, which is a different pitch than Copilot's historical single-developer-in-the-editor positioning.</p>
+        <p><span class="lbl">Why it still matters.</span> No action today: this pipeline's dispatch and review happen from Claude Code and Cowork sessions directly, not through Slack or Teams, so a Copilot presence there doesn't intersect with the current workflow. Worth a re-look only if a future step needs a team-visible, chat-native agent surface rather than a solo session.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · GitHub's own changelog, primary source for both the Slack/Teams launch and the Customize tab</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M3 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI / Codex</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 18–24, 2026 · rust-v0.148.0–v0.149.1</span>
+    </div>
+    <h4 class="headline">Codex CLI adds session forking and markdown export — closing a feature gap with Claude Code rather than opening a new one</h4>
+    <p>Three Codex CLI releases this window: rust-v0.148.0 (Aug 18) added the ability to export a conversation to Markdown and fork a session to explore a different direction without losing the original; rust-v0.149.0 (Aug 20) added an interactive task-management dashboard and new directory commands; rust-v0.149.1 (Aug 24) tightened completion performance and edge-case error handling.</p>
+    <p>Session forking specifically mirrors a capability Claude Code's own <code>/fork</code> already provides — this window reads as feature parity-chasing rather than a new capability neither tool had.</p>
+    <div class="links">
+      <a href="https://www.havoptic.com/tools/openai-codex">Havoptic, Codex release tracker</a>
+      <a href="https://releasebot.io/updates/openai/codex">Releasebot, Codex updates</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Last edition covered Codex's denser week (GPT-5.3-Codex, Agent Plugins, MCP stateless-spec support, a 15-million-user milestone) as the more consequential story; this window is quieter and more maintenance-shaped by comparison, aside from the forking feature.</p>
+        <p><span class="lbl">The details.</span> No practitioner writeup located this week describes forking or the new dashboard in actual use — both are documented only through the release notes themselves, one step removed from a hands-on account.</p>
+        <p><span class="lbl">Why it still matters.</span> No action: this pipeline doesn't currently run Codex, and a caught-up feature set isn't itself a reason to start. Revisit only if Codex ships something Claude Code's current toolset genuinely lacks, rather than a feature the other side already has.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div>
+        <span class="why">3/5 · single third-party tracker (Havoptic) corroborated by Releasebot's listing; OpenAI's own changelog page could not be independently re-fetched with current data this edition</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR'S VIEW -->
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>Memory, not another model or another IDE panel, is this week's biggest operator-facing change.</strong> A default-on, cross-surface memory system changes what Claude already knows before a session starts — that's a bigger day-to-day shift than another point release, and it's the one item this edition rates worth an hour precisely because it changes behaviour by default rather than waiting to be opted into.</li>
+      <li><strong>Security hardening keeps arriving as small, load-bearing defaults rather than headline features.</strong> A wildcard Bash-rule warning and a mandatory approval step before a plugin can mint its own auth tokens will not make anyone's release notes summary, but both close gaps in the same failure class — untrusted content or configuration reaching a session unnoticed — that produced a real CVE and a real deny-rule bypass earlier this year.</li>
+      <li><strong>Every major agent tool is chasing the same "operate without me" claim at once.</strong> Cursor's standing subscriptions, GitHub Copilot's shared Slack/Teams sessions, and Claude Code's own background and cross-session messaging features are all pointed at the same target — less babysitting — and none of them has third-party evidence yet that the autonomy claim holds up outside the vendor's own telling.</li>
+    </ol>
+    <p class="closer">Wildcard for the week: GitHub Copilot showing up natively inside Slack and Teams is worth remembering less for what it does today than for the bet it represents — that the agent should live inside the chat tool a team already has open, rather than pulling the team into a separate agent surface the way Cowork's own expansion has.</p>
+  </div>
+
+  <!-- WHAT CHANGED FOR THIS PIPELINE -->
+  <h3 class="sec">What changed for this pipeline</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>This week, worth doing:</strong> open Memory settings on whichever Claude plan runs this pipeline and review what's been captured so far, especially from any session touching confidential business context; confirm Team/Enterprise activation status with the admin if that's the governing plan.</li>
+      <li><strong>This week, also worth doing:</strong> run <code>/permissions</code> and check for any Bash allow rule with a wildcard placed before the subcommand — the exact pattern v2.1.246 now warns about at startup.</li>
+      <li><strong>No action on the plugin-marketplace <code>headersHelper</code> change:</strong> no installed plugin marketplace currently uses it; noted for when one is added.</li>
+      <li><strong>Leave Cursor's standing-agent claim at WATCH:</strong> nothing to test until an independent report confirms a subscribed cloud agent running unattended without a bad edit or runaway action.</li>
+      <li><strong>No action on GitHub Copilot's Slack/Teams launch or Codex's forking feature:</strong> neither intersects with how this pipeline currently dispatches or reviews work.</li>
+    </ul>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Wednesday, August 26, 2026 &middot; <strong>Research window:</strong> 20–26 August 2026, 7 days &middot; <strong>Scope:</strong> third edition under the widened Practical AI Tools scope — 2 Home Stack cards, 3 cross-vendor cards, 5 items total; 2 TRY, 3 WATCH, 0 SKIP.</p>
+    <p><strong>Confidence legend:</strong> ●●●●● 5/5 vendor primary source corroborated by independent press &middot; ●●●●○ 4/5 reputable press or multiple independent trackers confirming a primary source &middot; ●●●○○ 3/5 single credible source &middot; ●●○○○ 2/5 aggregator- or vendor-only figures not independently verified.</p>
+    <p><strong>Editorial notes:</strong> The agent compiling this briefing cannot run any of these tools directly — every verdict rests on documented vendor behaviour and practitioner reports, not hands-on testing; WATCH was preferred over TRY wherever the evidence for an autonomy or capability claim was still vendor-only (Cursor's standing agents, capped at 4/5 for the shipped fact but not further tested). Sources are exclusively English-language. Model releases are deliberately out of scope for capability review — they belong to the Frontier Tech briefing's Release Radar; this issue covers only the operable tool surface built on top of them. Cognition/Devin's reported funding talks (still unresolved from two editions ago) were checked again and still carry no product or operator consequence, so the item stays out of active coverage.</p>
+  </div>
+
+</div>
+</body>
+</html>
