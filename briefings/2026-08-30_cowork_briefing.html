@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools Briefing — 27–30 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <!-- APP BAR -->
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>Fourth edition under the widened scope &middot; Week of August 30, 2026 &middot; Window 27–30 August</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Claude Code patches five security holes and adds a lockdown flag in one quiet week</h2>
+    <p>No headline launch this window: Anthropic quietly closed five Claude Code security gaps — including a symlink bypass in file tools and a plugin path-traversal hole — and shipped a <code>--restricted</code> flag for running sessions with tools stripped down. Cursor and GitHub Copilot moved on billing and onboarding, not capability.</p>
+  </div>
+
+  <!-- HOME STACK -->
+  <h3 class="sec">Home Stack — Claude Code &amp; Cowork</h3>
+
+  <!-- H1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Aug 27–28, 2026 · v2.1.248 &amp; v2.1.251</span>
+    </div>
+    <h4 class="headline">Six security fixes land across two releases — a symlink bypass, a plugin path-traversal hole, and a Bash arithmetic loophole</h4>
+    <p>v2.1.251 (Aug 28) shipped five fixes in one release: file tools (Read, Write, Edit) could be tricked into reading or writing outside an approved directory if a symlink was swapped in after the permission check ran; a plugin's declared command path could point outside its own plugin directory (now rejected as path traversal); project settings could enable detailed beta tracing or raw API body logging and bypass the OTLP collector; the Workflow tool could read a <code>scriptPath</code> outside the session's read permissions before the permission check fired; and Grep/Glob weren't applying <code>Read()</code> deny rules to files reached through a symlinked search path. A day earlier, v2.1.248 fixed Bash permission checks auto-approving commands that assigned arithmetic expressions to integer shell variables (e.g. <code>OPTIND=1/0</code>) — a gap a crafted command could have used to slip past an allow-rule.</p>
+    <p>None of the six is a disclosed CVE with a public advisory the way April's deny-rule bypass or this summer's API-key-exfiltration flaw were — these read as proactive hardening found and closed internally, not incident response.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Security fixes, this window</div><div class="stat-value">6</div></div>
+      <div class="stat"><div class="stat-label">Versions</div><div class="stat-value">v2.1.248, v2.1.251</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Aug 27–28, 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Anthropic, Claude Code changelog</a>
+      <a href="https://www.havoptic.com/tools/claude-code">Havoptic, release tracker</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Last edition's Home Stack card tracked the wildcard Bash-rule warning and plugin auth-token approval gate from v2.1.246 (Aug 25) as the same failure class — untrusted content or configuration reaching a session unnoticed. This window's symlink-swap and path-traversal fixes are the next entries in that same pattern: a check that passes at approval time but no longer holds by execution time.</p>
+        <p><span class="lbl">The details.</span> The symlink bypass is the sharpest of the six: it means a permission grant for one path could, after a symlink swap, resolve somewhere else entirely at the moment the file tool actually acts — the class of time-of-check-to-time-of-use bug that's hard to catch in review because both the check and the action look correct in isolation. The plugin path-traversal fix matters most for anyone installing third-party plugin marketplaces rather than writing plugins locally, since it closes a route by which an installed plugin's declared command could reach files never intended to be in scope.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth the hour: update to v2.1.251 or later before running any session with symlinks in the working directory, non-default plugin marketplaces, or the Workflow tool against untrusted scripts — none of the six fixes require a config change to benefit, only the update itself. No public CVE means no advisory to forward, so this is the kind of fix that's easy to miss without reading the changelog directly.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own published changelog, fetched in full for this window; cross-checked against Havoptic's independent release tracker, no discrepancies</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- H2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Aug 27–28, 2026 · v2.1.248 &amp; v2.1.251</span>
+    </div>
+    <h4 class="headline">A new --restricted flag strips Claude Code down to file and search tools — plus two breaking defaults worth checking before they surprise you</h4>
+    <p>v2.1.248 (Aug 27) added <code>--restricted</code> (and <code>CLAUDE_CODE_RESTRICTED=1</code>): it removes the built-in Bash/code-execution and WebFetch tools unless explicitly named in <code>--tools</code>, keeps file tools confined to the working directory, refuses <code>bypassPermissions</code> outright, and ignores user/project/local settings files entirely — a locked-down mode aimed at running Claude Code against untrusted repos or in CI where you don't want it to be able to shell out. Alongside it, two breaking changes from v2.1.251 (Aug 28): seat-based Enterprise subscriptions now default to Opus 5, matching every other premium plan; and <code>CLAUDE_CODE_SUBAGENT_MODEL</code> now only sets a default rather than overriding — an agent definition's own <code>model:</code> field and any explicit per-spawn model now take precedence over it.</p>
+    <p>The subagent-model change specifically inverts prior behaviour: anyone who set that environment variable expecting it to force every subagent onto one model will now see per-agent overrides win instead.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">New flag</div><div class="stat-value">--restricted</div></div>
+      <div class="stat"><div class="stat-label">Enterprise default model</div><div class="stat-value">now Opus 5</div></div>
+      <div class="stat"><div class="stat-label">Subagent model var</div><div class="stat-value">now default, not override</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Anthropic, Claude Code changelog</a>
+      <a href="https://juliangoldie.com/claude-code-restricted-mode/">Julian Goldie, restricted mode explainer</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This sits next to auto mode (default since Aug 14) rather than replacing it: auto mode is a classifier deciding what to approve automatically inside a normal session, while <code>--restricted</code> removes entire tool categories before the session starts — a different, coarser control aimed at the case where you don't trust the working directory's contents at all, not just the commands a well-behaved agent might run.</p>
+        <p><span class="lbl">The details.</span> Ignoring user/project/local settings files is the detail worth noting most: a restricted session can't be reconfigured back to a looser posture by anything sitting in the repo it's pointed at, which is exactly the property you'd want for scanning an untrusted clone or running inside CI on a fork's PR branch.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth the hour: try <code>--restricted</code> the next time this pipeline needs to point Claude Code at a repository or archive it doesn't fully trust — Pet Food supplier documents from outside parties are the most likely candidate. Separately, grep this pipeline's own scripts and CI configs for <code>CLAUDE_CODE_SUBAGENT_MODEL</code> before the next subagent-heavy run, since the semantics just flipped.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own changelog for all three changes, corroborated by an independent practitioner explainer of restricted mode</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LIST -->
+  <h3 class="sec">Across the stack</h3>
+
+  <!-- M1 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Cursor</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 27, 2026</span>
+    </div>
+    <h4 class="headline">Cursor drops the repo requirement for cloud agents — prompt first, save to a repo only once there's something worth keeping</h4>
+    <p>Cursor's cloud agents no longer require connecting GitHub or another SCM before starting: a new "Start from scratch" option in the repo picker lets an agent begin working immediately, with Cursor silently creating an Origin repo behind the scenes; only when the result is worth keeping does "Create repo" save it under a chosen name and visibility. The same release adds live browser preview by port-forwarding the cloud agent's environment directly, plus one-click Vercel publishing for a live URL.</p>
+    <p>This is an onboarding-friction fix, not a capability addition — everything it enables was already reachable by connecting a throwaway repo first.</p>
+    <div class="links">
+      <a href="https://cursor.com/changelog">Cursor, official changelog, Aug 27</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Two editions ago this briefing tracked Cursor's push into standing, subscribed cloud agents ("swarms," a <code>/goal</code> command); this window's change is smaller in ambition — it's about the first five minutes of using a cloud agent, not what it does once running.</p>
+        <p><span class="lbl">The details.</span> The Vercel-publish path requires a Vercel account, so the "zero setup" framing has one exception baked in for anyone who wants a shareable URL rather than just a saved repo. No independent writeup of this specific feature has surfaced yet; the only source is Cursor's own changelog entry.</p>
+        <p><span class="lbl">Why it still matters.</span> No action: this pipeline's work starts from an existing repository or file set in essentially every case, so the friction this removes doesn't apply here. Trigger to revisit: a future project that genuinely starts from a blank prompt rather than existing source material.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · Cursor's own official changelog, a primary source; no independent corroboration located this window</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2 -->
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub / Copilot</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Aug 27–28, 2026</span>
+    </div>
+    <h4 class="headline">GitHub tightens Copilot billing to upfront-only and drops the 300-file limit on Copilot code review</h4>
+    <p>Two changes land together: from October 1, 2026, existing Copilot Business/Enterprise customers on credit card or PayPal move to upfront per-seat payment before access, and new sign-ups reopen September 1 under the same model — GitHub frames it as tightening account vetting and billing reliability. Separately, Copilot code review drops its prior 300-file / 20,000-line-of-code ceiling entirely, now reviews bot-authored and Copilot-cloud-agent pull requests with a full agentic pass instead of a limited fallback, and adds a three-option resolution-reason dropdown (Addressed / Won't fix / Incorrect) on review comments. The default review depth also shifts from Lite to Balanced on September 28.</p>
+    <p>The billing change is administrative; the review-scope change is the one with a real capability delta, since a 20,000-line ceiling would have excluded most large refactors and monorepo changes from automatic review entirely.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Upfront billing starts</div><div class="stat-value">Oct 1, 2026</div></div>
+      <div class="stat"><div class="stat-label">Old PR review ceiling</div><div class="stat-value">300 files / 20,000 LOC</div></div>
+      <div class="stat"><div class="stat-label">Default review depth flips</div><div class="stat-value">Sep 28, 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://github.blog/changelog/2026-08-28-upcoming-changes-to-github-copilot-policies-and-billing/">GitHub Changelog, Copilot billing changes, Aug 28</a>
+      <a href="https://github.blog/changelog/2026-08-27-copilot-code-review-resolution-reasons-and-expanded-capabilities/">GitHub Changelog, code review capabilities, Aug 27</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Last edition covered Copilot's move into Slack and Teams as a shared agent surface; this window is the opposite kind of news — commercial plumbing and a review-engine limit removal rather than a new place Copilot shows up.</p>
+        <p><span class="lbl">The details.</span> Copilot Chat across github.com, GitHub Mobile and the cloud agent also converges into one unified experience no earlier than September 28, with chat history moving from a 28-day retention window to the lifetime of the account — a data-retention change worth knowing about for anyone who currently treats Copilot Chat as ephemeral.</p>
+        <p><span class="lbl">Why it still matters.</span> No action: this pipeline doesn't run Copilot seats, so neither the billing shift nor the review-scope expansion changes anything today. Worth a re-look only if Copilot's code review — now uncapped on size and covering bot-authored PRs — becomes a candidate as a second reviewer on a repo this pipeline maintains.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Two separate GitHub Changelog posts, both primary sources, fetched in full</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITOR'S VIEW -->
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>A short window found real substance in maintenance, not launches.</strong> Six security fixes across two Claude Code releases and a new lockdown flag are the kind of changes that never make a keynote but genuinely change what's safe to point the tool at — a symlink-swap bypass in file tools is a sharper finding than most of what got TRY-rated in busier weeks.</li>
+      <li><strong>Two breaking changes rode in on the same release as the security fixes, which is easy to miss.</strong> The Enterprise default-model flip and the <code>CLAUDE_CODE_SUBAGENT_MODEL</code> semantics change both landed in v2.1.251 alongside the five security patches — a reminder to read a release's full changelog even when the headline is "security fixes," since defaults change quietly in the same breath.</li>
+      <li><strong>Everyone else moved on plumbing, not capability.</strong> Cursor's zero-repo cloud agent onboarding and GitHub's Copilot billing overhaul are both about removing friction from getting started or getting paid — neither changes what the tools can do once running, which is consistent with a short, quiet window rather than a gap in coverage.</li>
+    </ol>
+    <p class="closer">Wildcard for the week: GitHub uncapping Copilot code review's file-size ceiling is a bigger deal than the billing news it shipped alongside — a 300-file limit meant most real refactors never got automatic review at all, and that's now gone.</p>
+  </div>
+
+  <!-- WHAT CHANGED FOR THIS PIPELINE -->
+  <h3 class="sec">What changed for this pipeline</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>This week, worth doing:</strong> update to Claude Code v2.1.251 or later — the symlink-swap fix in file tools and the plugin path-traversal fix both close gaps that need no config change to benefit, only the update.</li>
+      <li><strong>This week, also worth doing:</strong> grep this pipeline's own scripts and CI configs for <code>CLAUDE_CODE_SUBAGENT_MODEL</code> before the next subagent-heavy run — its semantics flipped from override to default in v2.1.251.</li>
+      <li><strong>Worth trying once, not urgent:</strong> run <code>--restricted</code> the next time this pipeline needs Claude Code pointed at a repo or document set from an outside party it doesn't fully trust.</li>
+      <li><strong>No action on Cursor's zero-repo onboarding or GitHub Copilot's billing/review changes:</strong> neither this pipeline's workflow (always starts from existing source material) nor its toolset (no Copilot seats) intersects with either change today.</li>
+    </ul>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Sunday, August 30, 2026 &middot; <strong>Research window:</strong> 27–30 August 2026, 4 days &middot; <strong>Scope:</strong> fourth edition under the widened Practical AI Tools scope — 2 Home Stack cards, 2 cross-vendor cards, 4 items total; 2 TRY, 2 WATCH, 0 SKIP.</p>
+    <p><strong>Confidence legend:</strong> ●●●●● 5/5 primary source (vendor's own documentation, fetched directly), corroboration where found &middot; ●●●●○ 4/5 primary source, not yet independently corroborated &middot; ●●●○○ 3/5 single credible non-primary source &middot; ●●○○○ 2/5 aggregator- or tracker-only figures not independently verified.</p>
+    <p><strong>Editorial notes:</strong> The agent compiling this briefing cannot run any of these tools directly — every verdict rests on documented vendor behaviour and practitioner reports, not hands-on testing. This is a genuinely short window (four days, Thursday through Sunday): no memory-merge-scale story recurred, and the honest edition is a small one rather than a padded one. Model releases are deliberately out of scope for capability review — they belong to the Frontier Tech briefing's Release Radar; a Gemini 3 Flash integration into Gemini CLI and OpenAI Codex CLI activity both fell outside this window's dates and are left for the next edition if they recur. Sources are exclusively English-language.</p>
+  </div>
+
+</div>
+</body>
+</html>
