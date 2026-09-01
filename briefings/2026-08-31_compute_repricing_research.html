@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Compute Repricing Thesis, Walked Through</title>
+<meta name="description" content="Dwarkesh Patel argues GPU compute is underpriced and spot prices could rise 10x — a two-hour blog experiment, walked through claim by claim, with the central supply figure failing the check.">
+<meta name="wz-icon" content="bolt">
+<meta name="wz-color" content="#b06000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --teal:#b06000; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#7a4300 0%,#b06000 55%,#d98324 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--teal);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--teal);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<div class="wrap">
+<div class="hero">
+    <div class="kicker">Essay + companion video presentation · dwarkesh.com · Format v2</div>
+    <h1>Why compute might get 10x more expensive — his case, walked through</h1>
+    <p>Dwarkesh Patel argues that GPU compute is underpriced relative to what frontier labs can extract from it, and that spot prices could climb 10x or more as revenue keeps outrunning supply. By his own account this was a deliberately time-boxed two-hour writing experiment — not his usual months of interview-driven research — and he says so upfront rather than as a buried caveat. That framing is fairness-relevant: a reader should weigh the piece as what it announces itself to be. Three days later he restated the same case in a short companion video; this piece treats the two as one argument.</p>
+    <div class="meta">
+      <span>Essay: July 29, 2026 · Video: August 3, 2026</span>
+      <span>dwarkesh.com/p/why-compute-might-get-10x-more-expensive</span>
+    </div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> 7 claims verified against Epoch AI's compute-trends data, SemiAnalysis's pricing and fab-allocation reporting, and public deal reporting · reactions gathered a month on, including named counter-readings · fairness-reviewed against the essay and video · the central supply-growth figure — lab compute "3x-ing" year over year — fails the check, and a reader will find that verdict inline where the claim appears, not held back for the scorecard · not independently re-verified: the underlying methodology of the cited sources themselves · verdicts as of August 31, 2026.</div>
+
+<div class="navchips">
+  <a href="#brief">His argument</a>
+  <a href="#walk">Walked through</a>
+  <a href="#back">Stepping back</a>
+  <a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="num">1</div><h2>His argument in brief</h2></div>
+
+<div class="card">
+  <p class="sub">His theses as he means them — stated at full strength, before any checking. If he read this section, he should want to sign it.</p>
+  <ul class="tight">
+    <li><b>The paradox that starts everything.</b> Frontier lab revenue is compounding at roughly 10x a year. The compute those labs run on is compounding at roughly 3x a year. A gap that wide cannot persist indefinitely — something has to close it, and the question worth asking is what.</li>
+    <li><b>Only one of three closing mechanisms actually works.</b> The gap could close through fatter margins, through inference eating a larger share of the compute budget, or through the price of compute itself rising. Margins can't carry it: "for effect 1 to dominate, margins would have to be in the mid-90s percent by the end of next year. That sounds quite crazy to me." Labs won't lean on inference share either, because inference revenue isn't really the point — "the point of inference revenue is to convince investors to give you more money to buy more compute to train bigger models." That leaves price.</li>
+    <li><b>A labor-parity anchor for what a GPU should actually rent for.</b> If a human-level software engineer could run on an H100-equivalent, "that H100 should rent for over $250k a year" — "that's 15x today's spot price." The anchor isn't a forecast so much as a ceiling: it shows how much headroom exists between what compute costs today and what it would be worth if the labs' own capability claims are taken seriously.</li>
+    <li><b>Supply grows slower than it looks, once decomposed.</b> The ~3x figure he starts from isn't one number — it's roughly 1.4x from ordinary Moore's-law-style chip improvement, times 1.2x from new fab construction (which he argues is EUV-bottlenecked through 2030), times 1.8x from reallocating existing wafer capacity toward AI — a reallocation that saturates as AI's share of TSMC's leading node approaches full utilization by 2027.</li>
+    <li><b>The squeeze has real losers.</b> Incumbent labs with existing compute commitments lock up capacity ahead of the crunch. Frontier models command an Alchian–Allen-style premium — "your margins are set by how much better you are than the next best alternative" — because scarce, expensive compute gets rationed toward whoever can extract the most value per FLOP. Low-value uses get priced out first; he names "short-form video slop" as the kind of workload that stops being economical to run.</li>
+    <li><b>The regime has a built-in expiry date.</b> None of this is permanent. It ends whenever hardware itself gets cheap to build again — his marker is a world where humanoid robots or automated fabs collapse the cost of building compute, at which point the whole scarcity logic unwinds.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="walk"><div class="num">2</div><h2>The argument, walked through</h2></div>
+
+<div class="card">
+  <p class="sub">His content, in his own order. Checks and other views sit directly under the claim they belong to. Verdict scale: 5/5 primary source · 4/5 corroborated press · 3/5 single credible source · 2/5 aggregator only.</p>
+
+  <h3>The paradox: revenue outrunning supply</h3>
+  <div class="quote">"Lab compute 3x-es year over year" — while frontier lab revenue, on his figures, is on a roughly 10x-a-year trajectory.</div>
+  <p>The whole essay is built on this gap. If revenue really is compounding three times faster than the resource that produces it, then either the extra revenue is an illusion (margins expanding to absorb it), or the compute mix is quietly shifting (more of it going to inference, which monetizes directly, rather than training), or the price of compute itself has to rise to ration a resource that demand has outgrown. He treats the third option as the one left standing once the first two are examined — that examination is the essay's actual argument, not the paradox itself.</p>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 5/5</span> — Epoch AI's frontier-training-compute estimate runs <b>4–5x/year</b> (roughly 4.2x since 2018); a ~3x figure shows up only when the frame widens to broader, industry-wide 2025 compute rather than frontier-lab training compute specifically. His own December 2025 essay used "over 4x" for the same quantity. This is load-bearing: at 4–5x supply growth rather than 3x, the price-squeeze arithmetic in every later section weakens materially — the gap he opens with is narrower than stated.</div>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5</span> — The revenue premise behind the paradox, frontier lab revenue around <b>$100–150bn</b> for 2026, is directionally right but the range leans high: annualized run-rate revenue was around $65bn as of July 2026, with investor projections clustering at $100–120bn. The upper bound of his own range is overstated.</div>
+  <div class="inbox views"><span class="tag">Other views</span>The gap between his 3x and Epoch's 4–5x is the single most consequential correction in this piece — it is the number the rest of the supply-side argument is built on top of, and Epoch is the source he elsewhere leans on for other figures. He does not appear to have used his own December essay's higher number here.</div>
+  <p class="weight">The paradox is real in direction — revenue is outrunning supply — but its magnitude is inflated at the very first step, before any of the three reconciling mechanisms are even examined.</p>
+
+  <h3>Why margins and inference-share can't carry the gap</h3>
+  <p>He works through the reconciling mechanisms in order. Margins are already thin-ish today and rising, but not enough: closing the gap through margin expansion alone runs into his own arithmetic — "for effect 1 to dominate, margins would have to be in the mid-90s percent by the end of next year. That sounds quite crazy to me" (both sentences contiguous in the essay's mechanism discussion). He footnotes his own starting figure for where margins sit today and where they'd need to go — from roughly 40% to over 80% — as, in his own words, a "total vibe claim," not a modeled estimate.</p>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-unv">Unverifiable</span> <span class="cs">C 2/5</span> — No public source confirms a 40%-to-&gt;80% margin trajectory for frontier labs. SemiAnalysis's blended inference-margin estimates cluster around ~70%, which is <em>consistent with</em> the shape of his claim but does not confirm the specific numbers. His own "total vibe claim" label is, on the evidence available, the correct weight to put on it — not false, not confirmed, genuinely a guess he is honest about making.</div>
+  <p>He then rules out inference share doing the work on its own, on strategic rather than accounting grounds: labs have no interest in letting inference revenue quietly substitute for training-compute growth, because "the point of inference revenue is to convince investors to give you more money to buy more compute to train bigger models." Inference revenue is instrumental to the training-compute arms race, not an alternative to it — so it won't be allowed to relieve the pressure the paradox describes.</p>
+  <div class="inbox views"><span class="tag">Other views</span>This is an assertion about lab incentives and investor psychology, not a checkable figure — but it is consistent with how OpenAI and Anthropic have both talked publicly about revenue as a fundraising input rather than a terminal goal. No named source was found disputing the claim directly.</div>
+  <p class="weight">Ruling out margins and inference-share is the load-bearing move in the essay — everything downstream (the price argument, the labor-parity anchor) only follows if this elimination holds, and the margin leg of it rests on a number he himself flags as a guess.</p>
+
+  <h3>Labor-parity: what a GPU should actually rent for</h3>
+  <div class="quote">"If a human-level software engineer that could run on an H100 equivalent [existed]... that H100 should rent for over $250k a year." — "That's 15x today's spot price."</div>
+  <p>Having ruled out margins and inference-share, he turns to price as the remaining variable and offers a ceiling for how high it could plausibly go: value an H100 the way you'd value the labor it could substitute for, and the implied annual rent is over a quarter-million dollars — far above what anyone pays today. The anchor isn't presented as where prices will land; it's presented as evidence of how much room exists between current pricing and what the labs' own capability claims would justify, which is what makes a 10x move look plausible to him rather than absurd.</p>
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-mis">Wrong date</span> <span class="cs">C 4/5</span> — He cites spot prices up more than 40% from a February 2026 trough. The rise itself checks out — SemiAnalysis's index shows one-year H100 rental rates moving from roughly <b>$1.70 to $2.35/hr</b>, close to a 40% increase — but the trough it rose from was <b>October 2025</b>, not February 2026. The direction and rough magnitude of the price move are right; the date anchoring the "from here" claim is wrong by about four months.</div>
+  <p class="weight">The $250k/15x figure is explicitly a ceiling exercise, not a forecast, and should be read that way. The nearby price-trend claim is directionally solid but dated incorrectly.</p>
+
+  <h3>Supply: why 3x isn't really 3x</h3>
+  <p>He decomposes his starting 3x supply-growth figure into three multiplied factors: about 1.4x from chip-level improvement (Moore's-law-style gains within a process node), about 1.2x from new fab construction — which he argues is bottlenecked by EUV lithography-tool availability through roughly 2030 — and about 1.8x from reallocating existing wafer capacity away from other chip categories and toward AI accelerators, a reallocation he says is saturating as AI's share of TSMC's most advanced node climbs toward full utilization by 2027.</p>
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-true">True (figures)</span> <span class="cs">C 5/5</span> — AI workloads at roughly <b>60% of TSMC's N3 capacity today, rising to ~86% by 2027</b>, matches SemiAnalysis's published figures closely. <span class="pill p-unv">Mechanism unverifiable</span> <span class="cs">C 2/5</span> — the specific 1.2x-from-fab-construction, EUV-bottlenecked-through-2030 mechanism was not found in the SemiAnalysis source he otherwise leans on for the adjacent capacity figures; that source emphasizes wafer capacity and HBM/DRAM constraints instead. The saturation figures are solid; the fab-construction leg of his decomposition is not traceable to a cited source.</div>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — OpenAI's 2024 inference spend at roughly <b>25% of compute spend</b> ($1.8bn of $7bn) matches Epoch AI's figures. <span class="pill p-unv">Unverifiable extension</span> <span class="cs">C 2/5</span> — his extension of that share to roughly 50% by 2026 has no corresponding figure in Epoch's published data; it is an extrapolation he makes, not a number Epoch reports.</div>
+  <div class="inbox views"><span class="tag">Other views</span>Dylan Patel — SemiAnalysis's founder, and Dwarkesh's guest on an August 25, 2026 episode overlapping this same territory — supports the broad direction (compute is centralizing toward the two or three largest labs, and that scarcity commands a real price premium: he puts frontier-lab-monetized compute at roughly $50 million per megawatt against a standard market rate around $10–15 million per megawatt) but frames the growth numbers differently. On his account, Anthropic and OpenAI's own compute is roughly <em>tripling</em> year over year (from about 2 gigawatts each at the start of 2026 toward 18GW by end-2027 and 54GW by end-2028), while <em>global</em> compute additions are closer to doubling (roughly 30GW this year, 50 next, 70 in 2028). Patel's tripling figure is closer to Dwarkesh's original 3x than to Epoch's 4–5x — but it measures something different (the two labs' own gigawatt build-out) from Epoch's frontier-training-FLOP metric, so the two numbers should not be read as confirming each other; they are different rulers held against a similar-sounding claim.</div>
+  <p class="weight">The saturation figures underneath the supply decomposition are solid; the fab-construction multiplier is not traceable to a source, and the loudest adjacent voice (Patel) agrees on direction while using a different, not directly comparable, set of numbers.</p>
+
+  <h3>Consequences: who gets priced out</h3>
+  <p>Scarce, repriced compute doesn't ration itself evenly. He expects incumbent labs with existing capacity commitments to be structurally advantaged — they locked in supply before the squeeze, and can outbid new entrants for whatever comes free. Among labs that do compete for marginal compute, the winners will be whoever extracts the most value per FLOP: "your margins are set by how much better you are than the next best alternative," an Alchian–Allen-style logic where the premium for being the best available option rises precisely because the input (compute) got more expensive. At the bottom of the value stack, workloads that only make sense when compute is cheap start dying — he names "short-form video slop" as the kind of use that gets priced out first.</p>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5</span> — As an example of incumbent capacity lock-up, the Google–SpaceX deal he cites (roughly $900M/month for around 110,000 GPUs) is close to reported figures (~$920M/month). Anthropic's separate, later SpaceX compute arrangement has no public dollar figure attached to it, and the GB200/GB300 hardware blend behind the number is not independently confirmed.</div>
+  <p class="weight">The capacity-lock-up mechanism has a real, roughly-confirmed example behind it; the low-value-use-dies prediction is illustrative and forward-looking rather than something checkable today.</p>
+
+  <h3>The regime's expiry date — and how much to lean on any of it</h3>
+  <p>He is unusually candid about the limits of his own argument. On whether the compute-scarcity trend continues: "there's no deep reason why the trend needs to continue, and it very well might not." He explicitly flags the resemblance to a discredited genre of forecasting — "this kind of prediction does pattern match onto the ways people have been wrong about scarcity" — an acknowledgment of the Simon–Ehrlich pattern, where confident scarcity bets have historically lost to human ingenuity and substitution. His counter is not that Ehrlich-style skeptics are always wrong, but that they have not always been right either: in some past decades, he argues, the scarcity side of that bet would have won. And running underneath all of it is the admission that frames the whole piece: this was a two-hour writing experiment, not a research report, and he says so rather than letting the piece imply more rigor than it has.</p>
+  <p class="weight">These hedges are as load-bearing as any figure in the piece. A reader who drops them ends up with a confident forecast the author himself did not make — the honest version of this essay is a scenario worth taking seriously, explicitly flagged by its own author as possibly wrong and admittedly rushed.</p>
+</div>
+
+<div class="sechead" id="back"><div class="num">3</div><h2>Stepping back</h2></div>
+
+<div class="card">
+  <div class="callout red">
+    <b>The pattern in the verdicts.</b> Both checks that failed outright lean the same direction. The "3x" supply-growth figure (c1) understates real growth versus Epoch's 4–5x, which would make the actual squeeze <em>tighter</em> than his own arithmetic implies if the demand side holds; the "February trough" date (c3) is wrong, but the price surge it's meant to illustrate is real and, on the corrected timeline, has been running <em>longer</em> than he says. Neither error weakens his thesis — both point toward a sharper version of it than the one he actually argued. Worth stating plainly, because it cuts against the easy assumption that inflated framing always favors the author's conclusion.
+  </div>
+
+  <h3>The messenger</h3>
+  <p>Dwarkesh Patel is known primarily as an interviewer — the Dwarkesh Podcast's long-form conversations with AI researchers and technologists — not as a hardware or semiconductor analyst. This essay is unusual for him: original economic argument rather than an interview digest, built in two hours by his own account. Its supply-side numbers lean heavily on SemiAnalysis, whose founder Dylan Patel is a recurring podcast guest and, as Michael Parekh's reception piece discloses below, his housemate — a closeness worth naming as a stake, not an accusation, given how much of the essay's arithmetic traces back to that one source. For his broader track record across other essays and interviews, see <a href="2026-08-31_dwarkesh_theses_research.html">the corpus piece</a>; this piece stays focused on the compute essay and its companion video alone.</p>
+
+  <h3>Reception, one month on</h3>
+  <p>As of this writing, no named technical rebuttal has surfaced from either of the two sources the essay leans on hardest — Epoch AI (whose own growth figures quietly contradict his central 3x premise, as noted at c1) has published nothing addressing the piece directly, and SemiAnalysis has not weighed in independently of Dylan Patel's own podcast appearance. The most visible public reaction is Michael Parekh's, in his AI-RTZ newsletter, and it is not simple agreement: he calls the essay "the smartest version of the argument in circulation," gives it what he describes as a fair hearing under the heading "the 'Dwarkesh' Compute Demand Bull Case," and then pushes back with what he calls "ten brakes" on the price-surge scenario — including temporary IPO-window pricing pressure, supply responding to the price umbrella the scarcity itself creates, continued per-token efficiency deflation, customers building their own silicon, and the historical track record of scarcity bets losing. Parekh also discloses the Dwarkesh–Dylan Patel housemate connection directly, flagging the essay as "a VERY bullish corner of the AI world, marking its own beliefs to market."</p>
+  <p>That is the state of the reaction a month out: engaged, not silent, and not settled. It should be read as "reactions still forming," not as either endorsement or refutation by absence. The strongest counterarguments currently available live inside this piece's own checks rather than in a named external rebuttal — Epoch's 4–5x growth figure against his 3x, and the general class of Jevons-paradox-style objection that cheaper, more efficient inference could relieve compute demand rather than intensify the squeeze, which no one has yet argued against him by name.</p>
+
+  <h3>What could not be substantiated</h3>
+  <p>The $250k/15x labor-parity figure is his own back-of-envelope arithmetic; no independent study mapping H100 capacity to human-engineer productivity was found to confirm or refute the mapping itself, only the arithmetic once the input is granted. The 1.2x fab-construction, EUV-bottlenecked-through-2030 mechanism (c5) could not be traced to the SemiAnalysis source he otherwise draws on for adjacent figures. The 50%-by-2026 extension of OpenAI's inference-compute share (c7) has no corresponding Epoch figure. Parekh's "ten brakes" are his own analysis and were not independently checked against data for this piece — they are reported as his view, not verified as fact.</p>
+</div>
+
+<div class="sechead" id="score"><div class="num">4</div><h2>Scorecard &amp; takeaways</h2></div>
+
+<div class="card">
+  <p class="sub">All 7 checked claims; each verdict links back to its place in the walkthrough.</p>
+  <table>
+    <tr><th>Claim</th><th style="width:26%">Verdict</th><th style="width:9%">C</th></tr>
+    <tr><td><a href="#c1">Lab compute "3x-es year over year"</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c2">Revenue premise ~$100–150bn (2026)</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c3">Spot prices +40%+ from Feb 2026 trough</a></td><td><span class="pill p-mis">Wrong date</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c4">Google–SpaceX ~$900M/mo, 110k GPUs</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c5">AI ~60% of TSMC N3 now → 86% by 2027</a></td><td><span class="pill p-true">True (figures)</span> <span class="pill p-unv">Mechanism unverifiable</span></td><td class="cs">5/5, 2/5</td></tr>
+    <tr><td><a href="#c6">Margins 40% → &gt;80%</a></td><td><span class="pill p-unv">Unverifiable</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c7">OpenAI 2024 inference ~25% of compute spend</a></td><td><span class="pill p-true">True</span> <span class="pill p-unv">Extension unverifiable</span></td><td class="cs">5/5, 2/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>The direction of the paradox.</b> Frontier lab revenue is genuinely outrunning compute supply growth — the gap is narrower than 10x-vs-3x once Epoch's 4–5x is used, but it does not close.</li>
+    <li><b>Real, rising spot prices.</b> The roughly 40% rise is corroborated even though the trough date is wrong.</li>
+    <li><b>Real incumbent capacity lock-up.</b> The Google–SpaceX deal is a genuine, roughly-confirmed example of the mechanism, not an invented one.</li>
+    <li><b>AI's rising claim on leading-edge fab capacity.</b> The 60%-now, 86%-by-2027 figures hold up against SemiAnalysis directly.</li>
+    <li><b>Inference eating a growing share of compute spend.</b> The 2024 anchor point is confirmed; only the 2026 extension is unverified.</li>
+    <li><b>His own hedges.</b> The "might not continue" admission and the Simon–Ehrlich acknowledgment are genuine, not decorative — they belong in any fair summary of what he actually argued.</li>
+  </ul>
+  <h3>What to discount</h3>
+  <p>The headline "10x" figure specifically should not be quoted as a finding — it is a ceiling built on a labor-parity anchor and a starting supply-growth number (3x) that understates the real figure, which pulls the ratio in an unpredictable direction rather than confirming it. The &gt;80% margin figure is, by his own label, a guess. The fab-construction mechanism behind the supply decomposition is not sourced. The direction of the argument — compute stays scarce and gets more expensive in the near term — is widely shared, including by Parekh's more skeptical read; the specific multiplier is not.</p>
+
+  <h3>Sources</h3>
+  <ul class="tight" style="font-size:14px">
+    <li>Primary — Dwarkesh Patel, "Why compute might get 10x more expensive in coming years" (dwarkesh.com, July 29, 2026) and companion video, "Why smarter AI models could drive up compute prices 10x" (August 3, 2026)</li>
+    <li>Compute growth — Epoch AI frontier-training-compute trend data; Dwarkesh's own December 2025 essay (for the "over 4x" figure)</li>
+    <li>Pricing &amp; fab capacity — SemiAnalysis GPU rental price index; SemiAnalysis TSMC N3 capacity-allocation reporting (single-source: the EUV/fab-construction mechanism itself is not confirmed in this source)</li>
+    <li>Deal reporting — public reporting on the Google–SpaceX compute agreement (single-source for the exact monthly figure; Anthropic's separate SpaceX arrangement has no public dollar figure)</li>
+    <li>Reception — Michael Parekh, "AI: The 'Dwarkesh' Compute Demand Bull Case," AI-RTZ newsletter (single-source for the "ten brakes" characterization)</li>
+    <li>Comparison — Dylan Patel, Dwarkesh Podcast episode, August 25, 2026 ("Anthropic &amp; OpenAI will have most of the world's compute by 2028")</li>
+  </ul>
+</div>
+
+<div class="foot">
+  Analysis prepared August 31, 2026 · Format v2 (content-first)<br>
+  Verdicts reflect sources available on the date of writing.
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dylan Patel on the Compute Endgame — The Argument, Walked Through</title>
+<meta name="description" content="SemiAnalysis founder Dylan Patel tells Dwarkesh why Anthropic and OpenAI are on track to control most of the world's usable compute by 2028 — his numbers on inference economics, China, power and debt, presented in full and checked in place.">
+<meta name="wz-icon" content="globe">
+<meta name="wz-color" content="#0b5394">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0b5394; --blue-d:#073763; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#0b5394; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#0d2c4a 0%,#0b5394 55%,#1c6fb8 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:29px;line-height:1.26;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:23px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<div class="wrap">
+<div class="hero">
+    <div class="kicker">Interview presentation · Dwarkesh Podcast · Format v2</div>
+    <h1>Dylan Patel on the compute endgame: why he thinks two labs end up owning most of the world's flops</h1>
+    <p>The SemiAnalysis founder walks Dwarkesh through the numbers behind a single claim: that by the end of 2028, Anthropic and OpenAI will control most of the world's usable compute, that the economics now make this self-reinforcing, and that the only things that can still stop it are physics and regulators — not competitors. His argument first, at full strength, with Dwarkesh's own on-air pushbacks and the checking built in where it belongs.</p>
+    <div class="meta">
+      <span>Analysis prepared August 31, 2026</span>
+      <span>Interview: Dwarkesh Podcast — Dylan Patel, August 25, 2026 (dwarkesh.com/p/dylan-patel-3) · ~2h</span>
+    </div>
+</div>
+
+<div class="epistemic"><b>How this was built and checked:</b> built from an AI-extracted transcript digest of the episode page, not a line-verified raw transcript — quotes are as extracted, with cross-fetch verification against the live episode page and independent secondary summaries where flagged below · 12 claims checked against primary and press sources (SEC/press financial reporting, Commerce Dept. and outlet coverage of model-access restrictions, industry price and capacity reporting) · fairness-reviewed for quote-splice integrity, dropped hedges and missing concessions · not investment advice · verdicts as of August 31, 2026.</div>
+
+<div class="navchips">
+  <a href="#brief">His argument</a>
+  <a href="#walk">Walked through</a>
+  <a href="#back">Stepping back</a>
+  <a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="num">1</div><h2>His argument in brief</h2></div>
+
+<div class="card">
+  <p class="sub">His theses as he means them — stated at full strength, before any checking. If he read this section, he should want to sign it.</p>
+  <ul class="tight">
+    <li><b>Compute is centralizing into two labs, fast.</b> Roughly 30% of incremental 2026 compute is already going to Anthropic and OpenAI; by the end of 2027, on contracts already signed, that's 40–50%. By end-2028 the two of them control most of the world's usable flops. "I see nothing that's stopping it."</li>
+    <li><b>The economics flipped from a cost center to a profit engine.</b> Base inference compute costs $10–15M per megawatt; GPT-4-era serving lost money at that price. Current-generation models are pulling in up to ~$50M per megawatt of revenue — enough that Anthropic turned a profit in Q2, with OpenAI potentially following in Q3. That surplus gets reinvested straight into training, which is what makes the centralization self-funding rather than a one-time head start.</li>
+    <li><b>The sticker price on the buildout understates the real number by close to double.</b> Headline CapEx covers only the critical IT — chips, racks, networking. Add the building shells (15–20 year assets) and the power plants behind them (30-year assets) and his own $5 trillion/year at 100GW becomes $7–10 trillion/year. Across 2024–29 that's roughly $11 trillion total, with $5–6 trillion of it needing to come from debt because cash flow alone can't cover it.</li>
+    <li><b>The US-China compute gap is already much wider than people think, and getting wider.</b> Before the 2022 export controls, the US added roughly 45–50% of the world's new compute and China 30–35%. Today the US is at roughly 70%, China is in the single digits. By 2028 China will have "30 gigawatts of AI compute or less" — and even that headline number overstates China's real position, because the chips behind it run at a steep efficiency discount to American silicon.</li>
+    <li><b>Power and turbines, not chips, are now the binding constraint.</b> Fabs can, in principle, scale; the physical supply chain behind gas turbines and EUV lithography mirrors cannot keep pace with the money chasing it, and that mismatch is, on his account, already visible in resale and arbitrage behavior (an episode anecdote this piece could not independently verify — flagged again below).</li>
+    <li><b>Non-consensus: labs will spend a shrinking share of their compute on inference, not a growing one.</b> Today's split is roughly 60/40 training-to-inference, and research already accounts for about half of total compute. Because compute spent on R&D compounds into the next generation of models — and compute spent on inference just serves the current one — the rational move for a lab racing for capability is to keep starving inference of its share even as the absolute number keeps growing.</li>
+    <li><b>The buildout has a macro ceiling, and it's debt, not chips.</b> $5–6 trillion of new AI-linked debt pushes big-tech bond yields from roughly 5–6% toward something like 8% — his own rough "vibe," not a model — which reprices non-AI equities, squeezes banks, and echoes the early-1980s Volcker shock that pushed roughly 40 countries into default.</li>
+    <li><b>Every economic force point the same way: toward centralization.</b> Training-scale economies, physical scarcity of the inputs, and deployment learning-by-doing all compound in the same direction, toward the labs that are already biggest.</li>
+    <li><b>The circuit-breaker on all of this is regulation, not physics.</b> Labs are already withholding and restricting their own most capable models — OpenAI has slowed and withheld its "Astra" model, Anthropic's "Mythos" is restricted from foreign employees — which means the ceiling on how fast this plays out is now more likely to be set in Washington than in a fab.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="walk"><div class="num">2</div><h2>The argument, walked through</h2></div>
+
+<div class="card">
+  <p class="sub">His content, in his order. Checks and other views sit directly under the claim they belong to. Verdict scale: 5/5 primary source · 4/5 corroborated press · 3/5 single credible source · 2/5 aggregator or single-source-only.</p>
+
+  <h3>The centralization number: half the incremental compute, one year out</h3>
+  <div class="quote"><b>Dylan Patel:</b> "It's really by the end of next year when half of the incremental compute is already going to Anthropic and OpenAI." <i>— "half" being the top of the 30% → 40–50% trajectory he lays out for 2026 → 2027</i></div>
+  <p>He opens with the headline figure and builds the rest of the interview around defending it. Roughly 30% of the world's incremental 2026 compute is already flowing to the two labs; by the end of 2027, on contracts already signed — not projected, signed — that rises to 40–50%. He extends the line out to end-2028, where the two labs "control most of the usable flops in the world" on their own, amplified by 3–5x perf/watt gains per chip generation (GB300, TPUv7, Trainium3) that let the same power footprint do more each cycle. His closing line on the trend: "I see nothing that's stopping it."</p>
+  <div class="inbox check" id="c12"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 3/5</span> — Both labs reportedly moved from roughly 2GW (OpenAI) and under 2GW (Anthropic) at the start of 2026 to above 5GW each by year-end, per an independent summary of this same episode — a genuinely fast ramp, consistent with public reporting on both labs' compute contracts through 2026. The 40–50%-of-incremental-compute figure and the 3–5x perf/watt claim are SemiAnalysis's own proprietary tracking; no independently published figure was found that confirms the precise percentages, so they're taken on the analyst's institutional credibility rather than verified directly.</div>
+  <div class="inbox views"><span class="tag">Other views — incl. Dwarkesh's own pushback</span>Dwarkesh pushes on the ceiling question directly: if compute keeps concentrating this fast, what stops it from just being two companies running the whole world's AI? Patel's answer is the efficiency-multiplier point above — centralization isn't zero-sum on capability, because each generation's chips do more with the same power, so the "ceiling" keeps moving up rather than acting as a hard stop. In the exchange as digested, he does not directly address the concentration itself, only why the concentrated entities keep getting more capable rather than plateauing.</div>
+  <p class="weight">The direction and speed of the ramp check out; the precise share-of-incremental-compute numbers are SemiAnalysis's own estimate, stated with more confidence than outside verification can currently support.</p>
+
+  <h3>Inference economics flipped from loss-leader to profit engine</h3>
+  <div class="quote"><b>Dylan Patel:</b> "I spend $10 on inference capacity, generate $50 of revenue … and spend all of that profit on training."</div>
+  <p>The mechanical story: base compute costs $10–15M per megawatt to run. In the GPT-4 era, serving inference at that base cost against then-prevailing prices was a money-loser — labs subsidized usage to build habit and data. Today, current-generation models pull in up to roughly $50M per megawatt of revenue against that same base cost, and Patel projects that climbing higher — "could get $70, $80 million per megawatt" — by the end of 2027. The profit on that spread doesn't sit as cash; it gets reinvested straight into the next training run, which is the mechanism that turns a compute lead into a compounding one. He states plainly: "Anthropic started turning a profit in Q2."</p>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> — Anthropic's Q2 2026 revenue came in above $11.5bn, with reported <b>positive operating income</b> for the first time (CNBC, Yahoo Finance), and its annualized run rate reportedly reached <b>$65bn in July</b> (CNBC). "Turning a profit in Q2" is a fair gloss on that reporting, though "positive operating income" and GAAP net profit are not identical claims, and independent, audited confirmation was not found.</div>
+  <div class="inbox check" id="c2"><span class="tag">Check — OpenAI Q3 projection</span><span class="pill p-unv">Unverifiable, leans optimistic</span> <span class="cs">C 3/5</span> — No public forecast found supports OpenAI turning profitable as early as Q3 2026; independent financial-forecast trackers project OpenAI running a loss through 2026 (on the order of low-double-digit billions for the year) with profitability pushed out to later years. Patel's "possibly Q3" reads as his own optimistic scenario, not a reported figure.</div>
+  <div class="inbox check" id="c3"><span class="tag">Check — revenue/MW figures</span><span class="pill p-most">Mostly true (current) / unconfirmed (projected)</span> <span class="cs">C 3/5</span> — The current ~$50M/MW figure is broadly consistent with an independent summary of this same episode, which put current pricing in the $20–50M/MW range against a $10–15M/MW base cost. The $70–80M/MW-by-end-2027 figure ("could get $70, $80 million per megawatt") is flagged as transcript-suspect in the source material behind this piece — the number and the date may not be as precisely paired in the original conversation as a clean transcript would show — so it is presented here as his projection, not a settled figure.</div>
+  <p class="weight">The realized numbers — Anthropic's Q2 turn — hold up well against outside reporting; the forward numbers, for both labs, run ahead of what public forecasters are currently willing to say.</p>
+
+  <h3>What the headline CapEx number leaves out</h3>
+  <p>Patel's argument here is an accounting correction, not a new forecast: the CapEx figures companies report cover the "critical IT" — chips, servers, networking — because that's the part with the fastest depreciation schedule and the most investor attention. It quietly omits the building shells around the data centers (15–20 year assets) and the power plants built to feed them (30-year assets). Once those are added back in, his own oft-cited "$5 trillion a year at 100GW" figure becomes $7–10 trillion a year at that same capacity. Run across 2024–2029, he puts the full buildout at roughly $11 trillion, of which $5–6 trillion has to be debt-financed because no combination of hyperscaler and lab cash flow covers it.</p>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-most">Mostly true, high end of the public range</span> <span class="cs">C 3/5</span> — Published estimates for the multi-year AI buildout cluster lower than his figure: McKinsey's widely cited "cost of compute" analysis puts the race at roughly <b>$7 trillion</b>; other trackers cite figures from ~$1 trillion (data-center capex alone, by 2029) up to ~$5 trillion (MUFG, by 2030). Patel's $11 trillion total and $5–6 trillion debt-financed figure sit above the McKinsey number and at the high end of what's publicly modeled — directionally consistent with "this requires more debt than headline CapEx suggests," but not independently confirmed at his specific figure. The shells-plus-power-plants accounting logic itself is sound and matches how Goldman Sachs' own "tracking trillions" assumptions piece frames the undercount.</div>
+  <p class="weight">The accounting point — headline CapEx undercounts the real build — is correct and shared by other serious forecasters; his own total sits meaningfully above their central estimates.</p>
+
+  <h3>The China gap, and why it may be wider than it looks</h3>
+  <div class="quote"><b>Dylan Patel:</b> "The Chinese semiconductor industry has significantly more subsidies than the rest of the world's combined."</div>
+  <p>Before the October 2022 export controls, Patel puts the US at roughly 45–50% of the world's incremental compute and China at 30–35% — a real contest. Today, he says, the US is at roughly 70% and China is "sub-10%." His forecast for China runs to 2028 ("30 gigawatts of AI compute or less") with a slow build toward a real domestic-fab contribution — SMIC and CXMT scaling meaningfully only from 2028 — but he attaches a heavy quality discount to whatever China does build: domestic chips run well behind American silicon in efficiency, so a headline gigawatt of Chinese compute buys meaningfully less usable flops than an American one. He is careful to note the subsidy point is not really in dispute — China's state support for its chip industry dwarfs anything comparable elsewhere.</p>
+  <div class="inbox check" id="c5"><span class="tag">Check — current US/China share</span><span class="pill p-most">Mostly true</span> <span class="cs">C 3/5</span> — An independent AI-geopolitics tracker (ai2027-tracker.com) puts China's current share of <em>global</em> AI-relevant compute at roughly 12% — in the same neighborhood as, but somewhat higher than, Patel's "sub-10% of incremental new compute" (a narrower, flow-based measure that would reasonably read lower than a stock-based share). An independent summary of this same episode corroborates the ~70%/&lt;10% split as stated on the show. No independent primary figure (Epoch AI, published SemiAnalysis data) was found giving the identical pre-2022 baseline of 45–50%/30–35%; the direction of the shift is well documented in export-control coverage (CSIS, BCG) even where the precise percentages aren't independently pinned down.</div>
+  <div class="inbox check" id="c6"><span class="tag">Check — 2028 forecast &amp; quality discount</span><span class="pill p-unv">Unverifiable — single source</span> <span class="cs">C 2/5</span> — The 30GW-by-2028 figure and the roughly 2.5x efficiency discount (framed elsewhere as "50GW of Chinese compute ≈ 20GW American") are SemiAnalysis's own proprietary estimates. The specific pairing of numbers is flagged as transcript-suspect in the material this piece is built from, so it is presented as his claim, not as an independently confirmed figure — though a real efficiency gap between export-control-constrained Chinese chips and current US silicon is not seriously disputed in the wider literature (CSIS, Epoch AI chip-smuggling research).</div>
+  <div class="inbox views"><span class="tag">Other views</span>Independent trackers converge on China holding somewhere between roughly one-tenth and one-eighth of global compute today — a genuinely large gap from pre-2022 parity, though estimates vary by whether they measure flow (new adds) or stock (installed base), which is part of why Patel's and the trackers' numbers don't line up exactly. Nobody in the public literature surveyed here disputes the direction of the gap; the dispute, where it exists, is about its precise size and how fast Chinese domestic fabs close it after 2028.</div>
+  <p class="weight">The direction — a large and widening US lead — is well supported by outside sources; the specific 2028 tonnage and the quality-discount multiplier are his own institute's estimate, presented with more precision than any outside source can currently confirm.</p>
+
+  <h3>Power and turbines: the bullwhip</h3>
+  <div class="quote"><b>Dylan Patel:</b> "We could make a trillion dollars … but we're bottlenecked on the mirrors that go into the ASML machines."</div>
+  <p>His framework is the bullwhip effect from supply-chain economics: a small, steady increase in demand at the lab level turns into a much larger, delayed, and overcorrecting swing further up the chain — at turbine makers, at Zeiss (which supplies the mirrors inside ASML's EUV lithography machines). The signal takes years to propagate and, by the time capacity arrives, demand has already moved again. He frames the arbitrage this creates as almost absurd: a roughly $6bn fab that produces about 1GW a year can support on the order of $100bn a year in revenue once compute is that scarce — a return that pulls in capital far faster than physical supply can respond, which is exactly why turbines and EUV tooling, not chip fabrication capacity itself, are now the tightest constraint. His hedge on the supply side: EUV/Zeiss "should be making 100 EUV tools by end of decade," but the supply response itself is "a whip" — it lags, then overshoots.</p>
+  <div class="inbox check" id="c10"><span class="tag">Check</span><span class="pill p-true">True (shortage) / <span class="pill p-most">mostly true (Zeiss figure)</span></span> <span class="cs">C 4/5</span> — The gas turbine shortage is independently and extensively documented in 2026 trade press: Wood Mackenzie reports turbine prices up roughly <b>195%</b> amid the supply-demand crunch, and multiple energy-sector outlets (Yahoo/OilPrice, Modo Energy) describe turbines as now "AI's biggest constraint." Zeiss's commitment to scale mirror production toward roughly 100 EUV tools a year by 2030 is corroborated by an independent summary of this same episode; no separate primary Zeiss statement was checked directly, so it carries a single-source flag despite being plausible and specific.</div>
+  <p class="weight">The turbine shortage itself is one of the best-corroborated claims in the interview; the specific arbitrage economics and the Zeiss production target are plausible and internally consistent, but rest on the show itself as the only source found.</p>
+
+  <h3>Non-consensus: less inference share over time, not more</h3>
+  <p>Here Patel breaks from what he frames as consensus expectation — that as AI products mature, labs will shift more of their compute toward serving paying users and less toward research. He argues the opposite: today's roughly 60/40 training-to-inference split, with research already accounting for about half of total compute, should tilt further toward research over time, not less, because compute spent on R&D compounds into the next model generation while compute spent on inference only monetizes the current one. In a race where being one generation ahead is worth more than near-term revenue, the rational move is to keep inference's share shrinking relative to the total even as its absolute size keeps growing with the overall footprint.</p>
+  <div class="inbox views"><span class="tag">Other views</span>Dwarkesh presses him directly on this — if labs are turning a genuine profit on inference now, doesn't that argue for leaning into it rather than away from it? Patel doubles down rather than softening the claim: the profit itself is the fuel for training, not a reason to reallocate toward serving more of it. This is the one thesis in the interview presented as most clearly Patel's own reading against the grain, rather than a numbers-driven conclusion, and it is correspondingly the hardest of his theses to check against any outside benchmark — no independent tracker of lab-level training/inference compute splits was found to test it against.</div>
+  <p class="weight">Internally coherent and consistent with how a capability race would be expected to behave; it is a prediction about future lab behavior, not a documented fact, and should be read as such.</p>
+
+  <h3>The macro ceiling: debt, yields, and a second Volcker shock</h3>
+  <div class="quote"><b>Dylan Patel:</b> "[An 8% yield is] not a real number — I'm vibing a number."</div>
+  <p>The chain: $5–6 trillion of new AI-linked debt has to clear the market somewhere, and hyperscalers are already issuing at a scale Patel calls the largest debt issuance year on record. As spreads widen against that supply, he expects big-tech bond yields to move from roughly 5–6% toward something meaningfully higher — his own "vibed" figure lands around 8% — which would reprice long-duration, non-AI equities across the board and squeeze banks holding the paper. He extends the debt-service point to sovereigns: US government interest costs are already around 20% of tax revenue, and he suggests a several-point rate move could push that toward 40–60%. Dwarkesh brings in economist Basil Halperin's framing here — a second Volcker shock, echoing the roughly 40 developing-country defaults that followed the early-1980s rate spike — and Patel doesn't push back on the analogy.</p>
+  <div class="inbox check" id="c11"><span class="tag">Check</span><span class="pill p-most">Mostly true (base figure)</span> <span class="cs">C 3/5</span> — US net interest costs running near a fifth of federal revenue is broadly consistent with CBO-reported trends for the mid-2020s. The projection to 40–60% under a multi-point rate rise is Patel's own extrapolation, not a published forecast, and should be read as scenario math rather than a stated projection from CBO or any independent source. <span class="pill p-unv">Unverifiable</span> — Basil Halperin is a real economist publicly working on macroeconomic policy under transformative AI (confirmed via an independent podcast appearance discussing exactly this topic), which supports Dwarkesh's citation being genuine; the specific "~40 country defaults" figure attributed to him was not independently traced to a primary Halperin publication in the time available.</div>
+  <p class="weight">He is explicit that the 8% figure is a vibe, not a model — a hedge worth taking at face value; the debt-financing scale behind it and the base debt-service share are real, even where the multi-year yield forecast is not.</p>
+
+  <h3>Every force points the same direction</h3>
+  <div class="quote"><b>Dylan Patel:</b> "Every force is screeching towards centralization."</div>
+  <p>He ties the previous theses into one mechanism: training-scale economies reward whoever is already biggest; physical scarcity (turbines, EUV tooling, power) rewards whoever can pay the arbitrage price first and lock in supply; and deployment learning — the fact that a model serving more real users gets better data to improve the next one — rewards whoever already has the most users. None of the three forces pulls against the other two. Dwarkesh, working through the implications live, sketches an illustrative progression of "AI laborers" scaling from roughly 10 million to 100 million to a billion — his own framing device for what a compute base that size could eventually run, not a number Patel puts forward himself.</p>
+  <p class="weight">Not an independently checkable claim; it's the interview's organizing logic, and the individual mechanisms behind it (scale economies, physical scarcity, deployment learning) are each independently well-established economic effects, even though their combined magnitude here is Patel's own synthesis.</p>
+
+  <h3>The circuit-breaker is regulation, not physics</h3>
+  <p>Patel's closing move undercuts his own momentum: the fastest-moving constraint on how fast this plays out isn't chips or power, it's political. Both leading labs are already withholding or restricting their most capable systems — not hypothetically, but right now. He points to two live examples: OpenAI has slowed and withheld release of its "Astra" model, and Anthropic's "Mythos" model is restricted from foreign employees. Asked whether labs might simply retreat to internal-only deployment if regulation tightens further — capability without public release — he agrees this is already happening, not a hypothetical escape hatch.</p>
+  <div class="inbox check" id="c8"><span class="tag">Check — Astra</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> — OpenAI publicly confirmed slowing Astra's development and delaying release over cybersecurity concerns (Axios, TechCrunch, both August 2026), reportedly including a training pause tied to a "Preparedness Framework" review. The specific "two-week" duration cited in the source material behind this piece was not independently confirmed, though a pause of some length is well documented.</div>
+  <div class="inbox check" id="c9"><span class="tag">Check — Mythos</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — Extensively corroborated: the US Commerce Department restricted Anthropic's Mythos model from foreign-national access on national-security grounds in June 2026 (CNN, Bloomberg, CNBC, Fortune, CSIS), with access later partially restored for some companies and government agencies. This is among the best-documented claims in the entire interview.</div>
+  <div class="inbox views"><span class="tag">Other views — Dwarkesh's pushback</span>This is the point in the conversation where Dwarkesh's skepticism visibly gives way: after walking through the compute, debt and regulatory picture together, he remarks that he "didn't realize the compute situation was as fucked as" Patel was describing — the clearest on-air concession in the episode that the cumulative case landed, even though he had pushed back individually on several of the pieces along the way (the ceiling question, the EUV supply timeline, the $70–80M/MW figure, and the debt numbers, where Patel himself conceded labs "can't cash-flow fund everything").</div>
+  <p class="weight">The two named examples are both real and well-documented events, which lends real weight to the "regulation is the binding constraint" framing — though it is one interview's worth of anecdote, not yet a general rule about how the whole industry will behave under future restriction.</p>
+
+  <h3>The world total: putting a number on it</h3>
+  <p>Patel's own running estimate for total world AI-relevant power capacity additions: roughly 30GW in 2026, 50GW in 2027, 70GW in 2028, and 90–100GW in 2029. Dwarkesh does the arithmetic live and arrives at a cumulative figure north of 200GW globally by the end of 2028; Patel confirms it — "yeah, globally" — without independently restating the number himself.</p>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-unv">Unverifiable — single source</span> <span class="cs">C 2/5</span> — These are SemiAnalysis's own proprietary capacity-tracking estimates. Independent power-demand forecasting found in this research (Gartner's 26% data-center electricity growth for 2026, Goldman Sachs' US demand roughly doubling by 2027) is directionally consistent with rapid AI power growth, but none of the sources checked publish year-by-year global GW-add figures at this granularity to compare against. The 200GW-plus cumulative figure is Dwarkesh's own derived arithmetic, agreed to rather than independently sourced by Patel on air.</div>
+  <p class="weight">Plausible and internally consistent with the rest of his numbers, but this is the single most single-sourced figure in the entire interview — taken on SemiAnalysis's institutional credibility, not independently confirmed here.</p>
+</div>
+
+<div class="sechead" id="back"><div class="num">3</div><h2>Stepping back</h2></div>
+
+<div class="card">
+  <div class="callout">
+    <b>The pattern in the verdicts.</b> Split the twelve checks by tense and a clean pattern appears: claims about what has already happened — Anthropic's Q2 turn, the Astra pause, the Mythos restriction, the turbine shortage — check out solidly, several of them at the top corroboration tier. Claims about what is about to happen — the precise revenue-per-megawatt trajectory, the 2028 China tonnage and its efficiency discount, the year-by-year world power-add figures, OpenAI's Q3 profitability — consistently sit at the aggressive edge of the plausible range, or beyond what any outside forecaster is currently willing to publish, and always in the same direction: more concentration, more revenue, more of a China gap, sooner rather than later. None of those forward claims was shown false — they are unverifiable or at the optimistic edge, not wrong — so this is a consistent direction of optimism relative to outside estimates, not a demonstrated error pattern; and one run's worth of verdicts is not a track record.
+  </div>
+
+  <h3>The messenger</h3>
+  <p>Dylan Patel is the founder of SemiAnalysis, the semiconductor and AI-infrastructure research firm whose supply-chain reporting on TSMC capacity, Nvidia roadmaps and hyperscaler buildouts has an outside-verified track record of being unusually well-sourced — that reputation is precisely why his forward-looking numbers here (the China tonnage, the world power-add schedule) are taken seriously even where they carry a single-source flag above. But the commercial reality sits alongside the reputation, not against it: SemiAnalysis reportedly expects on the order of $100M in 2026 revenue from subscriptions and supply-chain research (The Information, via industry coverage) sold substantially to the same hyperscalers, labs and chipmakers whose future he is forecasting here. That is a stake, not an accusation — a research firm's business model depends on being right often enough that its subscribers keep paying, which cuts toward rigor as much as toward salesmanship. This piece did not surface a documented specific miss in Patel's public forecasting record to weigh against the wins; that absence is itself worth naming rather than treating as a clean record, since it may simply reflect the search budget rather than the absence of misses.</p>
+
+  <h3>Interests, stated as stakes</h3>
+  <table>
+    <tr><th style="width:38%">Position</th><th>Stake</th></tr>
+    <tr><td><b>Compute is centralizing fast, and inference economics favor scale</b></td><td>SemiAnalysis's research product is built on exactly this kind of granular capacity and pricing forecasting; a world where compute dynamics are dramatic and fast-moving is a world where that research is more valuable to subscribers, not less.</td></tr>
+    <tr><td><b>China is falling further behind</b></td><td>A framing consistent with the export-control policy regime that shapes the chip industry SemiAnalysis covers and sells research about; no evidence found that Patel personally lobbies on this policy, but his research firm's commercial audience skews toward US and allied chip and hyperscaler interests.</td></tr>
+    <tr><td><b>The buildout is under-financed and heading for a debt-driven macro shock</b></td><td>A more dramatic, higher-stakes framing of the AI buildout is, again, the kind of story that drives subscriber interest in detailed supply-chain and capital-markets research — worth noting as a structural incentive, not evidence the underlying numbers are wrong.</td></tr>
+  </table>
+
+  <p>The companion piece on this site tracks Dwarkesh Patel's own recurring theses across his interviews as host, including where this episode's compute numbers connect to arguments made elsewhere on the show: <a href="2026-08-31_dwarkesh_theses_research.html">Dwarkesh Patel's AI Theses — update</a>.</p>
+
+  <h3>What could not be substantiated</h3>
+  <p>The year-by-year world power-capacity add figures (30/50/70/90–100GW) and the 200GW-plus cumulative 2028 total; the 2028 China compute tonnage and its roughly 2.5x quality-discount multiplier; the precise $70–80M/MW-by-end-2027 revenue projection and its date pairing; OpenAI's Q3 2026 profitability timeline; the specific "~40 country defaults" figure attributed to Basil Halperin; and the exact percentage-point breakdown of incremental compute share by year. Each is marked unverifiable or single-source at its place above rather than silently treated as confirmed — this is a research-firm founder's proprietary forecasting, presented with the confidence of someone who watches these numbers for a living, not a settled public record.</p>
+</div>
+
+<div class="sechead" id="score"><div class="num">4</div><h2>Scorecard &amp; takeaways</h2></div>
+
+<div class="card">
+  <p class="sub">All 12 checked claims; each verdict links back to its place in the walkthrough.</p>
+  <table>
+    <tr><th>Claim</th><th style="width:26%">Verdict</th><th style="width:9%">C</th></tr>
+    <tr><td><a href="#c12">Labs' GW ramp, 2GW→5GW+ each in 2026</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c1">Anthropic profitable in Q2 2026</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c2">OpenAI profitable by Q3 2026</a></td><td><span class="pill p-unv">Unverifiable, leans optimistic</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c3">Revenue/MW: ~$50M now, $70–80M by end-2027</a></td><td><span class="pill p-most">Mostly true / unconfirmed</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c4">$11T total buildout 2024–29, $5–6T debt</a></td><td><span class="pill p-most">Mostly true, high end of range</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c5">US ~70% / China &lt;10% of compute today</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c6">China 30GW by 2028 + ~2.5x quality discount</a></td><td><span class="pill p-unv">Unverifiable — single source</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c10">Turbine shortage / Zeiss 100 EUV tools by 2030</a></td><td><span class="pill p-true">True / mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c11">Debt-service ~20%→40–60% of tax revenue</a></td><td><span class="pill p-most">Mostly true (base) / unverifiable (projection)</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c8">OpenAI's Astra withheld / training paused</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c9">Anthropic's Mythos restricted from foreign employees</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c7">World power adds 30/50/70/90–100GW/yr, 200GW+ by 2028</a></td><td><span class="pill p-unv">Unverifiable — single source</span></td><td class="cs">2/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>The direction of the centralization thesis.</b> Two labs pulling away from the rest of the field on compute, funded by inference profits that get reinvested into training, is well supported by what's independently checkable — Anthropic's real Q2 turn, both labs' documented capacity ramps, and the general shape of hyperscaler capital markets in 2026.</li>
+    <li><b>The regulation-as-circuit-breaker thesis.</b> Both named examples — Astra, Mythos — are real, well-documented, and happened close to when Patel says they did. This is the best-evidenced structural claim in the interview.</li>
+    <li><b>The physical-bottleneck story.</b> The turbine shortage is independently and extensively reported; the EUV/mirror supply constraint is a real, named chokepoint even where the exact production targets carry a single-source flag.</li>
+    <li><b>The CapEx-undercount accounting logic</b>, which McKinsey's and Goldman's own published frameworks broadly share, even at lower absolute totals than his.</li>
+    <li><b>His hedges themselves</b> — "vibing a number" on the 8% yield, the EUV supply response as "a whip", the concession that labs "can't cash-flow fund everything" — are honest markers of where he knows he's extrapolating, each quoted at its place in the walkthrough above.</li>
+  </ul>
+  <h3>What to discount</h3>
+  <p>The precise year-by-year figures wherever no outside source could corroborate them: the world power-capacity add schedule and its 200GW-plus 2028 total, the 2028 China tonnage and quality-discount multiplier, and the $70–100M/MW-by-end-2027 revenue pairing. OpenAI's Q3 2026 profitability claim runs ahead of every independent forecast found. The Halperin "~40 country defaults" figure is plausible given the real Volcker-shock history but wasn't traced to a primary source. None of these is contradicted by outside evidence — they are simply proprietary or extrapolated numbers stated with more certainty than any independent check available here can support.</p>
+
+  <h3>Sources</h3>
+  <ul class="tight" style="font-size:14px">
+    <li>Primary — Dwarkesh Podcast, "Dylan Patel – Anthropic &amp; OpenAI will have most of the world's compute by 2028," dwarkesh.com/p/dylan-patel-3, August 25, 2026, and an independent secondary summary of the same episode</li>
+    <li>Anthropic financials — CNBC (Aug 15 &amp; Aug 17, 2026), Yahoo Finance Q2 revenue and operating-income reporting</li>
+    <li>OpenAI financials — futuresearch.ai OpenAI revenue/loss forecast tracker</li>
+    <li>US/China compute share — ai2027-tracker.com (China compute-share estimate); CSIS and BCG on export-control impact and the US-China AI divide</li>
+    <li>Astra — Axios (Aug 7 &amp; Aug 18, 2026), TechCrunch (Aug 7, 2026)</li>
+    <li>Mythos — CNN, Bloomberg, CNBC, Fortune, CSIS (June–July 2026 coverage of Commerce Dept. restriction)</li>
+    <li>Turbine shortage — Wood Mackenzie press release; Yahoo Finance/OilPrice.com; Modo Energy research note</li>
+    <li>Total AI CapEx — McKinsey "The cost of compute: a $7 trillion race to scale data centers"; Goldman Sachs "Tracking Trillions"; MUFG CapEx chart-of-the-day</li>
+    <li>Macro/debt — CBO net-interest-to-revenue trend reporting; Mercatus Center podcast appearance by Basil Halperin on AI-era macro policy</li>
+    <li>SemiAnalysis business — Intellectia/The Information coverage of SemiAnalysis's subscription and research revenue</li>
+  </ul>
+</div>
+
+<div class="foot">
+  Analysis prepared August 31, 2026 · Format v2 (content-first) · Companion piece: <a href="2026-08-31_dwarkesh_theses_research.html">Dwarkesh Patel's AI Theses — update</a><br>
+  Verdicts reflect sources available on the date of writing · Not investment advice.
+</div>
+
+</div>
+</body>
+</html>
