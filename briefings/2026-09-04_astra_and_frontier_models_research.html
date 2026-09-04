@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Astra and the Frontier Around It</title>
+<meta name="description" content="OpenAI's Critical-tier Astra launched into a closed and open frontier that had not stood still — what each lab claims about itself, what independent evaluators found, and where the two accounts disagree, as of September 4, 2026.">
+<meta name="wz-icon" content="idea">
+<meta name="wz-color" content="#0b3d91">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --teal:#0b3d91; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#062a63 0%,#0b3d91 55%,#1a56c4 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--teal);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--teal);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .p-open{background:#f3e8fd;color:#681da8}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  .tblwrap{overflow-x:auto}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<div class="wrap">
+<div class="hero">
+    <div class="kicker">AI model landscape · Snapshot · Format v2</div>
+    <h1>Astra, and the frontier around it</h1>
+    <p>OpenAI's Astra launched publicly on September 3, 2026, as the first model any lab has assigned its own "Critical" cyber-capability tier. It landed inside a frontier that had not stood still: Anthropic's Fable 5.1 shipped two days earlier and sits atop the one leaderboard every source here cites (a single aggregator snapshot, C 3/5); Google, xAI, Meta, Microsoft and a cluster of Chinese open-weight labs are each staking a claim to some part of "best." This is a snapshot of what each lab says about itself, what the handful of independent evaluators who checked in time found, and where the two accounts do not agree — as the record stood on September 4, 2026.</p>
+    <div class="meta">
+      <span>September 4, 2026</span>
+      <span>Landscape snapshot, not an interview or single-author piece</span>
+    </div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> format adapted for a no-single-author landscape — the claims below are mostly the labs' own, made about themselves · 14 claims checked against outside sources · checked against: OpenAI's own launch posts, ARC Prize's independent evaluation, an Artificial Analysis index snapshot reached via secondary aggregators (not Artificial Analysis's own site), lab model cards and pricing pages, and CNBC/TechCrunch/Axios reporting · <b>NOT retrieved</b> for this piece: LMArena, METR's time-horizon series, SWE-bench Verified for Astra specifically, Amazon Nova's claims, Mistral's current flagship, Gemini 3.8 Pro/Ultra's specs, Meta Muse Spark's technical specs · every index ranking cited here rests on <b>one</b> aggregator's snapshot of the Artificial Analysis index (C 3/5), not on Artificial Analysis's own site · <b>disclosed plainly:</b> this piece was compiled with Claude, an Anthropic model, and Anthropic's Fable 5.1 leads the index cited throughout — weigh that when reading the rankings below · not investment advice.</div>
+
+<div class="navchips">
+  <a href="#brief">In brief</a>
+  <a href="#astra">Astra</a>
+  <a href="#closed">Closed frontier</a>
+  <a href="#open">Open frontier</a>
+  <a href="#reading">Reading the boards</a>
+  <a href="#back">Stepping back</a>
+  <a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="num">1</div><h2>The picture in brief</h2></div>
+
+<div class="card">
+  <p class="sub">Each lab's own claim about itself, at full strength, before any checking — no verdicts here, those come later.</p>
+  <ul class="tight">
+    <li><b>OpenAI:</b> Astra, launched September 3, is the first model OpenAI has designated at its own "Critical" cyber-capability tier — and, in Greg Brockman's words, "our most intelligent and, also very importantly, our most aligned model yet." (TechCrunch, C4)</li>
+    <li><b>Anthropic:</b> Fable 5.1, launched two days earlier on September 1 alongside the smaller Mythos 5.1, sits at #1 on the Artificial Analysis index snapshot cited throughout this piece.</li>
+    <li><b>Google:</b> Gemini 3.5 Pro carries a 2-million-token context window and a four-level "Deep Think" effort setting; a 3.8 Pro/Ultra tier is discussed but UNVERIFIED here.</li>
+    <li><b>xAI:</b> Grok 4.6 is positioned as the cost-efficiency frontier of the closed tier, at $2/$6 per million tokens under 200K context — with Grok 4.7 targeted "within weeks" and Grok 5 before the end of 2026.</li>
+    <li><b>Meta:</b> Muse Spark is a closed family — a press cluster describes a pivot away from open weights at the frontier — even as Llama 4 Scout and Maverick remain openly licensed one tier down.</li>
+    <li><b>The Chinese open labs:</b> GLM-5.3, Kimi K3, Qwen3.8 and DeepSeek V4 each claim frontier-adjacent capability at roughly 10–50x lower list prices than the closed leaders, and currently hold the top five slots on the open side of the index cited here.</li>
+    <li><b>Nvidia:</b> Nemotron 4 is pitched as the US open-weight answer to a closed, expensive frontier — a &gt;1 trillion-parameter model backed by a $7 billion compute budget through fiscal 2028. It has not been released.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="astra"><div class="num">2</div><h2>Astra, walked through</h2></div>
+
+<div class="card">
+  <p class="sub">OpenAI's own claims, in the order the company made them. Checks and other views sit under the claim they check. Confidence scale carried over from the underlying reports: C5 primary source · C4 corroborated press · C3 single credible source or aggregator · C2 weak/secondary · C1 rumor-only.</p>
+
+  <h3>The road to launch</h3>
+  <p>A White House official told Axios that OpenAI "voluntarily informed the administration of their plans to delay" (Aug 7, C4–5). An RL training pause followed, roughly August 7–18, described in OpenAI's own post "Pacing model development in an era of cyber-critical capabilities" (C5) and corroborated by Axios (Aug 18, C4). On September 1, OpenAI's "Path to Astra" post announced the model's first Critical-tier cyber designation (C5); public launch followed September 3, covered by TechCrunch, CNBC, NBC and Fortune (C4). The name itself is contested: OpenAI and TechCrunch call it "Astra"; other outlets refer to it as "GPT-6 Astra."</p>
+
+  <h3>Rollout and price</h3>
+  <p>Access opened first to Daybreak defensive-cyber partners, then rolled to Pro, Plus, Enterprise, Business and API access over the following week (C4). Pricing is reported at $10/$50 per million tokens (Vellum and FourWeekMBA, both citing Artificial Analysis, C3).</p>
+
+  <h3>What OpenAI says it can do</h3>
+  <p>OpenAI's own claims: computer and browser automation, zero-day identification, software engineering, terminal use, and codebase analysis.</p>
+
+  <h3>OpenAI's own benchmark numbers</h3>
+  <p>All figures in this block are OpenAI's own (C5): 100% on ExploitBench; an internal "Port 20" red-team exercise that found high-severity V8 vulnerabilities including 2 zero-days; a Cyber Jailbreak Refusal rate of 91.5% against 59% for Sol (GPT-5.6); a Honeypot unauthorized-attempt rate of 0% against 56% for Sol; and 98.6–99.9% on ARC-AGI-3 through OpenAI's own harness. GPQA Diamond is reported at 96.0.</p>
+  <div class="quote"><b>Greg Brockman:</b> "Our most intelligent and, also very importantly, our most aligned model yet." <span style="opacity:.7">(TechCrunch, C4)</span></div>
+  <div class="quote"><b>OpenAI:</b> "It is the first model we are designating at this level, and requires stronger safeguards than any prior release."</div>
+  <div class="quote"><b>OpenAI:</b> "Astra's safeguards sufficiently minimize the risk of severe harm for release."</div>
+
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-open">Harness-dependent</span> <span class="cs">C 5/5</span> — ARC Prize's own neutral harness scored Astra at <b>62.7%</b> on ARC-AGI-3 (arcprize.org, Sept 3) — more than 35 points below OpenAI's adapter-harness number of 98.6–99.9%. ARC Prize's own caution: even saturating the benchmark "would not represent proof of achieving AGI." For scale, Opus 5 scored 30.2% on the same public set per Vellum.</div>
+
+  <h3>The independent index read</h3>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-most">Confirmed, one aggregator snapshot</span> <span class="cs">C 3/5</span> — On the Artificial Analysis Index v4.1.1 (Sept 3, read via FourWeekMBA, C3–4), Astra scores <b>61</b> — tied with Sol, the model it replaces, and behind Fable 5.1 (66 by one aggregator's read, 65.7 by another) and Opus 5 (63). A separate report's read of the same snapshot puts Astra at <b>61.2</b> (C3) — a rounding difference against the 61 above, not a real disagreement, but the two source paths did not converge on one figure. <b>The reports conflict on the exact number; both are shown here.</b></div>
+
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-true">Confirmed</span> <span class="cs">C 3/5</span> — On Humanity's Last Exam with tools, Astra scores <b>57.2</b>, behind Fable 5.1 (65.0), Fable 5 (63.8) and Opus 5 (63.6).</div>
+
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-true">Confirmed — Astra leads</span> <span class="cs">C 3/5</span> — On FrontierMath Tier 4, Astra scores <b>97.6</b> against 87.8 for both Fable models and 73.2 for Opus 5. This is Astra's clearest independently-reported lead.</div>
+
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-open">Sources conflict</span> <span class="cs">C 3/5</span> — Coding results depend on which benchmark and which aggregator is read. Terminal-Bench 4.0: Astra 57.7 leads Fable 5.1 (55.8) and Opus 5 (52.3). FrontierCode 1.1 Extended: Astra 64.5 trails Fable 5 (64.9). The AA Coding Agent Index itself is read three different ways — a three-way tie (68.1/67.0/67.2, per Vellum) versus a clear Fable 5.1 lead (~70 vs Astra's ~67, per FourWeekMBA). DeepSWE v1.1: Astra 74.1 beats Sol (72.7) but trails Meta's Muse Spark 1.3 (75.4). No single reading of "who leads on coding" survives across sources.</div>
+
+  <h3>The AGI question</h3>
+  <p>Altman is widely reported to have suggested Astra "may represent AGI" (an Axios headline, Sept 3) or that AGI could arrive "by end of 2026 if you accept his definition" (the-decoder) — but no source reached for this piece supplied a verbatim quote to that effect.</p>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-unv">Unverified paraphrase</span> <span class="cs">no C-score in source</span> — Only paraphrased headlines were located for the AGI framing; the underlying verbatim quote was not retrieved for this piece.</div>
+
+  <h3>"Persistent-Astra"</h3>
+  <p>Secondary commentary (Zvi and others) has used a "Persistent-Astra" label — describing some form of Astra continuing to run or reason across sessions in ways prior models reportedly did not. Separately, a July 19 security incident is reported to have involved "a different internal model from the Astra family, but not [the public] Astra itself."</p>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-unv">Thin sourcing</span> <span class="cs">C 3/5</span> — The "Persistent-Astra" label rests on secondary commentary; the primary document it would trace to was not fetched for the underlying report. The label has since been reused in essay-derived companion pieces on this topic — reuse that does not make it better sourced.</div>
+
+  <h3>What's missing</h3>
+  <div class="inbox check" id="c8"><span class="tag">Check</span><span class="pill p-unv">Not found</span> <span class="cs">no source located</span> — Astra's context window and full modality set were not published in any source reached for this piece. An MRCR retrieval result up to 512K–1M tokens implies a context window of at least 1M, but that is this piece's own inference from a retrieval score, not a stated spec.</div>
+
+  <h3>The safety story</h3>
+  <div class="quote"><b>Jakub Pachocki (OpenAI):</b> chain-of-thought monitoring is "fragile" — and, in a separate fragment as reported, "unfortunately trending in a negative direction." <span style="opacity:.7">(the-decoder, C4; two reported fragments, contiguity not confirmed)</span></div>
+  <p>Astra is reported to use a form of recurrent depth, or "opaque recurrence," in its reasoning — part of what is driving the monitoring concern.</p>
+  <div class="quote"><b>UK AISI:</b> opaque reasoning could "severely undermine current oversight methods." <span style="opacity:.7">(C4)</span></div>
+  <p>A joint statement from researchers at OpenAI, Anthropic and Google on latent reasoning was also reported (C4).</p>
+  <div class="quote"><b>Dianne Penn (Anthropic):</b> the approach is "deliberately more conservative." <span style="opacity:.7">(Axios, C5)</span></div>
+  <div class="quote"><b>Michael Dalton (OpenAI):</b> the company is "consciously slowing down research to enhance security." <span style="opacity:.7">(Axios, C5)</span></div>
+  <p>OpenAI's own framing: the largest planned RL run "remains paused pending smaller-scale assessments" (C5). "Critical" tier is defined, per OpenAI, as the ability to produce functional zero-day exploits against hardened systems without human intervention.</p>
+
+  <h3>Governance: voluntary or pressured?</h3>
+  <p>A White House official's "voluntarily informed" framing (Axios, Aug 7, C4) sits opposite a broader narrative, visible in some coverage, that reads the delay as government pressure; this piece did not find sourcing strong enough to settle which framing is more accurate. The administration is reported to be developing a pre-release evaluation framework, with details unclear. A separate claim that Altman gave a Capitol Hill demo could not be verified (C2). A Cursor pricing dispute in this period is a separate, all-models business disagreement, not specific to Astra (C3).</p>
+
+  <div class="inbox views"><span class="tag">Other views</span>The headline framing split cleanly on the same numbers. Axios and Fortune ran with "may represent AGI"; FourWeekMBA's read of the same index snapshot called Astra "a flat-capability release at a premium price" (C3). A pre-launch narrative (Patel) describing Astra as "trained but withheld" was overtaken by the actual September 3 launch and should be read as historical, not current.</div>
+  <p class="weight">The safety story — a Critical-tier designation, a paused RL run, a chorus of named researchers worried about opaque reasoning — is the best-sourced part of Astra's launch. The capability story is the least resolved: OpenAI's own harness and ARC Prize's neutral one disagree by more than 35 points, and on the one index every source here cites, Astra ties the model it replaced.</p>
+</div>
+
+<div class="sechead" id="closed"><div class="num">3</div><h2>The closed frontier</h2></div>
+
+<div class="card">
+  <p class="sub">Per-lab claims and independently observed figures, with confidence scores carried over from the underlying reports.</p>
+
+  <h3>OpenAI — GPT-5.6 (Sol / Terra / Luna)</h3>
+  <p>Shipped July 9, 2026 (C5). Sol: 52.7 on Agents' Last Exam, 80 on the AA Coding Agent Index (self-reported), 90.4 on BrowseComp, 73.5 on ExploitBench, 88.8 on Terminal-Bench 2.1 (C4). Context roughly 256K–512K tokens; reasoning exposed as an effort setting (standard/max/ultra). Pricing: Sol $5/$30, Terra $2.50/$15, Luna $1/$6 per million tokens (C4). The prior GPT-5.5 sits at #15 on the index cited throughout, at 56.3 (C3).</p>
+
+  <h3>Anthropic — Fable 5.1 / Mythos 5.1 / Opus 5</h3>
+  <p>Fable 5.1 and the smaller Mythos 5.1 launched September 1, 2026, initially to vetted organizations under "Project Glasswing" (C5). Reported figures: TB-Science 0.1 at 52.6 (versus 24.7 for Fable 5, 29.0 for Opus 5); Terminal-Bench 4.0 at 55.8 (Mythos 5.1 scores higher, 60.9); CursorBench 3.2.0 at 73.4; HLE 60.9 without tools, 65.0 with tools (C4). Context 1M tokens in, 128K out. List price is unchanged from Fable 5 at $10/$50 per million tokens, cached reads discounted 75% to $0.25, batch pricing $5/$25 (C4). On the index snapshot cited throughout, Fable 5.1 sits at #1 with 65.7 (Sept 3, via benchlm.ai, C3).</p>
+  <p>Opus 5 sits at #2 with 63.0, and TB-Science 29.0; one source (netalith, C3) credits it with roughly 103 agentic steps before failure, versus roughly 53 for Grok 4.6 — Opus 5's own pricing was not found in these reports. The prior Fable 5 sits at #4 (62.1); Opus 4.8 at #13 (57.3).</p>
+  <div class="inbox check" id="c9"><span class="tag">Check</span><span class="pill p-mis">Wrong figure, or different tier</span> <span class="cs">C 4/5</span> — A podcast-digest source put Fable 5's input price at <b>$15</b> per million tokens; Anthropic's own pricing pages, and the pricing citation this report otherwise relies on, put it at <b>$10</b>. The $15 figure is either an error or describes a different tier than the one being compared here.</div>
+
+  <h3>Google — Gemini 3.5 Pro / 3.8 Flash</h3>
+  <p>Gemini 3.5 Pro reached general availability around late June 2026 (C3): 2M-token context, 64K output, a four-level "Deep Think" effort setting. Pricing is a third-party estimate only — roughly $12–15 input / $36–45 output per million tokens (C2), not a Google-sourced figure. On the index, the smaller Gemini 3.8 Flash sits at #10 with 58.7 (C3). A Gemini 3.8 Pro/Ultra tier is discussed in coverage but its specs are UNVERIFIED here.</p>
+
+  <h3>xAI — Grok 4.6</h3>
+  <p>Launched August 12, 2026 (C3): a 1.5-trillion-parameter base model, priced $2/$6 per million tokens under a 200K-token context window and $4/$12 above it, cached input $0.50, cached output $1. It scores 60.9–61 on the index (C3), and lab-provided summaries credit it with leading CursorBench, FrontierCode and "AA-Briefcase," with roughly 53 agentic steps before failure. xAI is reported to be targeting Grok 4.7 "within weeks" of this snapshot and Grok 5 before the end of 2026 (C3).</p>
+
+  <h3>Meta — Muse Spark (closed) and Llama 4 (open, one tier down)</h3>
+  <p>Meta's Muse Spark family is described only through a press cluster (C4): Muse Spark 1.3 sits at #3 on the index with 62.1; the smaller Muse Spark 1.2 sits at #14 with 56.8. Specs, pricing and release dates are UNVERIFIED — no primary Meta source for any of them was located.</p>
+  <div class="inbox check" id="c14"><span class="tag">Check</span><span class="pill p-open">Two true, separate facts</span> <span class="cs">C 4/5 (Muse Spark press cluster) · C 3/5 (Llama 4 license, May-dated)</span> — Muse Spark's own specs could not be verified from any primary Meta source. That does not contradict Meta's earlier open Llama 4 Scout and Maverick models remaining available under Meta's 700M-monthly-active-user license clause. Both are true at once: Meta's frontier line has closed, and Llama 4 remains open one tier below it.</div>
+
+  <h3>Microsoft, Amazon, Mistral</h3>
+  <p>Microsoft showed seven models at Build 2026; MAI-Thinking-1 reached public preview around August 31 with a self-reported ~97% on AIME (C3). Pricing and index position are UNVERIFIED. Amazon's Nova frontier claims are UNVERIFIED in these reports. Microsoft expanded its partnership with Mistral on July 21, 2026 (C4); no current Mistral flagship model or its figures were located here — UNVERIFIED.</p>
+
+  <div class="tblwrap"><table>
+    <tr><th>Category</th><th>Leader</th><th>Figure</th><th style="width:16%">Source / C</th></tr>
+    <tr><td>Overall index</td><td><b>Fable 5.1</b></td><td>65.7</td><td class="cs">aggregator, C3</td></tr>
+    <tr><td>Reasoning / HLE with tools</td><td><b>Fable 5.1</b></td><td>65.0</td><td class="cs">C4</td></tr>
+    <tr><td>Terminal agents</td><td><b>Mythos 5.1 / Fable 5.1</b></td><td>60.9 / 55.8</td><td class="cs">C4</td></tr>
+    <tr><td>Agentic step-length</td><td><b>Opus 5</b></td><td>~103 steps</td><td class="cs">C3</td></tr>
+    <tr><td>Coding-agent index (self-reported)</td><td><b>Sol (GPT-5.6)</b></td><td>80</td><td class="cs">C4</td></tr>
+    <tr><td>Long context</td><td><b>Gemini 3.5 Pro</b></td><td>2M tokens</td><td class="cs">C3</td></tr>
+    <tr><td>Cost-efficiency frontier</td><td><b>Grok 4.6</b></td><td>$2/$6 per M</td><td class="cs">C3</td></tr>
+    <tr><td>Budget tier</td><td><b>Luna (GPT-5.6)</b></td><td>$1/$6 per M</td><td class="cs">C4</td></tr>
+    <tr><td>Surprise entrant</td><td><b>Muse Spark 1.3</b></td><td>#3, 62.1</td><td class="cs">C3</td></tr>
+    <tr><td>LMArena / ARC / SWE-bench / METR leader</td><td>not retrieved</td><td>—</td><td class="cs">UNVERIFIED</td></tr>
+  </table></div>
+
+  <div class="tblwrap"><table>
+    <tr><th>Model</th><th>Price per million tokens (in/out)</th><th style="width:14%">C</th></tr>
+    <tr><td>Luna (GPT-5.6)</td><td>$1 / $6</td><td class="cs">C4</td></tr>
+    <tr><td>Grok 4.6 (&lt;200K)</td><td>$2 / $6</td><td class="cs">C3</td></tr>
+    <tr><td>Terra (GPT-5.6)</td><td>$2.50 / $15</td><td class="cs">C4</td></tr>
+    <tr><td>Sol (GPT-5.6)</td><td>$5 / $30</td><td class="cs">C4</td></tr>
+    <tr><td>Astra</td><td>$10 / $50</td><td class="cs">C3</td></tr>
+    <tr><td>Fable 5.1 / Mythos 5.1</td><td>$10 / $50 (cache $0.25)</td><td class="cs">C4</td></tr>
+    <tr><td>Gemini 3.5 Pro</td><td>~$12–15 / ~$36–45 (third-party estimate)</td><td class="cs">C2</td></tr>
+  </table></div>
+
+  <div class="inbox views"><span class="tag">Other views</span>Self-reported claims and independent aggregation diverge in predictable directions. OpenAI calls Sol the "best coding model" on its own Coding Agent Index self-report (80); the same index, read by outside aggregators once Fable 5.1 is included, does not confirm that lead. xAI's lab-provided summaries credit Grok 4.6 with leading several agentic benchmarks; the one independently sourced step-length figure (netalith, C3) instead shows Opus 5 roughly doubling Grok 4.6's agentic run length (~103 vs ~53 steps) — breadth of claimed wins and depth of independently measured performance are not the same thing.</div>
+  <p class="weight">On the one snapshot every source here relies on, Anthropic leads. That snapshot is a single aggregator's read of a single index, taken on one day — worth exactly that much, no more.</p>
+</div>
+
+<div class="sechead" id="open"><div class="num">4</div><h2>The open-weight frontier</h2></div>
+
+<div class="card">
+  <p class="sub">Open-weight releases, mostly out of China, claimed at 10–50x lower list price than the closed leaders. Self-reported figures are marked as such.</p>
+
+  <h3>GLM-5.3 and GLM-5.3-Flash (Z.ai)</h3>
+  <p>GLM-5.3 was announced August 13, with weights released August 28 after a roughly two-week cyber-safety hold (press cluster, C4). Mixture-of-experts, 744B total parameters / 40B active (metadata separately lists 753B). Custom license requiring security review above $10B in a licensee's annual revenue. Context 1,048,576 tokens, 128K API output. Priced $1.40/$4.40 per million tokens ($0.26 cached). Sits at 60 on the index, tied for the top open-weight slot. Self-reported: CyberGym 84.5, AutomationBench 48.2 (C4); a claimed "2,436" CyberGym task-count/audit figure is UNVERIFIED here.</p>
+  <p>GLM-5.3-Flash is confirmed to be the model previously known by the codename "Ox Alpha" — 320B total / 18B active, MIT-licensed, text/image/video.</p>
+  <div class="inbox check" id="c10"><span class="tag">Check</span><span class="pill p-open">Sources disagree</span> <span class="cs">C 3/5 (both figures)</span> — GLM-5.3-Flash's price is reported as <b>$0.10</b> per million tokens blended by one source, and as <b>$0.15/$0.50</b> input/output by another. Both carry the same C3 confidence in the underlying reports; neither is preferred here. <b>The reports conflict; both figures are shown.</b></div>
+
+  <h3>Kimi K3 (Moonshot)</h3>
+  <p>Announced July 16, weights released July 27. 2.8 trillion total parameters across 896 experts, 16 active per token (roughly 104B active parameters per Artificial Analysis) — reported as the largest open-weight model released to date. 1M context, roughly $2.30 blended price. Scores 60 on the index; #1 on the Frontend Code Arena; #3 overall behind Fable 5.1 and, one report notes, "Sol Max" (C4). A claimed 30% revenue-share offer is UNVERIFIED.</p>
+  <div class="inbox check" id="c11"><span class="tag">Check</span><span class="pill p-mis">Independently confirmed gap</span> <span class="cs">C 3–4/5</span> — A joint US CAISI / UK AISI assessment (July 24) found Kimi K3 scoring <b>32%</b> on a set of cyber-exploit benchmarks where a comparison model scored <b>76%</b> — a gap wide and specific enough that some observers read it as evidence for a "distillation theory" (that the model was trained in part on a closed competitor's outputs). This is a theory built on one gap on one benchmark set, not a confirmed finding.</div>
+
+  <h3>Qwen3.8 (Alibaba)</h3>
+  <p>Qwen3.8 Max released early August; a 27B Apache-2.0 variant exists (a "1M downloads" figure is UNVERIFIED); Flash priced $0.16/$0.47. Qwen3.8 Flash-Next followed August 26: 125B total / 6B active parameters plus a 51B-parameter n-gram layer, described as a preview of a "Qwen4" architecture; context 262K native, extendable to 1M via YaRN. Self-reported: DeepSWE 58.7, SWE-bench Pro 62.5, CoWorkBench 73.9, claimed to beat DeepSeek-V4-Flash and Opus 4.6 (C4, self-reported). A variant tracked on the index as "Qwen3.8 2.4T-A95B" scores 58 (C3).</p>
+
+  <h3>DeepSeek V4</h3>
+  <p>Released April 24, MIT-licensed, 1M context, text-only. V4-Pro: 1.6T total / ~49B active, priced $0.435/$0.87 (one aggregator reads it as $0.70 blended), scores 53 on the index. V4-Flash: 284B total / ~13B active, priced $0.14/$0.28.</p>
+  <div class="inbox check" id="c12"><span class="tag">Check</span><span class="pill p-unv">Self-flagged, unverified</span> <span class="cs">C 4/5</span> — DeepSeek itself reports V4-Pro scoring above 80% on SWE-bench Verified but flags the figure as "awaiting third-party verification" — the company's own caveat, not this piece's addition. An R2 successor is UNVERIFIED.</div>
+
+  <h3>Nvidia Nemotron 4 — not released</h3>
+  <p>In training as of mid-August, reported at more than 1 trillion parameters (roughly 2x the earlier Nemotron 3 Ultra), with a possible "late fall" release and an undisclosed license.</p>
+  <div class="inbox check" id="c13"><span class="tag">Check</span><span class="pill p-mis">Figure corrected</span> <span class="cs">C 2/5 (The Information, via secondary source)</span> — Nemotron 4's budget is reported as a <b>$7 billion</b> compute allocation running through fiscal 2028 — not a "$6 billion training run," a figure that circulated but does not match the underlying report. The Information's reporting, as relayed, positions it as a US "escape hatch" from Claude/GPT-level pricing — the phrase is the report's, not Nvidia's confirmed wording.</div>
+
+  <h3>Also in the field</h3>
+  <p>Meta Llama 4 Scout (109B MoE, 10M context) and Maverick (400B/17B) — dated, covered above under Meta. Gemma 4 (Google): 2B–270B, Apache 2.0; a "1B downloads" figure is UNVERIFIED. Mistral Medium 3.5: 77.6% SWE-bench Verified, Apache-licensed; Mistral Large 3: 675B/41B (C3). Phi, Faraday, MiniMax, Hunyuan, Seed, Baidu, StepFun, OLMo and Reflection: UNVERIFIED in these reports — not covered here.</p>
+
+  <div class="tblwrap"><table>
+    <tr><th>Model</th><th>Index score</th><th>Tier</th></tr>
+    <tr><td>Fable 5.1</td><td>65.7</td><td>closed</td></tr>
+    <tr><td>Sol Max (GPT-5.6)</td><td>score not retrieved</td><td>closed</td></tr>
+    <tr><td>Kimi K3</td><td>60</td><td>open</td></tr>
+    <tr><td>GLM-5.3</td><td>60</td><td>open</td></tr>
+    <tr><td>Qwen3.8 "2.4T-A95B"</td><td>58</td><td>open</td></tr>
+    <tr><td>GLM-5.3-Flash</td><td>57</td><td>open</td></tr>
+    <tr><td>DeepSeek V4-Pro</td><td>53</td><td>open</td></tr>
+  </table></div>
+  <p>The gap between the top closed score (65.7) and the top open score (60) on this one index is <b>~5.7 points</b>. Points, not months: a points gap on one composite index cannot be translated into a time lag — the composite blends evaluations with different growth rates, and no source in these reports attempts that conversion. It is presented here as points only.</p>
+
+  <div class="tblwrap"><table>
+    <tr><th>Model</th><th>Price per million tokens (in/out)</th><th style="width:14%">C</th></tr>
+    <tr><td>GLM-5.3-Flash</td><td>$0.10 blended, <i>or</i> $0.15/$0.50 (disputed)</td><td class="cs">C3</td></tr>
+    <tr><td>Qwen3.8 Flash</td><td>$0.16 / $0.47</td><td class="cs">C3–4</td></tr>
+    <tr><td>DeepSeek V4-Flash</td><td>$0.14 / $0.28</td><td class="cs">C4</td></tr>
+    <tr><td>DeepSeek V4-Pro</td><td>$0.435 / $0.87 (~$0.70 blended)</td><td class="cs">C4</td></tr>
+    <tr><td>GLM-5.3</td><td>$1.40 / $4.40</td><td class="cs">C4</td></tr>
+    <tr><td>Kimi K3</td><td>~$2.30 blended</td><td class="cs">C4</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--grey-600)">A 10–50x discount against closed list prices is consistent with prior briefings on this space; it was not independently re-verified for this piece.</p>
+
+  <div class="callout"><b>Controversies.</b> Distillation: Anthropic publicly accused DeepSeek and Moonshot of distilling Claude's outputs in late February 2026 (NBC/Fortune/SCMP, C4); the Register's headline captured the tone — "Impostor Chinese models pretend they're Claude" (headline only, C3). The Kimi K3 cyber-benchmark gap above (C3–4) is read by some as later, more specific evidence for the same theory, but it is not confirmation of it. Licenses vary widely — from MIT (DeepSeek V4, GLM-5.3-Flash) to custom revenue-gated terms (GLM-5.3) to Meta's MAU-based clause (Llama 4). Safety holds exist (GLM-5.3's roughly two-week cyber hold before weights release). Self-reported claims — DeepSeek's SWE-bench number, Qwen3.8's benchmark sweep — carry their own caveats, or none at all. UNVERIFIED in these reports: GLM-5.3's "2,436" CyberGym task-count claim, Kimi K3's 30% revenue-share offer, and the download counts cited for Qwen3.8 and Gemma 4.</div>
+
+  <p><b>US vs. China.</b> China holds the top five slots on the open-weight side of the index cited here (Kimi K3, GLM-5.3, Qwen3.8, GLM-5.3-Flash, DeepSeek V4-Pro). The clearest US open-weight answer, Nvidia's Nemotron 4, has not been released.</p>
+</div>
+
+<div class="sechead" id="reading"><div class="num">5</div><h2>How to read the leaderboards</h2></div>
+
+<div class="card">
+  <p class="sub">The harness a model runs in, and the index a score comes from, do as much work as the model itself.</p>
+
+  <h3>Harness versus model</h3>
+  <p>Two cases make the same point from two different labs. First: Nvidia's own "AI Village Olympics" (AVO) benchmark, published August 21 (Nvidia Developer Blog, corroborated by Forbes and The New Stack, C4), found Opus 5 scoring roughly 30% on the ARC-AGI-3 public set alone at High reasoning effort (a figure attributed to ARC Prize, C3) — but reaching 100.00 relative-human-adjusted-effort (RHAE) across 25 environments and all 183 levels once wrapped in Nvidia's own agent harness. Nvidia's own framing: "A frontier language model is only one component of an AI agent... the harness determines whether that capability translates into sustained real-world performance." Second: Astra shows the identical pattern from OpenAI's side — 98.6–99.9% on ARC-AGI-3 through OpenAI's own provider adapter, 62.7% on ARC Prize's neutral harness (see Section 2). Read together, both say the same thing: the model is not the whole system, and self-graded harnesses inflate scores that neutral ones do not reproduce.</p>
+
+  <h3>What the index actually is</h3>
+  <p>The Artificial Analysis Index v4.1.1 cited throughout this piece composites nine evaluations — GDPval-AA v2, τ³-Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience and AA-LCR — across 643 models (C5 for that composition claim). The live top-10 leaderboard itself was not extracted for this piece, since it renders client-side; every ranking cited here instead comes through a secondary aggregator's snapshot of it (C3).</p>
+
+  <h3>What was not retrieved</h3>
+  <p>LMArena standings; METR's time-horizon series (a 1.1 update from January 29, 2026 exists; a roughly seven-month capability-doubling time is widely repeated and a compression to roughly four months is rumored — both UNVERIFIED here); SWE-bench Verified/Pro leaderboards; HLE's top 10; and the top of the "ECI" index (its own page title claims "14 points per year since reasoning models," C3) — none of these were reached for this piece.</p>
+
+  <h3>Token share versus revenue</h3>
+  <p>Gavin Baker (Atreides Management) is widely cited for a claim that open-weight models carry 15–25% of inference volume against 60–90% of revenue value for closed models — but that exact line was <b>not confirmed</b> as his in these reports. What was found: a Baker post citing open-source share of tokens on the Vercel AI Gateway rising from 28% to 62% over roughly two months in mid-2026 (crediting @rauchg, C3), while OpenAI's and Anthropic's own revenue kept accelerating over the same period. Anthropic's annualized revenue reached $65 billion in July 2026 (CNBC and TechCrunch, Aug 17, C5); OpenAI's is reported around $40 billion (single aggregator, C3; a separate Axios "revenue chasm" piece on this is referenced in the underlying research but was not itself fetched).</p>
+  <div class="inbox views"><span class="tag">Other views</span>The token-share number (open models carrying an ever-larger fraction of raw usage) and the revenue number (closed labs, especially Anthropic, still growing dollars fastest) are both real and both true at once on the sources found here — they describe volume and value, not the same thing, and no source in these reports reconciles them into one line.</div>
+
+  <h3>The convergence theme</h3>
+  <p>Stanford HAI's 2026 AI Index is confirmed to discuss a "Converging Frontier Model Performance" theme alongside "Jagged Intelligence" (C3) — models bunching near the top on aggregate scores while still failing unevenly on specific tasks. A more specific claim of "98% pathway overlap" between frontier models could not be confirmed — UNVERIFIED.</p>
+</div>
+
+<div class="sechead" id="back"><div class="num">6</div><h2>Stepping back</h2></div>
+
+<div class="card">
+  <div class="callout red">
+    <b>The direction of the errors, read off this one run.</b> Every gap this piece could check ran the same way: a lab's own harness scored its own model higher than a neutral one did (Astra on ARC-AGI-3, by more than 35 points; Opus 5 on Nvidia's AVO, from ~30% to 100%); a lab's "best at X" self-report did not survive contact with an aggregated index (Sol's coding claim; Grok 4.6's breadth-of-wins framing against its own independently-sourced step-length number); and at least one specific figure that circulated in commentary (Nemotron 4's training budget) did not match the primary number once traced back. This is not evidence any one lab is dishonest — it is what happens whenever the entity being measured also controls the measurement.
+  </div>
+
+  <h3>The messenger, every time</h3>
+  <p>There is no single author to profile in this piece — every lab quoted here is grading itself, in public, on evaluations it had a hand in choosing or running. That is the structural condition of this whole beat, not a flaw specific to one company.</p>
+
+  <h3>Interests, stated as stakes</h3>
+  <div class="tblwrap"><table>
+    <tr><th style="width:34%">Position</th><th>Stake</th></tr>
+    <tr><td><b>OpenAI's "Critical" cyber tier</b></td><td>Sells safety seriousness and frontier capability in the same announcement — a designation OpenAI itself created and applied to its own model.</td></tr>
+    <tr><td><b>Anthropic's index #1</b> (cited throughout this piece)</td><td>This piece was compiled with an Anthropic model, and Anthropic's Fable 5.1 leads the one index cited throughout. That coincidence is stated here plainly rather than left implicit.</td></tr>
+    <tr><td><b>Aggregators</b> (Artificial Analysis via secondary sites, benchlm.ai, Vellum, FourWeekMBA)</td><td>Ad- and traffic-supported businesses whose value depends on the index having an audience; none of their methodology was independently re-derived here.</td></tr>
+    <tr><td><b>Nvidia</b> (AVO benchmark)</td><td>Sells both the harness framework and the GPUs every model in it runs on; Nemotron 4 is explicitly pitched against Anthropic's and OpenAI's pricing.</td></tr>
+    <tr><td><b>Chinese open labs</b> (GLM, Kimi, Qwen, DeepSeek)</td><td>Face live distillation accusations from a closed competitor; every self-reported benchmark they publish also functions as a rebuttal to that accusation.</td></tr>
+    <tr><td><b>Gavin Baker / Atreides</b></td><td>A public investor whose fund positions in AI infrastructure benefit from a compelling open-vs-closed narrative either way it resolves.</td></tr>
+  </table></div>
+
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li>Altman's verbatim AGI quote — only paraphrased headlines were found.</li>
+    <li>The "Persistent-Astra" label's primary source.</li>
+    <li>Astra's context window and full modality list.</li>
+    <li>Gemini 3.8 Pro/Ultra's specs.</li>
+    <li>Amazon Nova's frontier claims.</li>
+    <li>Mistral's current flagship model and its figures.</li>
+    <li>GLM-5.3's "2,436" CyberGym task-count/audit claim.</li>
+    <li>Kimi K3's 30% revenue-share offer.</li>
+    <li>Download-count claims for Qwen3.8 and Gemma 4.</li>
+    <li>The exact "15–25% volume / 60–90% value" line attributed to Gavin Baker.</li>
+    <li>The "98% pathway overlap" claim.</li>
+    <li>LMArena standings, METR's current time-horizon number, SWE-bench Verified/Pro leaders, HLE's top 10, and the top of the ECI index.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="score"><div class="num">7</div><h2>Scorecard &amp; takeaways</h2></div>
+
+<div class="card">
+  <p class="sub">All 14 checked claims; each verdict links back to its place in the walkthrough above.</p>
+  <div class="tblwrap"><table>
+    <tr><th>Claim</th><th style="width:26%">Verdict</th><th style="width:10%">C</th></tr>
+    <tr><td><a href="#c1">Astra 98.6–99.9% on ARC-AGI-3 (own harness)</a></td><td><span class="pill p-open">Harness-dependent</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c2">Astra 61 on AA index, ties Sol, trails Fable 5.1 &amp; Opus 5</a></td><td><span class="pill p-most">Confirmed, aggregator</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c3">HLE w/ tools: Astra 57.2 trails Fable 5.1 65.0</a></td><td><span class="pill p-true">Confirmed</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c4">FrontierMath Tier 4: Astra 97.6 leads</a></td><td><span class="pill p-true">Confirmed</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c5">Coding leadership (Astra vs Fable vs Muse Spark)</a></td><td><span class="pill p-open">Sources conflict</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c6">Altman: Astra "may represent AGI"</a></td><td><span class="pill p-unv">Unverified paraphrase</span></td><td class="cs">n/a</td></tr>
+    <tr><td><a href="#c7">"Persistent-Astra" label</a></td><td><span class="pill p-unv">Thin sourcing</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c8">Astra context window / modalities</a></td><td><span class="pill p-unv">Not found</span></td><td class="cs">n/a</td></tr>
+    <tr><td><a href="#c9">Fable 5 priced at $15/M input</a></td><td><span class="pill p-mis">Wrong figure</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c10">GLM-5.3-Flash price: $0.10 vs $0.15/$0.50</a></td><td><span class="pill p-open">Sources disagree</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c11">Kimi K3 32% vs 76% on cyber-exploit benchmarks</a></td><td><span class="pill p-mis">Confirmed gap</span></td><td class="cs">3–4/5</td></tr>
+    <tr><td><a href="#c12">DeepSeek V4-Pro &gt;80% SWE-bench Verified</a></td><td><span class="pill p-unv">Self-flagged, unverified</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c13">Nemotron 4 "$6B training run"</a></td><td><span class="pill p-mis">Figure corrected ($7B budget)</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c14">Muse Spark specs vs Llama 4 still-open status</a></td><td><span class="pill p-open">Both true, separate facts</span></td><td class="cs">3–4/5</td></tr>
+  </table></div>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>Astra's Critical-tier safety framing and paused RL run</b> — the best-sourced part of the launch, corroborated across OpenAI's own posts, UK AISI and multiple named researchers.</li>
+    <li><b>FrontierMath Tier 4 as a genuine Astra strength</b> (97.6, clearly ahead) — consistent across the sources that reported it.</li>
+    <li><b>The open-weight price advantage</b> (10–50x) as a real and repeated pattern, even though this piece did not re-verify the multiple itself.</li>
+    <li><b>The distillation controversy</b> as a real, ongoing dispute — not resolved, but not invented either.</li>
+    <li><b>The convergence / "jagged intelligence" theme</b> from Stanford HAI, as a confirmed framing (distinct from the unconfirmed "98%" specific).</li>
+  </ul>
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>Anthropic's #1 index position</b> — one aggregator's snapshot of one index on one day; treat as a data point, not a verdict, and remember who compiled this piece.</li>
+    <li><b>Astra's 98.6–99.9% ARC-AGI-3 number</b> — harness-dependent; ARC Prize's own neutral score (62.7%) is the more comparable figure.</li>
+    <li><b>The open-vs-closed "gap" as any kind of time lag</b> — it is ~5.7 points on one composite index; no source here converts that into months, and this piece does not either.</li>
+    <li><b>Meta Muse Spark's technical specs</b> — sourced only to a press cluster, not to Meta directly.</li>
+    <li><b>Any single aggregator's coding-agent-index number</b> — three different sources gave three different pictures of the same comparison.</li>
+    <li><b>xAI's and the Chinese open labs' self-reported benchmark wins</b> — Grok 4.6's "leads on" list, Qwen3.8-Flash-Next's sweep and DeepSeek's SWE-bench figure all rest on the labs' own numbers; the only independent cross-check here (the AA index) is itself a single snapshot.</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <ul class="tight" style="font-size:14px">
+    <li>Astra — OpenAI's own posts (primary); TechCrunch, CNBC, NBC, Fortune (launch coverage); Axios (governance quotes — single-sourced for the "voluntarily informed" framing); ARC Prize / arcprize.org (primary for the neutral-harness score); the-decoder (Pachocki quote — single-sourced)</li>
+    <li>Closed frontier — lab pricing pages and model cards; benchlm.ai, Vellum and FourWeekMBA as three separate aggregator reads of the same Artificial Analysis index (each single-sourced for its own specific number)</li>
+    <li>Open-weight — Z.ai, Moonshot, Alibaba and DeepSeek's own posts and model cards; US CAISI / UK AISI joint assessment (primary for the Kimi K3 cyber gap); The Information via a secondary source (single-sourced, Nemotron 4 budget)</li>
+    <li>Framings — Nvidia Developer Blog (primary, AVO), corroborated by Forbes and The New Stack; Stanford HAI 2026 AI Index; Gavin Baker's own posts (single-sourced for the Vercel gateway figure); CNBC and TechCrunch, corroborating each other on Anthropic's ARR</li>
+  </ul>
+</div>
+
+<div class="foot">
+  Compiled September 4, 2026 · Format v2 (content-first, landscape) · Built from four research passes (Astra, the closed frontier, the open-weight frontier, evaluations/framings; ~70 web sources retrieved on September 4), assembled without further searching<br>
+  This piece was written with the help of Claude, an Anthropic model; Anthropic's Fable 5.1 leads the index cited throughout — weigh the source accordingly · Confidence scores (C1–C5) are carried over unchanged from the underlying reports and were never upgraded · Not investment advice.
+</div>
+
+</div>
+</body>
+</html>
