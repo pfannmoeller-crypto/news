@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools — 30 August–5 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>The operator's briefing on the knowledge-work tool stack &middot; 30 August&ndash;5 September 2026</p>
+    </div>
+  </div>
+
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Claude Code closes permission gaps and merges memory as Cursor answers on-prem worries</h2>
+    <p>This week's real story is defensive: Anthropic shipped five point releases fixing deny rules that were silently not blocking, and merged memory across chat and Cowork. Cursor's self-hosted machines let cloud agents run on customer infrastructure. Devin, Gemini CLI and the MCP roadmap moved on maintenance, not capability.</p>
+  </div>
+
+  <h3 class="sec">Home Stack — Claude Code &amp; Cowork</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">1&ndash;4 Sep 2026</span>
+    </div>
+    <h4 class="headline">Five point releases quietly fix permission and sandbox rules that weren't actually blocking</h4>
+    <p>Across v2.1.257&ndash;v2.1.260, Anthropic fixed a run of permission bugs: <code>Bash</code> <code>Read()</code> deny rules that didn't cover option values, git operands, or <code>cd</code> compounds; <code>Edit</code>/<code>Write</code>/<code>Read</code> rules with parentheses being silently dropped as invalid; and one bad rule that broke all file edits with an opaque regex error. A macOS 12 launch regression got an emergency same-day patch.</p>
+    <p>None of this changes what Claude Code can do &mdash; it changes whether the guardrails you already wrote were doing anything.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Fix versions</div><div class="stat-value">2.1.257&ndash;2.1.260</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Sep 1&ndash;4, 2026</div></div>
+      <div class="stat"><div class="stat-label">Emergency patch</div><div class="stat-value">macOS 12 launch fail</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://support.anthropic.com/en/articles/11940350-claude-code-model-configuration">Model configuration docs</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Deny-rule regex handling in <code>settings.json</code> has always been the sharp edge of Claude Code's permission system &mdash; a rule that looks right but doesn't compile the way the reviewer assumed is worse than no rule, because it reads as protection. This run of releases fixed at least four distinct classes of that failure inside four days, which says the surface area was larger than one bug.</p>
+        <p><span class="lbl">The details.</span> 2.1.259 fixed <code>Read()</code> deny rules missing option values, git operands and <code>cd &amp;&amp;</code> compounds &mdash; meaning a rule meant to block <code>cd /etc &amp;&amp; cat shadow</code> style compounds may not have fired. 2.1.260 fixed rules containing parentheses being rejected outright as "invalid," and separately fixed a single malformed rule anywhere in the list breaking every file edit in the session with a generic "Invalid regular expression" error rather than isolating the bad rule. 2.1.260 also reverted a 2.1.259 change that had over-corrected in the other direction, denying legitimate commands like <code>npm run build</code>. 2.1.261 added <code>bashOutputMaxChars</code>/<code>taskOutputMaxChars</code> (output can now stay inline to 128K characters before spilling to file) and <code>/skill-doctor</code> to show which loaded skills are unused and their context cost.</p>
+        <p><span class="lbl">Why it still matters.</span> Anyone running Claude Code with custom deny rules against a pipeline holding client, deal or financial data has been relying on protection that had known gaps for an unknown window. There's no CVE and no disclosure beyond the changelog entries themselves &mdash; this is bug-fix hygiene, not an advisory, so nothing forces anyone to re-check their own rule sets against the new behaviour.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 &middot; official Claude Code changelog, self-corroborating across four consecutive point releases, 1&ndash;4 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">1 Sep 2026 · v2.1.257/260</span>
+    </div>
+    <h4 class="headline">Claude Fable 5.1 becomes the default subagent model, with a new flag to force it everywhere</h4>
+    <p>v2.1.257 shipped Claude Fable 5.1 (1M context, $10/$50 per Mtok, $0.25/Mtok cache reads) as the new default Fable-tier model and added <code>CLAUDE_CODE_SUBAGENT_MODEL_FORCE</code> to pin every subagent to one model regardless of what a skill or command frontmatter requests. v2.1.260 fixed prompt caching on Fable 5.1 not covering context after tool results &mdash; a real cost bug on exactly the workflows (long tool-heavy subagent runs) the model targets.</p>
+    <p>Fable 5.1 also carries safety-triggered auto-fallback to Opus on flagged request categories, toggleable in <code>Config &gt; MODEL &amp; OUTPUT</code>.</p>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://support.claude.com/en/articles/15363606-why-claude-switched-models-in-your-conversation-with-fable-5-or-fable-5-1">Model-switching support article</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Subagent model selection has been a quiet cost lever in Claude Code: skills and slash commands can request a specific model via frontmatter, but until this release there was no single override to guarantee every subagent in a session runs the same model &mdash; useful for cost audits or for pipelines that need deterministic behaviour across a fleet of parallel subagents.</p>
+        <p><span class="lbl">The details.</span> The prompt-cache bug fixed a day later (2.1.260) meant subagent runs that call tools mid-task &mdash; the majority of real work &mdash; weren't getting cache discounts on everything after the first tool result, silently inflating token bills on exactly the default model just promoted.</p>
+        <p><span class="lbl">Why it still matters.</span> A default-model flip inside an existing product is not new capability, but it is a cost and behaviour change that lands without anyone opting in. Anyone running subagent-heavy workflows (this pipeline included) should check actual spend against the new default before assuming the promotion was cost-neutral.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 &middot; official Claude Code changelog and Anthropic support documentation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">25 Aug 2026</span>
+    </div>
+    <h4 class="headline">Cowork and Claude chat now share one memory &mdash; off by default on Team and Enterprise</h4>
+    <p>Claude's memory system merged across chat and Cowork: preferences and project context set in one now surface in the other, updated live during a session rather than only summarised at its end. It's on by default for Free, Pro and Max; off by default for Team and Enterprise accounts.</p>
+    <p>Sensitive categories (health, religion, race, ethnicity, gender identity) are excluded unless a user opts in; government IDs and criminal history are never stored regardless.</p>
+    <div class="links">
+      <a href="https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/">TechCrunch</a>
+      <a href="https://thenewstack.io/claude-memory-chat-cowork/">The New Stack</a>
+      <a href="https://sdtimes.com/ai/anthropic-puts-persistent-memory-into-claude-cowork/">SD Times</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cowork and chat previously ran separate memory stores, which meant re-explaining a project's context every time work moved from a chat conversation into a Cowork session or back &mdash; exactly the seam an operator running both surfaces for one pipeline hits constantly.</p>
+        <p><span class="lbl">The details.</span> The update writes memory continuously rather than at session end, and users can view, edit or delete stored entries directly. Claude remains ad-free, so nothing written to memory feeds ad targeting. Multiple outlets (TechCrunch, The New Stack, SD Times, 9to5Mac, Engadget) independently confirmed the same rollout and defaults; no Anthropic newsroom post was found separate from in-product documentation.</p>
+        <p><span class="lbl">Why it still matters.</span> The Team/Enterprise default-off split is the operational detail: an operator on a Team or Enterprise seat gets none of this until they turn it on manually, while a Pro or Max user gets it automatically. Worth checking which side of that line this pipeline's account sits on before assuming continuity that isn't there yet.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 &middot; four independent outlets corroborate the same feature and defaults, 25 August; no primary Anthropic newsroom post located</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Across the stack</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Cursor</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">2 Sep 2026</span>
+    </div>
+    <h4 class="headline">Cursor lets Cloud Agents run entirely on customer-owned infrastructure</h4>
+    <p>"Self-hosted machines" moves Cloud Agents off Cursor's infrastructure and onto AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel or E2B &mdash; code, build outputs and secrets stay on internal machines, with dynamic worker pools that scale and hibernate on demand.</p>
+    <p>It follows two weeks of Cloud Agent expansion: subscriptions that wake agents on PR or Slack events, a <code>/goal</code> command for long-lived objectives, and non-blocking steering mid-run.</p>
+    <div class="links">
+      <a href="https://cursor.com/changelog/self-hosted-machines">Cursor changelog</a>
+      <a href="https://cursor.com/docs/cloud-agent/self-hosted-pool">Self-hosted pool docs</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cloud coding agents have had one standing objection from security-conscious teams: code and secrets leave the building. Cursor's own Cloud Agents (and the <code>/goal</code>-driven autonomous mode shipped 19 August) inherited that objection along with the convenience. Self-hosted machines is Cursor's direct answer &mdash; not a new agent capability, but a deployment model that removes the objection.</p>
+        <p><span class="lbl">The details.</span> Named worker queues scale with demand and support hibernation to control idle cost; self-hosted workers also support computer use (browser and application interaction) on Linux and Mac, not just terminal/tool-call agents. Setup targets platform teams provisioning infrastructure, not a single operator wiring up a personal pool.</p>
+        <p><span class="lbl">Why it still matters.</span> This is a data-residency and compliance play aimed at regulated or security-sensitive engineering orgs, not a capability delta for a solo or small-team pipeline. The open question is whether Anthropic answers with the same option for Claude Code's own cloud/background sessions.</p>
+        <p><span class="lbl">Watch items.</span> Flips to TRY once a self-hosted pool has a documented single-command setup for a one- or two-person team, rather than requiring a platform-team-scale deployment.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 &middot; official Cursor changelog, blog post and docs, 2 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-agent">Google / Gemini CLI</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">1 Sep 2026 · v0.58.0</span>
+    </div>
+    <h4 class="headline">Gemini CLI v0.58.0 locks down container access after a sandbox-escape-shaped gap</h4>
+    <p>The stable release isolates Docker and container-runtime sockets and binaries inside macOS Seatbelt sandboxing, closing a path to unauthorized container execution. It also fixes inconsistent symlink evaluation in ignore-path handling and adds top-level safety checkers to write-policy configuration.</p>
+    <div class="links">
+      <a href="https://geminicli.com/docs/changelogs/latest/">Gemini CLI changelog</a>
+      <a href="https://github.com/google-gemini/gemini-cli/compare/v0.57.0...v0.58.0">v0.57.0&rarr;v0.58.0 diff</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Sandbox isolation on macOS Seatbelt is Gemini CLI's main defence against a misbehaving or manipulated agent reaching outside its intended scope. A gap in container-socket isolation specifically means an agent running Docker commands could have had broader execution access than the sandbox model intended.</p>
+        <p><span class="lbl">The details.</span> Seven pull requests shipped in this release; alongside the sandbox fix, ignore-path symlink handling was made consistent (a previous inconsistency could let excluded paths resolve back into scope via a symlink) and write-policy configuration gained safety checkers at the top level rather than nested.</p>
+        <p><span class="lbl">Why it still matters.</span> This is a straightforward upgrade-now item for anyone running Gemini CLI in containerized workflows on macOS, independent of whether Gemini CLI is this pipeline's primary agent. Low effort, real risk closed.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 &middot; official Gemini CLI changelog and GitHub release diff, 1 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-agent">Cognition / Devin</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">28 Aug&ndash;2 Sep 2026</span>
+    </div>
+    <h4 class="headline">Devin adds a dead-code scan type and native Gmail, Calendar, Gamma and Supabase connectors</h4>
+    <p>A new "Cleanup" scan type flags dead code and cleanup opportunities, runnable via a <code>/scan</code> composer command or scheduled through automations. Separately, Devin shipped MCP-based integrations for Gmail, Google Calendar, Gamma and Supabase (28 August).</p>
+    <div class="links">
+      <a href="https://docs.devin.ai/release-notes/overview">Devin release notes</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Devin has spent recent months building out marketplace and automation surface (scan history with run profiles and cost data, tag filtering, split editors) rather than new agentic capability. This week continues that pattern: a scan type is a code-quality feature, and the new connectors extend Devin's existing MCP-server model to four more services.</p>
+        <p><span class="lbl">The details.</span> Findings triage got a redesigned interface; automation runs now surface richer trigger-event detail for GitLab, Jira, incident.io and GitHub sources specifically.</p>
+        <p><span class="lbl">Why it still matters.</span> None of this changes whether Devin is the right tool for this pipeline &mdash; it remains an enterprise-priced autonomous software engineer, and Gmail/Calendar connectors don't turn it into a general ops assistant. Useful if already a Devin customer running scheduled scans; not a reason to evaluate it fresh.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 &middot; official Devin release notes, 28 August and 2 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-infra">MCP / Core Maintainers</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">22 Aug 2026</span>
+    </div>
+    <h4 class="headline">The Model Context Protocol publishes a new roadmap covering transport, governance and enterprise readiness</h4>
+    <p>MCP's core and community maintainers posted an updated roadmap after five months of work, covering transport evolution and scalability, agent-to-agent communication, governance maturation, and enterprise readiness &mdash; a direction-setting post, not a spec release.</p>
+    <div class="links">
+      <a href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/">MCP roadmap post</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> MCP's last dated specification update was 28 July 2026. This roadmap post is the maintainers' account of what changed structurally since then and what's next, authored by David Soria Parra and Den Delimarsky on behalf of core and Working Group maintainers.</p>
+        <p><span class="lbl">The details.</span> The four named tracks &mdash; transport scalability, agent-to-agent communication patterns, governance maturation, and enterprise readiness &mdash; are process and infrastructure work on the protocol itself, not new server capabilities an integrator can use today.</p>
+        <p><span class="lbl">Why it still matters.</span> Anyone building new MCP servers into this pipeline's automation should read the roadmap before assuming the current transport and governance model is stable long-term; nothing here is shipped yet, so it changes planning, not this week's code.</p>
+        <p><span class="lbl">Watch items.</span> Flips to a capability item once the scalable-transport track ships something implementable, rather than describing intent.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 &middot; official Model Context Protocol blog, primary maintainer post, 22 August</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>The Home Stack's real news this week is a security correction, not a feature.</strong> Four consecutive point releases fixing deny-rule and sandbox gaps means the permission system anyone relies on to run Claude Code against sensitive data had known holes for an unknown window &mdash; worth an actual audit, not just reading the changelog.</li>
+      <li><strong>Cursor's self-hosted machines is the more strategic move than any single Claude Code point release.</strong> It's Cursor conceding that the cloud-agent pitch stalls without an on-prem answer for regulated teams. The next thing worth watching is whether Anthropic offers the same option for Claude Code's own cloud and background sessions &mdash; nothing suggests it's coming yet.</li>
+      <li><strong>Everyone else moved on plumbing, not capability.</strong> Gemini CLI's sandbox hardening, Devin's scan tooling and connector expansion, and the MCP roadmap post are all maintenance, governance or code-quality work &mdash; nothing here lets an operator do something this week that wasn't possible in July.</li>
+    </ol>
+    <p class="closer">A quiet week for new capability is not the same as a quiet week for risk &mdash; this one had more of the latter than the former.</p>
+  </div>
+
+  <h3 class="sec">What changed for this pipeline</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>This week, worth doing:</strong> audit this pipeline's own <code>.claude/settings.json</code> deny rules for parentheses and <code>Bash</code> <code>Read()</code> clauses &mdash; 2.1.259/2.1.260 fixed several classes of rule that were silently not blocking; confirm the current rule set actually behaves as written on the new version.</li>
+      <li><strong>This week, also worth doing:</strong> check whether Cowork memory is on for this account &mdash; on by default for Pro/Max, off by default for Team/Enterprise &mdash; and test whether it actually carries context between a chat conversation and a Cowork session on this pipeline's own work.</li>
+      <li><strong>Worth trying once, not urgent:</strong> check actual token spend on subagent-heavy runs since Fable 5.1 became the default (1 September); decide once whether to pin with <code>CLAUDE_CODE_SUBAGENT_MODEL_FORCE</code> or leave auto-selection in place.</li>
+      <li><strong>Not urgent, read before building:</strong> skim the MCP roadmap post before wiring new MCP servers into this pipeline's automation &mdash; transport and governance changes are coming, even if nothing ships yet.</li>
+    </ul>
+  </div>
+
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Saturday, September 5, 2026 &middot; <strong>Research window:</strong> 30 August&ndash;5 September 2026, 7 days &middot; <strong>Scope:</strong> the knowledge-work tool stack Stefan operates &mdash; Claude Code/Cowork first, then coding and automation agents, research and MCP tooling across vendors. Model releases are covered in Frontier Tech, not here.</p>
+    <p><strong>Confidence legend:</strong> 5/5 primary vendor source (changelog, docs, official blog) &middot; 4/5 corroborated by two or more independent outlets without a located primary post &middot; 3/5 single credible source &middot; 2/5 aggregator-only, caveat stated in the card.</p>
+    <p><strong>Editorial notes:</strong> seven items this week, three Home Stack and four across the stack; no item padded to hit a target count. No TRY verdict rests on a source below 4/5. Verdicts reflect documented vendor behaviour and practitioner reporting, not hands-on testing this agent cannot perform.</p>
+  </div>
+
+</div>
+</body>
+</html>
