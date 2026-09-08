@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ed Zitron and Steven Bartlett on Whether AI Breaks in 2027</title>
+<meta name="description" content="The loudest critic of the AI build-out spent three hours on Diary of a CEO. Thirty-four claims from both sides, checked against primary sources.">
+<meta name="wz-icon" content="decline">
+<meta name="wz-color" content="#37474f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#37474f; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#37474f 0%,#263238 55%,#102027 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+  .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11.5px;
+      background:var(--grey-100);color:var(--grey-600);border-radius:6px;padding:2px 8px;
+      margin-left:8px;vertical-align:middle;font-weight:500}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .p-open{background:#ede7f6;color:#4527a0}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout.violet{background:#ede7f6;border-left-color:var(--accent);color:#263238}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Diary of a CEO &middot; Ed Zitron &middot; 27 August 2026 &middot; Format v2</div>
+  <h1>Ed Zitron and Steven Bartlett, Three Hours on Whether AI Breaks in 2027</h1>
+  <p>The loudest critic of the AI build-out sat across from a founder who built his show on disagreeing with guests on camera. This piece checks 34 claims from both sides against filings, primary reports and the operators' own statements, and reports what was argued before any of the checking lands.</p>
+  <div class="meta"><span>Diary of a CEO, 27 Aug 2026, ~3 hours</span><span>34 claims checked</span><span>Compiled 8 September 2026</span></div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> 34 claims checked, of which 31 are Zitron's and 3 are Bartlett's (c22 is Bartlett's figure, accepted by Zitron, counted as Bartlett's; c29 is Zitron's claim, supported with research that Bartlett read out, counted as Zitron's; c30 and c32 are Bartlett's) &mdash; checked against company filings, primary reports and the benchmark operators' own statements. <b>Quote fidelity:</b> as extracted &mdash; six fragments cross-verified against an independent transcript; every other line of speech is reported, not quoted. <b>Not independently verified:</b> OpenAI's and Anthropic's private financials, which no outside party can audit. <b>Compiler disclosure:</b> this piece is written with Claude, an Anthropic model, and Anthropic is a named party in the argument being checked &mdash; it appears in the token-cost claim (c15), the investment flows (c11, c12), and the revenue and IPO figures used as context. As of 8 September 2026. Not investment advice.</div>
+
+<div class="navchips">
+  <a href="#brief">The argument in brief</a><a href="#walk">Walked through</a><a href="#back">Stepping back</a><a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="num">1</div><h2>The argument in brief</h2></div>
+<div class="card">
+  <p class="sub">Stated at full strength, in Zitron's order. No verdicts in this section &mdash; the checking starts in Section 2.</p>
+
+  <h3>1. It is a con</h3>
+  <p>What is sold as a new kind of intelligence is, in Zitron's account, expensive and unreliable cloud software wrapped in a story too good to check &mdash; pushed into products people already pay for without being asked, at a scale he considers unmatched by any prior technology rollout.</p>
+
+  <h3>2. The money does not close</h3>
+  <p>Roughly a trillion dollars of capital expenditure sits against tens of billions of revenue, concentrated in two companies &mdash; OpenAI and Anthropic &mdash; that lose money on every unit of the product they sell.</p>
+
+  <h3>3. Demand is manufactured</h3>
+  <p>AI features have been forced into software people already pay for, priced so far below cost that nobody has actually tested whether users would pay full freight. What looks like appetite is a subsidy.</p>
+
+  <h3>4. Adoption figures measure exposure, not demand</h3>
+  <p>Being handed a chatbot inside a product you already use is not the same as choosing to use one. The industry's own adoption numbers, on this reading, describe reach, not desire.</p>
+
+  <h3>5. The capability is not what is being sold</h3>
+  <p>Users are told to build elaborate scaffolding &mdash; the right harness, model and prompt order &mdash; to get useful results. To Zitron, that scaffolding is itself the evidence: a genuinely autonomous system would not need a human building a cage of workarounds around it.</p>
+
+  <h3>6. AI-written code is making software worse</h3>
+  <p>Code generated by these tools is shipping faster than it is understood, and the people shipping it are, in his account, increasingly unable to read what they ship.</p>
+
+  <h3>7. The jobs story is not in the data</h3>
+  <p>The mass displacement narrative is not showing up in the industry's own research, Zitron argues, including research commissioned by companies with every incentive to find it.</p>
+
+  <h3>8. There is no post-bubble story</h3>
+  <p>Dark fibre, laid in vast excess in the dot-com bubble, got lit because the demand behind it was real, just early. Nobody has shown him equivalent deferred demand for AI infrastructure, and the cost curve that would need to bend is not bending.</p>
+
+  <h3>9. It breaks in 2027</h3>
+  <p>The end point of the argument: OpenAI runs out of money in 2027, and the edifice built on top of and around it goes with it.</p>
+  <h3>10. "AI" is kept deliberately blurred</h3>
+  <p>Running underneath the other nine: Zitron argues the word is held vague on purpose, so that protein folding, robotics and autonomous weapons can be claimed as credit by companies building none of them, and so that any criticism of the thing actually being financed can be answered with a question about curing cancer. The data centres, on his account, are being built for generative AI specifically, and the industry's numbers should be read against that narrower object.</p>
+</div>
+
+<div class="sechead" id="walk"><div class="num">2</div><h2>The argument, walked through</h2></div>
+<div class="card">
+  <p class="sub">In the order built. Verdict scale: 5/5 primary source &middot; 4/5 two independent sources &middot; 3/5 single credible source &middot; 2/5 aggregator only.</p>
+
+  <h3>Round 1 &middot; It is a con</h3>
+  <div class="quote"><b>Zitron</b> &mdash; "This is the largest non-consensual push of technology in history." (as extracted)</div>
+  <p>Zitron opened from this ground: AI has been forced into products hundreds of millions of people already paid for &mdash; operating systems, office suites, search &mdash; without being asked, faster and wider than any comparable technology shift he can name. It is a claim about scale and consent, not a claim with a single figure attached, so there is nothing here to check against a filing. He qualified how far he takes it later in the conversation, answering Bartlett on whether the spending could ever pay for itself.</p>
+  <div class="quote"><b>Zitron</b> &mdash; "I don't think it's some big conspiracy." (as extracted)</div>
+  <p>He does not think OpenAI, Microsoft, Google and the rest sat down and planned deliberate fraud. His limiting principle is that the people running these companies probably believed, and in many cases still believe, that the spending turns profitable &mdash; the con, on his account, is one of narrative and incentive, not conspiracy. That matters for how the rest reads: the opening claim rests almost entirely on whether the money closes, where Round 2 goes next. Zitron made a written version of this argument before &mdash; see <a href="https://pfannmoeller-crypto.github.io/news/briefings/2026-08-04_zitron_ai_bubble_research.html">"Ed Zitron's Case Against the AI Boom &mdash; The Argument, Walked Through", 4 August 2026</a>, covering the OpenAI-as-systemic-liability thesis, the circular financing, and the absence of a bailout mechanism. New here is the spoken version under sustained pushback, and eight months of financial reality since. Bartlett framed his own role across the episode as asking questions to work out where the truth sits, not to attack.</p>
+  <p class="weight">No claim to check in this round; it is the frame the rest of the interview either earns or does not.</p>
+
+  <h3>Round 2 &middot; The money</h3>
+  <p>Zitron's central load-bearing round: OpenAI's losses, Microsoft's OpenAI-linked revenue and capex, Nvidia's GPU sales, and the concentration of AI revenue in two loss-making companies &mdash; none of it, he argues, adds up to a business that can sustain the spending committed to it.</p>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 3/5</span> &mdash; $20.92bn is OpenAI's 2025 loss from operations ($13.07bn revenue against $34bn of costs); the headline net loss attributable was $38.53bn once a $41.55bn non-cash remeasurement is included. Zitron used the more conservative of his own two numbers. Figures come from financials he published himself; the <a href="https://www.wheresyoured.at/exclusive-openai-financials/">FT corroborated them</a>, OpenAI has not confirmed them.</div>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 3/5</span> &mdash; 2024: $3.7bn revenue, $12.48bn costs, $8.78bn operating loss, $5.09bn net loss attributable &mdash; from the same leaked set. Source: <a href="https://www.wheresyoured.at/exclusive-openai-financials/">Zitron, wheresyoured.at</a>.</div>
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> &mdash; Disclosed in Microsoft's FY2026 10-K as revenue from commercial arrangements with OpenAI, correctly characterised as money OpenAI pays Microsoft; $6.0bn was still receivable at 30 June 2026 and Microsoft discloses no margin on it. Source: <a href="https://finance.yahoo.com/technology/ai/articles/microsoft-made-24-1-billion-031442842.html">Microsoft FY2026 10-K, via Yahoo Finance</a>.</div>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 3/5</span> &mdash; The ~$34bn total AI revenue figure is an analyst estimate built on Bloomberg data, not a Microsoft disclosure. The subtraction against the $24.1bn OpenAI figure is arithmetically right ($34bn &minus; $24.1bn &asymp; $9.9bn), but rests on an estimate presented in the interview as if it were a company number. Source: <a href="https://beancount.io/blog/2026/07/29/microsoft-fy2026-earnings-analysis">Beancount.io FY26 analysis</a>.</div>
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> &mdash; $115.948bn of additions to property and equipment, fiscal year ended 30 June 2026. Source: <a href="https://www.microsoft.com/en-us/investor/earnings/fy-2026-q4/press-release-webcast">Microsoft FY2026 Q4 press release</a>.</div>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-unv">Unverifiable</span> <span class="cs">C 2/5</span> &mdash; Microsoft gave no FY2027 dollar figure on the earnings call &mdash; management said only that capex growth would exceed FY2026's. Secondary figures conflict: some reports put ~$175bn/~$190bn as an FY2026 total including finance leases; pre-earnings FY2027 estimates ran to $255&ndash;260bn. Source: <a href="https://www.benzinga.com/markets/earnings/26/07/60786971/microsoft-stock-ai-capex-amy-hood-gpu-spending-surges-after-hours">Benzinga</a>.</div>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 5/5</span> &mdash; $215.9bn is Nvidia's total FY2026 revenue across every segment, not GPU sales specifically. Data Center revenue &mdash; where AI GPUs sit &mdash; was $193.7bn; roughly $22bn came from Gaming, Pro Visualization and Automotive. Since the claim sets GPU sales against downstream AI revenue, the all-segment figure overstates the mismatch by about $22bn. Source: <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026">Nvidia investor relations, FY2026 Q4</a>.</div>
+  <div class="inbox check" id="c8"><span class="tag">Check</span><span class="pill p-unv">Unverifiable</span> <span class="cs">C &mdash;</span> &mdash; No published figure of this shape was found. Zitron's own nearest published calculation put non-OpenAI/Anthropic AI revenue at $10.33bn, covering Microsoft alone. Source: <a href="https://www.wheresyoured.at/dont-look-up/">Zitron, "Don't Look Up", wheresyoured.at</a>.</div>
+  <div class="inbox check" id="c9"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 3/5</span> &mdash; His own source says 70% or more of the AI revenues of Microsoft, Google and Amazon &mdash; three hyperscalers' AI-cloud lines, not global AI revenue. The narrower statement is defensible; the broader one stated is not the same claim. Source: <a href="https://www.wheresyoured.at/dont-look-up/">ibid.</a></div>
+  <div class="inbox views"><span class="tag">Other views</span>On c1, c3 and c5 the checks support Zitron plainly: the OpenAI loss, Microsoft revenue and Microsoft capex figures are all correct as stated. <b>Torsten Slok</b>, chief economist at Apollo Global Management, makes the sharpest independent version of the circularity point: AI profits are funded by investors rather than earned from customers, so chip margins are paid out of capital raised by a loss-making layer (Fortune, 10 Aug 2026). <b>Harris Kupperman</b> of Praetorian Capital reworks GPU depreciation to 3&ndash;5 years rather than hyperscalers' 5.5&ndash;6 and gets a breakeven capex requirement of $320&ndash;480bn a year. <b>Michael Burry</b> separately calculated roughly $176bn of cumulative earnings overstatement from useful-life extensions through 2028. The <b>Bank for International Settlements</b>' June 2026 report flagged a roughly $1tn AI boom heading for a reckoning and rising credit concentration. Not everyone this deep in the numbers goes as far as Zitron: <b>Ben Thompson</b> of Stratechery is closer to him on the economics than most bulls &mdash; AI should pay for itself by now and has not &mdash; but stops short of calling the product a con.</div>
+  <p class="weight">The core money numbers hold up almost exactly as stated; where they slip, it is in the direction of overstating the case, not the reverse &mdash; and independent analysts converge on the same alarm from different arithmetic.</p>
+
+  <h3>Round 3 &middot; Manufactured demand</h3>
+  <p>Zitron moved from losses to how they are financed and priced: circular investment flows between hyperscalers and the two frontier labs, pricing that loses money on heavy users, and a token-cost figure he treats as proof the product cannot be sold at a price people would actually choose to pay.</p>
+  <div class="quote"><b>Zitron</b> &mdash; "on a 200-dollar-a-month ChatGPT subscription, you can burn 14,000 dollars' worth of tokens" (as extracted)</div>
+  <div class="inbox check" id="c10"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5</span> &mdash; $50bn is the announced total, but staged: $15bn immediate and $35bn conditional on triggers, and it is an equity investment, not revenue. Separately, OpenAI committed to buy roughly $100bn of AWS cloud over eight years &mdash; money running the other way. Source: <a href="https://www.geekwire.com/2026/filings-how-amazons-50b-openai-deal-actually-works-and-what-theyre-keeping-secret/">GeekWire, filings analysis</a>.</div>
+  <div class="inbox check" id="c11"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> &mdash; $5bn additional investment announced April 2026, with up to $20bn more conditional. Source: <a href="https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai">Amazon</a>.</div>
+  <div class="inbox check" id="c12"><span class="tag">Check</span><span class="pill p-false">Wrong figure</span> <span class="cs">C 4/5</span> &mdash; Google announced up to $40bn in cash and compute in April 2026; no $10bn tranche was found. The error runs against Zitron's own case &mdash; the real figure makes the circular-financing pattern he is describing larger, not smaller. Source: <a href="https://techcrunch.com/2026/04/24/google-to-invest-up-to-40b-in-anthropic-in-cash-and-compute/">TechCrunch</a>.</div>
+  <div class="inbox check" id="c13"><span class="tag">Check</span><span class="pill p-open">Open</span> <span class="cs">C 3/5</span> &mdash; The $1.1tn commitment figure is Zitron's own tally and single-sourced; it may understate &mdash; Altman put OpenAI's data-centre commitments alone at roughly $1.4tn in November 2025. The $400bn revenue figure and "30% of expected cloud growth" could not be located in any source. Sources: <a href="https://www.wheresyoured.at/dont-look-up/">Zitron</a>; <a href="https://techcrunch.com/2025/11/06/sam-altman-says-openai-has-20b-arr-and-about-1-4-trillion-in-data-center-commitments/">TechCrunch on Altman</a>.</div>
+  <div class="inbox check" id="c14"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 3/5</span> &mdash; His published figure is $217bn in the first half of 2026. As a 2026-to-date total it holds and is probably now higher; as stated in the interview it drops the half-year qualifier. Source: <a href="https://www.wheresyoured.at/dont-look-up/">Zitron, "Don't Look Up"</a>.</div>
+  <div class="inbox check" id="c15"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 3/5</span> &mdash; The $14,000 and $8,000 figures are real and correctly attributed, but SemiAnalysis derived them as a theoretical ceiling &mdash; a user running tasks until weekly limits are exhausted &mdash; not typical consumption. On SemiAnalysis's own model, OpenAI only loses money if more than about 11.4% of users hit that ceiling. Presented without the qualifier, the figures read as ordinary usage. A further $400-on-a-$20-plan figure raised alongside it could not be confirmed. Source: <a href="https://www.techspot.com/news/112759-openai-anthropic-cant-afford-have-everyone-use-ai.html">SemiAnalysis via TechSpot</a>.</div>
+  <div class="inbox check" id="c16"><span class="tag">Check</span><span class="pill p-false">Wrong figure</span> <span class="cs">C 4/5</span> &mdash; Four months, not three. Uber's COO described exhausting the 2026 AI/coding token budget in that period. Source: <a href="https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/">Fortune</a>.</div>
+  <div class="inbox check" id="c18"><span class="tag">Check</span><span class="pill p-false">Wrong date</span> <span class="cs">C 3/5</span> &mdash; The remark was made on 4 June 2026 at OpenAI's Intelligence at Work event, not March 2026. The substance &mdash; enterprise customers exhausting a year's AI budget in a quarter &mdash; is accurately described. Source: <a href="https://www.thestateofai.com/news/sam-altman-ai-budgets-huge-problem-for-companies">The State of AI</a>.</div>
+  <div class="quote"><b>Bartlett</b> &mdash; "money is a lagging indicator of value" (as extracted)</div>
+  <p>Bartlett's counter was that pricing below cost during an adoption phase does not prove the underlying value is not real &mdash; the money catches up once a product is entrenched, and using today's losses as the whole verdict mistakes the order things usually happen in.</p>
+  <div class="inbox views"><span class="tag">Other views</span>c12's correction cuts in Zitron's favour: the true Google&ndash;Anthropic figure strengthens the circularity argument rather than weakening it. The live tension in this round is that Zitron's token-burn figures are <b>Dylan Patel</b>'s and <b>SemiAnalysis</b>'s own numbers, and SemiAnalysis is broadly bullish on hardware-software co-design as the real source of AI economics improving &mdash; the bear case here leans on the bull's own data.</div>
+  <p class="weight">The individual investment figures mostly check out or, where wrong, understate his case; the token-cost figure at the centre of the round is real but was presented as ordinary rather than a worst-case ceiling.</p>
+
+  <h3>Round 4 &middot; Adoption measures exposure, not demand</h3>
+  <p>Zitron argued that headline adoption numbers &mdash; users reached, users counted &mdash; describe how fast a product got bundled into things people already used, not how many people chose it on its own merits.</p>
+  <div class="inbox check" id="c20"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5</span> &mdash; The 60-days, 9-months and 2.5-years figures all come from a single UBS note of February 2023, which estimated monthly active users from web-traffic data; OpenAI never confirmed the number. The "web, about seven years" comparator is not in that note &mdash; it comes from a different years-to-N-users dataset using a different definition, spliced into the same sentence. Source: <a href="https://aibusiness.com/nlp/ubs-chatgpt-is-the-fastest-growing-app-of-all-time">UBS note via AI Business</a>.</div>
+  <div class="inbox check" id="c21"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 3/5</span> &mdash; Pew, June 2026: 49% of US adults say they have ever used an AI chatbot, 44% have used ChatGPT &mdash; roughly eleven points below the over-60% figure stated. The internet and PC comparators set against it come from a different dataset using a different definition of adoption. Source: <a href="https://www.pewresearch.org/internet/2026/06/17/americans-and-ai-2026-chatbots-smart-devices-and-views-on-impact/">Pew Research Center, June 2026</a>.</div>
+  <div class="inbox views"><span class="tag">Other views</span>The distinction this round rests on &mdash; usage without tested willingness to pay &mdash; is the seam the critic camp splits on. <b>Paul Kedrosky</b> and <b>Derek Thompson</b> put it explicitly: a financing bubble is not the same as saying the underlying tool does not work (The Ringer, 17 Mar 2026). Real, growing usage and an unproven business model can both be true &mdash; adoption numbers alone do not settle which reading is correct.</div>
+  <p class="weight">Both adoption comparisons stitch together figures with different definitions and different sources; the substance of the numbers used for AI itself is directionally right, just smaller than stated.</p>
+
+  <h3>Round 5 &middot; The capability is not what is being sold</h3>
+  <p>Zitron's argument here is about the gap between the autonomy the industry markets and the scaffolding real deployments require. He described needing to hand-build the right combination of harness, model and prompt sequence to get reliable output from agentic systems &mdash; work that, in his account, amounts to a person doing most of the reasoning and the model filling in a narrower gap than advertised. He does not dispute that the underlying models have gotten better at bounded tasks.</p>
+  <p>The interview's most consequential exchange sits inside this round. Bartlett offered figures on hallucination-rate improvement as evidence that reliability is progressing quickly; Zitron accepted them, with a qualifier attached.</p>
+  <div class="inbox check" id="c22"><span class="tag">Check</span><span class="pill p-mis">Misleading &mdash; and it cuts against the concession</span> <span class="cs">C 5/5</span> &mdash; Bartlett cited a hallucination leaderboard showing improvement from 21.8% to 0.7% on summarisation (the transcript garbles the source as "Virtaria"; it is Vectara's Hughes Hallucination Evaluation Model leaderboard). Vectara retired that version in November 2025, stating models had clustered at the top and it could no longer separate their performance. Its replacement uses 7,700 articles up to 32k tokens instead of 1,000 short ones; on the current board the best model sits at 1.8% and the worst at 24.2%. Neither 0.7% nor 21.8% appears on the current leaderboard. Bartlett offered the figures as evidence of progress and Zitron accepted them <i>for simple tasks</i>; the correction undercuts the premise both were arguing from &mdash; and Zitron's own qualifier turns out to be the accurate half of what he conceded. Sources: <a href="https://www.vectara.com/blog/introducing-the-next-generation-of-vectaras-hallucination-leaderboard">Vectara, "Introducing the next generation..."</a>, 19 Nov 2025; <a href="https://github.com/vectara/hallucination-leaderboard">current board</a>.</div>
+  <p>This is the most important item in the piece. It is not that either man lied: both were arguing from a benchmark its own operator had retired nine months before the episode aired for being saturated &mdash; a shared error of currency, not honesty. What survives the correction is the shape of Zitron's hedge: he did not accept "hallucinations are solved," he accepted "hallucinations are down, on simple tasks" &mdash; and the retired board's successor shows exactly that pattern, dramatic improvement on short inputs and a wide, unresolved spread on long ones.</p>
+  <div class="inbox check" id="c25"><span class="tag">Check</span><span class="pill p-open">Open</span> <span class="cs">C 3/5</span> &mdash; Nvidia's own published claims about its Vera Rubin chip are internally inconsistent: NVL72 material claims up to 30x more work per watt, while other Nvidia statements cite 10x more tokens per megawatt. No audited cost-per-megawatt or cost-per-token data exists publicly, so the dollars-per-megawatt half of the claim cannot be checked either way. Source: <a href="https://blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/">Nvidia blog</a>.</div>
+  <p>Zitron's description of agentic systems as, in substance, one model talking to another model inside a hand-built harness could not be confirmed as a contiguous, verifiable line and is reported here only in paraphrase, without quotation marks. On the security question raised in this part of the conversation, Bartlett said he accepts the underlying risk argument rather than contesting it.</p>
+  <div class="inbox views"><span class="tag">Other views</span><b>Kelsey Piper</b>, writing in The Argument ("AI's biggest critic has lost the plot", 28 Apr 2026), argues Zitron has been wrong specifically on capability trajectory &mdash; that 2024&ndash;2026 progress was faster than 2022&ndash;2024, and that GPT-4-level capability now costs roughly a thousandth of what it did when it launched. She still concedes that better skepticism about these companies' honesty is badly needed. <b>Gary Marcus</b> is often read as an ally on this point but is arguing a different thesis again &mdash; his skepticism is about AGI hype and misuse harms, not the economics of the capability gap Zitron is describing here.</div>
+  <p class="weight">The efficiency claim cannot be resolved either way with public data; the hallucination exchange is the one correction in this piece that lands against the host and against a figure the guest had already half-accepted, and it is why the qualifier he attached matters more than the number he was given.</p>
+
+  <h3>Round 6 &middot; Software quality</h3>
+  <p>Zitron's case study was Google Search: a 2019 internal "code yellow" over query growth, Prabhakar Raghavan taking over from longtime search lead Ben Gomes, and Gomes objecting internally to changes he thought degraded quality for revenue reasons. He used it as an example of a company choosing short-term metrics over the product, and extended the pattern to AI-assisted coding generally, arguing it is a primary cause of rising outages and degraded software across the industry. He later walked the point back, conceding it was unfair to single out Google specifically when the same pattern of shipping fast and cutting testing shows up industry-wide.</p>
+  <div class="quote"><b>Zitron</b> &mdash; "I'm being a little unfair." (as extracted)</div>
+  <div class="inbox check" id="c28"><span class="tag">Check</span><span class="pill p-most">Mostly true &mdash; self-sourced</span> <span class="cs">C 4/5</span> &mdash; The code yellow and Gomes's internal objection are documented in unsealed exhibits from US v. Google. They were first reported by Zitron himself. The court record is real; the citation is to his own work. Sources: <a href="https://www.wheresyoured.at/the-men-who-killed-google/">Zitron, "The Man Who Killed Google Search"</a>; <a href="https://www.justice.gov/usdoj-media/atr/media/1322631/dl">DOJ filing</a>.</div>
+  <div class="inbox check" id="c29"><span class="tag">Check</span><span class="pill p-open">Open</span> <span class="cs">C 3/5</span> &mdash; The evidence is correlational and mixed. Google Cloud's DORA reports find AI adoption associated with both higher throughput and elevated instability. GitClear finds roughly 4x growth in duplicated code. METR's randomised trial found experienced open-source developers were about 19% slower with AI tools while believing they were faster. No study establishes AI coding as the primary causal driver of outages. Sources: <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report">DORA 2025</a>; <a href="https://www.gitclear.com/ai_assistant_code_quality_2025_research">GitClear</a>.</div>
+  <div class="inbox views"><span class="tag">Other views</span>Bartlett's conduct in this round is itself worth noting on the record: rather than steering around the point, he read out research supporting Zitron's position on AI-assisted coding during the episode &mdash; the correlational studies behind c29 &mdash; instead of suppressing or contesting it.</div>
+  <p class="weight">The Google history checks out but traces back to Zitron's own reporting; the broader claim that AI coding is a primary cause of software decline is real as a pattern in the data and unproven as a causal story.</p>
+
+  <h3>Round 7 &middot; Jobs and robots</h3>
+  <p>Zitron argued the mass-displacement story is not showing up in the data, citing an OpenAI-commissioned study and an Oxford Economics finding, and pointed to a staged Tesla Optimus demo as robotics capability overstated. Bartlett introduced autonomous-vehicle safety statistics as AI capability that is real and already saving lives; Zitron's reply was that self-driving is not generative AI and does not carry his argument. He said plainly he is not going to pretend robots are not interesting, and credited Waymo specifically for not rushing its rollout the way he thinks other companies in this space have.</p>
+  <div class="inbox check" id="c26"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> &mdash; OpenAI's enterprise-adoption report of 11 August 2026 (p.35) finds revenue per employee is not meaningfully associated with output tokens per employee or messages per active user once other controls are included. Caveat he did not give: the study is cross-sectional and the revenue baselines predate the usage measured, so it is not a before-and-after test. Source: <a href="https://fortune.com/2026/08/13/buried-in-openais-latest-research-no-correlation-between-ai-use-and-revenue-per-employee/">Fortune on the OpenAI report</a>.</div>
+  <div class="inbox check" id="c27"><span class="tag">Check</span><span class="pill p-unv">Unverifiable</span> <span class="cs">C &mdash;</span> &mdash; The specific Oxford Economics report he describes could not be located. A January 2026 Oxford Economics analysis argues something close to the opposite &mdash; that evidence for AI-driven layoffs is limited. The strongest current evidence on entry-level hiring is Stanford's "Canaries in the Coal Mine" (Brynjolfsson, Chandar and Chen, Aug 2025), which finds a roughly 13% relative employment decline for early-career workers in the most AI-exposed occupations &mdash; a real finding in the direction he is arguing for, just not the study he cited. Source: <a href="https://digitaleconomy.stanford.edu/wp-content/uploads/2025/08/Canaries_BrynjolfssonChandarChen.pdf">Stanford Digital Economy Lab</a>.</div>
+  <div class="inbox check" id="c30"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5 (IIHS) &middot; 3/5 (Waymo pair)</span> &mdash; The 68%, 85% and 81% figures match an IIHS study covering about 50m Waymo miles against 222bn human miles across San Francisco, Phoenix, Los Angeles and Austin, 2021&ndash;2024. Three limits matter: Austin alone showed only a 4% improvement on a small sample; human crash data is under-reported by roughly half, which flatters the comparison; and Waymo operates in a geofenced, mostly favourable domain. The 2.1-vs-4.68 pair is Waymo's own self-reported figure, not IIHS's. Zitron's reply &mdash; that this is not generative AI &mdash; is correct as a matter of category. Sources: <a href="https://www.iihs.org/news/detail/waymos-driverless-cars-crash-less-often-than-people">IIHS</a>; <a href="https://waymo.com/safety/impact/">Waymo Safety Hub</a>.</div>
+  <div class="inbox check" id="c31"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> &mdash; At Tesla's "We, Robot" event on 10 October 2024, the Optimus units serving guests were remotely operated by humans for their physical actions. Source: <a href="https://cybernews.com/tech/tesla-optimus-human-controlled-we-robot-event/">Cybernews</a>.</div>
+  <div class="inbox check" id="c34"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 3/5</span> &mdash; Amodei's actual claim (Axios, May 2025) was that AI could eliminate half of all <i>entry-level</i> white-collar roles within five years. Dropping "entry-level" widens the target and makes the claim easier to dismiss. Source: <a href="https://www.marketingaiinstitute.com/blog/dario-amodei-ai-entry-level-jobs">Marketing AI Institute</a>.</div>
+  <div class="inbox views"><span class="tag">Other views</span>On c26 and c31, the checks support Zitron plainly: the OpenAI correlation study and the Optimus human-operator fact are both as he described them. Bartlett did not state the three limits attached to the AV comparison &mdash; the Austin outlier, the under-reporting of human crashes, and Waymo's geofenced operating domain &mdash; when he led with the headline figures.</div>
+  <p class="weight">The jobs evidence he leans on is thinner than he presented it, but a different, better-sourced study in the same direction exists; the robots exchange favours him on the specific facts while leaving the larger question &mdash; what autonomous vehicles prove about generative AI &mdash; genuinely open.</p>
+
+  <h3>Round 8 &middot; There is no post-bubble story</h3>
+  <p>Zitron's dot-com comparison: dark fibre laid in enormous excess in the late 1990s got lit because the demand behind it was real, just early. He argued nobody has shown him equivalent deferred demand behind today's data-centre build-out, citing a planning pipeline, the scale of the Stargate Abilene site, a power comparison to Bristol, and Goldman's own skeptic. He offered those figures in service of thesis 10 as much as this one: on his reading the capacity being planned is for generative AI specifically, so it cannot be defended by pointing at the parts of the field that are not generative AI. The checks below test the figures; they do not settle that framing, which is an argument about categories rather than about numbers. Bartlett pushed back with the fax-machine comparison &mdash; that prominent skeptics, including a Nobel laureate economist, have been wrong about transformative technology before.</p>
+  <div class="inbox check" id="c17"><span class="tag">Check</span><span class="pill p-mis">Misleading</span> <span class="cs">C 3/5</span> &mdash; The 190 GW figure is real, but it is cumulative announced capacity since 2024 across 777 projects, of which only about 5 GW is under construction and 16 GW is slated for 2026. Converting a multi-year announcement pipeline into a single year's required demand inflates the gap between spending and use. The $130bn actual-demand comparator was not found in the underlying report. Source: <a href="https://www.currence.ai/blog/data-center-outlook">Sightline Climate / Currence.ai, 24 Feb 2026</a>.</div>
+  <div class="inbox check" id="c23"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5</span> &mdash; 1.2 GW and eight buildings confirmed. The disclosed GPU figure is "more than 450,000" GB200s total, averaging roughly 56,000 per building; no per-building figure is published, so 50,000-per-building is close but not sourced as stated. Source: <a href="https://www.datacenterdynamics.com/en/news/openai-and-oracle-to-deploy-450000-gb200-gpus-at-stargate-abilene-data-center/">DataCenterDynamics</a>.</div>
+  <div class="inbox check" id="c24"><span class="tag">Check</span><span class="pill p-false">Wrong figure (unit error)</span> <span class="cs">C 2/5</span> &mdash; Megawatts measure instantaneous power, not an annual quantity &mdash; an annual total would be megawatt-hours. No primary source for a Bristol figure of 780&ndash;800 MW was found. The area half does hold: Bristol is roughly 110 km&sup2; (about 1.18bn sq ft), and 1.18bn divided by 998,000 is about 1,183x, close to the 1,172x stated. Source: area arithmetic verified independently; no primary source located for the power figure.</div>
+  <div class="inbox check" id="c33"><span class="tag">Check</span><span class="pill p-false">Wrong name and title</span> <span class="cs">C 5/5</span> &mdash; The analyst's name is Jim Covello, not Cavelli, and the note's title is "Gen AI: Too Much Spend, Too Little Benefit?" (Goldman Sachs, Top of Mind #129, 25 June 2024) &mdash; probably a transcript artefact, not an error Zitron made himself; the substance is accurately described. Covello has since hardened his position, arguing in June 2026 that AI has moved further from profitability, not closer. Sources: <a href="https://www.goldmansachs.com/images/migrated/insights/pages/gs-research/gen-ai--too-much-spend,-too-little-benefit-/TOM_AI%202.0_ForRedaction.pdf">Goldman Sachs</a>; <a href="https://fortune.com/2026/06/05/is-ai-a-bubble-worth-it-short-term-early-goldman-skeptic-covello-profits/">Fortune, 5 Jun 2026</a>.</div>
+  <div class="inbox check" id="c32"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> &mdash; Krugman, writing in Red Herring in 1998, predicted that by around 2005 the internet's impact on the economy would prove no greater than the fax machine's. He has since called it a deliberately provocative prediction that was wrong, while maintaining the near-term productivity point had some validity. Clifford Stoll's 1995 Newsweek piece, cited alongside it, is likewise real. Source: <a href="https://www.bloomberg.com/news/articles/2021-05-24/paul-krugman-got-something-very-right-about-the-internet-the-fax-machine-and-the-economy">Bloomberg</a>.</div>
+  <div class="quote"><b>Zitron</b> &mdash; "AI has no post-bubble story even for this." (as extracted)</div>
+  <p>He gave ground before answering: Clifford Stoll, he allowed, had had real points &mdash; about bad information, and about online education as a replacement for the classroom. His answer to the Krugman comparison was about economics rather than skepticism: the internet's skeptics were wrong because deferred demand for connectivity was real and eventually showed up. He does not think anyone has demonstrated the equivalent deferred demand for the specific infrastructure being built now, dark-fibre style, and until someone does, the historical-skeptics-were-wrong pattern does not transfer.</p>
+  <div class="inbox views"><span class="tag">Other views</span><b>Jim Covello</b>, two years after his original note, now argues AI has moved further from profitability rather than closer, and that Nvidia captures nearly all the economic value in the chain while everyone above it bleeds cash &mdash; a distribution he calls historically unprecedented (Fortune, 5 Jun 2026). <b>Azeem Azhar</b>, Exponential View, runs a five-gauge dashboard on which only industry strain (capex against revenue) read red as of his last fetchable update; he calls it a boom rather than a bubble, distinguished from the dot-com case by the absence of broad macro distortion (Fortune, 13 Nov 2025) &mdash; his most recent 2026 position could not be fetched for this piece. <b>Paul Kedrosky</b> and <b>Derek Thompson</b> are explicit that a financing bubble and a working product are not mutually exclusive, and <b>Ben Thompson</b> sits close to that camp while more sympathetic to Zitron's numbers than most. None of Kedrosky, Derek Thompson, Ben Thompson or Covello goes as far as Zitron in calling the product itself, rather than the financing around it, the problem.</div>
+  <p class="weight">Every figure here is accurate, a transcript slip, or overstated the same way &mdash; pipelines and totals read as single-year facts &mdash; and the central claim, that no deferred-demand story has been shown, is not itself rebutted by anyone in the piece, including people who think he is wrong about almost everything else.</p>
+
+  <h3>Round 9 &middot; It breaks in 2027</h3>
+  <p>The interview's terminal claim: OpenAI runs out of money in 2027.</p>
+  <div class="inbox check" id="c19"><span class="tag">Check</span><span class="pill p-open">Open</span> <span class="cs">C 3/5</span> &mdash; OpenAI is private and discloses no cash position or runway, so the claim cannot be checked directly. Independent analysts have converged on mid-2027 as a plausible exhaustion point, and the mechanism now named is roughly $800bn of contractual commitments over 3.5 years, including a $300bn Oracle deal that starts in 2027. That is a forecast, not a fact, and Zitron is one of several people making it rather than the only one. Source: <a href="https://www.tomshardware.com/tech-industry/big-tech/openai-could-reportedly-run-out-of-cash-by-mid-2027-nyt-analyst-paints-grim-picture-after-examining-companys-finances">Tom's Hardware on NYT analysis</a>.</div>
+  <div class="inbox views"><span class="tag">Other views</span>The BIS's June 2026 flagging of rising credit concentration, and the IMF's <b>Tobias Adrian</b> noting the five largest hyperscalers issued $159bn of corporate bonds in the first five months of 2026 &mdash; more than their combined borrowing over the prior five years &mdash; both point at the same mechanism from the debt side: maturity mismatch and bank limits pushing data-centre debt into private credit and pension funds. Neither calls it "a bubble," but both describe the plumbing a 2027 stress event would run through.</div>
+  <p class="weight">The single most important claim in the piece is also the one that cannot be verified at all; it is a widely shared forecast built on a real, disclosed mechanism, not a fact anyone can currently check.</p>
+</div>
+
+<div class="sechead" id="back"><div class="num">3</div><h2>Stepping back</h2></div>
+<div class="card">
+  <div class="callout violet"><b>The error direction in this run.</b> Of 34 claims: 15 True or Mostly true, 7 Misleading, 5 Wrong figure or Wrong date, 3 Unverifiable, 4 Open. Of the twelve Misleading or Wrong, nine lean toward his thesis: a total-revenue figure used where a segment figure was needed (c7), a three-hyperscaler share presented as global (c9), a theoretical usage ceiling presented as ordinary consumption (c15), a multi-year pipeline presented as a single year's demand (c17), an adoption figure roughly eleven points high (c21, which inflates the very everyone-has-been-pulled-in framing the round rests on), a prediction widened by dropping "entry-level" (c34), three months stated where the source says four (c16), a date moved from June to March (c18), and a unit error treating megawatts as annual (c24). Two cut the other way: the Google&ndash;Anthropic figure (c12) understates the circularity he argues for, and the hallucination correction (c22) rescues the concession he made rather than the premise both were arguing from. One (c33, the misattributed Goldman analyst's name) reads as a transcript artefact, not his error. Plainly: when Zitron is wrong here, he is usually wrong in the direction that flatters his case. The caveat: this is one run on one interview, not a base rate. No direction is imported from the earlier written-case piece.</div>
+
+  <h3>Zitron as his own source</h3>
+  <p>A second observation belongs here and nowhere else: on the load-bearing financial claims, Zitron is frequently his own source. c1, c2, c8, c9, c13, c14 and c28 trace back to his own reporting on wheresyoured.at. For the OpenAI financials specifically, that reporting was corroborated by the Financial Times and has held up; for the aggregate industry figures &mdash; the $22bn outside-revenue estimate, the 70% concentration claim, the $1.1tn commitment tally &mdash; it has not been independently checked by anyone else. Both halves are true at once, and neither cancels the other.</p>
+
+  <h3>The messenger</h3>
+  <p>Zitron sells a subscription newsletter, a podcast and a forthcoming book built on this thesis; his commercial interest rises if the crash he describes arrives on schedule. Set against that: he broke the OpenAI financials the Financial Times later corroborated, and being early and publicly checkable is itself part of what he sells. A fuller account of his track record, the written circular-financing argument, and the absence of a bailout mechanism is in the earlier piece on this topic &mdash; <a href="https://pfannmoeller-crypto.github.io/news/briefings/2026-08-04_zitron_ai_bubble_research.html">"Ed Zitron's Case Against the AI Boom &mdash; The Argument, Walked Through", 4 August 2026</a> &mdash; and is not re-litigated here.</p>
+
+  <h3>Interests, stated as stakes</h3>
+  <table>
+    <tr><th style="width:26%">Position</th><th>Stake</th></tr>
+    <tr><td><b>Ed Zitron</b></td><td>A subscription newsletter, a podcast and a book whose value rises if the crash arrives; being early and right is the product. Against that: he published the numbers first and they held.</td></tr>
+    <tr><td><b>Steven Bartlett</b></td><td>An interview show is worth more when the guest is contradicted on camera; the format rewards a live disagreement regardless of who is right. He is also an investor in and builder of consumer businesses, and the episode carries advertising.</td></tr>
+    <tr><td><b>OpenAI, Anthropic, Microsoft, Nvidia, Oracle, Amazon, Google</b></td><td>Every figure at issue is one they choose whether and how to disclose. Two of the most load-bearing numbers in the argument exist only because they leaked.</td></tr>
+    <tr><td><b>The compiler</b></td><td>This piece is written with Claude, an Anthropic model. Anthropic is a party in the argument: its token economics are the subject of c15, its funding of c11 and c12, and its revenue and IPO plans appear in the context. A model made by one of the companies being checked is not a neutral instrument, and the reader should weigh the Anthropic-touching checks accordingly.</td></tr>
+  </table>
+
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li>c6, c8 and c27 in full &mdash; no source of the shape claimed was found for any of them.</li>
+    <li>The $400-on-a-$20-plan figure raised alongside the SemiAnalysis token-cost numbers inside c15.</li>
+    <li>The $400bn revenue figure and the 30%-of-cloud-growth figure inside c13.</li>
+    <li>The 780&ndash;800 megawatt Bristol power figure inside c24.</li>
+    <li>A negative result worth stating: no substantive published rebuttal of this specific episode was found &mdash; thin evidence of nothing much either way.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="score"><div class="num">4</div><h2>Scorecard &amp; takeaways</h2></div>
+<div class="card">
+  <table>
+    <tr><th style="width:56%">Claim</th><th>Verdict</th><th>C</th></tr>
+    <tr><td><a href="#c1">OpenAI lost $20.9bn last year</a></td><td><span class="pill p-true">True</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c2">OpenAI lost over $5bn in 2024</a></td><td><span class="pill p-true">True</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c3">Microsoft made $24.1bn from OpenAI in FY2026</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c4">Microsoft's non-OpenAI AI revenue is ~$10bn</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c5">Microsoft spent $115bn of capex in FY2026</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c6">Microsoft plans $175bn of capex next year</a></td><td><span class="pill p-unv">Unverifiable</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c7">Nvidia sold $215.9bn of GPUs last fiscal year</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c8">Only $22bn of AI revenue exists outside OpenAI and Anthropic</a></td><td><span class="pill p-unv">Unverifiable</span></td><td class="cs">&mdash;</td></tr>
+    <tr><td><a href="#c9">70% of all AI revenues come from OpenAI and Anthropic</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c10">Amazon sent $50bn to OpenAI this year</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c11">Amazon sent $5bn to Anthropic</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c12">Google sent $10bn to Anthropic</a></td><td><span class="pill p-false">Wrong figure</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c13">$1.1tn cloud commitments, $400bn+ revenue, 30%+ of cloud growth</a></td><td><span class="pill p-open">Open</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c14">OpenAI and Anthropic raised $217bn in 2026</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c15">$200/mo plans can burn $14,000 / $8,000 of tokens</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c16">Uber burned its annual token budget in three months</a></td><td><span class="pill p-false">Wrong figure</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c17">190 GW planned implies $1.6&ndash;3tn annual demand vs ~$130bn actual</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c18">Altman's budget remark was made in March 2026</a></td><td><span class="pill p-false">Wrong date</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c19">It breaks in 2027, when OpenAI runs out of cash</a></td><td><span class="pill p-open">Open</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c20">ChatGPT hit 100m users in 60 days, fastest ever</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c21">Over 60% of US adults integrated into AI tools in three years</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c22">Hallucination leaderboard improved from 21.8% to 0.7%</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c23">Stargate Abilene: 1.2 GW, eight buildings, 50,000 GB200s each</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c24">Bristol uses 780&ndash;800 MW a year; Stargate is 1,172x denser</a></td><td><span class="pill p-false">Wrong figure</span></td><td class="cs">2/5</td></tr>
+    <tr><td><a href="#c25">Vera Rubin is 10x more efficient but costs more per megawatt</a></td><td><span class="pill p-open">Open</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c26">No correlation between token spend and revenue per employee</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c27">Oxford Economics found young people losing jobs to AI</a></td><td><span class="pill p-unv">Unverifiable</span></td><td class="cs">&mdash;</td></tr>
+    <tr><td><a href="#c28">Google deliberately degraded search (code yellow, Raghavan, Gomes)</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c29">AI-assisted coding is a primary cause of rising outages</a></td><td><span class="pill p-open">Open</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c30">Waymo shows 68% lower crash involvement and related AV figures</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5 &middot; 3/5</td></tr>
+    <tr><td><a href="#c31">The Optimus demo required a human controller</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c32">Krugman said the internet's impact would be no greater than the fax machine's</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c33">Jim Cavelli of Goldman Sachs wrote "Genius Too Much Spend for Not Enough Return"</a></td><td><span class="pill p-false">Wrong name and title</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c34">Dario Amodei said 50% of white-collar labour would go away</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">3/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li>The core money math: OpenAI's 2025 and 2024 losses, Microsoft's OpenAI-linked revenue and its FY2026 capex all check out exactly as stated (c1, c2, c3, c5).</li>
+    <li>The Google search history, the OpenAI no-correlation study, and the Optimus human-controller fact all check out and support his case (c26, c28, c31).</li>
+    <li>The circular-financing arithmetic understates, rather than overstates, the pattern he describes (c12).</li>
+    <li>The central 2027 forecast rests on a real, disclosed mechanism &mdash; roughly $800bn of commitments, including a $300bn Oracle deal starting that year &mdash; even though the forecast itself cannot be independently confirmed (c19).</li>
+    <li>No substantive rebuttal of the specific episode has been published, and several independent analysts (Slok, Kupperman, Burry, the BIS) reach adjacent conclusions from different arithmetic.</li>
+  </ul>
+
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>Discount Bartlett:</b> the hallucination figures he led with came from a retired benchmark version absent from the current leaderboard (c22); the AV statistics omitted the Austin outlier, human crash under-reporting, and Waymo's geofenced domain (c30).</li>
+    <li><b>Discount Zitron:</b> the token-cost figures central to Round 3 are a theoretical ceiling presented without that qualifier (c15), and the demand comparison in Round 8 converts a multi-year pipeline into a single year's figure (c17).</li>
+    <li><b>Discount the compiler:</b> this piece is written with an Anthropic model, and Anthropic's own economics, funding and IPO plans are load-bearing facts here (c11, c12, c15); weigh the Anthropic-touching checks accordingly rather than as coming from an outside party.</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <p class="sub">Principal sources: OpenAI financials via Zitron/wheresyoured.at and the FT; Microsoft's FY2026 10-K and Q4 release; Nvidia's FY2026 Q4 results; Amazon, Google and Anthropic funding announcements; SemiAnalysis via TechSpot; Sightline Climate/Currence.ai; Pew Research Center; Vectara's hallucination leaderboard, current and retired; IIHS and Waymo safety data; Stanford Digital Economy Lab; Goldman Sachs research; Tom's Hardware on NYT analysis; and named commentary from Kelsey Piper, Azeem Azhar, Ben Thompson, Paul Kedrosky, Derek Thompson, Torsten Slok, Harris Kupperman, Michael Burry, Tobias Adrian and the BIS.</p>
+  <p class="sub"><b>Single-source flags:</b> c1, c2, c8, c9, c13 and c14 rest on Zitron's own reporting; c4 rests on a single analyst estimate; c24 is unsourced for its power figure; and Azeem Azhar's most recent 2026 position could not be fetched and is cited only to its last confirmed headline.</p>
+</div>
+
+<div class="foot">Compiled 8 September 2026 &middot; 34 claims checked &middot; compiled with Claude, an Anthropic model<br>A reading of an argument, not an endorsement of it &mdash; and not investment advice.</div>
+</div>
+</body>
+</html>
