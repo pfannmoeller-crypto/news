@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools — 6–15 September 2026 (catch-up edition)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>Catch-up edition · 6–15 September 2026, 10-day window</p>
+    </div>
+  </div>
+
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Claude Code closes an auto-mode review gap; Codex CLI proves it never went quiet</h2>
+    <p>A 10-day catch-up covering 6-15 September: Claude Code's auto-mode now reviews inline shell commands and subagent hand-backs, Codex CLI resurfaces with worktree isolation and inline mid-task answers, and Cursor, GitHub Copilot, Gemini CLI and Devin all push cloud agents and marketplaces further, most of it still unproven.</p>
+  </div>
+
+  <h3 class="sec">Home Stack — Claude Code &amp; Cowork</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">2.1.265–2.1.271 · Sep 8–14, 2026</span>
+    </div>
+    <h4 class="headline">Auto mode now sends inline shell commands and subagent hand-backs through the safety classifier</h4>
+    <p>Three point releases close a gap in auto mode: a skill's or slash command's inline <code>!</code> shell commands used to follow the classifier's judgment call, and a subagent's work reached its caller through its own last message rather than a reviewed hand-back. Both now run as reviewed tool calls like everything else auto mode approves.</p>
+    <p>The same run of releases also killed the no-timeout Monitor watch. Every watch now carries a deadline — 30 minutes at most, 10 in a single-prompt <code>-p</code> run — and Claude has to notice and re-arm it rather than leaving one open indefinitely.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Versions</div><div class="stat-value">2.1.265, 2.1.269, 2.1.271</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Sep 8–14, 2026</div></div>
+      <div class="stat"><div class="stat-label">Monitor deadline</div><div class="stat-value">≤30 min (≤10 min in -p)</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://www.gradually.ai/en/changelogs/claude-code/">Gradually.ai changelog mirror</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Auto mode's safety classifier is meant to review every consequential tool call before it runs; the two gaps it closes here were both places a call could take effect without going through that review — an inline shell command tucked inside a skill's own script, or a subagent's summary standing in for an actual reviewed report. The fix landed in three steps: 2.1.265 didn't touch this directly, 2.1.269 introduced the inline-command and Monitor-deadline changes alongside a revert of an over-broad 2.1.259 deny-rule change, and 2.1.270 had to fix a regression where read-only git commands started asking for permission after a long-running session. 2.1.271 then reissued the inline-command and subagent hand-back changes cleanly, plus a new per-command <code>allowed_domains</code> option for Bash, PowerShell and Monitor in auto mode.</p>
+        <p><span class="lbl">The details.</span> Concretely: a skill that shells out with <code>!some-command</code> inside a markdown body no longer gets a free pass from the classifier — it is now scoped by the same permission rules as a directly issued Bash call. A subagent's result now arrives at its caller through a dedicated hand-back call, which the classifier reviews on its own terms, instead of the caller simply trusting the subagent's closing message. Monitor's <code>persistent</code> option — the one that let a watch run with no timeout — is gone; every watch, however set up, now expires and needs Claude to re-arm it.</p>
+        <p><span class="lbl">Why it still matters.</span> This pipeline runs under auto mode and uses Monitor itself; a watch set up assuming it would sit open indefinitely will now lapse silently unless something notices the deadline and re-arms it. Any skill in this stack that shells out inline should be checked against the current permission rules rather than assumed to have run under the classifier's looser read before 2.1.269.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own Claude Code changelog, 8–14 September 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">2.1.268 · Sep 10, 2026</span>
+    </div>
+    <h4 class="headline">A managed MCP server you thought you'd filtered out can reappear on upgrade</h4>
+    <p><code>allowedMcpServers</code> now governs only the servers a user or project adds themselves; a literal <code>managed-mcp.json</code> entry your allowlist used to exclude now loads again after upgrading past 2.1.268, and keeping it off requires <code>deniedMcpServers</code> instead. The same release also stopped plain <code>WebFetch</code> deny and ask rules from reaching the Artifact tool's own reads and updates — an <code>Artifact</code> rule is now required to gate those.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Version</div><div class="stat-value">2.1.268</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Sep 10, 2026</div></div>
+      <div class="stat"><div class="stat-label">WebFetch timeout</div><div class="stat-value">300s (configurable)</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> The two changes shipped in the same release because both narrow what a single settings rule is assumed to cover. <code>allowedMcpServers</code> was being used, in practice, to keep an org-managed server off a machine even though the field was meant to scope user additions; that filtering effect is now gone. Separately, the Artifact tool fetches and publishes pages over the network, which made a <code>WebFetch</code> rule look like it covered Artifact calls too — it no longer does.</p>
+        <p><span class="lbl">The details.</span> The release bundles a related fix: <code>WebFetch</code> itself used to hang indefinitely on a slow or unresponsive host; it now fails after 300 seconds by default, adjustable through <code>CLAUDE_CODE_WEBFETCH_DEADLINE_MS</code>. A separate fix in the same version closed a gap where deny and ask rules on a symlinked directory didn't apply when a path was given by its real, non-symlinked location.</p>
+        <p><span class="lbl">Why it still matters.</span> Any configuration that leaned on <code>allowedMcpServers</code> to keep a specific managed server out, or on a <code>WebFetch</code> deny rule to gate the Artifact tool, should be re-checked against 2.1.268 and later — the old assumption about what those rules cover no longer holds.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own Claude Code changelog, 10 September 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Across the stack</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI / Codex CLI</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">v0.154.0 · Sep 9, 2026</span>
+    </div>
+    <h4 class="headline">Codex CLI adds isolated worktree sessions and lets you answer questions without breaking its stride</h4>
+    <p>The previous edition of this briefing dropped Codex CLI for a changelog gone quiet since June — that read turns out to be wrong. Codex shipped continuously through July and August and landed v0.154.0 on 9 September: experimental worktree support (<code>--worktree</code> or <code>/worktree</code>) creates an isolated checkout for a new or forked session, and questions can now be answered inline, with suggested choices or free text, while Codex keeps working instead of stalling on the prompt.</p>
+    <p>The same release shares a background Codex server across Windows sessions with new daemon lifecycle commands, and drops the already-deprecated <code>codex mcp-server</code> entry point entirely — a hard break for any config still pointing at it.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Version</div><div class="stat-value">v0.154.0</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Sep 9, 2026</div></div>
+      <div class="stat"><div class="stat-label">Removed</div><div class="stat-value"><code>codex mcp-server</code></div></div>
+    </div>
+    <div class="links">
+      <a href="https://github.com/openai/codex/releases/tag/rust-v0.154.0">GitHub release rust-v0.154.0</a>
+      <a href="https://x.com/CodexReleases/status/2097817395930735015">Codex Releases changelog thread</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Codex CLI's pace has actually been high all summer — 0.143–0.146 shipped through late July, 0.150–0.153 through August, and 0.153.0–0.154.0 in the first two weeks of September, including plugin-marketplace support for the CLI (list, install, remove from remote marketplaces) that landed 3 September. None of that surfaced in this briefing's prior editions; it should have.</p>
+        <p><span class="lbl">The details.</span> Worktree support is explicitly experimental and creates its own checkout per session rather than sharing a working tree, which avoids one session's edits colliding with another's. Inline question-answering means a long-running task no longer has to pause and wait at a terminal prompt — Codex surfaces the question with suggested answers and keeps its context. The Windows background-server change lets multiple sessions share one daemon instead of each spinning up its own process. The removed <code>codex mcp-server</code> entry point was deprecated earlier and is now gone outright, breaking any script or agent config still invoking it directly.</p>
+        <p><span class="lbl">Why it still matters.</span> Worktree isolation and inline mid-task Q&amp;A are both genuinely useful, comparable capabilities to things this stack already does with Claude Code sessions and hooks — worth a side-by-side hour once worktree support leaves "experimental." Anything integrating with Codex through the old <code>mcp-server</code> command needs to move off it now, not on notice.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · corroborated by OpenAI's official GitHub release and the @CodexReleases changelog account, 9 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-agent">Cursor</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">Beta · Sep 10, 2026</span>
+    </div>
+    <h4 class="headline">Cursor's new coordinator agent delegates whole features and migrations to cloud subagents</h4>
+    <p>Cursor Projects, in beta to all users since 10 September, adds a coordinator agent that plans and delegates rather than writes code itself, spreading work across parallel cloud subagents for features, large migrations, or ongoing maintenance like lint-rule generation. Projects keep running on dedicated cloud machines when a laptop closes, and a coordinator can subscribe to a Slack channel, a schedule, or every PR on a repo to act without a fresh prompt each time.</p>
+    <div class="links">
+      <a href="https://cursor.com/blog/projects">Cursor: Introducing Projects</a>
+      <a href="https://aiweekly.co/alerts/cursor-ships-projects-beta-with-delegating-coordinator-agent">AI Weekly coverage</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This is Cursor's answer to the same problem this pipeline already solves with unattended Claude Code sessions and scheduled tasks: keep an agent working on something larger than one prompt-response turn without a human babysitting it. Cursor's framing — a coordinator that "delegates rather than executes, is never blocked" — is explicitly aimed at multi-week, multi-PR work rather than single edits.</p>
+        <p><span class="lbl">The details.</span> The coordinator can spin up a local agent when a task needs to run against a developer's own machine, otherwise everything stays in the cloud. Cursor reports new users merging 30% more pull requests and heavy users merging six times as many — both figures are self-reported, unaudited, and published without a baseline or cohort breakdown.</p>
+        <p><span class="lbl">Watch items.</span> Beta rollout, self-reported productivity numbers, and no published detail yet on data residency or what a coordinator is blocked from doing autonomously (the announcement doesn't state whether pushing to main is restricted). The trigger to revisit: general availability plus an audited benchmark or a clear data-handling spec.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · Cursor's own blog post, corroborated by AI Weekly, 10 September; the merge-rate figures are Cursor's own unaudited claim</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub / Copilot</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">Sep 7–11, 2026</span>
+    </div>
+    <h4 class="headline">Copilot code review now closes its own comment threads, and VS Code learns to run agents on a schedule</h4>
+    <p>VS Code 1.137 (week of 7 September) adds recurring agent tasks in public preview — hourly, daily, weekly, or on demand — plus experimental voice mode and PR/issue review inside the Agents window. Separately, on 11 September, Copilot code review started resolving its own comments automatically when a follow-up commit addresses them, and writes a specific commit message when a developer applies one of its autofixes instead of a generic default.</p>
+    <p>GitHub also rolled out an ensemble "Lite" review mode that combines several model passes into one set of findings: in GitHub's own testing it raised the share of addressed high-severity comments by 47% (31% medium, 11% low) while cutting review cost by about 8%.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">High-severity addressed</div><div class="stat-value">+47%</div></div>
+      <div class="stat"><div class="stat-label">Review cost</div><div class="stat-value">−8%</div></div>
+      <div class="stat"><div class="stat-label">Recurring tasks</div><div class="stat-value">Preview, VS Code 1.137</div></div>
+    </div>
+    <div class="links">
+      <a href="https://github.blog/changelog/2026-09-10-github-copilot-weekly-releases-september-7/">Copilot weekly releases, Sep 7</a>
+      <a href="https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review/">Copilot code review update, Sep 11</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Both changes target the same friction point: a reviewer (human or Copilot) leaves a comment, the fix lands in a later commit, and someone has to remember to close the thread. Auto-resolution removes that manual step; the ensemble mode is GitHub trying to make the underlying comments worth resolving in the first place, by combining perspectives before a single verdict reaches the PR.</p>
+        <p><span class="lbl">The details.</span> The ensemble approach also gained "a broader set of shell tools" behind Copilot's agent firewall, so it can validate a fix by actually running build and test commands rather than reasoning about the diff alone. JetBrains gets a parallel but separate change: enterprise admins can now centrally set sandbox policy — enablement, filesystem and network access, proxy settings — through managed policies (public preview).</p>
+        <p><span class="lbl">Why it still matters.</span> This is a concrete, low-cost test: point the Lite ensemble review at one real pull request from this pipeline's own tooling and compare what it flags, and at what cost, against the current review step. Recurring scheduled agent tasks in VS Code are also worth a look against any chore this pipeline still runs by hand on a timer.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · two separate official GitHub Changelog posts, 10–11 September 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Google / Gemini CLI</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">v0.59.0 · Sep 8, 2026</span>
+    </div>
+    <h4 class="headline">Gemini CLI patches an MCP OAuth SSRF gap and locks workspace trust fail-closed</h4>
+    <p>v0.59.0 fixes a server-side request forgery vector during MCP OAuth metadata discovery and authentication, and moves workspace trust to fail closed: in restricted mode, the set of MCP servers available to a session is now filtered rather than left open. It follows the v0.58.0 sandbox-container hardening this briefing flagged TRY two editions ago — the pattern is a team working through its own attack surface release by release.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Version</div><div class="stat-value">v0.59.0</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Sep 8, 2026</div></div>
+      <div class="stat"><div class="stat-label">Fixes</div><div class="stat-value">MCP OAuth SSRF, trust fail-closed</div></div>
+    </div>
+    <div class="links">
+      <a href="https://geminicli.com/docs/changelogs/">Gemini CLI changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> MCP OAuth metadata discovery involves the CLI fetching a URL supplied by the server it's authenticating against; without validation, that fetch can be redirected to an internal address the attacker wants probed — the classic SSRF shape. Fail-closed workspace trust means an untrusted or restricted workspace no longer gets the benefit of the doubt on which MCP servers it can see.</p>
+        <p><span class="lbl">The details.</span> The changelog describes the fix as preventing SSRF specifically "during MCP OAuth metadata discovery and authentication" and the trust change as filtering "available <code>mcpServers</code> when operating in restricted mode" — both narrowly scoped to the MCP integration rather than a CLI-wide change.</p>
+        <p><span class="lbl">Why it still matters.</span> Any Gemini CLI install configured with MCP servers should move to v0.59.0; an OAuth-discovery SSRF is a real, exploitable class of bug, not a theoretical one, and the fix is a version bump, not a config migration.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Google's own Gemini CLI changelog, 8 September 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-agent">Cognition / Devin</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">Sep 9–11, 2026</span>
+    </div>
+    <h4 class="headline">Devin's marketplace grows by 21 zero-config MCP integrations and a unified plugin system</h4>
+    <p>Devin added 21 new zero-config OAuth MCP servers to its marketplace on 11 September — Dropbox, ClickHouse Cloud, Lucid, Typeform, Coda, GitBook, Railway, Retool, Smartsheet and Make among them — alongside a unified plugin system for bundling skills, rules, hooks and MCP servers into installable, org-governed packages, a PagerDuty on-call integration, and new <code>/scan</code> and <code>/ask</code> slash commands.</p>
+    <div class="links">
+      <a href="https://docs.devin.ai/release-notes/overview">Devin release notes</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This is the same theme this briefing skipped two editions ago, when Devin added a dead-code scan type and Gmail, Calendar, Gamma and Supabase connectors: steady connector and marketplace growth inside a single vendor's walled agent, rather than a change to how work gets routed to it.</p>
+        <p><span class="lbl">The details.</span> The plugin system lets an org mark a bundle of skills, rules, hooks and MCP servers as required or optional across the team, with governance controls on top — closer to an internal app store than a capability change. PagerDuty integration lets Devin act as an on-call responder, triaging incidents and posting findings as notes.</p>
+        <p><span class="lbl">Why it still matters.</span> None of this changes the operator calculus: Devin remains a per-seat cloud agent with its own marketplace, and a wider marketplace makes onboarding within Devin easier without giving a reason to route work there instead of an MCP-native pipeline already under this stack's own control.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Cognition's own Devin release notes, 9–11 September 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>The permission story is the real Home Stack news.</strong> Claude Code's auto mode spent September closing the gap between what the safety classifier was assumed to review and what it actually reviewed — inline shell commands, subagent hand-backs, and now MCP-server and WebFetch scoping that quietly stopped meaning what a config file said it meant.</li>
+      <li><strong>Dropping Codex CLI for going quiet was a mistake worth naming.</strong> It shipped through the whole gap this briefing wasn't watching it — plugin marketplaces, worktree isolation, inline Q&amp;A — and none of that is model news; it belongs here every week Codex CLI ships something, not just when it's convenient to notice.</li>
+      <li><strong>Everyone else is racing to "coordinator plus cloud subagents," and none of it is proven yet.</strong> Cursor Projects, Copilot's recurring agent tasks, and Devin's expanding marketplace are three different bets on the same shape of autonomy; the unaudited productivity claims and beta labels are why two of three land as WATCH or SKIP this week rather than TRY.</li>
+    </ol>
+    <p class="closer">A quiet capability week, a loud plumbing one — the tools that ship security and permission fixes on a tight cadence are the ones actually running production work, this pipeline's own included.</p>
+  </div>
+
+  <h3 class="sec">What changed for this pipeline</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>This week, worth doing:</strong> audit this pipeline's Claude Code config for <code>allowedMcpServers</code> or <code>deniedMcpServers</code> usage and confirm no managed server silently reappeared after crossing 2.1.268; swap any long-lived Monitor watch for the new deadline-and-re-arm pattern introduced in 2.1.269–2.1.271.</li>
+      <li><strong>Also worth doing:</strong> grep this pipeline's skills and slash commands for inline <code>!</code> shell commands, and re-check them against default-mode permission rules now that auto mode no longer waves them through on the classifier's earlier judgment call.</li>
+      <li><strong>Worth trying once, not urgent:</strong> run GitHub Copilot's ensemble "Lite" code review against one real pull request from this pipeline's own repo and compare its findings and cost to the current review step.</li>
+      <li><strong>Not yet:</strong> hold off routing any of this pipeline's work through Cursor Projects or Devin's plugin marketplace until either publishes an audited benchmark, leaves beta, or states its data-residency terms plainly.</li>
+    </ul>
+  </div>
+
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Tuesday, September 15, 2026 &middot; <strong>Research window:</strong> 6–15 September 2026, 10 days (catch-up edition, widened from the usual 7 to close the gap since the 5 September edition) &middot; <strong>Scope:</strong> the application layer only — work agents, CLIs, IDEs, automation and the MCP ecosystem; model releases belong to Frontier Tech's Release Radar and are not covered here.</p>
+    <p><strong>Confidence legend:</strong> 5/5 primary vendor source · 4/5 two independent sources · 3/5 single credible source · 2/5 aggregator-only with a visible caveat. No score is rounded up.</p>
+    <p><strong>Editorial notes:</strong> the previous edition (5 September) dropped Codex CLI on the assumption its changelog had gone quiet since June; that assumption was wrong, and it returns to scope here. No item from the 5 September edition repeats this week unless its verdict changed.</p>
+  </div>
+
+</div>
+</body>
+</html>
