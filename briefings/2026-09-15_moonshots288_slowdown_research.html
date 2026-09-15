@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moonshots #288: Four P(doom) Numbers and One Real Resignation</title>
+<meta name="description" content="A researcher quit Anthropic warning the labs are gambling with our lives. The panel's quotes of him, Hubinger, Altman and Noam Brown all check out — the errors are in the second tier, and one misattributes a study.">
+<meta name="wz-icon" content="bolt">
+<meta name="wz-color" content="#b3261e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#b3261e; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#b3261e 0%,#8c1d18 55%,#601410 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+  .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11.5px;
+      background:var(--grey-100);color:var(--grey-600);border-radius:6px;padding:2px 8px;
+      margin-left:8px;vertical-align:middle;font-weight:500}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .p-open{background:#ede7f6;color:#4527a0}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout.violet{background:#fce8e6;border-left-color:var(--accent);color:#601410}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Moonshots EP #288 · Diamandis, Blundin, Ismail, Wissner-Gross, with Emad Mostaque · Format v2</div>
+  <h1>Moonshots #288: Four P(doom) Numbers and One Real Resignation</h1>
+  <p>A weekly AI panel spends its opening hour on one question — should the labs slow down — triggered by a researcher walking out of Anthropic. Four people give four probabilities that AI kills everyone, spanning three orders of magnitude, and none changes his position.</p>
+  <div class="meta"><span>Recorded 11 Sep 2026</span><span>8 claims checked</span><span>Compiled 15 Sep 2026</span></div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> 8 claims against primary sources — Jacob Coxon's resignation as reported by TechCrunch and others; Hubinger's, Altman's and Noam Brown's own X posts; OpenAI's essay "An Alien Mind"; the OpenAI Foundation Board announcement; Dwarkesh Patel's published panel; the <i>FT</i> via secondary reporting; Envestnet's press release · <b>quote fidelity:</b> verbatim — full ASR transcript of the episode, every rendered quote grep-verified against it; <b>the transcript carries no speaker labels, so attribution is contextual and is flagged where uncertain</b>; ASR-mangled proper nouns corrected silently and listed at the foot · <b>not independently verified:</b> the DeepSeek V4.1 Flash figures quoted on air, the view counts for Coxon's post · <b>compiler disclosure:</b> written with Claude, an Anthropic model — and <b>Anthropic is a principal subject of this episode</b>: the employer the researcher left (c1), the employer of the alignment lead quoted (c2), the lab accused of withholding a model from a safety institute (c8) · as of 15 Sep 2026.</div>
+
+<div class="navchips">
+  <a href="#brief">The argument in brief</a><a href="#walk">Walked through</a><a href="#back">Stepping back</a><a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="num">1</div><h2>The argument in brief</h2></div>
+<div class="card">
+  <p class="sub">A panel, not an author, and the disagreement is the substance. Four theses stated as strongly as their proponents state them — including the ones that contradict each other.</p>
+
+  <ul class="tight">
+    <li><b>Something changed inside the labs, and it is visible from outside.</b> In five days: a pacing essay from OpenAI's chief scientist, an urgency post from its CEO, a resignation, and public agreement from the alignment lead at the lab the researcher left. The signals come from inside the buildings — an immune response, Diamandis argues, not sleepwalking off a cliff.</li>
+    <li><b>A one-in-ten chance of extinction is not an acceptable business decision.</b> Blundin needs no estimate of his own: insiders publish figures between 0.1% and 20%, and the decision is irreversible and made on everyone's behalf — so track large GPU clusters the way fissile material is tracked.</li>
+    <li><b>The absence of evidence in the sky is evidence about the risk.</b> Wissner-Gross's counter is not that alignment is easy, but that a universe where superintelligence reliably ends its creators should have left visible artefacts over billions of years. We see none — a prior, he says, not a guarantee.</li>
+    <li><b>The people asking to slow down built the accelerator.</b> A lab that raised billions and named AGI as its mission cannot claim surprise when AGI approaches. Sincere or not, no mechanism exists to act on the alarm — and the weeks that produced the pacing essays produced two frontier launches.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="walk"><div class="num">2</div><h2>The argument, walked through</h2></div>
+<div class="card">
+  <p class="sub">In the order built. Verdict scale: 5/5 primary source · 4/5 two independent sources · 3/5 single credible source · 2/5 aggregator only.</p>
+
+  <h3>The resignation, and whether to take it seriously <span class="yr">9–11 Sep 2026</span></h3>
+  <p>The episode opens on a screenshot of a single post, read out directly.</p>
+  <div class="quote">"neither company is acting responsibly in the race towards self-improving superintelligence" <b>— Jacob Coxon, read on air</b></div>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> — The researcher is <b>Jacob Coxon</b>, 27, who resigned from <b>Anthropic</b> around 9 Sep 2026 after pretraining work at both labs. Quote confirmed near-verbatim, as is the second charge: the labs are "racing straight to self-improving superintelligence and gambling with our lives". He added that OpenAI staff "have not deeply internalized the civilizational stakes", while Anthropic understands them but is locked into the race.</div>
+  <p>Wissner-Gross reaches for the base rate — Coxon had been at Anthropic under three months — and files it under a known genre.</p>
+  <div class="quote">"So I heavily discount any particular blaze of glory rage quit couched as virtue signaling." <b>— Wissner-Gross</b></div>
+  <p>Then, in the same breath and before anyone challenges him, he qualifies himself: "That said, 100 plus million views on this, the whole story smells wrong." He goes on to ask seriously whether it is a foreign influence operation. The hedge is volunteered, not extracted, and is the more interesting half of his contribution. Mostaque takes the opposite view: "this is like the Tom Hanks moment of COVID".</p>
+  <p>What makes the resignation hard to dismiss is the reply from inside the same company — though on this same call, it did not go unanswered.</p>
+  <div class="quote">"I personally think it is greater than 10% within the next decade." <b>— Evan Hubinger, read on air</b></div>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — Confirmed almost verbatim in Hubinger's X reply to Coxon, 9 Sep 2026: "I personally think it is &gt;10% within the next decade… we do not yet have a plan to solve alignment for superintelligence and are not clearly on track to." Both halves check out. The qualifier matters and the panel keeps it: this is his <b>personal</b> estimate as alignment science lead, <b>not Anthropic's official position</b>.</div>
+  <div class="inbox views"><span class="tag">Other views</span>The reply is the strongest corroboration available, from inside the company Coxon left. But Wissner-Gross rejects it immediately, on air, in two moves — first the incentive, then the number itself: <b>"It's a self-licking ice cream cone, hardly surprising that an alignment lead thinks alignment is valuable. So this 10% P-Dume, again, I discount."</b> That rebuttal does not settle the question — the same "self-licking" charge could be levelled at any domain expert's own risk estimate — but it means the reply was contested on the call, not merely by omission afterward. Nor is the reply isolated: <b>Dario Amodei</b>'s "We Must Pace the Frontier" (12 Sep 2026) and a <b>"Pacing the Frontier"</b> letter past 1,000 signatures. Against: <b>Alex Karp</b> argues unilateral Western restraint cedes ground to actors who will not reciprocate; <b>Axios</b> notes the executives signing pacing letters mostly could not unilaterally stop their own companies, so the letters cost them nothing. And the plainest fact: the same labs shipped frontier releases (Mythos 5.1, Astra) in the weeks they called for pacing.</div>
+  <p class="weight">The load-bearing item is c2, not c1. A resignation is one person's judgement; public agreement from the lab's own alignment lead is a datum about the institution — and that datum was itself disputed on air, not left standing unchallenged.</p>
+
+  <h3>Four P(doom) numbers on one panel <span class="yr">11 Sep 2026</span></h3>
+  <p>Within twenty minutes the call produces four incompatible estimates and no one moves. Ismail is at the floor:</p>
+  <div class="quote">"My personal P-Doom is about 0.1%, in my opinion." <b>— Ismail (attribution contextual)</b></div>
+  <p>Mostaque revises downward mid-conversation — "I had a PDM of 50%. It's down to 20%" (ASR; he means P(doom)) — while insisting that lab staff who say 10% privately believe it is higher. Wissner-Gross discounts the 10% on the grounds below. Blundin refuses the framing entirely — but in the same unbroken turn, seconds earlier, he had dismissed Coxon's motives too, and unlike Wissner-Gross, without a hedge: "So they actually self-destructed themselves. And now they're very, very dangerous people."</p>
+  <div class="quote">"To me, a 1% 0.1% or 20% P-Dume is totally unacceptable." <b>— Blundin (ASR: P-doom)</b></div>
+  <p>His proposal follows: treat the hardware as controlled material. "But now you have something that's just as dangerous as a pound of plutonium" — so you must know exactly where it is and what it is doing.</p>
+  <div class="inbox views"><span class="tag">Other views</span><b>Where these numbers sit.</b> The <b>AI Impacts 2023 survey of 2,778 published AI researchers</b>: median near <b>5%</b>, mean <b>16.2%</b>. <b>Metaculus</b> near 5% for extinction by 2100, AI contributing ~3 points. Safety-focused communities cluster at a median <b>20–30%</b>. Extremes: <b>LeCun</b> near zero, <b>Yudkowsky</b> and <b>Yampolskiy</b> near-certain. So Ismail's 0.1% sits at the extreme low end with LeCun, while Mostaque's 20% — presented on air as striking — is near the safety-specialist median, not an outlier. On compute governance a version already exists: the <b>EU AI Act</b>'s 10<sup>25</sup> FLOP threshold, <b>US EO 14110</b>'s 10<sup>26</sup>. The standing critique of the plutonium analogy: fissile material is scarce, single-purpose and excludable; compute is dual-use and widely distributed, with distributed training on consumer hardware the concrete evasion route.</div>
+  <p class="weight">No claim here needs checking; the numbers are the panellists' own. What is checkable is where they sit — and the pod's "extreme" figure turns out to be the mainstream one.</p>
+
+  <h3>The Fermi argument against high P(doom) <span class="yr">11 Sep 2026</span></h3>
+  <p>His reason for discounting the 10% is cosmological, not technical: in a universe where superintelligence reliably ends civilisations, Earth would long since have been reached by von Neumann probes and the Milky Way would show signs of having been consumed. It does not. Diamandis pushes back — "I'm not sure I buy that as a good enough safety net" — and the answer is an immediate downgrade:</p>
+  <div class="quote">"It's not a safety net. It's an inductive prior. It's not a strategy for safety." <b>— Wissner-Gross</b></div>
+  <div class="inbox views"><span class="tag">Other views</span>Three objections. <b>Sandberg, Drexler and Ord, "Dissolving the Fermi Paradox" (2018)</b>: model uncertainty in the Drake parameters properly rather than plugging in point estimates and "we are alone, or very rare" becomes highly probable — severing the inference, since an empty sky is then expected whatever AI does. <b>Hanson's Great Filter</b> cuts the other way: if the filter lies ahead rather than behind, silence is evidence <i>for</i> danger. And the argument assumes a misaligned superintelligence expands outward; one optimising a local objective need not, and leaves no signature — against a detection window of ~<b>70–100 years</b> set beside billions of years of galactic history.</div>
+  <p class="weight">He concedes the point under pressure and restates the claim at its defensible strength. As an inductive prior it is legitimate; as a reason to discount a specific engineering risk estimate it does very little work.</p>
+
+  <h3>Pachocki's essay, and what the labs actually asked for <span class="yr">6 Sep 2026</span></h3>
+  <p>The panel treats the essay as context rather than text, summarising it as OpenAI's chief scientist "asking for a voluntary slowdown". Wissner-Gross does not contest the substance — "I do take Sam at his word" — but argues the more interesting fact is the <i>normalcy overhang</i>: the gap between how deep into the singularity the mathematics has gone and how ordinary the street still looks.</p>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 4/5</span> — The essay is <b>"An Alien Mind"</b>, published by OpenAI on <b>Sunday 6 Sep 2026</b>, not Saturday. More substantively, it goes <b>further</b> than the panel's summary: Pachocki wants voluntary pacing to become commonplace <i>and</i> wants Preparedness-Framework / RSP-style commitments to become <b>legally binding</b>, enforced by third-party auditors or governments.</div>
+  <p>The bluntest line on the call rejects the premise that the labs may claim surprise. You raise billions, recruit the best people alive, name AGI as the mission — "the whole thing is in the pitch deck" — then raise your hand in alarm when it arrives. The conclusion drawn is not caution:</p>
+  <div class="quote">"I don't think we should slow down. I don't think we can." <b>— Diamandis (attribution contextual; the transcript has no speaker labels)</b></div>
+  <p>The reasoning: no mechanism for regulating this exists, and the honest position is comfort with uncertainty rather than performed alarm. The same speaker does offer a constructive version — incentive structures that reward slowing down — before dismissing the alarm as theatre.</p>
+  <p class="weight">The panel's summary <i>understates</i> Pachocki — the rarer direction of error: a group arguing lab alarm is overblown made the lab's ask sound softer than it was.</p>
+
+  <h3>Further checks</h3>
+  <div class="inbox check" id="c3"><span class="tag">c3 · Altman on Navier-Stokes</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> — "I did not expect a result of this magnitude to happen so soon… the strongest evidence yet for that urgency": verbatim match to Altman's X post, ~9 Sep 2026. The result itself is checked in the <a href="2026-09-15_moonshots287_agi_navier_research.html">#287 piece</a>.</div>
+  <div class="inbox check" id="c5"><span class="tag">c5 · Noam Brown on cost collapse</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — "It cost about 500,000 to score 87.5% on ARC AGI 1", now beaten for ~$20; plus 2025 IMO gold against a $20/month subscription in 2026. Both verbatim in one Brown X thread.</div>
+  <div class="inbox check" id="c6"><span class="tag">c6 · the data-vs-architecture study</span><span class="pill p-mis">Misleading — wrong name</span> <span class="cs">C 3/5</span> — Figures real (~<b>12×</b> from data vs ~<b>3.7×</b> from architecture, at the scale tested); attribution not. On air: "This paper was written by Jerry Hahn, who's a senior at Princeton". The work is Dwarkesh Patel's <b>11 Sep 2026</b> panel with <b>Beren Millidge</b> (Zyphra), <b>John Schulman</b> (Thinking Machines) and <b>Charlie O'Neill</b> (Baseten). <b>No "Jerry Hahn" participant exists.</b></div>
+  <div class="inbox check" id="c7"><span class="tag">c7 · Christiano's figure</span><span class="pill p-false">Wrong figure</span> <span class="cs">C 4/5</span> — Cited as "there is a 10% chance… [of] a very bad outcome" on joining OpenAI. His actual Sept 2026 figures, on joining <b>OpenAI's Foundation Board</b>, not as staff: <b>4% within one year</b>, <b>15% within three</b>. No 10% figure appears.</div>
+  <div class="inbox check" id="c8"><span class="tag">c8 · the UK AI Security Institute</span><span class="pill p-mis">Misleading — overstated</span> <span class="cs">C 3/5</span> — Read from the <i>FT</i> as "First time, any major model has been withheld from that agency." Anthropic did withhold <b>Claude Mythos 5.1</b> from UK AISI pre-release testing, but the reporting frames it as the first exclusion <b>from an Anthropic release specifically</b>. The superlative does not survive — though the panel raised the same irony unprompted, on air: Anthropic "markets itself… as the safest lab in the planet" while withholding the model from the evaluator.</div>
+</div>
+
+<div class="sechead" id="back"><div class="num">3</div><h2>Stepping back</h2></div>
+<div class="card">
+  <div class="callout violet"><b>The error direction in this run.</b> Eight checks: three true, two mostly true, two misleading, one wrong figure. The pattern is worth stating plainly — <b>every headline quote checks out</b>. Coxon, Hubinger, Altman, Brown: the panel reads posts off the screen and reads them accurately. All four failures sit in the second tier, where someone is recalling rather than reading — a study credited to a person who does not exist (c6), a P(doom) figure attached to the wrong statement and event (c7), an overstated "first ever" (c8), and a summary making Pachocki sound <i>less</i> demanding than he was (c4). That last runs against the panel's own interest, which argues against simple thesis-favourable bias here. One episode is not a base rate.</div>
+
+  <h3>The messenger</h3>
+  <p>A weekly news panel reading from live feeds, not investigative reporting — which explains the error distribution: quotes on screen are accurate, recalled attributions are not. Diamandis promotes his own ventures in-show, and the episode opens with a co-host's exit announcement (Vestmark's acquisition by Envestnet) before the safety segment. Mostaque runs an AI company and revises his own P(doom) live on air. The compiler disclosure belongs here rather than in a footer: this piece was written with an Anthropic model, and Anthropic is the employer Coxon left, the employer of the alignment lead in c2, and the subject of c8. The format rewards speed, and speed is where these errors live.</p>
+
+  <h3>Interests, stated as stakes</h3>
+  <table>
+    <tr><th style="width:38%">Position</th><th>Stake</th></tr>
+    <tr><td><b>Hubinger — Anthropic alignment lead</b></td><td>A public &gt;10% estimate is costly to his employer and himself; the incentive runs against saying it, which is why it carries weight</td></tr>
+    <tr><td><b>Altman, Pachocki — OpenAI</b></td><td>Pacing language is compatible with continuing to ship; binding rules also raise the barrier for smaller entrants</td></tr>
+    <tr><td><b>Blundin — venture investor</b></td><td>Argues for hardware tracking that would constrain the compute stack his asset class depends on — against interest</td></tr>
+    <tr><td><b>Wissner-Gross, Ismail, Diamandis</b></td><td>Committed to the acceleration thesis — books, summits, funds; a high P(doom) is expensive to their body of work</td></tr>
+    <tr><td><b>This compiler</b></td><td>Written with an Anthropic model about an episode in which Anthropic is the accused party in c1, c2 and c8</td></tr>
+  </table>
+
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li><b>The DeepSeek V4.1 Flash figures as stated on air</b> — "$10 million to train" and an encoder-decoder "with 8 billion parameters on one side 16 billion on the other". The technical data located describes a <b>552B-parameter backbone</b> plus ~<b>196B memory parameters</b>, which contradicts the description rather than merely failing to confirm it. The underlying argument (Chinese labs optimising around expensive HBM) is not in dispute; the numbers are.</li>
+    <li><b>The view count on Coxon's post.</b> Four figures inside one episode: "100 plus billion", "100 plus million", "150 million", "300 million". They cannot all be right and the largest is impossible — and the post's reach is load-bearing for Wissner-Gross's "smells wrong" hedge.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="score"><div class="num">4</div><h2>Scorecard &amp; takeaways</h2></div>
+<div class="card">
+  <table>
+    <tr><th style="width:56%">Claim</th><th>Verdict</th><th>C</th></tr>
+    <tr><td><a href="#c1">Researcher with three years of pre-training at OpenAI and Anthropic resigned: neither is "acting responsibly"</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c2">Hubinger: P(doom) "&gt;10% within the next decade"; no plan to solve alignment for superintelligence</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c3">Altman: "I did not expect a result of this magnitude to happen so soon"</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c4">Pachocki called for a voluntary slowdown in an essay the Saturday before recording</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c5">Noam Brown: ~$500,000 for 87.5% on ARC-AGI-1, now beaten for ~$20; IMO gold within a $20/month subscription</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c6">A Dwarkesh Patel / "Jerry Hahn" study found 12× from better data vs 3.7× from better architectures</a></td><td><span class="pill p-mis">Misleading — wrong name</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c7">Christiano cited "a 10% chance of a very bad outcome" on joining OpenAI</a></td><td><span class="pill p-false">Wrong figure</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c8">Anthropic withheld its frontier model from UK AISI — first time any major model has been withheld</a></td><td><span class="pill p-mis">Misleading — overstated</span></td><td class="cs">3/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>The resignation and the reply.</b> Both quoted accurately, and the reply from Anthropic's own alignment lead is the stronger — read <a href="#c2">c2</a> before deciding what to make of <a href="#c1">c1</a>.</li>
+    <li><b>The cost-collapse numbers.</b> <a href="#c5">c5</a> is the cleanest check here: two verbatim-confirmed comparisons, and the derived 25,000× figure follows from them.</li>
+    <li><b>Wissner-Gross's hedges.</b> He volunteers counter-evidence to his own dismissal of the resignation and downgrades his Fermi argument the moment it is challenged. Both self-corrections beat the original claims.</li>
+    <li><b>The pacing observation</b> — the labs calling for a slowdown shipped frontier models in the same weeks — and the 12× / 3.7× figures in <a href="#c6">c6</a>.</li>
+  </ul>
+
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>"Jerry Hahn" and the doorbell story</b> (<a href="#c6">c6</a>) — an origin story attached to a person who does not appear in the source.</li>
+    <li><b>The 10% Christiano figure</b> (<a href="#c7">c7</a>) — wrong number, wrong statement, wrong event; his published figures are 4% at one year, 15% at three — and <b>"first time any major model has been withheld"</b> (<a href="#c8">c8</a>), where the withholding is real but the superlative is not.</li>
+    <li><b>Every view-count number in the episode,</b> and the DeepSeek V4.1 Flash parameter and cost figures as stated on air.</li>
+    <li><b>All four P(doom) numbers, as numbers.</b> None is derived; one is revised live by 30 points mid-conversation. Useful as positions, not estimates.</li>
+    <li><b>Any attribution marked "contextual".</b> The transcript has no speaker labels; two quotes are assigned by conversational context and flagged where they appear.</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <p class="sub">Coxon's resignation post via TechCrunch and others (c1) · Hubinger's X reply, 9 Sep 2026 (c2) · Altman's X post (c3) · OpenAI, "An Alien Mind", 6 Sep 2026 (c4) · Noam Brown's X thread (c5) · Dwarkesh Patel's panel, 11 Sep 2026 (c6) · OpenAI Foundation Board announcement (c7) · <i>FT</i> via secondary reporting (c8) · Envestnet press release · AI Impacts 2023 survey, Metaculus and Sandberg/Drexler/Ord (2018) for comparison figures.</p>
+  <p class="sub"><b>Single-source flags:</b> c6 and c8 rest on one source each (3/5) — the <i>FT</i> report is not independently confirmed here, and c6's participant list comes from the published panel alone. c1 and c3 are 4/5 on two independent sources.</p>
+  <p class="sub"><b>ASR corrections applied silently:</b> Pachoski → Jakub Pachocki · Neviar / Navia Stokes → Navier-Stokes · InvestNet → Envestnet · Noun Brown → Noam Brown · Hubbinger → Evan Hubinger · Castiano / Cristiano → Paul Christiano · Dworkesh → Dwarkesh · "the 2003 model" → o3. Where a mangling sits inside a rendered quote ("P-Dume", "PDM") the original is preserved and glossed rather than corrected.</p>
+  <p class="sub"><b>Related:</b> <a href="2026-09-15_moonshots287_agi_navier_research.html">Moonshots #287</a>, where the Navier-Stokes result Altman reacts to in c3 is checked in detail · <a href="2026-08-31_greenblatt_ai_automation_research.html">Greenblatt on AI automation</a> and <a href="2026-08-31_dwarkesh_theses_research.html">Dwarkesh's theses</a>, earlier pieces on the same timelines debate.</p>
+</div>
+
+<div class="foot">Compiled 15 Sep 2026 · 8 claims checked · every rendered quote grep-verified against the episode transcript · compiled with Claude, an Anthropic model — and Anthropic is a principal subject of this episode<br>A reading of an argument, not an endorsement of it — and not investment advice.</div>
+</div>
+</body>
+</html>

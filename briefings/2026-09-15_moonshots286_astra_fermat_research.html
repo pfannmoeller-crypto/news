@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moonshots #286: The Benchmark That Wasn't, and a Theorem That Was</title>
+<meta name="description" content="The episode title says Astra saturates ARC-AGI-3 at 99.9%. On air the panel's own guest says 62.7%. Seven claims checked — including a Fermat formalisation the panel doubted live and that turned out to be real.">
+<meta name="wz-icon" content="cycle">
+<meta name="wz-color" content="#6a1b9a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#6a1b9a; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#6a1b9a 0%,#4a148c 55%,#311b92 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+  .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11.5px;
+      background:var(--grey-100);color:var(--grey-600);border-radius:6px;padding:2px 8px;
+      margin-left:8px;vertical-align:middle;font-weight:500}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .p-open{background:#ede7f6;color:#4527a0}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout.violet{background:#ede7f6;border-left-color:var(--accent);color:#311b92}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Moonshots EP #286 · 5 September 2026 · Research format v2</div>
+  <h1>Astra's benchmarks, Fermat's theorem, and a bill to ban superintelligence</h1>
+  <p>A weekly AI panel — Peter Diamandis hosting Dave Blundin, Salim Ismail and Alex Wissner-Gross, with guest Emad Mostaque — works through OpenAI's GPT-6 Astra release, an Anthropic formalisation of Fermat's Last Theorem read off a feed mid-broadcast, the Sanders–Casar ban bill and Tesla's Cybercab event. What the five of them said, checked.</p>
+  <div class="meta"><span>Recorded 5 Sep 2026 · ~2h</span><span>7 claims checked</span><span>Compiled 15 Sep 2026</span></div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> 7 claims against primary sources — ARC Prize's leaderboard and blog, Anthropic's own FLT announcement, Kevin Buzzard's independent verification, Epoch AI, OpenAI release materials, Sanders' press release, Nevada Transportation Authority reporting, Science News on twin primes · <b>quote fidelity:</b> verbatim — full ASR transcript, every rendered quote grep-verified by the compiler; garbled ASR nouns corrected and listed at the foot; the transcript carries no speaker labels, so attribution is inferred from context · <b>not verified:</b> the 92%→51% hallucination figure, the Sanders quote as worded, the release-cadence tally · <b>compiler:</b> Claude, an Anthropic model — and <b>Anthropic is a party to claim c2 and a competitor in c1, c3 and c4</b> · as of 15 Sep 2026.</div>
+
+<div class="navchips">
+  <a href="#brief">The argument in brief</a><a href="#walk">Walked through</a><a href="#back">Stepping back</a><a href="#score">Scorecard</a>
+</div>
+
+<div class="sechead" id="brief"><div class="num">1</div><h2>The panel's argument in brief</h2></div>
+<div class="card">
+  <p class="sub">Five people, one hour, no single author. Stated as strongly as the panel states it, with no verdicts attached.</p>
+
+  <h3>Capability is compounding faster than any institution can respond</h3>
+  <p>Astra is a new pre-train — the first since GPT-4o, if Greg Brockman is to be believed — saturating benchmarks built to be hard: frontier mathematics, program synthesis, exploit generation. A state's only sane posture is to accelerate.</p>
+
+  <h3>But a headline percentage has stopped describing a model</h3>
+  <p>The same model tops one index and trails on another, and scores either near 100% or 60-plus percent on one benchmark depending on permitted tooling. Not that the numbers are fake — that one number no longer suffices.</p>
+
+  <h3>Mathematics is the leading indicator, and it has fallen</h3>
+  <p>Twin-prime bounds tumbling in days, a 300-page proof formalised into millions of machine-checked lines, Millennium-Prize problems plausibly months away. The one domain with no ambiguity about a right answer is going first.</p>
+
+  <h3>Autonomy economics are about to invert a trillion-dollar market</h3>
+  <p>A two-seat robotaxi at $30,000 against Waymo vehicles past $100,000, per-mile cost down an order of magnitude. Once the cost curve breaks, whole districts stop admitting human drivers.</p>
+</div>
+
+<div class="sechead" id="walk"><div class="num">2</div><h2>The argument, walked through</h2></div>
+<div class="card">
+  <p class="sub">In the order the panel builds it. Verdict scale: 5/5 primary source · 4/5 two independent sources · 3/5 single credible source · 2/5 aggregator only.</p>
+
+  <h3>1 · The benchmark that wasn't <span class="yr">5 Sep 2026</span></h3>
+  <p>Diamandis opens by reading OpenAI's release page aloud: <i>"Astra also saturates ARC AGI3 with a 99.9% score"</i>. Within twenty minutes the panel's two most technical voices have taken that number apart on air.</p>
+  <div class="quote">"you look at the artificial analysis benchmark and it actually lags behind Meta's Muse Spark." — <b>Emad Mostaque</b></div>
+  <p>Astra tops one leaderboard while placing third on another that weights broad economic work, where Claude Fable 5.1 remains first. Mostaque does not call this benchmaxing — he says the opposite, that Astra <i>"looks like the first non-benchmaxed model"</i>.</p>
+  <div class="quote">"ARC AGI 3 is being quasi-saturated at this point by GPT-6" — <b>Alex Wissner-Gross</b></div>
+  <p>Wissner-Gross hedges where the release page does not, and gives a range rather than a number — <i>"depending on how it's measured, either near 100% or 60 plus percent performance"</i> — plus a charge against the benchmark's methodology:</p>
+  <div class="quote">"some might say a little bit unfair in how they've judged harnesses versus baseline models" — <b>Alex Wissner-Gross</b></div>
+  <p>He keeps his uncertainty: either Astra is extraordinary at program synthesis, or OpenAI distilled the community's harness code back into the base model. He does not pick.</p>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-most">Mostly true — and Wissner-Gross's on-air correction is the accurate number</span> <span class="cs">C 5/5</span> — ARC Prize's own leaderboard: <b>62.7% under the standard generic harness vs 99.9% under a provider-tuned adapter harness</b> (10 Sep 2026). ARC Prize's own harness discarded reasoning traces between turns, depressing scores; four harnesses took the same public set from 13% to 100% <b>without touching model weights</b>. Wissner-Gross's live "either near 100% or 60-plus percent, depending on how it's measured" is essentially exact, and his charge that ARC-AGI-3 judging was "a little bit unfair... harnesses versus baseline models" matches ARC Prize's own published findings.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>ARC Prize itself</b>: four harnesses moved the same public set from 13% to 100% with identical weights. <b>The AWS team</b> behind one high-scoring harness — the depressed scores measured the absence of a harness, not the model's limits. <b>An LMArena study</b> (~2.8m comparisons) found selective submission can inflate standing by up to 100 points. Frontier numbers are mostly lab-self-reported; the 62.7% figure surfaced five days after this episode aired.</div>
+  <p class="weight">The panel's own live correction is more reliable than the headline it sits under — an unusual thing to say about a news show.</p>
+
+  <h3>2 · A theorem that was <span class="yr">4 Sep 2026</span></h3>
+  <p>The mirror image comes an hour in, mid-argument about regulation, when Mostaque interrupts himself with something off his feed:</p>
+  <div class="quote">"Anthropic just formalized Fermat's last theorem in 13 million lines of Lean" — <b>Emad Mostaque</b></div>
+  <p>Diamandis does not parse it. His response is two words —</p>
+  <div class="quote">"29,000, what?" — <b>Peter Diamandis</b></div>
+  <p>— and another panellist has to explain that this is Wiles's proof, 300 pages rendered machine-checkable. The claim enters unsourced, as a rhetorical device. My research flagged it as the episode's most likely fabrication. It is true.</p>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-true">True — the panel's live scepticism was about sourcing, not substance</span> <span class="cs">C 5/5</span> — Anthropic announced 4 Sep 2026 that Claude produced the first complete machine-checked <b>Lean formalisation</b> of FLT in 11 days: <b>13 million lines of Lean, 29,500 intermediate theorems</b>, about 5x the size of Mathlib. This formalises <b>Wiles's existing proof</b> — it is not new mathematics. Kevin Buzzard, who leads the community's own multi-year FLT formalisation at Imperial, independently compiled and checked it, calling it "extraordinary" while noting it "just faithfully follows the early literature... and adds nothing" new. Anthropic used his project's scaffolding; he was not involved in producing it.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Kevin Buzzard</b> cuts both ways: he compiled it himself and confirmed it checks, called it extraordinary, and was equally clear it adds nothing mathematically new — the distinction the panel never makes. <b>Terence Tao</b>'s ICM warning is the general case: machine proofs shift the burden from producing arguments to verifying them, and a proof can be valid without being illuminating. The panel never returns to the claim — raised, marvelled at, dropped.</div>
+  <p class="weight">The claim raised with least evidence was the most solid thing said all hour. The compiler has a conflict here — read Buzzard's line, not mine.</p>
+
+  <h3>3 · A Critical classification, and a bill to ban it <span class="yr">3–5 Sep 2026</span></h3>
+  <p>Diamandis reads the safety story next, attributing it to the Wall Street Journal:</p>
+  <div class="quote">"This is the first model OpenAI has ever classified as being a critical tier cybersecurity risk" — <b>Peter Diamandis</b>, reading</div>
+  <p>Wissner-Gross calls the accompanying kill-switch announcement marketing and redirects to depth scaling: reasoning done inside a forward pass rather than in readable tokens cannot be policed by reading. That point survives.</p>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 4/5</span> — OpenAI's own Sept 2026 materials confirm Astra is the first model to cross the <b>Critical</b> cybersecurity threshold — autonomous zero-day discovery and exploit generation — gated to a vetted "Daybreak" coalition. Confirmed by CNBC and SecurityWeek. The show attributes it to the WSJ; the substance is OpenAI's own disclosure.</div>
+  <p>The panel then turns to the Sanders–Casar bill, and the disagreement a five-person panel is supposed to produce does not appear. Diamandis reads Sanders on air:</p>
+  <div class="quote">"We need an immediate global pause on advanced AI development before it's too late." — <b>Sanders, as read on air</b> (wording unverified against his press materials)</div>
+  <p>Mostaque calls it performative theatre. Ismail agrees, at length. The rest of the panel's reaction is dismissive too, but the crosstalk here carries no speaker labels precise enough to pin a second name to it. Wissner-Gross makes the most-developed objection — the bill targets development, not deployment:</p>
+  <div class="quote">"This gets into banning math, banning ideas" — <b>Alex Wissner-Gross</b></div>
+  <p>He escalates to book-burning, with the twist that here the book <i>is</i> the pre-training corpus. Diamandis calls it un-American. Nobody argues the other side.</p>
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-most">Mostly true; quote unverified</span> <span class="cs">C 5/5 bill · quote unverifiable</span> — Announced 3 Sep 2026: permanent ban on superintelligent AI, temporary pause on advanced development pending a new federal safety regulator, penalties mirroring illegal nuclear-weapons development — corporate shutdown plus up to 20 years for individuals. Backers named include Hinton, Bengio, Wozniak, Branson, Bannon, Beck. The on-air Sanders quote ("immediate global pause... before it's too late") is <b>not verbatim</b> in his press materials.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>The backing is cross-ideological</b> — Hinton and Bengio alongside Wozniak, Branson, Bannon and Beck — which undercuts the fringe framing; that coalition does not form around theatre. <b>Compute thresholds already exist in law</b> (EU AI Act 10^25 FLOPs, US EO 14110 10^26), on the rationale that training compute is one of the few properties observable <i>before</i> deployment. <b>Bengio's International AI Safety Report 2026</b> documents safeguards being bypassed. Sharpest of all, and supplied by the panel itself: OpenAI shipped a model it rates <b>Critical under its own voluntary framework</b> — the best argument that self-governance is not a substitute.</div>
+  <p class="weight">A panel that unanimously calls a position theatre has not tested it. The classification in c4 is the counter-argument to their own conclusion in c5 — and it was on their own slide.</p>
+
+  <h3>4 · Robotaxi economics <span class="yr">Aug–Sep 2026</span></h3>
+  <p>The Cybercab segment is the episode's weakest stretch and its most enthusiastic. On price, Diamandis:</p>
+  <div class="quote">"The cyber cab is coming in at or below $30,000." — <b>Peter Diamandis</b></div>
+  <p>On fleet scale he cites Nevada permission for 5,000 vehicles in Las Vegas within twelve months; on fares, an early Austin rider report describing the service as</p>
+  <div class="quote">"running about 50% cheaper than Uber for comparable trips" — <b>Peter Diamandis</b>, reading</div>
+  <p>Ismail extends it to the cost curve — the most consequential number here, and the one nobody sources:</p>
+  <div class="quote">"from a couple of dollars a mile today to down to 20 cents a mile" — <b>Salim Ismail</b></div>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-mis">Misleading on all three</span> <span class="cs">C 4/5</span> — $30,000 is Musk's stated <b>target</b>, not confirmed pricing. Nevada raised its cap to 5,000 <b>driverless vehicles</b> in Clark County (20 Aug 2026) — a general robotaxi cap, and the vehicles actually deployed are <b>Model Ys</b>, with Cybercab "to follow"; Tesla's own chief engineer said 2,500 in a year would make them "extremely happy". Sampled Austin fares ran <b>more expensive</b> than Uber ($19.58 vs $12.96; $12.15 vs $7.96) — the opposite of the claim.</div>
+  <div class="inbox views"><span class="tag">Other views</span>The measured numbers sit an order of magnitude from 20 cents. <b>Waymo's cost per revenue mile</b> is estimated near <b>$1.98</b>; <b>Tesla's Austin service</b> around <b>$1.40</b> with a safety monitor aboard; even <b>BCG's optimistic modelling</b> reaches only ~<b>$0.80</b> for the US. Twenty cents is Tesla's engineering target under full autonomy at scale, not a measured cost. Side by side: <b>$0.20</b> claimed · <b>$0.80</b> optimistic · <b>$1.40</b> Tesla, monitored · <b>$1.98</b> Waymo, measured.</div>
+  <p class="weight">Three claims, three failure modes. None is a lie; all three are a feed read too quickly.</p>
+
+  <h3>Further checks</h3>
+  <p class="sub">Two more claims, checked but not load-bearing above.</p>
+  <div class="quote">"hallucination rate fell nearly by half from 92 to 51% with accuracy actually increasing" — <b>Peter Diamandis</b>, reading OpenAI's release page</div>
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-mis">Mixed</span> <span class="cs">C 4/5 math/exploit · hallucination unverifiable</span> — Epoch AI confirmed Astra solved the last unsolved Tier 4 problem and called the tier fully saturated; OpenAI self-reported 97.6%, Epoch ~98% (methodology difference, not error). Perfect ExploitBench score confirmed in OpenAI's own "Path to Astra". <b>The 92%→51% hallucination figure appears in no OpenAI or Epoch material — UNVERIFIABLE</b>. Note the figure as read is also internally odd: a 92% hallucination rate for a frontier model is not a plausible baseline, which suggests a garbled relative measure rather than an absolute one.</div>
+  <div class="quote">"Axiomath announced 220. And then literally two hours later, OpenAI announced Astra and they're like 186" — <b>a panellist</b> (no speaker labels in the source; context does not settle whether this is Mostaque or Wissner-Gross)</div>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-false">Wrong figures and a misattribution</span> <span class="cs">C 4/5</span> — Real chronology: the 12-year-old Polymath8b record of 246 was broken to <b>240 by a human mathematician, Julia Stadlmann</b> (31 Aug 2026) — not by a model. Axiom Math's AI then reached <b>212</b> (not 220) by extending her method. A Lean-certified bound of <b>186</b> was published by OpenAI (30 Aug, released 2 Sep) — the endpoint is right. So a human's result was credited to an AI model, and both intermediate figures are wrong.</div>
+  <p class="weight">The twin-prime story is the episode in miniature: destination correct, route invented, a person's work absorbed into a model's press cycle.</p>
+</div>
+
+<div class="sechead" id="back"><div class="num">3</div><h2>Stepping back</h2></div>
+<div class="card">
+  <div class="callout violet"><b>The error direction in this run.</b> Seven checks: two true, two mostly true, one misleading, one wrong on figures, one mixed with an unverifiable component. The errors are <b>not uniformly self-serving</b>. The benchmark claim was <b>overstated in the episode's own title and corrected by the panel on air</b>; the Fermat claim was <b>understated live and turned out true</b>. What the misses share is not bias but <b>speed</b> — twin primes, the hallucination rate, the Cybercab fares, all read off a feed mid-broadcast. One episode is not a base rate.</div>
+
+  <h3>The messenger, and the stakes</h3>
+  <p>A weekly AI news panel, recorded live, five people reading from feeds with no editorial layer in between — a format that produces the episode's best moment (a benchmark number corrected live, more accurately than the press release) and its worst (three unchecked figures in one segment). The hosts run promotional slots for their own ventures inside the same hour: XPRIZE, Fountain Life, Moonshots Live. Mostaque runs an AI company, so his framing of regulation as futile is not disinterested — and he also supplies the most accurate observation in the episode (c1) and its best-verified claim (c2). Every headline number here originates in OpenAI's own release materials, self-reported ahead of independent verification. Symmetrically, and stated plainly because the reader cannot check it otherwise: this piece is compiled with an Anthropic model, and <b>Anthropic is a principal party to c2 and a direct competitor to OpenAI in c1, c3 and c4</b>.</p>
+
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li>The <b>92%→51% hallucination figure</b> — in no OpenAI or Epoch material located.</li>
+    <li>The <b>Sanders quote as worded</b>; the bill's substance checks out, the sentence does not.</li>
+    <li>Terminal-Bench having <b>"doubled"</b> — the 52.6 score is real, the baseline was never named.</li>
+    <li>The <b>"12 releases in 30 days"</b> tally — no source reproduces the count.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="score"><div class="num">4</div><h2>Scorecard &amp; takeaways</h2></div>
+<div class="card">
+  <table>
+    <tr><th style="width:56%">Claim</th><th>Verdict</th><th>C</th></tr>
+    <tr><td><a href="#c1">Astra "saturates" ARC-AGI-3 at 99.9%</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c2">Anthropic formalised Fermat's Last Theorem — 13m lines, 29,000 theorems</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c3">FrontierMath Tier 4 = 98%; ExploitBench = 100%; hallucinations 92%→51%</a></td><td><span class="pill p-mis">Mixed</span></td><td class="cs">4/5 · unv</td></tr>
+    <tr><td><a href="#c4">Astra classed a "critical cybersecurity risk", first model ever</a></td><td><span class="pill p-true">True</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c5">Sanders + Casar "Ban Artificial Superintelligence Act", up to 20 years</a></td><td><span class="pill p-most">Mostly true</span></td><td class="cs">5/5 · quote unv</td></tr>
+    <tr><td><a href="#c6">Cybercab $30k, Nevada 5,000 Cybercabs, Austin fares ~50% cheaper</a></td><td><span class="pill p-mis">Misleading</span></td><td class="cs">4/5</td></tr>
+    <tr><td><a href="#c7">Twin-prime race: Fable 5.1 → 260, Axiomath → 220, Astra → 186</a></td><td><span class="pill p-false">Wrong figures</span></td><td class="cs">4/5</td></tr>
+  </table>
+
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li><b>Wissner-Gross's range, not the release page's number</b> — the leaderboard published 62.7% generic and 99.9% adapter-tuned five days later.</li>
+    <li><b>Mostaque's divergence observation</b> — topping one index while placing third on another is now the normal case, not an anomaly.</li>
+    <li><b>The Fermat formalisation, in full</b> — 13m lines of Lean, 29,500 theorems, independently compiled by Buzzard. Raised with the least evidence; entirely real.</li>
+    <li><b>Astra's Critical classification</b>, and <b>the depth-scaling concern</b>: reasoning inside a forward pass cannot be policed by reading. Not a benchmark claim at all.</li>
+  </ul>
+
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>The episode's own title.</b> "Saturates at 99.9%" is the adapter-harness figure presented as the figure — corrected internally, not in the title.</li>
+    <li><b>Every Cybercab number</b> — a target read as a price, a general cap read as a Cybercab order, an anecdote read as a fare structure; sampled Austin fares ran <i>more</i> expensive than Uber. And the <b>20-cents-a-mile</b> curve, a target presented as trajectory against $1.98 (Waymo), ~$1.40 (Tesla, monitored), ~$0.80 (BCG optimistic).</li>
+    <li><b>The twin-prime chronology</b> — a human's record credited to a model, both intermediate bounds wrong; only 186 holds. And <b>the 92%→51% hallucination figure</b>, until a source appears.</li>
+    <li><b>The unanimous dismissal of the ban bill</b> — not because the bill is right, but because a five-to-nil panel has not tested it, and the counter-argument was on their own slide.</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <p class="sub">ARC Prize leaderboard and blog (10 Sep 2026) · Anthropic FLT announcement (4 Sep) · Buzzard's independent compilation · Epoch AI on FrontierMath Tier 4 · OpenAI "Path to Astra" and Sept 2026 Preparedness materials · CNBC, SecurityWeek · Sanders' Senate press release (3 Sep) · Nevada Transportation Authority on the Clark County cap (20 Aug) · Science News and Axiom Math on twin primes · LMArena study · Bengio, International AI Safety Report 2026 · EU AI Act and EO 14110 thresholds.</p>
+  <p class="sub"><b>Single-source flags:</b> the Austin fare comparison (c6) rests on a few sampled trips — as does the panel's opposite claim. Tesla's chief-engineer remark on 2,500 vehicles is a single quotation. Epoch's ~98% vs OpenAI's 97.6% (c3) is a methodology difference, not a contradiction. Buzzard is one expert on c2 — but he runs the competing formalisation project, so the least likely to overstate it.</p>
+  <p class="sub"><b>ASR nouns corrected silently in quotations:</b> Firmat's → Fermat's · Imad Mustach → Emad Mostaque · Ilya Sutskiva → Sutskever · Michael Cratios → Kratsios · Faye Faye Lee → Fei-Fei Li · Zooks → Zoox · RKGI 3 / Arc AGI3 → ARC-AGI-3 · GPD6 → GPT-6 · "13 million lines of both" → Lean · Metamuse Spark → Meta's Muse Spark · Greg Kassar → Rep. Greg Casar.</p>
+  <p class="sub"><b>Related:</b> <a href="2026-09-04_astra_and_frontier_models_research.html">Astra and the frontier models</a> — companion landscape piece; independently found ARC-AGI-3 at 62.7% neutral vs 98.6–99.9% harness-assisted, matching c1. · <a href="2026-09-15_moonshots287_agi_navier_research.html">Moonshots #287</a> — the following episode, on the Navier–Stokes result and the AGI declaration.</p>
+</div>
+
+<div class="foot">Compiled 15 September 2026 · 7 claims checked · compiled with Claude, an Anthropic model — Anthropic is a party to claim c2 and a competitor in c1, c3 and c4<br>A reading of an argument, not an endorsement of it — and not investment advice.</div>
+</div>
+</body>
+</html>
