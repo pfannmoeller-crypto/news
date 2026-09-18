@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What flies where, and why: satellites, orbits and the rockets that carry them</title>
+<meta name="description" content="A numbers primer, every figure sourced and scored: the six orbit classes, what satellites do in each, what a satellite must be able to do, and which rocket carries which payload — SpaceX, NASA, China, Europe, as of 18 September 2026.">
+<meta name="wz-icon" content="rocket">
+<meta name="wz-color" content="#1a3d6d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#1a3d6d; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#1a3d6d 0%,#123056 55%,#0c1f3d 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:28px;line-height:1.26;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0 0 10px;opacity:.95;max-width:66ch}
+  .hero p:last-of-type{margin-bottom:0}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+  .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11.5px;
+      background:var(--grey-100);color:var(--grey-600);border-radius:6px;padding:2px 8px;
+      margin-left:8px;vertical-align:middle;font-weight:500}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .p-open{background:#ede7f6;color:#4527a0}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+  .nf{color:var(--grey-600);font-style:italic}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout.violet{background:#ede7f6;border-left-color:var(--accent);color:#123056}
+  .callout b{font-weight:700}
+
+  .tblwrap{overflow-x:auto;margin:14px 0 4px}
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  .tblwrap table{margin:0}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px;white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:23px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+    th,td{font-size:12.5px;padding:7px 8px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Research · long read · 18 September 2026</div>
+  <h1>What flies where, and why: satellites, orbits and the rockets that carry them</h1>
+  <p>This is a reference sheet Stefan asked for: which orbits exist, what satellites do in each, what a satellite must be built to do to survive and work there, and which rocket takes it there. It has no argument to make and no author to agree or disagree with — it is a set of figures, each carrying its own source and its own confidence score.</p>
+  <p>The unit of the piece is the satellite, followed through four questions in order: what should it do → where must it be to do that → what must it be able to do, physically, once it is there → how does it get there. Three launch blocks carry almost all of the traffic — SpaceX, the US government (NASA and national-security launch customers, mainly on SLS and defence missions), and China (CASC's Long March family plus a fast-growing commercial tier) — with Europe (Ariane 6, ESA) and everyone else (Japan, Russia, India, and the new commercial entrants) each getting one line.</p>
+  <p>Every number below carries a source and a confidence score (C, out of 5). Counts of active satellites and launch tallies are dated, because they move week to week — sometimes day to day.</p>
+  <div class="meta"><span>Sources: ESA · NASA · gps.gov · FCC · SpaceX · Jonathan McDowell's census · CASC / state media · operators · trade press (cross-check)</span><span>20 anchors checked</span><span>Compiled 18 September 2026</span></div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> four research passes — orbits, what satellites do in each orbit, what a spacecraft's systems must achieve, and launch vehicles — each run against primary sources where one exists: ESA's orbit and debris pages, NASA's ISS, radiation-modelling and small-spacecraft references, gps.gov, the FCC's 2022 deorbit rule, SpaceX's own capabilities document and space-safety constellation page, a NASA Inspector General audit (via Payload), Jonathan McDowell's planet4589.org launch and satellite census, and named operator pages (Viasat, ESA's Galileo service page, eoPortal, STScI). Wikipedia and trade press (SpaceNews, Payload, Gunter's Space Page, keeptrack.space, BryceTech's tallies as reported by Via Satellite, and others) are used only as a cross-check tier, never as the sole source for a load-bearing figure, and are marked 3/5 or lower. <b>Not independently verified this run:</b> Chinese launch prices (none published), several Starlink specification figures (power, design life, per-satellite cost), GPS III's on-board clock count and cost, the annual GEO comsat order series, and SpaceX's share of mass launched to orbit (as opposed to its share of launch attempts). Every conflict between two credible figures is shown side by side, never averaged, and every figure marked UNVERIFIED in the underlying research is kept as "not found" rather than filled in. <b>Quote fidelity:</b> not applicable — this is a numbers primer with no interview or essay to quote verbatim; every figure below is reproduced as extracted from its source, not paraphrased. Compiled with Claude (an Anthropic model) — disclosed because SpaceX's AI arm (xAI / Grok) competes with Anthropic, so SpaceX's self-reported figures are treated exactly like every other vendor's: independently tracked counts where an independent tracker exists, self-reported specifications marked as self-reported. As of 17–18 September 2026. Not investment advice.</div>
+
+<div class="navchips">
+  <a href="#map">The map</a><a href="#orbits">The orbits</a><a href="#do">What they do</a><a href="#must">What they must do</a><a href="#ride">The ride</a><a href="#conflicts">Conflicts</a><a href="#soft">Soft spots</a><a href="#scorecard">Scorecard</a>
+</div>
+
+<!-- 1 · THE MAP -->
+<div class="sechead" id="map"><div class="num">1</div><h2>The map</h2></div>
+<div class="card">
+  <p class="sub">One paragraph, one small table, and the one fact that explains almost everything else in this piece: going higher is not what costs a rocket most of its fuel — going <i>fast enough to stay up</i> is.</p>
+  <p>Everything that orbits Earth sits in one of six broad bands. Closest in is <b>low Earth orbit (LEO)</b> — anywhere from about 200 to 2,000&nbsp;km up — home to the International Space Station, most broadband satellite fleets and almost all Earth-imaging spacecraft. A special, near-polar slice of LEO is <b>sun-synchronous orbit (SSO)</b>, tuned so a satellite crosses every point on Earth at the same local solar time — the imaging workhorse orbit. Further out is <b>medium Earth orbit (MEO)</b>, roughly 19,000–23,000&nbsp;km up, where the navigation constellations — GPS, Europe's Galileo, Russia's GLONASS, China's BeiDou — live. At 35,786&nbsp;km sits <b>geostationary orbit (GEO)</b>, the one altitude where a satellite's orbital period exactly matches Earth's rotation, so it appears to hang motionless over one spot — the address for most television and fixed-broadband satellites and for weather satellites that need to stare at one hemisphere continuously. Well above that, a minority of spacecraft use highly elliptical <b>Molniya or Tundra orbits</b>, which dwell for hours over high latitudes GEO cannot usefully cover. And beyond Earth orbit entirely, a handful of science missions sit at the Sun–Earth <b>Lagrange points</b> (L1 and L2, roughly 1.5&nbsp;million&nbsp;km out) or, for lunar missions, in <b>cislunar space</b> around the Moon.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Class</th><th>Altitude</th><th>Period</th><th>One-way signal delay</th><th>One resident</th></tr>
+  <tr><td><b>Low Earth orbit (LEO)</b></td><td>200–2,000&nbsp;km</td><td>88–127&nbsp;min</td><td>0.7–6.7&nbsp;ms</td><td>International Space Station (~400–420&nbsp;km)</td></tr>
+  <tr><td><b>Sun-synchronous (SSO)</b></td><td>500–800&nbsp;km, ~98°</td><td>95–101&nbsp;min</td><td>1.7–2.7&nbsp;ms</td><td>Sentinel-2 (786&nbsp;km)</td></tr>
+  <tr><td><b>Medium Earth orbit (MEO)</b></td><td>19,130–23,222&nbsp;km</td><td>~11h16m–14h05m</td><td>64–78&nbsp;ms</td><td>GPS (20,180&nbsp;km)</td></tr>
+  <tr><td><b>Geostationary (GEO)</b></td><td>35,786&nbsp;km, 0°</td><td>23h56m04s</td><td>119&nbsp;ms</td><td>GOES-19 weather satellite</td></tr>
+  <tr><td><b>Highly elliptical (Molniya / Tundra)</b></td><td>600×39,700&nbsp;km / 25,000×46,000&nbsp;km</td><td>12h / 24h</td><td>2–153&nbsp;ms</td><td>Russian communications satellites</td></tr>
+  <tr><td><b>Cislunar / Lagrange</b></td><td>Gateway's halo orbit (a loop around the Moon's balance point, not a circle around the Moon) ~1,500×70,000&nbsp;km above the Moon; L1/L2 ~1.5&nbsp;million&nbsp;km</td><td>~7 days (Gateway)</td><td>~5,000&nbsp;ms to L1/L2</td><td>James Webb Space Telescope (JWST, at L2 since Jan 2022)</td></tr>
+  </table></div>
+  <p>What it costs to get there is the more useful number, and it is not a story about height. Reaching low Earth orbit from the ground costs a rocket roughly 9.3–10&nbsp;km/s of <b>delta-v</b> — the change in speed a manoeuvre costs, the standard currency of spaceflight — of which 1.5–2&nbsp;km/s is lost fighting gravity and air drag on the way up. Moving from a low orbit up to a geostationary transfer orbit (GTO, an elliptical "on-ramp" orbit used to reach geostationary orbit) costs a further 2.3–2.4&nbsp;km/s; the last step, circularising at GEO itself, is roughly 1.5&nbsp;km/s more, though sources disagree on the exact figure. Reaching the Moon (trans-lunar injection, TLI — the burn that sends a spacecraft toward the Moon) from LEO costs about 3.2&nbsp;km/s, and a Mars transfer costs 3.6–4.3&nbsp;km/s depending on the launch window. Altitude, in other words, is not the hard part; speed is — a satellite in a 200&nbsp;km orbit is already travelling at roughly 7.8&nbsp;km/s, and staying up simply means going fast enough, sideways, that the curve of your fall matches the curve of the Earth.</p>
+  <p>Where does space begin? By international convention, the <b>Kármán line</b> is set at 100&nbsp;km altitude; the United States has used 50&nbsp;miles (about 80&nbsp;km) as its own working definition since 2005, which is why some sub-orbital flights are called "spaceflights" in the US and not everywhere else.</p>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-mis">Sourced, with conflict</span> <span class="cs">C 3/5</span> — the delta-v figures come from Wikipedia's delta-v budget page, which flags its own inconsistency on the transfer-orbit-to-GEO step (given here as "roughly 1.5&nbsp;km/s" for that reason); the other legs are more consistent across sources. The Kármán-line figures (100&nbsp;km international, ~80&nbsp;km US) are well attested but not cross-checked against a primary regulatory text this run. <a href="#scorecard">↓ scorecard</a></div>
+</div>
+
+<!-- 2 · PART 1: THE ORBITS -->
+<div class="sechead" id="orbits"><div class="num">2</div><h2>Part 1 — the orbits</h2></div>
+<div class="card">
+  <p class="sub">The master table, then four things altitude does to a satellite whether its operators want it to or not, then two live disputes: where Starlink actually flies today, and how many satellites are up there right now.</p>
+
+  <h3>The full picture <span class="yr">as of 2026</span></h3>
+  <p>Speed, how much of Earth one satellite can see, and what actually lives at each altitude, laid out together:</p>
+  <div class="tblwrap"><table>
+  <tr><th>Class</th><th>Altitude</th><th>Speed</th><th>Period</th><th>Earth visible from one satellite</th><th>One-way delay</th><th>What lives there</th><th>Source / C</th></tr>
+  <tr><td><b>Low Earth orbit (LEO)</b></td><td>200–2,000&nbsp;km</td><td>7.8→6.9&nbsp;km/s</td><td>88→127&nbsp;min</td><td>~3% (200&nbsp;km) to ~12% (2,000&nbsp;km)</td><td>0.7–6.7&nbsp;ms</td><td>ISS (~400–420&nbsp;km, 51.6°), Tiangong (~390&nbsp;km, ~41°), Hubble (~525–540&nbsp;km, falling), Starlink, most Earth-observation</td><td>ESA / NASA — 5/5; visible-fraction geometry 4/5</td></tr>
+  <tr><td><b>Sun-synchronous (SSO)</b></td><td>500–800&nbsp;km, ~98° inclination (the tilt of the orbit's plane against the equator)</td><td>7.5–7.6&nbsp;km/s</td><td>95–101&nbsp;min</td><td>~4–5%</td><td>1.7–2.7&nbsp;ms</td><td>Sentinel-2 (786&nbsp;km), Landsat, Suomi NPP / JPSS (~834&nbsp;km, 98.8°), Planet, Maxar, most radar satellites</td><td>ESA, Wikipedia — 4/5</td></tr>
+  <tr><td><b>Medium Earth orbit (MEO)</b></td><td>19,130–23,222&nbsp;km</td><td>3.6–3.9&nbsp;km/s</td><td>~11h16m (GLONASS) · 11h58m (GPS) · ~12h53m (BeiDou) · ~14h05m (Galileo)</td><td>~35–38%</td><td>64–78&nbsp;ms</td><td>GPS 20,180&nbsp;km/55°; Galileo 23,222&nbsp;km/56°; GLONASS 19,130&nbsp;km/64.8°; BeiDou MEO ~21,500&nbsp;km/55°; SES's O3b mPOWER — altitude not stated on SES's own page</td><td>gps.gov 5/5; Wikipedia 4/5; SES page 2/5</td></tr>
+  <tr><td><b>Geostationary (GEO)</b></td><td>35,786&nbsp;km, 0°</td><td>3.07&nbsp;km/s</td><td>23h56m04s</td><td>~42% geometric, ~1/3 usable; nothing above ±81° latitude</td><td>119&nbsp;ms</td><td>TV/broadband comsats (SES, Intelsat, Eutelsat, Viasat), weather (GOES-16/18/19, Meteosat, Himawari-9, Fengyun-4), BeiDou's 3 GEO + 3 inclined</td><td>ESA 5/5; Wikipedia 4/5</td></tr>
+  <tr><td><b>Highly elliptical (Molniya / Tundra)</b></td><td>600×39,700&nbsp;km (Molniya, 12h) · 25,000×46,000&nbsp;km (Tundra, 24h), 63.4°</td><td>1.5–10&nbsp;km/s</td><td>12h / 24h</td><td>dwells over high latitudes</td><td>2–153&nbsp;ms</td><td>Russian communications; US early-warning payloads (Molniya-type); Sirius radio used Tundra 2000–2016</td><td>Wikipedia 4/5</td></tr>
+  <tr><td><b>Cislunar / Lagrange</b></td><td>Gateway ~1,500×70,000&nbsp;km above the Moon, ~7-day period; Sun–Earth L1/L2 ~1.5&nbsp;million&nbsp;km</td><td>—</td><td>—</td><td>—</td><td>~5,000&nbsp;ms to L1/L2</td><td>SOHO, DSCOVR (L1); JWST since Jan 2022, Euclid (L2); Gaia retired</td><td>Wikipedia 4/5</td></tr>
+  </table></div>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-true">Sourced</span> <span class="cs">C 5/5</span> — ESA's "Types of orbits" page and NASA's ISS reference cover the core geometry at 5/5; the visible-fraction figures are a straightforward calculation from altitude (4/5); the one soft spot is SES's own O3b&nbsp;mPOWER page, which does not state an altitude for its own satellites (2/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>What the altitude does to a satellite</h3>
+  <p><b>Drag and lifetime.</b> Left uncontrolled, a satellite at 200&nbsp;km re-enters within days to weeks; at 400&nbsp;km, within about five years; at 600&nbsp;km and above, often more than 25 years; at 800&nbsp;km, centuries. In medium Earth orbit and geostationary orbit, decay is effectively permanent on any human timescale, which is exactly why those two altitudes need dedicated disposal orbits rather than just waiting for the atmosphere to do the work. The International Space Station loses roughly 2&nbsp;km of altitude a month to residual drag and is reboosted several times a year to compensate.</p>
+  <p><b>Eclipse.</b> A satellite in an ISS-type low orbit spends roughly 35 minutes of its roughly 93-minute orbit in Earth's shadow — no sunlight, running on battery. Geostationary satellites see no eclipse at all for most of the year, but around each equinox they pass through roughly 44-day seasons in which the shadow returns for up to about 72 minutes a day. Dawn–dusk sun-synchronous orbits, chosen deliberately, see little or no eclipse at all, which is one reason imaging satellites like this orbit.</p>
+  <p><b>Radiation.</b> NASA's total-ionising-dose model (5&nbsp;mm of aluminium shielding, one year) gives a stark ladder: a low equatorial orbit at 500&nbsp;km receives 10&nbsp;rad or less a year; an ISS-type 500&nbsp;km/51° orbit receives about 430&nbsp;rad; a polar 500&nbsp;km orbit, 333&nbsp;rad; geostationary orbit, about 5,930&nbsp;rad; and a geostationary <b>transfer</b> orbit — the elliptical path (roughly 500×38,000&nbsp;km) a satellite spends days crossing on its way up to GEO, passing twice a day through the Van Allen belts (two doughnut-shaped bands of high-energy particles trapped by Earth's magnetic field) — about 59,600&nbsp;rad. That is ten times the dose a satellite receives once it settles into geostationary orbit itself; the inner Van Allen belt starts around 1,000&nbsp;km and the outer one runs roughly 13,000–60,000&nbsp;km, which is exactly where the navigation satellites have to sit.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Location</th><th>Annual dose (5&nbsp;mm aluminium shielding)</th></tr>
+  <tr><td>Low Earth orbit</td><td>≤10&nbsp;rad (equatorial, 500&nbsp;km) to 430&nbsp;rad (ISS-type, 500&nbsp;km/51°)</td></tr>
+  <tr><td>Geostationary orbit</td><td>~5,930&nbsp;rad</td></tr>
+  <tr><td>Geostationary transfer orbit</td><td>~59,600&nbsp;rad — ten times GEO</td></tr>
+  </table></div>
+  <p><b>Station-keeping.</b> Low-orbit constellations run electric thrusters more or less continuously just to hold altitude against drag. A geostationary satellite needs roughly 50&nbsp;m/s of delta-v a year for north–south correction alone, and is generally required to stay inside a box just 2–3° of longitude wide. Halo orbits around the L1 and L2 Lagrange points are inherently unstable and need continuous small corrections to avoid drifting away.</p>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-true">Textbook, not re-confirmed</span> <span class="cs">C 3/5 floor</span> — the radiation dose table and the ISS reboost figure are NASA primary sources, C 5/5 each. Drag/lifetime bands come from Wikipedia's LEO article (3/5, textbook, not re-confirmed against a primary decay model). Eclipse minutes and the station-keeping delta-v figure are each attested by two research agents independently but without a primary source fetched this run (3–4/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Starlink's shells — a live conflict between the widely quoted and the current</h3>
+  <p>Ask where Starlink actually flies and you will get two different, both genuinely sourced, answers depending on when the source was written. The figures that circulate most widely — including in a great deal of secondary reporting — describe the shells as they were laid out between 2019 and 2021. SpaceX's own 2026 safety documentation describes a fleet that has since been lowered by roughly 90&nbsp;km on average. Both are correct for their moment; this is a design change, not an error in either source.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Generation / use</th><th>Shells (altitude / inclination)</th></tr>
+  <tr><td>Gen-1, widely cited (2019–21)</td><td>550&nbsp;km/53°; 570&nbsp;km/70°; 560&nbsp;km/97.6°; 540&nbsp;km/53.2°; 530&nbsp;km/43°</td></tr>
+  <tr><td>SpaceX's own space-safety page (2026)</td><td>485&nbsp;km/43°; 472.5&nbsp;km/70°; 462.5&nbsp;km/97.3°; 463&nbsp;km/53°</td></tr>
+  <tr><td>Direct-to-cell shells (2026)</td><td>360&nbsp;km/53°; 358.5&nbsp;km/43°</td></tr>
+  <tr><td>V3, planned</td><td>330–360&nbsp;km</td></tr>
+  <tr><td>Deployment altitude, new V2 minis</td><td>365–372&nbsp;km, then raised to their operating shell</td></tr>
+  </table></div>
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-true">Sourced, with conflict</span> <span class="cs">C 5/5 (current)</span> — SpaceX's own 2026 space-safety page is the primary source for the current shells (5/5); the Gen-1 figures are well attested by Gunter's Space Page (4/5); the deployment-altitude figure for new V2 minis comes from SpaceNews (3/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Rules and debris</h3>
+  <p>Since 29&nbsp;September 2022, the US Federal Communications Commission (FCC) requires US-licensed low-Earth-orbit satellites to deorbit within five years of the end of their mission, replacing the long-standing 25-year international guideline set by the Inter-Agency Space Debris Coordination Committee (IADC) and the UN — a five-fold tightening, for US operators only. Geostationary satellites, which cannot practically deorbit, are instead raised into a graveyard orbit roughly 200–300&nbsp;km above the GEO belt at end of life.</p>
+  <p>ESA's Space Environment Report 2025 counts roughly 40,000 tracked objects in orbit, of which about 11,000 are active payloads; it estimates more than 1.2&nbsp;million objects larger than 1&nbsp;cm and over 50,000 larger than 10&nbsp;cm. Jonathan McDowell's end-2025 tally, independently, counts 32,207 catalogued objects weighing 16,185&nbsp;tonnes in total.</p>
+  <p>Starlink's own collision-avoidance manoeuvres, reported every six months in its FCC filings, have been rising fast: more than 25,000 in the December&nbsp;2022–May&nbsp;2023 window, climbing to 144,404 in December&nbsp;2024–May&nbsp;2025. Later figures of 207,152 and 355,000 have been reported in the press but could not be pinned to a specific reporting window this run, so they are marked at low confidence. On the disposal side, Starlink deorbited 260 satellites (176 first-generation, 84 second-generation) between December&nbsp;2025 and May&nbsp;2026, versus roughly 500 in the previous six-month window and 406 across the whole of 2024.</p>
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-true">Sourced</span> <span class="cs">C 4/5</span> — the FCC rule (5/5) and the ESA and McDowell debris counts (5/5 each) are primary. The Starlink manoeuvre series is primary for the two dated windows (4/5 each) but the 207,152/355,000 figures are not pinned to a window (2/5) and are kept here only as reported, flagged low-confidence. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>The census — how many satellites are up there</h3>
+  <p>As of 17&nbsp;September 2026, Jonathan McDowell's planet4589.org census — the field's standard independent tracker — counts 16,810 active satellites. A June&nbsp;2026 figure of 15,711, citing McDowell-derived data via SpaceDaily, and an end-2025 figure of 14,132 from McDowell's own "Space Activities in 2025" report sit earlier on the same growth curve — these three numbers disagree only because the fleet is growing quickly, not because they disagree about anything. The Union of Concerned Scientists' long-cited satellite database, by contrast, has been frozen at 7,560 (as of May&nbsp;2023) and should not be treated as current.</p>
+  <p>Of the 16,810, Starlink alone accounts for 11,114 active satellites — 66% of everything active in orbit — with 10,801 launched and 1,391 re-entered by 25&nbsp;December&nbsp;2025. Behind it: OneWeb/Eutelsat at 652 (October&nbsp;2024); Amazon's Leo/Kuiper constellation at roughly 392–398 launched (July–September&nbsp;2026); and China's two mega-constellations, Guowang at 186 and Qianfan at 238 launched (17&nbsp;September&nbsp;2026). A separate, lower-confidence 2023 aggregator estimate puts military and intelligence satellites at 247 for the US, 157 for China, 110 for Russia and 17 for France — 613 in total.</p>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-true">Sourced</span> <span class="cs">C 5/5</span> — McDowell's census is the field standard (5/5); the Starlink share and the OneWeb/Kuiper/Guowang/Qianfan figures are each dated and sourced to McDowell or trade aggregators (3–5/5); the military count is a single 2023 aggregator figure (2/5) and should be read as indicative only. <a href="#scorecard">↓ scorecard</a></div>
+</div>
+
+<!-- 3 · PART 2: WHAT THEY DO -->
+<div class="sechead" id="do"><div class="num">3</div><h2>Part 2 — what satellites do there</h2></div>
+<div class="card">
+  <p class="sub">One block per job, in the orbit built for it, each with the "why this orbit" logic, the current numbers, and its own check.</p>
+
+  <h3>Broadband, from low Earth orbit</h3>
+  <p><b>Why LEO:</b> latency scales with distance. A round trip to a satellite around 500&nbsp;km up and back takes roughly 25–40 milliseconds; the same round trip via a geostationary satellite 35,786&nbsp;km away takes about 500–600&nbsp;milliseconds — the difference between a phone call that feels normal and one with an awkward half-second pause, and the reason video calls, online gaming and remote desktops work acceptably over LEO broadband but were always painful over GEO. The price of that low latency is scale: because each satellite covers only a small, fast-moving patch of ground, you need thousands of them where one geostationary satellite would do.</p>
+  <p>Starlink runs 11,114 active satellites and reported 12&nbsp;million subscribers as of June&nbsp;2026. It has flown laser inter-satellite links since 2020 — three optical terminals per satellite, according to trade reporting, now said to run "up to 200&nbsp;Gbps per link"; an earlier design figure of 100&nbsp;Gbps per link is also reported and the two do not obviously refer to the same hardware generation, so both are kept here as a live conflict. A separate "mini" laser terminal built for third-party satellites demonstrated 25&nbsp;Gbps over 4,000&nbsp;km after launching in August&nbsp;2025. Competing constellations: OneWeb/Eutelsat at 652 satellites, Amazon's Leo constellation at roughly 395, and China's Guowang and Qianfan combined at roughly 424.</p>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-true">Sourced, with conflict</span> <span class="cs">C 3/5</span> — the latency comparison and satellite count are solid (4–5/5); the subscriber figure and both laser-link throughput figures come from trade press rather than a primary SpaceX document (3/5), and the two throughput figures (200&nbsp;Gbps vs 100&nbsp;Gbps) are shown side by side rather than resolved. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Television and fixed broadband, from geostationary orbit</h3>
+  <p><b>Why GEO persists:</b> a geostationary satellite holds still in the sky as seen from the ground, so a single fixed dish — no tracking motor, no hand-over between satellites — can serve millions of homes at once. Viasat's own materials describe its Viasat-3-class satellites as designed for roughly 1&nbsp;terabit per second of throughput each. Fleet sizes: SES and Intelsat each operate more than 50 satellites, per trade aggregation.</p>
+  <p>Trade press has been reporting a real decline in new GEO orders — including SES's cancellation of two already-paid Intelsat satellites, reported in 2026 — but this run found no primary annual-orders series to put a number on the trend. That figure is marked UNVERIFIED rather than estimated.</p>
+  <div class="inbox check" id="c8"><span class="tag">Check</span><span class="pill p-mis">Partly sourced</span> <span class="cs">C 3/5</span> — the Viasat-3 throughput figure is a primary vendor claim (5/5); fleet sizes are aggregator-level (3/5); the GEO order-decline trend is reported by trade press with one concrete example (the SES/Intelsat cancellation) but has <span class="nf">no sourced annual figure — not found</span>. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Navigation, from medium Earth orbit</h3>
+  <p><b>Why ~20,000&nbsp;km:</b> a position fix needs four or more satellites visible from any point on Earth at once, and roughly a 12-hour orbit repeats the same ground track every day, which simplifies both the constellation design and the receiver's job; the altitude is a balance between signal strength (closer would be stronger) and how much sky each satellite covers (higher covers more).</p>
+  <p>GPS runs 31 operational satellites (gps.gov, a dated page); Europe's Galileo, 28 operational as of September&nbsp;2026; China's BeiDou, 35 BeiDou-3 satellites plus 15 older BeiDou-2 satellites, arranged in three layers — 24 medium-orbit, 3 geostationary and 3 inclined geosynchronous; Russia's GLONASS, roughly 24–26. On accuracy: civilian GPS typically resolves to a few metres; Galileo's High Accuracy Service, per ESA, resolves to 20&nbsp;cm.</p>
+  <div class="inbox check" id="c9"><span class="tag">Check</span><span class="pill p-true">Sourced</span> <span class="cs">C 4/5</span> — gps.gov (5/5) and ESA's Galileo High Accuracy Service page (5/5) are primary; BeiDou's three-layer structure and GLONASS's count are cross-checked (4/5 and 3/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Earth observation, from sun-synchronous orbit</h3>
+  <p><b>Why sun-synchronous:</b> the orbit precesses — its plane rotates — by about one degree a day, exactly matching Earth's motion around the Sun, so the satellite crosses every point on the ground at the same local solar time on every pass (Sentinel-2 crosses at 10:30, descending). Constant lighting makes images directly comparable year over year, and the near-polar inclination gives global coverage.</p>
+  <p>ESA's Sentinel-2 flies at 786&nbsp;km with 10/20/60&nbsp;m resolution bands and a 5-day revisit using two satellites. Maxar's WorldView Legion resolves to 30&nbsp;cm using six satellites. In radar imaging (SAR — synthetic-aperture radar, which images through cloud and at night by bouncing its own radio signal off the ground), ICEYE runs roughly 14 satellites, Capella roughly 7, and Umbra roughly 2, per a single trade source. China's Jilin-1 constellation runs "100-plus" satellites, alongside the separate Gaofen series.</p>
+  <div class="inbox check" id="c10"><span class="tag">Check</span><span class="pill p-mis">Partly sourced</span> <span class="cs">C 3/5</span> — Sentinel-2's specifications are ESA/cross-checked primary (4/5); Maxar's resolution figure and the SAR fleet counts (ICEYE, Capella, Umbra) rest on a single trade source each (3/5); Jilin-1's "100-plus" figure is likewise single-sourced (3/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Weather — why it needs both GEO and polar orbit</h3>
+  <p>A geostationary satellite gives an unblinking view of one hemisphere, which is what storm tracking needs — GOES-19 became "GOES-East" on 7&nbsp;April&nbsp;2025 after launching on a Falcon Heavy on 25&nbsp;June&nbsp;2024, joining Europe's Meteosat Third Generation, Japan's Himawari-9 and China's Fengyun-4. Polar, sun-synchronous satellites (JPSS-2, Europe's Metop, China's Fengyun-3) instead cover the whole globe roughly twice a day and can sound the atmosphere vertically as they pass. GOES-R's imager carries 16 spectral bands, resolves to 0.5&nbsp;km in the visible, and produces a full-disk image every 5–15&nbsp;minutes, alongside a dedicated lightning mapper.</p>
+  <div class="inbox check" id="c11"><span class="tag">Check</span><span class="pill p-true">Sourced</span> <span class="cs">C 4/5</span> — the GOES-19 launch and handover dates and the GOES-R imager specifications come from NASA/eoPortal (5/5); the international-fleet context (Meteosat, Himawari, Fengyun) is cross-checked but not independently re-verified per satellite this run (4/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Science and crewed spaceflight</h3>
+  <p>Hubble sits in low Earth orbit (~535&nbsp;km) because the Space Shuttle had to be able to reach it for servicing. The James Webb Space Telescope (JWST) sits instead at the L2 Lagrange point because a sun shield facing one direction there gives it permanent, uninterrupted cold and dark — essential for an infrared telescope. Europe's Gaia and Euclid missions sit at L2 for the same reason. Chandra, NASA's X-ray observatory, instead uses a high elliptical orbit specifically to climb above the Van Allen belts for long, uninterrupted exposures.</p>
+  <p>The International Space Station masses roughly 420&nbsp;tonnes (NASA also quotes "450,000&nbsp;kg" including visiting vehicles), carries up to seven crew, orbits at roughly 400–420&nbsp;km, and is scheduled for a planned deorbit at the end of 2030 using a dedicated SpaceX deorbit vehicle under a NASA contract signed in June&nbsp;2024 worth roughly $843&nbsp;million. China's Tiangong station masses roughly 100&nbsp;tonnes for its core module alone — higher figures sometimes quoted include docked visiting craft, which is a definitional difference rather than a factual dispute — carries a crew of 3 (6 during handovers), and orbits at 386–392&nbsp;km. A private US entrant, Vast's Haven-1 module, masses 14&nbsp;tonnes and is targeting a 2026 launch on a Falcon&nbsp;9.</p>
+  <div class="inbox check" id="c12"><span class="tag">Check</span><span class="pill p-true">Sourced, with conflict</span> <span class="cs">C 3/5</span> — the ISS mass, deorbit plan and contract value are NASA primary (4/5); the science-mission orbit choices are agency-sourced (4/5); Tiangong's mass is Wikipedia-sourced and genuinely definitional between "core only" and "with docked craft" (3/5), shown here as a conflict rather than resolved. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Launch tallies</h3>
+  <p>How much of this actually reached orbit, and who launched it:</p>
+  <div class="tblwrap"><table>
+  <tr><th>Period</th><th>Attempts</th><th>Successes</th><th>By country / operator</th><th>Note</th></tr>
+  <tr><td><b>2025 (full year)</b></td><td>329</td><td>321</td><td>US 181 (SpaceX 170: Falcon&nbsp;9 165 + Starship 5; ULA 6; Blue Origin 2; Rocket Lab 18); China 92 (payloadspace.com) vs 93 (keeptrack.space) — ±1 conflict, ~96% success, ~45 of them for Guowang/Qianfan; Europe 8 (7 successes)</td><td>SpaceX share ~52% of attempts; commercially operated rockets 70% of all attempts. BryceTech's separate tally counts 325 total, SpaceX 165 (51%), China 68 — the "68" is a CASC (state)-only reading, versus keeptrack's 93 which includes Chinese commercial launches; both are shown, reconciliation inferred</td></tr>
+  <tr><td><b>2026, year to date (18 Sep)</b></td><td>216</td><td>209</td><td>US 131 (Falcon&nbsp;9 107); China 62 (Long March 43, Kinetica 5); Russia 11; Europe ~6; Japan 3; India 3</td><td>—</td></tr>
+  <tr><td><b>2024 (full year)</b></td><td>~260 (derived)</td><td>—</td><td>China 68 (keeptrack.space)</td><td>The ~260 total is derived rather than directly reported this run</td></tr>
+  </table></div>
+  <div class="inbox check" id="c13"><span class="tag">Check</span><span class="pill p-mis">Sourced, with conflict</span> <span class="cs">C 4/5</span> — the 2025 and 2026 totals are trade-aggregator primary counts (payloadspace.com and Wikipedia's "2026 in spaceflight", 3–4/5); the China 92-vs-93 and BryceTech 68-vs-93 conflicts are both genuine counting-method differences and are kept side by side; the 2024 total is a lower-confidence derived figure (2/5). <a href="#scorecard">↓ scorecard</a></div>
+</div>
+
+<!-- 4 · PART 3: WHAT A SATELLITE MUST DO -->
+<div class="sechead" id="must"><div class="num">4</div><h2>Part 3 — what a satellite must do</h2></div>
+<div class="card">
+  <p class="sub">Seven systems every satellite needs regardless of mission, then three real satellites laid across the same rows to see how differently those seven systems get built.</p>
+
+  <h3>The seven systems</h3>
+  <p><b>1. Power.</b> Triple-junction solar cells run roughly 30% efficient, up to 34% in the best cases. A 3U cubesat (a standardised small-satellite format, roughly the size of three stacked bread loaves) draws 2–50&nbsp;watts; a GOES-R weather satellite draws more than 4&nbsp;kilowatts at end of life; large geostationary communications satellites draw 10–20&nbsp;kilowatts. Lithium-ion batteries carry the load through eclipse.</p>
+  <p><b>2. Propulsion.</b> Chemical hydrazine thrusters produce 0.5–4&nbsp;newtons of thrust at a specific impulse (a measure of fuel efficiency — how much thrust a given amount of propellant produces) of 150–250 seconds. Electric propulsion trades thrust for efficiency: Hall-effect thrusters produce 10–50 millinewtons at 1,000–2,000 seconds; ion thrusters, 1–10 millinewtons at 1,000–3,500 seconds; cold-gas thrusters (simplest, weakest) run only 65–70 seconds. Starlink's own argon Hall thruster is reported at 170&nbsp;millinewtons, 2,500 seconds, 4.2&nbsp;kW and 2.1&nbsp;kg. Raising a satellite electrically from a transfer orbit up to geostationary orbit takes roughly 4–6 months.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Thruster type</th><th>Thrust</th><th>Specific impulse</th><th>C</th></tr>
+  <tr><td>Chemical hydrazine</td><td>0.5–4&nbsp;N</td><td>150–250&nbsp;s</td><td>4/5</td></tr>
+  <tr><td>Hall-effect electric</td><td>10–50&nbsp;mN</td><td>1,000–2,000&nbsp;s</td><td>4/5</td></tr>
+  <tr><td>Ion electric</td><td>1–10&nbsp;mN</td><td>1,000–3,500&nbsp;s</td><td>4/5</td></tr>
+  <tr><td>Cold gas</td><td>lowest of the four</td><td>65–70&nbsp;s</td><td>4/5</td></tr>
+  <tr><td>Starlink argon Hall thruster</td><td>170&nbsp;mN</td><td>2,500&nbsp;s</td><td>3/5</td></tr>
+  </table></div>
+  <p><b>3. Attitude control</b> (keeping the satellite pointed correctly) uses star trackers, sun sensors and gyroscopes to sense orientation, and reaction wheels, magnetorquers (which push against Earth's magnetic field) and small thrusters to correct it. A typical communications satellite needs to point to within about 0.1°; Earth-observation satellites need arcsecond-level precision. JWST needs to hold roughly 1 arcsecond of pointing from its main bus, refined to 2 milliarcseconds by a dedicated fine-steering mirror.</p>
+  <p><b>4. Thermal control</b> — radiators, heat pipes, multilayer insulation and heaters — manages surfaces that, in low Earth orbit, can swing roughly between −150°C and +120°C as the satellite passes in and out of sunlight.</p>
+  <p><b>5. Radiation and reliability</b> — covered in Part 1's dose table (LEO ≤10–430&nbsp;rad/year, GEO ~5,930&nbsp;rad/year, transfer orbit ~59,600&nbsp;rad/year) — drives how "rad-hard" (radiation-hardened) a satellite's electronics need to be, and feeds directly into design life: a LEO broadband satellite is typically designed for roughly five years (Starlink's own figure for this could not be sourced this run), GOES-R for 15 years (10 operational plus 5 in storage as a spare), and GPS III for 15 years.</p>
+  <p><b>6. Communications</b> — radio bands L, S, C, X, Ku, Ka and V, plus optical laser links (see Part 2); phased-array antennas; telemetry and command typically in S-band.</p>
+  <p><b>7. Payload</b> — the part that actually does the mission's job: transponders or phased arrays for communications; atomic clocks for navigation (GPS III's on-board clock count could not be sourced this run); imaging optics, where aperture size sets resolution, for Earth observation; SAR antennas for radar imaging; imagers and atmospheric sounders for weather (GOES's imager: 16 bands, as above).</p>
+  <p><b>End of life</b> ties back to Part 1's rules: the FCC's five-year deorbit rule for US-licensed LEO satellites, a graveyard orbit above GEO, passivation (venting remaining propellant, discharging batteries so nothing can explode later) and, increasingly, "demisable" design so the satellite is engineered to burn up completely on re-entry.</p>
+  <div class="inbox check" id="c14"><span class="tag">Check</span><span class="pill p-mis">Textbook, not re-confirmed</span> <span class="cs">C 2–5/5</span> — the primary-sourced rows are power (NASA's small-spacecraft state-of-the-art report, GOES-R power, both 5/5), the propulsion table (NASA SOA, 4/5), radiation doses (NASA/TM-2022, 5/5), JWST's pointing figures (STScI, 4/5) and the three design-life figures (GOES-R and GPS III, 5/5 each; Starlink's not found). The textbook rows — general attitude-control pointing needs, thermal swings, and the 4–6-month electric orbit-raising time — were not re-confirmed against a primary source this run and sit at 2/5. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Three satellites, same rows</h3>
+  <p>The same twelve questions, asked of a broadband satellite, a weather satellite, a navigation satellite and a student-built cubesat, show how differently "what a satellite must do" gets answered depending on the job:</p>
+  <div class="tblwrap"><table>
+  <tr><th>Row</th><th>Starlink V2 mini</th><th>GOES-R (16/18/19)</th><th>GPS III</th><th>3U cubesat</th></tr>
+  <tr><td>Job</td><td>broadband to user terminals</td><td>weather imaging of one hemisphere</td><td>navigation signal</td><td>student / tech demo</td></tr>
+  <tr><td>Orbit</td><td>~463–485&nbsp;km shells (deployed at 365–372&nbsp;km)</td><td>GEO, 75.2°W / 137.2°W</td><td>MEO, 20,180&nbsp;km, 55°</td><td>LEO, 400–600&nbsp;km typical</td></tr>
+  <tr><td>Mass</td><td>~800&nbsp;kg</td><td>5,192&nbsp;kg wet, &lt;2,800&nbsp;kg dry</td><td>3,880&nbsp;kg vs 4,400&nbsp;kg for SV01 "heaviest GPS satellite" — conflict</td><td>~4&nbsp;kg</td></tr>
+  <tr><td>Power</td><td>two solar arrays; kW figure <span class="nf">not found</span></td><td>&gt;4&nbsp;kW end of life</td><td><span class="nf">not found</span></td><td>2–50&nbsp;W</td></tr>
+  <tr><td>Propulsion</td><td>argon Hall thrusters, 170&nbsp;mN / 2,500&nbsp;s</td><td>liquid apogee engine for orbit-raising + station-keeping thrusters</td><td>thruster type <span class="nf">not found</span></td><td>none, or cold gas</td></tr>
+  <tr><td>Pointing</td><td><span class="nf">not found</span></td><td>fine-pointing A2100 bus variant</td><td><span class="nf">not found</span></td><td>sun sensors, magnetorquers</td></tr>
+  <tr><td>Radiation</td><td>~0.3–0.4&nbsp;krad/yr environment</td><td>~5.9&nbsp;krad/yr environment; rad-hard parts</td><td>sits in the outer Van Allen belt; dose <span class="nf">not found</span></td><td>commercial-off-the-shelf parts, short life</td></tr>
+  <tr><td>Communications</td><td>Ku/Ka user links, E-band backhaul, 3 laser terminals</td><td>S-band telemetry, 75&nbsp;Mbit/s data downlink</td><td>L-band: L1C civil signal, M-code military signal</td><td>UHF/S-band</td></tr>
+  <tr><td>Payload</td><td>phased arrays, ~4× Gen-1 capacity per satellite</td><td>imager (ABI): 16 bands, 0.5&nbsp;km; lightning mapper (GLM)</td><td>rubidium atomic clocks; count <span class="nf">not found</span></td><td>one small sensor or radio</td></tr>
+  <tr><td>Design life</td><td><span class="nf">not found</span> (~5 years commonly said)</td><td>15 years</td><td>15 years</td><td>months to ~2 years</td></tr>
+  <tr><td>Cost</td><td><span class="nf">not found</span></td><td>programme: $6.2&nbsp;bn baseline vs ~$11.4&nbsp;bn GAO estimate (2006) — conflict</td><td><span class="nf">not found</span> (the often-quoted "$577&nbsp;m" could not be sourced)</td><td>~$50,000–$500,000</td></tr>
+  <tr><td>In orbit</td><td>11,114 active</td><td>3 operational + spares</td><td>10 launched (SV01–SV10)</td><td>thousands, various</td></tr>
+  </table></div>
+  <div class="inbox check" id="c15"><span class="tag">Check</span><span class="pill p-mis">Sourced, with conflict</span> <span class="cs">C 3/5</span> — GOES-R's rows are almost entirely primary-sourced (5/5); GPS III's orbit and design life are primary (5/5) but its mass is a genuine two-figure conflict and several rows (power, propulsion type, pointing, cost, clock count) were not found; Starlink's orbit is primary (5/5) but power, pointing, design life and cost were not found; the cubesat rows are generic textbook figures (2/5). Nothing here was filled in to complete the table — gaps are shown as gaps. <a href="#scorecard">↓ scorecard</a></div>
+
+  <p><b>What the table says.</b> Same seven systems, three different answers to "how do you build this." The low-orbit broadband satellite is cheap by satellite standards, short-lived by design, and built in the thousands — mass production, not longevity. The geostationary weather or communications satellite is heavy, engineered for a 15-year design life, radiation-hardened for a much harsher dose, and built one at a time. The navigation satellite is, in a sense, a clock with wings: its entire job is to keep extremely precise time in the outer Van Allen belt and broadcast that time down, which is why it too gets a 15-year design life despite sitting in a much harsher radiation environment than a broadband satellite in LEO.</p>
+  <div class="inbox check" id="c16"><span class="tag">Check</span><span class="pill p-mis">Partly sourced</span> <span class="cs">C 2/5</span> — Starlink's deorbit and collision-avoidance-manoeuvre figures are covered in full at <a href="#c5">c5</a>; the two later manoeuvre figures (207,152 and 355,000) remain unpinned to a specific window and are kept low-confidence. <a href="#scorecard">↓ scorecard</a></div>
+</div>
+
+<!-- 5 · PART 4: THE RIDE -->
+<div class="sechead" id="ride"><div class="num">5</div><h2>Part 4 — the ride</h2></div>
+<div class="card">
+  <p class="sub">Which rocket a satellite gets depends on more than its mass.</p>
+
+  <h3>The matching rule</h3>
+  <p>A satellite's ride is decided by mass, target orbit, inclination (which depends on the launch site's latitude), schedule, insurance, and law, roughly in that order of how binding each constraint is. Law is the least visible constraint and one of the hardest: US export-control rules (ITAR — the International Traffic in Arms Regulations) mean a Chinese payload effectively cannot fly on a US rocket, and Chinese policy runs the same restriction in the other direction. European institutional payloads fly on Ariane 6 or Vega-C by policy preference; Europe's own Galileo navigation satellites flying on a Falcon&nbsp;9 in 2024 was a genuine exception, granted under what is reported as a rare waiver.</p>
+
+  <h3>The launcher table</h3>
+  <p>Grouped by operator; every price is labelled list price, trade estimate, or auditor figure, and anything not published is marked as such rather than estimated.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Group</th><th>Rocket</th><th>Payload (LEO/SSO/GTO)</th><th>Reuse</th><th>2025 launches (2026 YTD)</th><th>Success</th><th>Price</th><th>Typical loads</th><th>Status</th><th>C</th></tr>
+  <tr><td>SpaceX</td><td><b>Falcon&nbsp;9</b></td><td>22,000 / — / 8,300&nbsp;kg (SpaceX capabilities doc; SSO figure ~15,600&nbsp;kg)</td><td>first stage; record 37 flights on booster B1067 (Aug 2026); 32 at end-2025</td><td>165 (2026 YTD ~107)</td><td>165/165 launches in 2025; 162/165 landings</td><td>$74&nbsp;m list, ≤5.5&nbsp;t to GTO (implies ~$3,400/kg to LEO)</td><td>Starlink, NASA crew/cargo, national security, GEO comsats, rideshare</td><td>operational</td><td>5/5</td></tr>
+  <tr><td>SpaceX</td><td><b>Falcon Heavy</b></td><td>~63,800&nbsp;kg LEO (expended) / ~26,700&nbsp;kg GTO</td><td>side boosters</td><td>0 in 2025 (last flight Oct 2024)</td><td>~93% lifetime</td><td>~$100&nbsp;m+ list (estimate)</td><td>Europa Clipper, Psyche, GOES, national-security direct-to-GEO</td><td>operational, rare</td><td>3/5</td></tr>
+  <tr><td>SpaceX</td><td><b>Starship</b></td><td>design target 100–150&nbsp;t, reusable; deployed Starlink V3 satellites on a 2026 test flight</td><td>both stages by design; booster catch demonstrated; ship reuse not yet routine</td><td>5 test flights in 2025; flights 12–13 in 2026</td><td>test programme, mixed results</td><td><span class="nf">not published</span></td><td>Starlink V3; Artemis lunar lander (HLS), not yet crew-certified</td><td>in test</td><td>3/5</td></tr>
+  <tr><td>US government</td><td><b>SLS Block&nbsp;1</b></td><td>~27&nbsp;t to trans-lunar injection</td><td>expendable</td><td>Artemis&nbsp;II flew 1–11 Apr 2026, crewed lunar flyby (Wiseman, Glover, Koch, Hansen)</td><td>2/2</td><td>$4.2&nbsp;bn per launch (NASA Inspector General audit IG-23-015, 2023; often rounded to "$4.1&nbsp;bn" in press)</td><td>Artemis only</td><td>Artemis&nbsp;III no earlier than late 2027</td><td>4/5</td></tr>
+  <tr><td>China</td><td><b>Long March family (2C…12)</b></td><td>LM-5: ~25&nbsp;t LEO / 14&nbsp;t GTO; LM-6A ~4.5&nbsp;t SSO; LM-2C ~3.7&nbsp;t LEO</td><td>expendable; LM-8/6A exploring reuse</td><td>China 92–93 total in 2025 (conflict); 2026 YTD 62 (43 Long March)</td><td>~96% in 2025</td><td><span class="nf">not published</span></td><td>Guowang/Qianfan (~45 launches in 2025), state missions</td><td>operational</td><td>3/5</td></tr>
+  <tr><td>China</td><td><b>Long March 10 / 10B</b></td><td>~70&nbsp;t LEO crew variant; ≥27&nbsp;t to trans-lunar injection</td><td>10B booster recovery demonstrated</td><td>first integrated test 11 Feb 2026</td><td>1 test</td><td><span class="nf">not published</span></td><td>crewed lunar programme, target landing 2030</td><td>in test</td><td>4/5</td></tr>
+  <tr><td>China</td><td><b>LandSpace Zhuque-3</b></td><td>11,800&nbsp;kg expended / 8,000&nbsp;kg recovered</td><td>booster landed on flight 2 (18 Aug 2026), tipped over after a leg failure — first Chinese commercial orbital-class booster landing</td><td>2 flights (Dec 2025, Aug 2026), both orbital successes</td><td>2/2</td><td><span class="nf">not published</span></td><td>commercial</td><td>early operational</td><td>4/5</td></tr>
+  <tr><td>China</td><td><b>Other Chinese commercial</b></td><td>Galactic Energy Ceres-1 ~400&nbsp;kg solid; Space Pioneer Tianlong-3 ~17&nbsp;t design; CAS Space Kinetica (5 launches in 2026 YTD)</td><td>—</td><td>—</td><td>—</td><td><span class="nf">not published</span></td><td>small satellites</td><td>mixed</td><td>2–3/5</td></tr>
+  <tr><td>Europe</td><td><b>Ariane&nbsp;6 (62 / 64)</b></td><td>10,350 / 7,200 / 4,500&nbsp;kg (A62); 21,650 / 15,500 / 11,500&nbsp;kg (A64)</td><td>expendable</td><td>4 in 2025, 3 in 2026 YTD; 8 total, 7 successes</td><td>7/8</td><td>A62 ~€100&nbsp;m, A64 &gt;€100&nbsp;m (estimates, not contract prices)</td><td>ESA, EU institutional (European preference), Amazon Leo</td><td>operational, ramping to 6–8/yr</td><td>4/5</td></tr>
+  <tr><td>US others</td><td><b>ULA Vulcan</b></td><td>27,200 / — / 15,300&nbsp;kg; 12,100&nbsp;kg to TLI</td><td>expendable</td><td>1 in 2025, 1 in 2026 YTD; 4 total, all successful</td><td>4/4</td><td>"$110&nbsp;m starting" list</td><td>US national security, Amazon Leo, Dream Chaser</td><td>national-security launches paused after a second solid-booster anomaly, Feb 2026</td><td>4/5</td></tr>
+  <tr><td>US others</td><td><b>Blue Origin New Glenn</b></td><td>45,000 / — / 13,600&nbsp;kg</td><td>first stage; first reflight 19 Apr 2026</td><td>2 in 2025, 1 in 2026: NG-1 orbit reached, booster lost; NG-2 success + first landing (13 Nov 2025); NG-3 upper-stage fault, wrong orbit, booster landed</td><td>2 of 3 payload successes</td><td>$68–110&nbsp;m (unsourced range)</td><td>Blue Ring, NASA ESCAPADE, AST SpaceMobile</td><td>early operational</td><td>4/5</td></tr>
+  <tr><td>US others</td><td><b>Rocket Lab Electron</b></td><td>~300&nbsp;kg LEO</td><td>expendable</td><td>21 in 2025, 21/21</td><td>~95% lifetime, 79 missions</td><td>~$7.5–8.5&nbsp;m reported</td><td>small satellites, government</td><td>operational</td><td>4/5</td></tr>
+  <tr><td>US others</td><td><b>Rocket Lab Neutron</b></td><td>13,000&nbsp;kg LEO target</td><td>droneship landing planned</td><td>0 — debut slipped to late 2026</td><td>—</td><td><span class="nf">not published</span></td><td>5-launch deal announced May 2026</td><td>pre-flight</td><td>4/5</td></tr>
+  <tr><td>One-liners</td><td><b>Japan H3</b></td><td>16&nbsp;t LEO</td><td>expendable</td><td>8 flights, 6 successes</td><td>6/8</td><td><span class="nf">not found</span></td><td>Japanese government and commercial payloads</td><td>operational</td><td>4/5</td></tr>
+  <tr><td>One-liners</td><td><b>Russia Angara</b></td><td>A5 ~24.5&nbsp;t LEO</td><td>expendable</td><td>13 flights, 12 successes</td><td>12/13</td><td><span class="nf">not found</span></td><td>Russian government payloads</td><td>operational</td><td>4/5</td></tr>
+  <tr><td>One-liners</td><td><b>Firefly Alpha</b></td><td>small-sat class</td><td>expendable</td><td>7 flights, 3 clean successes</td><td>3/7</td><td>$15–17.6&nbsp;m</td><td>small satellites</td><td>operational, mixed record</td><td>4/5</td></tr>
+  <tr><td>One-liners</td><td><b>India LVM3 / PSLV</b></td><td><span class="nf">not found this run</span></td><td><span class="nf">not found</span></td><td><span class="nf">not found</span></td><td><span class="nf">not found</span></td><td><span class="nf">not found</span></td><td><span class="nf">not found</span></td><td>operational</td><td>—</td></tr>
+  <tr><td>One-liners</td><td><b>Relativity Terran R</b></td><td>design stage</td><td>planned</td><td>0 — not yet flown</td><td>—</td><td><span class="nf">not published</span></td><td>—</td><td>pre-flight</td><td>—</td></tr>
+  </table></div>
+  <div class="inbox check" id="c17"><span class="tag">Check</span><span class="pill p-mis">Partly sourced</span> <span class="cs">C 3/5 floor</span> — Falcon&nbsp;9's payload and price figures are SpaceX's own capabilities document, C 5/5; SLS's cost is a NASA Inspector General audit, C 5/5; Ariane&nbsp;6, Vulcan and New Glenn specifications are 4/5 cross-checked; every Chinese rocket's price is genuinely unpublished, not merely unresearched, and is marked as such throughout rather than estimated. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>The four ride types</h3>
+  <div class="tblwrap"><table>
+  <tr><th>Ride</th><th>Example</th><th>Price</th><th>Time to service</th><th>C</th></tr>
+  <tr><td>Rideshare (sharing a launch with other payloads)</td><td>Falcon&nbsp;9 Transporter / Bandwagon</td><td>$7,000 per&nbsp;kg to sun-synchronous orbit, minimum $350,000 for 50&nbsp;kg (single aggregator; SpaceX's own rideshare page was not readable this run)</td><td>fixed dates, roughly monthly</td><td>3/5</td></tr>
+  <tr><td>Dedicated small launcher</td><td>Rocket Lab Electron</td><td>~$7.5–8.5&nbsp;m</td><td>weeks to months</td><td>2/5</td></tr>
+  <tr><td>Dedicated medium/heavy launcher</td><td>Falcon&nbsp;9, single payload</td><td>$74&nbsp;m list</td><td>12–24 months' lead time (estimate)</td><td>5/5 (price)</td></tr>
+  <tr><td>GEO via transfer orbit</td><td>Falcon&nbsp;9 or Ariane&nbsp;6 to GTO, satellite raises itself electrically</td><td>launch price plus 4–6 months of electric orbit-raising (estimate)</td><td>4–6 months after launch</td><td>2/5</td></tr>
+  <tr><td>Direct to GEO</td><td>Falcon Heavy, ULA Vulcan</td><td>~$100&nbsp;m+ / $110&nbsp;m+</td><td>immediate</td><td>3/5</td></tr>
+  </table></div>
+  <div class="inbox check" id="c18"><span class="tag">Check</span><span class="pill p-mis">Partly sourced</span> <span class="cs">C 2/5 floor</span> — the Falcon&nbsp;9 dedicated-launch price is SpaceX's own list price, C 5/5; the rideshare price rests on a single aggregator, satbase, because SpaceX's own rideshare page could not be read this run (3/5); electric orbit-raising timing and lead times are general estimates, not vendor-quoted, C 2/5. <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>Moon programmes, status only</h3>
+  <p>Artemis&nbsp;II flew a crewed lunar flyby from 1 to 11&nbsp;April&nbsp;2026, carrying astronauts Wiseman, Glover, Koch and Hansen. Artemis&nbsp;III is now targeted for no earlier than late 2027, slipped from a mid-2027 target, according to testimony from NASA's Isaacman on 27&nbsp;April&nbsp;2026 — driven by delays in cryogenic-propellant transfer for the lunar lander (either SpaceX's Starship-derived Human Landing System or Blue Origin's Blue Moon). China's Long March&nbsp;10, the rocket intended for its own crewed lunar programme, flew its first integrated test on 11&nbsp;February&nbsp;2026, with a crewed landing targeted for 2030.</p>
+  <div class="inbox check" id="c19"><span class="tag">Check</span><span class="pill p-true">Sourced</span> <span class="cs">C 4/5</span> — the Artemis&nbsp;II flight dates and crew are well documented (5/5); the Artemis&nbsp;III slip and its stated cause come from congressional testimony reported in April 2026 (4/5); Long March&nbsp;10's test date and China's 2030 target are cross-checked (4/5). <a href="#scorecard">↓ scorecard</a></div>
+
+  <h3>SpaceX's share</h3>
+  <p>By attempts, SpaceX flew 170 of 329 orbital launches in 2025 — about 52% — or, on BryceTech's separate count, 165 of 325, about 51%. In 2026 year to date, Falcon&nbsp;9 alone accounts for 107 of 216 attempts, about 50%. SpaceX's share of total mass launched to orbit, rather than of launch attempts, is a different and larger number in most informal accounts, but no primary source for it (McDowell's own space25.pdf report on this specific figure) was read for this run — it is marked UNVERIFIED rather than estimated.</p>
+  <div class="inbox check" id="c20"><span class="tag">Check</span><span class="pill p-mis">Partly sourced</span> <span class="cs">C 4/5</span> — the attempt-share arithmetic is straightforward division on sourced totals (4/5 both readings); the mass-to-orbit share is <span class="nf">not found</span> this run and is not estimated here. <a href="#scorecard">↓ scorecard</a></div>
+</div>
+
+<!-- 6 · CONFLICTS -->
+<div class="sechead" id="conflicts"><div class="num">6</div><h2>Where the numbers disagree</h2></div>
+<div class="card inbox views">
+  <p class="sub">Nine places where two credible figures do not match. None are averaged; each is kept as both values, with what most likely explains the gap.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Figure</th><th>Source A</th><th>Source B</th><th>What explains it</th><th>What this piece uses</th></tr>
+  <tr><td>Starlink shell altitudes</td><td>530–570&nbsp;km (Gen-1, widely cited, 2019–21)</td><td>463–485&nbsp;km (SpaceX's own 2026 page)</td><td>the fleet was deliberately lowered — a design change, not an error</td><td>both, dated (<a href="#c3">c3</a>)</td></tr>
+  <tr><td>Active satellites</td><td>16,810 (17 Sep 2026) / 15,711 (Jun 2026) / 14,132 (end-2025)</td><td>UCS database: 7,560 (May 2023, stale)</td><td>same McDowell lineage, growth not disagreement; UCS simply stopped updating</td><td>16,810 as current, others as history (<a href="#c6">c6</a>)</td></tr>
+  <tr><td>China 2025 launches</td><td>92 (payloadspace.com)</td><td>93 (keeptrack.space)</td><td>±1 counting difference between two independent trackers</td><td>both, flagged ±1 (<a href="#c13">c13</a>)</td></tr>
+  <tr><td>China 2025 launches, alternate count</td><td>92–93 (all Chinese launches)</td><td>68 (BryceTech)</td><td>BryceTech's "68" counts CASC (state) launches only; the higher figures include Chinese commercial launches</td><td>both, with the counting-method note (<a href="#c13">c13</a>)</td></tr>
+  <tr><td>GPS III satellite mass</td><td>3,880&nbsp;kg (Wikipedia, GPS Block III)</td><td>4,400&nbsp;kg (reported for SV01, "heaviest GPS satellite")</td><td>possibly different satellites in the same block, or a reporting error — not resolved</td><td>both (<a href="#c15">c15</a>)</td></tr>
+  <tr><td>GOES-R programme cost</td><td>$6.2&nbsp;bn (programme baseline)</td><td>~$11.4&nbsp;bn (GAO estimate, 2006)</td><td>a baseline budget figure versus a later independent auditor's estimate</td><td>both (<a href="#c15">c15</a>)</td></tr>
+  <tr><td>SLS per-launch cost</td><td>$4.2&nbsp;bn (NASA Inspector General report IG-23-015)</td><td>"$4.1&nbsp;bn" (common press rounding)</td><td>the same figure, rounded differently in reporting</td><td>$4.2&nbsp;bn, noting the press rounding (<a href="#c17">c17</a>)</td></tr>
+  <tr><td>Starlink laser inter-satellite link speed</td><td>200&nbsp;Gbps per link (current trade reporting)</td><td>100&nbsp;Gbps per link (earlier design figure)</td><td>likely different hardware generations, not clearly distinguished in press coverage</td><td>both (<a href="#c7">c7</a>)</td></tr>
+  <tr><td>Tiangong space station mass</td><td>~100&nbsp;tonnes (core module only)</td><td>~180&nbsp;tonnes (with docked visiting craft)</td><td>definitional — what counts as "the station" at a given moment</td><td>both, labelled by definition (<a href="#c12">c12</a>)</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:10px">A tenth near-conflict is not a number at all: the delta-v cost of the last step from geostationary transfer orbit up to full geostationary orbit has no clean, consistent value across sources — Wikipedia's own delta-v budget page flags this inconsistency itself (<a href="#c4">c4</a>).</p>
+</div>
+
+<!-- 7 · STEPPING BACK -->
+<div class="sechead" id="soft"><div class="num">7</div><h2>Stepping back</h2></div>
+<div class="card">
+  <h3>Where the numbers are soft</h3>
+  <ul class="tight">
+    <li><b>Chinese prices.</b> No launch price for any Long March variant, or for any Chinese commercial rocket beyond a handful of estimates, has been published; only counts are public, via state media and independent trackers.</li>
+    <li><b>SpaceX specifications beyond two documents.</b> SpaceX's own capabilities PDF and space-safety page are treated as primary (5/5); nearly everything else about Starlink — subscriber counts, laser-link speeds, per-satellite cost — comes from trade press at 3/5 or below.</li>
+    <li><b>Textbook figures not re-confirmed.</b> Eclipse minutes, station-keeping delta-v, temperature swings, and general attitude-control pointing requirements are standard aerospace-engineering figures that this run did not trace back to a primary source; they sit at 2–3/5 and are marked as textbook throughout.</li>
+    <li><b>Counts move weekly.</b> Every satellite count and launch tally in this piece carries a date for a reason — these numbers are not static facts but snapshots of something that changes, in Starlink's case, roughly daily.</li>
+    <li><b>Wikipedia as cross-check, never as sole source.</b> Wikipedia articles were used throughout to cross-check or fill gaps (typically 3–4/5) but never as the only source behind a load-bearing figure in this piece.</li>
+  </ul>
+
+  <h3>Who states what</h3>
+  <table>
+  <tr><th style="width:30%">Position</th><th>Stake</th></tr>
+  <tr><td><b>SpaceX</b></td><td>self-reports its own capabilities, prices and safety figures; its fleet size, by contrast, is independently tracked by McDowell rather than taken on trust</td></tr>
+  <tr><td><b>CASC / Chinese state media</b></td><td>reports launch counts, which are independently cross-checked by outside trackers; publishes no launch prices at all</td></tr>
+  <tr><td><b>NASA Inspector General</b></td><td>an internal auditor reporting on the SLS programme's cost, not the programme itself — an independent check inside the same agency</td></tr>
+  <tr><td><b>Operators (SES, Viasat, gps.gov, NOAA)</b></td><td>make capability claims about their own products, generally treated as primary for specifications but not independently audited here</td></tr>
+  <tr><td><b>Wikipedia and trade press</b></td><td>cross-check tier only in this piece — useful for triangulating, never the sole basis for a load-bearing number</td></tr>
+  <tr><td><b>The compiler</b></td><td>an Anthropic model; disclosed because SpaceX's AI arm, xAI/Grok, competes with Anthropic, so SpaceX's figures are treated exactly like every other vendor's self-reported figures — independently tracked counts where a tracker exists, self-reported specifications marked as self-reported</td></tr>
+  </table>
+
+  <h3>What could not be found</h3>
+  <ul class="tight">
+    <li>Chinese launch prices, for any rocket family</li>
+    <li>Starlink satellite power output, official design life, and per-satellite cost</li>
+    <li>GPS III's on-board atomic-clock count and satellite cost (the commonly quoted "$577&nbsp;m" figure)</li>
+    <li>An annual series for GEO comsat orders, beyond a trade-press decline narrative and one named cancellation</li>
+    <li>SpaceX's share of total mass launched to orbit (as distinct from its share of launch attempts)</li>
+    <li>India's LVM3 and PSLV launcher specifications and pricing, this run</li>
+    <li>Several general aerospace-engineering figures (eclipse duration, station-keeping delta-v, thermal swings, pointing requirements) that are textbook-standard but were not re-confirmed against a primary source</li>
+  </ul>
+
+  <h3>How to read the counts</h3>
+  <p>Almost every satellite and launch count in this piece traces back to one lineage — Jonathan McDowell's independent tracking at planet4589.org — sampled at different dates. Where three figures for "active satellites" appear at 16,810, 15,711 and 14,132, that is the same count growing over roughly nine months, not three trackers disagreeing about the same moment. Read any pair of counts in this piece with their dates attached, and treat a difference as growth first, disagreement second, unless the note beside it says otherwise.</p>
+</div>
+
+<!-- 8 · SCORECARD -->
+<div class="sechead" id="score"><a id="scorecard"></a><div class="num">8</div><h2>Scorecard</h2></div>
+<div class="card">
+  <p class="sub">This is a primer, not an argument — there is no author to be right or wrong. "Verdict" instead says how solidly each block is sourced.</p>
+  <div class="tblwrap"><table>
+  <tr><th>Anchor</th><th>What it covers</th><th>Verdict</th><th>C</th><th>Note</th></tr>
+  <tr><td><a href="#c1">c1</a></td><td>Master orbit-class table</td><td><span class="pill p-true">Sourced</span></td><td class="cs">5/5</td><td>ESA/NASA primary; one 2/5 gap (O3b mPOWER altitude)</td></tr>
+  <tr><td><a href="#c2">c2</a></td><td>Drag, eclipse, radiation, station-keeping</td><td><span class="pill p-mis">Textbook, not re-confirmed</span></td><td class="cs">3/5</td><td>dose table and ISS reboost 5/5; eclipse and station-keeping textbook, 3–4/5</td></tr>
+  <tr><td><a href="#c3">c3</a></td><td>Starlink's shell altitudes</td><td><span class="pill p-true">Sourced, with conflict</span></td><td class="cs">5/5</td><td>fleet lowered — design change, both figures kept</td></tr>
+  <tr><td><a href="#c4">c4</a></td><td>Delta-v ladder, Kármán line</td><td><span class="pill p-mis">Sourced, with conflict</span></td><td class="cs">3/5</td><td>Wikipedia's own inconsistency note on the transfer-to-GEO step preserved</td></tr>
+  <tr><td><a href="#c5">c5</a></td><td>Deorbit rules, debris counts, Starlink manoeuvres</td><td><span class="pill p-true">Sourced</span></td><td class="cs">4/5</td><td>FCC/ESA/McDowell primary; two unpinned manoeuvre figures flagged 2/5</td></tr>
+  <tr><td><a href="#c6">c6</a></td><td>The satellite census</td><td><span class="pill p-true">Sourced</span></td><td class="cs">5/5</td><td>McDowell primary; military count is a single 2023 aggregator, 2/5</td></tr>
+  <tr><td><a href="#c7">c7</a></td><td>Broadband from LEO</td><td><span class="pill p-mis">Sourced, with conflict</span></td><td class="cs">3/5</td><td>laser-link speed conflict (200 vs 100&nbsp;Gbps) unresolved</td></tr>
+  <tr><td><a href="#c8">c8</a></td><td>GEO television and fixed services</td><td><span class="pill p-mis">Partly sourced</span></td><td class="cs">3/5</td><td>GEO order-decline number not found</td></tr>
+  <tr><td><a href="#c9">c9</a></td><td>Navigation from MEO</td><td><span class="pill p-true">Sourced</span></td><td class="cs">4/5</td><td>gps.gov and ESA primary</td></tr>
+  <tr><td><a href="#c10">c10</a></td><td>Earth observation from SSO</td><td><span class="pill p-mis">Partly sourced</span></td><td class="cs">3/5</td><td>SAR fleet counts single-sourced</td></tr>
+  <tr><td><a href="#c11">c11</a></td><td>Weather from GEO and polar orbit</td><td><span class="pill p-true">Sourced</span></td><td class="cs">4/5</td><td>eoPortal/NASA primary for GOES-R</td></tr>
+  <tr><td><a href="#c12">c12</a></td><td>Science missions and crewed stations</td><td><span class="pill p-mis">Sourced, with conflict</span></td><td class="cs">3/5</td><td>Tiangong mass is a definitional conflict</td></tr>
+  <tr><td><a href="#c13">c13</a></td><td>Launch tallies by year</td><td><span class="pill p-mis">Sourced, with conflict</span></td><td class="cs">4/5</td><td>China count ±1; BryceTech CASC-only reading explained</td></tr>
+  <tr><td><a href="#c14">c14</a></td><td>The seven satellite systems</td><td><span class="pill p-mis">Textbook, not re-confirmed</span></td><td class="cs">2–5/5</td><td>power/radiation/design-life primary; thermal/pointing/orbit-raising textbook</td></tr>
+  <tr><td><a href="#c15">c15</a></td><td>Three-satellite comparison table</td><td><span class="pill p-mis">Sourced, with conflict</span></td><td class="cs">3/5</td><td>GPS III mass and GOES-R cost both shown as conflicts; several cells not found</td></tr>
+  <tr><td><a href="#c16">c16</a></td><td>Starlink deorbit/manoeuvre check</td><td><span class="pill p-mis">Partly sourced</span></td><td class="cs">4/5</td><td>see c5 for full figures</td></tr>
+  <tr><td><a href="#c17">c17</a></td><td>Launcher comparison table</td><td><span class="pill p-mis">Partly sourced</span></td><td class="cs">3/5</td><td>Chinese prices genuinely unpublished throughout</td></tr>
+  <tr><td><a href="#c18">c18</a></td><td>Four ride types and prices</td><td><span class="pill p-mis">Partly sourced</span></td><td class="cs">2/5</td><td>rideshare price single-aggregator; timing figures are estimates</td></tr>
+  <tr><td><a href="#c19">c19</a></td><td>Artemis and China's lunar programme</td><td><span class="pill p-true">Sourced</span></td><td class="cs">4/5</td><td>flight dates and testimony well documented</td></tr>
+  <tr><td><a href="#c20">c20</a></td><td>SpaceX's share of launches</td><td><span class="pill p-mis">Partly sourced</span></td><td class="cs">4/5</td><td>mass-to-orbit share not found</td></tr>
+  </table></div>
+
+  <h3>What to rely on</h3>
+  <ul class="tight">
+    <li>The orbit-class table (<a href="#c1">c1</a>) — ESA and NASA primary</li>
+    <li>The NASA radiation-dose figures (<a href="#c2">c2</a>) — a primary model, 5/5</li>
+    <li>The satellite census (<a href="#c6">c6</a>) — McDowell's tracker, dated, growing weekly</li>
+    <li>SpaceX's Falcon&nbsp;9 list price (<a href="#c17">c17</a>) — SpaceX's own capabilities document</li>
+    <li>The SLS per-launch cost (<a href="#c17">c17</a>) — a NASA Inspector General auditor figure</li>
+    <li>The FCC's five-year deorbit rule (<a href="#c5">c5</a>) — a primary regulatory text</li>
+    <li>Artemis&nbsp;II's flight dates (<a href="#c19">c19</a>) — well-documented, 5/5</li>
+  </ul>
+  <h3>What to treat as indicative only</h3>
+  <ul class="tight">
+    <li>Starlink specifications sourced only to trade press (laser-link speeds, subscriber counts)</li>
+    <li>Chinese launch counts, which run ±1 between independent trackers</li>
+    <li>Every price marked "estimate" in the launcher and ride-type tables</li>
+    <li>Textbook engineering figures not re-confirmed against a primary source this run</li>
+    <li>The single 2023 aggregator figure for military and intelligence satellite counts by country</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <p class="sub"><b>Primary tier:</b> ESA "Types of orbits"; ESA Space Environment Report 2025; NASA's ISS reference materials; NASA/TM-2022 radiation-dose modelling; NASA's small-spacecraft state-of-the-art report; gps.gov; the FCC's 2022 five-year deorbit rule; SpaceX's Capabilities &amp; Services PDF; SpaceX's space-safety constellation-altitude page; NASA Office of Inspector General report IG-23-015 (via Payload); Jonathan McDowell's planet4589.org active-satellite census and "Space Activities in 2025"; eoPortal's GOES-R page; STScI's JWST pointing documentation; viasat.com; ESA's Galileo High Accuracy Service page; NASA and SpacePolicyOnline reporting on the ISS deorbit-vehicle contract.</p>
+  <p class="sub"><b>Cross-check tier:</b> Wikipedia articles (orbit classes, delta-v budget, GPS Block III, Tiangong, satellite counts, and others as cited); Gunter's Space Page; payloadspace.com; keeptrack.space; BryceTech's tallies as reported by Via Satellite; space.com; SpaceNews; Spaceflight Now; NASASpaceFlight; orbitalradar; satbase; tesmanian; SpaceIntelReport.</p>
+  <p class="sub"><b>Single-source flags:</b> satbase (the rideshare price figure); tesmanian (Starlink's thruster specifications); orbitalradar (constellation launch counts); worldpopulationreview (military satellite counts by country).</p>
+</div>
+
+<div class="foot">Compiled 18 September 2026 · written with an Anthropic model · not investment advice<br>The data pack behind this piece is held as a sidecar file alongside it.</div>
+</div>
+</body>
+</html>
