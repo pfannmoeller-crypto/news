@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools — 13–19 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+  h3.sec.sub{font-size:11px; letter-spacing:1.2px; color:var(--text2); margin:18px 0 10px;}
+  .card.quiet p{margin:0; color:var(--muted); font-style:italic;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>13–19 September 2026 · what you can do differently, and what the others are building</p>
+    </div>
+  </div>
+
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Chat and Cowork merge into one Claude; Claude Code learns to run parallel sessions</h2>
+    <p>Anthropic folded Cowork into ordinary chat and gave Claude Code a way to run several coding sessions from one goal. Away from Anthropic, two rivals let you talk to a coding agent out loud in the same week — a signal worth watching, not a verdict.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h3 class="sec">Your stack</h3>
+
+  <h3 class="sec sub">Claude chat</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude chat</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">16 September 2026</span>
+    </div>
+    <h4 class="headline">Cowork and ordinary Claude chat are no longer two separate apps</h4>
+    <p>Until this week, a task you started in Cowork (Anthropic's longer-running, computer-using mode) stayed in Cowork, and a chat conversation stayed in chat — you had to pick the right app before you typed. Claude now decides for itself whether a request is a quick answer or a longer job, and both kinds of session live in the same place, on the web, desktop and mobile.</p>
+    <p>Document writing (Claude Docs), slide drafting with a PowerPoint or PDF (portable document format) export (Claude Slides), and visual design work now sit inside the same conversation too, instead of being separate tools you had to switch to.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat / Cowork</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Try on X</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">16 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/cowork-is-now-claude">Anthropic: Cowork and chat are now one Claude</a>
+      <a href="https://simonwillison.net/2026/Sep/16/one-claude/">Simon Willison's take</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cowork launched as Anthropic's separate app for longer, computer-using tasks — the kind that keep working after you stop typing. Chat stayed the place for ordinary back-and-forth conversation. Anthropic's own write-up admits the split confused people: "what they'd started in one also didn't carry into the other. So we stopped making you choose." Simon Willison, who writes one of the most-read independent accounts of these tools, said he had been "increasingly confused" by the boundary between Cowork, chat and Claude Code, and welcomed the merge as Claude becoming a general-purpose agent rather than three separate products.</p>
+        <p><span class="lbl">The details.</span> There is nothing to turn on. Pro and Max subscribers get the merged experience first, rolling out over the next few weeks; Team and the free plan follow later, and Enterprise organisations get at least 30 days' notice before it changes for them. Claude still asks for approval before it acts by default; you can also let it work with fewer check-ins and only interrupt you when it genuinely needs a decision — either way, Anthropic says, "you keep the final say."</p>
+        <p><span class="lbl">Why it still matters.</span> This is the first time the boundary between "quick chat" and "long unattended task" has been removed rather than just made easier to cross. It also explains two other changes in this briefing: Claude Code's Projects redesign and the syncing of skills and plugins into terminal sessions are the same tidying, applied to Claude Code.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own announcement, corroborated by Simon Willison, 16 September</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec sub">Cowork</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">17 September 2026</span>
+    </div>
+    <h4 class="headline">Cowork stopped crashing on very long conversations</h4>
+    <p>If a Cowork session went on for a long time — a big research pass, a multi-file review — search and reloading that session could crash the app outright. That is fixed. A second fix in the same update stops workspace updates failing with a false "not enough disk space" error on machines that in fact had plenty of room.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">17 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 17 Sep 2026</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cowork keeps a working session open for as long as a task runs, sometimes hours. The longer a conversation grew, the more likely search inside it, or simply reopening it, was to bring the whole app down — a problem that got worse the more useful the session had been.</p>
+        <p><span class="lbl">The details.</span> It also fixed two things you may have hit: some installed plugin skills failing to load, and Cowork skills that build spreadsheets or slide decks sometimes failing to start.</p>
+        <p><span class="lbl">Why it still matters.</span> None of this changes what Cowork can do; it changes whether it stays usable once a session runs long, which is exactly the kind of session the merge with chat is about to make more common.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own Desktop changelog, 17 September</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec sub">Claude Code</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">17 September 2026</span>
+    </div>
+    <h4 class="headline">Projects can now run several of its own Claude Code sessions toward one goal</h4>
+    <p>Projects used to be a folder that held related files and conversations. It has been rebuilt around a goal instead: you describe what you want done, and Claude scopes the work, splits it across several parallel sessions (each on its own branch of a repository), reviews what each one produced, and assembles the result — you can watch the overall progress or open any one thread. Project-level settings such as cloud environments, connectors and plugins, and which model or effort level to use, now live in one place too, along with a library of every file and artifact the project has produced.</p>
+    <p>This is starting as a beta for a first group of Pro and Max subscribers who already use Claude Code's cloud sessions, expanding to more Claude Code users within about a week, with Team and Enterprise plans following later.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Nothing yet</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">17 Sep 2026 (beta)</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/projects-redesigned">Anthropic: Projects redesigned</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> The old Projects were closer to a shared folder: you put files and conversations in one place so a team could find them, but coordinating several strands of the same piece of work still meant opening separate sessions yourself and copying context between them by hand.</p>
+        <p><span class="lbl">The details.</span> A project now keeps shared memory across its threads — earlier decisions and how you like to be kept informed carry over automatically — and you can set a project-level goal such as "reduce this service's response time" or "retire this old interface" and let Claude break it into parallel work. No toggle is needed once it reaches your account; existing projects keep working as before until then.</p>
+        <p><span class="lbl">Why it still matters.</span> This is a genuinely new way of working, not a bigger folder, so it is worth watching rather than acting on until it actually appears in your account: the trigger is Projects showing a goal field and a threads view instead of the current file list, on a session that uses Claude Code's cloud environments.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own announcement, 17 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">17 September 2026</span>
+    </div>
+    <h4 class="headline">Skills and plugins you turned on in the Claude app now follow you into the terminal</h4>
+    <p>Whatever skills and plugins you have enabled on your claude.ai account now sync automatically into Claude Code sessions signed in with that account — you no longer have to install the same thing twice to use it from the terminal. It is on by default; two settings switch it off separately for skills and for plugins if you would rather keep the terminal on its own set.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Nothing</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">17 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 17 September entry</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Before this change, a skill or plugin lived wherever you turned it on: enable something in the Claude app and Claude Code would not know about it, and vice versa. That was already an odd mismatch and became a harder one to justify the same week chat and Cowork stopped being separate places too.</p>
+        <p><span class="lbl">The details.</span> The same update also let a terminal session sign in and immediately request access to your claude.ai plugins as part of login, and added a way to install a plugin straight from a named marketplace with one command instead of adding the marketplace first.</p>
+        <p><span class="lbl">Why it still matters.</span> This is a WATCH rather than a TRY because there is nothing to actively do — it is worth knowing about mainly so a skill behaving differently in the terminal than expected has an obvious explanation: check whether it is syncing from your account rather than installed locally.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own Claude Code changelog, 17 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">14 September 2026</span>
+    </div>
+    <h4 class="headline">Fast mode now works in cloud and Remote Control sessions, not only on your own machine</h4>
+    <p>Fast mode trades a little care for speed on straightforward requests. It already worked when Claude Code was running directly on your computer; now it also works in a cloud session or one you are controlling remotely from the Claude app, wherever your organisation allows it.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Try on X</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">14 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 14 September entry</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cloud and Remote Control sessions run on Anthropic's infrastructure or a self-hosted runner (a machine you run yourself) rather than your own laptop, which is exactly where a quick, lower-overhead mode is most useful — a background job you are not watching does not need the same caution as one you are reviewing line by line.</p>
+        <p><span class="lbl">The details.</span> In auto mode, a command now gets network access only to the sites it needs, and you can start a helper agent without your project's standing instructions when you want a clean slate.</p>
+        <p><span class="lbl">Why it still matters.</span> Try it the next time a cloud or Remote Control session is doing something routine — a status check, a simple file edit — and you want the reply back sooner than the fully considered default.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own Claude Code changelog, 14 September</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <h3 class="sec">Try this week</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>Publish a write-up as an artifact and see it come back as a formatted page.</strong> Markdown files published as artifacts from Claude Code now render with a proper title, document-style type and highlighted code, instead of showing up as a plain text block — worth testing on a research long-read or any other write-up you would otherwise have to reformat by hand. <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 14 September</a></li>
+      <li><strong>Use the send-now key to queue instructions mid-run instead of waiting.</strong> Pressing Ctrl+Enter (or Ctrl+X then Ctrl+S) interrupts whatever Claude Code is doing and sends every message you have queued at once, shown in grey until it is received — worth trying on a multi-step job like this weekly briefing run, where you often think of a follow-up instruction while a fetch is still in progress. <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 17 September</a></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 3 -->
+  <h3 class="sec">What the others are building</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Codex CLI</span>
+      <span class="tag t-vendor">Devin</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">16–17 September 2026</span>
+    </div>
+    <h4 class="headline">Two coding agents let you talk to them out loud while they work</h4>
+    <p>OpenAI's Codex CLI (command-line interface) added an experimental voice mode: a live conversation with transcripts and microphone controls, right inside the same tool that writes and runs code. A day earlier, Devin added voice calls built on a live speech model, dropping you straight into call controls the moment you start one.</p>
+    <p><strong>Read-across.</strong> Two agent-coding tools adding a voice option in the same week is a signal, not a coincidence; expect a voice mode for Claude Code sessions to be on Anthropic's list next [inference].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Not there — Claude chat and mobile have voice mode; Claude Code does not</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">Two vendors this window</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">16–17 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://learn.chatgpt.com/docs/changelog">Codex changelog, 16 Sep 2026</a>
+      <a href="https://docs.devin.ai/release-notes/2026">Devin release notes, 16 September</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Voice input already exists in general chat assistants; what is new here is putting it inside a tool built for writing and reviewing code, where the previous norm was typing and reading a transcript. This voice mode in the Codex CLI (command-line interface) is explicitly experimental and ships alongside plainer additions in the same release: the ability to hide, archive or delete individual tasks, and Touch ID (Apple's fingerprint check) confirmation for tool requests on supported Macs.</p>
+        <p><span class="lbl">The details.</span> Devin's voice calls also arrived with two smaller, related changes: a session that had gone to sleep now starts waking up as soon as you begin typing, rather than after you send the message, and copying a message out of Devin now keeps its formatting when pasted into an email, document or code editor.</p>
+        <p><span class="lbl">Why it still matters.</span> Neither vendor has published usage data showing voice caught on, so this is a feature to watch rather than a verdict on whether talking to a coding agent works well in practice — the case for Claude Code would be the same one both vendors are making: fewer moments where you have to stop and type when your hands are on something else.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · both vendors' own release notes, 16–17 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub Copilot</span>
+      <span class="tag t-vendor">Devin</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">16–18 September 2026</span>
+    </div>
+    <h4 class="headline">Automated code review is quietly becoming stricter by default</h4>
+    <p>GitHub Copilot's code review now sorts its own findings into "open", "resolved since last review" and "previously missed", and closes its own comments once a later push addresses them, tagging why ("fixed", "won't fix", "incorrect"). The same week, Devin made security-bug scanning a permanent part of every review it runs, rather than something you had to ask for.</p>
+    <p><strong>Read-across.</strong> Two competitors tightening their default review behaviour in the same week suggests "always scan, always track what's resolved" is becoming the baseline reviewers are expected to meet [inference].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Partly — Claude Code's review already tracks resolved findings across pushes; an always-on security scan is not confirmed</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">Two vendors this window</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">16–18 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience">GitHub Copilot changelog, 18 September</a>
+      <a href="https://docs.devin.ai/release-notes/2026">Devin release notes, 16 September</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Automated pull-request review from a coding agent has existed for a while at all three vendors; the change this week is about trust in the machinery around it — whether a reviewer remembers what it already told you, and whether a security pass happens every time or only when asked.</p>
+        <p><span class="lbl">The details.</span> Copilot's update also has it write a suggested commit title and description when you accept a batch of its suggestions. Anthropic's own Claude Code changelog in the same window includes fixes to its Code Review product that carry the same intent — for example, stopping a follow-up review from re-raising a security finding a person had already resolved when a later push simply moved the lines it was anchored to — which is the evidence behind the "partly" rating above, even though Anthropic has not stated a default-on security-scan policy the way Devin has.</p>
+        <p><span class="lbl">Why it still matters.</span> None of this is a reason to switch reviewers; it is a reason to expect Claude's own review product to say explicitly, before long, whether security checks run on every review by default.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · both vendors' own release notes, 16–18 September</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub Copilot</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">18 September 2026</span>
+    </div>
+    <h4 class="headline">Copilot now lets you pick cost, quality or speed directly, instead of just a model name</h4>
+    <p>Across Microsoft's Visual Studio Code editor, its own command-line tool and its standalone app, Copilot now offers three named tiers — efficiency, balance and intelligence — that decide how it weighs cost, quality and response time for you, instead of leaving that trade-off to whichever model name you happened to pick.</p>
+    <p><strong>Read-across.</strong> A single dial for cost against quality, applied the same way everywhere you use the tool, is a simpler mental model than picking a model per session; expect Claude's own surfaces to move toward one dial rather than three separate model pickers [inference].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Partly — you pick a model directly, and Claude Code's own fast mode is a separate speed switch</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">One vendor</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">18 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14">GitHub Copilot changelog, weekly release</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Choosing between named models (which one is "smarter", which is "cheaper") asks a user to know things about the underlying models that most people using a coding tool have no reason to track. A named tier instead asks about the task: is this routine, or does it need real care.</p>
+        <p><span class="lbl">The details.</span> The same weekly release added a way for a team to request a higher usage budget from inside the tool when they hit their limit, rather than asking an administrator out of band, and let Copilot's agents run inside the same isolated workspace your project already uses, with the same tools installed.</p>
+        <p><span class="lbl">Why it still matters.</span> This is a gap worth watching rather than a verdict on whether Claude's current model picker is worse — it plainly is not, since it already gives more control — but a single cost/quality dial is a different, simpler product decision that Claude has not made yet.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · GitHub's own Copilot changelog, 18 September</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>The three surfaces are becoming one.</strong> Chat and Cowork merged into a single app on 16 September, skills and plugins now sync from the app into the terminal, and Claude Code's redesigned Projects turns one goal into several of its own sessions. None of these were announced as a package, but together they are the same move: fewer separate tools, one Claude that decides which mode a task needs.</li>
+      <li><strong>Rivals are converging on the same two things at once.</strong> Codex CLI (command-line interface) and Devin both let you talk to a coding agent out loud in the same seven days; Copilot and Devin both made automated review carry more memory and more default security scanning. Two vendors moving the same way in one window is a pattern, not a launch.</li>
+      <li><strong>The direction read: voice and stricter default review are the predictable next stops for Claude Code.</strong> Anthropic's own review product already tracks resolved findings across pushes, which is most of the way to what Copilot and Devin just shipped; voice is the bigger gap, and the one this week's competitor moves make hardest to ignore [inference].</li>
+    </ol>
+    <p class="closer">Three log-ins just became one. Don't be surprised if the terminal is next.</p>
+  </div>
+
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Saturday, 19 September 2026 &middot; <strong>Research window:</strong> 13–19 September 2026 &middot; <strong>Scope:</strong> the tools Stefan operates — Claude chat, Cowork, Claude Code, and what Codex, Cursor, Gemini CLI (command-line interface), Copilot and Devin are building; model releases belong to Frontier Tech.</p>
+    <p><strong>Confidence legend:</strong> 5/5 vendor changelog or release note &middot; 4/5 two independent sources &middot; 3/5 single credible source or practitioner write-up &middot; 2/5 aggregator-only with a visible caveat. No score is rounded up. Read-across sentences are inference and carry no score.</p>
+    <p><strong>Sources read every week:</strong> Claude Desktop changelog, Claude apps release notes, Claude product announcements, Claude Code changelog — then search. <strong>Editorial notes:</strong> Cursor and the Gemini CLI (command-line interface) shipped no dated changes in this window; both were checked and came back empty.</p>
+  </div>
+
+</div>
+</body>
+</html>
