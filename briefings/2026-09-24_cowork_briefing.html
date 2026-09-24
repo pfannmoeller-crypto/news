@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools — 18–24 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+  h3.sec.sub{font-size:11px; letter-spacing:1.2px; color:var(--text2); margin:18px 0 10px;}
+  .card.quiet p{margin:0; color:var(--muted); font-style:italic;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>18–24 September 2026 · what you can do differently, and what the others are building</p>
+    </div>
+  </div>
+
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Opus becomes the default everywhere, and Claude opens one shop window for the rest</h2>
+    <p>Anthropic made Opus, its most capable model, the default on every paid plan, and opened one marketplace for the connectors and plugins that used to live in separate lists. Claude Code now reads a shared instructions file automatically. Cursor and Copilot both moved into security review of every pull request.</p>
+  </div>
+
+  <!-- SECTION 1: Your stack -->
+  <h3 class="sec">Your stack</h3>
+
+  <div class="banner"><strong>Verdict key, on every card below:</strong> <span class="tag verdict try">TRY</span> worth doing yourself this week &middot; <span class="tag verdict watch">WATCH</span> nothing to do yet, but worth keeping an eye on &middot; <span class="tag verdict skip">SKIP</span> background only, no action needed &middot; <span class="tag verdict watch">GAP</span> a competitor now has this and Claude doesn't, yet &middot; <span class="tag verdict try">CLAUDE HAS IT</span> Claude already does this.</div>
+
+  <h3 class="sec sub">Claude chat</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude chat</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">22–23 Sep 2026</span>
+    </div>
+    <h4 class="headline">Opus is now the default model on every paid Claude plan, not only the top ones</h4>
+    <p>Starting a new chat, a Cowork session or a Claude Code run on the Pro or Team Standard plan now opens with Opus instead of Sonnet — the same default that Max, Team Premium and Enterprise plans already had. Anthropic is also setting how hard the model thinks to a medium level by default across every product, to keep answers quick.</p>
+    <p>Opus tends to read and write more carefully than Sonnet but costs more per exchange, so if you are on Pro or Team Standard your weekly usage allowance may run out sooner than it used to. There is nothing to turn on — if you would rather keep the cheaper, faster model, you can still pick it yourself from the model menu in chat and Cowork, or switch back in Claude Code.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat / Cowork / Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">nothing — switch back yourself if you want the cheaper model</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">22–23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://mixed-news.com/en/claude-code-default-model-opus-pro-team-standard-plans/">mixed-news.com write-up</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Until this week, only the most expensive Claude plans opened in Opus by default; Pro and Team Standard, the two cheapest paid tiers, opened in Sonnet, with Opus available as a manual choice. Anthropic's own guidance still describes Sonnet as the model that "handles most coding tasks well and costs less than Opus", so this is a default being raised, not a recommendation being withdrawn.</p>
+        <p><span class="lbl">The details.</span> The change reached Claude Code first, then the wider Claude app, including Cowork, within a day. It arrived alongside a new version of Opus that Anthropic says performs nearly as well as the previous Opus — the model it replaces — while costing less to run each time, part of why Anthropic felt comfortable making it the everyday default rather than a special-occasion one.</p>
+        <p><span class="lbl">Why it still matters.</span> If you run long Claude Code sessions or lean on Cowork through the week, this is the one change in this briefing most likely to change how quickly you hit your usage limit — worth a glance at your usage the first time it happens, rather than being surprised by it.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Code's own changelog, corroborated by Anthropic staff and a same-week write-up</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude chat</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">23 Sep 2026</span>
+    </div>
+    <h4 class="headline">A single Claude Marketplace now lists every plugin, connector and partner agent in one place</h4>
+    <p>Anthropic opened a marketplace that gathers more than two thousand connectors (links that let Claude read or work directly in outside apps, such as Google, Microsoft, Notion and Salesforce) and plugins (installable add-ons that give Claude new abilities), alongside ready-made Claude-powered agents and software you can buy directly, and consultants from Anthropic's own partner network. Previously these were scattered across separate menus depending on which one you happened to open first.</p>
+    <p>If your organisation already has a paid contract with Anthropic, money set aside under that contract can now be spent on these marketplace purchases too, instead of arriving as a separate bill.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat (web)</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">try — browse it once for a connector you already want</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/blog/claude-marketplace">Claude Marketplace announcement</a>
+      <a href="https://thenextweb.com/news/anthropic-marketplace-claude-enterprise-software">The Next Web coverage</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Connectors for chat and Cowork, plugins for Claude Code, and ready-built agents each used to live behind their own menu, so finding a specific one meant already knowing where to look. The new marketplace puts all three kinds of listing on one browsable page.</p>
+        <p><span class="lbl">The details.</span> Builders can submit their own connector, plugin or agent through a listed application process, and companies that want deeper help can be matched with a consulting partner or systems integrator — an outside firm that sets the software up and customises it for them — from the same page.</p>
+        <p><span class="lbl">Why it still matters.</span> The page doesn't add a new capability so much as make two years of accumulated connectors and plugins findable — worth a look before you next reach for a workaround you've built by hand, in case it already exists.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Anthropic's own announcement</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude chat</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">22 Sep 2026</span>
+    </div>
+    <h4 class="headline">A batch of small Claude chat fixes landed with nothing to switch on</h4>
+    <p>This week's update quietly fixed several rough edges: sending a chat message with no internet connection now fails within a few seconds and tells you so, instead of appearing to hang for about a minute; editing a message while Claude is still replying no longer throws away your edited text if the edit is refused; and the app freezing for a few seconds right after it opens, most common on Windows machines, no longer happens.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">nothing</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">22 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> None of these were new features; all were fixes to behaviour that had been mildly broken for a while, bundled into one weekly desktop update.</p>
+        <p><span class="lbl">The details.</span> Also fixed: the window that used to be replaced entirely by a "couldn't finish loading" error when a side panel failed to load now stays open, with a retry button on the panel itself instead.</p>
+        <p><span class="lbl">Why it still matters.</span> Individually minor, but if any of these were the reason you closed and reopened the app this month, that reason is gone now.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop's own changelog</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec sub">Cowork</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">21–22 Sep 2026</span>
+    </div>
+    <h4 class="headline">Cowork stops quietly losing the middle of long memory notes</h4>
+    <p>If you kept a project memory note in Cowork longer than roughly ten thousand characters, and two updates to it happened to overlap, Claude could end up seeing only the beginning and the end of the note — the middle quietly disappeared, with no error or warning shown. That's fixed this week, so a long-running note about how you like a job done should now stay complete.</p>
+    <p>Also fixed: deleting a task on Windows no longer fails with an unhelpful error; sending a message that starts with a file path is no longer wrongly refused as an unrecognised instruction; and if a suggested connector belongs to a tool your organisation hasn't turned on yet, Cowork now offers to request it instead of showing a Connect button that would have failed anyway.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">nothing</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">21–22 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Cowork's project memory is meant to be a running note Claude keeps updating as you work with it; a long enough note used to be exactly the case most likely to trigger the write conflict that lost its middle section.</p>
+        <p><span class="lbl">The details.</span> The memory fix shipped in the same update as the model default change above; the three smaller fixes arrived a day later in the desktop app itself.</p>
+        <p><span class="lbl">Why it still matters.</span> If you rely on a long-running Cowork memory note rather than short ones, this removes a real, if quiet, way of losing your own instructions.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · both changelogs, independently</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec sub">Claude Code</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">18–21 Sep 2026</span>
+    </div>
+    <h4 class="headline">Claude Code now falls back to a shared, plain instructions file when a project has none of its own</h4>
+    <p>If a project folder has no Claude-specific instructions file, Claude Code now reads a plain instructions file instead of starting with none — a text file, kept in the project, that lists things like coding conventions, what to avoid, and how to run tests, and that Claude then follows automatically. It's the same kind of file that other coding tools — including Cursor, OpenAI's Codex, and Google's command-line coding tool (one you run by typing commands, rather than clicking through a graphical app) — already read. Written once, it now works across whichever of those tools you happen to open that project in, instead of needing a Claude-only copy.</p>
+    <p>It reached the command-line version of Claude Code on 18 September and the desktop app's coding sessions three days later, so both places now behave the same way.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">try — write one shared instructions file in a repo you switch tools on</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">18–21 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Anthropic's own instructions file has existed since Claude Code's early days; the shared, cross-tool format is newer and has been adopted by several coding agents over the past year as a way to avoid every tool wanting its own copy of the same project notes.</p>
+        <p><span class="lbl">The details.</span> This only applies when there is no Claude-specific file already in the project; if you already keep one, nothing changes for you. It is not yet available if your organisation runs Claude Code through its own Amazon, Google or Microsoft cloud account rather than directly through Anthropic; if you access Claude Code any other way — including a normal subscription plan — you already have it.</p>
+        <p><span class="lbl">Why it still matters.</span> You mentioned running Cursor, Codex and a Gemini command-line tool alongside Claude Code from time to time — this is the first week it's genuinely less duplicate effort to keep one instructions file instead of several.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · both changelogs, independently</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">23 Sep 2026</span>
+    </div>
+    <h4 class="headline">Claude Code can now tell you how many of your approval prompts auto mode would have handled</h4>
+    <p>The built-in usage-insights view can now estimate, from your own recent sessions, how many permission prompts you answered by hand that auto mode — the setting that lets Claude approve routine actions itself — would have handled for you instead. That turns "should I turn auto mode on" from a guess into a number based on how you actually work.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">try — check it on your own recent sessions before switching auto mode on</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Auto mode has been available for a while, but deciding whether it's worth the trust previously meant trying it and seeing — there was no way to check against sessions you'd already run.</p>
+        <p><span class="lbl">The details.</span> The estimate looks at your recent history rather than a generic average, so a session that involved a lot of one-off manual approvals will show a different number than one spent mostly re-running the same few commands.</p>
+        <p><span class="lbl">Why it still matters.</span> A five-minute check before you commit to a habit change, rather than finding out by living with it for a week.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Code's own changelog</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">19 Sep 2026</span>
+    </div>
+    <h4 class="headline">Auto mode's safety check gets cheaper for pay-per-use and enterprise users — not yet for subscription plans</h4>
+    <p>If you access Claude Code through a pay-per-use developer account (billed by usage rather than a flat subscription), or through your organisation's own Amazon, Google or Microsoft cloud account rather than directly through Anthropic, the automatic check that decides whether auto mode can approve a routine action by itself now runs on Anthropic's side and no longer adds to your bill. When that check isn't available for a moment, Claude Code quietly switches to the older, billed version of the check and now tells you when it does, instead of charging you silently.</p>
+    <p>This change does not reach the Pro, Max or Team subscription plans, so if you're on one of those, there is nothing different to notice yet.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">nothing on a subscription plan; watch for it reaching Pro/Max/Team</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">19 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+      <a href="https://mixed-news.com/en/claude-code-stops-charging-auto-mode-safety-checks-agents-md/">mixed-news.com write-up</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Auto mode's approval check used to run locally and counted as part of your token usage regardless of which billing route you were on, which meant the safety net itself had a running cost.</p>
+        <p><span class="lbl">The details.</span> The free version is opt-out rather than opt-in for the accounts it applies to, so anyone billing through a pay-per-use developer account, an enterprise agreement, or their own Amazon, Google or Microsoft cloud account is already on it unless they've turned it off. If you're on a Pro, Max or Team subscription, this doesn't apply to you yet.</p>
+        <p><span class="lbl">Why it still matters.</span> Worth knowing about even on a subscription plan, since it signals where Anthropic is investing in auto mode next; a version for Pro, Max and Team would be the natural next step.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Code's own changelog and documentation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict skip">SKIP</span>
+      <span class="date-pill">23 Sep 2026</span>
+    </div>
+    <h4 class="headline">Interrupting Claude Code mid-task now pauses the work instead of throwing it away</h4>
+    <p>Pressing ctrl+enter (or ctrl+x then ctrl+s) to send a new message while Claude Code is still running something used to cancel whatever it was doing. Now it moves the running work to the background instead, so typing a new instruction mid-task no longer costs you the progress that was already made.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div>
+      <div class="stat"><div class="stat-label">What to do</div><div class="stat-value">nothing — it just behaves better now</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> This is a change to one specific keyboard shortcut's behaviour, not a new feature — the shortcut itself has existed for a while.</p>
+        <p><span class="lbl">The details.</span> The interrupted work keeps running where you can check on it later, the same way any other background task in Claude Code does.</p>
+        <p><span class="lbl">Why it still matters.</span> Small, but it removes a reason to hesitate before typing a follow-up instruction during a long research pull or a long briefing run.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Code's own changelog</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Try this week -->
+  <h3 class="sec">Try this week</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>Write one shared instructions file instead of a Claude-only one</strong> — next time you touch a repository you also open in Cursor, Codex or Gemini's command-line tool, such as this Webzeitung project, give it one plain instructions file rather than a separate Claude-specific copy; Claude Code now reads it automatically when there's nothing else. <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 18 Sep 2026</a></li>
+      <li><strong>Check auto mode against your own history before switching it on</strong> — run the built-in usage-insights check on your webzeitung-briefings sessions to see how many of last week's approval prompts auto mode would have skipped, before deciding whether to turn it on for next week's run. <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 23 Sep 2026</a></li>
+      <li><strong>Browse the new Marketplace once</strong> — spend five minutes in Claude's new marketplace looking for a connector that could replace a manual step in your research long-reads, such as pulling from a source you currently copy and paste by hand. <a href="https://claude.com/blog/claude-marketplace">Claude Marketplace announcement, 23 Sep 2026</a></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 3: What the others are building -->
+  <h3 class="sec">What the others are building</h3>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Cursor</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">23 Sep 2026</span>
+    </div>
+    <h4 class="headline">Cursor now scans every pull request for security holes and proposes the fix</h4>
+    <p>Cursor added a reviewer that checks every pull request (a proposed code change, submitted for review before it's merged into the project) for exploitable weaknesses — injected code, ways to skirt authentication, secrets left in the code, and similar issues — and rates each finding by severity with the likely path an attacker would take and a suggested fix. A companion feature watches a change after it goes live, tracks whether it's behaving as expected, and can automatically open a pull request that reverts it — undoes the change, putting the code back the way it was — if something looks wrong.</p>
+    <p><strong>Read-across.</strong> GitHub Copilot built a similar dedicated security check into its own reviews twice already this quarter; with Cursor now doing the same, three tools have converged on the same idea in a few months — expect Claude Code's own review feature to grow a comparable security-specific layer rather than staying a general reviewer [inference — a judgement call we're making, not something any source states directly].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">partly — Claude Code reviews pull requests, but doesn't yet rate findings by severity with a suggested fix the way this does</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">third time this quarter</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://cursor.com/changelog">Cursor changelog</a>
+      <a href="https://github.blog/changelog/2026-07-14-security-reviews-now-available-in-the-github-copilot-app/">GitHub Copilot security review (July 2026)</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> GitHub Copilot added a dedicated security-review command to its command-line tool in June and brought the same check into its main app in July; Cursor's version arrives two months later, aimed at the same kind of finding.</p>
+        <p><span class="lbl">The details.</span> Both of Cursor's new features are limited for now to its paid plans built for teams and large organisations, with trial credit offered so teams can test the half that watches code after it goes live — checking a real release for problems — before committing to it.</p>
+        <p><span class="lbl">Why it still matters.</span> A general code reviewer and a security-focused one ask different questions of the same change; the direction across the field is toward having both, not choosing one.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Cursor's own changelog</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub Copilot &amp; Devin</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">18–23 Sep 2026</span>
+    </div>
+    <h4 class="headline">Two competitors now let you pick how hard the model should think, in plain language</h4>
+    <p>GitHub Copilot's reviewer now offers a plain three-way choice between faster-and-cheaper, balanced, and slower-and-more-thorough. Devin's own tool picker went further, naming what each option actually gets you — for example, its top option is labelled "highest intelligence" and explains that it runs on Devin's strongest available models — rather than leaving you to guess what a label means.</p>
+    <p><strong>Read-across.</strong> Claude Code already has a similar dial for how hard the model thinks, but it isn't offered the same way in Claude chat or Cowork; two competitors moving on plain-language versions of the same idea in one window suggests that dial reaching chat and Cowork is a matter of when, not if [inference].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">partly — Claude Code has an effort dial; Claude chat and Cowork don't have a matching one yet</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">two vendors this window</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">18–23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14/">GitHub Copilot weekly release</a>
+      <a href="https://docs.devin.ai/release-notes/overview">Devin release notes</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Both tools are responding to the same complaint: a model that reasons more takes longer and costs more, and people want to choose that trade-off themselves rather than have it fixed for every task.</p>
+        <p><span class="lbl">The details.</span> Copilot's version is rolling out across its command-line tool, its editor extension and its standalone app; Devin's applies when picking which underlying model handles a given piece of work, including switching mid-task.</p>
+        <p><span class="lbl">Why it still matters.</span> A plain-language version of this choice, sitting next to the message box rather than buried in a settings screen, is the detail that decides whether ordinary users ever find the dial at all.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · both vendors' own release notes</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Devin</span>
+      <span class="tag verdict try">CLAUDE HAS IT</span>
+      <span class="date-pill">18–23 Sep 2026</span>
+    </div>
+    <h4 class="headline">Devin grew its own plugin marketplace the same week Claude opened one</h4>
+    <p>Cognition, the company behind Devin, added ready-made building blocks for Microsoft 365 and Google Workspace to its own plugin marketplace this week, and let organisations mark individual plugins as required or optional for their teams — the same week Anthropic opened its own unified marketplace.</p>
+    <p><strong>Read-across.</strong> Two vendors expanding their marketplace in the same seven days, right as Claude's own marketplace launches, suggests the pace of new partner connectors arriving on Claude's version will be brisk rather than occasional [inference].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">has it since 23 Sep 2026 (the new Claude Marketplace, above)</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">two vendors this window</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">18–23 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://docs.devin.ai/release-notes/overview">Devin release notes</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Devin has run its own plugin marketplace for a while; this week's additions are about which ready-made connectors are in it and how organisations can govern them, not a new marketplace itself.</p>
+        <p><span class="lbl">The details.</span> Plugins can now be capped in size and marked required, so an organisation can make sure every team has a given connector rather than hoping individuals install it.</p>
+        <p><span class="lbl">Why it still matters.</span> The coincidence in timing is the story here — both companies are treating "a marketplace of connectors" as core infrastructure worth expanding weekly, not a feature that ships once and sits still.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Devin's own release notes</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI Codex</span>
+      <span class="tag verdict try">CLAUDE HAS IT</span>
+      <span class="date-pill">22 Sep 2026</span>
+    </div>
+    <h4 class="headline">OpenAI's Codex command-line tool caught up to a fuller screen, mouse support and voice input</h4>
+    <p>OpenAI's biggest update yet to its Codex command-line tool added a fuller-screen view with mouse support and searchable history, spoken input turned on by default, a built-in view of how much you've used it, and diagrams and equations rendered right in the terminal rather than as plain text.</p>
+    <p><strong>Read-across.</strong> Most of this closes a gap to Claude Code rather than opening a new one — the fuller-screen view, mouse support and spoken input have all been in Claude Code for a while. The one genuinely new piece is drawing diagrams straight in the terminal, which Claude Code doesn't do yet; worth watching whether that turns up there next [inference].</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">partly — has the fuller-screen view, mouse support and spoken input already; not there — diagrams drawn in the terminal</div></div>
+      <div class="stat"><div class="stat-label">Signal</div><div class="stat-value">one vendor</div></div>
+      <div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">22 Sep 2026</div></div>
+    </div>
+    <div class="links">
+      <a href="https://learn.chatgpt.com/docs/changelog">Codex changelog</a>
+    </div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body">
+        <p><span class="lbl">Context &amp; background.</span> Codex's command-line tool has trailed Claude Code and Cursor on plain usability for a while; this release reads as a deliberate effort to close that gap in one go rather than piece by piece.</p>
+        <p><span class="lbl">The details.</span> A quick follow-up fix the next day added OpenAI's newest models to the same tool's picker, separate from the interface changes themselves.</p>
+        <p><span class="lbl">Why it still matters.</span> When a competitor's big release is mostly "now it does what the other one already did", that's a useful signal Claude Code's current shape is the one the field is converging on — not proof it can stop moving.</p>
+      </div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · OpenAI's own changelog</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Editor's view -->
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>Opus is the new floor, not just the ceiling.</strong> Every paid plan, Pro included, now opens in Opus by default, with the thinking effort turned down to medium as a cost counterweight — the free ride on the cheaper model is over unless you switch back yourself.</li>
+      <li><strong>Claude built a front door for an ecosystem it already had.</strong> The new Marketplace doesn't add a capability so much as make two years of connectors, plugins and partner agents findable in one place — and, in a coincidence worth noting, Devin expanded its own plugin marketplace the very same week.</li>
+      <li><strong>The direction read: three habits are spreading across every serious agent tool at once.</strong> A plain-language dial for how hard the model should think, security-specific review of every pull request, and one shop window for everything pluggable. Claude Code already leads on the first of the three; expect the second to show up there before year's end, since two competitors just moved on it inside a single week.</li>
+    </ol>
+    <p class="closer">A quiet week for headline features, a loud one for defaults — the change most people will actually notice is the one nobody had to switch on.</p>
+  </div>
+
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Thursday, 24 September 2026 &middot; <strong>Research window:</strong> 18–24 September 2026 &middot; <strong>Scope:</strong> the tools Stefan operates — Claude chat, Cowork, Claude Code, and what Codex, Cursor, Gemini CLI (command-line interface), Copilot and Devin are building; model releases belong to Frontier Tech.</p>
+    <p><strong>Confidence legend:</strong> 5/5 vendor changelog or release note &middot; 4/5 two independent sources &middot; 3/5 single credible source or practitioner write-up &middot; 2/5 taken only from a news-aggregator site repeating someone else's reporting, with a visible caveat. No score is rounded up. Read-across sentences are inference and carry no score.</p>
+    <p><strong>Sources read every week:</strong> Claude Desktop changelog, Claude apps release notes, Claude product announcements, Claude Code changelog — then search. <strong>Editorial notes:</strong> the weekly-limit style surprise from mid-September — when a usage-limit change caught people off guard with no advance warning — had no repeat this window; the biggest single change was a default, not a feature, so this edition leans on "what to do" being "nothing" more often than usual — deliberately, rather than padded.</p>
+  </div>
+
+</div>
+</body>
+</html>
