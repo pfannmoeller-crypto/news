@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools — 25 Sep – 1 Oct 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+  h3.sec.sub{font-size:11px; letter-spacing:1.2px; color:var(--text2); margin:18px 0 10px;}
+  .card.quiet p{margin:0; color:var(--muted); font-style:italic;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+  <div class="card appbar">
+    <div class="avatar">PT</div>
+    <div>
+      <h1>Practical AI Tools</h1>
+      <p>25 Sep – 1 Oct 2026 · what you can do differently, and what the others are building</p>
+    </div>
+  </div>
+
+  <div class="card hero">
+    <p class="eyebrow">Briefing summary</p>
+    <h2>Claude Code now asks you less before acting; OpenAI launches assistants that never stop</h2>
+    <p>Anthropic spent the week on how often Claude has to ask before it acts, mostly in Claude Code. OpenAI's developer conference pushed assistants that keep working without being asked. Both moves point the same way: you give the instruction, the tool carries on.</p>
+  </div>
+
+  <div class="banner"><strong>How to read the tags.</strong> On your own tools: <span class="tag verdict try">TRY</span> worth an hour this week, on the task named; <span class="tag verdict watch">WATCH</span> it has shipped, but check the point named or wait for it; <span class="tag verdict skip">SKIP</span> shipped, not for you. On other companies' tools: <span class="tag verdict try">CLAUDE HAS IT</span> Claude already does this; <span class="tag verdict watch">GAP</span> Claude lacks it or has only part of it; <span class="tag verdict skip">NO READ-ACROSS</span> a real feature that says nothing about what Claude will do next.</div>
+
+  <h3 class="sec">Your stack</h3>
+
+  <h3 class="sec sub">Claude chat</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude chat</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">29 Sep</span>
+    </div>
+    <h4 class="headline">The new-chat menu now lets you choose a Google Doc, Sheet or Slides deck as the result</h4>
+    <p>In the Claude desktop app, when you start a new chat and Google Drive is connected, you can pick Google Doc, Google Sheet or Google Slides as the form of the answer. You get a Google file instead of text to paste. Nothing says yet whether the same menu exists in the phone app.</p><p>A good first test: ask for the week's summary as a Google Doc.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat, desktop app</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update the app; try it on a weekly summary</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">29 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Until now an answer in Claude chat left the app as copy and paste. The menu puts the file type next to the prompt box, so the choice is made before Claude starts writing.</p><p><span class="lbl">The details.</span> Check on the first try where the file lands in Drive, and whether you can ask Claude to edit it afterwards. The same update fixed several bugs that could lose or misdirect a message you had typed.</p><p><span class="lbl">Why it still matters.</span> A table or summary that someone else has to edit is the natural fit: it arrives in the format they already use.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop release notes, 29 Sep</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec sub">Cowork</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">29 Sep</span>
+    </div>
+    <h4 class="headline">The shortcuts that create Word, PDF, PowerPoint and Excel files work again in Cowork</h4>
+    <p>Cowork is Claude's desktop assistant for tasks on your computer. Typing /docx, /pdf, /pptx or /xlsx there was being rejected with an &ldquo;unknown skill&rdquo; message and the four had disappeared from the list that appears when you type /. They are back. Claude Code, for its part, no longer lists commands that only work in Cowork.</p><p>If /docx failed for you this month, try again on your next contract summary or board paper.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; try /docx on a contract summary</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">29 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Each of the four is a skill: a saved set of instructions that tells Claude how to produce one kind of file or do one kind of task. Claude loads a skill when the task calls for it, or when you type its name after a slash.</p><p><span class="lbl">The details.</span> The same update fixed Office-file previews that kept failing until the app was restarted; the preview now says why it failed. Not yet known: when exactly the shortcuts broke.</p><p><span class="lbl">Why it still matters.</span> The document shortcuts are the part of Cowork closest to contract and board-paper work, so a list that no longer showed them was easy to mistake for a removed feature.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop release notes, 29 Sep</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Cowork</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">29 Sep</span>
+    </div>
+    <h4 class="headline">Saving a skill that Claude proposed could wipe it: the update stops that</h4>
+    <p>When Claude proposes or writes a skill in a chat, it shows a Save button under it. That button could be used on a skill with no content, which saved an empty skill, or emptied the skill it was meant to update. The button now says why it cannot save.</p><p>Update the app, then open each skill you changed recently and check it is not empty. Emptied skills are not restored by the update.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; check recently changed skills</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">29 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> A skill that is silently emptied does not produce an error. The next run behaves as if the skill did not exist, and the cause is hard to trace.</p><p><span class="lbl">The details.</span> The release notes describe the bug and the fix from now on. Not yet known: how many saves were affected.</p><p><span class="lbl">Why it still matters.</span> Long skills for recurring work, such as a weekly briefing procedure, have the most to lose from a quiet overwrite. Keep a backup copy of important skills outside the app.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop release notes, 29 Sep</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec sub">Claude Code</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">28 Sep</span>
+    </div>
+    <h4 class="headline">Claude Code now opens in auto mode however you pay for it</h4>
+    <p>Auto mode means Claude decides itself which actions are safe and asks you only about risky ones, such as deleting files. It has been the starting mode on the Pro, Max and Team plans since 14 August. On 28 Sep it was extended to every plan, including companies that run Claude through Amazon or Google cloud, in Claude Code in the terminal and in Visual Studio Code (a code editor).</p><p>A new answer, &ldquo;Yes, but ask again next time&rdquo;, lets you allow one look at a file outside your project, once.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code, terminal and Visual Studio Code</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Nothing; to go back to the old behaviour use Shift+Tab or the mode menu</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">28 Sep</div></div></div>
+    <div class="links"><a href="https://code.claude.com/docs/en/changelog">Claude Code release notes</a><a href="https://claude.com/blog/auto-mode-default-in-claude-code">Anthropic: auto mode as default (7 Aug)</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Anthropic describes auto mode as checking each action for anything irreversible, destructive or aimed outside your own environment, instead of asking you each time. The 7 Aug announcement made it the starting mode from 14 Aug for the three plans named above.</p><p><span class="lbl">The details.</span> A mode you have chosen yourself in the settings still wins, so anyone who picked the ask-every-time mode keeps it. Shift+Tab in the terminal, or the mode menu in the desktop app, switches within a session. Sonnet 5.5 is now the Sonnet you get by default.</p><p><span class="lbl">Why it still matters.</span> The starting mode is what most people live with. Not yet known: how often the safety check stops real work. Notice how often a run you would have interrupted went on.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Code release notes 28 and 29 Sep; Anthropic announcement 7 Aug</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict try">TRY</span>
+      <span class="date-pill">22 Sep, plus fixes since</span>
+    </div>
+    <h4 class="headline">Remote Control no longer asks about every action while you sit at your own computer</h4>
+    <p>Remote Control lets you steer a Claude Code session on your computer from your phone. In the desktop app it used to ask for approval before every action Claude took on your computer while it was switched on, even when you were typing at that computer. Since the 22 Sep update it asks only when the instruction came from another device.</p><p>To try it: start a run on your computer, for example the weekly briefing, send a follow-up from your phone, and see where it asks.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code, desktop app, Remote Control</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; try one run steered from the phone</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">22 Sep, plus fixes to 30 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop release notes</a><a href="https://code.claude.com/docs/en/changelog">Claude Code release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Remote Control is the feature that makes a long run practical to leave: you start it at the computer and check on it from the phone. A prompt that fired at the computer as well made it a nuisance.</p><p><span class="lbl">The details.</span> Later fixes this week address messages going missing: photos and messages sent from the phone no longer get silently lost, and Remote Control, which had stopped working for some paid users, works again.</p><p><span class="lbl">Why it still matters.</span> Steering from the phone is the use that makes unattended runs worth having, and each step of it had a way to lose a message until this week.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop release notes 22 Sep; Claude Code release notes 25 to 30 Sep</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">28 &amp; 29 Sep</span>
+    </div>
+    <h4 class="headline">Max thinking is now per session, and Ultracode is a separate switch</h4>
+    <p>Effort is the setting for how long Claude thinks before answering; Max is the highest level. In the desktop app, choosing Max now applies to the current session only, so new sessions no longer start at Max. Choose Max at the start of a hard task; it no longer sticks.</p><p>Ultracode is a separate switch in the terminal and no longer changes your effort level. Anthropic's notes do not explain what it does.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code, desktop app and terminal</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Choose Max when a hard task starts</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">28 and 29 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop release notes</a><a href="https://code.claude.com/docs/en/changelog">Claude Code release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Higher effort buys more careful answers at the price of time and of more of your usage allowance. Until now the app kept a Max choice for later sessions, so a setting picked for one hard task also applied to routine ones.</p><p><span class="lbl">The details.</span> Ultracode was tied to a higher effort level; now the two are independent, and the switch can be reached with Tab in the effort menu or typed as a command.</p><p><span class="lbl">Why it still matters.</span> If sessions in the app suddenly feel quicker or shallower, this is the first place to look.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop release notes 29 Sep; Claude Code release notes 28 Sep</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Anthropic / Claude Code</span>
+      <span class="tag verdict watch">WATCH</span>
+      <span class="date-pill">29 Sep</span>
+    </div>
+    <h4 class="headline">Archiving an old Claude Code session in the desktop app could delete unsaved work: fixed</h4>
+    <p>Claude Code can give each session its own isolated copy of your project, called a worktree, so two tasks cannot overwrite each other. Archiving an old session could delete unsaved work in that copy. The 29 Sep update fixes this and no longer deletes a session's copy automatically.</p><p>Update the app. Before archiving an older session, copy out anything not yet saved to the project's version history.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code, desktop app</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; check old sessions before archiving</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">29 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The app used to clean up these copies on its own, and the archive step is where the bug did its damage.</p><p><span class="lbl">The details.</span> Mac and Linux were affected, for sessions created before the copy's location was changed. Copies are now kept until the session is archived.</p><p><span class="lbl">Why it still matters.</span> Losing unsaved work is the one failure this week that cannot be undone, and it sat in a routine action.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Claude Desktop release notes, 29 Sep</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Try this week</h3>
+  <div class="card">
+    <ul class="actions">
+      <li><strong>Ask Claude Code to check your instructions for outdated advice</strong> — type <code>/doctor prompt-audit</code> in the folder that holds your briefing and research skills. It reads the instruction notes Claude Code keeps for a project, plus your skills, and lists out-of-date instructions, such as wrong file paths, and instructions that contradict each other. <a href="https://code.claude.com/docs/en/changelog">Claude Code release notes, 25 Sep</a></li>
+      <li><strong>Carry on in the desktop app</strong> — start the weekly briefing run in the terminal, then type <code>claude --desktop</code> in the same folder to open the desktop app on it. <a href="https://code.claude.com/docs/en/changelog">Claude Code release notes, 29 Sep</a></li>
+    </ul>
+  </div>
+
+  <h3 class="sec">What the others are building</h3>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Codex · Cursor</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">23 &amp; 29 Sep</span>
+    </div>
+    <h4 class="headline">Two companies now sell an assistant that checks your code for security problems and drafts the fix</h4>
+    <p>Codex is OpenAI's coding tool; Cursor is a code editor built around AI agents. On 29 Sep OpenAI announced Codex Security as generally available: it checks your code for security problems, on demand or on a schedule, and drafts fixes in the cloud. Cursor's Security Review, six days earlier, flags typical security mistakes in each proposed code change and suggests a fix.</p><p><strong>Read-across.</strong> Claude reviews code changes but does not scan on a schedule and fix by itself; this is likely to come (our reading).</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Partly: review of code changes exists; no scheduled scan</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">Two companies within a week</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">Cursor 23 Sep; Codex 29 Sep</div></div></div>
+    <div class="links"><a href="https://cursor.com/changelog">Cursor changelog</a><a href="https://decrypt.co/379584/openai-ai-agents-computers-devday-2026-everything-announced">Decrypt: DevDay recap</a><a href="https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/">Simon Willison: DevDay live blog</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Both products address the weak point of code written by agents: nobody reads every line. A second agent whose only job is to look for what the first got wrong is the answer both chose.</p><p><span class="lbl">The details.</span> OpenAI says 1 percent of its drafted fixes get undone (its own figure). Cursor's bot also supports rules that a team writes for its own code, and a companion bot watches each change after it goes live.</p><p><span class="lbl">Why it still matters.</span> What Claude offers today is review of a change before it is accepted. The new products work on the whole body of code over time, which is a different job.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · Cursor changelog and two independent reports of the OpenAI announcement, 29 Sep</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">GitHub Copilot</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">30 Sep</span>
+    </div>
+    <h4 class="headline">GitHub's Copilot can now choose between models itself and have a second model check the first</h4>
+    <p>Copilot is GitHub's coding assistant. Its new HydraFusion option, in Visual Studio Code and the Copilot app, picks per task between three routes: one model solves it, a cheaper model tries first and a stronger one steps in if needed, or other models review the answer. It shows live progress.</p><p><strong>Read-across.</strong> Claude Code lets you choose a model but not one combined option, so expect model choice and review passes to become a setting there (our reading).</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Not as one option</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">One company</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">30 Sep</div></div></div>
+    <div class="links"><a href="https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app">GitHub changelog: HydraFusion</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Most coding tools make you the router: the strong, slow model for the hard task and the cheap one for the rest. HydraFusion moves that choice into the product, and the built-in review route means a result has been checked by another model before you see it.</p><p><span class="lbl">The details.</span> Not yet known: its price, and which models it uses. The claim that it improves results rests on GitHub's own description.</p><p><span class="lbl">Why it still matters.</span> Trying a cheaper model first and escalating only when needed is also a way to spend less of a usage allowance, which matters wherever limits bind.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · GitHub changelog, 30 Sep</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">Codex · Antigravity</span>
+      <span class="tag verdict try">CLAUDE HAS IT</span>
+      <span class="date-pill">29 &amp; 30 Sep</span>
+    </div>
+    <h4 class="headline">Codex and Antigravity now let you interrupt an agent mid-task</h4>
+    <p>Codex (OpenAI's coding tool) added an opt-in setting on 29 Sep: you can type instructions while Codex is working and it takes them up. Antigravity, Google's coding app, followed on 30 Sep: you can send a message to one of the helper agents it runs, directly from the message box.</p><p><strong>Read-across.</strong> Claude already accepts messages typed while it works and, since 30 Sep, has a send-now shortcut for helper agents; expect finer control over each helper, such as redirecting one of several (our reading).</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Has it: typing while Claude works; send-now for helpers since 30 Sep</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">Two companies this week</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">29 and 30 Sep</div></div></div>
+    <div class="links"><a href="https://learn.chatgpt.com/docs/changelog">Codex changelog</a><a href="https://antigravity.google/docs/changelog/">Antigravity changelog</a><a href="https://code.claude.com/docs/en/changelog">Claude Code release notes</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Agents that run for many minutes make the old rhythm of ask, then wait, a problem: you spot a wrong turn after two minutes and the agent finishes the wrong job anyway. Both companies chose to let you speak up mid-run.</p><p><span class="lbl">The details.</span> Antigravity replaced Google's Gemini command-line tool for free and consumer-subscription users on 18 Jun, so Google's tool news now appears there. Claude's equivalent is a message typed while it works, plus the send-now shortcut.</p><p><span class="lbl">Why it still matters.</span> The difference to watch is how direct the control is. Both competitors describe it for one agent or one helper; Claude's version is spread across several places.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div>
+        <span class="why">5/5 · Codex and Antigravity changelogs 29 and 30 Sep; Claude Code release notes 30 Sep</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI · Google</span>
+      <span class="tag verdict try">CLAUDE HAS IT</span>
+      <span class="date-pill">28 &amp; 29 Sep</span>
+    </div>
+    <h4 class="headline">OpenAI and Google now have app stores for their coding agents</h4>
+    <p>OpenAI opened a plugin marketplace on 29 Sep: partners such as Adobe, Canva, Figma and Notion can show their tools inside ChatGPT and Codex. Google's Antigravity added a place on 28 Sep to find and install plugins. A plugin is an add-on that gives the assistant access to a service.</p><p><strong>Read-across.</strong> Claude has had a plugin store since 23 Sep, and a submission route for developers since 25 Sep; Anthropic says browsing will reach both Claude and Claude Code over the coming weeks, so expect it inside Cowork and Claude Code themselves (our reading).</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Has it since 23 Sep</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">Two companies this week</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">28 and 29 Sep</div></div></div>
+    <div class="links"><a href="https://claude.com/blog/build-plugins-for-claude">Anthropic: build plugins for Claude</a><a href="https://antigravity.google/docs/changelog/">Antigravity changelog</a><a href="https://decrypt.co/379584/openai-ai-agents-computers-devday-2026-everything-announced">Decrypt: DevDay recap</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> A plugin typically bundles a connection to an outside service with ready-made instructions for using it. A store lets companies list them and lets you install them without setting anything up by hand.</p><p><span class="lbl">The details.</span> OpenAI's version adds a purchasing route for companies. Antigravity's changelog gives one line and nothing on who can list there.</p><p><span class="lbl">Why it still matters.</span> Three companies built the same storefront within about a week, so the contest is shifting from which agent is better to which one connects to the services you already use.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · Anthropic announcement and Antigravity changelog; OpenAI side from two independent reports</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag t-vendor">OpenAI</span>
+      <span class="tag verdict watch">GAP</span>
+      <span class="date-pill">29 Sep</span>
+    </div>
+    <h4 class="headline">OpenAI's new &ldquo;Dots&rdquo; are assistants that work in the background; you message them in Slack or Microsoft Teams</h4>
+    <p>Dots are always-on assistants from OpenAI, launched on 29 Sep. You give one a standing job, for example reading customer feedback and acting on it, and message it in Slack or Microsoft Teams, or inside ChatGPT or Codex. OpenAI plans for several Dots to work together. Plans and price are unconfirmed.</p><p><strong>Read-across.</strong> Claude can run tasks on a schedule, but cannot yet keep an assistant waiting for something to happen; expect Anthropic to move scheduled tasks in that direction (our reading).</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Partly: scheduled tasks and Slack; no assistant that waits for events</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">One company this week</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">29 Sep</div></div></div>
+    <div class="links"><a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/">TechCrunch: Dots</a><a href="https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/">Simon Willison: DevDay live blog</a></div>
+    <details class="deep">
+      <summary>Read more</summary>
+      <div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Much of this already existed inside ChatGPT's agent features; what is new is one persistent assistant with its own name, reachable where teams already talk. Cursor's Projects, from 10 Sep, applies the same idea to coding: a lead agent that keeps working for months and hands tasks to helpers.</p><p><span class="lbl">The details.</span> Text-message access is announced as coming. OpenAI is connecting Dots to Microsoft's security controls for company use.</p><p><span class="lbl">Why it still matters.</span> It is the same direction as this week's Claude Code change, seen from the other side: Claude asks less while it works; Dots work without being asked at all.</p></div>
+    </details>
+    <div class="foot">
+      <div class="conf"><span class="lbl">C-Score</span>
+        <div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div>
+        <span class="why">4/5 · TechCrunch and live coverage of the 29 Sep announcement</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>The change to notice is in Claude Code. </strong>Auto mode as the opening mode on every plan, the &ldquo;ask again next time&rdquo; answer and the quieter Remote Control prompt share one idea: fewer prompts when you are at the computer, and questions kept for when someone else is instructing.</li>
+      <li><strong>The competitor week was OpenAI's. </strong>Three of the five items come from its developer conference on 29 Sep: security scanning, an app store and always-on assistants. Claude has a partial or very new equivalent of each.</li>
+      <li><strong>The direction: unattended work, steered from elsewhere. </strong>Claude's own changes and the competitors' interrupt-while-it-works features both make long runs easier to leave alone and easier to redirect. The visible gap is in timing: Claude's tasks run on a timer, while competitors are moving to assistants that run when something happens (our reading).</li>
+    </ol>
+    <p class="closer">A quiet week for chat and Cowork, a busy one for permissions: the tools are learning when not to ask.</p>
+  </div>
+
+  <div class="card colophon">
+    <p><strong>Compiled:</strong> Thursday, 1 October 2026 &middot; covers 25 September – 1 October 2026.</p>
+    <p><strong>C-Score key:</strong> the five dots show how well a claim is sourced. Five: the company's own release notes. Four: two independent reports. Three: one credible source. Two: a single secondary source, flagged. No score is rounded up; the &ldquo;our reading&rdquo; sentences are judgement and carry no score.</p>
+    <p><strong>Who is who:</strong> Codex is OpenAI's coding tool; Cursor is an AI code editor; GitHub Copilot is GitHub's coding assistant; Antigravity is Google's coding app, which replaced its Gemini CLI (command-line interface) tool for free and consumer-subscription users.</p>
+  </div>
+
+</div>
+</body>
+</html>
