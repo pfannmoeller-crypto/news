@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical AI Tools — 15–29 October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
+    --text:#202124; --text2:#3c4043; --muted:#5f6368;
+    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
+    --link:#1967d2; --pill:#f1f3f4;
+    --try-bg:#e6f4ea; --try-fg:#0d652d;
+    --watch-bg:#fef7e0; --watch-fg:#b06000;
+    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
+  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+
+  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
+  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
+  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
+
+  .hero{background:var(--hero); color:#fff; border:none;}
+  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
+  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
+  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
+  .hero p + p{margin-top:11px;}
+
+  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+    font-weight:700; margin:30px 0 12px; padding-left:2px;}
+  h3.sec.sub{font-size:11px; letter-spacing:1.2px; color:var(--text2); margin:18px 0 10px;}
+  .card.quiet p{margin:0; color:var(--muted); font-style:italic;}
+
+  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
+  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
+  .t-vendor{background:#fef3e0; color:#c46210;}
+  .t-infra{background:#e8eef6; color:#1f3548;}
+  .t-research{background:#f3e8fd; color:#5f1d8e;}
+  .t-agent{background:#e6f4ea; color:#0d652d;}
+  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
+  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
+  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
+  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
+  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
+
+  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
+  .card p{margin:0 0 11px; color:var(--text2);}
+  .card p:last-of-type{margin-bottom:0;}
+
+  .lbl{font-weight:700; color:var(--text);}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
+    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
+  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
+  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
+
+  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
+  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
+    padding:4px 11px; border-radius:11px; display:inline-block;}
+  .links a:hover{background:#e4e7ea;}
+
+  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
+  details.deep[open]{background:#fff;}
+  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
+    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
+  details.deep summary::-webkit-details-marker{display:none;}
+  .deep-body{padding:2px 18px 16px; font-size:14px;}
+  .deep-body p{margin:0 0 11px;}
+
+  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
+    padding-top:10px; border-top:1px solid var(--divider);}
+  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
+  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
+  .conf .dots{display:flex; gap:3px;}
+  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
+  .conf .d.on{background:var(--primary);}
+  .conf .why{font-size:11.5px; color:var(--muted);}
+
+  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
+
+  ol.take{margin:6px 0 0; padding-left:22px;}
+  ol.take li{margin-bottom:13px; color:var(--text2);}
+  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
+
+  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
+  ul.actions li{margin-bottom:10px;}
+
+  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
+  .colophon strong{color:var(--text2);}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 14px 48px;}
+    .card{padding:18px 16px;}
+    .hero h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+  <div class="card appbar"><div class="avatar">PT</div><div><h1>Practical AI Tools</h1>
+  <p>Covers 15–29 October 2026; 2–14 October not covered (catch-up edition) · what you can do differently, and what the others are building</p></div></div>
+  <div class="card hero"><p class="eyebrow">Briefing summary</p>
+  <h2>Anthropic opens an always-on agent; rivals move coding agents into chat apps</h2>
+  <p>A catch-up edition for two weeks. Claude gets its first agent that works while you are away, but only on a US waitlist. Cowork scheduled tasks stop losing their skills. Meanwhile Cursor, Devin and GitHub Copilot push agents into shared pages and Microsoft Teams.</p></div>
+
+  <div class="card"><p><strong>Key.</strong> Watch = keep an eye on it · Try = worth testing this week · Skip = ignore · Gap = rivals have something Claude lacks · Claude has it = nothing new to do. Confidence 1–5 dots show how well sourced a claim is.</p>
+  <p>Your stack means the tools you use. Claude is the AI assistant made by Anthropic. Claude chat is the chatbot, Cowork is the desktop assistant for office tasks, and Claude Code is a coding tool. Cursor, Devin, GitHub Copilot, OpenAI Codex and Google Gemini CLI (command-line interface) are rival AI coding tools.</p></div>
+  <h3 class="sec">Your stack</h3>
+  <h3 class="sec sub">Claude chat</h3>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Claude chat</span><span class="tag verdict watch">WATCH</span><span class="date-pill">21 Oct 2026</span></div>
+    <h4 class="headline">Claude Duet, an AI assistant that carries out tasks while you are away, opens as a US-only waitlist</h4>
+    <p>Anthropic (maker of the AI assistant Claude) describes Claude Duet as a proactive assistant: you hand it work by message, it runs on a computer run by Anthropic over the internet, not on yours, checks your linked accounts every few hours and comes back with a finished document, spreadsheet or slide deck, or with a question. It drafts replies and reminders but shows you what it is about to send, pay or delete and waits for your approval.</p><p>For now it is an early test version: only people in the US on Anthropic's two paid personal plans (Pro and Max) can join the waitlist. Business and company plans are excluded, and it counts against your usual allowance of messages.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat (separate app)</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Join the waitlist if eligible; otherwise wait</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">21 Oct 2026</div></div></div>
+    <div class="links"><a href="https://support.claude.com/en/articles/12138966-release-notes">Claude apps release notes, 21 Oct</a><a href="https://braindetox.kr/en/posts/claude_duet_proactive_personal_agent_2026.html">Detailed write-up of Anthropic's announcement</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Duet is the first Claude product built around the idea that you do not open it; it comes to you. It checks accounts only every few hours, so it can miss something that arrives in between and may misjudge urgency, as Anthropic itself concedes.</p><p><span class="lbl">The details.</span> Anthropic lists scheduling meetings, flagging email and calendar items, finding unpaid invoices, preparing payroll for review and building dashboards or small web apps (the last uses more of your allowance). It can link to your email, calendar and other services through add-ons Anthropic lists in an online store. It will not buy or sell shares or move money between accounts, even with approval; credit card numbers and passport-type documents get the tightest protection. An automatic safety check, also used in Anthropic's other products, decides which actions are allowed. All of this is Anthropic's own description; no independent test has been published.</p><p><span class="lbl">Why it still matters.</span> Upgrade this to Try once you get an invitation or it opens outside the US. Anthropic has not said how Duet relates to Cowork, so do not assume it replaces tasks you set to run automatically at fixed times.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">Confidence 4 of 5: Anthropic's own release note plus one detailed report on the announcement</span></div></div>
+  </div><h3 class="sec sub">Cowork</h3>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Cowork</span><span class="tag verdict try">TRY</span><span class="date-pill">22 Oct 2026</span></div>
+    <h4 class="headline">Cowork tasks set to run automatically no longer lose your add-ons and saved instructions</h4>
+    <p>Until this fix, a task set to run at fixed times, or one running in the background and not open on screen, could fail to find the add-ons (plugins) and saved instruction sets (skills) you installed. An example is a briefing you set to run every week. The fix arrived on 22 October.</p><p>Two related changes. Some actions need a human to approve them; these now ask for approval only inside the app, so an automatic task skips them rather than waiting. And the /schedule shortcut now just fills in a request to schedule a task, like the Schedule button.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork (desktop app)</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Install the update, then re-run one automatic task to check it works</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">22 Oct 2026</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 22 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Before this, an unattended run could behave differently from the same task run while you watched, because the saved instructions it relied on were not found. The symptom is a task that completes but ignores your own standing instructions.</p><p><span class="lbl">The details.</span> The approval change cuts the other way. An automatic task that needs a service insisting on a human click will now continue without that step, rather than stall. Check the output of any task that writes through such a service and note what was skipped. Anthropic's update notes do not list which services are affected.</p><p><span class="lbl">Why it still matters.</span> Anthropic's update notes do not say which add-ons were affected, and versions run through other companies' systems do not get this fix.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Anthropic's own update notes</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Cowork</span><span class="tag verdict watch">WATCH</span><span class="date-pill">20 Oct 2026</span></div>
+    <h4 class="headline">A new Storage page shows how much disk space Claude uses and lets you clear old tasks</h4>
+    <p>Settings now has a Storage page showing the disk space Claude occupies, with a button to remove inactive Cowork tasks and old coding conversations. A low-disk warning opens it, and typing /storage in Cowork or the coding tool does the same.</p><p>It is housekeeping, not a new capability. Worth one visit if your laptop has been short of space.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude desktop app (Cowork and coding tool)</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Open Settings, Storage once; otherwise nothing</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">20 Oct 2026</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 20 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The same release means very old versions of Windows 10 can no longer receive Claude updates. It also removed the confirmation box before opening most links to other websites.</p><p><span class="lbl">The details.</span> The page is not yet available through other companies' systems, and Anthropic does not say what happens to a removed task's files. Treat removal as permanent and export anything you still need first.</p><p><span class="lbl">Why it still matters.</span> When to act: the low-disk warning appears.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Anthropic's own update notes</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Cowork</span><span class="tag verdict skip">SKIP</span><span class="date-pill">20 Oct 2026</span></div>
+    <h4 class="headline">Designs made in Cowork can be passed to the coding tool to turn into working software</h4>
+    <p>A design made in Cowork now has a Hand off to Claude Code entry in its name menu. It opens Claude Code, Anthropic's coding tool, with a request to build the design in your software project, or gives you the request to paste.</p><p>Only relevant if you build software from designs; ignore it for briefings, research and contracts.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Nothing</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">20 Oct 2026</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 20 Oct</a><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 16 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> A note from 16 October says Anthropic's separate design website, Claude Design, closes on 14 December 2026. Anthropic does not say where existing designs go, so export anything you want to keep before then.</p><p><span class="lbl">The details.</span> The handoff is the only new link between the two products in these two weeks.</p><p><span class="lbl">Why it still matters.</span> No further detail is available: Anthropic's notes give one line.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Anthropic's own update notes</span></div></div>
+  </div><h3 class="sec sub">Claude Code</h3>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Claude Code</span><span class="tag verdict try">TRY</span><span class="date-pill">27 Oct 2026</span></div>
+    <h4 class="headline">Adding the word ultrathink makes Claude work longer and more carefully on one request</h4>
+    <p>In the text-command window of Claude Code, the word ultrathink inside your request makes Claude reason at its extra-high effort level for that one request, on all of Anthropic's current AI models. The word is now coloured only when it will work, not when it is quoted or part of a file name.</p><p>Try it on one demanding job, such as checking a contract for clauses that contradict each other.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code (text-command window)</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Try on a contract review, such as a company-takeover agreement</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">26 Oct 2026</div></div></div>
+    <div class="links"><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Effort is the setting that decides how long Claude reasons before answering. It was previously changed with a menu or command for the whole session; the keyword raises it for one request only, so you do not pay for it on easy follow-ups.</p><p><span class="lbl">The details.</span> A fix in the latest update also stops the small status text at the bottom of the screen from naming a newly picked effort level before it takes effect: during a task it now shows the level actually in force. A change made mid-task may wait for your next message.</p><p><span class="lbl">Why it still matters.</span> Higher effort uses more of your allowance and takes longer. Anthropic does not say by how much.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Anthropic's own update notes</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Claude Code</span><span class="tag verdict watch">WATCH</span><span class="date-pill">15 Oct 2026</span></div>
+    <h4 class="headline">The coding screen in the Claude desktop app is rebuilt around a side panel and a visible plan</h4>
+    <p>The coding screen has a new side panel showing settings, what Claude has read so far, linked services, edits made and jobs running in the background. A box at the end of the conversation shows Claude's plan while it works and a short recap with next-step buttons when it finishes. Questions and approval requests now appear in the conversation instead of above the message box.</p><p>Also new: saved work setups you pick when starting, a second chat beside the main one, and one job that can launch other jobs and get their results.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude desktop app, coding screen</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; look at the plan box on your next session</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">15 Oct 2026</div></div></div>
+    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 15 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The row under the message box now holds a setting for how much Claude may do without asking, one menu for model and effort, and a circle showing how much of your allowance is used. The Get started checklist is gone from the sidebar.</p><p><span class="lbl">The details.</span> Several controls moved: buttons for pull requests (proposals to merge code changes) are in the side panel's changes section, the folder menu is in its settings section, and the Filter button became Group and sort. If a button you used has vanished, look in the side panel first.</p><p><span class="lbl">Why it still matters.</span> When to try it properly: a session long enough that you want to see what Claude plans next. Parts are not yet available through other companies' systems.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Anthropic's own update notes</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Anthropic / Claude Code</span><span class="tag verdict watch">WATCH</span><span class="date-pill">19 Oct 2026</span></div>
+    <h4 class="headline">Claude Code warns before an old conversation uses up a large share of your five-hour allowance</h4>
+    <p>On Anthropic's paid personal plans, picking up a long inactive conversation can use a noticeable share of the cap on how much you can use Claude within any five-hour stretch, because Claude has to reprocess the entire conversation. Claude Code now says so first and offers to start a new conversation instead, where Claude can look up the old one if you refer to it.</p><p>Related: the usage screen now explains each warning in one line and offers to apply the fix, and messages now say five-hour limit instead of session limit.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Nothing; choose when the warning appears</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">19–27 Oct 2026</div></div></div>
+    <div class="links"><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The warning exists because picking up a conversation after a break means reprocessing all of it, which costs more than a fresh start. Anthropic gives no threshold for when the warning appears.</p><p><span class="lbl">The details.</span> A companion note says that when a long online conversation was automatically condensed, reopening it on your computer loads the summary, not the original messages; the tool now warns about that too.</p><p><span class="lbl">Why it still matters.</span> When to act: you see the prompt on a conversation you could restart cheaply.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Anthropic's own update notes</span></div></div>
+  </div>
+  <h3 class="sec">Try this week</h3>
+  <div class="card"><ul class="actions">
+    <li><strong>Run your weekly briefing as an automatic Cowork task after updating</strong> — compare the result with last week's: if your saved instructions were missing before, this is the week they should be found. <a href="https://claude.com/docs/cowork/changelog">Desktop changelog, 22 Oct</a></li>
+    <li><strong>Ask for a multi-tab web page for a research long-read</strong> — ask Claude to publish the piece as a single web page with several tabs and open it on your phone; links now open the right tab and phones display it correctly. <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 15–26 Oct</a></li>
+    <li><strong>Put ultrathink on one contract review</strong> — pick a document where two clauses may conflict and compare the answer with an ordinary request. <a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 26 Oct</a></li>
+  </ul></div>
+
+  <h3 class="sec">What the others are building</h3>
+  <div class="card quiet"><p>Rival tools; each card says whether Claude can already do the same.</p></div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Cursor / Devin</span><span class="tag verdict watch">GAP</span><span class="date-pill">16 and 26 Oct 2026</span></div>
+    <h4 class="headline">Two rival coding assistants now return interactive pages instead of only text and code</h4>
+    <p>Cursor's AI helpers running online can build an interactive page (a "canvas") as part of their work, and you share the finished page with a team by link (16 October). Devin, a rival AI coding assistant, can build reports, dashboards and charts as web pages and show them inside the conversation (26 October).</p><p>Neither company says how the pages are made or saved.</p><p><strong>Our guess (not reported):</strong> Claude's pages may start appearing inside the working conversation, not only as a link you open afterwards.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Does Claude do this?</div><div class="stat-value">partly — Claude publishes pages as shareable links; showing them inside the conversation is not documented</div></div><div class="stat"><div class="stat-label">How many rivals?</div><div class="stat-value">two rivals in these two weeks</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">16 and 26 Oct 2026</div></div></div>
+    <div class="links"><a href="https://cursor.com/changelog/cloud-agent-canvases-and-environments">Cursor changelog, 16 Oct</a><a href="https://docs.devin.ai/release-notes/overview">Devin release notes, 26 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Cursor's note also adds a test-stage way to create online work setups by program, setups covering up to 300 project code folders and, it says, five times faster loading of large ones. Devin's note adds merged activity views, quoting parts of attached pages, and a note that explains why a request was blocked.</p><p><span class="lbl">The details.</span> Both companies are moving from helpers that hand back a text answer to helpers that hand back something you open and click. Claude already publishes pages as links from Cowork and Claude Code and improved that this fortnight, which is why the gap is small.</p><p><span class="lbl">Why it still matters.</span> Not yet known: which plans include this, whether the pages can be edited afterwards, and whether Devin's pages can be shared outside the conversation.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">Confidence 4 of 5: two companies' own update notes, reporting the same direction independently</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">GitHub Copilot / Devin</span><span class="tag verdict watch">GAP</span><span class="date-pill">15–23 Oct 2026</span></div>
+    <h4 class="headline">Coding assistants move into Microsoft Teams: tag the helper on a problem report and it prepares a fix</h4>
+    <p>GitHub Copilot (the AI coding helper from GitHub, a code-sharing website) in Microsoft Teams can turn a notification into code: a problem report arrives in a channel, you tag GitHub, and the helper investigates and prepares a proposed code fix, a pull request, for people to check (23 October). Devin added matching Teams features on 19 and 23 October: it can start private work from channel messages, respond to group tags, and retry a crashed job when you reply in the thread.</p><p>GitHub also made its Slack and Teams apps work across several code projects on 15 October.</p><p><strong>Our guess (not reported):</strong> Expect a Teams route for Claude, since Microsoft's chat tool is the obvious gap next to Slack.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Does Claude do this?</div><div class="stat-value">partly — Claude has a Slack connector; a Teams equivalent is not documented</div></div><div class="stat"><div class="stat-label">How many rivals?</div><div class="stat-value">two rivals in these two weeks</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">15–23 Oct 2026</div></div></div>
+    <div class="links"><a href="https://github.blog/changelog/2026-10-23-turn-notifications-into-code-with-github-copilot-in-teams">GitHub changelog, 23 Oct</a><a href="https://docs.devin.ai/release-notes/overview">Devin release notes, 19 and 23 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> GitHub's old notifications app for Teams is retired on 16 November, so teams using it must install the combined app. Devin's Teams work also includes confidentiality markings on files and alerts to administrators when a channel stops delivering messages.</p><p><span class="lbl">The details.</span> The pattern is the same in both: the helper is reached from where work is discussed, not from a developer's coding window. The practical consequence is who can start a job: colleagues, without opening a coding tool.</p><p><span class="lbl">Why it still matters.</span> Not yet known: pricing, and how much of this Anthropic already offers in Teams. Nothing about a Teams route for Claude has been announced.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">Confidence 4 of 5: GitHub's and Devin's own update notes</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Cursor</span><span class="tag verdict watch">GAP</span><span class="date-pill">20 Oct 2026</span></div>
+    <h4 class="headline">Cursor lets you build your own AI helpers that react to code changes, Slack messages or a timer</h4>
+    <p>Cursor's new toolkit for building your own AI helper lets you define it as a folder of instructions, tools and saved skills, then run it on your computer with a test area or put it on Cursor's servers with one command. The helper can react to proposed code changes and comments, results of automatic builds, Slack messages, automatic messages from other software, or a schedule, and keeps a separate conversation per thread. Templates include one that checks code for security problems and one that fixes proposed changes automatically.</p><p>Cursor says it is open to everyone, not just testers. Pricing is not stated.</p><p><strong>Our guess (not reported):</strong> Anthropic may keep its developer tools and its Duet assistant on separate tracks until one hosted option covers both.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Does Claude do this?</div><div class="stat-value">partly — Anthropic has a toolkit for developers (the Agent SDK (software development kit)); a one-command hosted version is not documented</div></div><div class="stat"><div class="stat-label">How many rivals?</div><div class="stat-value">one rival</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">20 Oct 2026</div></div></div>
+    <div class="links"><a href="https://cursor.com/changelog/agent-sdk">Cursor changelog, 20 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The toolkit includes automated checks of what the helper did, which can run on your computer or in automatic builds, and a command that replays a real proposed code change as a test. Running it on your own servers is mentioned but not explained.</p><p><span class="lbl">The details.</span> Claude Duet is the everyday-user version of the same idea from the Claude side; Cursor offers the developer version. Anthropic's coding tool also added guidance for its Managed Agents product to a built-in helper this fortnight, so Anthropic has a developer path too.</p><p><span class="lbl">Why it still matters.</span> Not yet known: how Cursor's helpers are billed and which AI models they can use.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="why">Confidence 3 of 5: Cursor's own note, with no independent confirmation</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">OpenAI Codex</span><span class="tag verdict try">CLAUDE HAS IT</span><span class="date-pill">27 Oct 2026</span></div>
+    <h4 class="headline">Codex now remembers by default and imports memories from other assistants</h4>
+    <p>OpenAI Codex, OpenAI's coding assistant, now remembers things between sessions automatically for new users and can import memories from other coding assistants (27 October). Earlier it added a way to save frequently used requests (23 October) and made a message sent mid-answer redirect it at once (15 October).</p><p>Claude's memory has worked across chats and Cowork since 25 August, and the desktop app can import from another assistant.</p><p><strong>Our guess (not reported):</strong> No new gap; memory in the coding tool is the likely next step for Claude Code.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Does Claude do this?</div><div class="stat-value">has it since 25 Aug 2026 (memory across chat and Cowork); import from other apps in Settings since 8 Oct</div></div><div class="stat"><div class="stat-label">How many rivals?</div><div class="stat-value">one rival</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">15–27 Oct 2026</div></div></div>
+    <div class="links"><a href="https://learn.chatgpt.com/docs/changelog">Codex changelog</a><a href="https://engadget.com/2243753/claude-memory-now-works-across-both-chats-and-cowork-sessions">Memory across chat and Cowork, 25 Aug</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Codex's note says memories from other assistants can be imported, but not which ones. Claude's import setting (8 October) covers instructions, saved skills and linked services on your computer from another app; it is not the same as memory.</p><p><span class="lbl">The details.</span> Redirecting mid-answer matches what Claude Code already did with queued messages; it added a clickable send-now hint for them this fortnight.</p><p><span class="lbl">Why it still matters.</span> Not yet known: whether Codex memory is stored on your computer or by OpenAI.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: Codex's own update notes; the Claude side rests on Anthropic's notes and a press report</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">GitHub Copilot</span><span class="tag verdict try">CLAUDE HAS IT</span><span class="date-pill">26 Oct 2026</span></div>
+    <h4 class="headline">Copilot now skips approval questions for safe actions</h4>
+    <p>In GitHub Copilot's text-command tool, desktop app and code-editor add-on, the AI now decides which requests (running a command, reading a file, opening a web address) are safe. Safe ones go ahead and you are asked only about the rest. Administrators can disable the setting or block the Allow All option.</p><p>Claude Code's auto mode, a setting that lets it act without asking each time, works the same way, and a guided setup that reads your project was added this fortnight.</p><p><strong>Our guess (not reported):</strong> No gap; the next step may be team-wide rules for the setting.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Does Claude do this?</div><div class="stat-value">has it — auto mode; guided setup added 19 Oct 2026</div></div><div class="stat"><div class="stat-label">How many rivals?</div><div class="stat-value">one rival</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">26 Oct 2026</div></div></div>
+    <div class="links"><a href="https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available">GitHub changelog, 26 Oct</a><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 19 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Now that it is open to all users, a middle setting between ask-every-time and allow-everything is becoming standard.</p><p><span class="lbl">The details.</span> Anthropic's notes also say that in the mode that skips approvals, a command that would delete files dangerously is now refused at once with a hint, so unattended runs keep going.</p><p><span class="lbl">Why it still matters.</span> Not yet known: how often GitHub's checker is wrong; neither company publishes an error rate in these notes.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">Confidence 5 of 5: both companies' own update notes</span></div></div>
+  </div>
+  <div class="card">
+    <div class="meta"><span class="tag t-vendor">Devin</span><span class="tag verdict try">CLAUDE HAS IT</span><span class="date-pill">23 Oct 2026</span></div>
+    <h4 class="headline">Devin replaces its saved instruction sets with a new format called Skills</h4>
+    <p>Devin is replacing its saved procedures, called Playbooks, with Skills, one account at a time. New accounts from 24 October get Skills only. On 19 October it also let its jobs propose edits to shared add-ons and skills, pending an administrator's approval.</p><p>Skills are a Claude idea: reusable instructions loaded when relevant. Claude has had them for a year.</p><p><strong>Our guess (not reported):</strong> Other assistants may read the same skill folders Claude uses, which would make your briefing instructions portable.</p>
+    <div class="stat-grid"><div class="stat"><div class="stat-label">Does Claude do this?</div><div class="stat-value">has it — skills are an established Claude feature</div></div><div class="stat"><div class="stat-label">How many rivals?</div><div class="stat-value">one rival</div></div><div class="stat"><div class="stat-label">Available since</div><div class="stat-value">23 Oct 2026</div></div></div>
+    <div class="links"><a href="https://docs.devin.ai/release-notes/overview">Devin release notes, 23 Oct</a></div>
+    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The useful part is the approval flow: a job can suggest a change to a shared skill and an administrator approves it. Anthropic's notes show no equivalent approval step.</p><p><span class="lbl">The details.</span> It matters because skills are becoming the shared format across AI assistant products, so skills you write for Cowork or Claude Code may later be worth more than the prompts you type.</p><p><span class="lbl">Why it still matters.</span> Not yet known: whether Devin skills can be used outside Devin.</p></div></details>
+    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="why">Confidence 3 of 5: Devin's own release note</span></div></div>
+  </div>
+  <h3 class="sec">Editor's view</h3>
+  <div class="card">
+    <ol class="take">
+      <li><strong>The fortnight's biggest news is one you may not be able to use.</strong> Claude Duet is a US-only waitlist for Anthropic's two paid personal plans. Treat it as a sign of Anthropic's direction, not as this month's workflow.</li>
+      <li><strong>The practical gain is quiet and sits in Cowork.</strong> Automatic tasks finding their saved instructions is what lets a weekly briefing run unattended; check one run against last week.</li>
+      <li><strong>Where things are heading: AI assistants are moving out of the coding window into everyday apps.</strong> Claude Duet works on a computer run by Anthropic, Cursor builds helpers that react to events, Devin and Copilot sit in Teams, and Cursor and Devin hand back pages instead of text. Claude Code's own changes are about seeing and steering a long job. Our guess: Claude's next moves are more places to start tasks and better ways to receive results.</li>
+    </ol>
+    <p class="closer">Little news from Google's Gemini CLI (command-line interface) tool: its latest update was 13 October, and free users were moved to a new Google tool called Antigravity.</p>
+  </div>
+
+  <div class="card colophon">
+    <p><strong>Written:</strong> Thursday, 29 October 2026 &middot; covers the AI tools you use. This briefing is drafted with Claude, made by Anthropic, which is also the subject of much of it.</p>
+    <p><strong>Confidence:</strong> 5 = the company's own update notes &middot; 4 = two separate sources &middot; 3 = one credible source &middot; 2 = a secondary report with a caveat. Our guesses are marked as such.</p>
+    <p><strong>Source:</strong> company update notes and announcements, plus outside reports where named.</p>
+  </div>
+</div>
+</body>
+</html>

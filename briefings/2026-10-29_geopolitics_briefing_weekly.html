@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- SKELETON for the {{Label}} briefing. Copy this file; replace every {{…}}; add story cards by
+     duplicating the one in each section (all seven parts, in order). Do not add script tags, the
+     wz-back link or a robots meta — the pipeline injects them. English throughout. -->
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geopolitics — 15–29 October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<style>
+  :root {
+    --bg:#f8f9fa; --surface:#ffffff; --surface-2:#f1f3f4;
+    --on-surface:#202124; --on-surface-2:#3c4043; --on-surface-muted:#5f6368;
+    --divider:#dadce0; --divider-soft:#e8eaed;
+    --primary:#7627bb; --primary-soft:#f3e8fd; --primary-on-soft:#5f1d8e;
+    --blue:#1a73e8; --blue-soft:#e8f0fe; --blue-on:#1967d2;
+    --green:#188038; --green-soft:#e6f4ea; --green-deep:#0d652d;
+    --yellow:#b06000; --yellow-soft:#fef7e0;
+    --red:#c5221f; --red-soft:#fce8e6; --red-deep:#a50e0e;
+    --ink:#1f3548; --ink-soft:#e3ecf3; --ink-deep:#0f2536;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.06);
+    --shadow-2:0 1px 2px 0 rgba(60,64,67,0.08), 0 2px 6px 2px rgba(60,64,67,0.10);
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--on-surface); font-family:'Google Sans Text','Roboto',system-ui,sans-serif; font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+  .appbar { background:var(--surface); border-bottom:1px solid var(--divider-soft); }
+  .appbar-inner { max-width:880px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .appbar .logo { width:36px; height:36px; border-radius:50%; background:var(--primary-soft); color:var(--primary-on-soft); display:grid; place-items:center; font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px; }
+  .appbar .titles { flex:1; }
+  .appbar h1 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0; line-height:1.2; }
+  .appbar .sub { font-size:12px; color:var(--on-surface-muted); margin-top:2px; }
+  .appbar .actions { display:flex; gap:6px; }
+  .icon-btn { width:40px; height:40px; border-radius:50%; border:none; background:transparent; color:var(--on-surface-2); display:grid; place-items:center; cursor:pointer; transition:background 0.15s; }
+  .icon-btn:hover { background:var(--surface-2); }
+  .icon-btn .material-icons-outlined { font-size:20px; }
+
+  .page { max-width:880px; margin:0 auto; padding:24px 24px 80px; width:100%; }
+
+  .banner { display:flex; gap:12px; align-items:flex-start; background:var(--red-soft); border:1px solid #f5c6c3; border-radius:12px; padding:14px 18px; margin-bottom:20px; }
+  .banner .material-icons-outlined { color:var(--red); font-size:20px; margin-top:1px; }
+  .banner p { margin:0; font-size:13px; color:var(--on-surface-2); line-height:1.55; }
+  .banner strong { color:var(--on-surface); }
+
+  .chips { display:flex; gap:8px; margin-bottom:20px; overflow-x:auto; padding-bottom:4px; }
+  .chip { white-space:nowrap; font-size:13px; padding:7px 14px; border-radius:8px; border:1px solid var(--divider); background:var(--surface); color:var(--on-surface-2); text-decoration:none; transition:background 0.15s; }
+  .chip:hover { background:var(--surface-2); }
+  .chip.active { background:var(--primary-soft); border-color:var(--primary-soft); color:var(--primary-on-soft); font-weight:500; }
+
+  .hero { background:linear-gradient(135deg,#7627bb 0%,#1f3548 100%); color:#ffffff; border-radius:16px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-1); }
+  .hero .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-bottom:8px; }
+  .hero h2 { font-family:'Google Sans',sans-serif; font-size:24px; font-weight:500; line-height:1.3; margin:0 0 12px; letter-spacing:-0.01em; }
+  .hero p { font-size:14px; line-height:1.6; opacity:0.96; margin:0; }
+
+  .statusquo { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:22px 26px; margin-bottom:8px; }
+  .statusquo h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0 0 12px; display:flex; align-items:center; gap:10px; }
+  .statusquo h3 .material-icons-outlined { font-size:20px; color:var(--primary-on-soft); }
+  .statusquo ul { margin:0; padding-left:20px; }
+  .statusquo li { font-size:13.5px; color:var(--on-surface-2); line-height:1.6; margin-bottom:8px; }
+  .statusquo li:last-child { margin-bottom:0; }
+  .statusquo strong { color:var(--on-surface); font-weight:500; }
+
+  .section-header { display:flex; align-items:center; gap:12px; margin:32px 4px 12px; }
+  .section-header .material-icons-outlined { color:var(--primary-on-soft); font-size:22px; }
+  .section-header h3 { font-family:'Google Sans',sans-serif; font-size:16px; font-weight:500; margin:0; flex:1; }
+  .count-pill { font-family:'Roboto Mono',monospace; font-size:11px; background:var(--surface-2); color:var(--on-surface-muted); padding:3px 10px; border-radius:10px; }
+
+  .card { background:var(--surface); border:1px solid var(--divider-soft); border-radius:14px; padding:20px 24px; margin-bottom:14px; transition:box-shadow 0.2s, border-color 0.2s; }
+  .card:hover { box-shadow:var(--shadow-2); border-color:var(--divider); }
+  .card .meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; padding:3px 10px; border-radius:12px; }
+  .tag.t-green { background:var(--green-soft); color:var(--green-deep); }
+  .tag.t-red { background:var(--red-soft); color:var(--red-deep); }
+  .tag.t-blue { background:var(--blue-soft); color:var(--blue-on); }
+  .tag.t-yellow { background:var(--yellow-soft); color:var(--yellow); }
+  .tag.t-purple { background:var(--primary-soft); color:var(--primary-on-soft); }
+  .tag.t-ink { background:var(--ink-soft); color:var(--ink-deep); }
+  .date-pill { font-family:'Roboto Mono',monospace; font-size:11px; color:var(--on-surface-muted); }
+  .card h4 { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:500; margin:0 0 8px; line-height:1.3; letter-spacing:-0.005em; }
+  .card p { font-size:14px; line-height:1.6; color:var(--on-surface-2); margin:0 0 10px; }
+
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin:4px 0 14px; }
+  .stat-grid .stat { background:var(--surface-2); border-radius:10px; padding:10px 12px; }
+  .stat-grid .stat .v { font-family:'Google Sans',sans-serif; font-size:18px; font-weight:600; color:var(--primary-on-soft); line-height:1.2; }
+  .stat-grid .stat .k { font-size:10.5px; color:var(--on-surface-muted); text-transform:uppercase; letter-spacing:0.04em; margin-top:3px; }
+
+  .card .links { font-family:'Roboto',sans-serif; font-size:12px; }
+  .card .links a { color:var(--primary-on-soft); text-decoration:none; padding:3px 9px; border-radius:6px; background:var(--surface-2); font-weight:500; margin-right:6px; display:inline-block; margin-bottom:4px; }
+  .card .links a:hover { background:var(--primary-soft); }
+  .card .foot { display:flex; align-items:center; gap:12px; margin-top:12px; padding-top:10px; border-top:1px solid var(--divider-soft); flex-wrap:wrap; }
+  .conf { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .conf .dots { display:flex; gap:3px; }
+  .conf .d { width:7px; height:7px; border-radius:50%; background:var(--divider); }
+  .conf .d.on { background:var(--primary); }
+  .conf .lbl { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--on-surface-muted); }
+  .conf .why { font-size:11.5px; color:var(--on-surface-muted); }
+
+  details.deep { margin-top:12px; border-top:1px dashed var(--divider-soft); padding-top:12px; }
+  details.deep summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px; background:var(--primary-soft); color:var(--primary-on-soft); font-size:12px; font-weight:500; padding:5px 14px; border-radius:14px; user-select:none; }
+  details.deep summary::-webkit-details-marker { display:none; }
+  details.deep summary::marker { content:""; }
+  details.deep summary .chev { display:inline-block; transition:transform 0.2s; font-size:13px; line-height:1; }
+  details.deep[open] summary .chev { transform:rotate(180deg); }
+  details.deep summary:hover { background:#e9d7fb; }
+  details.deep .ddbody { margin-top:12px; }
+  details.deep .ddbody p { font-size:13.5px; line-height:1.62; color:var(--on-surface-2); margin:0 0 10px; }
+  details.deep .ddbody p:last-child { margin-bottom:0; }
+  .lbl-sub { color:var(--on-surface); font-weight:700; }
+
+  .editor { background:var(--surface); border-radius:16px; padding:28px 32px; margin:32px 0 0; border:1px solid var(--divider-soft); box-shadow:var(--shadow-1); }
+  .editor .label { display:inline-flex; align-items:center; gap:6px; background:var(--primary-soft); color:var(--primary-on-soft); padding:4px 12px; border-radius:12px; font-size:11px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px; }
+  .editor h3 { font-family:'Google Sans',sans-serif; font-size:22px; font-weight:500; margin:0 0 18px; line-height:1.3; }
+  .editor p { font-size:14px; line-height:1.65; color:var(--on-surface-2); margin:0 0 14px; }
+  .editor p strong { color:var(--on-surface); font-weight:500; }
+  .editor .num { color:var(--primary-on-soft); font-weight:700; }
+  .editor p:last-child { margin-bottom:0; }
+  .editor .closer { font-style:italic; color:var(--on-surface-muted); border-top:1px solid var(--divider-soft); padding-top:14px; margin-top:4px; }
+
+  .xref { background:var(--ink-soft); border:1px solid #cfe0ec; border-radius:12px; padding:16px 20px; margin-top:20px; }
+  .xref p { margin:0; font-size:13px; color:var(--ink-deep); line-height:1.6; }
+
+  .colophon { margin-top:56px; padding-top:24px; border-top:1px solid var(--divider-soft); text-align:center; font-size:12px; color:var(--on-surface-muted); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .page { padding:16px 16px 60px; }
+    .hero { padding:24px 22px; border-radius:12px; }
+    .hero h2 { font-size:20px; }
+    .card { padding:18px 20px; }
+    .editor { padding:22px; }
+    .editor h3 { font-size:18px; }
+  }
+.odds{margin:10px 0 0;padding:7px 12px;background:#f3e8fd;border-left:3px solid #8430ce;border-radius:0 8px 8px 0;font-size:13px;color:#4a1d78}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="logo">GP</div>
+    <div class="titles">
+      <h1>Geopolitics Briefing</h1>
+      <div class="sub">Catch-up edition: covers 15–29 October 2026; 2–14 October not covered</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" title="Print" onclick="window.print()"><span class="material-icons-outlined">print</span></button>
+      <button class="icon-btn" title="More"><span class="material-icons-outlined">more_vert</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+<div class="banner">
+  <span class="material-icons-outlined">warning_amber</span>
+  <p><strong>Little was reported in late October </strong>on Ukraine and on the US-Iran talks, and the stories below say where gaps remain. Where an earlier event is needed to follow a story, it appears inside that story's <strong>Read more</strong> panel.</p>
+</div>
+
+<div class="chips">
+  <a class="chip active" href="#top">All</a>
+  <a class="chip" href="#status">Background</a>
+  <a class="chip" href="#ukraine">Ukraine / Russia</a>
+  <a class="chip" href="#iran">Iran / Hormuz</a>
+  <a class="chip" href="#sanctions">Sanctions</a>
+  <a class="chip" href="#other">Europe incidents</a>
+  <a class="chip" href="#editor">Editor's view</a>
+</div>
+
+<a id="top"></a>
+<div class="hero">
+  <div class="eyebrow">Geopolitics · 15–29 October 2026 · catch-up edition</div>
+  <h2>Iran keeps Hormuz largely shut as Russia ignores a truce Trump announced</h2>
+  <p>The US and Iran have been at war since 28 February. In Ukraine, a US-announced energy ceasefire had no visible effect on Russian strikes. Around the Strait of Hormuz, a narrow sea passage for much of the world's oil, October was the worst month on record for attacks on ships. A new US law against buyers of Russian energy was cancelled the day it took effect.</p>
+</div>
+
+<a id="status"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">history</span>
+  <h3>Background — where things stood on 1 October</h3>
+</div>
+<div class="statusquo">
+  <h3><span class="material-icons-outlined">bookmark</span>Summary from 1 October</h3>
+  <ul>
+    <li><strong>Ukraine's front line:</strong> Close to static. Russia gained about 14 square miles in September, a tiny amount, and gave up a net 6 in the last week, according to Russia Matters, a research project that publishes a weekly war summary. Russia controls roughly 12% of Ukraine's territory.</li>
+    <li><strong>Strikes on energy:</strong> On 29–30 September Russia fired at least 188 drones plus missiles at power plants near Kyiv, Ukraine's capital, then 285 more drones in daylight, in what Ukraine's prime minister called the biggest energy attack in months. Ukraine had offered to stop hitting Russian oil facilities if Russia stopped hitting its power system; Russia had not accepted. US president Donald Trump said on 28 September that Ukraine's president, Volodymyr Zelensky, would "probably" slow Ukraine's attacks on Russian oil refineries; Kyiv (Ukraine's government) had not confirmed that.</li>
+    <li><strong>Iran and Hormuz:</strong> The US and Iran have been at war since 28 February. Iran and the US had swapped seven-day ceasefire proposals and disagreed on what must come first: reopening the strait and ending the US naval blockade of Iranian ports, or Iran's nuclear programme. Three ships were hit by missiles or drones of unknown origin on 30 September, and Brent, the standard international oil price, stood near $98–100 a barrel (a barrel is about 160 litres).</li>
+    <li><strong>Shipping data:</strong> Estimates vary widely: PortWatch, the International Monetary Fund's ship-tracking project, counted about one ship a day, while US officials said 20 million barrels of oil left over a weekend. Before the war about 85 ships passed daily.</li>
+    <li><strong>Sanctions:</strong> A US law signed on 18 September (the Graham Act, named for Senator Lindsey Graham) lets the president tax imports from countries that buy Russian energy; none had been applied. Russia took over the Russian businesses of the Swiss food company Nestlé and the French supermarket chain Auchan, with more signalled.</li>
+    <li><strong>Hybrid warfare:</strong> Poland added air patrols after a Russian helicopter briefly (42 seconds) crossed into its airspace; a likely Russian drone crashed in Moldova on 30 September; one report said Russia was showing more caution near the borders of the North Atlantic Treaty Organisation (NATO), the Western military alliance.</li>
+  </ul>
+</div>
+
+<a id="ukraine"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">shield</span>
+  <h3>Ukraine / Russia — a truce announced, strikes continue</h3>
+  
+</div>
+<div class="card">
+  <div class="meta"><span class="tag t-red">Energy truce</span><span class="date-pill">Events 11–15 Oct</span></div>
+  <h4>Trump declared an energy ceasefire "effective immediately"; Russian strikes on Ukrainian power went on</h4>
+  <p>Trump announced on 11 October an "immediate" energy ceasefire between Russia and Ukraine, meaning an end to attacks on each other's power plants and fuel sites. Neither government had agreed to it first. Asked why he believed both sides had agreed, Trump said: "Because I said they agreed. That's why."</p>
+  <p>Zelensky said on 13 October that Ukraine had not targeted Russian refineries or energy sites and that Russia had ignored the truce. On 14 October Zelensky said Russia used 39 ballistic missiles (long-range missiles that fly very high before dropping on the target) and more than 120 drones against energy and other critical sites in Kyiv, the Kyiv region and Kharkiv, a Ukrainian city near the Russian border. On 15 October the Kyiv region and the Ukrainian city of Lutsk lost power. No later report shows a truce taking hold.</p>
+  <div class="stat-grid">
+    <div class="stat"><div class="v">39</div><div class="k">Ballistic missiles, 14 Oct (Zelensky)</div></div>
+    <div class="stat"><div class="v">120+</div><div class="k">Drones, 14 Oct (Zelensky)</div></div>
+    <div class="stat"><div class="v">None</div><div class="k">Sign that the truce took effect</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.newsweek.com/russia-accused-of-immediately-breaking-ceasefire-touted-by-trump-12560566">Newsweek · Russia accused of breaking the truce</a>
+    <a href="https://kyivindependent.com/russian-drone-strikes-leave-portions-of-kyiv-without-power-fires-burning/">Kyiv Independent · Kyiv without power, 15 Oct</a>
+    <a href="https://www.pravda.com.ua/eng/news/2026/10/11/8057478/">Ukrainska Pravda · Trump claims an agreed truce</a>
+  </div>
+  <details class="deep">
+    <summary>Read more<span class="chev">▾</span></summary>
+    <div class="ddbody">
+      <p><span class="lbl-sub">Context &amp; background.</span> The announcement came about ten days after the large strike of 29–30 September described in the last edition and followed weeks in which Ukraine offered a mutual halt that Russia answered with conditions: it had said it would accept a pause only if it covered Russian oil and gas exports by sea and came with the removal of Western sanctions. A report by Axios, a US news site, republished by the Ukrainian newspaper Ukrainska Pravda on 11 October, says Zelensky was unaware of the truce but willing to accept it. This was not the first time: on 13 September Trump said both sides had agreed to stop targeting energy sites, and Kyiv called it a proposal.</p>
+      <p><span class="lbl-sub">The details.</span> The Institute for the Study of War, a Washington research group that tracks the war daily, concluded from statements by the Kremlin (the Russian government) and Russian Telegram channels (a messaging app) that Moscow had agreed to nothing and "no ceasefire exists". Russia's foreign minister, Sergei Lavrov, said on 12 October that Zelensky had not "earned a respite". Kremlin spokesman Dmitry Peskov said, on a date not given, that Moscow had nothing to say on the announcement and was not interested in Zelensky's proposed 60-day ceasefire to allow elections. Targets after the announcement included a heat and power plant west of Kharkiv, gas production sites in the Kharkiv region and an oil depot in Sarny, a town in western Ukraine, according to the same report. In the week to 4 October, the Institute reported, Russia fired over 1,900 strike drones, 1,700 glide bombs (bombs fitted with wings, dropped from aircraft) and 25 missiles at Ukraine, and was producing 130 to 140 ballistic missiles a month.</p>
+      <p><span class="lbl-sub">Why it still matters.</span> A truce declared by Ukraine's ally and ignored by Russia shows the US is willing to announce progress it has not secured. Russia is likely to keep bombing Ukraine's power stations this winter. Little is known about events after 15 October, including the front line, Russian politics and any new talks. Things to watch: an official Russian response, a Ukrainian strike on a Russian refinery, or a new mass strike.</p>
+    </div>
+  </details>
+  <div class="odds">Polymarket: <b>Russia–Ukraine ceasefire agreement by 31 December</b> — 15.5% (down 5 points this week)</div>
+<div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">4/5 · Newsweek (citing the Institute for the Study of War) and the Kyiv Independent, a Ukrainian news outlet, agree that strikes continued; the missile and drone counts are Zelensky's own</span></div></div>
+</div>
+
+<a id="iran"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">local_fire_department</span>
+  <h3>Iran / Hormuz — record attacks on ships, an offer left unanswered</h3>
+  
+</div>
+<div class="card">
+  <div class="meta"><span class="tag t-blue">Hormuz shipping</span><span class="date-pill">Events 5–24 Oct</span></div>
+  <h4>October is the worst month on record for attacks on ships around Hormuz</h4>
+  <p>The Reuters news agency reported on 23 October that the Washington Institute for Near East Policy, a research group, counted 28 confirmed and reported attacks on ships in and near the Strait of Hormuz in October, and 113 since the war began on 28 February (the US and Iran are fighting). The International Maritime Organization, the United Nations shipping body, lists more than 30 supertankers (very large oil carriers) damaged, 11 of them in October.</p>
+  <p>On 17 October Iran's Revolutionary Guards, a powerful military force separate from the regular army, said two supertankers each carrying more than two million barrels caught fire after hitting naval mines; Agence France-Presse, a French news agency, could not confirm this. Reuters, citing two senior Iranian officials, has reported that Iran's government has adopted a tactic of attacking ships; no attacker is named for most individual incidents.</p>
+  <div class="stat-grid">
+    <div class="stat"><div class="v">28</div><div class="k">Attacks in October (Washington Institute, a US research group)</div></div>
+    <div class="stat"><div class="v">113</div><div class="k">Attacks since 28 Feb</div></div>
+    <div class="stat"><div class="v">11</div><div class="k">Supertankers damaged in Oct</div></div>
+    <div class="stat"><div class="v">4 vs 85</div><div class="k">Ships passing on 18 Oct vs. normal daily number before the war</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.al-monitor.com/originals/2026/10/ship-attacks-strait-hormuz-hit-record-high-october">Al-Monitor · Ship attacks hit record high (Reuters)</a>
+    <a href="https://www.omanobserver.om/article/1197906/world/region/oil-tankers-on-fire-after-hitting-mines-in-hormuz-igrc">Oman Observer · Tankers on fire after hitting mines (Agence France-Presse)</a>
+    <a href="https://straits.live/briefs/2026-10-24">Straits · Hormuz brief, 24 Oct</a>
+  </div>
+  <details class="deep">
+    <summary>Read more<span class="chev">▾</span></summary>
+    <div class="ddbody">
+      <p><span class="lbl-sub">Context &amp; background.</span> On 30 September three ships were hit by missiles or drones of unknown origin, and the strait has been effectively closed to normal commercial traffic since the war began. A Saudi pipeline restarted on 22 September carries some oil to the Red Sea, avoiding the strait.</p>
+      <p><span class="lbl-sub">The details.</span> The counts differ by source and none claims to be complete. The United Kingdom Maritime Trade Operations centre, a British navy-run shipping-safety monitor, recorded 135 conflict-related incidents as of 16 October, and says the true number is probably higher because shipowners report voluntarily and often incompletely. A shipping-data firm, Marisks, reported a dozen ships attacked between 5 and 11 October, the highest weekly total since the conflict began. The 28, 113 and 135 figures measure different things (attacks versus incidents, different regions and periods) and should not be added together or compared directly. Four ships passed on 18 October, according to PortWatch, a ship-tracking project run by the International Monetary Fund, as relayed by the Straits website, which collects reports and is partly AI-written; PortWatch only sees ships that broadcast their position, so the real number may be higher. The same website carries the Revolutionary Guards' mine claim and notes that no maritime authority has confirmed it; maritime monitors separately reported two tankers hit off Saudi Arabia's coast on 16 October (Agence France-Presse). Raydan, a shipping analyst quoted by Reuters, says Iran is stepping up attacks to keep oil supply low and prices high before the US midterm elections on 3 November; that is the analyst's reading, not an Iranian statement. Shipowners can earn over $1 million a day per tanker, so some keep sending ships into the danger zone.</p>
+      <p><span class="lbl-sub">Why it still matters.</span> The supertankers damaged so far equal about 3.5% of the world fleet of more than 900 such ships, which means fewer ships available to carry oil even after any deal. The escalation also shows that talks have not slowed the attacks. Watch for: who is blamed, confirmed mine hits, more ships passing.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">4/5 · Reuters and Agence France-Presse separately report the October attack counts and the 17 October fires; the mine claim itself is the Revolutionary Guards' alone and unconfirmed, and the ship count comes from one website</span></div></div>
+</div>
+<div class="card">
+  <div class="meta"><span class="tag t-purple">Diplomacy and oil</span><span class="date-pill">Events 18–28 Oct</span></div>
+  <h4>Iran says its seven-day Hormuz offer stands; oil costs over $115 a barrel</h4>
+  <p>Iran's foreign minister, Abbas Araghchi, said on 18 October in Baghdad that Iran's offer to reopen the strait within seven days if the US meets its conditions is "still on the table", that Iran had received a US response and was reviewing it, and that if there were "any honesty on the US part, which there isn't", the path to reopening was clear (Reuters, via Oman Observer). The contents of the US response were not described.</p>
+  <p>Brent, the standard international oil price, was quoted at $116.72 a barrel on 24 October and $115.35 on 28 October by a website that collects reports, against about $98–100 on 1 October. That is up roughly 15–19% in under a month. No new round of direct talks has been confirmed.</p>
+  <div class="stat-grid">
+    <div class="stat"><div class="v">7 days</div><div class="k">Days Iran says it needs to reopen once its terms are met</div></div>
+    <div class="stat"><div class="v">$116.72</div><div class="k">Brent, 24 Oct (one website)</div></div>
+    <div class="stat"><div class="v">~$100</div><div class="k">Brent, 1 Oct</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.omanobserver.om/article/1197995/world/region/iran-urges-us-to-accept-proposal-to-reopen-hormuz">Oman Observer · Iran urges US to accept (Reuters)</a>
+    <a href="https://straits.live/briefs/2026-10-28">Straits · Hormuz brief, 28 Oct</a>
+  </div>
+  <details class="deep">
+    <summary>Read more<span class="chev">▾</span></summary>
+    <div class="ddbody">
+      <p><span class="lbl-sub">Context &amp; background.</span> The seven-day plan dates from mid-September, after an interim ceasefire collapsed, and was answered by a US counterproposal for a seven-day ceasefire. On 4 October Iran's parliament speaker, Mohammad Baqer Ghalibaf, said the strait would not reopen until "our seven conditions, based on the Islamabad Memorandum of Understanding", an agreement outline from June, were met (Khaleej Times); the seven conditions were not published. The conditions Araghchi named on 18 October include lifting the US blockade of Iranian ports, lifting US sanctions on Iranian oil exports, and an end to hostilities on all regional fronts.</p>
+      <p><span class="lbl-sub">The details.</span> Reuters reports that Iran's security chief said the week before 18 October that negotiations had stalled because Washington had not addressed all seven conditions. Araghchi's timeline is that the strait could reopen within six days of US acceptance, with talks resuming the day after. The same website reports that Qatar urged Iran to show goodwill by ending regional threats and reopening the strait, as part of US mediation efforts. Only that one website reports the Qatari statement and the oil prices. The US has not confirmed it sent a reply.</p>
+      <p><span class="lbl-sub">Why it still matters.</span> The two governments are, on this evidence, in the same position as on 1 October: each says the other must change position first, with attacks on ships continuing in between. Oil near $115 is up roughly 15–19% since 1 October (from about $98–100), which raises fuel prices well beyond the region and is also a political cost for the US president before the 3 November midterm elections. A published US reply, or a named date for talks, would be the first sign of movement.</p>
+    </div>
+  </details>
+  <div class="odds">Polymarket: <b>Strait of Hormuz traffic back to normal by 31 December</b> — 10.5% (down 1 point this week)</div>
+<div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></div><span class="why">3/5 · Araghchi's remarks come from one Reuters report; the oil prices and the Qatari statement come from one website that collects reports, so treat the figures as indicative</span></div></div>
+</div>
+
+<a id="sanctions"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">account_balance</span>
+  <h3>Sanctions &amp; trade — a new US tariff law is cancelled</h3>
+  
+</div>
+<div class="card">
+  <div class="meta"><span class="tag t-ink">Legislation</span><span class="date-pill">Events 9–18 Oct</span></div>
+  <h4>Trump cancelled the Graham Act's tariffs and sanctions for now, on the day they were due to start</h4>
+  <p>On 16 October President Trump signed an order that formally brought the Lindsey O. Graham Sanctioning Russia and Iran Act into force but suspended every penalty in it, so none took effect. The law, signed on 18 September, required the president to impose them by 18 October. Law firms that reviewed the order say no company faces new penalties now; the president keeps the power and can switch the penalties on later without a new law.</p>
+  <p>Earlier, on 9 October, the US Treasury's sanctions office issued a permit (General License 135) that lets US firms deal in Russian-origin diesel until 7 April 2027 despite sanctions. Ukrainska Pravda, a Ukrainian newspaper, reported on 16 October that 22 US lawmakers demanded the sanctions be imposed immediately.</p>
+  <div class="stat-grid">
+    <div class="stat"><div class="v">500%</div><div class="k">Maximum tariff (a tax on imports) on Russian goods: a sixfold price</div></div>
+    <div class="stat"><div class="v">100%</div><div class="k">Maximum on other countries that buy Russian energy</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">New tariffs imposed</div></div>
+    <div class="stat"><div class="v">180 days</div><div class="k">The US trade negotiator's office must review the list every 180 days</div></div>
+  </div>
+  <div class="links">
+    <a href="https://www.hklaw.com/en/insights/publications/2026/10/graham-act-codifies-russia-sanctions">Holland &amp; Knight · Graham Act codifies Russia sanctions</a>
+    <a href="https://www.cov.com/en/news-and-insights/insights/2026/10/recent-developments-in-eu-and-us-sanctions-relating-to-russia">Covington · Recent developments</a>
+    <a href="https://www.pravda.com.ua/eng/news/2026/10/16/8058264/">Ukrainska Pravda · 22 lawmakers demand sanctions</a>
+  </div>
+  <details class="deep">
+    <summary>Read more<span class="chev">▾</span></summary>
+    <div class="ddbody">
+      <p><span class="lbl-sub">Context &amp; background.</span> The law is wider than first reported: it allows taxes on imports of up to 500% on goods from Russia, and up to 100% on everything a listed country sells to the US, whether or not it relates to Russia. The law's powers expire in 2031 unless Congress extends them.</p>
+      <p><span class="lbl-sub">The details.</span> A country is targeted if it bought new Russian oil or gas after mid-October and is one of the five biggest buyers, or is one of the five biggest helpers in dodging oil sanctions. Neither the law nor the order names any country; the law-firm analysis expects China, India and Turkey to be the likely names. Countries cutting Russian gas are exempt for gas, but not for oil. Covington, a US law firm, reports that the order also drops a rule that would make it harder to lift existing sanctions, and tries to drop the law's expiry date; the firm doubts the president can do the second. Covington adds that US criticism of the move is largely negative, led by Democrats with some Republicans, and that Congress is highly unlikely to reverse it before the current Congress ends on 3 January 2027. Separately, on 12 October the EU (European Union) added 826 organisations and 743 people to its list of Russians whose money in Europe is frozen.</p>
+      <p><span class="lbl-sub">Why it still matters.</span> The US now has a new tariff law against Russian energy buyers on the books and has chosen not to use it, while also easing Russian diesel. Together with the unconfirmed energy truce in the Ukraine story above, this suggests Washington is trying to avoid higher fuel prices before 3 November. After that date, the first test is whether the suspension is extended or ended. There is no new news on Russia's takeover of Western firms.</p>
+    </div>
+  </details>
+  <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">4/5 · Holland &amp; Knight and Covington, two independent US law firms, agree on the order; the lawmakers' demand is known only from a Ukrainska Pravda headline</span></div></div>
+</div>
+
+<a id="other"></a>
+<div class="section-header">
+  <span class="material-icons-outlined">wifi_tethering</span>
+  <h3>Sabotage and drone incidents in Europe — none confirmed</h3>
+  
+</div>
+<div class="statusquo">
+  <h3><span class="material-icons-outlined">info</span>Quiet, or just not reported?</h3>
+  <ul>
+    <li>No confirmed Russian drone, airspace or sabotage incidents in Europe were found for 15–29 October. That is not proof of calm: little was reported.</li>
+    <li>The most recent confirmed picture, from 1 October, is: Poland had stepped up air patrols, a likely Russian drone had crashed in Moldova, and one report spoke of increased Russian caution near the borders of the North Atlantic Treaty Organisation (NATO).</li>
+  </ul>
+</div>
+
+<a id="editor"></a>
+<div class="editor">
+  <div class="label"><span class="material-icons-outlined" style="font-size:14px">lightbulb</span>Editor's view</div>
+  <h3>Announcements are running ahead of facts on every front</h3>
+  <p><span class="num">1.</span> <strong>A truce is only a truce if the other side says so. </strong>The 11 October energy ceasefire had a date and no second party agreeing; Ukraine says Russia ignored it and the Institute for the Study of War says none exists. The gap between announcement and effect is the story.</p>
+  <p><span class="num">2.</span> <strong>The Hormuz numbers do not agree and should not be added together. </strong>Attack counts of 28, 113, 120 and 135 measure different periods and regions. What is solid is the direction: October is the worst month on record, and more than 30 supertankers are damaged.</p>
+  <p><span class="num">3.</span> <strong>Neither Iran nor the US has changed position. </strong>Iran repeats a seven-day offer; Washington's reply is not public. Until a reply or a meeting date is published, the 1 October deadlock still describes the position.</p>
+  <p><span class="num">4.</span> <strong>The US keeps its biggest new sanctions power unused. </strong>Waiving the Graham Act's tariffs, while also easing Russian diesel, is consistent with putting fuel prices first before 3 November. That is an inference, not a stated reason.</p>
+  <p><span class="num">5.</span> <strong>Gaps in what is known. </strong>Little was reported in late October on the front line, Russian politics, incidents in Europe or a new round of talks.</p>
+  <div class="closer">Next: watch what the US and Iranian governments do after the 3 November elections, and whether the Graham Act suspension is extended.</div>
+</div>
+
+<div class="xref">
+  <p><strong>Cross-reference:</strong> Oil prices are covered in our separate Markets briefing.</p>
+</div>
+
+<div class="colophon">Geopolitics Briefing · 29 October 2026<br>C-Score (confidence): 5 = from the original source; 4 = two separate reports agree; 3 = one reliable report; 2 = only a website that collects reports</div>
+
+</main>
+</body>
+</html>
