@@ -14,230 +14,164 @@ img{max-width:100%;height:auto}
   text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
   opacity:.92}
 </style>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Practical AI Tools — 9–12 November 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practical AI Tools — 12 November 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f8f9fa; --surface:#ffffff; --divider:#e8eaed;
-    --text:#202124; --text2:#3c4043; --muted:#5f6368;
-    --primary:#c46210; --hero:#c46210; --accent:#f29900; --empty:#dadce0;
-    --link:#1967d2; --pill:#f1f3f4;
-    --try-bg:#e6f4ea; --try-fg:#0d652d;
-    --watch-bg:#fef7e0; --watch-fg:#b06000;
-    --skip-bg:#f1f3f4; --skip-fg:#5f6368;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--bg); color:var(--text);
-    font-family:'Roboto','Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
-    font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:880px; width:100%; margin:0 auto; padding:24px 20px 64px;}
-  .card{background:var(--surface); border:1px solid var(--divider); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+:root{--bg:#f8f9fa;--surface:#fff;--divider:#e8eaed;--text:#202124;--text2:#3c4043;--muted:#5f6368;--blue:#c46210;--link:#a3500c;--pill:#f1f3f4;}
+html,body{margin:0;padding:0;}
+*{box-sizing:border-box;}
+body{background:var(--bg);font-family:'Google Sans',Roboto,Arial,Helvetica,sans-serif;color:var(--text);line-height:1.55;}
+.wrap{max-width:880px;width:100%;margin:0 auto;padding:24px 20px;}
+.card{background:var(--surface);border:1px solid var(--divider);border-radius:12px;padding:18px 20px;margin-bottom:12px;}
+.appbar{display:flex;align-items:center;gap:14px;}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex:0 0 40px;}
+.appbar .title{font-size:18px;font-weight:500;}
+.appbar .sub{font-size:13px;color:var(--muted);}
+.hero{background:linear-gradient(135deg,#f29900 0%,#c46210 60%,#8a4a0b 100%);border-radius:12px;padding:26px 28px;margin-bottom:14px;}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;color:#fde7c7;text-transform:uppercase;}
+.hero h1{font-size:23px;font-weight:500;color:#fff;margin:10px 0 12px;line-height:1.32;}
+.three{margin:0;padding-left:20px;font-size:14px;color:#fff;opacity:.94;line-height:1.6;}
+.three li{margin-bottom:6px;}
+.three b{color:#fff;}
+.toplist{background:#fff;border:1px solid var(--divider);border-radius:12px;padding:14px 20px;margin-bottom:10px;}
+.toplist .tl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:4px;}
+.toplist ol{margin:0;padding-left:20px;font-size:14px;}
+.toplist li{margin:5px 0;}
+.toplist a{color:var(--link);text-decoration:none;font-weight:500;}
+.fld{font-size:11px;color:var(--muted);}
+.count{font-size:13px;color:var(--muted);margin:4px 4px 6px;}
+h2.field{font-size:15px;font-weight:700;margin:22px 4px 10px;display:flex;align-items:baseline;gap:10px;}
+h2.field .n{font-size:12px;font-weight:400;color:var(--muted);}
+details.story{background:var(--surface);border:1px solid var(--divider);border-radius:12px;margin-bottom:10px;}
+details.istop{border-color:#f0b429;border-left:4px solid #f0b429;}
+details.story>summary{list-style:none;cursor:pointer;display:block;padding:14px 44px 12px 16px;position:relative;}
+details.story>summary::-webkit-details-marker{display:none;}
+details.story>summary::after{content:"\25B8";position:absolute;right:16px;top:16px;font-size:18px;color:var(--muted);}
+details.story[open]>summary::after{content:"\25BE";color:var(--blue);}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:6px;}
+.chip{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;letter-spacing:.3px;}
+.chip.top{background:#f0b429;color:#3b2a00;}
+.date{display:inline-block;background:var(--pill);color:var(--muted);font-size:11px;padding:2px 9px;border-radius:10px;font-family:'Roboto Mono',ui-monospace,monospace;}
+.c-anthropic{background:#fdece9;color:#b3410c;}.c-openai{background:#e6f4ea;color:#0d652d;}.c-nvidia{background:#e8f5e9;color:#1b5e20;}.c-broadcom{background:#e8eaf6;color:#283593;}.c-energy{background:#fff8e1;color:#8a6100;}.c-china{background:#fce8e6;color:#a50e0e;}.c-policy{background:#f3e8fd;color:#5f1d8e;}.c-bio{background:#e0f7fa;color:#00695c;}.c-robotics{background:#ede7f6;color:#4527a0;}.c-space{background:#e3f2fd;color:#0b5394;}
+.hl{font-size:16.5px;font-weight:700;line-height:1.3;margin:2px 0 6px;}
+.sr{font-size:13.5px;color:var(--text2);font-weight:400;}
+.cf{font-size:12px;color:var(--muted);margin-top:6px;}
+.cf .dots{letter-spacing:1px;color:var(--blue);}
+.inner{padding:2px 16px 14px;border-top:1px solid var(--divider);font-size:13px;color:var(--text2);line-height:1.62;}
+.inner .lbl{font-weight:700;color:var(--text);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin:12px 0 3px;}
+.inner p{margin:0 0 6px;}
+.inner .tbl{background:#fef0e1;border-left:4px solid #c46210;border-radius:0 8px 8px 0;padding:8px 12px;color:var(--text2);font-size:12.8px;}
+.inner .lk a,.also a{display:inline-block;background:var(--pill);color:var(--link);font-size:12px;text-decoration:none;padding:3px 10px;border-radius:10px;margin:2px 4px 2px 0;}
+.inner .why{font-size:12px;color:var(--muted);}
+.also{list-style:none;margin:0;padding:0;font-size:13.5px;}
+.also li{padding:8px 0;border-top:1px solid var(--divider);}
+.also li:first-child{border-top:none;}
+.other{background:#fef7e0;border-color:#fde293;font-size:13px;}
+.other p{margin:0 0 6px;}
+.tw{width:100%;}
+table.bets{width:100%;border-collapse:collapse;font-size:12.5px;}
+table.bets th{text-align:left;background:#f8f9fb;padding:7px 8px;border-bottom:2px solid var(--divider);font-size:11.5px;}
+table.bets td{padding:7px 8px;border-bottom:1px solid var(--divider);vertical-align:top;color:var(--text2);}
+.note{font-size:12.5px;color:var(--muted);margin:8px 0 0;}
+.colophon{font-size:12.5px;color:var(--muted);}
+.colophon h3{font-size:13px;margin:0 0 8px;color:var(--text);}
+.colophon p{margin:0 0 8px;}
+@media (max-width:600px){table.bets thead{display:none;}table.bets,table.bets tbody,table.bets tr,table.bets td{display:block;width:100%;}table.bets tr{border-bottom:1px solid var(--divider);padding:6px 0;}table.bets td{border:none;padding:2px 0;}.hero{padding:20px;}}
 
-  .appbar{display:flex; align-items:center; gap:14px; padding:18px 24px;}
-  .avatar{width:44px; height:44px; min-width:44px; border-radius:50%; background:var(--accent); color:#fff;
-    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; letter-spacing:.3px;}
-  .appbar h1{margin:0; font-size:20px; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
-  .appbar p{margin:2px 0 0; font-size:13px; color:var(--muted);}
-
-  .hero{background:var(--hero); color:#fff; border:none;}
-  .hero .eyebrow{font-size:11px; letter-spacing:1.4px; text-transform:uppercase; opacity:.82; margin:0 0 10px; font-weight:500;}
-  .hero h2{margin:0 0 12px; font-size:22px; line-height:1.32; font-weight:500; font-family:'Google Sans',Roboto,sans-serif;}
-  .hero p{margin:0; font-size:14.5px; line-height:1.65; opacity:.95;}
-  .hero p + p{margin-top:11px;}
-
-  h3.sec{font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
-    font-weight:700; margin:30px 0 12px; padding-left:2px;}
-  h3.sec.sub{font-size:11px; letter-spacing:1.2px; color:var(--text2); margin:18px 0 10px;}
-  .card.quiet p{margin:0; color:var(--muted); font-style:italic;}
-
-  .meta{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:11px;}
-  .tag{font-size:11px; font-weight:500; padding:3px 10px; border-radius:10px; letter-spacing:.3px;}
-  .t-vendor{background:#fef3e0; color:#c46210;}
-  .t-infra{background:#e8eef6; color:#1f3548;}
-  .t-research{background:#f3e8fd; color:#5f1d8e;}
-  .t-agent{background:#e6f4ea; color:#0d652d;}
-  .verdict{font-weight:700; text-transform:uppercase; letter-spacing:.4px;}
-  .verdict.try{background:var(--try-bg); color:var(--try-fg);}
-  .verdict.watch{background:var(--watch-bg); color:var(--watch-fg);}
-  .verdict.skip{background:var(--skip-bg); color:var(--skip-fg);}
-  .date-pill{font-size:11px; background:var(--pill); color:var(--muted); padding:3px 10px; border-radius:10px;}
-
-  h4.headline{margin:0 0 9px; font-size:17px; font-weight:500; line-height:1.4; font-family:'Google Sans',Roboto,sans-serif;}
-  .card p{margin:0 0 11px; color:var(--text2);}
-  .card p:last-of-type{margin-bottom:0;}
-
-  .lbl{font-weight:700; color:var(--text);}
-
-  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:4px 0 14px;
-    background:#fcfaf7; border:1px solid var(--divider); border-radius:10px; padding:12px 14px;}
-  .stat-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:3px;}
-  .stat-value{font-size:15px; font-weight:700; color:var(--text); font-family:'Google Sans',Roboto,sans-serif;}
-
-  .links{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px;}
-  .links a{font-size:12px; background:var(--pill); color:var(--link); text-decoration:none;
-    padding:4px 11px; border-radius:11px; display:inline-block;}
-  .links a:hover{background:#e4e7ea;}
-
-  details.deep{margin:2px 0 14px; border:1px solid var(--divider); border-radius:10px; background:#fcfcfd;}
-  details.deep[open]{background:#fff;}
-  details.deep summary{cursor:pointer; list-style:none; padding:9px 14px; font-size:12.5px; font-weight:500;
-    color:var(--hero); background:#fef3e0; border-radius:9px; display:inline-block; margin:10px 12px;}
-  details.deep summary::-webkit-details-marker{display:none;}
-  .deep-body{padding:2px 18px 16px; font-size:14px;}
-  .deep-body p{margin:0 0 11px;}
-
-  .foot{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:13px 0 0;
-    padding-top:10px; border-top:1px solid var(--divider);}
-  .conf{display:flex; align-items:center; gap:5px; flex-wrap:wrap;}
-  .conf > .lbl{font-size:11px; color:var(--muted); font-weight:700;}
-  .conf .dots{display:flex; gap:3px;}
-  .conf .d{width:7px; height:7px; border-radius:50%; background:var(--divider); display:inline-block;}
-  .conf .d.on{background:var(--primary);}
-  .conf .why{font-size:11.5px; color:var(--muted);}
-
-  .banner{background:#fef7e0; border:1px solid #fbd77e; color:#7a5000; border-radius:10px; padding:14px 18px; margin-bottom:16px; font-size:13.5px;}
-
-  ol.take{margin:6px 0 0; padding-left:22px;}
-  ol.take li{margin-bottom:13px; color:var(--text2);}
-  .closer{font-style:italic; color:var(--muted); margin-top:16px; font-size:14px;}
-
-  ul.actions{margin:6px 0 0; padding-left:20px; color:var(--text2);}
-  ul.actions li{margin-bottom:10px;}
-
-  .colophon{font-size:12px; color:var(--muted); line-height:1.7;}
-  .colophon strong{color:var(--text2);}
-
-  @media (max-width:560px){
-    .wrap{padding:16px 14px 48px;}
-    .card{padding:18px 16px;}
-    .hero h2{font-size:19px;}
-  }
+.c-pt{background:#fef0e1;color:#8a4a0b;}.v-try{background:#e6f4ea;color:#0d652d;}.v-watch{background:#fef7e0;color:#8a6100;}.v-skip{background:#eceff1;color:#3c4043;}.v-has{background:#e8f0fe;color:#174ea6;}.v-gap{background:#fce8e6;color:#a50e0e;}.v-none{background:#f1f3f4;color:#5f6368;}
+.since{font-size:13.5px;}.since ul{margin:4px 0 0;padding-left:18px;}.since li{margin:3px 0;}.since .k{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);}
 </style>
 </head>
 <body>
 <a class="wz-back" href="../index.html">&#8962; Home</a>
 <div class="wrap">
-  <div class="card appbar"><div class="avatar">PT</div><div><h1>Practical AI Tools</h1><p>9–12 November 2026 · what you can do differently, and what the others are building</p></div></div>
-  <div class="card hero"><p class="eyebrow">Briefing summary</p>
-    <h2>Claude chat gets sheets and whiteboards; rivals had a quiet three days</h2>
-    <p>Three days after the last edition, Anthropic added shared spreadsheets and whiteboards to Claude chat and turned on the combined start screen for company-managed accounts. Scheduled tasks now say why they did not run. Cursor, Codex and Gemini CLI (command-line interface) shipped nothing worth your time.</p></div>
-  <h3 class="sec">Your stack</h3>
-  <h3 class="sec sub">Claude chat</h3>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude chat</span><span class="tag verdict try">TRY</span><span class="date-pill">10 Nov 2026</span></div>
-    <h4 class="headline">Claude can now build spreadsheets and whiteboards that you and your team edit together</h4>
-    <p>Claude Sheets and Claude Whiteboards are new kinds of document in Claude chat, both in beta on every paid plan. Ask for a tracker with tabs, formulas and drop-down lists and Claude fills the cells and marks each edit so you can follow it. A whiteboard is a shared board where Claude can group notes by theme and draft who does what.</p><p>Claude Dashboards also left beta on the same day and is now called Claude Data.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat (web, desktop, phone)</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Try on an M&amp;A (mergers and acquisitions) document tracker</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">10 Nov 2026</div></div></div>
-    <div class="links"><a href="https://claude.com/resources/articles/sheets-whiteboards-data">Anthropic: Sheets, Whiteboards, Data</a><a href="https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors">Anthropic: product overview</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Until now a spreadsheet from Claude was a file you downloaded and opened elsewhere. Now it stays in Claude and teammates can open it. Anthropic says an idea can carry from a whiteboard to a sheet to a dashboard without being retyped.</p><p><span class="lbl">The details.</span> Sheets are described as having simple spreadsheet functions for now; for full Excel features you export the file or use the separate Claude add-in for Excel. A whiteboard can be turned into a document or slide deck, or sent on to Miro or Lucid (online whiteboard tools). Claude Data adds written summaries of your data, agreed definitions of key numbers that a data team signs off (beta) and live sharing (beta). A feature called Claude Meetings, which would join a call and take notes, is announced as coming soon with no date.</p><p><span class="lbl">Why it still matters.</span> Anthropic names no limits on size, and I found no independent hands-on test of Sheets or Whiteboards yet, so treat the claims as the vendor’s. Check on a real tracker whether the formulas hold before you rely on it.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Anthropic product posts, 10 Nov</span></div></div>
-  </div>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude chat</span><span class="tag verdict watch">WATCH</span><span class="date-pill">10 Nov 2026</span></div>
-    <h4 class="headline">Apps from Asana, Notion, Box and others can now open beside your chat, and Claude can edit them live</h4>
-    <p>Where a connected app supports it, you can open it next to the conversation or full screen, signed in as yourself, and ask Claude to change the page, row or file you have open. You approve its actions the same way as for any connector. It starts with a small group: Adobe, Atlassian, Box, HubSpot, Notion, Asana, Canva, Carta, Dropbox, monday.com, Smartsheet, Vercel and Webflow.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude chat, web and desktop app</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Watch; try once your account has the new start screen</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">10 Nov 2026</div></div></div>
-    <div class="links"><a href="https://claude.com/resources/articles/interactive-connectors-full-tool">Anthropic: apps open in Claude</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Earlier this year Claude could only show a small live preview of a connected tool inside the chat. This is the full tool, not a preview.</p><p><span class="lbl">The details.</span> It arrives with the combined chat-and-Cowork experience, so you see it only once your account has been moved to it or your organisation switches it on. Administrators can limit a connector’s tools as they do today. Developers build these apps with Anthropic's open standard for connecting tools (the Model Context Protocol), and for them the feature is an early public test.</p><p><span class="lbl">Why it still matters.</span> Figma, Harvey and Shopify are named as building versions but are not available yet. Move this to TRY when an app you use daily appears in the list.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Anthropic product post, 10 Nov</span></div></div>
-  </div>
-  <h3 class="sec sub">Cowork</h3>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude desktop app</span><span class="tag verdict try">TRY</span><span class="date-pill">10 Nov 2026</span></div>
-    <h4 class="headline">Scheduled tasks now tell you when the last run failed, needs you, or never started</h4>
-    <p>A scheduled task’s card in Cowork and Code can now read “Last run failed”, “Last run failed, will try again”, “Needs input” or “Didn’t run”, and says why a due run has not begun, for example “Waiting for its previous run to finish”. Notifications are also more honest: a run that carried on without a step now says “skipped a step” instead of “completed”.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude desktop app, Cowork and Code tabs</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; look at the card of your weekly briefing task</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">10 Nov 2026</div></div></div>
-    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 10 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Last time the question was how a run nobody watches should refuse instead of freeze. This is the other half: seeing afterwards what happened.</p><p><span class="lbl">The details.</span> A step that needed your approval while nobody was there is reported as skipped. In Auto mode (Claude acting without asking each time), a step blocked by the safety check is reported as blocked. Both are fixes to wording that used to say “completed”.</p><p><span class="lbl">Why it still matters.</span> Not stated: whether the status also shows in email or phone notifications. The note describes the task card and the notification text only.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Claude Desktop changelog</span></div></div>
-  </div>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude desktop app</span><span class="tag verdict watch">WATCH</span><span class="date-pill">10 Nov 2026</span></div>
-    <h4 class="headline">The combined chat-and-Cowork start screen is now the default for company-managed accounts</h4>
-    <p>Last edition flagged this for 10 November and it has now happened. On computers whose settings are managed by a company administrator, the combined “Unified Claude” start screen opens by default, with Cowork switched on. The separate switches for Chat and Cowork in the setup window are gone and replaced by one switch.</p><p>On a personal account nothing is forced.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude desktop app, company-managed setups</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Watch; ask the administrator if you want the old split</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">10 Nov 2026</div></div></div>
-    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 10 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The earlier plan said the combined view would go on for all organisations on 10 November. The newest app version keeps the old behaviour for setups that only use Code until 17 December.</p><p><span class="lbl">The details.</span> New conversations started on the project page now begin a Cowork task, or a chat on a computer that cannot run Cowork. Administrators must set both retention periods (how long chats and Cowork tasks are kept) because Cowork tasks follow their own. The old per-tab switches are being phased out; people still using them see a warning from 17 November.</p><p><span class="lbl">Why it still matters.</span> A watch item rather than a task: it matters if you manage settings for other people.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Claude Desktop changelog</span></div></div>
-  </div>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude desktop app</span><span class="tag verdict watch">WATCH</span><span class="date-pill">10 Nov 2026</span></div>
-    <h4 class="headline">Windows: Claude moves its data to a new folder, and may now stop at launch with a message</h4>
-    <p>On Windows 10 (version 21H2 or later) and 11, the update moves Claude’s saved data to the folder Claude-Data under your local application data folder. If another program holds a file Claude needs, Claude can stop at launch with “Claude could not start”; closing other programs or restarting fixes it. When Windows starts Claude at sign-in it stops without any message.</p><p>Computer use now asks for the “Use system shortcuts” permission before pressing the Windows key with Tab, a number or a symbol, and file types that install something at a double click are refused.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude desktop app on Windows</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update; if Claude does not start, restart the computer</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">10 Nov 2026</div></div></div>
-    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 10 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The Microsoft Store version and copies installed by a company are unchanged. Fixes in the same release: Run on startup now works for Store installs, and two files saved to Downloads at the same moment no longer lose one.</p><p><span class="lbl">The details.</span> Also fixed: an artifact in the side panel reloading and losing unsaved edits, and sign-in links that did nothing when clicked twice.</p><p><span class="lbl">Why it still matters.</span> Not stated: whether old data is deleted after the move. Do not clean up the old folder until you have checked.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Claude Desktop changelog</span></div></div>
-  </div>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Cowork</span><span class="tag verdict skip">SKIP</span><span class="date-pill">10 Nov 2026</span></div>
-    <h4 class="headline">Cowork no longer lets Claude edit your global instructions by changing a project instruction file</h4>
-    <p>Edits Claude makes to a session’s project instruction file no longer update your global instructions; to change those, use Settings. Nothing to do unless you relied on Claude rewriting them.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Cowork</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Nothing</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">10 Nov 2026</div></div></div>
-    <div class="links"><a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 10 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> This closes a way for a task to change settings that apply to every other task.</p><p><span class="lbl">The details.</span> The same release fixes a lost comment on a file when Claude sent an updated copy, and the Automatically approve switch not turning on right after picking a model that can run Auto.</p><p><span class="lbl">Why it still matters.</span> Little; skip unless a task of yours edited those instructions.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Claude Desktop changelog</span></div></div>
-  </div>
-  <h3 class="sec sub">Claude Code</h3>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude Code</span><span class="tag verdict try">TRY</span><span class="date-pill">9 Nov 2026</span></div>
-    <h4 class="headline">Update Claude Code: a leak of sign-in secrets and two permission gaps were closed</h4>
-    <p>Update. The 9 November release stops secrets such as refresh tokens (stored keys that keep you signed in) being sent to another server when a connected service redirects the sign-in, closes a case where a read-only command ran outside the protected area where commands are tested, without asking, and makes file-copy commands obey the same blocked-list as file writes.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code (terminal and desktop Code tab)</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Update</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">9 Nov 2026</div></div></div>
-    <div class="links"><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 9 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The notes list 74 fixes; these are the ones that touch your security. They name no outside report and no known misuse.</p><p><span class="lbl">The details.</span> Also fixed: a file-editing command on network folders that could change only the first of several matching places or overwrite the first section of a notebook file. Commands typed with their full file location, such as /bin/cp (the copy command), now get the same checks.</p><p><span class="lbl">Why it still matters.</span> Updating is the whole action.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Claude Code changelog</span></div></div>
-  </div>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Anthropic / Claude Code</span><span class="tag verdict watch">WATCH</span><span class="date-pill">9 Nov 2026</span></div>
-    <h4 class="headline">Claude Fable 5.2 is now the default Fable model, and saved Fable 5.1 choices were moved to it</h4>
-    <p>If you picked Fable 5.1 in Claude Code, the pick now points to the newest Fable. On Pro and Max plans this happened at once; on Team and Enterprise plans it happens once the organisation allows it. The changelog lists a price of $8 per million input tokens and $40 per million output tokens (tokens are the small pieces of text the model reads and writes). To go back, use the model command with the 5.1 name.</p><p>The model itself belongs to the Frontier Tech briefing.</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">Where</div><div class="stat-value">Claude Code</div></div><div class="stat"><div class="stat-label">What to do</div><div class="stat-value">Watch your usage meter; switch back if costs jump</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">9 Nov 2026</div></div></div>
-    <div class="links"><a href="https://code.claude.com/docs/en/changelog">Claude Code changelog, 9 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> The same release also lets a Code tab session in the desktop app send twice as many messages to your other sessions (20, up from 10) before waiting for you.</p><p><span class="lbl">The details.</span> Nothing in the notes says how Fable 5.2 uses your plan allowance compared with 5.1; a search found no developer reaction yet.</p><p><span class="lbl">Why it still matters.</span> Move to TRY if you want the stronger model for a hard task, with a named task to test it on.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Claude Code changelog</span></div></div>
-  </div>
-  <h3 class="sec">Try this week</h3>
-  <div class="card"><ul class="actions">
-    <li><strong>Read the new status on your weekly briefing task</strong> — after the next scheduled run of the briefing in the News folder, open its task card and check it says what happened; if it says “Needs input” or “Didn’t run”, that is the cause. <a href="https://claude.com/docs/cowork/changelog">Claude Desktop changelog, 10 Nov 2026</a></li>
-    <li><strong>Build one tracker in Claude Sheets</strong> — ask for a document checklist for an M&amp;A (mergers and acquisitions) deal with owners and dates, then compare formulas with your usual spreadsheet. <a href="https://claude.com/resources/articles/sheets-whiteboards-data">Anthropic, 10 Nov 2026</a></li>
-  </ul></div>
-  <h3 class="sec">What the others are building</h3>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Devin</span><span class="tag verdict watch">GAP</span><span class="date-pill">11 Nov 2026</span></div>
-    <h4 class="headline">Devin can now set itself reminders to pick a task up again later</h4>
-    <p>Devin, a rival AI coding assistant, can wake itself at a future time, including in sessions started by automations or by an automated account. It means a long job can pause, wait for something outside and carry on without you.</p><p><strong>Read-across.</strong> Expect scheduled Cowork and Claude Code runs to be able to set their own follow-up time rather than only run on a fixed schedule [inference].</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Partly — scheduled tasks and a repeat command exist; a task choosing its own wake-up time is not described</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">One vendor</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">11 Nov 2026</div></div></div>
-    <div class="links"><a href="https://docs.devin.ai/release-notes/overview">Devin release notes, 11 Nov</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> A cloud Claude Code session already warns that a repeat timer stops when the cloud machine it runs on shuts down and offers a version that survives (Claude Code changelog, 6 Nov). That shows the problem is known.</p><p><span class="lbl">The details.</span> The Devin note is one line with no limits on how far ahead a reminder can be set.</p><p><span class="lbl">Why it still matters.</span> Not known: whether Devin keeps its state while waiting, or what it costs.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></div><span class="why">5/5 · Devin release notes</span></div></div>
-  </div>
-  <div class="card">
-    <div class="meta"><span class="tag t-vendor">Devin</span><span class="tag verdict try">CLAUDE HAS IT</span><span class="date-pill">11 Nov 2026</span></div>
-    <h4 class="headline">Devin’s design mode lets you circle part of a page and send it with a note</h4>
-    <p>In Devin’s design mode you pick an element on a page and edit its properties in a small bar, draw boxes or pencil marks in five colours, and send the marked-up picture with a note. You can also pick colours from the preview and look up the page’s named colours and fonts.</p><p><strong>Read-across.</strong> Nothing new to expect; Claude Design has offered editing on the page and importing your design system since 16 September [inference].</p>
-    <div class="stat-grid"><div class="stat"><div class="stat-label">In Claude today</div><div class="stat-value">Has it — Claude Design editing in any conversation since 16 Sep 2026</div></div><div class="stat"><div class="stat-label">Signal</div><div class="stat-value">One vendor</div></div><div class="stat"><div class="stat-label">Shipped</div><div class="stat-value">11 Nov 2026</div></div></div>
-    <div class="links"><a href="https://docs.devin.ai/release-notes/overview">Devin release notes, 11 Nov</a><a href="https://support.claude.com/en/articles/12138966-release-notes">Claude release notes, 16 Sep</a></div>
-    <details class="deep"><summary>Read more</summary><div class="deep-body"><p><span class="lbl">Context &amp; background.</span> Sketch-and-annotate on a live page is the same move as drawing on a screenshot for a human colleague.</p><p><span class="lbl">The details.</span> The same Devin release adds approving several suggested project-setup changes at once and a setting to ask before loading images from other sites.</p><p><span class="lbl">Why it still matters.</span> Little; included only because Devin was the one rival with a dated change in the window.</p></div></details>
-    <div class="foot"><div class="conf"><span class="lbl">C-Score</span><div class="dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></div><span class="why">4/5 · Devin notes plus Claude release notes (a different vendor)</span></div></div>
-  </div>
-  <h3 class="sec">Editor's view</h3>
-  <div class="card"><ol class="take">
-    <li><strong>The loud news is in Claude chat, the useful news is in Cowork. </strong>Sheets and whiteboards are new but beta and unproven; the scheduled-task status is small and answers the question you had last week about runs nobody watches.</li>
-    <li><strong>Update Claude Code again. </strong>The 9 November release closes a sign-in secret leak and two permission gaps, and quietly moves Fable 5.1 choices to 5.2.</li>
-    <li><strong>The direction read: work stays inside Claude. </strong>Sheets, whiteboards and apps that open beside the chat mean outputs no longer leave for another program, while Devin’s self-set reminders point the same way for unattended work. Expect Cowork runs that schedule their own next step [inference].</li>
-  </ol><p class="closer">A short edition by design: Cursor, Codex and Gemini CLI (command-line interface) had nothing new since the last one, and Copilot’s (GitHub’s AI coding assistant) only entries were new models.</p></div>
-  <div class="card colophon">
-    <p><strong>Compiled:</strong> Thursday, 12 November 2026 &middot; <strong>Research window:</strong> 9–12 November 2026 &middot; <strong>Scope:</strong> the tools this briefing’s reader operates — Claude chat, Cowork, Claude Code, and what Codex, Cursor, Gemini CLI (command-line interface), Copilot and Devin are building; model releases belong to Frontier Tech.</p>
-    <p><strong>Confidence legend:</strong> 5/5 vendor changelog or release note &middot; 4/5 two independent sources &middot; 3/5 single credible source or practitioner write-up &middot; 2/5 aggregator-only with a visible caveat. No score is rounded up. Read-across sentences are inference and carry no score.</p>
-    <p><strong>Sources read every week:</strong> Claude Desktop changelog, Claude apps release notes, Claude product announcements, Claude Code changelog — then search. <strong>Editorial notes:</strong> follow-up edition covering only changes since 9 November; the Claude apps release notes had no new entry after 6 November.</p>
-  </div>
+<div class="appbar card"><div class="avatar">PT</div><div><div class="title">Practical AI Tools</div><div class="sub">Edition of 12 November 2026 &middot; covering 9&ndash;12 November</div></div></div>
+<div class="hero"><div class="eyebrow">The week in three lines</div>
+<h1>Claude chat gets sheets and whiteboards; rivals had a quiet three days</h1>
+<ol class="three"><li><b>What changed.</b> Anthropic added shared spreadsheets and whiteboards to Claude chat, and scheduled tasks now say why they did not run.</li><li><b>Why it matters.</b> More of your work can stay inside Claude. Cursor, Codex and Gemini CLI (command-line interface) shipped nothing worth your time.</li><li><b>What comes next.</b> Old per-tab switch warnings start 17 November; Code-only setups keep the old behaviour until 17 December.</li></ol></div>
+<div class="toplist"><div class="tl">Top stories</div><ol><li><a href="#top1">Claude can now build spreadsheets and whiteboards that you and your team edit together</a> <span class="fld">Your stack: Claude chat</span></li><li><a href="#top2">Scheduled tasks now tell you when the last run failed, needs you, or never started</a> <span class="fld">Your stack: Cowork</span></li><li><a href="#top3">Update Claude Code: a leak of sign-in secrets and two permission gaps were closed</a> <span class="fld">Your stack: Claude Code</span></li></ol></div>
+<p class="count">10 stories &middot; tap a story to open it</p>
+
+<h2 class="field">Your stack: Claude chat <span class="n">2 stories</span></h2>
+<details class="story istop" id="top1"><summary>
+<div class="meta"><span class="chip c-pt">Claude chat</span><span class="chip v-try">TRY</span><span class="chip top">TOP</span><span class="date">10 Nov</span></div>
+<div class="hl">Claude can now build spreadsheets and whiteboards that you and your team edit together</div>
+<div class="sr">Claude Sheets and Claude Whiteboards are new kinds of document in Claude chat, both in beta on every paid plan. Ask for a tracker with tabs, formulas and drop-down lists and Claude fills the cells and marks each edit.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>Until now a spreadsheet from Claude was a file you downloaded and opened elsewhere; now it stays in Claude and teammates can open it. Sheets have simple spreadsheet functions for now; for full Excel features you export the file or use the separate Claude add-in for Excel. A whiteboard is a shared board where Claude can group notes by theme and draft who does what; it can be turned into a document or slide deck, or sent on to Miro or Lucid (online whiteboard tools). Claude Dashboards also left beta the same day and is now called Claude Data, with written summaries of your data, agreed definitions of key numbers (beta) and live sharing (beta). Anthropic names no size limits, and no independent hands-on test exists yet, so treat the claims as the vendor’s. Where: Claude chat on web, desktop and phone. Try it on an M&amp;A (mergers and acquisitions) document tracker and check whether the formulas hold.</p><div class="lbl">What to watch</div><p>Claude Meetings, which would join a call and take notes, is announced as coming soon with no date.</p><div class="lbl">Sources</div><p class="lk"><a href="https://claude.com/resources/articles/sheets-whiteboards-data" target="_blank" rel="noopener">Anthropic: Sheets, Whiteboards, Data</a> <a href="https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors" target="_blank" rel="noopener">Anthropic: product overview</a></p><p class="why">Why 5/5: Anthropic product posts, 10 Nov.</p></div></details>
+<details class="story" id="s2"><summary>
+<div class="meta"><span class="chip c-pt">Claude chat</span><span class="chip v-watch">WATCH</span><span class="date">10 Nov</span></div>
+<div class="hl">Apps from Asana, Notion, Box and others can now open beside your chat, and Claude can edit them live</div>
+<div class="sr">Where a connected app supports it, you can open it next to the conversation or full screen, signed in as yourself. Claude can then change the page, row or file you have open, with your approval.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>You approve Claude’s actions the same way as for any connector. It starts with a small group: Adobe, Atlassian, Box, HubSpot, Notion, Asana, Canva, Carta, Dropbox, monday.com, Smartsheet, Vercel and Webflow. Earlier this year Claude could only show a small live preview of a connected tool inside the chat; this is the full tool. It arrives with the combined chat-and-Cowork experience, so you see it only once your account has been moved to it or your organisation switches it on. Administrators can limit a connector’s tools as they do today. Developers build these apps with Anthropic’s open standard for connecting tools (the Model Context Protocol), and for them the feature is an early public test. Where: Claude chat, web and desktop app.</p><div class="lbl">What to watch</div><p>Figma, Harvey and Shopify are named as building versions but are not available yet. Move this to TRY when an app you use daily appears in the list.</p><div class="lbl">Sources</div><p class="lk"><a href="https://claude.com/resources/articles/interactive-connectors-full-tool" target="_blank" rel="noopener">Anthropic: apps open in Claude</a></p><p class="why">Why 5/5: Anthropic product post, 10 Nov.</p></div></details>
+<h2 class="field">Your stack: Cowork <span class="n">4 stories</span></h2>
+<details class="story istop" id="top2"><summary>
+<div class="meta"><span class="chip c-pt">Cowork</span><span class="chip v-try">TRY</span><span class="chip top">TOP</span><span class="date">10 Nov</span></div>
+<div class="hl">Scheduled tasks now tell you when the last run failed, needs you, or never started</div>
+<div class="sr">A scheduled task’s card in Cowork and Code can now read “Last run failed”, “Needs input” or “Didn’t run”, and says why a due run has not begun. A run that carried on without a step now says “skipped a step”, not “completed”.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>The card can read “Last run failed”, “Last run failed, will try again”, “Needs input” or “Didn’t run”, and it says why a due run has not begun, for example “Waiting for its previous run to finish”. A step that needed your approval while nobody was there is reported as skipped. In Auto mode (Claude acting without asking each time), a step blocked by the safety check is reported as blocked. Both are fixes to wording that used to say “completed”. Last time the question was how a run nobody watches should refuse instead of freeze; this is the other half, seeing afterwards what happened. Not stated: whether the status also shows in email or phone notifications. Where: Claude desktop app, Cowork and Code tabs. What to do: update and look at the card of your weekly briefing task.</p><div class="lbl">Sources</div><p class="lk"><a href="https://claude.com/docs/cowork/changelog" target="_blank" rel="noopener">Claude Desktop changelog, 10 Nov</a></p><p class="why">Why 5/5: Claude Desktop changelog.</p></div></details>
+<details class="story" id="s4"><summary>
+<div class="meta"><span class="chip c-pt">Cowork</span><span class="chip v-watch">WATCH</span><span class="date">10 Nov</span></div>
+<div class="hl">The combined chat-and-Cowork start screen is now the default for company-managed accounts</div>
+<div class="sr">Last edition flagged this for 10 November and it has now happened. On company-managed computers the combined “Unified Claude” start screen opens by default, with Cowork switched on.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>The separate switches for Chat and Cowork in the setup window are gone and replaced by one switch. On a personal account nothing is forced. The earlier plan said the combined view would go on for all organisations on 10 November; the newest app version keeps the old behaviour for setups that only use Code until 17 December. New conversations started on the project page now begin a Cowork task, or a chat on a computer that cannot run Cowork. Administrators must set both retention periods (how long chats and Cowork tasks are kept) because Cowork tasks follow their own. A watch item rather than a task: it matters if you manage settings for other people. Ask the administrator if you want the old split.</p><div class="lbl">What to watch</div><p>The old per-tab switches are being phased out; people still using them see a warning from 17 November. Code-only setups keep the old behaviour until 17 December.</p><div class="lbl">Sources</div><p class="lk"><a href="https://claude.com/docs/cowork/changelog" target="_blank" rel="noopener">Claude Desktop changelog, 10 Nov</a></p><p class="why">Why 5/5: Claude Desktop changelog.</p></div></details>
+<details class="story" id="s5"><summary>
+<div class="meta"><span class="chip c-pt">Cowork</span><span class="chip v-watch">WATCH</span><span class="date">10 Nov</span></div>
+<div class="hl">Windows: Claude moves its data to a new folder, and may now stop at launch with a message</div>
+<div class="sr">On Windows 10 (version 21H2 or later) and 11, the update moves Claude’s saved data to a new folder. If another program holds a file Claude needs, Claude can stop at launch with “Claude could not start”.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>The data moves to the folder Claude-Data under your local application data folder. Closing other programs or restarting fixes the launch message; when Windows starts Claude at sign-in it stops without any message. Computer use now asks for the “Use system shortcuts” permission before pressing the Windows key with Tab, a number or a symbol, and file types that install something at a double click are refused. The Microsoft Store version and copies installed by a company are unchanged. Also fixed: Run on startup for Store installs, two files saved to Downloads at the same moment losing one, an artifact in the side panel reloading and losing unsaved edits, and sign-in links that did nothing when clicked twice. Not stated: whether old data is deleted after the move, so do not clean up the old folder until you have checked.</p><div class="lbl">Sources</div><p class="lk"><a href="https://claude.com/docs/cowork/changelog" target="_blank" rel="noopener">Claude Desktop changelog, 10 Nov</a></p><p class="why">Why 5/5: Claude Desktop changelog.</p></div></details>
+<details class="story" id="s6"><summary>
+<div class="meta"><span class="chip c-pt">Cowork</span><span class="chip v-skip">SKIP</span><span class="date">10 Nov</span></div>
+<div class="hl">Cowork no longer lets Claude edit your global instructions by changing a project instruction file</div>
+<div class="sr">Edits Claude makes to a session’s project instruction file no longer update your global instructions; to change those, use Settings. Nothing to do unless you relied on Claude rewriting them.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>This closes a way for a task to change settings that apply to every other task. The same release fixes a lost comment on a file when Claude sent an updated copy, and the Automatically approve switch not turning on right after picking a model that can run Auto. Little to act on; skip unless a task of yours edited those instructions.</p><div class="lbl">Sources</div><p class="lk"><a href="https://claude.com/docs/cowork/changelog" target="_blank" rel="noopener">Claude Desktop changelog, 10 Nov</a></p><p class="why">Why 5/5: Claude Desktop changelog.</p></div></details>
+<h2 class="field">Your stack: Claude Code <span class="n">2 stories</span></h2>
+<details class="story istop" id="top3"><summary>
+<div class="meta"><span class="chip c-pt">Claude Code</span><span class="chip v-try">TRY</span><span class="chip top">TOP</span><span class="date">9 Nov</span></div>
+<div class="hl">Update Claude Code: a leak of sign-in secrets and two permission gaps were closed</div>
+<div class="sr">The 9 November release stops secrets such as refresh tokens from being sent to another server when a connected service redirects the sign-in. It also closes two permission gaps.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>Refresh tokens are stored keys that keep you signed in. The release closes a case where a read-only command ran outside the protected area where commands are tested, without asking, and makes file-copy commands obey the same blocked-list as file writes; commands typed with their full file location, such as /bin/cp (the copy command), now get the same checks. Also fixed: a file-editing command on network folders that could change only the first of several matching places or overwrite the first section of a notebook file. The notes list 74 fixes; these are the ones that touch your security. They name no outside report and no known misuse. Where: Claude Code, terminal and desktop Code tab. Updating is the whole action.</p><div class="lbl">Sources</div><p class="lk"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 9 Nov</a></p><p class="why">Why 5/5: Claude Code changelog.</p></div></details>
+<details class="story" id="s8"><summary>
+<div class="meta"><span class="chip c-pt">Claude Code</span><span class="chip v-watch">WATCH</span><span class="date">9 Nov</span></div>
+<div class="hl">Claude Fable 5.2 is now the default Fable model, and saved Fable 5.1 choices were moved to it</div>
+<div class="sr">If you picked Fable 5.1 in Claude Code, the pick now points to the newest Fable. On Pro and Max plans this happened at once; on Team and Enterprise it waits for the organisation.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>The changelog lists a price of $8 per million input tokens and $40 per million output tokens (tokens are the small pieces of text the model reads and writes). To go back, use the model command with the 5.1 name. The same release lets a Code tab session in the desktop app send twice as many messages to your other sessions (20, up from 10) before waiting for you. Nothing in the notes says how Fable 5.2 uses your plan allowance compared with 5.1; a search found no developer reaction yet. The model itself belongs to the Frontier Tech briefing. Watch your usage meter and switch back if costs jump.</p><div class="lbl">What to watch</div><p>Move to TRY if you want the stronger model for a hard task, with a named task to test it on.</p><div class="lbl">Sources</div><p class="lk"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">Claude Code changelog, 9 Nov</a></p><p class="why">Why 5/5: Claude Code changelog.</p></div></details>
+<h2 class="field">Try this week</h2>
+<div class="card plain"><ol class="also"><li><b>Read the new status on your weekly briefing task.</b> After the next scheduled run of the briefing in the News folder, open its task card and check it says what happened; if it says “Needs input” or “Didn’t run”, that is the cause. <a href="https://claude.com/docs/cowork/changelog" target="_blank" rel="noopener">Claude Desktop changelog, 10 Nov</a></li><li><b>Build one tracker in Claude Sheets.</b> Ask for a document checklist for an M&amp;A (mergers and acquisitions) deal with owners and dates, then compare formulas with your usual spreadsheet. <a href="https://claude.com/resources/articles/sheets-whiteboards-data" target="_blank" rel="noopener">Anthropic, 10 Nov</a></li></ol></div>
+<h2 class="field">What the others are building <span class="n">2 stories</span></h2>
+<details class="story" id="s9"><summary>
+<div class="meta"><span class="chip c-pt">Devin</span><span class="chip v-gap">GAP</span><span class="date">11 Nov</span></div>
+<div class="hl">Devin can now set itself reminders to pick a task up again later</div>
+<div class="sr">Devin, a rival AI coding assistant, can wake itself at a future time, including in sessions started by automations or by an automated account. A long job can pause, wait for something outside and carry on without you.</div>
+<div class="cf" aria-label="Confidence 5 of 5"><span class="dots">●●●●●</span> 5/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>What Claude offers today: partly. Scheduled tasks and a repeat command exist; a task choosing its own wake-up time is not described. A cloud Claude Code session already warns that a repeat timer stops when the cloud machine it runs on shuts down and offers a version that survives (Claude Code changelog, 6 Nov), so the problem is known. The Devin note is one line with no limits on how far ahead a reminder can be set. Not known: whether Devin keeps its state while waiting, or what it costs. Read-across: expect scheduled Cowork and Claude Code runs to be able to set their own follow-up time rather than only run on a fixed schedule [inference]. Signal: one vendor.</p><div class="lbl">Sources</div><p class="lk"><a href="https://docs.devin.ai/release-notes/overview" target="_blank" rel="noopener">Devin release notes, 11 Nov</a></p><p class="why">Why 5/5: Devin release notes.</p></div></details>
+<details class="story" id="s10"><summary>
+<div class="meta"><span class="chip c-pt">Devin</span><span class="chip v-has">CLAUDE HAS IT</span><span class="date">11 Nov</span></div>
+<div class="hl">Devin’s design mode lets you circle part of a page and send it with a note</div>
+<div class="sr">In Devin’s design mode you pick an element on a page, edit its properties in a small bar, and draw boxes or pencil marks in five colours. You send the marked-up picture with a note.</div>
+<div class="cf" aria-label="Confidence 4 of 5"><span class="dots">●●●●○</span> 4/5</div>
+</summary><div class="inner"><div class="lbl">The details</div><p>What Claude offers today: it has this. Claude Design has offered editing on the page and importing your design system in any conversation since 16 September 2026. Devin also lets you pick colours from the preview and look up the page’s named colours and fonts, and the same release adds approving several suggested project-setup changes at once and a setting to ask before loading images from other sites. Sketch-and-annotate on a live page is the same move as drawing on a screenshot for a human colleague. Read-across: nothing new to expect [inference]. Signal: one vendor; included only because Devin was the one rival with a dated change in the window.</p><div class="lbl">Sources</div><p class="lk"><a href="https://docs.devin.ai/release-notes/overview" target="_blank" rel="noopener">Devin release notes, 11 Nov</a> <a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener">Claude release notes, 16 Sep</a></p><p class="why">Why 4/5: Devin notes plus Claude release notes, a different vendor.</p></div></details>
+<h2 class="field">Also noted</h2>
+<div class="card plain"><ul class="also"><li>Cursor, Codex and Gemini CLI (command-line interface) had nothing new since the last edition, and Copilot’s (GitHub’s AI coding assistant) only entries were new models.</li></ul></div>
+
+<h2 class="field">Editor&#8217;s view</h2>
+<div class="card plain"><ol class="also"><li><b>The loud news is in Claude chat, the useful news is in Cowork.</b> Sheets and whiteboards are new but beta and unproven; the scheduled-task status is small and answers the question you had last week about runs nobody watches.</li><li><b>Update Claude Code again.</b> The 9 November release closes a sign-in secret leak and two permission gaps, and quietly moves Fable 5.1 choices to 5.2.</li><li><b>The direction read: work stays inside Claude.</b> Sheets, whiteboards and apps that open beside the chat mean outputs no longer leave for another program, while Devin’s self-set reminders point the same way for unattended work. Expect Cowork runs that schedule their own next step [inference].</li></ol></div>
+
+<div class="colophon card"><h3>Colophon</h3>
+<p><b>Coverage window:</b> 9&ndash;12 November 2026, a follow-up edition covering only changes since 9 November. Scope: Claude chat, Cowork, Claude Code, and what Codex, Cursor, Gemini CLI, Copilot and Devin are building; model releases belong to Frontier Tech.</p>
+<p><b>Sources and limits:</b> read every week: Claude Desktop changelog, Claude apps release notes, Claude product announcements, Claude Code changelog, then search. The Claude apps release notes had no new entry after 6 November. Read-across sentences are inference and carry no score.</p>
+<p>Each story ends with a C-Score, our 1&ndash;5 rating of how firmly it is sourced: 5/5 primary source read, 4/5 two independent sources, 3/5 single credible source, 2/5 aggregator or headline only. No score is rounded up. Drafted with Claude, made by Anthropic.</p></div>
 </div>
 </body>
 </html>
