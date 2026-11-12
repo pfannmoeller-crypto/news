@@ -6,6 +6,15 @@ mobile-friendly static site (GitHub Pages).
 Usage:  python3 build_site.py <news_dir> <out_dir>
 Idempotent: wipes and regenerates <out_dir>/briefings + index.html.
 
+2026-11-12: front page v2 (decided with Stefan 2026-11-10). The Briefings tab opens with
+"The week" — the story that connects the edition, three changes, three dates — read
+from a file YYYY-MM-DD_the_week.html of the same date (between the WZ-WEEK markers).
+Below it, one card per briefing in its category colour, with the edition's own hero
+headline and an optional signal (big / normal / quiet week) read from the briefing's
+meta tags wz-signal<suffix> / wz-teaser<suffix> in the week file (or wz-signal / wz-teaser
+in the briefing itself). Without a week file the cards still show headlines.
+History retired 2026-11-10 (tab keeps its archive).
+
 2026-07-21: front page split into two CSS-only tabs — "Briefings" (Monday
 stack) and "History". Each tab has its own current edition + archive, so a
 future-dated History edition no longer hijacks the Briefings front page.
@@ -27,6 +36,9 @@ from collections import defaultdict
 #     Polymarket lives on as odds lines inside Frontier Tech / Markets / Geopolitics cards
 #     plus an Odds board section in Markets. NEVER delete a row from this dict.
 CATEGORIES = {
+    # The week — one overview page per edition, rendered at the top of the Briefings tab
+    # (2026-11-12). Not a briefing; never shown as a card of its own.
+    "_the_week":                  ("The week",        "The story that connects the edition: what changed, what comes next.",  "#174ea6", "WK"),
     "_ai_briefing_weekly":        ("Frontier Tech",   "AI, space, compute, energy, bio, robotics — the frontier, argued and priced.", "#1a73e8", "FT"),
     "_market_briefing_weekly":    ("Markets",         "Indices, earnings, macro, commodities, crypto — plus the odds board.",           "#188038", "MK"),
     "_geopolitics_briefing_weekly":("Geopolitics",    "Ukraine/Russia, Iran, sanctions, hybrid warfare.",    "#7627bb", "GP"),
@@ -40,12 +52,16 @@ CATEGORIES = {
     # belongs on the Research tab as long-reads (_research suffix), not as a briefing category.
     # Removal was safe precisely because no file ever used the suffix; a category WITH archived
     # editions must never be deleted, only retired.
-    "_history_briefing_weekly":   ("History",         "What happened in the coming week 10, 25 and 50 years ago.",    "#6d4c41", "HB"),
+    "_history_briefing_weekly":   ("History",         "Retired 2026-11-10 — archive of the History editions (the same week 10, 25 and 50 years ago).",    "#6d4c41", "HB"),
 }
 
 # Suffixes retired from the weekly stack — used only for documentation/reporting;
 # the generator itself treats them like any other category so archives render.
-RETIRED = {"_a16z_briefing_weekly", "_polymarket_dashboard_weekly", "_innermost_loop_weekly"}
+RETIRED = {"_a16z_briefing_weekly", "_polymarket_dashboard_weekly", "_innermost_loop_weekly",
+           "_history_briefing_weekly"}
+
+WEEK_SUFFIX = "_the_week"
+WEEK_RE = re.compile(r"<!--\s*WZ-WEEK-START\s*-->(.*?)<!--\s*WZ-WEEK-END\s*-->", re.S)
 
 # SITE WIDTH STANDARD: one container width for the whole site — 880px, fluid below.
 # The index and every briefing/research file must match; a width jump between the
@@ -87,6 +103,8 @@ ICON_PATHS = {
     "_a16z_briefing_weekly": "M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z",
     # Innermost Loop — all_inclusive (infinity)
     "_innermost_loop_weekly": "M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l7.03-6.24c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.42 5.4-5.38s-2.42-5.38-5.4-5.38z",
+    # The week — event_note
+    "_the_week": "M17 10H7v2h10v-2zm2-7h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5H7v2h7v-2z",
     # Cowork — build (wrench)
     "_cowork_briefing": "M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z",
     # History — history (clock rewind)
@@ -187,11 +205,61 @@ def _collect(briefings_dir: Path, suffixes):
         v.sort()
     return editions
 
-def _pane(editions, empty_msg):
+HERO_BLOCK_RE = re.compile(r'<[^>]*class="[^"]*\bhero\b[^"]*"[^>]*>(.*)', re.S | re.I)
+HEAD_RE = re.compile(r"<h[1-3][^>]*>(.*?)</h[1-3]>", re.S | re.I)
+
+def _meta(html, name):
+    m = re.search(r'<meta\s+name="' + re.escape(name) + r'"\s+content="([^"]*)"', html, re.I)
+    return m.group(1).strip() if m else ""
+
+def _headline(html):
+    """The edition's hero headline (first h1-h3 inside the .hero block)."""
+    import html as _h
+    b = HERO_BLOCK_RE.search(html)
+    if not b:
+        return ""
+    h = HEAD_RE.search(b.group(1)[:6000])
+    if not h:
+        return ""
+    return re.sub(r"\s+", " ", _h.unescape(TAG_RE.sub(" ", h.group(1)))).strip()
+
+SIGNALS = {"big": ("big week", "sig-big"), "normal": ("normal week", "sig-normal"),
+           "quiet": ("quiet week", "sig-quiet")}
+
+def _week(briefings_dir: Path, iso: str):
+    """(block html, page html) of the edition's week file, or ("", "")."""
+    f = briefings_dir / f"{iso}{WEEK_SUFFIX}.html"
+    if not f.is_file():
+        return "", ""
+    page = f.read_text(encoding="utf-8", errors="replace")
+    m = WEEK_RE.search(page)
+    return (f'<div class="wk">{m.group(1)}</div>' if m else ""), page
+
+def _pane(editions, empty_msg, briefings_dir: Path = None):
     dates = sorted(editions, reverse=True)
     latest = dates[0] if dates else None
     cards = ""
-    if latest:
+    week = ""
+    if latest and briefings_dir is not None:
+        week, week_page = _week(briefings_dir, latest)
+        for _, suffix, fname in editions[latest]:
+            if suffix == WEEK_SUFFIX:
+                continue
+            label, teaser, color, avatar = CATEGORIES[suffix]
+            html = (briefings_dir / fname).read_text(encoding="utf-8", errors="replace")
+            hl = _headline(html)
+            # signal and teaser: the week file (wz-signal<suffix>, wz-teaser<suffix>) wins,
+            # then the briefing's own meta tags, then the category teaser
+            sub = _meta(week_page, "wz-teaser" + suffix) or _meta(html, "wz-teaser") or teaser
+            sig = SIGNALS.get((_meta(week_page, "wz-signal" + suffix) or _meta(html, "wz-signal")).lower())
+            sig_html = f'<span class="sig {sig[1]}">{sig[0]}</span>' if sig else ""
+            cards += f"""
+  <a class="bcard" style="--c:{color}" href="briefings/{fname}">
+    <span class="btop"><span class="bname">{label}</span>{sig_html}</span>
+    <span class="bhl">{hl or label}</span>
+    <span class="bsub">{sub}</span>
+  </a>"""
+    elif latest:
         for _, suffix, fname in editions[latest]:
             label, teaser, color, avatar = CATEGORIES[suffix]
             cards += f"""
@@ -207,15 +275,21 @@ def _pane(editions, empty_msg):
             f'<a class="arow" href="briefings/{fname}">'
             f'<span class="adot" style="background:{CATEGORIES[suffix][2]}"></span>'
             f'{CATEGORIES[suffix][0]}</a>'
-            for _, suffix, fname in editions[iso])
+            for _, suffix, fname in editions[iso] if suffix != WEEK_SUFFIX)
+        n_items = sum(1 for _, s, _f in editions[iso] if s != WEEK_SUFFIX)
+        week_link = "".join(
+            f'<a class="arow wkrow" href="briefings/{fname}"><span class="adot" style="background:{CATEGORIES[s][2]}"></span>The week</a>'
+            for _, s, fname in editions[iso] if s == WEEK_SUFFIX)
         archive += f"""
   <details class="edition">
-    <summary>{pretty_date(iso)} <span class="count">{len(editions[iso])} Briefings</span></summary>
-    <div class="arows">{rows}</div>
+    <summary>{pretty_date(iso)} <span class="count">{n_items} Briefings</span></summary>
+    <div class="arows">{week_link}{rows}</div>
   </details>"""
     date_line = pretty_date(latest) if latest else "—"
+    grid = "bgrid" if (latest and briefings_dir is not None) else "cardgrid"
+    head = "This week's briefings" if week else "Current edition"
     body = f"""<div class="edline">Current edition: {date_line}</div>
-<h2>Current edition</h2>{f'<div class="cardgrid">{cards}</div>' if cards else f'<p class="sub" style="padding:0 4px">{empty_msg}</p>'}
+{week}<h2>{head}</h2>{f'<div class="{grid}">{cards}</div>' if cards else f'<p class="sub" style="padding:0 4px">{empty_msg}</p>'}
 <h2>Archive</h2>{archive if archive else '<p class="sub" style="padding:0 4px">No earlier editions yet.</p>'}"""
     return body
 
@@ -330,7 +404,7 @@ def build_index(briefings_dir: Path) -> str:
     """Build the tabbed front-page HTML from processed briefing filenames."""
     brief_ed = _collect(briefings_dir, [s for s in CATEGORIES if s not in HISTORY_SUFFIXES])
     hist_ed = _collect(briefings_dir, HISTORY_SUFFIXES)
-    pane_b = _pane(brief_ed, "No current edition.")
+    pane_b = _pane(brief_ed, "No current edition.", briefings_dir)
     pane_h = _pane(hist_ed, "No History edition yet.")
     pane_r = _research_pane(briefings_dir)
 
@@ -400,6 +474,29 @@ summary::-webkit-details-marker{{display:none}}
 #tab-h:checked ~ .tabrow .lab-h{{background:var(--hist);color:#fff}}
 #tab-r:checked ~ .tabrow .lab-r{{background:var(--res);color:#fff}}
 footer{{text-align:center;color:var(--muted);font-size:12px;margin-top:32px}}
+/* front page v2 (2026-11-12): The week + coloured briefing cards */
+.wk{{margin-top:10px}}
+.wk-hero{{background:linear-gradient(135deg,#1a73e8,#174ea6);color:#fff;border-radius:16px;padding:20px 20px 18px}}
+.wk-eyebrow{{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}}
+.wk-hero h3{{font-size:22px;line-height:1.25;margin:6px 0 10px;font-weight:700}}
+.wk-hero p{{font-size:15px;opacity:.96}}
+.wk-box{{background:var(--surface);border:1px solid var(--divider);border-radius:14px;padding:4px 16px}}
+.wk-row{{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #eef0f2}}
+.wk-row:last-child{{border-bottom:0}}
+.wk-n{{flex:0 0 26px;height:26px;border-radius:50%;background:#e8f0fe;color:#174ea6;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}}
+.wk-d{{flex:0 0 78px;font-weight:700;color:#174ea6;font-size:14px}}
+.wk-row b{{font-weight:500}}
+.wk-s{{color:var(--muted);font-size:14px}}
+.bgrid{{display:grid;grid-template-columns:1fr;gap:10px}}
+.bcard{{display:block;background:var(--surface);border:1px solid var(--divider);border-left:6px solid var(--c);
+  border-radius:14px;padding:13px 16px;text-decoration:none;color:var(--text)}}
+.bcard:active{{background:#f1f3f4}}
+.btop{{display:flex;flex-wrap:wrap;align-items:center;gap:8px}}
+.bname{{background:var(--c);color:#fff;border-radius:12px;padding:2px 10px;font-size:12.5px;font-weight:700}}
+.sig{{border-radius:12px;padding:1px 9px;font-size:12px;font-weight:500}}
+.sig-big{{background:#fce8e6;color:#b3261e}}.sig-normal{{background:#e8f0fe;color:#174ea6}}.sig-quiet{{background:#eef0f2;color:#5f6368}}
+.bhl{{display:block;margin:6px 0 3px;font-size:16.5px;line-height:1.3;font-weight:500}}
+.bsub{{display:block;font-size:14px;color:var(--sec)}}
 </style>
 </head>
 <body>
