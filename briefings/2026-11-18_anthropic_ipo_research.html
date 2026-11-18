@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic's IPO: What $70–78 a Share Actually Buys</title>
+<meta name="description" content="A valuation aid for the ANT listing, built from the S-1 itself: what the price implies at each share count, how much of the growth is recognised revenue, what the $900bn of compute commitments mean, who controls the company, and where bulls and bears part ways. Not investment advice.">
+<meta name="wz-icon" content="deal">
+<meta name="wz-color" content="#b3541e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#b3541e; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#b3541e 0%,#8e3f14 55%,#6d2f0f 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:11px 16px;margin-bottom:12px;font-size:13px;color:var(--grey-600);
+             line-height:1.55}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+  .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11.5px;
+      background:var(--grey-100);color:var(--grey-600);border-radius:6px;padding:2px 8px;
+      margin-left:8px;vertical-align:middle;font-weight:500}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .inbox{border-radius:10px;padding:11px 15px;margin:10px 0;font-size:13.8px;line-height:1.55;
+         color:var(--grey-700)}
+  .inbox .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;
+              letter-spacing:.6px;text-transform:uppercase;display:block;margin-bottom:4px}
+  .inbox.check{background:#fffdf5;border:1px solid #f0e0b0}
+  .inbox.check .tag{color:#a56100}
+  .inbox.views{background:#f6f9ff;border:1px solid #d3e0f5}
+  .inbox.views .tag{color:#174ea6}
+  .inbox b{color:var(--grey-900);font-weight:500}
+  .weight{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 0}
+
+  .pill{display:inline-block;padding:1px 9px;border-radius:11px;font-size:11px;
+        font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;
+        font-family:'Google Sans',sans-serif;vertical-align:middle}
+  .p-true{background:#e6f4ea;color:#137333}
+  .p-most{background:#e8f0fe;color:#174ea6}
+  .p-mis{background:#fef7e0;color:#a56100}
+  .p-false{background:#fce8e6;color:#a50e0e}
+  .p-unv{background:#f1f3f4;color:#5f6368}
+  .p-open{background:#fbece3;color:#8e3f14}
+  .cs{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--grey-600);white-space:nowrap}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.red{background:#fce8e6;border-left-color:var(--red);color:#7d1512}
+  .callout.blue{background:#e8f0fe;border-left-color:var(--blue);color:#174ea6}
+  .callout.violet{background:#fbece3;border-left-color:var(--accent);color:#5a270c}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+  .src li{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+<div class="hero">
+  <div class="kicker">Research · Valuation landscape · Long read</div>
+  <h1>Anthropic's IPO: What $70–78 a Share Actually Buys</h1>
+  <p>Anthropic, PBC is offering 825 million Class A shares on Nasdaq under the ticker ANT, in a range of $70 to $78. This piece reads the price against the company's own amended filing: which share count it multiplies, which revenue figure it divides by, what the compute commitments add, who holds control, and where the bull and bear cases part ways. It does not say where the price should land.</p>
+  <div class="meta"><span>Source: S-1/A No. 3 (17 Nov 2026)</span><span>Range $70–78</span><span>Nasdaq: ANT</span><span>As of 18 Nov 2026, before pricing</span></div>
+</div>
+
+<div class="epistemic"><b>How this was checked:</b> figures about the company were read against S-1/A Amendment No. 3 (filed 17 Nov 2026), the IPO-website free writing prospectus carrying the founders' letter, and Form 8-A, all from SEC filings. Press and analyst reactions come from three research passes; nine checks (c1 to c9) test the claims that carry the valuation. Variant used: landscape, bull versus bear on one security, so each party is stated at full strength before any check, and conflicting figures sit side by side rather than being averaged. · <b>Quote fidelity:</b> verbatim for the filing and the founders' letter, each quote contiguous and under 20 words; analysts and commentators are paraphrased, with a quote of 12 words or fewer only where marked. Many commentator items reached us through relays (aggregator sites) and are scored C 2/5 on that basis. · <b>Not independently verified:</b> the final price (not known at writing); the exact Reuters, Bloomberg and FT wording, which we saw only through relays; a dated snapshot of listed-peer multiples; the Polymarket odds beyond one aggregator snapshot. · <b>Conflict of interest:</b> this piece was compiled with Claude, a model made by Anthropic — the company being valued. That is a direct conflict of interest. To counter it, company figures are read against the filing and the headline metrics get a dedicated check, the bear case is given equal space, and a separate review counted skepticism per party. · <b>Not investment advice.</b> · As of 18 Nov 2026, about 14:00 UTC, before the final pricing (expected on the evening of 18 Nov US Eastern, with trading expected 19 Nov).</div>
+
+<div class="navchips">
+  <a href="#deal">The deal</a><a href="#bull">Bull case</a><a href="#bear">Bear case</a><a href="#c1">c1</a><a href="#c2">c2</a><a href="#c3">c3</a><a href="#c4">c4</a><a href="#c5">c5</a><a href="#c6">c6</a><a href="#c7">c7</a><a href="#c8">c8</a><a href="#c9">c9</a><a href="#toolkit">Toolkit</a><a href="#stepping-back">Stepping back</a><a href="#scorecard">Scorecard</a><a href="#sources">Sources</a>
+</div>
+
+<div class="sechead" id="deal"><div class="num">1</div><h2>The deal in one table</h2></div>
+<div class="card">
+  <p class="sub">Everything in this section comes from the S-1/A No. 3 unless marked otherwise (C 5/5). Press detail on retail brokers is marked as such.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="width:30%">Item</th><th>What the filing says</th></tr>
+    <tr><td><b>Issuer and venue</b></td><td>Anthropic, PBC, a Delaware public benefit corporation. Ticker ANT, Nasdaq Global Select. Lead underwriters: Goldman Sachs and Morgan Stanley.</td></tr>
+    <tr><td><b>Shares offered</b></td><td>825,000,000 Class A shares: 801,351,354 new shares from the company and 23,648,646 sold by existing holders. Underwriters' option: 123,750,000 further shares.</td></tr>
+    <tr><td><b>Range</b></td><td>$70.00 to $78.00; midpoint $74.</td></tr>
+    <tr><td><b>Concurrent private placement</b></td><td>$26.0B of non-voting Class N stock at the IPO price: Google $10B, NVIDIA $10B, AMD $2.5B, Broadcom $1B, Micron $1B, Microsoft $1B, TSMC $0.5B. That is 351,351,348 shares at $74. These shares are not subject to the lock-up. Directors indicated interest of up to $303M.</td></tr>
+    <tr><td><b>Net proceeds</b></td><td>About $84.6B, or about $93.7B if the option is exercised. Stated use: general corporate purposes including compute and infrastructure and hiring; possibly acquisitions.</td></tr>
+    <tr><td><b>Share count after the offering</b></td><td>13,086,672,593 shares outstanding. The filing's table gives a fully diluted count of about 18.01B: Class A 7.43B, Class N 7.80B (including note conversion), options 1.70B (treasury method), RSUs 1.07B.</td></tr>
+    <tr><td><b>Retail allocation</b></td><td>"Up to 20%" of Class A shares are expected to go to retail investors, subject to demand (S-1). Brokers named in the press: Schwab, Fidelity, Robinhood, SoFi, E*TRADE (C 2/5, aggregator).</td></tr>
+    <tr><td><b>Timeline</b></td><td>Per the IPO website FAQ: roadshow from 10 Nov; price expected 18 Nov (EST); trading expected 19 Nov (EST). Confidential drafts were filed from 1 Jun 2026; public S-1 on 26 Oct; amendments on 2, 10 and 17 Nov.</td></tr>
+    <tr><td><b>Dilution</b></td><td>Pro forma as adjusted net tangible book value of $8.21 per share, so immediate dilution of $65.79 per share for buyers at $74.</td></tr>
+  </table></div>
+
+  <h3>What the price multiplies (our calculation from S-1 share counts)</h3>
+  <p>The headline number depends first on which share count is used. We multiplied the S-1 counts by each end of the range. The enterprise value (EV) column subtracts the $212.7B pro forma cash from the fully diluted value and is a rough cut: it ignores the compute commitments discussed in c4 and the credit facility.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Price</th><th>Basic market cap (13.09B sh)</th><th>Fully diluted (18.01B sh)</th><th>Rough EV (FD minus $212.7B)</th><th>Multiple of $81B run-rate: basic / FD / EV</th></tr>
+    <tr><td><b>$70</b></td><td>$916B</td><td>$1,261B</td><td>$1,048B</td><td>11.3x / 15.6x / 12.9x</td></tr>
+    <tr><td><b>$74</b></td><td>$968B</td><td>$1,333B</td><td>$1,120B</td><td>12.0x / 16.5x / 13.8x</td></tr>
+    <tr><td><b>$78</b></td><td>$1,021B</td><td>$1,405B</td><td>$1,192B</td><td>12.6x / 17.3x / 14.7x</td></tr>
+  </table></div>
+  <p class="sub">All cells: our calculation. Each $1 on the price moves market capitalisation by about $13B on the basic count and about $18B on the fully diluted count.</p>
+  <p>The same fully diluted $74 value against recognised revenue rather than run-rate: 19.7x the annualised Q3 2026 revenue of $67.8B, and 30x the annualised nine-month 2026 revenue of $44.3B (our calculation). Run-rate and recognised revenue are different measures; c2 sets out why they diverge.</p>
+  <div class="callout blue"><b>Pricing was not known at writing.</b> The final price was expected on the evening of 18 Nov US Eastern, after this piece's as-of time. Every table here is given across the range, and the per-$1 sensitivity is stated so a reader can place any final price on it.</div>
+</div>
+
+<div class="sechead" id="steelman"><div class="num">2</div><h2>Each side at full strength, before any check</h2></div>
+<p class="sub" style="padding:0 4px">Nothing in this section carries a verdict. Each party states its case as its best advocate would. The checks come afterwards, and they cut both ways.</p>
+
+<div class="card" id="bull">
+  <h2>The bull case</h2>
+  <p class="sub">The issuer's own framing, then the commentators who think the price is reasonable or low.</p>
+  <h3>The issuer: a business growing faster than almost anything on record, and still profitable on its adjusted measures</h3>
+  <p>Revenue went from $41M in 2023 to $386M in 2024 and $4,585M in 2025. Nine-month 2026 revenue is $33,242M. Quarterly revenue climbed from $376M in Q1 2025 to $16,956M in Q3 2026, which is +1,127% year on year. The S-1 reports a run-rate of about $81B at 31 October 2026, up about $10B in a month. Adjusted operating income over nine months of 2026 is $4,081M, a 12% margin, and operating cash flow was positive at $6.6B. The customer base is deepening, not just widening: more than 11,900 customers pay at least $100k on a trailing basis (about 950 a year earlier), more than 1,900 pay at least $1M, and net revenue retention is about 900%. Over half of the Fortune 500 are customers, and no customer exceeds 10% of nine-month revenue. Revenue per employee on a trailing basis is $6.6M, from $1.4M.</p>
+  <p>On the issuer's account, the heavy spending is the investment that produces this curve, and the founders' letter says it plainly: forward compute investments "may seem irresponsibly large at first glance". The same letter says "never let your company be worth a dollar more than it is actually worth", that the company will not run advertising and, over the Mythos Preview delay, accepted "forgoing substantial revenue" rather than ship early. The structure is presented as a safeguard: a body that "can act in the public interest when the situation demands it".</p>
+  <h3>The bulls: the price is set to be digestible, listed peers trade at similar multiples (in their reading), and Tunguz rates the quality as among the best he has seen</h3>
+  <p>Dan Ives (Wedbush), on 10 Nov, argued that a digestible price near $1T matters more than squeezing out the last turn of valuation, and he sees much higher long-run value (a $3T figure is reported from a snippet only, C 2/5). Patrick Moorhead (Moor Insights), on 11 Nov, said the range looks low against the earlier $2T talk, summing it up as "pricing it to go crazy on IPO day", while leaving open whether run-rate covers the $900.9B of commitments. Scott Galloway (NYU Stern), on 16 Nov, noted that 17x to 19x run-rate is roughly where Broadcom and AMD trade and argued the deal is priced for a first-day pop.</p>
+  <p>On quality, Tomasz Tunguz (Theory Ventures, quoted by Fortune on 3 Nov) called growth and retention among the best he has seen and put implied gross margin near 85% with retention near 900%. Campbell Hutcheson (Epoch AI, Fortune, 3 Nov) argued that paying up for compute can be rational if it buys a capability lead. Azeem Azhar (Exponential View) takes the view that a lab able to turn reliably profitable is valuable even with growth slowing from a very high base. ARK Invest's Brett Winton did not make a call on ANT; ARK's venture fund held about 4.4% of Anthropic at 31 Oct, which is a disclosed interest.</p>
+  <p>No bull in our material set out a full valuation. The nearest reference is a reported 2028 revenue forecast of $190–200B (company forecast as reported by Reuters via TNW, not in the S-1, C 3/5). At $1.33T that is about 6.7–7x that revenue (our calculation, ignoring margins and discounting). Whether that is high or low depends on the margin and the discount rate.</p>
+</div>
+
+<div class="card" id="bear">
+  <h2>The bear case</h2>
+  <p class="sub">The valuation skeptics, then the governance critics, with the circularity concern attached to both.</p>
+  <h3>The valuation bears: the price needs a path few companies have ever completed</h3>
+  <p>Jay Ritter (University of Florida) counted 4,110 IPOs from 1980 to 2024; only 14 were priced above 40x sales on an offer-price basis, and that group lagged the market by 15.4% over up to three years, with 12 of 14 underperforming (the exceptions were Mobileye and Astera Labs). Which bucket ANT falls into depends on the revenue base: about 16.5x run-rate, but about 38x trailing-twelve-month recognised revenue of $35.3B (Q4 2025 plus nine months of 2026) on the fully diluted value at $74 (our calculation). Ritter's own arithmetic is that justifying about $1.41T needs a path to $100B or more of annual after-tax profit, and he points to falling prices from open models; he says "a lot of things have to go right", and still sees substantial upside if they do. The sample is 14 companies; we did not test whether they are comparable to ANT in growth.</p>
+  <p>Aswath Damodaran (NYU Stern), valuing the company on his own blog on 28 Oct, arrives at about $1.475T of equity, assuming roughly $1T of revenue in 2036 and a 27.5% operating margin, and treating compute commitments as debt-like with a probability of failure. He expects the IPO to be "priced, rather than valued", would not buy far above his value and would not short, and his range of outcomes runs from negative to about $4T. That is above the $1.33T fully diluted value at $74, though we did not check that his share base is the same. He is a good-business-but-price-near-its-limit voice (our wording) rather than a pure bear. Steve Eisman, through a relay (C 2/5), points to sequential growth that slowed from 144% to 45% (S-1 implies +47%, our calculation), and to revenue per compute dollar falling from 2.08 to 1.70, which he blames on the end of "tokenmaxing" and on cheaper Chinese models. Ed Zitron argues Q2 profit was flattered by discounted compute (UNVERIFIED, see c3) and that the staggered lock-up is an insider exit route. New Constructs' reverse DCF puts equity as low as $144B with a middle case near $1.1T. Harrison Rolfes (PitchBook) notes that $2T would have been about 435x 2025 revenue and that non-voting public shares warrant a discount. Tony Trzcinka (Impax) asks whether revenue outpaces commitments and whether the obligations make borrowing expensive.</p>
+  <h3>The governance critics: public buyers are buying economics without control</h3>
+  <p>Control sits with a one-share Class F held by the co-founders' Founder LLC (50.1% of general voting power), and a one-share Class T held by the Long-Term Benefit Trust, which elects a board majority. Public Class A holders get one vote per share. The company is a controlled company under Nasdaq rules. Damodaran calls this "more entrenching than Alphabet or Meta" (his own blog, C 5/5), companies he owns. The Council of Institutional Investors generally opposes dual-class structures without a sunset of seven years or less (a general position, not an ANT-specific statement, C 3/5). New York City Comptroller Mark Levine wrote on 14 Oct asking for safety disclosure and shareholder accountability (C 3/5), and advocacy groups have called the founder vote a "power grab" (C 2/5, advocacy).</p>
+  <h3>Circularity: some of the money comes from the companies that sell Anthropic its compute</h3>
+  <p>The $26B placement comes from suppliers and partners who also sell Anthropic compute or compete with it. The S-1 itself describes the cloud service providers as investors, distributors, customers and competitors, a relationship it calls "multifaceted and complex". Two readings: the placement signals strategic demand from companies well placed to judge the business, and it ties those suppliers' interests to the price. Damodaran noted the concern briefly. We found no source quantifying any round trip.</p>
+</div>
+
+<div class="sechead" id="walk"><div class="num">3</div><h2>Nine claims, walked through</h2></div>
+<div class="card">
+  <p class="sub">Scale: C 5/5 primary source · C 4/5 two independent sources · C 3/5 one credible source · C 2/5 aggregator only. A verdict never raises the score of the source behind it.</p>
+
+  <h3>c1 · The headline valuation <span class="yr">press, 5–17 Nov</span></h3>
+  <div class="quote">"$1.3 trillion" (ABC) · "up to $1.4 trillion" (Decrypt)</div>
+  <p>Headlines quote a fully diluted number. Renaissance Capital gives $1.2 trillion fully diluted at the midpoint and says it excludes $111B of convertible debt; the FT, through a relay, gives $1.26T to $1.41T. Our arithmetic from the S-1 (see the deal table) gives $1.26T to $1.41T fully diluted and $0.92T to $1.02T basic. The basic count is about 27% below the fully diluted one, so "what the company is worth" has a range of about $0.4T before any view on the business. The talk of "$2 trillion" is a separate claim and sits in the same box below.</p>
+  <div class="inbox check" id="c1"><span class="tag">Check</span><span class="pill p-most">Mostly true</span> <span class="cs">C 3/5</span> — the press figures match our fully diluted arithmetic ($1.26–1.41T, our calculation from S-1 counts, C 5/5 inputs); the basic equivalent is $0.92–1.02T. Renaissance's $1.2T uses a share base we could not reproduce (<span class="pill p-open">Open</span>). <b>c1b, "$2 trillion":</b> <span class="pill p-mis">Misleading</span> <span class="cs">C 2/5</span> if read as a company target. It was banker and press expectation (a Reuters prospectus story in late September, relayed by Pulse 2.0 as "more than $2 trillion"; a TNW headline in August) and never an S-1 number. Whether Reuters itself printed the figure is <span class="pill p-unv">UNVERIFIED</span>.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Moorhead</b> reads the range as low against the $2T talk; <b>Rolfes</b> uses the same $2T as the denominator for a very high multiple of 2025 revenue. The same unsourced figure serves both as the bull's bargain case and the bear's stretch case (our wording).</div>
+  <p class="weight">How much this matters for the valuation: it fixes the denominator for every multiple, so which share count a reader uses moves the answer by more than the whole price range does.</p>
+
+  <h3>c2 · Run-rate revenue of $81B <span class="yr">S-1, as of 31 Oct</span></h3>
+  <div class="quote">"annualizes our consumption-based fees for a trailing 28-day period"</div>
+  <p>The S-1 states that subscription fees are annualised from a single month, that the measure "may not correspond to the revenue we ultimately recognize", and that "Our actual historical revenue and future revenue may differ materially from this measure." Recognised revenue was $16,956M in Q3 2026, which annualises to $67.8B (our calculation); the October run-rate of about $81B is about $10B above 30 September. Usage fell about 20% around the turn of the year in the past, so a holiday dip is part of the company's own record. The press path to $81B: about $9B at end-2025, $14B in February, $30B in April (Bloomberg, relay, C 3/5), $47B in May (Anthropic, C 5/5), above $65B at end-July (Reuters via TNW, C 3/5).</p>
+  <div class="inbox check" id="c2"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — as a company metric, with its methodology caveat: it is a trailing 28-day annualisation, about $13B above annualised recognised Q3 revenue (our calculation). Milestones other than the S-1 and Anthropic's own: C 3/5.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Ritter</b> shows that the revenue base decides the bucket (about 16.5x run-rate, about 38x trailing recognised revenue, our calculation). <b>Tunguz</b> and <b>Galloway</b> work from run-rate. <b>Eisman</b> reads the slowdown in sequential growth as the signal that run-rate flatters.</div>
+  <p class="weight">How much this matters for the valuation: a lot; the same price is 16.5x or 38x depending on the denominator.</p>
+
+  <h3>c3 · "It is profitable" <span class="yr">S-1, 9M 2026</span></h3>
+  <div class="quote">"We expect our costs will increase over time and our losses will continue"</div>
+  <p>Adjusted operating income was $4,081M over nine months (a 12% margin; 19% in Q2, 15% in Q3) and adjusted net income $5,591M. On a GAAP basis operating income was +$974M in Q2 and −$567M in Q3, and −$1,260M for nine months. Net loss for nine months was $104.0B, of which $94.3B is a non-cash fair-value change on convertible notes driven by the rising valuation. Net losses in 2023, 2024 and 2025 were $1.5B, $8.3B and $42.0B (fair-value charges $1.0B, $5.4B and $34.3B); 2025 includes a $1.5B copyright settlement (Bartz). Stock-based compensation was $3.3B over nine months, with $24.1B (RSUs) plus a further $2.1B of stock-based compensation still unrecognised. The S-1 hedges: "our revenue growth may not be sustainable, and our rate of growth may decrease", and "Many have substantially greater financial, technical, and marketing resources than we do" (Google and OpenAI are named as the primary competitors). The company guides that short-term compute will keep growing and "compress our operating margin and Adjusted Operating Margin".</p>
+  <div class="inbox check" id="c3"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> — the 12% and 15% adjusted margins are in the filing; so are the Q3 GAAP operating loss and the company's own margin-compression guidance. Which margin to capitalise is a choice, not a fact.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Azhar</b> expects the lab to turn reliably profitable. <b>Zitron</b> says Q2's profit was flattered by discounted compute; the S-1 does not say that (<span class="pill p-unv">UNVERIFIED</span>, C 3/5). <b>Rolfes</b> cites a 2025 operating loss above $8B excluding note remeasurement (C 3/5).</div>
+  <p class="weight">How much this matters for the valuation: moderate for the current price, large for any earnings multiple, because the filing itself says the margin is expected to move down in the near term.</p>
+
+  <h3>c4 · The compute commitments <span class="yr">S-1 vs press, Sep–Oct</span></h3>
+  <div class="quote">"currently costs significantly more"</div>
+  <p>That phrase describes short-term compute relative to committed compute: Q3 included $5.0B of it, and the S-1 says "We expect our use of short-term compute to continue to increase in the near term". Compute and infrastructure expense rose from $944M in Q1 2025 to $9.9B in Q3 2026, from 251% of revenue to 48% in Q2 and 58% in Q3. Q3 compute expense grew 382% year on year against revenue growth of 1,127%. Revenue per compute dollar was 2.08 in Q2 and 1.72 in Q3 (our calculation; Eisman cites 2.08 to 1.70). Cost of revenue over nine months was $4,812M, a GAAP gross margin of about 85.5% (our calculation), but most compute sits in R&D ($19,240M), so this gross margin is not comparable to software peers.</p>
+  <p>The commitments themselves: about $900.9B in total, of which $451.6B falls due before 2030 and $70.7B within 12 months, plus $150B to $175B under arrangements with no fixed dollar amount; $186.2B of the total is terminable or contingent. The contractual-obligations table totals $320.0B. One example: SpaceXAI (formerly X.AI, a SpaceX subsidiary) arrangements from May to October 2026 of up to $120.5B into 2029, about $3.1B a month once all capacity is delivered (expected December 2026), cancellable on 90 days' notice after non-cancellable periods ending January and March 2027. Against the $81B run-rate, the total is about 11x and the 12-month slice about 87% (our calculation).</p>
+  <div class="inbox check" id="c4"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> for $900.9B. Earlier press figures measure different scopes: Reuters "$518bn over a decade, about 80% non-cancellable" (29 Sep, C 4/5) and Bloomberg Government "nearly $900 billion" (30 Oct, C 3/5). Reading $518B to $900.9B as a "rise" is <span class="pill p-mis">Misleading</span>. Other quoted totals, side by side and not reconciled: $637B across seven contracts (Tunguz, via aggregator, C 2/5); about $800B (MBI, C 2/5); more than $430B non-cancellable (Zitron, C 3/5). These are definitional differences, not competing facts.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Damodaran</b> treats commitments as debt-like with a failure probability. <b>Moorhead</b> asks whether run-rate covers them. <b>Trzcinka</b> asks whether revenue outpaces them. <b>Hutcheson</b> argues compute spend can be rational if it buys a lead. <b>Tunguz</b>: the bills arrive whether or not customers do.</div>
+  <p class="weight">How much this matters for the valuation: it decides whether the enterprise value is the rough cut in the deal table or something materially larger, and the filing's own terminable-or-contingent split ($186.2B) is the lever.</p>
+
+  <h3>c5 · Revenue quality <span class="yr">S-1, Q3 and 9M 2026</span></h3>
+  <div class="quote">"would not be expected to recur"</div>
+  <p>The S-1 estimates that 5% to 7% of nine-month 2026 revenue (about $1.7B to $2.3B, our calculation) came from customers later found to violate the usage policy or commercial terms; that revenue "would not be expected to recur", and enforcement tightened in August and September "may reduce our overall revenue and growth rates". Concentration: "Approximately 79% of our revenue came from customers outside of our top five customers" in Q3, up from about 64% in Q1, so the top five were about 21% of Q3 revenue and about 36% of Q1 (our calculation). Cloud marketplaces (Amazon, Google, Microsoft) were 44% of nine-month revenue, and the mix is 79% consumption and 21% subscription. Models released in the prior six months produced more than 80% of Q3 revenue. Net revenue retention (about 900% at 30 Sep) divides current-quarter revenue from customers who paid at least $1 in the same quarter a year earlier by their revenue then. It excludes Claude Pro, Max and Ultra subscribers. In a year of roughly 11x growth the base is small, so the ratio is mechanically large (S-1, C 5/5). On the 5% to 7% estimate the S-1 adds "We believe this dynamic is common in our industry" and "This estimate requires judgment and may change".</p>
+  <div class="inbox check" id="c5"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> for the 5% to 7% figure; the press coverage we found was EconoTimes and RuntimeWire only (C 2/5), no major outlet. <b>Zitron's "top five about 25%":</b> <span class="pill p-true">True</span> for the nine months <span class="cs">C 5/5</span>. The S-1 says "our top five customers represented approximately 25% of our revenue for the nine months ended September 30, 2026". It gives about 21% for Q3 and about 36% for Q1 (our calculation from "79% outside top five"), so the figure depends on the period. Each top-five customer reached a record high in Q3 (S-1). <b>Zitron's description</b> of the 5% to 7% as customers "distilling" the models: <span class="pill p-unv">Unverifiable</span> as stated; the S-1 names usage-policy or commercial-terms violations and discusses distillation separately as a risk.</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Tunguz</b> highlights retention near 900% as an unusual strength. <b>Eisman</b> attributes slowing growth to an end of "tokenmaxing". <b>Ben Thompson</b> (via aggregator, C 2/5) worries competition may erode a profitable core.</div>
+  <p class="weight">How much this matters for the valuation: moderate in size (a few percent of nine-month revenue) but it shows the metrics are being read from the filing by both sides.</p>
+
+  <h3>c6 · Peers and multiples <span class="yr">Sep–Nov</span></h3>
+  <p>The only peer with a comparable private mark is OpenAI. A first close of about $11B at $1.25T on 6 Nov 2026 (Reuters and Bloomberg, via relay, C 3/5) follows a closed round of $122B at $852B post-money on 31 March (C 4/5). OpenAI's run-rate has two figures: "nearing $70B" (Axios, 29 Sep to 1 Oct, C 3/5) and about $50B after an FT correction on gross versus net accounting (9 Oct, C 3/5). Against $1.25T that is 18x on $70B or 25x on $50B (our calculation). OpenAI says it will not list in 2026. A dated snapshot of listed-peer multiples was not available to us, so none is shown.</p>
+  <div class="inbox check" id="c6"><span class="tag">Check</span><span class="pill p-open">Open</span> <span class="cs">C 3/5</span> — the OpenAI marks are reported by relay; the two run-rate figures are shown side by side and not reconciled. <b>Galloway's comparison</b> of about 17x to 19x run-rate sales with Broadcom and AMD uses a P/E for the peers: different yardsticks, so the comparison does not settle the point either way (C 3/5).</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Galloway</b>: the multiple is about where the established chip companies trade, which he reads as a case that the deal is priced for a pop. <b>Pitchbook's Rolfes</b>: the $2T talk implied a very high multiple of 2025 revenue. <b>Damodaran</b> holds that an IPO is priced from what the market will pay, not valued from cash flows.</div>
+  <p class="weight">How much this matters for the valuation: the private marks give a reference but not a verdict, since a mark set by a funding round and a price set by a public book are different mechanisms.</p>
+
+  <h3>c7 · Governance and control <span class="yr">S-1, founders' letter</span></h3>
+  <div class="quote">"elects four of our seven directors"</div>
+  <p>The founders' letter says the Long-Term Benefit Trust (LTBT) elects four of seven directors and the co-founders elect the other three, and that founder voting power "passes to our common stockholders once fewer than three of us remain in the voting entity". The S-1 gives the mechanism: Class F is redeemed after a transition period once there are fewer than three Continuing Founders for 90 consecutive days. The five classes are A (public, one vote), N (strategic partners, non-voting, converting to A on sale to unaffiliated holders of no more than 9.99%), T (one share, held by the LTBT), F (one share, held by the Founder LLC, 50.1% of general voting power, no economic rights) and E (employees, limited matters). Changing the LTBT without the trustees' support needs, until year three, unanimous Continuing Founders plus a Class E majority plus a Class A majority; with no Class F outstanding, 85% of Class A. The Public Benefit Fund holds 5% of fully diluted equity (846,840,960 Class N shares), and the board may add 2% for every sustained 50% share-price increase from the prior contribution, starting at the IPO price; the founders' letter says this is "not outside the range of what has been offered as executive compensation packages". The co-founders pledge 80% of personal equity (about 9% of fully diluted shares) and employee donation pledges are about 8% (as of 30 Jun 2026). Donation-matching expense was $2.1B over nine months (about 6% of operating expense), with $2.0B in Q3. Amazon holds 14.7% and Google 13.7% of capital stock.</p>
+  <div class="inbox check" id="c7"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> for the structure as the filing states it. The LTBT is designed to have five financially disinterested trustees (S-1); Tech Times reported it down to three in August 2026 (Bernanke joined, Cuéllar left; C 3/5). The current count in the S-1 was not confirmed by us (<span class="pill p-open">Open</span>).</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Damodaran</b> (own blog, C 5/5): more entrenching than Alphabet or Meta. <b>Council of Institutional Investors</b>: general opposition to dual class without a sunset of seven years or less (C 3/5, not ANT-specific). <b>Ritter's data</b> (C 5/5): tech dual-class IPOs from 1980 to 2024 returned +13.8% market-adjusted over three years, against −22.0% for single-class IPOs overall, which cuts against the simple story that control means underperformance; the baskets differ (tech dual-class versus all single-class IPOs), so this is suggestive, not a like-for-like test. <b>Defenders:</b> the company, through the founders' letter; we found no independent named defender.</div>
+  <p class="weight">How much this matters for the valuation: it does not change a discounted cash flow, but it decides what a Class A holder can do about one, and the evidence on whether that costs returns is mixed.</p>
+
+  <h3>c8 · Supply of stock and index flows <span class="yr">S-1, press, rule sources</span></h3>
+  <div class="quote">"including up to 10%"</div>
+  <p>About 15.5B shares are locked up for up to 180 days, or up to 365 days for the co-founders and holders above 0.5% of fully diluted shares. Of the 180-day shares, 3.7B may become eligible earlier, "including up to 10%" of holdings of non-founder directors, officers and employees, from the first trading day. The company's own lock-up ends at the earlier of 180 days or two trading days after Q1 2027 results. The placement shares are not locked. Press detail, reported but not checked by us: 23 release dates in year one with tranches tied to FY2026 and Q1 2027 results (Business Insider via leverageshares, C 3/5); anchor-related first-day releases of up to 315M shares and later steps on 15 Dec, 5 Jan, 19 Jan and 2 Feb (crowdfundedwealth, C 2/5).</p>
+  <p>Index rules: Nasdaq approved fast entry on 30 Mar 2026, effective 1 May; a new listing is ranked on the seventh trading day and added after the fifteenth if within the top 40 by market cap (BNN Bloomberg, C 3/5). If trading starts 19 Nov, that points to around mid-December (our calendar arithmetic, <span class="pill p-unv">UNVERIFIED</span>). S&P DJI rejected fast entry in June 2026 and requires 12 months of seasoning plus positive GAAP earnings (latest quarter and trailing four quarters; Vanguard, C 4/5); with a nine-month 2026 GAAP net loss of $104B, S&P 500 inclusion is not near (our reading). Precedents: SpaceX priced 11 Jun at $135 ($1.75T), closed day one at $160.95 (+19%), later fell about 31% from its peak and stood at $139.11 on 13 Nov, about +3% on the IPO price (fourweekmba, aggregator, C 2/5); it fell 6.8% on its Nasdaq-100 inclusion day (C 2/5). Cerebras priced at $185 in May and rose 68% on day one; its later price is unreliable (C 2/5, <span class="pill p-unv">UNVERIFIED</span>) and is not quoted.</p>
+  <div class="inbox check" id="c8"><span class="tag">Check</span><span class="pill p-true">True</span> <span class="cs">C 5/5</span> for the unlocked placement and the 3.7B and 10% early-release terms. <span class="pill p-open">Open</span> for the staged-release dates (C 2–3/5, reported) and the index timing (C 3/5 for the rule, UNVERIFIED for the date).</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Zitron</b> frames the staggered lock-up as an insider exit route (C 3/5). The opposite reading: index inclusion creates passive demand on a known schedule, and the SpaceX fall on its inclusion day shows it need not lift the price (C 2/5).</div>
+  <p class="weight">How much this matters for the valuation: little for intrinsic value, a great deal for the path of the price in the first months, which is a different question.</p>
+
+  <h3>c9 · Demand and the market backdrop <span class="yr">11–18 Nov</span></h3>
+  <p>Bloomberg (11 Nov, relay) reported the book "multiple times" covered, and about 6x oversubscribed with no range change on 12 to 13 Nov (relay, C 2/5). The FT, through a relay, reported bankers weighing a price above the range that could lift value to $1.5T or more (11 Nov, C 2/5, <span class="pill p-unv">UNVERIFIED</span>). Polymarket odds for the first-day-close market cap, as of 18 Nov via financefeeds (C 2/5): below $1.25T 33%, $1.25T to $1.5T 39%, $1.5T to $1.75T 18%. Backdrop: on 5 Nov the S&P 500 fell 4.4% and the Nasdaq 5.5% (AI financing worries and the midterm results; AP, C 3/5); on 12 Nov Nvidia's CEO Jensen Huang resigned with the CFO Colette Kress interim (Al Jazeera and others, C 4/5); on 16 Nov the S&P 500 fell 1.9%, a third straight loss (AP, C 3/5). The Fed held at 3.75% to 4.00% on 28 Oct with two dissents favouring a hike (Fed release, C 5/5); the 10-year yield was 4.84% on 5 Nov (C 3/5).</p>
+  <div class="inbox check" id="c9"><span class="tag">Check</span><span class="pill p-open">Open</span> <span class="cs">C 2/5</span> — demand reports are all relayed; the final price was not announced at writing. The market and Fed items carry their own scores above (C 5/5 for the Fed, C 3–4/5 otherwise).</div>
+  <div class="inbox views"><span class="tag">Other views</span><b>Moorhead</b> reads a range set below the earlier talk as setting up a first-day pop, and <b>Ives</b> puts weight on a digestible price. <b>Sløk</b> (Apollo, 27 Oct, C 2/5) says AI has not yet paid off outside tech, and the backdrop above is the setting in which the book is being built.</div>
+  <p class="weight">How much this matters for the valuation: none for what the business is worth, all for what the first print will be; every item here will be stale by the next day.</p>
+</div>
+
+<div class="sechead" id="toolkit"><div class="num">4</div><h2>Valuation toolkit</h2></div>
+<div class="card">
+  <p class="sub">All arithmetic here is our calculation and is a way to frame the question, not a forecast and not a recommendation.</p>
+  <h3>What you have to believe at $74 fully diluted ($1.33T)</h3>
+  <p>For the fully diluted value to equal a mature earnings multiple times net income, these are the net income and revenue levels implied.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Mature P/E you assume</th><th>Net income needed</th><th>Revenue needed at 25% net margin</th><th>Revenue needed at 30% net margin</th></tr>
+    <tr><td><b>20x</b></td><td>$67B</td><td>$267B</td><td>$222B</td></tr>
+    <tr><td><b>25x</b></td><td>$53B</td><td>$213B</td><td>$178B</td></tr>
+    <tr><td><b>35x</b></td><td>$38B</td><td>$152B</td><td>$127B</td></tr>
+  </table></div>
+  <p class="sub">Reference points: nine-month 2026 adjusted net income of $5.6B (S-1); Ritter's threshold of $100B or more of after-tax profit (his implied multiple is lower than the rows above); Damodaran's $1T of revenue in 2036; a reported 2028 revenue forecast of $190B to $200B (Reuters exclusive via TNW, Aug 2026, C 3/5; a company forecast as reported, not in the S-1). These ignore the time value of money: a figure needed in 2031 must be discounted back to today, which raises what has to be earned.</p>
+  <h3>Sensitivity</h3>
+  <p>Each $1 on the price is about $18B of fully diluted value (about $13B basic). Pricing above the range at, for illustration, $85 would be about $1.53T fully diluted. The $85 is an illustration, not a forecast of the pricing.</p>
+  <h3>Questions that decide the answer</h3>
+  <ul class="tight">
+    <li><b>Share count.</b> Which count does your price use: basic (13.09B) or fully diluted (about 18.01B)?</li>
+    <li><b>Revenue base.</b> Run-rate ($81B) or recognised revenue ($35.3B trailing twelve months; $67.8B annualised Q3)?</li>
+    <li><b>Margin.</b> Adjusted or GAAP, and is stock-based compensation a cost?</li>
+    <li><b>Commitments.</b> Are the $900.9B operating costs, or debt-like? How much of the $186.2B terminable or contingent portion would be exercised?</li>
+    <li><b>Durability.</b> Is the frontier lead durable against Google, OpenAI and open-weight models, and against price deflation? Epoch AI measured the price to reach a fixed capability level falling about 40x a year on one benchmark, with a range of 9x to 900x by task (C 5/5).</li>
+    <li><b>Control.</b> Is no control acceptable at this price? Ritter's data points both ways (c7).</li>
+    <li><b>Allocation versus aftermarket.</b> Ritter's base rates (C 5/5): the average first-day return in 2025 was 29%; IPOs with at least $1B of sales averaged −2.1% market-adjusted over three years; tech dual-class IPOs +13.8%. An IPO allocation price and an aftermarket price are different decisions.</li>
+    <li><b>Calendar.</b> What happens on the lock-up dates and index-inclusion dates in c8?</li>
+  </ul>
+</div>
+
+<div class="sechead" id="stepping-back"><div class="num">5</div><h2>Stepping back</h2></div>
+<div class="card">
+  <div class="callout violet"><b>The error direction in this run.</b> Press errors leaned toward overstating value: the $2T talk (c1) and the $518B-to-$900B "rise" (c4). One bull comparison used a mismatched yardstick (Galloway, c6). The company's own numbers checked out against the filing, but its headline metrics (run-rate, adjusted margin, retention) are framings more favourable than the recognised-revenue and GAAP alternatives, and the filing carries the hedges. A handful of checks is not a base rate, and no claim here should be read as a measure of how often each party errs.</div>
+  <h3>Messengers and incentives</h3>
+  <p>Anthropic and its underwriters have an interest in a full book and a first-day pop; the underwriters' fees are an underwriting discount. The strategic investors in the placement are suppliers. ARK holds Anthropic. Commentators have brand positions: Zitron is a long-standing AI skeptic, New Constructs is a reverse-DCF research firm known for contrarian calls (record mixed per press); Ives is a known tech bull; we did not audit any commentator's record. Damodaran discloses that he would not short. The compiler is an Anthropic model.</p>
+  <h3>Interests, stated as stakes</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Party</th><th>Gains if the price holds or rises</th><th>Gains if it falls</th><th>Disclosure</th></tr>
+    <tr><td><b>Anthropic and existing holders</b></td><td>Higher proceeds and a currency for compute and hiring; selling holders realise more.</td><td>Little; a lower price means more dilution for the same capital.</td><td>The issuer; its own S-1 carries risk language.</td></tr>
+    <tr><td><b>Underwriters (Goldman Sachs, Morgan Stanley)</b></td><td>Fees tied to proceeds and to a well-received book.</td><td>Little.</td><td>Named in the S-1.</td></tr>
+    <tr><td><b>Placement investors (Google, NVIDIA and others)</b></td><td>Marks on their stake and a stronger customer.</td><td>A lower mark on their stake.</td><td>Also suppliers, investors, distributors and competitors per the S-1.</td></tr>
+    <tr><td><b>Bulls (Ives, Moorhead, Galloway)</b></td><td>Being right on a prominent call.</td><td>A reputational cost.</td><td>No holdings found in our material; brand positions as above.</td></tr>
+    <tr><td><b>Bears (Zitron, New Constructs, Eisman)</b></td><td>A reputational cost.</td><td>Being right on a prominent call.</td><td>No holdings found in our material; brand positions as above.</td></tr>
+    <tr><td><b>Damodaran, Ritter</b></td><td>None found in our material.</td><td>None found in our material.</td><td>Damodaran says he would not short and owns Alphabet and Meta.</td></tr>
+    <tr><td><b>ARK Invest</b></td><td>Mark-up of an about 4.4% venture-fund position.</td><td>Mark-down.</td><td>Holding stated at 31 Oct.</td></tr>
+    <tr><td><b>Press and aggregators</b></td><td>Traffic from a large, contested story.</td><td>Traffic from a large, contested story.</td><td>Many items reached us through relays.</td></tr>
+    <tr><td><b>The compiler (Claude, made by Anthropic)</b></td><td>The company that built the compiler gains from a higher price.</td><td>It loses.</td><td>A direct conflict of interest; countered by reading company figures against the filing (the headline metrics get a dedicated check), giving the bear case equal space and a per-party skepticism count.</td></tr>
+  </table></div>
+  <h3>What could not be substantiated</h3>
+  <ul class="tight">
+    <li>The final price.</li>
+    <li>The Reuters "$2T" wording.</li>
+    <li>The FT above-range report.</li>
+    <li>Zitron's discounted-compute claim.</li>
+    <li>The LTBT's current trustee count.</li>
+    <li>Peer multiples with dates.</li>
+    <li>Polymarket odds beyond one aggregator snapshot.</li>
+    <li>The share base behind Renaissance's $1.2T.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="scorecard"><div class="num">6</div><h2>Scorecard and takeaways</h2></div>
+<div class="card" id="score">
+  <p class="sub">Each row links to its check box; each check box links back here. Scores are those of the underlying sources and are not raised by the verdict.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="width:56%">Claim</th><th>Verdict</th><th>C</th></tr>
+    <tr><td><a href="#c1">c1 · Headline valuation of $1.2–1.4T (and the $2T talk)</a></td><td><span class="pill p-most">Mostly true</span> <span class="pill p-mis">c1b Misleading</span></td><td class="cs">3/5, 2/5</td></tr>
+    <tr><td><a href="#c2">c2 · Run-rate of $81B</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c3">c3 · Profitability</a></td><td><span class="pill p-true">True</span></td><td class="cs">5/5</td></tr>
+    <tr><td><a href="#c4">c4 · $900.9B of commitments (and the "rise" from $518B)</a></td><td><span class="pill p-true">True</span> <span class="pill p-mis">Misleading</span></td><td class="cs">5/5, 4/5</td></tr>
+    <tr><td><a href="#c5">c5 · Revenue quality: 5–7% policy violators; top-five share; retention</a></td><td><span class="pill p-true">True</span> <span class="pill p-unv">Unverifiable</span></td><td class="cs">5/5, 3/5</td></tr>
+    <tr><td><a href="#c6">c6 · Peers and multiples</a></td><td><span class="pill p-open">Open</span></td><td class="cs">3/5</td></tr>
+    <tr><td><a href="#c7">c7 · Governance and control</a></td><td><span class="pill p-true">True</span> <span class="pill p-open">Open</span> (trustee count)</td><td class="cs">5/5, 3/5</td></tr>
+    <tr><td><a href="#c8">c8 · Supply of stock and index flows</a></td><td><span class="pill p-true">True</span> <span class="pill p-open">Open</span> (dates)</td><td class="cs">5/5, 2–3/5</td></tr>
+    <tr><td><a href="#c9">c9 · Demand and market backdrop</a></td><td><span class="pill p-open">Open</span></td><td class="cs">2/5</td></tr>
+  </table></div>
+  <h3>What survives</h3>
+  <ul class="tight">
+    <li>The company's figures check against the filing: the $81B run-rate as a defined metric, the adjusted margins, the $900.9B of commitments, the five-class structure.</li>
+    <li>The price's meaning depends on three choices that are not in dispute as facts: share count (about $0.4T apart at $74), revenue base (16.5x or about 38x), and how commitments are treated.</li>
+    <li>Both sides' strongest evidence is real: growth and retention on the bull side; the base rate for very high sales multiples, the margin guidance and the control structure on the bear side.</li>
+    <li>The evidence on dual-class tech IPOs does not support a simple story in either direction.</li>
+  </ul>
+  <h3>What to discount</h3>
+  <ul class="tight">
+    <li><b>Anthropic (the issuer):</b> the headline metrics are framings more favourable than the recognised-revenue and GAAP alternatives, and the issuer and its underwriters gain from a full book. The hedges in the filing, not the letter's tone, are the better guide.</li>
+    <li><b>The bulls:</b> the argument that the range is low against $2T (our wording) rests on a figure that was talk, not an S-1 number (c1b), and a P/E comparison with sales multiples uses different yardsticks (c6).</li>
+    <li><b>The valuation bears:</b> a causal story attached to a correct figure (Eisman's "tokenmaxing", Zitron's discounted compute and "distilling") is the commentator's, not the filing's; New Constructs' record is mixed.</li>
+    <li><b>The governance critics:</b> the institutional-investor position is general rather than ANT-specific, advocacy-group language is advocacy, and the one empirical counterweight in our material compares different baskets, so it does not settle the point either way (c7).</li>
+    <li><b>The press:</b> relayed items, headline totals compared across scopes ($518B to $900.9B) and unsourced round numbers ($2T) carry less weight than they appear to; most demand reports are C 2/5.</li>
+    <li><b>The compiler:</b> this piece was built with a model made by the company being valued. Its framing choices, including which checks to run and how to word them, are the thing a reader should test most.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="sources"><div class="num">7</div><h2>Sources</h2></div>
+<div class="card">
+  <h3>Primary</h3>
+  <ul class="tight src">
+    <li>SEC EDGAR, <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026074338/anthropicpbc-sx1ax3.htm">S-1/A No. 3</a> (C 5/5)</li>
+    <li>IPO-website free writing prospectus with the founders' letter (SEC filing, Nov 2026; C 5/5)</li>
+    <li>Anthropic, <a href="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation">Series G</a>: $30B at $380B post-money, 12 Feb 2026, run-rate then $14B · <a href="https://www.anthropic.com/news/series-h">Series H</a>: $65B at $965B post-money, 28 May 2026, run-rate "crossed $47 billion". The H-1 price of $589.0095 per preferred share is $58.90 after the 10-for-1 split of 17 Sep 2026 (S-1); the IPO midpoint is +26% per share on that (our calculation). Against the $965B headline, the fully diluted value at $74 is +38%, and the gap is share-count growth (notes, fund, placement), not price. (C 5/5)</li>
+    <li><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm">Federal Reserve release, 28 Oct 2026</a> (C 5/5)</li>
+    <li>Jay Ritter: <a href="https://site.warrington.ufl.edu/ritter/files/IPO-Statistics.pdf">IPO statistics</a> · <a href="https://site.warrington.ufl.edu/ritter/files/IPOs-long-run-returns-on-IPOs.pdf">long-run returns</a> · <a href="https://site.warrington.ufl.edu/ritter/files/IPOs-Dual-Class.pdf">dual-class</a> (C 5/5)</li>
+    <li><a href="https://aswathdamodaran.blogspot.com/2026/10/the-anthropic-prospectus-arrives-ipo.html">Damodaran, own blog, Oct 2026</a> (C 5/5 for his own view)</li>
+    <li><a href="https://epoch.ai/data-insights/ai-inference-price-trends">Epoch AI, inference price trends</a> (C 5/5)</li>
+  </ul>
+  <h3>Press and analysts</h3>
+  <ul class="tight src">
+    <li><a href="https://www.renaissancecapital.com/IPO-Center/News/122657/anthropic-sets-terms-for-61-billion-ipo-targeting-a-1-2-trillion-market-cap">Renaissance Capital</a> · <a href="https://fortune.com/2026/11/03/anthropics-third-quarter-results-mean-ipo-math-and-history-are-not-on-its-side-analysts-say/">Fortune, 3 Nov</a> · <a href="https://www.thestreet.com/investing/anthropic-ipo-valuation-risk-1-trillion-ceiling-jay-ritter">TheStreet on Ritter</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-overvalued-hardly-valuation-013234576.html">Yahoo on Galloway</a></li>
+    <li>Stocktwits: <a href="https://stocktwits.com/news-articles/markets/equity/dan-ives-backs-anthropic-ipo-s-1-t-target-digestible-debut-beats-maximum-valuation/cNGuodfR9JO">Ives</a> · <a href="https://stocktwits.com/news-articles/markets/equity/pricing-it-to-go-crazy-on-ipo-day-analyst-views-anthropic-s-1-3-trillion-ipo-valuation-conservative-even-with-900-b-spending-overhang/cNGDaXPR9Jo">Moorhead</a></li>
+    <li><a href="https://wheresyoured.at/exit-liquidity">Zitron</a> · TNW: <a href="https://thenextweb.com/news/anthropic-ipo-valuation-new-constructs-144bn">New Constructs</a>, <a href="https://thenextweb.com/news/anthropic-revenue-run-rate-65-billion">$65B run-rate</a>, <a href="https://thenextweb.com/news/anthropic-ipo-190-200bn-2028-revenue-forecast">2028 forecast</a></li>
+    <li><a href="https://www.businessday.co.za/world/international-companies/2026-09-29-anthropic-plans-518bn-ai-infrastructure-spend-80-non-cancellable/">Business Day / Reuters, $518bn</a> · <a href="https://news.bgov.com/financial-accounting/anthropic-ipo-filing-reveals-nearly-900-billion-in-future-debt">Bloomberg Government</a></li>
+    <li><a href="https://advisors.vanguard.com/insights/article/anthropics-ipo-puts-index-rules-in-the-spotlight">Vanguard, index rules</a> · <a href="https://www.bnnbloomberg.ca/business/2026/03/30/new-nasdaq-rules-to-include-fast-entry-for-new-listings-on-benchmark-index/">BNN Bloomberg, Nasdaq fast entry</a> · <a href="https://fortune.com/2026/06/15/how-spacex-debut-compares-to-other-major-ipos/">Fortune, SpaceX debut</a></li>
+    <li><a href="https://www.fool.com/investing/2026/10/26/anthropics-ipo-keeps-founders-in-control/">Fool, governance</a> · <a href="https://www.techtimes.com/articles/324928/20260819/anthropic-ipo-buyers-get-no-board-control-super-voting-founders-three-member-trust-govern.htm">Tech Times, LTBT</a></li>
+    <li>OpenAI: <a href="https://letsdatascience.com/blog/openai-wanted-30-billion-closed-11-billion-lower-price">letsdatascience (aggregator)</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html">Yahoo, March round</a></li>
+    <li>Markets: <a href="https://www.alaskasnewssource.com/2026/11/05/brutal-sell-off-ai-stocks-sends-wall-street-reeling-sp-500-sees-worst-day-since-2025-liberation-day-tariffs/">AP, 5 Nov</a> · <a href="https://aljazeera.com/news/2026/11/12/ai-titan-jensen-huang-out-as-nvidia-ceo">Al Jazeera, Huang</a></li>
+  </ul>
+  <p class="sub"><b>Single-source and aggregator flags (C 2/5):</b> stockanalysis (6x oversubscribed); financefeeds (Polymarket); EconoTimes and RuntimeWire (5% to 7%); webull (Eisman); crowdfundedwealth (retail brokers, lock-up dates); fourweekmba (SpaceX price); letsdatascience (FT above-range). Reuters, Bloomberg and FT items were seen through relays only.</p>
+</div>
+
+<div class="foot">Prepared 18 Nov 2026 before pricing · 9 claims checked · compiled with Claude, a model made by Anthropic, the company being valued: a direct conflict of interest, countered by reading company figures against the filing (the headline metrics get a dedicated check), giving the bear case equal space, and a separate review that checked quote integrity and counted skepticism per party (the counts are kept in the research notes)<br>A reading of the filing and the reaction to it, not an endorsement of any side — and not investment advice.</div>
+</div>
+</body>
+</html>
