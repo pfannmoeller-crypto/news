@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* webzeitung width + mobile overrides */
+img{max-width:100%;height:auto}
+@media (max-width:900px){
+  table[width]{width:100%!important}
+  td,th{word-break:break-word}
+  body{-webkit-text-size-adjust:100%}
+}
+.wz-back{position:fixed;bottom:16px;right:16px;z-index:9999;background:#202124;color:#fff;
+  text-decoration:none;font:500 14px Roboto,Arial,sans-serif;padding:10px 18px;border-radius:24px;
+  opacity:.92}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Agent, Many Skills: The “Six Levels” of Claude Skills, Checked</title>
+<meta name="description" content="A RoboNuggets explainer says Anthropic’s engineers swapped agent fleets for one agent with skills. What a skill is, the six levels it teaches, 12 checked claims, and what multi-agent builders, security researchers and the first skill benchmarks say.">
+<meta name="wz-icon" content="idea">
+<meta name="wz-color" content="#e65100">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1a73e8; --blue-d:#174ea6; --green:#188038; --red:#c5221f; --amber:#f29900;
+    --accent:#283593; --grey-900:#202124; --grey-700:#3c4043; --grey-600:#5f6368;
+    --grey-300:#dadce0; --grey-100:#f1f3f4; --grey-50:#f8f9fa; --white:#fff;
+    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --shadow-2:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--grey-100);
+       font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       color:var(--grey-900);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 72px}
+  h1,h2,h3,h4{font-family:'Google Sans','Roboto',sans-serif;font-weight:500;letter-spacing:-.2px}
+
+  .hero{background:linear-gradient(135deg,#283593 0%,#1a237e 100%);
+        color:#fff;padding:44px 30px 34px;border-radius:20px;box-shadow:var(--shadow-2);
+        margin-bottom:14px}
+  .kicker{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;
+          font-weight:500;margin-bottom:12px}
+  .hero h1{font-size:30px;line-height:1.24;margin:0 0 16px;color:#fff;font-weight:700}
+  .hero p{font-size:16px;line-height:1.6;margin:0;opacity:.95;max-width:66ch}
+  .hero .meta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.28);
+              font-size:13px;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 18px}
+
+  .epistemic{background:var(--white);border:1px solid var(--grey-300);border-radius:12px;
+             padding:13px 18px;margin-bottom:12px;font-size:13.5px;color:var(--grey-600);
+             line-height:1.6}
+  .epistemic b{color:var(--grey-700);font-weight:500}
+
+  .navchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .navchips a{background:var(--white);border:1px solid var(--grey-300);border-radius:20px;
+              padding:7px 16px;font-size:13.5px;font-weight:500;color:var(--grey-700);
+              font-family:'Google Sans',sans-serif}
+  .navchips a:hover{background:var(--grey-50);text-decoration:none}
+
+  .card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-1);
+        padding:26px 28px;margin-bottom:18px}
+  .card h2{font-size:22px;margin:0 0 6px;color:var(--grey-900)}
+  .card h3{font-size:17.5px;margin:30px 0 8px;color:var(--grey-900)}
+  .card h3:first-of-type{margin-top:14px}
+  .card p{margin:0 0 14px;font-size:15.5px;color:var(--grey-700)}
+  .sub{font-size:13.5px;color:var(--grey-600);margin:0 0 18px}
+  .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11.5px;
+      background:var(--grey-100);color:var(--grey-600);border-radius:6px;padding:2px 8px;
+      margin-left:8px;vertical-align:middle;font-weight:500}
+
+  .sechead{display:flex;align-items:center;gap:12px;margin:38px 0 16px}
+  .sechead .num{background:var(--accent);color:#fff;width:30px;height:30px;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+       font-family:'Google Sans',sans-serif;flex:0 0 30px}
+  .sechead h2{font-size:21px;margin:0;color:var(--grey-900)}
+
+  .partband{background:var(--white);border:1px solid var(--grey-300);border-left:5px solid var(--accent);
+            border-radius:12px;padding:14px 18px;margin:34px 0 8px}
+  .partband .pl{font-family:'Google Sans',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.2px;
+            text-transform:uppercase;color:var(--accent)}
+  .partband h2{font-size:22px;margin:2px 0 4px;color:var(--grey-900)}
+  .partband p{margin:0;font-size:13.5px;color:var(--grey-600)}
+
+  .quote{border-left:3px solid var(--accent);background:var(--grey-50);border-radius:0 10px 10px 0;
+         padding:12px 18px;margin:0 0 12px;font-size:15px;color:var(--grey-700);font-style:italic}
+  .quote b{font-style:normal;color:var(--grey-900);font-weight:500}
+
+  .explainer{background:#f6f9ff;border:1px solid #d3e0f5;border-radius:10px;padding:13px 17px;margin:14px 0;
+             font-size:14px;line-height:1.6;color:var(--grey-700)}
+  .explainer .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;
+             text-transform:uppercase;display:block;margin-bottom:4px;color:var(--blue-d)}
+  .explainer b{color:var(--grey-900);font-weight:500}
+
+  .dialogue{border:1px solid var(--grey-300);border-radius:10px;padding:12px 16px;margin:14px 0;background:var(--white);
+            font-size:14.5px;color:var(--grey-700);line-height:1.6}
+  .dialogue .tag{font-family:'Google Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;
+            text-transform:uppercase;display:block;margin-bottom:4px;color:var(--grey-600)}
+  .dialogue b{color:var(--grey-900);font-weight:500}
+
+  .hedge{font-size:13.5px;color:var(--grey-600);font-style:italic;margin:8px 0 14px}
+
+  .camp{border:1px solid var(--grey-300);border-radius:12px;padding:16px 18px;margin:0 0 14px;background:var(--white)}
+  .camp h3{margin:0 0 4px !important;font-size:16.5px}
+  .camp .who{font-size:13.5px;color:var(--grey-900);margin:0 0 8px}
+  .camp p{font-size:15px;margin:0 0 10px}
+  .camp .diff{font-size:14px;color:var(--grey-600);margin:0}
+  .camp .diff b{color:var(--grey-900);font-weight:500}
+  .gtag{display:inline-block;font-family:'Roboto Mono',monospace;font-size:11px;color:var(--grey-600);
+        background:var(--grey-100);border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle;
+        white-space:normal}
+
+  .callout{background:#fef7e0;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+           padding:15px 18px;margin:16px 0;font-size:14.5px;color:#5c4200}
+  .callout.violet{background:#e8eaf6;border-left-color:var(--accent);color:#1a237e}
+  .callout b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13.5px}
+  th{text-align:left;background:var(--grey-50);color:var(--grey-700);font-weight:500;
+     padding:8px 10px;border-bottom:2px solid var(--grey-300);font-family:'Google Sans',sans-serif;
+     font-size:12.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--grey-300);color:var(--grey-700);
+     vertical-align:top}
+  td b{color:var(--grey-900);font-weight:500}
+
+  ul.tight{margin:6px 0 14px;padding-left:20px}
+  ul.tight li{margin-bottom:8px;font-size:15px;color:var(--grey-700)}
+  ul.tight li b{color:var(--grey-900);font-weight:500}
+
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .foot{text-align:center;font-size:12.5px;color:var(--grey-600);padding:26px 10px 0;line-height:1.8}
+
+  @media (max-width:600px){
+    .hero{padding:28px 20px 24px;border-radius:14px}
+    .hero h1{font-size:24px}
+    .card{padding:20px 18px}
+    .wrap{padding:10px 10px 48px}
+  }
+</style>
+</head>
+<body>
+<a class="wz-back" href="../index.html">&#8962; Home</a>
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">RoboNuggets · YouTube · 23 Nov 2026 · Short read: explainer, checks, perspectives</div>
+  <h1>One Agent, Many Skills: The “Six Levels” of Claude Skills, Checked</h1>
+  <p>A popular explainer says Anthropic’s engineers stopped building a new agent for every task and load one general agent with “skills” instead. What a skill is, the six levels the video teaches, which claims hold, and what the research and the multi-agent camp say.</p>
+  <div class="meta"><span>Video, about 16 min</span><span>English, auto-captioned</span><span>As of 26 Nov 2026</span></div>
+</div>
+
+<div class="epistemic"><b>About this piece.</b> Source: “Anthropic’s Engineers Stopped Building AI Agents (Here’s What They Build Instead)” by Jay E on the RoboNuggets YouTube channel, published 23 Nov 2026 (16 min), read in full from YouTube’s auto-generated English captions. <b>Quote fidelity:</b> as extracted from auto-captions; quotations are lightly cleaned of filler and recognition errors (“Entropic” for Anthropic, “cloud” for Claude) but otherwise verbatim. <b>Checks:</b> 12 claims were checked; each check box carries a source-quality score: C5 primary source, C4 two independent sources, C3 one credible source, C2 aggregator only. Not verified: the word “hobbling” as Boris Cherny’s term, the “skills = applications” step of Anthropic’s analogy, and the presenter’s own biography. <b>Compiler disclosure:</b> written with an Anthropic model (Claude). The video is about Anthropic’s products, most claims trace back to Anthropic staff, and many checks rely on Anthropic’s own documentation and figures; read the piece with that conflict in mind. Research studies cited in Part II are 2026 preprints, mostly read through summaries. <b>Structure:</b> Part I, the video with inline checks, is about two thirds of the text.</div>
+
+<div class="navchips">
+  <a href="#kt">Key takeaways</a><a href="#p1">I · The video</a><a href="#p2">II · Other perspectives</a><a href="#bp">The big picture</a><a href="#sig">Signposts</a><a href="#p3">III · Worth knowing</a><a href="#score">Checks at a glance</a><a href="#src">Sources</a>
+</div>
+
+<div class="sechead" id="kt"><div class="num">&#9889;</div><h2>Key takeaways</h2></div>
+<div class="card">
+  <ul class="tight">
+    <li><b>The idea.</b> Instead of building many specialised agents, use one general agent (such as Claude Code) and give it expertise through skills: folders with a SKILL.md file of instructions, plus optional examples, templates and scripts. The framing comes from an Anthropic talk, “Don’t Build Agents, Build Skills Instead” (late 2025).</li>
+    <li><b>The six levels.</b> Let Claude write skills with Anthropic’s skill-creator; do a task once and then turn the session into a skill; record your screen; use skills that are not step lists (data pointers, design systems, one-line definitions); install other people’s skills after vetting them; and sometimes run without skills to see what a newer model does unaided.</li>
+    <li><b>The facts mostly hold.</b> Launch date, open standard, the screen-recording feature, the partner directory and Anthropic’s 80% cut of Claude Code’s system prompt are confirmed. One explanation is oversimplified: relaying Anthropic’s chart, he calls the agent “harness” “in its essence just a set of system prompts” plus your own context; Anthropic’s descriptions also include tools, code execution and a file system. The title overstates the talk; his spoken line, that the engineers stopped building a new agent “for every single task”, is close to it.</li>
+    <li><b>The research is more cautious than the video.</b> 2026 preprints find curated skills help on average, self-written skills often do not, and large skill libraries make the right skill harder to pick. That supports levels 5 and 6 more than “skill max it”.</li>
+    <li><b>Who is talking.</b> The presenter sells a $97-a-month community and courses on building agents with Claude Code; the video largely builds on Anthropic’s own talking points and adds his practitioner recipe.</li>
+  </ul>
+</div>
+
+<div class="partband" id="p1"><div class="pl">Part I</div><h2>The video</h2><p>What the presenter says, in his order, with a check box wherever a factual claim carries the argument. Level names are his.</p></div>
+
+<div class="card">
+  <h3>Who is speaking</h3>
+  <p><b>Jay E</b> runs RoboNuggets, a paid online community on the Skool platform, and says he spent over a decade working with well-known brands and has worked in AI since a master’s in data science (not verified). The video promotes his community, a Claude Code masterclass and “Rubric”, his software for working with agents.</p>
+  <h3>The claim in one paragraph</h3>
+  <p>Building a new agent for every job is like buying a new computer for every task. The model is the chip, the agent is the operating system, and skills are the apps: install one and the same agent can do something new. One well-equipped general agent beats a “fleet of hundreds”, the way a manager would rather lead a small team of A-players than 100 people.</p>
+  <div class="quote">“The fewer agents that you have in principle, the better.” <b>— Jay E</b></div>
+</div>
+
+<div class="sechead"><div class="num">1</div><h2>Why one agent with skills <span class="yr">0:00</span></h2></div>
+<div class="card">
+  <p>He cites Barry Zhang of Anthropic, who said the team used to build many agents until they found that “the agent underneath is actually more universal than we thought”: a general agent like Claude Code can already work in several fields, and what is usually missing is your own expertise. That expertise is what a skill supplies.</p>
+  <div class="explainer" id="c1"><span class="tag">Check 1 · The Anthropic talk · C4/5</span><b>Holds, with a headline paraphrase.</b> Barry Zhang and Mahesh Murag of Anthropic gave “Don’t Build Agents, Build Skills Instead” at the AI Engineer Code Summit in November 2025 (online from 8 Dec 2025). The quoted sentence is in the talk, as is the comparison of models to processors and of the runtime to an operating system; the “skills are applications” step was not seen in the transcripts we could check. The video’s title, that Anthropic’s engineers “stopped building AI agents”, overstates the talk, which argues for skills on top of one general agent, not for abandoning agents; his spoken line (“stopped building new agents for every single task”) is close to the talk.</div>
+  <p>He then explains Anthropic’s layer picture: the model at the core; around it the “agent harness”, which he describes as “in its essence just a set of system prompts” injected into every chat, plus your own context such as CLAUDE.md files and memory; and on top the skills. In practice, he says, “don’t make a lot of agents” means not creating many separate workspace folders, each with its own instructions and memory. He keeps one workspace for everything, with by his count 600,000 files.</p>
+  <div class="explainer" id="c2"><span class="tag">Check 2 · “The harness is just system prompts” · C3/5</span><b>Oversimplified.</b> He hedges with “in its essence” and adds your own context and memory to the layer. In the talk the runtime is a model coupled to an environment, with scaffolding “as thin as just bash and file system”: the agent reads and writes files, runs code and connects to external tools. Anthropic’s own descriptions of its harness include the agent loop, tools, code execution and context management. System prompts are one part of it.</div>
+</div>
+
+<div class="sechead"><div class="num">2</div><h2>What a skill is, and what changed in a year <span class="yr">2:05</span></h2></div>
+<div class="card">
+  <p>In Zhang’s words, skills are “essentially just folders”. The key file is SKILL.md. At its top sit a name and a description, which he says “probably” matter most, because Claude matches your request against them to decide whether to open the folder at all: the label on the toolbox. Inside are steps in plain English, and optionally examples, templates or custom software.</p>
+  <div class="explainer" id="c3"><span class="tag">Check 3 · How skills load · C5/5</span><b>Holds.</b> Anthropic’s documentation requires a name (up to 64 characters) and a description (up to 1,024). Only these, roughly 100 tokens per skill, sit permanently in the agent’s context; the body is read when a request matches, and bundled files only when needed. Anthropic calls this progressive disclosure.</div>
+  <div class="explainer"><span class="tag">Background · skills, agents, MCP</span>An <b>agent</b> here is a model running in a loop with tools, able to act on files and software. A <b>skill</b> is packaged know-how the agent loads when relevant. <b>MCP</b> (Model Context Protocol) is a separate Anthropic-led standard that connects agents to outside services such as a CRM or a database. Skills teach the agent how; MCP gives it access.</div>
+  <p>Two things changed since launch, he says. Skills became an open standard that more than 70 platforms adopted, including ChatGPT, Cursor and GitHub Copilot, so a skill built for Claude can work elsewhere and survives a switch of provider. And skills grew from written standard operating procedures into something broader.</p>
+  <div class="explainer" id="c4"><span class="tag">Check 4 · Launch and open standard · C4/5</span><b>Holds.</b> Anthropic announced skills on 16 Oct 2025 and published the format as an open standard on 18 Dec 2025. In October 2026 it handed the standard to the Agentic AI Foundation under the Linux Foundation and cited more than 70 platforms, including ChatGPT, Cursor, GitHub Copilot and VS Code, plus 1 million published skills and about 280 million installs. The dates are primary; the adoption figures are self-reported by Anthropic and were not independently verified.</div>
+</div>
+
+<div class="sechead"><div class="num">3</div><h2>Levels 0 to 3: how to make a skill <span class="yr">5:24</span></h2></div>
+<div class="card">
+  <p><b>Level 0</b>, writing a skill by hand, he skips: “I never recommend this to anyone.” <b>Level 1</b> is asking Claude to write skills with Anthropic’s skill-creator skill, and telling Claude to use it by default so every new skill follows Anthropic’s best practices. His example: a consultant asks for a skill that turns call notes into a one-page proposal and attaches their best past proposals for layout and tone.</p>
+  <div class="explainer" id="c5"><span class="tag">Check 5 · skill-creator · C3/5</span><b>Partly holds.</b> Anthropic offers a skill-creator skill for guided skill building. We found no Anthropic page confirming that it is preinstalled in every Claude app; in Claude Code it may require adding Anthropic’s skills collection.</div>
+  <p><b>Level 2</b> is his recommended route, because most needed automations only show up during the work: do the task once with Claude, correct it as you would an intern, and at the end ask it to turn the session into a skill. Each later run with new edge cases refines it. He uses this for the animations in his own videos, with a skill he keeps refining, and says this is how he and many advanced users he knows work.</p>
+  <div class="quote">“Do it once, then skillify it so that the next time you do this same task, it is already automated at a certain degree.” <b>— Jay E</b></div>
+  <p><b>Level 3</b> is for visual, click-heavy tasks: in the Claude desktop app, choose “record a skill”, do the task while narrating as if training a new hire, and Claude proposes a skill from the recording. His example: logging into a supplier website that has no connector.</p>
+  <div class="explainer" id="c6"><span class="tag">Check 6 · “Record a skill” · C4/5</span><b>Holds, with a scope note.</b> The feature launched on 21 Jul 2026 in Cowork in the Claude desktop app for Mac, under the + menu, for paid plans. It is not available on the Free plan.</div>
+</div>
+
+<div class="sechead"><div class="num">4</div><h2>Level 4: skills that are not step lists <span class="yr">10:16</span></h2></div>
+<div class="card">
+  <p>His point: a skill “can be as big as a library or even as small as one sentence”. He names four types from his own practice:</p>
+  <ul class="tight">
+    <li><b>Database skills</b> point to your own data, such as each customer’s purchase history, communications and lifetime value, so automations can personalise messages.</li>
+    <li><b>Artifact skills</b> hold a design system (colours, fonts, layouts); his on-brand PDF guides are made this way.</li>
+    <li><b>Definition skills</b> pin down what a word means to you; his “wildcard” skill tells Claude what he means by wild ideas.</li>
+    <li><b>One-liners</b>, such as Matt Pocock’s popular “grill me” skill, a few lines telling Claude to interview you about your plan one question at a time.</li>
+  </ul>
+  <div class="explainer" id="c7"><span class="tag">Check 7 · The skill types · C3/5</span><b>The example holds; the taxonomy is his.</b> Matt Pocock’s grill-me skill exists in his published collection; it interviews the user about a plan, though we could not confirm the “one question at a time” detail. The four type names are the presenter’s own; no external source uses them.</div>
+</div>
+
+<div class="sechead"><div class="num">5</div><h2>Level 5: other people’s skills <span class="yr">12:20</span></h2></div>
+<div class="card">
+  <p>Many skills already exist for free. He points to Anthropic’s directory, with partner skills from Notion, Figma and Atlassian, and to skills.sh from Vercel, which ranks skills by installs. Because of the open standard, skills written for other tools usually work in Claude. His advice: let Claude browse a directory and recommend what fits, use only trusted sources, have the agent check a skill for safety before installing, and adapt it to your setup.</p>
+  <div class="explainer" id="c8"><span class="tag">Check 8 · Directories · C5/5</span><b>Holds.</b> Anthropic’s directory launched on 18 Dec 2025 with Notion, Canva, Figma and Atlassian among the partners. Vercel launched skills.sh on 20 Jan 2026 as a directory and leaderboard; it tracks installs, though the page does not state the ranking rule.</div>
+  <div class="explainer" id="c9"><span class="tag">Check 9 · Is vetting needed? · C4/5</span><b>Yes, and the risk is measured.</b> Snyk’s “ToxicSkills” scan of 3,984 skills from ClawHub and skills.sh (Feb 2026) found at least one flaw in 36.8% and a critical issue in 13.4%, with 76 confirmed malicious payloads. The top 100 on skills.sh had no critical findings; the open ClawHub marketplace was worse. Snyk sells security tooling, which is worth knowing when reading its numbers.</div>
+</div>
+
+<div class="sechead"><div class="num">6</div><h2>Level 6: sometimes, no skills at all <span class="yr">13:31</span></h2></div>
+<div class="card">
+  <p>The last level reverses the rest. He cites Boris Cherny, creator and technical lead of Claude Code, who said in an interview that every six months you should delete your CLAUDE.md files, skills and hooks and see what the model does. The reason: with newer models such as Fable and Opus 5.5, detailed instructions written for older models can hold the output back. He says he “probably” would not recommend deleting files; instead, run a task once with and once without the skill and compare.</p>
+  <div class="quote">“Instead of helping you become more ambitious, your skills can actually end up holding the model back.” <b>— Jay E</b></div>
+  <p>He calls it the bell-curve meme: simple at the start, ever more knowledge piled on in the middle, simple again at the end. He says Cherny has a name for it, “hobbling”, when the model could do something and you are getting in its way, and that the Claude Code team cut its system prompt by 80% for this reason. His “wildcard” skill serves the same purpose: inviting the model to surprise him.</p>
+  <div class="explainer" id="c10"><span class="tag">Check 10 · Cherny’s advice · C3/5</span><b>Mostly holds.</b> In a Y Combinator interview around the Opus 5 release (summer 2026), Cherny recommended deleting CLAUDE.md files, skills and hooks every six months because the model may not need the instructions. His advice was aimed at Claude Code users. We found no source attributing the word “hobbling” to him; coverage uses the AI-research term “unhobbling”, so the captions may have dropped a syllable. The sense, a model held back by its instructions, matches.</div>
+  <div class="explainer" id="c11"><span class="tag">Check 11 · The 80% cut · C4/5</span><b>Holds.</b> Anthropic’s Thariq Shihipar wrote on 24 Jul 2026 that more than 80% of Claude Code’s system prompt was removed for the newest models with no measurable loss on Anthropic’s own coding evaluations (self-reported), because old rules often conflicted with what the models now do by default. Anthropic’s advice there is to keep CLAUDE.md files and skills lean, not to abolish them.</div>
+  <div class="explainer" id="c12"><span class="tag">Check 12 · The models named · C5/5</span><b>Holds.</b> Anthropic released Claude Opus 5.5 on 22 Sep 2026; Claude Fable is its top model tier.</div>
+  <p class="hedge">His hedges: skills “usually” work across tools; level 2 gets him “mostly good results”; and having fewer agents is “probably a better idea”, not a rule.</p>
+</div>
+
+<div class="partband" id="p2"><div class="pl">Part II</div><h2>Other perspectives</h2><p>Not who is right, but how practitioners and researchers answer the same questions. No direct response to this video was found; the debate is about the ideas it packages.</p></div>
+
+<div class="card">
+  <h3>The map</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Camp</th><th>Core view</th><th>Who</th><th>Distance from the video</th></tr>
+    <tr><td><b>A · One agent, many skills</b></td><td>General agents plus packaged know-how beat agent fleets</td><td>Zhang and Murag, Willison, Ronacher, early Walden Yan</td><td>Close</td></tr>
+    <tr><td><b>B · Multi-agent where it pays</b></td><td>Several agents win on broad, parallel, read-heavy work</td><td>Anthropic research team, LangChain, Cosine, Yan (2026)</td><td>Partly</td></tr>
+    <tr><td><b>C · Skills help, less than claimed</b></td><td>Curated skills help; self-written and large libraries disappoint</td><td>SkillsBench, Skill-Use, “Demystifying Agent Skills” (preprints)</td><td>Partly</td></tr>
+    <tr><td><b>D · MCP still matters</b></td><td>Skills and connectors solve different problems</td><td>Mintlify, David Coffee, The New Stack</td><td>Small</td></tr>
+    <tr><td><b>E · Supply-chain risk</b></td><td>Shared skills are an attack surface</td><td>Snyk, Palo Alto Unit 42</td><td>Agrees, stronger</td></tr>
+  </table></div>
+
+  <div class="camp">
+    <h3>A · “One general agent, packaged expertise” <span class="gtag">primary texts · C4–5/5</span></h3>
+    <p class="who">Barry Zhang and Mahesh Murag (Anthropic); Simon Willison; Armin Ronacher; Walden Yan (Cognition, 2025)</p>
+    <p>Willison called skills “maybe a bigger deal than MCP” at launch, because they are cheap in context and simple to write. Ronacher moved his MCP use to skills. Cognition’s 2025 essay “Don’t Build Multi-Agents” argued that parallel agents make conflicting hidden decisions.</p>
+    <p class="diff"><b>Difference from the video:</b> none on the core idea; the video adds the practitioner recipe and a sales pitch for his community.</p>
+  </div>
+
+  <div class="camp">
+    <h3>B · “Multi-agent where it pays” <span class="gtag">primary posts · C4–5/5</span></h3>
+    <p class="who">Anthropic’s research-system team; LangChain; Cosine; Walden Yan (April 2026 update)</p>
+    <p>Anthropic’s own multi-agent research system, a lead agent with subagents, beat a single agent by 90.2% on an internal research evaluation, at about 15 times the tokens of a chat; Anthropic says coding is a poor fit for that design. Yan’s 2026 follow-up keeps one agent writing but finds read-only reviewer agents pay off.</p>
+    <p class="diff"><b>Difference from the video:</b> the video’s “fewer agents is better” is right for most individual users, but even Anthropic uses several agents for broad research. Anthropic argues both positions for different jobs.</p>
+  </div>
+
+  <div class="camp">
+    <h3>C · “Skills help, less than claimed” <span class="gtag">2026 preprints via summaries · C3/5</span></h3>
+    <p class="who">SkillsBench (summarised by O’Reilly); Skill-Use benchmark; “Demystifying Agent Skills”; Atlassian guidance</p>
+    <p>Curated skills raised task pass rates by 16.2% on average, from about 4.5% in software engineering to about 52% in healthcare, while skills that models wrote for themselves gave no consistent benefit. How reliably a model loads the right skill ranged from about 32% to 97% depending on the model. In one study, as the library grew from 5 to 100 skills, correct-skill use fell from 29.6% to 3.3%, and skills were misapplied in 10% of runs against 0.8% without skills. Atlassian recommends fewer than five skills per agent.</p>
+    <p class="diff"><b>Difference from the video:</b> supports vetting, pruning and level 6, puts limits on “skill maxing” one agent, and qualifies level 2: model-written skills underperform, though none of the studies tested the human-corrected “do it once” route the video recommends. Most tested non-Claude models.</p>
+  </div>
+
+  <div class="camp">
+    <h3>D · “MCP still matters” <span class="gtag">blogs · C3/5</span></h3>
+    <p class="who">Mintlify; David Coffee; The New Stack</p>
+    <p>Skills describe how to do a job; connectors give access to live systems with permissions. A “database skill” that points to customer data still needs a connector or files behind it.</p>
+    <p class="diff"><b>Difference from the video:</b> small; the video’s supplier-website example only works because there is no connector.</p>
+  </div>
+
+  <div class="camp">
+    <h3>E · “Shared skills are a supply chain” <span class="gtag">security research · C4/5</span></h3>
+    <p class="who">Snyk; Palo Alto Networks Unit 42</p>
+    <p>Skills can run shell commands and carry hidden instructions; malicious ones have been found in open marketplaces, mostly using prompt injection.</p>
+    <p class="diff"><b>Difference from the video:</b> agrees on vetting, but “have your agent check it” relies on the same agent the attack targets.</p>
+  </div>
+
+  <h3>Where they really disagree</h3>
+  <ul class="tight">
+    <li><b>1 · One agent or many?</b> One for most users and coding; several for broad, parallel research.</li>
+    <li><b>2 · How many skills?</b> The video says one agent can be “skill maxed” but ends by urging pruning; the studies say routing degrades as libraries grow.</li>
+    <li><b>3 · Who writes them?</b> Curated by experts helps; written by the model alone often does not.</li>
+    <li><b>4 · How long do they stay useful?</b> Anthropic now says instructions age with each model generation; the video’s level 6 agrees.</li>
+  </ul>
+
+  <h3>Who is speaking, and with what stake</h3>
+  <p><b>Jay E</b> sells a $97-a-month community (about 1,500 members), a Claude Code masterclass and an agent bootcamp; his claim that mastering skills puts you ahead of “99% of people” is unquantified; the video gives no basis. <b>Anthropic</b> is the source of the talk, the adoption figures and most checks, and benefits when skills become a standard. <b>Snyk</b> sells security tooling. <b>The compiler</b> is an Anthropic model.</p>
+</div>
+
+<div class="sechead" id="bp"><div class="num">&#9670;</div><h2>The big picture</h2></div>
+<div class="card">
+  <div class="callout violet"><b>Our synthesis of the positions above, not a forecast.</b></div>
+  <p>The video packages a real shift accurately in its main lines: agents have become general enough that the scarce input is the user’s own know-how, and skills are the format for handing it over. Where it goes beyond the evidence is in quantity. The research so far rewards few, focused, curated skills, and Anthropic itself now tells users to strip instructions back with each model generation. The video’s own level 6 is the strongest part of its argument, and it limits the earlier levels.</p>
+</div>
+
+<div class="sechead" id="sig"><div class="num">&#9873;</div><h2>Signposts: how we will know</h2></div>
+<div class="card">
+  <div style="overflow-x:auto"><table>
+    <tr><th>Signal</th><th>Would support the video</th><th>Would support the sceptics</th><th>When</th></tr>
+    <tr><td><b>Skill-routing benchmarks for Claude</b></td><td>Reliable loading from large libraries</td><td>Routing collapse confirmed beyond a few skills</td><td>2027</td></tr>
+    <tr><td><b>Independent adoption counts</b></td><td>Cross-tool use beyond Anthropic’s figures</td><td>Usage concentrated in Claude</td><td>Agentic AI Foundation reports</td></tr>
+    <tr><td><b>Next model release</b></td><td>Old skills keep adding value</td><td>Another large cut to default instructions</td><td>Next generation</td></tr>
+    <tr><td><b>Marketplace security</b></td><td>Signed, scanned skills become standard</td><td>New malicious-skill campaigns</td><td>Ongoing</td></tr>
+  </table></div>
+</div>
+
+<div class="partband" id="p3"><div class="pl">Part III</div><h2>Worth knowing</h2><p>The checks at a glance, and what could not be established.</p></div>
+
+<div class="card" id="score">
+  <h3>Checks at a glance</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>#</th><th>Claim</th><th>Result</th><th>C</th></tr>
+    <tr><td><a href="#c1">1</a></td><td>Anthropic talk and quote</td><td>Holds; title is a paraphrase</td><td>4</td></tr>
+    <tr><td><a href="#c2">2</a></td><td>Harness = system prompts</td><td>Oversimplified</td><td>3</td></tr>
+    <tr><td><a href="#c3">3</a></td><td>Name and description decide loading</td><td>Holds</td><td>5</td></tr>
+    <tr><td><a href="#c4">4</a></td><td>Oct 2025 launch; open standard; 70+ platforms</td><td>Holds; adoption figures self-reported</td><td>4</td></tr>
+    <tr><td><a href="#c5">5</a></td><td>skill-creator available by default</td><td>Partly</td><td>3</td></tr>
+    <tr><td><a href="#c6">6</a></td><td>Record a skill in the desktop app</td><td>Holds (Cowork, Mac, paid plans)</td><td>4</td></tr>
+    <tr><td><a href="#c7">7</a></td><td>Skill types; grill-me</td><td>Example holds; taxonomy is his</td><td>3</td></tr>
+    <tr><td><a href="#c8">8</a></td><td>Partner directory; skills.sh</td><td>Holds</td><td>5</td></tr>
+    <tr><td><a href="#c9">9</a></td><td>Vet third-party skills</td><td>Holds; 13.4% critical in one scan</td><td>4</td></tr>
+    <tr><td><a href="#c10">10</a></td><td>Cherny: delete every 6 months; “hobbling”</td><td>Advice holds; term not found (possibly “unhobbling”)</td><td>3</td></tr>
+    <tr><td><a href="#c11">11</a></td><td>System prompt cut by 80%</td><td>Holds (Anthropic, self-reported)</td><td>4</td></tr>
+    <tr><td><a href="#c12">12</a></td><td>Fable and Opus 5.5</td><td>Holds</td><td>5</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:10px">Direction of the deviations in this run: the deviations are simplifications rather than inflated numbers (the harness description, the video title), plus the unquantified “99%” claim; the “hobbling” wording may be a caption error. One video is no base rate.</p>
+</div>
+
+<div class="card">
+  <h3>What could not be established</h3>
+  <ul class="tight">
+    <li>The full analogy step “skills are applications” in the Anthropic talk.</li>
+    <li>Whether Cherny used the word “hobbling”.</li>
+    <li>The presenter’s background and his 600,000-file workspace.</li>
+    <li>Any independent measure of how many people use skills; all adoption figures are Anthropic’s.</li>
+  </ul>
+</div>
+
+<div class="sechead" id="rel"><div class="num">&#8635;</div><h2>Related</h2></div>
+<div class="card">
+  <p>Earlier piece on the company behind the format: <a href="2026-11-18_anthropic_ipo_research.html">Anthropic’s IPO</a>. If you read one more thing: Anthropic’s July 2026 post on context engineering for its newest models, which is the official version of level 6.</p>
+</div>
+
+<div class="sechead" id="src"><div class="num">&#9776;</div><h2>Sources</h2></div>
+<div class="card">
+  <ul class="tight">
+    <li><b>Source:</b> Jay E, RoboNuggets, “Anthropic’s Engineers Stopped Building AI Agents (Here’s What They Build Instead)”, YouTube, 23 Nov 2026 (youtube.com/watch?v=IMSYKloMFrE); auto-generated captions.</li>
+    <li><b>Primary (C5):</b> Anthropic, skills launch (claude.com/blog/skills, 16 Oct 2025); Agent Skills documentation (platform.claude.com); organisation skills and directory (18 Dec 2025); donation of Agent Skills to the Agentic AI Foundation (Oct 2026); Claude Opus 5.5 announcement (22 Sep 2026); Thariq Shihipar, “The new rules of context engineering” (24 Jul 2026); Anthropic, multi-agent research system; Vercel, “Introducing skills” (20 Jan 2026).</li>
+    <li><b>Credible secondary (C3–C4):</b> AI Engineer talk page and transcripts of Zhang and Murag; The Decoder and Claude support on “record a skill”; Snyk ToxicSkills and arXiv 2605.28588; Unit 42 on OpenClaw; Cognition (Walden Yan, 2025 and Apr 2026); Simon Willison; Armin Ronacher; LangChain; O’Reilly Radar on SkillsBench; arXiv 2608.04828 (Skill-Use) and 2608.14036 (Demystifying Agent Skills); AI Hero (Matt Pocock); dev.to and newsletter write-ups of the Cherny interview.</li>
+    <li><b>Aggregator or self-description (C2):</b> RoboNuggets Skool page; an affiliate review of the community.</li>
+  </ul>
+</div>
+
+<div class="foot">Research piece compiled 26 Nov 2026, written with an Anthropic model (Claude). Quotations as extracted from auto-captions.</div>
+</div>
+</body>
+</html>
